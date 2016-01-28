@@ -1,0 +1,1205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files\microsoft visual studio 8\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.Xsl"?>
+<FxCopReport Version="8">
+ <Targets>
+  <Target Name="C:\Documents and Settings\ies080373\Local Settings\Temp\tmpF97.tmp.cadir\bin\App_Code.dll">
+   <Modules>
+    <Module Name="app_code.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="Constant" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="DeclareTypesInNamespaces" Category="Microsoft.Design" CheckId="CA1050" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+           <Issue Certainty="95" Level="Error">'Constant' should be declared inside a namespace.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="DefaultSelect" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Warning">Consider making 'DefaultSelect' non-public or a constant.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="DefaultSelectAddNew" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Warning">Consider making 'DefaultSelectAddNew' non-public or a constant.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="DefaultSelectone" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Warning">Consider making 'DefaultSelectone' non-public or a constant.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="S_EDITSConnStr" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Warning">Consider making 'S_EDITSConnStr' non-public or a constant.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="S_SPACE" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Warning">Consider making 'S_SPACE' non-public or a constant.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DAO" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="DeclareTypesInNamespaces" Category="Microsoft.Design" CheckId="CA1050" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+           <Issue Certainty="95" Level="Error">'DAO' should be declared inside a namespace.</Issue>
+          </Message>
+          <Message TypeName="LongAcronymsShouldBePascalCased" Category="Microsoft.Naming" CheckId="CA1705" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the capitalization of type name 'DAO'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="addTableRowCell(System.Web.UI.WebControls.TableRow,System.String):System.Void" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="251">Correct the casing of member name 'addTableRowCell'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="addTableRowCell(System.Web.UI.WebControls.TableRow,System.String,System.Int32):System.Void" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="System.Web.UI.WebControls.TableCell.set_Text(System.String)" TypeName="DoNotPassLiteralsAsLocalizedParameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="264">DAO.addTableRowCell(TableRow, String, Int32):Void passes a literal as parameter 1 of a call to TableCell.set_Text(String):Void. Retrieve the following string argument from a resource table instead: '&lt;input align='center' runat='server' type='button' id='butAction' style='font-family:arial; font-size:9px' value='____' onchange='butAction(____)' /&gt;'</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="260">Correct the casing of member name 'addTableRowCell'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="fillDataGrid(System.Web.UI.WebControls.DataGrid,System.String,System.String):System.Void" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="124">Consider changing the type of parameter 'dg' in DAO.fillDataGrid(DataGrid, String, String):Void from System.Web.UI.WebControls.DataGrid to its base type System.Web.UI.WebControls.BaseDataList. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="124">Correct the casing of member name 'fillDataGrid'.</Issue>
+            </Message>
+            <Message TypeName="SetLocaleForDataTypes" Category="Microsoft.Globalization" CheckId="CA1306" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="129">Be sure to set the DataSet Locale property wherever 'DAO.fillDataGrid(DataGrid, String, String):Void' creates an instance of that type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="SelCmdArr(System.String,System.String):System.Collections.ArrayList" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="SetLocaleForDataTypes" Category="Microsoft.Globalization" CheckId="CA1306" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="183">Be sure to set the DataSet Locale property wherever 'DAO.SelCmdArr(String, String):ArrayList' creates an instance of that type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="selDropDownList(System.Web.UI.WebControls.DropDownList,System.String,System.String):System.Void" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="43">Consider changing the type of parameter 'obj' in DAO.selDropDownList(DropDownList, String, String):Void from System.Web.UI.WebControls.DropDownList to its base type System.Web.UI.WebControls.ListControl. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="43">Correct the casing of member name 'selDropDownList'.</Issue>
+            </Message>
+            <Message TypeName="SetLocaleForDataTypes" Category="Microsoft.Globalization" CheckId="CA1306" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="48">Be sure to set the DataSet Locale property wherever 'DAO.selDropDownList(DropDownList, String, String):Void' creates an instance of that type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="selDropDownList(System.Web.UI.WebControls.DropDownList,System.String,System.String,System.Boolean):System.Void" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="59">Consider changing the type of parameter 'obj' in DAO.selDropDownList(DropDownList, String, String, Boolean):Void from System.Web.UI.WebControls.DropDownList to its base type System.Web.UI.WebControls.ListControl. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="59">Correct the casing of member name 'selDropDownList'.</Issue>
+            </Message>
+            <Message Id="blCOne" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="59">Parameter 'blCOne' of DAO.selDropDownList(DropDownList, String, String, Boolean):Void is never used. Remove the parameter or use it in the method body.</Issue>
+            </Message>
+            <Message TypeName="SetLocaleForDataTypes" Category="Microsoft.Globalization" CheckId="CA1306" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="64">Be sure to set the DataSet Locale property wherever 'DAO.selDropDownList(DropDownList, String, String, Boolean):Void' creates an instance of that type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="selDropDownList(System.Web.UI.WebControls.DropDownList,System.String,System.String,System.String):System.Void" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="3#" TypeName="AvoidTypeNamesInParameters" Category="Microsoft.Naming" CheckId="CA1720" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="74">Remove the type identifier from parameter name 'firstString'.</Issue>
+            </Message>
+            <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="74">Consider changing the type of parameter 'obj' in DAO.selDropDownList(DropDownList, String, String, String):Void from System.Web.UI.WebControls.DropDownList to its base type System.Web.UI.WebControls.ListControl. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Issue>
+            </Message>
+            <Message Id="System.Web.UI.WebControls.ListItem.#ctor(System.String,System.String)" TypeName="DoNotPassLiteralsAsLocalizedParameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="89">DAO.selDropDownList(DropDownList, String, String, String):Void passes a literal as parameter 1 of a call to ListItem.ListItem(String, String). Retrieve the following string argument from a resource table instead: '-- no data found --'</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="74">Correct the casing of member name 'selDropDownList'.</Issue>
+            </Message>
+            <Message TypeName="SetLocaleForDataTypes" Category="Microsoft.Globalization" CheckId="CA1306" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="79">Be sure to set the DataSet Locale property wherever 'DAO.selDropDownList(DropDownList, String, String, String):Void' creates an instance of that type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="selDropDownList(System.Web.UI.WebControls.DropDownList,System.String,System.String,System.String,System.String):System.Void" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="3#" TypeName="AvoidTypeNamesInParameters" Category="Microsoft.Naming" CheckId="CA1720" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="99">Remove the type identifier from parameter name 'firstString'.</Issue>
+            </Message>
+            <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="99">Consider changing the type of parameter 'obj' in DAO.selDropDownList(DropDownList, String, String, String, String):Void from System.Web.UI.WebControls.DropDownList to its base type System.Web.UI.WebControls.ListControl. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Issue>
+            </Message>
+            <Message Id="System.Web.UI.WebControls.ListItem.#ctor(System.String,System.String)" TypeName="DoNotPassLiteralsAsLocalizedParameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="114">DAO.selDropDownList(DropDownList, String, String, String, String):Void passes a literal as parameter 1 of a call to ListItem.ListItem(String, String). Retrieve the following string argument from a resource table instead: '-- no data found --'</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="99">Correct the casing of member name 'selDropDownList'.</Issue>
+            </Message>
+            <Message TypeName="SetLocaleForDataTypes" Category="Microsoft.Globalization" CheckId="CA1306" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="104">Be sure to set the DataSet Locale property wherever 'DAO.selDropDownList(DropDownList, String, String, String, String):Void' creates an instance of that type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="SelectDistinct(System.String,System.Data.DataTable,System.String):System.Data.DataTable" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotConcatenateStringsInsideLoops" Category="Microsoft.Performance" CheckId="CA1818" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="279">Change DAO.SelectDistinct(String, DataTable, String):DataTable to use StringBuilder instead of String.Concat or +=</Issue>
+            </Message>
+            <Message Id="0#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="270">Correct the casing of parameter name 'TableName'.</Issue>
+            </Message>
+            <Message Id="1#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="270">Correct the casing of parameter name 'SourceTable'.</Issue>
+            </Message>
+            <Message Id="2#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="270">Correct the casing of parameter name 'FieldName'.</Issue>
+            </Message>
+            <Message TypeName="SetLocaleForDataTypes" Category="Microsoft.Globalization" CheckId="CA1306" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="271">Be sure to set the DataTable Locale property wherever 'DAO.SelectDistinct(String, DataTable, String):DataTable' creates an instance of that type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="sqlCmd(System.String,System.String):System.Void" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DisposeObjectsBeforeLosingScope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="174">Modify DAO.sqlCmd(String, String):Void to dispose local 'cmd' of type 'SqlCommand' for all code paths.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="165">Correct the casing of member name 'sqlCmd'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="sqlCmdArr(System.String,System.String):System.String[]" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DisposeObjectsBeforeLosingScope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="221">Modify DAO.sqlCmdArr(String, String):String[] to dispose local 'cmd' of type 'SqlCommand' for all code paths.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="196">Correct the casing of member name 'sqlCmdArr'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="sqlCmdArrSingleCol(System.String,System.String):System.String[]" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DisposeObjectsBeforeLosingScope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="248">Modify DAO.sqlCmdArrSingleCol(String, String):String[] to dispose local 'cmd' of type 'SqlCommand' for all code paths.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="224">Correct the casing of member name 'sqlCmdArrSingleCol'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="sqlCmdDataSet(System.String,System.String):System.Data.DataSet" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="137">Correct the casing of member name 'sqlCmdDataSet'.</Issue>
+            </Message>
+            <Message TypeName="SetLocaleForDataTypes" Category="Microsoft.Globalization" CheckId="CA1306" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="143">Be sure to set the DataSet Locale property wherever 'DAO.sqlCmdDataSet(String, String):DataSet' creates an instance of that type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="sqlCmdDataSetSP(System.String,System.String):System.Data.DataSet" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="152">Correct the casing of member name 'sqlCmdDataSetSP'.</Issue>
+            </Message>
+            <Message TypeName="SetLocaleForDataTypes" Category="Microsoft.Globalization" CheckId="CA1306" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="DAO.cs" Line="158">Be sure to set the DataSet Locale property wherever 'DAO.sqlCmdDataSetSP(String, String):DataSet' creates an instance of that type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="EDITS" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="DeclareTypesInNamespaces" Category="Microsoft.Design" CheckId="CA1050" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+           <Issue Certainty="95" Level="Error">'EDITS' should be declared inside a namespace.</Issue>
+          </Message>
+          <Message TypeName="LongAcronymsShouldBePascalCased" Category="Microsoft.Naming" CheckId="CA1705" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the capitalization of type name 'EDITS'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="BoxShipLabel(System.String,System.String):EDITSResponse" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="1#" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="ParameterId" Certainty="85" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="EDITS.cs" Line="31">'Id' is an abbreviation and therefore is not subject to acronym casing guidelines. Correct the capitalization of 'ID' in parameter name 'boxID' by changing it to 'Id'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="BoxShipToLabel(System.String,System.String,System.String):System.String" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="EDITS.cs" Line="99">Modify 'EDITS.BoxShipToLabel(String, String, String):String' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="BoxShipToShipmentLabel(System.String,System.String,System.String):System.String" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="EDITS.cs" Line="118">Modify 'EDITS.BoxShipToShipmentLabel(String, String, String):String' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="PackingLabel(System.String,System.String):System.String" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="EDITS.cs" Line="61">Modify 'EDITS.PackingLabel(String, String):String' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="PackingShipmentLabel(System.String,System.String):System.String" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="EDITS.cs" Line="80">Modify 'EDITS.PackingShipmentLabel(String, String):String' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="PalletALabel(System.String,System.String,System.String):System.String" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="EDITS.cs" Line="137">Modify 'EDITS.PalletALabel(String, String, String):String' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="PalletAShipmentLabel(System.String,System.String,System.String):System.String" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="EDITS.cs" Line="156">Modify 'EDITS.PalletAShipmentLabel(String, String, String):String' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="PalletBLabel(System.String,System.String,System.String):System.String" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="EDITS.cs" Line="175">Modify 'EDITS.PalletBLabel(String, String, String):String' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="PalletBShipmentLabel(System.String,System.String,System.String):System.String" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="EDITS.cs" Line="194">Modify 'EDITS.PalletBShipmentLabel(String, String, String):String' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="WayBillList(System.String,System.String):System.String" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="EDITS.cs" Line="213">Modify 'EDITS.WayBillList(String, String):String' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="WayBillShipmentList(System.String,System.String):System.String" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="EDITS.cs" Line="232">Modify 'EDITS.WayBillShipmentList(String, String):String' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="EDITSResponse" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="DeclareTypesInNamespaces" Category="Microsoft.Design" CheckId="CA1050" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+           <Issue Certainty="95" Level="Error">'EDITSResponse' should be declared inside a namespace.</Issue>
+          </Message>
+          <Message TypeName="LongAcronymsShouldBePascalCased" Category="Microsoft.Naming" CheckId="CA1705" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the capitalization of type name 'EDITSResponse'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="DOC_SET_NUMBER" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Error">Make 'DOC_SET_NUMBER' private or internal (Friend in VB, public private in C++) and provide a public or protected property to access it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="XML" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Error">Make 'XML' private or internal (Friend in VB, public private in C++) and provide a public or protected property to access it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Method" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="DeclareTypesInNamespaces" Category="Microsoft.Design" CheckId="CA1050" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+           <Issue Certainty="95" Level="Error">'Method' should be declared inside a namespace.</Issue>
+          </Message>
+          <Message TypeName="StaticHolderTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1053" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Error">Remove the public constructors from 'Method'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="BuildXML(System.String,System.String):System.String" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="LongAcronymsShouldBePascalCased" Category="Microsoft.Naming" CheckId="CA1705" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="Method.cs" Line="58">Correct the capitalization of member name 'Method.BuildXML(String, String):String'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="DataSet_Parse(System.String):System.Data.DataSet" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="SetLocaleForDataTypes" Category="Microsoft.Globalization" CheckId="CA1306" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="Method.cs" Line="32">Be sure to set the DataSet Locale property wherever 'Method.DataSet_Parse(String):DataSet' creates an instance of that type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="h_get_Value(System.Collections.Hashtable,System.String):System.Object" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="1#" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="Method.cs" Line="46">Correct the casing of parameter name 'Key'.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="Method.cs" Line="46">Correct the casing of member name 'h_get_Value'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="h_set_Value(System.Collections.Hashtable,System.String,System.String):System.Object" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\App_Code" File="Method.cs" Line="38">Correct the casing of member name 'h_set_Value'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Documents and Settings\ies080373\Local Settings\Temp\tmpF97.tmp.cadir\bin\App_Web_2olrpwca.dll">
+   <Modules>
+    <Module Name="app_web_2olrpwca.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="IDPrompt" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+           <Issue Name="TypeId" Certainty="85" Level="Error">'Id' is an abbreviation and therefore is not subject to acronym casing guidelines. Correct the capitalization of 'ID' in type name 'IDPrompt' by changing it to 'Id'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="InternalID" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="MemberId" Certainty="85" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="IDPrompt.ascx.cs" Line="17">'Id' is an abbreviation and therefore is not subject to acronym casing guidelines. Correct the capitalization of 'ID' in member name 'IDPrompt.InternalID:String' by changing it to 'Id'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Order_Test" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="SNVIEW_SelectedIndexChanged(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="AvoidExcessiveComplexity" Category="Microsoft.Maintainability" CheckId="CA1502" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="31">SNVIEW_SelectedIndexChanged has a cyclomatic complexity of 30. Rewrite or refactor the method to reduce complexity to 25.</Issue>
+            </Message>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="47">Modify 'Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="409">Modify 'Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message Id="System.Web.UI.ITextControl.set_Text(System.String)" TypeName="DoNotPassLiteralsAsLocalizedParameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="77">Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void passes a literal as parameter 1 of a call to ITextControl.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'ZipFileName: Inventec_MTP_TEST_DATE______EDITS_REVISION___'</Issue>
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="73">Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void passes a literal as parameter 1 of a call to ITextControl.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'ZipFileName: Inventec_PRE_MTP_TEST_DATE______EDITS_REVISION___'</Issue>
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="81">Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void passes a literal as parameter 1 of a call to ITextControl.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'ZipFileName: Inventec_PROD_CHECK_DATE______EDITS_REVISION___'</Issue>
+            </Message>
+            <Message Id="Member" TypeName="LongAcronymsShouldBePascalCased" Category="Microsoft.Naming" CheckId="CA1705" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="31">Correct the capitalization of member name 'Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void'.</Issue>
+            </Message>
+            <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="60">Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void makes a call to System.Int32.ToString that does not explicitly provide an IFormatProvider. This should be replaced with a call to System.Int32.ToString(System.IFormatProvider).</Issue>
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="61">Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void makes a call to System.Int32.ToString that does not explicitly provide an IFormatProvider. This should be replaced with a call to System.Int32.ToString(System.IFormatProvider).</Issue>
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="66">Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void makes a call to System.Int32.ToString that does not explicitly provide an IFormatProvider. This should be replaced with a call to System.Int32.ToString(System.IFormatProvider).</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Order_Test+DataConnLib" Kind="Class" Accessibility="Private" ExternallyVisible="False">
+         <Members>
+          <Member Name=".ctor(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="SetLocaleForDataTypes" Category="Microsoft.Globalization" CheckId="CA1306" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="418">Be sure to set the DataSet Locale property wherever 'DataConnLib.DataConnLib(String)' creates an instance of that type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="Ds" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="set_Ds(System.Data.DataSet):System.Void" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="537">'DataConnLib.set_Ds(DataSet):Void' appears to have no upstream public or protected callers.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="SqlExecComm(System.String):System.Int32" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="512">'DataConnLib.SqlExecComm(String):Int32' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+            <Message TypeName="DisposeObjectsBeforeLosingScope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="532">Modify DataConnLib.SqlExecComm(String):Int32 to dispose local 'comm' of type 'SqlCommand' for all code paths.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="SqlExecSP(System.String,System.Collections.ArrayList):System.Int32" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="457">'DataConnLib.SqlExecSP(String, ArrayList):Int32' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+            <Message TypeName="DisposeObjectsBeforeLosingScope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="484">Modify DataConnLib.SqlExecSP(String, ArrayList):Int32 to dispose local 'comm' of type 'SqlCommand' for all code paths.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="SqlQueSP(System.String,System.String,System.Collections.ArrayList):System.Int32" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test.aspx.cs" Line="427">'DataConnLib.SqlQueSP(String, String, ArrayList):Int32' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="UploadASPFlatFile" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="LongAcronymsShouldBePascalCased" Category="Microsoft.Naming" CheckId="CA1705" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the capitalization of type name 'UploadASPFlatFile'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="btnUpload_Click(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="UploadASPFlatFile.ascx.cs" Line="50">Correct the casing of member name 'btnUpload_Click'.</Issue>
+            </Message>
+            <Message Id="System.String.Format(System.String,System.Object[])" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="UploadASPFlatFile.ascx.cs" Line="54">UploadASPFlatFile.btnUpload_Click(Object, EventArgs):Void makes a call to System.String.Format(System.String,System.Object[]) that does not explicitly provide an IFormatProvider. This should be replaced with a call to System.String.Format(System.IFormatProvider,System.String,System.Object[]).</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Documents and Settings\ies080373\Local Settings\Temp\tmpF97.tmp.cadir\bin\App_Web_agwpg5z0.dll">
+   <Modules>
+    <Module Name="app_web_agwpg5z0.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="Order_Test" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="SNVIEW_SelectedIndexChanged(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="AvoidExcessiveComplexity" Category="Microsoft.Maintainability" CheckId="CA1502" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="31">SNVIEW_SelectedIndexChanged has a cyclomatic complexity of 30. Rewrite or refactor the method to reduce complexity to 25.</Issue>
+            </Message>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="47">Modify 'Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="409">Modify 'Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message Id="System.Web.UI.ITextControl.set_Text(System.String)" TypeName="DoNotPassLiteralsAsLocalizedParameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="77">Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void passes a literal as parameter 1 of a call to ITextControl.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'ZipFileName: Inventec_MTP_TEST_DATE______EDITS_REVISION___'</Issue>
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="73">Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void passes a literal as parameter 1 of a call to ITextControl.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'ZipFileName: Inventec_PRE_MTP_TEST_DATE______EDITS_REVISION___'</Issue>
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="81">Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void passes a literal as parameter 1 of a call to ITextControl.set_Text(String):Void. Retrieve the following string argument from a resource table instead: 'ZipFileName: Inventec_PROD_CHECK_DATE______EDITS_REVISION___'</Issue>
+            </Message>
+            <Message Id="Member" TypeName="LongAcronymsShouldBePascalCased" Category="Microsoft.Naming" CheckId="CA1705" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="31">Correct the capitalization of member name 'Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void'.</Issue>
+            </Message>
+            <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="60">Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void makes a call to System.Int32.ToString that does not explicitly provide an IFormatProvider. This should be replaced with a call to System.Int32.ToString(System.IFormatProvider).</Issue>
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="61">Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void makes a call to System.Int32.ToString that does not explicitly provide an IFormatProvider. This should be replaced with a call to System.Int32.ToString(System.IFormatProvider).</Issue>
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="66">Order_Test.SNVIEW_SelectedIndexChanged(Object, EventArgs):Void makes a call to System.Int32.ToString that does not explicitly provide an IFormatProvider. This should be replaced with a call to System.Int32.ToString(System.IFormatProvider).</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Order_Test+DataConnLib" Kind="Class" Accessibility="Private" ExternallyVisible="False">
+         <Members>
+          <Member Name=".ctor(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="SetLocaleForDataTypes" Category="Microsoft.Globalization" CheckId="CA1306" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="419">Be sure to set the DataSet Locale property wherever 'DataConnLib.DataConnLib(String)' creates an instance of that type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="Ds" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="set_Ds(System.Data.DataSet):System.Void" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="538">'DataConnLib.set_Ds(DataSet):Void' appears to have no upstream public or protected callers.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="SqlExecComm(System.String):System.Int32" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="513">'DataConnLib.SqlExecComm(String):Int32' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+            <Message TypeName="DisposeObjectsBeforeLosingScope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="533">Modify DataConnLib.SqlExecComm(String):Int32 to dispose local 'comm' of type 'SqlCommand' for all code paths.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="SqlExecSP(System.String,System.Collections.ArrayList):System.Int32" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="458">'DataConnLib.SqlExecSP(String, ArrayList):Int32' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+            <Message TypeName="DisposeObjectsBeforeLosingScope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="485">Modify DataConnLib.SqlExecSP(String, ArrayList):Int32 to dispose local 'comm' of type 'SqlCommand' for all code paths.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="SqlQueSP(System.String,System.String,System.Collections.ArrayList):System.Int32" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Order_Test_shipment.aspx.cs" Line="428">'DataConnLib.SqlQueSP(String, String, ArrayList):Int32' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Documents and Settings\ies080373\Local Settings\Temp\tmpF97.tmp.cadir\bin\App_Web_j1luures.dll">
+   <Modules>
+    <Module Name="app_web_j1luures.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="Configuration_DocumentClassControl" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="connectionString" Kind="Field" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">It appears that field 'Configuration_DocumentClassControl.connectionString' is never used or is only ever assigned to. Use this field or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Documents and Settings\ies080373\Local Settings\Temp\tmpF97.tmp.cadir\bin\App_Web_tpfm6yhi.dll">
+   <Modules>
+    <Module Name="app_web_tpfm6yhi.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="_Default" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="btnPrintPDF_Click(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="33" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="188">_Default.btnPrintPDF_Click(Object, EventArgs):Void calls into Process.Start(ProcessStartInfo):Process which has a LinkDemand. By making this call, Process.Start(ProcessStartInfo):Process is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: &#xD;&#xA;-&gt;System.Diagnostics.Process.Start(System.Diagnostics.ProcessStartInfo) : Process&#xD;&#xA;-&gt;_Default.btnPrintPDF_Click(System.Object,System.EventArgs) : Void</Issue>
+             <Issue Certainty="33" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="188">_Default.btnPrintPDF_Click(Object, EventArgs):Void calls into ProcessStartInfo.set_Verb(String):Void which has a LinkDemand. By making this call, ProcessStartInfo.set_Verb(String):Void is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: &#xD;&#xA;-&gt;System.Diagnostics.ProcessStartInfo.set_Verb(System.String) : Void&#xD;&#xA;-&gt;_Default.btnPrintPDF_Click(System.Object,System.EventArgs) : Void</Issue>
+             <Issue Certainty="33" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="188">_Default.btnPrintPDF_Click(Object, EventArgs):Void calls into ProcessStartInfo.set_WindowStyle(ProcessWindowStyle):Void which has a LinkDemand. By making this call, ProcessStartInfo.set_WindowStyle(ProcessWindowStyle):Void is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: &#xD;&#xA;-&gt;System.Diagnostics.ProcessStartInfo.set_WindowStyle(System.Diagnostics.ProcessWindowStyle) : Void&#xD;&#xA;-&gt;_Default.btnPrintPDF_Click(System.Object,System.EventArgs) : Void</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="188">Correct the casing of member name 'btnPrintPDF_Click'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="btnQuery_Click(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="77">Correct the casing of member name 'btnQuery_Click'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="btnViewPdf_Click(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="357">Correct the casing of member name 'btnViewPdf_Click'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="btnViewXML_Click(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="199">Correct the casing of member name 'btnViewXML_Click'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="conditionTable_ItemCommand(System.Object,System.Web.UI.WebControls.RepeaterCommandEventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="83">Consider changing the type of parameter 'e' in _Default.conditionTable_ItemCommand(Object, RepeaterCommandEventArgs):Void from System.Web.UI.WebControls.RepeaterCommandEventArgs to its base type System.Web.UI.WebControls.CommandEventArgs. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="83">Correct the casing of member name 'conditionTable_ItemCommand'.</Issue>
+            </Message>
+            <Message TypeName="ReviewSqlQueriesForSecurityVulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="91">Review if the query string "SELECT * FROM [PAK.PAKRT_2D] WHERE DOC_SET_NUMBER='____' AND ISNULL(XSL_TEMPLATE_NAME,'')!=''", passed to SqlDataAdapter.SqlDataAdapter(String, SqlConnection) in _Default.conditionTable_ItemCommand(Object, RepeaterCommandEventArgs):Void, accepts any user input. If so, consider using a parameterized Sql query instead of building up the query via string concatenations.</Issue>
+            </Message>
+            <Message TypeName="SetLocaleForDataTypes" Category="Microsoft.Globalization" CheckId="CA1306" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="94">Be sure to set the DataSet Locale property wherever '_Default.conditionTable_ItemCommand(Object, RepeaterCommandEventArgs):Void' creates an instance of that type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="gvBox_PageIndexChanging(System.Object,System.Web.UI.WebControls.GridViewPageEventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="283">Correct the casing of member name 'gvBox_PageIndexChanging'.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="283">Correct the capitalization of 'gv' in member name '_Default.gvBox_PageIndexChanging(Object, GridViewPageEventArgs):Void'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="gvBox_SelectedIndexChanged(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="275">Correct the casing of member name 'gvBox_SelectedIndexChanged'.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="275">Correct the capitalization of 'gv' in member name '_Default.gvBox_SelectedIndexChanged(Object, EventArgs):Void'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="OpenWindows(System.String,System.String):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="364">Change the type of parameter 'url' of method _Default.OpenWindows(String, String):Void from string to System.Uri, or provide an overload of _Default.OpenWindows(String, String):Void, that allows 'url' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="referenceTable_ItemCommand(System.Object,System.Web.UI.WebControls.RepeaterCommandEventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="109">Consider changing the type of parameter 'e' in _Default.referenceTable_ItemCommand(Object, RepeaterCommandEventArgs):Void from System.Web.UI.WebControls.RepeaterCommandEventArgs to its base type System.Web.UI.WebControls.CommandEventArgs. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="109">Correct the casing of member name 'referenceTable_ItemCommand'.</Issue>
+            </Message>
+            <Message TypeName="ReviewSqlQueriesForSecurityVulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="117">Review if the query string "SELECT * FROM [PAK.PAKRT_2D] WHERE ID= __", passed to SqlCommand.SqlCommand(String, SqlConnection) in _Default.referenceTable_ItemCommand(Object, RepeaterCommandEventArgs):Void, accepts any user input. If so, consider using a parameterized Sql query instead of building up the query via string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="SetDefaultPrinter(System.String):System.Void" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalWarning">Because it is a DllImport method, _Default.SetDefaultPrinter(String):Void should be defined in a class named NativeMethods, SafeNativeMethods, or UnsafeNativeMethods.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="HP_UpLoadFile" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="btnCT_Click(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="78">Modify 'HP_UpLoadFile.btnCT_Click(Object, EventArgs):Void' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="25">Correct the casing of member name 'btnCT_Click'.</Issue>
+            </Message>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="26">Replace the call to String.op_Inequality("") in 'HP_UpLoadFile.btnCT_Click(Object, EventArgs):Void' with a call to String.IsNullOrEmpty.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="btnNSRT_Click(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="269">Modify 'HP_UpLoadFile.btnNSRT_Click(Object, EventArgs):Void' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="226">Correct the casing of member name 'btnNSRT_Click'.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="LongAcronymsShouldBePascalCased" Category="Microsoft.Naming" CheckId="CA1705" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="226">Correct the capitalization of member name 'HP_UpLoadFile.btnNSRT_Click(Object, EventArgs):Void'.</Issue>
+            </Message>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="227">Replace the call to String.op_Inequality("") in 'HP_UpLoadFile.btnNSRT_Click(Object, EventArgs):Void' with a call to String.IsNullOrEmpty.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="btnRT_Click(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="217">Modify 'HP_UpLoadFile.btnRT_Click(Object, EventArgs):Void' to catch a more specific exception than 'System.Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="158">Correct the casing of member name 'btnRT_Click'.</Issue>
+            </Message>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="204">Replace the call to String.Equals("") in 'HP_UpLoadFile.btnRT_Click(Object, EventArgs):Void' with a call to String.IsNullOrEmpty.</Issue>
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="192">Replace the call to String.op_Inequality("") in 'HP_UpLoadFile.btnRT_Click(Object, EventArgs):Void' with a call to String.IsNullOrEmpty.</Issue>
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="161">Replace the call to String.op_Inequality("") in 'HP_UpLoadFile.btnRT_Click(Object, EventArgs):Void' with a call to String.IsNullOrEmpty.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="FileUpload(System.Web.UI.WebControls.FileUpload):System.String" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="89">Replace the call to String.op_Inequality("") in 'HP_UpLoadFile.FileUpload(FileUpload):String' with a call to String.IsNullOrEmpty.</Issue>
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="93">Replace the call to String.op_Inequality("") in 'HP_UpLoadFile.FileUpload(FileUpload):String' with a call to String.IsNullOrEmpty.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="ImportCSV(System.String):System.Data.DataSet" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DisposeObjectsBeforeLosingScope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="156">Modify HP_UpLoadFile.ImportCSV(String):DataSet to dispose local 'cmdSelect' of type 'OdbcCommand' for all code paths.</Issue>
+            </Message>
+            <Message TypeName="ReviewSqlQueriesForSecurityVulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="146">Review if the query string "SELECT * FROM [____]", passed to OdbcCommand.OdbcCommand(String, OdbcConnection) in HP_UpLoadFile.ImportCSV(String):DataSet, accepts any user input. If so, consider using a parameterized Sql query instead of building up the query via string concatenations.</Issue>
+            </Message>
+            <Message TypeName="SetLocaleForDataTypes" Category="Microsoft.Globalization" CheckId="CA1306" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="121">Be sure to set the DataSet Locale property wherever 'HP_UpLoadFile.ImportCSV(String):DataSet' creates an instance of that type.</Issue>
+             <Issue Certainty="90" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="HP_UpLoadFile.aspx.cs" Line="150">Be sure to set the DataTable Locale property wherever 'HP_UpLoadFile.ImportCSV(String):DataSet' creates an instance of that type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="ASP">
+       <Types>
+        <Type Name="hp_uploadfile_aspx" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the capitalization of 'hp' in type name 'ASP.hp_uploadfile_aspx'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Documents and Settings\ies080373\Local Settings\Temp\tmpF97.tmp.cadir\bin\App_Web_vnpzxn4z.dll">
+   <Modules>
+    <Module Name="app_web_vnpzxn4z.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="_Default" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="btnPrintPDF_Click(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="33" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="188">_Default.btnPrintPDF_Click(Object, EventArgs):Void calls into Process.Start(ProcessStartInfo):Process which has a LinkDemand. By making this call, Process.Start(ProcessStartInfo):Process is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: &#xD;&#xA;-&gt;System.Diagnostics.Process.Start(System.Diagnostics.ProcessStartInfo) : Process&#xD;&#xA;-&gt;_Default.btnPrintPDF_Click(System.Object,System.EventArgs) : Void</Issue>
+             <Issue Certainty="33" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="188">_Default.btnPrintPDF_Click(Object, EventArgs):Void calls into ProcessStartInfo.set_Verb(String):Void which has a LinkDemand. By making this call, ProcessStartInfo.set_Verb(String):Void is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: &#xD;&#xA;-&gt;System.Diagnostics.ProcessStartInfo.set_Verb(System.String) : Void&#xD;&#xA;-&gt;_Default.btnPrintPDF_Click(System.Object,System.EventArgs) : Void</Issue>
+             <Issue Certainty="33" Level="CriticalError" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="188">_Default.btnPrintPDF_Click(Object, EventArgs):Void calls into ProcessStartInfo.set_WindowStyle(ProcessWindowStyle):Void which has a LinkDemand. By making this call, ProcessStartInfo.set_WindowStyle(ProcessWindowStyle):Void is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: &#xD;&#xA;-&gt;System.Diagnostics.ProcessStartInfo.set_WindowStyle(System.Diagnostics.ProcessWindowStyle) : Void&#xD;&#xA;-&gt;_Default.btnPrintPDF_Click(System.Object,System.EventArgs) : Void</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="188">Correct the casing of member name 'btnPrintPDF_Click'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="btnQuery_Click(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="77">Correct the casing of member name 'btnQuery_Click'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="btnViewPdf_Click(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="357">Correct the casing of member name 'btnViewPdf_Click'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="btnViewXML_Click(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="199">Correct the casing of member name 'btnViewXML_Click'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="conditionTable_ItemCommand(System.Object,System.Web.UI.WebControls.RepeaterCommandEventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="83">Consider changing the type of parameter 'e' in _Default.conditionTable_ItemCommand(Object, RepeaterCommandEventArgs):Void from System.Web.UI.WebControls.RepeaterCommandEventArgs to its base type System.Web.UI.WebControls.CommandEventArgs. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="83">Correct the casing of member name 'conditionTable_ItemCommand'.</Issue>
+            </Message>
+            <Message TypeName="ReviewSqlQueriesForSecurityVulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="91">Review if the query string "SELECT * FROM [PAK.PAKRT_2D] WHERE DOC_SET_NUMBER='____' AND ISNULL(XSL_TEMPLATE_NAME,'')!=''", passed to SqlDataAdapter.SqlDataAdapter(String, SqlConnection) in _Default.conditionTable_ItemCommand(Object, RepeaterCommandEventArgs):Void, accepts any user input. If so, consider using a parameterized Sql query instead of building up the query via string concatenations.</Issue>
+            </Message>
+            <Message TypeName="SetLocaleForDataTypes" Category="Microsoft.Globalization" CheckId="CA1306" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="94">Be sure to set the DataSet Locale property wherever '_Default.conditionTable_ItemCommand(Object, RepeaterCommandEventArgs):Void' creates an instance of that type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="gvBox_PageIndexChanging(System.Object,System.Web.UI.WebControls.GridViewPageEventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="283">Correct the casing of member name 'gvBox_PageIndexChanging'.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="283">Correct the capitalization of 'gv' in member name '_Default.gvBox_PageIndexChanging(Object, GridViewPageEventArgs):Void'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="gvBox_SelectedIndexChanged(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="275">Correct the casing of member name 'gvBox_SelectedIndexChanged'.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="275">Correct the capitalization of 'gv' in member name '_Default.gvBox_SelectedIndexChanged(Object, EventArgs):Void'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="OpenWindows(System.String,System.String):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="364">Change the type of parameter 'url' of method _Default.OpenWindows(String, String):Void from string to System.Uri, or provide an overload of _Default.OpenWindows(String, String):Void, that allows 'url' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="referenceTable_ItemCommand(System.Object,System.Web.UI.WebControls.RepeaterCommandEventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="109">Consider changing the type of parameter 'e' in _Default.referenceTable_ItemCommand(Object, RepeaterCommandEventArgs):Void from System.Web.UI.WebControls.RepeaterCommandEventArgs to its base type System.Web.UI.WebControls.CommandEventArgs. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Issue>
+            </Message>
+            <Message Id="Member" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="109">Correct the casing of member name 'referenceTable_ItemCommand'.</Issue>
+            </Message>
+            <Message TypeName="ReviewSqlQueriesForSecurityVulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Default.aspx.cs" Line="117">Review if the query string "SELECT * FROM [PAK.PAKRT_2D] WHERE ID= __", passed to SqlCommand.SqlCommand(String, SqlConnection) in _Default.referenceTable_ItemCommand(Object, RepeaterCommandEventArgs):Void, accepts any user input. If so, consider using a parameterized Sql query instead of building up the query via string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="SetDefaultPrinter(System.String):System.Void" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalWarning">Because it is a DllImport method, _Default.SetDefaultPrinter(String):Void should be defined in a class named NativeMethods, SafeNativeMethods, or UnsafeNativeMethods.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Upload" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="Page_Load(System.Object,System.EventArgs):System.Void" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2009-12-22 07:49:26Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Upload.aspx.cs" Line="18">Upload.Page_Load(Object, EventArgs):Void makes a call to System.String.Format(System.String,System.Object) that does not explicitly provide an IFormatProvider. This should be replaced with a call to System.String.Format(System.IFormatProvider,System.String,System.Object[]).</Issue>
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Upload.aspx.cs" Line="19">Upload.Page_Load(Object, EventArgs):Void makes a call to System.String.Format(System.String,System.Object) that does not explicitly provide an IFormatProvider. This should be replaced with a call to System.String.Format(System.IFormatProvider,System.String,System.Object[]).</Issue>
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Upload.aspx.cs" Line="22">Upload.Page_Load(Object, EventArgs):Void makes a call to System.String.Format(System.String,System.Object) that does not explicitly provide an IFormatProvider. This should be replaced with a call to System.String.Format(System.IFormatProvider,System.String,System.Object[]).</Issue>
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Upload.aspx.cs" Line="23">Upload.Page_Load(Object, EventArgs):Void makes a call to System.String.Format(System.String,System.Object) that does not explicitly provide an IFormatProvider. This should be replaced with a call to System.String.Format(System.IFormatProvider,System.String,System.Object[]).</Issue>
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Upload.aspx.cs" Line="26">Upload.Page_Load(Object, EventArgs):Void makes a call to System.String.Format(System.String,System.Object) that does not explicitly provide an IFormatProvider. This should be replaced with a call to System.String.Format(System.IFormatProvider,System.String,System.Object[]).</Issue>
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Upload.aspx.cs" Line="27">Upload.Page_Load(Object, EventArgs):Void makes a call to System.String.Format(System.String,System.Object) that does not explicitly provide an IFormatProvider. This should be replaced with a call to System.String.Format(System.IFormatProvider,System.String,System.Object[]).</Issue>
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Upload.aspx.cs" Line="30">Upload.Page_Load(Object, EventArgs):Void makes a call to System.String.Format(System.String,System.Object) that does not explicitly provide an IFormatProvider. This should be replaced with a call to System.String.Format(System.IFormatProvider,System.String,System.Object[]).</Issue>
+             <Issue Certainty="95" Level="Error" Path="e:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124" File="Upload.aspx.cs" Line="31">Upload.Page_Load(Object, EventArgs):Void makes a call to System.String.Format(System.String,System.Object) that does not explicitly provide an IFormatProvider. This should be replaced with a call to System.String.Format(System.IFormatProvider,System.String,System.Object[]).</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="AvoidExcessiveComplexity" Category="Microsoft.Maintainability" CheckId="CA1502">
+   <Name>Avoid excessive complexity</Name>
+   <Description>Method implementations that are exceedingly complex increase the challenge of understanding and maintaining code.</Description>
+   <Resolution Name="Default">{0} has a cyclomatic complexity of {1}. Rewrite or refactor the method to reduce complexity to {2}.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Warning</MessageLevel>
+   <File Name="MaintainabilityRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidTypeNamesInParameters" Category="Microsoft.Naming" CheckId="CA1720">
+   <Name>Avoid type names in parameters</Name>
+   <Description>Do not use type names to name parameters; use a generic name instead. Types names might not be intuitive for all developers. It is recommended that you select a generic name. If this is not sufficient, be sure to use the type name as it is defined in the .NET Framework Library. For example, use 'Boolean' instead of 'Bool'.</Description>
+   <Resolution Name="Default">Remove the type identifier from parameter name '{0}'.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+   <Name>Avoid uncalled private code</Name>
+   <Description>There is uncalled code that is not externally visible and is not a known runtime entry point. If this violation fires in error, please send a problem report to the FxCop team.</Description>
+   <Resolution Name="Default">'{0}' appears to have no upstream public or protected callers.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823">
+   <Name>Avoid unused private fields</Name>
+   <Description>Private fields were detected that do not appear to be accessed within the assembly. If this violation fires in error, please send a problem report to the FxCop team.</Description>
+   <Resolution Name="Default">It appears that field '{0}' is never used or is only ever assigned to. Use this field or remove it.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="ConsiderPassingBaseTypesAsParameters" Category="Microsoft.Design" CheckId="CA1011">
+   <Name>Consider passing base types as parameters</Name>
+   <Description>Using base types as parameters to methods improves re-use of these methods if you only use methods &amp; properties from the parameter's base class. E.g. use Stream instead of FileStream as a parameter when only calling Stream.Read(), this makes the method work on all kind of streams instead of just File streams.</Description>
+   <Resolution Name="Default">Consider changing the type of parameter '{0}' in {1} from {2} to its base type {3}. This method appears to only require base class members in its implementation. Suppress this violation if there is a compelling reason to require the more derived type in the method signature.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="50">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="DeclareTypesInNamespaces" Category="Microsoft.Design" CheckId="CA1050">
+   <Name>Declare types in namespaces</Name>
+   <Description>A type should be defined inside a namespace to avoid duplication.</Description>
+   <Resolution Name="Default">'{0}' should be declared inside a namespace.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="DisposeObjectsBeforeLosingScope" Category="Microsoft.Reliability" CheckId="CA2000">
+   <Name>Dispose objects before losing scope</Name>
+   <Description>If a disposable object is not disposed before all references to it are out of scope, the object will not be disposed until it is finalized. If the AppDomain is abruptly brought down, it is possible the object will not be finalized and therefore never disposed.</Description>
+   <Resolution Name="Default">Modify {0} to dispose local {1} of type '{2}' for all code paths.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="ReliabilityRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031">
+   <Name>Do not catch general exception types</Name>
+   <Description>You should not catch Exception or SystemException. Catching generic exception types can hide run-time problems from the library user, and can complicate debugging. You should catch only those exceptions that you can handle gracefully.</Description>
+   <Resolution Name="Default">Modify '{0}' to catch a more specific exception than '{1}' or rethrow the exception.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="DesignRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotConcatenateStringsInsideLoops" Category="Microsoft.Performance" CheckId="CA1818">
+   <Name>Do not concatenate strings inside loops</Name>
+   <Description>Use StringBuilder instead.</Description>
+   <Resolution Name="Default">Change {0} to use StringBuilder instead of String.Concat or +=</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Error</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051">
+   <Name>Do not declare visible instance fields</Name>
+   <Description>Public or protected instance fields limit your ability to change the implementation details for those data items. Use properties instead. They do not compromise usability or performance and they do provide flexibility in that they conceal the  implementation details of the underlying data.</Description>
+   <Resolution Name="Default">Make '{0}' private or internal (Friend in VB, public private in C++) and provide a public or protected property to access it.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122">
+   <Name>Do not indirectly expose methods with link demands</Name>
+   <Description>Do not wrap a method protected by a LinkDemand with a method that does not perform a security check. A LinkDemand checks the permissions of the immediate caller rather than checking the permissions of all callers in the call stack. In this case, the permissions of the wrapper method will be checked. If the wrapper method does not, itself, check the permissions of callers higher in the call stack, malicious code might be able to execute the wrapped function even though it lacks permission to do so.</Description>
+   <Resolution Name="Default">{0} calls into {1} which has a LinkDemand. By making this call, {1} is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: {2}</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="33">CriticalError</MessageLevel>
+   <File Name="SecurityRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotPassLiteralsAsLocalizedParameters" Category="Microsoft.Globalization" CheckId="CA1303">
+   <Name>Do not pass literals as localized parameters</Name>
+   <Description>String literals that are embedded in source code are difficult to localize. Avoid passing string literals as arguments in circumstances where a localized string is generally expected. Most localized applications, for example, should localize string arguments that are passed to exception constructors. When creating an Exception instance, therefore, a string argument retrieved from a string table is more appropriate than a string literal.</Description>
+   <Resolution Name="Default">{0} passes a literal as parameter {1} of a call to {2}. Retrieve the following string argument from a resource table instead: '{3}'</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="GlobalizationRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709">
+   <Name>Identifiers should be cased correctly</Name>
+   <Description>Type, namespace, and member identifiers are pascal-cased. Parameter identifiers are camel-cased. The pascal-casing convention capitalizes the first letter of each word, as in BackColor. The camel-casing convention formats the first letter of the first word in lowercase and capitalizes the first letter of all subsequent words, as in backgroundColor.</Description>
+   <Resolution Name="Member">Correct the casing of member name '{0}'.</Resolution>
+   <Resolution Name="Parameter">Correct the casing of parameter name '{0}'.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="LongAcronymsShouldBePascalCased" Category="Microsoft.Naming" CheckId="CA1705">
+   <Name>Long acronyms should be pascal-cased</Name>
+   <Description>Acronyms of three or more letters should be Pascal-cased. For example, use XmlSpace rather than XMLSpace. A violation of this rule might be required for compatibility with existing, non-managed symbol schemes. In general, however, these symbols should not be visible outside the assembly that uses them.</Description>
+   <Resolution Name="Member">Correct the capitalization of member name '{0}'.</Resolution>
+   <Resolution Name="Type">Correct the capitalization of type name '{0}'.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="85">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060">
+   <Name>Move pinvokes to native methods class</Name>
+   <Description>This type contains members with the DllImport attribute. Members with the DllImport attribute should be contained in classes named NativeMethods, SafeNativeMethods, or UnsafeNativeMethods.</Description>
+   <Resolution Name="Default">Because it is a DllImport method, {0} should be defined in a class named NativeMethods, SafeNativeMethods, or UnsafeNativeMethods.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalWarning</MessageLevel>
+   <File Name="DesignRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211">
+   <Name>Non-constant fields should not be visible</Name>
+   <Description>Static fields should be constant unless you carefully manage access to the field using locks. Using static variables without making them thread safe can compromise execution state. This rule applies to managed code libraries. If the analyzed assembly is an application, it is usually safe to exclude violations of this rule.</Description>
+   <Resolution Name="Default">Consider making '{0}' non-public or a constant.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Warning</MessageLevel>
+   <File Name="UsageRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="ReviewSqlQueriesForSecurityVulnerabilities" Category="Microsoft.Security" CheckId="CA2100">
+   <Name>Review sql queries for security vulnerabilities</Name>
+   <Description>Sql queries built up from user input are potentially vulnerable to injection attacks. Sql Server as well as other database servers support parameterized Sql queries, a feature that will reduce the risk for injection attacks.</Description>
+   <Resolution Name="Default">Review if the query string "{0}", passed to {1} in {2}, accepts any user input. If so, consider using a parameterized Sql query instead of building up the query via string concatenations.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Error</MessageLevel>
+   <File Name="SecurityRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801">
+   <Name>Review unused parameters</Name>
+   <Description>Review parameters in non-virtual methods that are not used in the method body to insure no correctness exists around failure to access them. Unused parameters incur maintenance and performance costs. Sometimes a violation of this rule can point to an implementation bug in the method (i.e. the parameter should actually have been used in the method body). Exclude warnings of this rule if the parameter has to exist because of backward compatibility.</Description>
+   <Resolution Name="Default">Parameter '{0}' of {1} is never used. Remove the parameter or use it in the method body.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="UsageRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="SetLocaleForDataTypes" Category="Microsoft.Globalization" CheckId="CA1306">
+   <Name>Set locale for data types</Name>
+   <Description>In most cases, Locale should be explicitly set to CultureInfo.InvariantCulture on DataSet and DataTable instances. Upon creation of a DataSet or DataTable instance, the Locale is set to the current culture. In most cases, the Locale should be set to CultureInfo.InvariantCulture to guarantee proper sorting behavior in all cultures.</Description>
+   <Resolution Name="Default">Be sure to set the {0} Locale property wherever '{1}' creates an instance of that type.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Error</MessageLevel>
+   <File Name="GlobalizationRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="ShortAcronymsShouldBeUppercase" Category="Microsoft.Naming" CheckId="CA1706">
+   <Name>Short acronyms should be uppercase</Name>
+   <Description>Two letter acronyms should be upper-cased. For example, use System.IO instead of System.Io. Although it may be common practice for some two letter acronyms to not be fully capitalized, violations of this rule should not be excluded for this reason. For example, 'DbConnection', is common but incorrect; use DBConnection. A violation of this rule might be required for compatibility with existing, non-managed symbol schemes. In general, however, these symbols should not be visible outside the assembly that uses them.</Description>
+   <Resolution Name="Member">Correct the capitalization of '{0}' in member name '{1}'.</Resolution>
+   <Resolution Name="MemberId">'Id' is an abbreviation and therefore is not subject to acronym casing guidelines. Correct the capitalization of 'ID' in member name '{0}' by changing it to 'Id'.</Resolution>
+   <Resolution Name="ParameterId">'Id' is an abbreviation and therefore is not subject to acronym casing guidelines. Correct the capitalization of '{0}' in parameter name '{1}' by changing it to '{2}'.</Resolution>
+   <Resolution Name="Type">Correct the capitalization of '{0}' in type name '{1}'.</Resolution>
+   <Resolution Name="TypeId">'Id' is an abbreviation and therefore is not subject to acronym casing guidelines. Correct the capitalization of 'ID' in type name '{0}' by changing it to 'Id'.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="85">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305">
+   <Name>Specify IFormatProvider</Name>
+   <Description>If an overload exists that takes an IFormatProvider argument, it should always be called in favor of an overload that does not. Some methods in the common language runtime convert a value to or from a string representation and take a string parameter that contains one or more characters, called format specifiers, which indicate how the value is to be converted. If the meaning of the format specifier varies by culture, a formatting object supplies the actual characters used in the string representation. In scenarios where sorting and comparison behavior should never change between cultures, specify CultureInfo.InvariantCulture.</Description>
+   <Resolution Name="Default">{0} makes a call to {1} that does not explicitly provide an IFormatProvider. This should be replaced with a call to {2}.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="GlobalizationRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="StaticHolderTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1053">
+   <Name>Static holder types should not have constructors</Name>
+   <Description>Instances of types that define only static members do not need to be created. Many compilers will automatically add a public default constructor if no constructor is specified.  To prevent this, adding an empty private constructor may be required.</Description>
+   <Resolution Name="Default">Remove the public constructors from '{0}'.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820">
+   <Name>Test for empty strings using string length</Name>
+   <Description>To test for empty strings, check if String.Length is equal to zero. Constructs such as "".Equals(someString) and String.Empty.Equals(someString) are less efficient than testing the string length. Replace these with checks for someString.Length == 0.</Description>
+   <Resolution Name="IsNullOrEmpty">Replace the call to String.{0}({1}) in '{2}' with a call to String.IsNullOrEmpty.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="PerformanceRules.dll" Version="8.0.0.0" />
+  </Rule>
+  <Rule TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054">
+   <Name>Uri parameters should not be strings</Name>
+   <Description>If a parameter name contains "uri" or "url" or "urn", and it's typed as string, the parameter type should be changed to System.Uri, unless there is an overload method where the same parameter is typed as Uri.</Description>
+   <Resolution Name="Default">Change the type of parameter '{0}' of method {1} from string to System.Uri, or provide an overload of {1}, that allows '{0}' to be passed as a System.Uri object.</Resolution>
+   <Owner />
+   <Email>[none]</Email>
+   <MessageLevel Certainty="60">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="8.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="Line">Line</String>
+  <String Key="LocationNotStoredInPdb">&lt;Location not stored in Pdb&gt;</String>
+  <String Key="Project">Project</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Microsoft Visual Studio 2005 Code Analysis Report</String>
+ </Localized>
+</FxCopReport>

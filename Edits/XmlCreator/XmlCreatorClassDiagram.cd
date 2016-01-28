@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Microsoft Sans Serif" Size="8.25" />
+  <Class Name="Inventec.HPEDITS.XmlCreator.XmlCreator">
+    <Position X="3" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>XmlCreator.cs</FileName>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAQAABAAACAACIgBAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Inventec.HPEDITS.XmlCreator.PackListXmlCreator">
+    <Position X="5.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>PackListXmlCreator.cs</FileName>
+      <HashCode>AAAAAAEAABAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+</ClassDiagram>

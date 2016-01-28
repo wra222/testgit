@@ -1,0 +1,105 @@
+C:\Projects\Test\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+C:\Projects\Test\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+C:\Projects\Test\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\Test\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+C:\Projects\Test\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+C:\Documents and Settings\iec950848\桌面\HP-EDITS\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+C:\Documents and Settings\iec950848\桌面\HP-EDITS\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+C:\Documents and Settings\iec950848\桌面\HP-EDITS\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\iec950848\桌面\HP-EDITS\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+C:\Documents and Settings\iec950848\桌面\HP-EDITS\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+F:\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+F:\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+F:\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+F:\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+F:\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+C:\Documents and Settings\IES064759\Desktop\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+C:\Documents and Settings\IES064759\Desktop\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+C:\Documents and Settings\IES064759\Desktop\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\IES064759\Desktop\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+C:\Documents and Settings\IES064759\Desktop\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+E:\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+E:\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+E:\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+E:\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+E:\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+E:\備份\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+E:\備份\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+E:\備份\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+E:\備份\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+E:\備份\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+E:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+E:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+E:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+E:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+E:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+D:\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+D:\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+D:\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+D:\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+D:\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+D:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+D:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+D:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+D:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+D:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+E:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+E:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+E:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+E:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+E:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+C:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+C:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+C:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+C:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+C:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+D:\EDITS-20100823\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+D:\EDITS-20100823\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+D:\EDITS-20100823\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+D:\EDITS-20100823\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+D:\EDITS-20100823\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+D:\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+D:\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+D:\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+D:\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+D:\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.dll
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\bin\Debug\FOPWrap.pdb
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\ResolveAssemblyReference.cache
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.dll
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\HPEDITS .net Source Code\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\obj\Debug\FOPWrap.pdb
