@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>tryFisLog</Title>
+			<Shortcut>tryFisLog</Shortcut>
+			<Description>Code snippet for tryFisLog catch</Description>
+			<Author>Microsoft Corporation</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>expression</ID>
+					<ToolTip>Exception type</ToolTip>
+					<Function>SimpleTypeName(global::System.Exception)</Function>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+			logger.DebugFormat("BEGIN: {0}()", methodName);
+			try	 
+            {
+								
+            }
+            catch (FisException e)
+            {
+                logger.Error(methodName + " :: " +e.mErrmsg);
+				throw new Exception(e.mErrmsg); 
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message, e);
+				throw;					
+            }
+			finally
+			{
+				logger.DebugFormat("END: {0}()", methodName);
+			}]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

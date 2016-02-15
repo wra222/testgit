@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://10.96.3.35:81/UPSATRP/UPS_ATRP.asmx?wsdl" docRef="http://10.96.3.35:81/UPSATRP/UPS_ATRP.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://10.96.3.35:81/UPSATRP/UPS_ATRP.asmx" xmlns:q1="http://hp.com/" binding="q1:ATRPSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://10.96.3.35:81/UPSATRP/UPS_ATRP.asmx" xmlns:q2="http://hp.com/" binding="q2:ATRPSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

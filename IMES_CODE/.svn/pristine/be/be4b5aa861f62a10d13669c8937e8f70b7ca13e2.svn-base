@@ -1,0 +1,25 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="PakUnitWeightReprint" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:CheckProductPropertyExist Customer="{ActivityBind PakUnitWeightReprint,Path=Customer}" x:Name="checkProductPropertyExist1" SessionType="{ActivityBind PakUnitWeightReprint,Path=SessionType}" Editor="{ActivityBind PakUnitWeightReprint,Path=Editor}" Station="{ActivityBind PakUnitWeightReprint,Path=Station}" PropertyToCheck="UnitWeight" Line="{ActivityBind PakUnitWeightReprint,Path=PdLine}" Key="{ActivityBind PakUnitWeightReprint,Path=Key}" />
+	<ns0:CheckUnitWeightPrintLabel Customer="{ActivityBind PakUnitWeightReprint,Path=Customer}" x:Name="checkUnitWeightPrintLabel1" SessionType="{ActivityBind PakUnitWeightReprint,Path=SessionType}" Editor="{ActivityBind PakUnitWeightReprint,Path=Editor}" Station="{ActivityBind PakUnitWeightReprint,Path=Station}" Line="{ActivityBind PakUnitWeightReprint,Path=PdLine}" Key="{ActivityBind PakUnitWeightReprint,Path=Key}" />
+	<ns0:DBScope Station="{ActivityBind PakUnitWeightReprint,Path=Station}" x:Name="dbScope1" Key="{ActivityBind PakUnitWeightReprint,Path=Key}" SessionType="{ActivityBind PakUnitWeightReprint,Path=SessionType}">
+		<ns0:GetUnitWeightProductLog Customer="{ActivityBind PakUnitWeightReprint,Path=Customer}" x:Name="getUnitWeightProductLog1" SessionType="{ActivityBind PakUnitWeightReprint,Path=SessionType}" Editor="{ActivityBind PakUnitWeightReprint,Path=Editor}" Station="{ActivityBind PakUnitWeightReprint,Path=Station}" Line="{ActivityBind PakUnitWeightReprint,Path=PdLine}" Key="{ActivityBind PakUnitWeightReprint,Path=Key}" LabelName="ConfigLabel" />
+		<IfElseActivity x:Name="ifElseActivity1">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="ifPassStation" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteRePrintLog Customer="{ActivityBind PakUnitWeightReprint,Path=Customer}" x:Name="writeRePrintLog1" SessionType="{ActivityBind PakUnitWeightReprint,Path=SessionType}" Editor="{ActivityBind PakUnitWeightReprint,Path=Editor}" Station="{ActivityBind PakUnitWeightReprint,Path=Station}" Line="{ActivityBind PakUnitWeightReprint,Path=PdLine}" Key="{ActivityBind PakUnitWeightReprint,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<ns0:GetUnitWeightProductLog Customer="{ActivityBind PakUnitWeightReprint,Path=Customer}" x:Name="getUnitWeightProductLog2" SessionType="{ActivityBind PakUnitWeightReprint,Path=SessionType}" Editor="{ActivityBind PakUnitWeightReprint,Path=Editor}" Station="{ActivityBind PakUnitWeightReprint,Path=Station}" Line="{ActivityBind PakUnitWeightReprint,Path=PdLine}" Key="{ActivityBind PakUnitWeightReprint,Path=Key}" LabelName="PODLabel" />
+		<IfElseActivity x:Name="ifElseActivity2">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="ifPassStation" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteRePrintLog Customer="{ActivityBind PakUnitWeightReprint,Path=Customer}" x:Name="writeRePrintLog2" SessionType="{ActivityBind PakUnitWeightReprint,Path=SessionType}" Editor="{ActivityBind PakUnitWeightReprint,Path=Editor}" Station="{ActivityBind PakUnitWeightReprint,Path=Station}" Line="{ActivityBind PakUnitWeightReprint,Path=PdLine}" Key="{ActivityBind PakUnitWeightReprint,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+	<ns0:Print Customer="{ActivityBind PakUnitWeightReprint,Path=Customer}" x:Name="print1" SessionType="{ActivityBind PakUnitWeightReprint,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind PakUnitWeightReprint,Path=Editor}" IsReprint="True" Station="{ActivityBind PakUnitWeightReprint,Path=Station}" MOFrom="No" Line="{ActivityBind PakUnitWeightReprint,Path=PdLine}" Key="{ActivityBind PakUnitWeightReprint,Path=Key}" DnFrom="No" />
+</ns0:BaseFlow>

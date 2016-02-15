@@ -1,0 +1,19 @@
+<ns0:BaseFlow Customer="{p1:Null}" x:Name="_066PickCard" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetForwarderByTruckID Customer="{ActivityBind _066PickCard,Path=Customer}" x:Name="getForwarderByTruckID1" SessionType="{ActivityBind _066PickCard,Path=SessionType}" Editor="{ActivityBind _066PickCard,Path=Editor}" Station="{ActivityBind _066PickCard,Path=Station}" Line="{ActivityBind _066PickCard,Path=PdLine}" Key="{ActivityBind _066PickCard,Path=Key}" />
+	<ns0:DBScope Station="{ActivityBind _066PickCard,Path=Station}" x:Name="dbScopeOther" Key="{ActivityBind _066PickCard,Path=Key}" SessionType="{ActivityBind _066PickCard,Path=SessionType}">
+		<ns0:SaveDataForPickCard Customer="{ActivityBind _066PickCard,Path=Customer}" x:Name="SaveDataForPickCard1" SessionType="{ActivityBind _066PickCard,Path=SessionType}" Editor="{ActivityBind _066PickCard,Path=Editor}" Station="{ActivityBind _066PickCard,Path=Station}" Line="{ActivityBind _066PickCard,Path=PdLine}" Key="{ActivityBind _066PickCard,Path=Key}" />
+		<IfElseActivity x:Name="ifElseActivity1">
+			<IfElseBranchActivity x:Name="ifNotAutoBOL">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="wasNotAutoBOL" />
+				</IfElseBranchActivity.Condition>
+				<ns0:Print Customer="{ActivityBind _066PickCard,Path=Customer}" NotExistException="True" SessionType="{ActivityBind _066PickCard,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind _066PickCard,Path=Editor}" x:Name="print1" Station="{ActivityBind _066PickCard,Path=Station}" MOFrom="No" ModelFrom="No" Line="{ActivityBind _066PickCard,Path=PdLine}" Key="{ActivityBind _066PickCard,Path=Key}" DnFrom="No" />
+				<ns0:WritePrintLog Customer="{ActivityBind _066PickCard,Path=Customer}" x:Name="writePrintLog2" SessionType="{ActivityBind _066PickCard,Path=SessionType}" Editor="{ActivityBind _066PickCard,Path=Editor}" Station="{ActivityBind _066PickCard,Path=Station}" Line="{ActivityBind _066PickCard,Path=PdLine}" Key="{ActivityBind _066PickCard,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+				<ns0:UpdateSession_PrintLog Customer="{ActivityBind _066PickCard,Path=Customer}" SessionPrintLogName="SessionEditsPrintName" SessionType="{ActivityBind _066PickCard,Path=SessionType}" Editor="{ActivityBind _066PickCard,Path=Editor}" Station="{ActivityBind _066PickCard,Path=Station}" SessionPrintLogBegNo="PickIDCtrl" x:Name="updateSession_PrintLog1" SessionPrintLogDescr="SessionEditsPrintDescr" Line="{ActivityBind _066PickCard,Path=PdLine}" Key="{ActivityBind _066PickCard,Path=Key}" SessionPrintLogEndNo="PickIDCtrl" />
+				<ns0:WritePrintLog Customer="{ActivityBind _066PickCard,Path=Customer}" x:Name="writePrintLog1" SessionType="{ActivityBind _066PickCard,Path=SessionType}" Editor="{ActivityBind _066PickCard,Path=Editor}" Station="{ActivityBind _066PickCard,Path=Station}" Line="{ActivityBind _066PickCard,Path=PdLine}" Key="{ActivityBind _066PickCard,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+</ns0:BaseFlow>

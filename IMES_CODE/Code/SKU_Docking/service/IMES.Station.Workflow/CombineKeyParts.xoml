@@ -1,0 +1,70 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="_CombineKeyParts" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:ns1="clr-namespace:IMES.Activity.Special;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind _CombineKeyParts,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" AddObjectWithSessionKey="{x:Null}" Station="{ActivityBind _CombineKeyParts,Path=Station}" x:Name="getProduct1" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" InputType="ProductIDOrCustSN" />
+	<IfElseActivity x:Name="ifElseActivity2">
+		<IfElseBranchActivity x:Name="ifwasStation39A">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="wasStation39A" />
+			</IfElseBranchActivity.Condition>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseBranchActivity5">
+			<ns0:BlockStation Customer="{ActivityBind _CombineKeyParts,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" ProcessType="Product" Station="{ActivityBind _CombineKeyParts,Path=Station}" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<ns0:GetBOM Customer="{ActivityBind _CombineKeyParts,Path=Customer}" MainObjFrom="Product" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" x:Name="getBOM1" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" Station="{ActivityBind _CombineKeyParts,Path=Station}" ModelFrom="Product" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplet" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind _CombineKeyParts,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" Station="{ActivityBind _CombineKeyParts,Path=Station}" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+			<IfElseActivity x:Name="IfComplete">
+				<IfElseBranchActivity x:Name="NotComplete">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplet" />
+					</IfElseBranchActivity.Condition>
+					<ns0:PartMatch Customer="{ActivityBind _CombineKeyParts,Path=Customer}" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" Station="{ActivityBind _CombineKeyParts,Path=Station}" x:Name="partMatch1" BindTo="Product" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="flag" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind _CombineKeyParts,Path=Station}" x:Name="dbScope1" Key="{ActivityBind _CombineKeyParts,Path=Key}" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}">
+				<ns0:BindParts Customer="{ActivityBind _CombineKeyParts,Path=Customer}" x:Name="bindProductParts1" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" Station="{ActivityBind _CombineKeyParts,Path=Station}" BindTo="Product" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind _CombineKeyParts,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" Status="Pass" Station="{ActivityBind _CombineKeyParts,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind _CombineKeyParts,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" Station="{ActivityBind _CombineKeyParts,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+				<ns0:Print Customer="{ActivityBind _CombineKeyParts,Path=Customer}" NotExistException="True" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" x:Name="print1" Station="{ActivityBind _CombineKeyParts,Path=Station}" MOFrom="Product" ModelFrom="Product_Model" Line="{ActivityBind _CombineKeyParts,Path=Key}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+				<ns0:WritePrintLog Customer="{ActivityBind _CombineKeyParts,Path=Customer}" x:Name="writePrintLog1" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" Station="{ActivityBind _CombineKeyParts,Path=Station}" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="flag39" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind _CombineKeyParts,Path=Station}" x:Name="dbScope2" Key="{ActivityBind _CombineKeyParts,Path=Key}" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}">
+				<ns1:BindDummyCPU Customer="{ActivityBind _CombineKeyParts,Path=Customer}" x:Name="bindDummyCPU2" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" Enabled="False" Station="{ActivityBind _CombineKeyParts,Path=Station}" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+				<ns0:BindParts Customer="{ActivityBind _CombineKeyParts,Path=Customer}" x:Name="bindProductParts2" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" Station="{ActivityBind _CombineKeyParts,Path=Station}" BindTo="Product" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind _CombineKeyParts,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" Status="Pass" Station="{ActivityBind _CombineKeyParts,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind _CombineKeyParts,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" Station="{ActivityBind _CombineKeyParts,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifStation39A">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="wasStation39A" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind _CombineKeyParts,Path=Station}" x:Name="dbScope3" Key="{ActivityBind _CombineKeyParts,Path=Key}" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}">
+				<ns0:BindParts Customer="{ActivityBind _CombineKeyParts,Path=Customer}" x:Name="bindParts1" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" Station="{ActivityBind _CombineKeyParts,Path=Station}" BindTo="Product" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseBranchActivity4">
+			<ns0:DBScope Station="{ActivityBind _CombineKeyParts,Path=Station}" x:Name="dbScope4" Key="{ActivityBind _CombineKeyParts,Path=Key}" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}">
+				<ns0:BindParts Customer="{ActivityBind _CombineKeyParts,Path=Customer}" x:Name="bindParts2" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" Station="{ActivityBind _CombineKeyParts,Path=Station}" BindTo="Product" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind _CombineKeyParts,Path=Customer}" x:Name="updateProductStatus4" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" Status="Pass" Station="{ActivityBind _CombineKeyParts,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind _CombineKeyParts,Path=Customer}" x:Name="writeProductLog4" SessionType="{ActivityBind _CombineKeyParts,Path=SessionType}" Editor="{ActivityBind _CombineKeyParts,Path=Editor}" Station="{ActivityBind _CombineKeyParts,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind _CombineKeyParts,Path=PdLine}" Key="{ActivityBind _CombineKeyParts,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{34B4EA0B-4E56-44A7-84D1-27819C45A5B0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IMES.Query.Implementation</RootNamespace>
+    <AssemblyName>IMES.Query.Implementation</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IMES.Infrastructure.FisException, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\IMES.Infrastructure.FisException.dll</HintPath>
+    </Reference>
+    <Reference Include="IMES.Query.DB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\bin\IMES.Query.DB.dll</HintPath>
+    </Reference>
+    <Reference Include="IMES.Query.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\IMES.Query.Interface\obj\Debug\IMES.Query.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FA_TouchGlassTimeQuery.cs" />
+    <Compile Include="COAStatus.cs" />
+    <Compile Include="ConfigDB.cs" />
+    <Compile Include="FA_ECOModelQuery.cs" />
+    <Compile Include="CT_TAT_Query.cs" />
+    <Compile Include="FA_DefectComponentRejudge.cs" />
+    <Compile Include="FA_LocQuery.cs" />
+    <Compile Include="FA_MPLineInput.cs" />
+    <Compile Include="FA_ReworkQuery.cs" />
+    <Compile Include="FA_rpt_sqeweeklyreport.cs" />
+    <Compile Include="SA_SMTDashboard.cs" />
+    <Compile Include="FA_SQEReport.cs" />
+    <Compile Include="PAK_CheatSheet.cs" />
+    <Compile Include="PAK_NoneShipProductQuery.cs" />
+    <Compile Include="FA_ProductPlanInputQuery_CR.cs" />
+    <Compile Include="FA_MPInputEx.cs" />
+    <Compile Include="PAK_MrpQuery.cs" />
+    <Compile Include="PAK_NonPaletProductQuery.cs" />
+    <Compile Include="FA_KeyPartsRequirementQuery.cs" />
+    <Compile Include="FA_ProductRepairQuery.cs" />
+    <Compile Include="FA_MastereSOPQuery.cs" />
+    <Compile Include="PAK_BsamShipSnList.cs" />
+    <Compile Include="PAK_BsamLocationQuery.cs" />
+    <Compile Include="FA_IMG_2PPQuery.cs" />
+    <Compile Include="FA_ProductPlanInputQuery.cs" />
+    <Compile Include="PAK_DockSnQuery.cs" />
+    <Compile Include="PAK_IdleTime.cs" />
+    <Compile Include="PAK_KitPartQueryImpl.cs" />
+    <Compile Include="PAK_MaterialBoxQuery.cs" />
+    <Compile Include="PAK_PLT3.cs" />
+    <Compile Include="PAK_ShipPLT3.cs" />
+    <Compile Include="PAK_UnShipSnList.cs" />
+    <Compile Include="FA_ProductImageDownTimeout.cs" />
+    <Compile Include="PAK_COARMAQuery.cs" />
+    <Compile Include="PAK_PAQCSortingQuery.cs" />
+    <Compile Include="PAK_StandModelWeight.cs" />
+    <Compile Include="PAK_Warehouse1.cs" />
+    <Compile Include="RBPC_Tool.cs" />
+    <Compile Include="FA_KeyPartDefectReport.cs" />
+    <Compile Include="SA_CpuQuery.cs" />
+    <Compile Include="SA_OQCQuery.cs" />
+    <Compile Include="SA_PCBInfoImpl.cs" />
+    <Compile Include="SA_PCBLotQuery.cs" />
+    <Compile Include="SA_PCBTestReport.cs" />
+    <Compile Include="PAK_COAStoreQuery.cs" />
+    <Compile Include="PAK_WipTracking.cs" />
+    <Compile Include="FA_MaterialUsed.cs" />
+    <Compile Include="FA_ProductEfficiency.cs" />
+    <Compile Include="FA_MOQuery.cs" />
+    <Compile Include="SA_PCBInputQueryImpl.cs" />
+    <Compile Include="FA_ProductStatement.cs" />
+    <Compile Include="FA_ModelBOM.cs" />
+    <Compile Include="FA_ProductYield.cs" />
+    <Compile Include="FA_QueryByPartSN.cs" />
+    <Compile Include="PAK_CDSIPOQuery.cs" />
+    <Compile Include="PAK_FirstPizza.cs" />
+    <Compile Include="PAK_KitFloatLocQueryImpl.cs" />
+    <Compile Include="Model_ASTQuery.cs" />
+    <Compile Include="PAK_ASTReportImpl.cs" />
+    <Compile Include="PAK_ASTeSOPQueryImpl.cs" />
+    <Compile Include="Family.cs" />
+    <Compile Include="FA_EPIAModelList.cs" />
+    <Compile Include="FA_MPInput.cs" />
+    <Compile Include="FA_PIADefectList.cs" />
+    <Compile Include="FA_PoWIPTracking.cs" />
+    <Compile Include="FA_PrdIdOnLine.cs" />
+    <Compile Include="FA_ProductInfo.cs" />
+    <Compile Include="FA_SNByFamily.cs" />
+    <Compile Include="Model.cs" />
+    <Compile Include="PAK_ChepPallet.cs" />
+    <Compile Include="PAK_COAStatusReport.cs" />
+    <Compile Include="PAK_COAStockQty.cs" />
+    <Compile Include="PdLine.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SA_FAReturnPCAImpl.cs" />
+    <Compile Include="SA_SAReceiveReturnMBQueryImpl.cs" />
+    <Compile Include="SA_PCBNoQuery.cs" />
+    <Compile Include="SA_PCBStationQueryImpl.cs" />
+    <Compile Include="SA_SABANDIT.cs" />
+    <Compile Include="SA_SAMBRepairImpl.cs" />
+    <Compile Include="SA_TestDefectImpl.cs" />
+    <Compile Include="SMT_TestDataReport.cs" />
+    <Compile Include="Station.cs" />
+    <Compile Include="PAK_VirtualPalletInfo.cs" />
+    <Compile Include="PAK_PackingDailyReport.cs" />
+    <Compile Include="PAK_PakBufferQuery.cs" />
+    <Compile Include="PAK_PLTDimension.cs" />
+    <Compile Include="PAK_PackingDataQuery.cs" />
+    <Compile Include="QueryCommon.cs" />
+    <Compile Include="PAK_BTLocQuery.cs" />
+    <Compile Include="PAK_ASTQuery.cs" />
+    <Compile Include="PAK_ShipLogQuery.cs" />
+    <Compile Include="PAK_StatusByDeliveryNo.cs" />
+    <Compile Include="PAK_PAQCUnTest.cs" />
+    <Compile Include="PAK_NonBulkPalletSummaryRpt.cs" />
+    <Compile Include="PAK_BulkPalletReport.cs" />
+    <Compile Include="PAK_Common.cs" />
+    <Compile Include="PAK_Query87Product.cs" />
+    <Compile Include="UploadFile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IMES.Entity.Infrastructure\IMES.Entity.Infrastructure.csproj">
+      <Project>{D5E00F47-1636-451C-B7A0-C4F2BFC3C34C}</Project>
+      <Name>IMES.Entity.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.Entity.Repository.Meta\IMES.Entity.Repository.Meta.csproj">
+      <Project>{20929D0C-C172-4918-942E-1E3C912C4914}</Project>
+      <Name>IMES.Entity.Repository.Meta</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

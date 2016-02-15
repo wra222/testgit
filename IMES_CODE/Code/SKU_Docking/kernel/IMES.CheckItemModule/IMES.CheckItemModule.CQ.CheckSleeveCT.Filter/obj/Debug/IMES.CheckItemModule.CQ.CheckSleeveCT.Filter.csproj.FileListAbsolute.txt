@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.CheckItemModule.CQ.CheckSleeveCT.Filter.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.CheckItemModule.CQ.CheckSleeveCT.Filter.pdb
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.CQ.CheckSleeveCT.Filter\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.CQ.CheckSleeveCT.Filter\obj\Debug\IMES.CheckItemModule.CQ.CheckSleeveCT.Filter.dll
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.CQ.CheckSleeveCT.Filter\obj\Debug\IMES.CheckItemModule.CQ.CheckSleeveCT.Filter.pdb

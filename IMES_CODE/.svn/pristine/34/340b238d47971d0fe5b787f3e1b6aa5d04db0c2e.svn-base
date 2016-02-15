@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="eng_msgInputPdLine" xml:space="preserve">
+    <value>Please select [PdLine] first!!</value>
+  </data>
+  <data name="eng_msgSuccess" xml:space="preserve">
+    <value>Success!</value>
+  </data>
+  <data name="eng_msgSystemError" xml:space="preserve">
+    <value>System Error!</value>
+  </data>
+  <data name="eng_ParamNull" xml:space="preserve">
+    <value>Parameter of this page is null!</value>
+  </data>
+  <data name="eng_nullDefectList" xml:space="preserve">
+    <value>Legal Defect List is null!</value>
+  </data>
+  <data name="eng_msgNoPcode" xml:space="preserve">
+    <value>Not exist you entered the [P Code]!</value>
+  </data>
+  <data name="eng_msgPcodeIsNull" xml:space="preserve">
+    <value>Please enter [P Code] first!</value>
+  </data>
+  <data name="cn_msgInputPdLine" xml:space="preserve">
+    <value>请先选择PdLine!</value>
+  </data>
+  <data name="cn_msgSuccess" xml:space="preserve">
+    <value>成功!</value>
+  </data>
+  <data name="cn_msgSystemError" xml:space="preserve">
+    <value>系统错误!</value>
+  </data>
+  <data name="cn_ParamNull" xml:space="preserve">
+    <value>该页面参数为空!</value>
+  </data>
+  <data name="cn_nullDefectList" xml:space="preserve">
+    <value>Legal Defect List is null!</value>
+  </data>
+  <data name="cn_msgNoPcode" xml:space="preserve">
+    <value>错误的功能代号!</value>
+  </data>
+  <data name="cn_msgPcodeIsNull" xml:space="preserve">
+    <value>请输入功能代号!</value>
+  </data>
+  <data name="cn_msgCollectExceedCount" xml:space="preserve">
+    <value>已经超过匹配项的数目!</value>
+  </data>
+  <data name="cn_msgCollectNoItem" xml:space="preserve">
+    <value>没找到匹配项!</value>
+  </data>
+  <data name="eng_msgCollectExceedCount" xml:space="preserve">
+    <value>The number for the matching items is exceeded!</value>
+  </data>
+  <data name="eng_msgCollectNoItem" xml:space="preserve">
+    <value>No matching item is found!</value>
+  </data>
+  <data name="cn_msgCollectExceedSumCount" xml:space="preserve">
+    <value>已经超过匹配项的总数目!</value>
+  </data>
+  <data name="eng_msgCollectExceedSumCount" xml:space="preserve">
+    <value>已经超过匹配项的总数目!</value>
+  </data>
+  <data name="cn_msgNoSetBat" xml:space="preserve">
+    <value>请选择BAT文件!</value>
+  </data>
+  <data name="cn_msgNoSetOffset" xml:space="preserve">
+    <value>请设置偏移量!</value>
+  </data>
+  <data name="cn_msgNoSetPort" xml:space="preserve">
+    <value>请选择输出端口!</value>
+  </data>
+  <data name="cn_msgNoSetPrinter" xml:space="preserve">
+    <value>请选择打印机!</value>
+  </data>
+  <data name="eng_msgNoSetBat" xml:space="preserve">
+    <value>Please select BAT!</value>
+  </data>
+  <data name="eng_msgNoSetOffset" xml:space="preserve">
+    <value>Please set offset!</value>
+  </data>
+  <data name="eng_msgNoSetPort" xml:space="preserve">
+    <value>Please config port!</value>
+  </data>
+  <data name="eng_msgNoSetPrinter" xml:space="preserve">
+    <value>Please config printer!</value>
+  </data>
+  <data name="cn_SessionIsNull" xml:space="preserve">
+    <value>超时或无效用户，请重新登录！</value>
+  </data>
+  <data name="eng_SessionIsNull" xml:space="preserve">
+    <value>Timeout or invalid user, please login again!</value>
+  </data>
+  <data name="cn_msgIllegalXOffset" xml:space="preserve">
+    <value>X偏移量格式不正确!(整数)</value>
+  </data>
+  <data name="cn_msgIllegalYOffset" xml:space="preserve">
+    <value>Y偏移量格式不正确!(整数)</value>
+  </data>
+  <data name="eng_msgIllegalXOffset" xml:space="preserve">
+    <value>X偏移量格式不正确!</value>
+  </data>
+  <data name="eng_msgIllegalYOffset" xml:space="preserve">
+    <value>Y偏移量格式不正确!</value>
+  </data>
+  <data name="cn_msgNoPrintItem" xml:space="preserve">
+    <value>不能获得PrintItem，请检查相关配置！！</value>
+  </data>
+  <data name="eng_msgNoPrintItem" xml:space="preserve">
+    <value>Can not get PrintItem, please check the Setting!!</value>
+  </data>
+  <data name="cn_BatNoExist" xml:space="preserve">
+    <value>不存在，请先下载！</value>
+  </data>
+  <data name="eng_BatNoExist" xml:space="preserve">
+    <value>does not exist, please download!</value>
+  </data>
+  <data name="cn_msgInputMaxLength1" xml:space="preserve">
+    <value>最大输入范围是</value>
+  </data>
+  <data name="cn_msgInputMaxLength2" xml:space="preserve">
+    <value>字符，超出部分会被裁减！</value>
+  </data>
+  <data name="cn_msgReasonNull" xml:space="preserve">
+    <value>请输入原因!</value>
+  </data>
+  <data name="eng_msgInputMaxLength1" xml:space="preserve">
+    <value>The Max Input Length is</value>
+  </data>
+  <data name="eng_msgInputMaxLength2" xml:space="preserve">
+    <value>characters,the overflow will be truncated!!</value>
+  </data>
+  <data name="eng_msgReasonNull" xml:space="preserve">
+    <value>Please input Reason!</value>
+  </data>
+  <data name="cn_msgPrintSettingPara" xml:space="preserve">
+    <value>请先检查[列印设定]页面参数!!</value>
+  </data>
+  <data name="eng_msgPrintSettingPara" xml:space="preserve">
+    <value>Please check the [PrintSetting] Parameters first!!</value>
+  </data>
+  <data name="cn_msgInputECR" xml:space="preserve">
+    <value>请输入ECR！</value>
+  </data>
+  <data name="eng_msgInputECR" xml:space="preserve">
+    <value>Please input ECR!</value>
+  </data>
+  <data name="cn_PrinterOrBatNotExit" xml:space="preserve">
+    <value>请先在列印设定里设置打印机或打印端口!!</value>
+  </data>
+  <data name="eng_PrinterOrBatNotExit" xml:space="preserve">
+    <value>Please set Printer or Port in PrintSetting first!!</value>
+  </data>
+  <data name="cn_msgInputSN" xml:space="preserve">
+    <value>请输入序号！</value>
+  </data>
+  <data name="eng_msgInputSN" xml:space="preserve">
+    <value>Please input unit SN or product ID!</value>
+  </data>
+  <data name="cn_msgNoToSave" xml:space="preserve">
+    <value>没有需要保存的信息！</value>
+  </data>
+  <data name="cn_msgStartNew" xml:space="preserve">
+    <value>确定取消前一个MB sno并开始新的MB sno 操作？（继续前一个MB sno，请输入9999或者点击save按钮。）</value>
+  </data>
+  <data name="eng_msgNoToSave" xml:space="preserve">
+    <value>Nothing need to be saved！</value>
+  </data>
+  <data name="eng_msgStartNew" xml:space="preserve">
+    <value>Are you sure to cancel the old MB sno and start a new one?(To continue the old one,please input versions and click save button.)</value>
+  </data>
+  <data name="eng_msgNoInputIECVer" xml:space="preserve">
+    <value>Please input IEC Version first !</value>
+  </data>
+  <data name="eng_mesIECLength" xml:space="preserve">
+    <value>The iec version length must be 4!</value>
+  </data>
+  <data name="eng_mesCustLength" xml:space="preserve">
+    <value>The cust version length must be 3!</value>
+  </data>
+  <data name="eng_msgIllegalIEC" xml:space="preserve">
+    <value>Format Error，Please input IEC Version again!(Format:*.**)</value>
+  </data>
+  <data name="cn_msgIllegalIEC" xml:space="preserve">
+    <value>格式错误，请重新输入IEC Version!(格式:*.**)</value>
+  </data>
+  <data name="cn_msgNoInputIECVer" xml:space="preserve">
+    <value>请先输入IEC Version!</value>
+  </data>
+  <data name="cn_mesCustLength" xml:space="preserve">
+    <value>Cust Version数据长度为3!</value>
+  </data>
+  <data name="cn_mesDupData" xml:space="preserve">
+    <value>重复数据!</value>
+  </data>
+  <data name="cn_mesIECLength" xml:space="preserve">
+    <value>IEC Version数据长度为4!</value>
+  </data>
+  <data name="cn_msgWeightNull" xml:space="preserve">
+    <value>重量为空，请称重！</value>
+  </data>
+  <data name="eng_msgWeightNull" xml:space="preserve">
+    <value>The weight is null!</value>
+  </data>
+  <data name="cn_msgSave" xml:space="preserve">
+    <value>是否要保存？</value>
+  </data>
+  <data name="eng_msgSave" xml:space="preserve">
+    <value>Are you sure to save?</value>
+  </data>
+  <data name="cn_msgECRWrongFormat" xml:space="preserve">
+    <value>ECR格式错误!</value>
+  </data>
+  <data name="eng_msgECRWrongFormat" xml:space="preserve">
+    <value>ECR format error!</value>
+  </data>
+  <data name="cn_lblRemarkLimited" xml:space="preserve">
+    <value>Reason最多输入80个字符!</value>
+  </data>
+  <data name="eng_lblRemarkLimited" xml:space="preserve">
+    <value>80 characters Limited</value>
+  </data>
+  <data name="cn_msgLabelTypeChange" xml:space="preserve">
+    <value>数据库中该LabelType可能发生了变化，请刷新页面并重新设置PrintSetting!</value>
+  </data>
+  <data name="eng_msgLabelTypeChange" xml:space="preserve">
+    <value>The DB about the LabelType may changed, please refresh the page and set PrintSetting anew! </value>
+  </data>
+  <data name="cn_mesNoSelWeightType" xml:space="preserve">
+    <value>请先选择称重机器!</value>
+  </data>
+  <data name="eng_mesNoSelWeightType" xml:space="preserve">
+    <value>Please Select Weight Machine!</value>
+  </data>
+  <data name="eng_mesDupData" xml:space="preserve">
+    <value>Duplicate data!</value>
+  </data>
+</root>

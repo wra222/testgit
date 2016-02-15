@@ -1,0 +1,188 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.Design;
+using System.Collections;
+using System.Drawing;
+using System.Linq;
+using System.Workflow.ComponentModel;
+using System.Workflow.ComponentModel.Design;
+using System.Workflow.ComponentModel.Compiler;
+using System.Workflow.ComponentModel.Serialization;
+using System.Workflow.Runtime;
+using System.Workflow.Activities;
+using System.Workflow.Activities.Rules;
+using IMES.FisObject.PCA.MB;
+using IMES.Infrastructure;
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+using IMES.FisObject.FA.Product;
+using IMES.FisObject.Common.Repair;
+using IMES.FisObject.Common.TestLog;
+using IMES.DataModel;
+using IMES.FisObject.Common.Part;
+using IMES.Infrastructure.Extend;
+
+namespace IMES.Activity
+{
+    /// <summary>
+    /// MBSNo是否存在
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// 基类：
+    ///         <see cref="IMES.Activity.BaseActivity">BaseActivity</see>  
+    /// </para>
+    /// <para>
+    /// 应用场景：
+    ///         应用于需要站
+    /// </para>
+    /// <para>
+    /// 实现逻辑：
+    ///          
+    ///</para> 
+    /// <para> 
+    /// 异常类型：
+    ///         1.系统异常：
+    ///         2.业务异常：
+    ///             
+    /// </para> 
+    /// <para>    
+    /// 输入：
+    ///         Session.SessionKeys.MB 
+    ///         
+    /// </para> 
+    /// <para>    
+    /// 中间变量：
+    ///         无
+    /// </para> 
+    ///<para> 
+    /// 输出：
+    ///       
+    /// </para> 
+    ///<para> 
+    /// 数据更新:
+    ///    
+    /// </para> 
+    ///<para> 
+    /// 相关FisObject:
+    ///        Product
+    /// </para> 
+    /// </remarks>
+
+	public partial class CheckMBIctTestLog:  BaseActivity
+	{
+        /// <summary>
+        /// CheckMBIctTestLog
+        /// </summary>
+        
+         // IMBRepository currentMBRepository = RepositoryFactory.GetInstance().GetRepository<IMBRepository, IMB>();
+          // IPartRepository partRep = RepositoryFactory.GetInstance().GetRepository<IPartRepository>();
+		public CheckMBIctTestLog()
+		{
+			InitializeComponent();
+		}
+        /// <summary>
+        /// CheckMBIctTestLog
+        /// </summary>
+        /// <param name="executionContext"></param>
+        /// <returns></returns>
+        protected internal override ActivityExecutionStatus DoExecute(ActivityExecutionContext executionContext)
+        {
+            IMB currentMB = (IMB)CurrentSession.GetValue(Session.SessionKeys.MB);
+           IMBRepository currentMBRepository = RepositoryFactory.GetInstance().GetRepository<IMBRepository, IMB>();
+          IPartRepository partRep = RepositoryFactory.GetInstance().GetRepository<IPartRepository>();
+
+            string strMBCode = "";
+            //string mbLastFuncTestType = "";
+            if (currentMB.Sn.Length == 11)
+            {
+                strMBCode = currentMB.Sn.Substring(0, 3);
+            }
+            else
+            {
+                strMBCode = currentMB.Sn.Substring(0, 2);
+            }
+            //if (CurrentSession.Station.ToString() != "10A")
+            //{
+            //    return base.DoExecute(executionContext);
+            //}
+            if (CurrentSession.Station.ToString() != "10A")
+            {
+                return base.DoExecute(executionContext);
+            }
+            else
+            {
+             
+                IList<MBTestDef> mbTestList = currentMBRepository.GetMBTestList_NotCut(strMBCode,true);
+               
+                if (mbTestList != null && mbTestList.Count > 0)
+                {
+                    
+                    return base.DoExecute(executionContext);
+                }
+
+                DateTime lastProcessTime = currentMB.MBStatus.Udt;
+                //檢查上傳Function test log不須檢查Station
+                //IList<TestLog> pcbTestLogList = currentMBRepository.GetPCBTestLogListFromPCBTestLog(currentMB.Sn, this.Station, lastProcessTime);
+                
+                IList<TestLog> pcbTestLogList = currentMBRepository.GetPCBTestLogListFromPCBTestLog(currentMB.Sn, "ICT", lastProcessTime);//
+                if (pcbTestLogList == null || pcbTestLogList.Count == 0)
+                {
+					 IList<TestLog> pcbTestLogList_aict = currentMBRepository.GetPCBTestLogListFromPCBTestLog(currentMB.Sn, "AICT", lastProcessTime);
+					 if(pcbTestLogList_aict == null || pcbTestLogList_aict.Count == 0)
+					   {
+					       string MBSN = GetParentMB(currentMB.Sn);
+                            if (MBSN != "")
+                              {
+                                 pcbTestLogList = currentMBRepository.GetPCBTestLogListFromPCBTestLog(MBSN, "ICT");//判斷先做ICT再切分的板子
+                                 if (pcbTestLogList == null || pcbTestLogList.Count == 0)
+                                    {
+									    pcbTestLogList_aict = currentMBRepository.GetPCBTestLogListFromPCBTestLog(MBSN, "AICT");//判斷先做ICT再切分的板子
+										if (pcbTestLogList_aict == null || pcbTestLogList_aict.Count == 0)
+										{
+											throw new FisException("PAK078", new string[] { });
+										}
+							
+                                     }
+                              }
+                             else
+								{
+									throw new FisException("PAK078", new string[] { });
+								}
+					   }
+                }
+                TestLog lastTestLog = pcbTestLogList[0];
+
+                if (lastTestLog.Status == TestLog.TestLogStatus.Fail)
+                {
+                    //List<string> erpara = new List<string>();
+                    //erpara.Add(currentMB.Sn);
+                    if (ExtendSession.SessionKeys.AllowPass != "N")
+                    {
+                        CurrentSession.AddValue(ExtendSession.SessionKeys.AllowPass, "N");//不可直接輸入9999，要輸入DefectCode
+                        CurrentSession.AddValue(ExtendSession.SessionKeys.DefectStation, this.Station);
+                        //throw new FisException("ICT025",erpara);
+                    }
+                   // throw new FisException("CHK245", new string[] { });
+                }
+            }
+            return base.DoExecute(executionContext);
+        }
+        /// <summary>
+        /// Check ICT 在MB切割前的測試記錄
+        /// </summary>
+        public string GetParentMB(string Mb)
+        {
+           string Result = "";
+           IMBRepository currentMBRepository = RepositoryFactory.GetInstance().GetRepository<IMBRepository, IMB>();
+           IList<IMES.FisObject.PCA.MB.MBInfo> PCBinfo = currentMBRepository.GetPCBInfoByTypeValue("ChildMBSN", Mb);
+           if (PCBinfo != null && PCBinfo.Count > 0)
+           {
+               IMES.FisObject.PCA.MB.MBInfo MBinf = PCBinfo[0];
+               Result = MBinf.PCBID;
+
+           }
+            return Result;
+        }
+	}
+}

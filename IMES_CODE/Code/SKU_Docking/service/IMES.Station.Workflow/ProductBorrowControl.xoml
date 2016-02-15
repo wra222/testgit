@@ -1,0 +1,23 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="ProductBorrowControl" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind ProductBorrowControl,Path=Customer}" NotExistException="BOR002" SessionType="{ActivityBind ProductBorrowControl,Path=SessionType}" Editor="{ActivityBind ProductBorrowControl,Path=Editor}" AddObjectWithSessionKey="{x:Null}" Station="{ActivityBind ProductBorrowControl,Path=Station}" x:Name="getProduct1" Line="{ActivityBind ProductBorrowControl,Path=PdLine}" Key="{ActivityBind ProductBorrowControl,Path=Key}" InputType="ProductIDOrCustSN" />
+	<ns0:WaitInput Customer="{ActivityBind ProductBorrowControl,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind ProductBorrowControl,Path=SessionType}" Editor="{ActivityBind ProductBorrowControl,Path=Editor}" Station="{ActivityBind ProductBorrowControl,Path=Station}" Line="{ActivityBind ProductBorrowControl,Path=PdLine}" Key="{ActivityBind ProductBorrowControl,Path=Key}" />
+	<IfElseActivity x:Name="BorrowOrReturn">
+		<IfElseBranchActivity x:Name="Borrow">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="IsBorrow" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind ProductBorrowControl,Path=Station}" x:Name="dbScope1" Key="{ActivityBind ProductBorrowControl,Path=Key}" SessionType="{ActivityBind ProductBorrowControl,Path=SessionType}">
+				<ns0:InsertBorrowLog Customer="{ActivityBind ProductBorrowControl,Path=Customer}" x:Name="insertBorrowLog1" SessionType="{ActivityBind ProductBorrowControl,Path=SessionType}" Editor="{ActivityBind ProductBorrowControl,Path=Editor}" Station="{ActivityBind ProductBorrowControl,Path=Station}" Status="B" Line="{ActivityBind ProductBorrowControl,Path=PdLine}" Key="{ActivityBind ProductBorrowControl,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind ProductBorrowControl,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind ProductBorrowControl,Path=SessionType}" Editor="{ActivityBind ProductBorrowControl,Path=Editor}" Status="Processing" Station="{ActivityBind ProductBorrowControl,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind ProductBorrowControl,Path=PdLine}" Key="{ActivityBind ProductBorrowControl,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind ProductBorrowControl,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind ProductBorrowControl,Path=SessionType}" Editor="{ActivityBind ProductBorrowControl,Path=Editor}" Station="{ActivityBind ProductBorrowControl,Path=Station}" Status="Processing" IsSingle="True" Line="{ActivityBind ProductBorrowControl,Path=PdLine}" Key="{ActivityBind ProductBorrowControl,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ReturnMB">
+			<ns0:DBScope Station="{ActivityBind ProductBorrowControl,Path=Station}" x:Name="dbScope2" Key="{ActivityBind ProductBorrowControl,Path=Key}" SessionType="{ActivityBind ProductBorrowControl,Path=SessionType}">
+				<ns0:UpdateBorrowLog Customer="{ActivityBind ProductBorrowControl,Path=Customer}" x:Name="updateBorrowLog1" SessionType="{ActivityBind ProductBorrowControl,Path=SessionType}" Editor="{ActivityBind ProductBorrowControl,Path=Editor}" Station="{ActivityBind ProductBorrowControl,Path=Station}" Status="R" Line="{ActivityBind ProductBorrowControl,Path=PdLine}" Key="{ActivityBind ProductBorrowControl,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind ProductBorrowControl,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind ProductBorrowControl,Path=SessionType}" Editor="{ActivityBind ProductBorrowControl,Path=Editor}" Status="Pass" Station="{ActivityBind ProductBorrowControl,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind ProductBorrowControl,Path=PdLine}" Key="{ActivityBind ProductBorrowControl,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind ProductBorrowControl,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind ProductBorrowControl,Path=SessionType}" Editor="{ActivityBind ProductBorrowControl,Path=Editor}" Station="{ActivityBind ProductBorrowControl,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind ProductBorrowControl,Path=PdLine}" Key="{ActivityBind ProductBorrowControl,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

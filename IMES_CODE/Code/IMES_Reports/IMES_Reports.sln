@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMES_Reports", "IMES_Reports\IMES_Reports.csproj", "{AB24FFBC-EDC0-4216-9F61-7C2EC693A403}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB24FFBC-EDC0-4216-9F61-7C2EC693A403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB24FFBC-EDC0-4216-9F61-7C2EC693A403}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB24FFBC-EDC0-4216-9F61-7C2EC693A403}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB24FFBC-EDC0-4216-9F61-7C2EC693A403}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

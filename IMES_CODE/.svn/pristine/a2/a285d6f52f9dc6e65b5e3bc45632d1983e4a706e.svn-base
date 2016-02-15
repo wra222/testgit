@@ -1,0 +1,637 @@
+﻿/*
+* INVENTEC corporation ©2011 all rights reserved. 
+* Description:Combine COA and DN
+* CI-MES12-SPEC-PAK-UI Combine COA and DN.docx
+* CI-MES12-SPEC-PAK-UC Combine COA and DN.docx               
+* Update: 
+* Date        Name                  Reason 
+* ==========  ===================== =====================================
+* 2012/08/10    Du.Xuan               Create   
+* Known issues:
+* TODO：
+* 
+*/
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Workflow.Runtime;
+using IMES.DataModel;
+using IMES.FisObject.Common.Model;
+using IMES.FisObject.Common.FisBOM;
+using IMES.FisObject.Common.Part;
+using IMES.FisObject.FA.Product;
+using IMES.FisObject.PAK.Pallet;
+using IMES.FisObject.PAK.DN;
+using IMES.FisObject.PAK.COA;
+using IMES.FisObject.PAK.Pizza;
+using IBOMRepository = IMES.FisObject.Common.FisBOM.IBOMRepository;
+using IMES.Infrastructure;
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+using IMES.Infrastructure.WorkflowRuntime;
+using IMES.Route;
+using IMES.Station.Interface.StationIntf;
+using log4net;
+using System.Data.SqlClient;
+using System.Data;
+using IMES.Infrastructure.Repository._Schema;
+
+
+
+namespace IMES.Station.Implementation
+{
+    /// <summary>
+    /// ICombineCOAandDNNew接口的实现类
+    /// </summary>
+    public class CombineCOAandDNNewImpl : MarshalByRefObject, ICombineCOAandDNNew
+    {
+        private ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private const Session.SessionType SessionType = Session.SessionType.Product;
+
+        private IProductRepository productRep = RepositoryFactory.GetInstance().GetRepository<IProductRepository, IProduct>();
+        private IModelRepository modelRep = RepositoryFactory.GetInstance().GetRepository<IModelRepository, Model>();
+        private IBOMRepository bomRep = RepositoryFactory.GetInstance().GetRepository<IBOMRepository>();
+        private IDeliveryRepository deliveryRep = RepositoryFactory.GetInstance().GetRepository<IDeliveryRepository, Delivery>();
+        private IPartRepository partRep = RepositoryFactory.GetInstance().GetRepository<IPartRepository, IPart>();
+        private ICOAStatusRepository coaRep = RepositoryFactory.GetInstance().GetRepository<ICOAStatusRepository, COAStatus>();
+
+
+        #region members
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="custSN"></param>
+        /// <param name="line"></param>
+        /// <param name="code"></param>
+        /// <param name="floor"></param>
+        /// <param name="editor"></param>
+        /// <param name="station"></param>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        public ArrayList InputSN(string custSN, string line, string editor, string station, string customer)
+        {
+            logger.Debug("(CombineCOAandDNNew)InputSN start, custSn:" + custSN);
+
+            try
+            {
+                List<string> erpara = new List<string>();
+
+                var currentProduct = CommonImpl.GetProductByInput(custSN, CommonImpl.InputTypeEnum.CustSN);
+                string sessionKey = currentProduct.ProId;
+                Session currentSession = SessionManager.GetInstance.GetSession(sessionKey, SessionType);
+
+                if (currentSession == null)
+                {
+                    currentSession = new Session(sessionKey, SessionType, editor, station, line, customer);
+
+                    Dictionary<string, object> wfArguments = new Dictionary<string, object>();
+                    wfArguments.Add("Key", sessionKey);
+                    wfArguments.Add("Station", station);
+                    wfArguments.Add("CurrentFlowSession", currentSession);
+                    wfArguments.Add("Editor", editor);
+                    wfArguments.Add("PdLine", line);
+                    wfArguments.Add("Customer", customer);
+                    wfArguments.Add("SessionType", SessionType);
+
+                    string wfName, rlName;
+
+                    RouteManagementUtils.GetWorkflow(station, "CombineCOAandDNNew.xoml", "", out wfName, out rlName);
+                    WorkflowInstance instance = WorkflowRuntimeManager.getInstance.CreateXomlFisWorkflow(wfName, rlName, wfArguments);
+
+                    currentSession.AddValue(Session.SessionKeys.IsComplete, false);
+                    currentSession.SetInstance(instance);
+
+                    if (!SessionManager.GetInstance.AddSession(currentSession))
+                    {
+                        currentSession.WorkflowInstance.Terminate("Session:" + sessionKey + " Exists.");
+                        FisException ex;
+                        erpara.Add(sessionKey);
+                        ex = new FisException("CHK020", erpara);
+                        throw ex;
+                    }
+
+                    currentSession.WorkflowInstance.Start();
+                    currentSession.SetHostWaitOne();
+                }
+                else
+                {
+                    FisException ex;
+                    erpara.Add(sessionKey);
+                    ex = new FisException("CHK020", erpara);
+                    throw ex;
+                }
+
+
+                if (currentSession.Exception != null)
+                {
+                    if (currentSession.GetValue(Session.SessionKeys.WFTerminated) != null)
+                    {
+                        currentSession.ResumeWorkFlow();
+                    }
+
+                    throw currentSession.Exception;
+                }
+
+                //========================================================
+                ArrayList retList = new ArrayList();
+                Product curProduct = (Product)currentSession.GetValue(Session.SessionKeys.Product);
+                Delivery curDn = (Delivery)currentSession.GetValue(Session.SessionKeys.Delivery);
+
+                //如果是Win8 机型，如果Image D/L 未上传相关数据，则报告错误：“Win 8 信息不完整！”
+
+                //if exists(select * from ModelBOM a (nolock), Part b (nolock) 
+                //where a.Material = @Model
+                //and a.Component = b.PartNo
+                //and b.BomNodeType = 'P1'
+                //and b.Descr LIKE 'ECOA%')
+                //select 'This product is WIN8 Model'
+
+                //if 3 <> (select COUNT(*) from ProductInfo nolock 
+                //where ProductID = @ProductID and InfoType in ('P/N','Key', 'Hash'))
+                //select 'Win 8 信息不完整!'
+              
+                IList<string> valueList = partRep.GetValueFromSysSettingByName("Site");
+                if (valueList.Count == 0)
+                {
+                    throw new Exception("Error:尚未設定Site...");
+                }
+                string win8Flag = "";
+                IList<MoBOMInfo> win8list = bomRep.GetPnListByModelAndBomNodeTypeAndDescr(curProduct.Model, "P1", "ECOA");
+                if (win8list.Count > 0)
+                {
+                    IList<string> typeList = new List<string>();
+                    typeList.Add("P/N");
+                    typeList.Add("Key");
+                    if (valueList[0] == "ICC")
+                    {
+                        typeList.Add("COA");
+                    }
+                    else
+                    {
+                        typeList.Add("Hash");
+                    }
+                
+                    IList<IMES.FisObject.FA.Product.ProductInfo> infoList = productRep.GetProductInfoList(curProduct.ProId, typeList);
+                    if (infoList == null || infoList.Count != 3)
+                    {
+                        SessionManager.GetInstance.RemoveSession(currentSession);
+                        FisException ex;
+                        erpara.Add(sessionKey);
+                        ex = new FisException("CHK885", erpara);//Win 8 信息不完整!
+                        throw ex;
+                    }
+                    win8Flag = "WIN8";
+                }
+
+                //只有当前PRODUCT没有收集COA (Product_Part)并且在ModelBOM 中Model 下阶存在BomNodeType = 'P1'，
+                //且IMES_GetData..Part.Descr LIKE 'COA%' 的Part的情况下，才需要收集COA 
+                string coaPn = "";
+                string productCoa = "";
+                IHierarchicalBOM curBom = bomRep.GetHierarchicalBOMByModel(curProduct.Model);
+                IList<IBOMNode> bomNodeList = curBom.FirstLevelNodes;
+                foreach (IBOMNode bomNode in bomNodeList)
+                {
+                    if ((bomNode.Part.BOMNodeType == "P1") && bomNode.Part.Descr.IndexOf("COA") == 0)
+                    {
+                        coaPn = bomNode.Part.PN;
+                        currentSession.AddValue("COABOMPart", bomNode.Part);
+                        break;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(coaPn))
+                {
+                    if (curProduct.ProductParts != null && curProduct.ProductParts.Count > 0)
+                    {
+                        foreach (ProductPart iprodpart in curProduct.ProductParts)
+                        {
+                            IPart curPart = partRep.GetPartByPartNo(iprodpart.PartID);
+                            if (curPart.BOMNodeType == "P1" && curPart.Descr.IndexOf("COA") == 0)
+                            {
+                                productCoa = curPart.PN;
+                                break;
+                            }
+                        }
+                    }
+                }
+                //(此处存在例外情况：当使用Code = @CustomerSN and Type =  'SN' 
+                //或者Code = @DeliveryNo and Type =  'DN'查询InternalCOA 表 存在记录时，不需要收集COA)
+                if (!string.IsNullOrEmpty(coaPn))
+                {
+                    bool snflag = partRep.CheckExistInternalCOA(curProduct.CUSTSN, "SN");
+                    bool dnflag = partRep.CheckExistInternalCOA(curProduct.CUSTSN, "DN");
+                    if (snflag || dnflag)
+                    {
+                        coaPn = "";
+                    }
+                }
+
+                ProductModel curModel = new ProductModel();
+                curModel.ProductID = curProduct.ProId;
+                curModel.CustSN = curProduct.CUSTSN;
+                curModel.Model = curProduct.Model;
+
+                string custPN = "";
+                DNForUI autoDn = new DNForUI();
+                if (!curProduct.IsBT)
+                {
+                    autoDn.DeliveryNo = curDn.DeliveryNo;
+                    autoDn.ModelName = curDn.ModelName;
+                    custPN = deliveryRep.GetDeliveryInfoValue(curDn.DeliveryNo, "PartNo");
+                    int startindex = custPN.IndexOf("/") + 1;
+                    if (startindex < 0)
+                    {
+                        startindex = 0;
+                    }
+                    autoDn.Editor = custPN.Substring(startindex, custPN.Length - startindex);//CustomerPN
+                    autoDn.PoNo = curDn.PoNo;
+                    autoDn.ShipDate_Str = curDn.ShipDate.Year.ToString("d4") + "/"
+                        + curDn.ShipDate.Month.ToString("d2") + "/" + curDn.ShipDate.Day.ToString("d2");
+                    autoDn.Qty = curDn.Qty;
+                    IList<IProduct> productList = new List<IProduct>();
+                    productList = productRep.GetProductListByDeliveryNo(curDn.DeliveryNo);
+                    autoDn.ShipmentID = Convert.ToString(productList.Count);//packetQty
+                }
+                string cdsiFlag = (string)currentSession.GetValue("CDSI");
+
+                //保存正确COAPN
+                currentSession.AddValue("COAPN", coaPn);
+                currentSession.AddValue(Session.SessionKeys.COASN, "");
+
+                retList.Add(curModel);
+                retList.Add(curProduct.IsBT);
+                retList.Add(coaPn);
+                retList.Add(autoDn);
+                retList.Add(win8Flag);
+                retList.Add(cdsiFlag);
+                retList.Add(productCoa);
+                //========================================================
+
+                return retList;
+
+            }
+            catch (FisException e)
+            {
+                logger.Error(e.mErrmsg, e);
+                throw new Exception(e.mErrmsg);
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message, e);
+                throw new SystemException(e.Message);
+            }
+            finally
+            {
+                logger.Debug("(CombineCOAandDNNew)InputSN end, uutSn:" + custSN);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="prodId"></param>
+        /// <param name="inputCOA"></param>
+        /// <returns></returns>
+        public ArrayList checkCOA(string prodId, string inputCOA)
+        {
+            logger.Debug("(CombineCOAandDNNew)checkCOA start,"
+                + " [prodId]: " + prodId);
+
+            FisException ex;
+            List<string> erpara = new List<string>();
+            string sessionKey = prodId;
+
+            string nodeStr = "";
+            ArrayList retList = new ArrayList();
+
+            try
+            {
+
+                Session curSession = SessionManager.GetInstance.GetSession(sessionKey, SessionType);
+
+                if (curSession == null)
+                {
+                    erpara.Add(sessionKey);
+                    ex = new FisException("CHK021", erpara);
+                    throw ex;
+                }
+                else
+                {
+                    //========================================================
+
+                    Product curProduct = (Product)curSession.GetValue(Session.SessionKeys.Product);
+                    string coaPN = (string)curSession.GetValue("COAPN");
+
+                    IHierarchicalBOM curBom = bomRep.GetHierarchicalBOMByModel(curProduct.Model);
+                    IList<IBOMNode> bomNodeList = curBom.FirstLevelNodes;
+
+
+                    //如果当前PRODUCT已经收集了COA (Product_Part 中看是否有绑定COA – 存在BomNodeType = 'P1' ，
+                    //IMES_GetData..Part.Descr LIKE 'COA%' 的Part)，则需要进行如下检查：
+                    string productCoa = "";
+                    ProductPart proPart = null;
+                    if (curProduct.ProductParts != null && curProduct.ProductParts.Count > 0)
+                    {
+                        foreach (ProductPart iprodpart in curProduct.ProductParts)
+                        {
+                            IPart curPart = partRep.GetPartByPartNo(iprodpart.PartID);
+                            if (curPart.BOMNodeType == "P1" && curPart.Descr.IndexOf("COA") == 0)
+                            {
+                                productCoa = curPart.PN;
+                                proPart = iprodpart;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (proPart != null)
+                    {
+                        //检查刷入的COA No 是否和已与Product结合的COA No 是否一致，如果不一致，
+                        //则需要报告错误：“用户刷入的COA No 与Product 结合的COA No 不一致，请联系相关人员!”； 
+
+                        if (inputCOA != proPart.PartSn)
+                        {
+                            erpara.Add(sessionKey);
+                            ex = new FisException("PAK147", erpara);//“用户刷入的COA No 与Product 结合的COA No 不一致，请联系相关人员!”
+                            nodeStr = ex.mErrmsg;
+
+                            retList.Add(nodeStr);
+                            retList.Add("");
+                            return retList;
+
+                        }
+                    }
+                    else
+                    {
+                        //用户刷入的COA 如果不存在，则报告错误：'COA is not exist!'
+                        //Remark:
+                        //使用COAStatus.COASN = @COA查询COAStatus 表没有存在记录，则表明用户刷入的COA 不存在
+                        COAStatus reCOA = coaRep.Find(inputCOA);
+                        if (null == reCOA)
+                        {
+                            erpara.Add(sessionKey);
+                            ex = new FisException("PAK149", erpara);//COA is not exist!
+                            nodeStr = ex.mErrmsg;
+
+                            retList.Add(nodeStr);
+                            retList.Add("");
+                            return retList;
+                        }
+
+                        //用户刷入的COA 如果Part No(COAStatus.IECPN) 与上文不符，
+                        //则报告错误：'COA Pn is wrong! Please reinput COA.'
+                        //Remark: 
+                        //使用COAStatus.COASN = @COA查询COAStatus 表取得记录的IECPN栏位为COA Pn
+                        if (coaPN != reCOA.IECPN)
+                        {
+                            erpara.Add(sessionKey);
+                            ex = new FisException("PAK150", erpara);//'COA Pn is wrong! Please reinput COA.'
+                            nodeStr = ex.mErrmsg;
+
+                            retList.Add(nodeStr);
+                            retList.Add("");
+                            return retList;
+                        }
+                        //用户刷入的COA 如果不是可以结合状态，需要报告错误：'Invalid COA! Please reinput COA.'
+                        //Remark: 
+                        //使用COAStatus.COASN = @COA 查询COAStatus 表取得记录的Status 如果不是'P1'，则该COA 不是可以结合状态
+                        if ("P1" != reCOA.Status)
+                        {
+                            erpara.Add(sessionKey);
+                            ex = new FisException("PAK151", erpara);//'Invalid COA! Please reinput COA.'
+                            nodeStr = ex.mErrmsg;
+
+                            retList.Add(nodeStr);
+                            retList.Add("");
+                            return retList;
+                        }
+
+                    }
+
+                    //用户刷入的COA 如果与其它Product 结合，则报告错误：“该COA 已与其它Product 结合，请联系相关人员!”
+                    //Remark：
+                    //IF EXISTS(SELECT * FROM Product_Part WHERE PartSn = @COA AND ProductID <> @ProductId)
+                    //PRINT '该COA 已与其它Product 结合，不能在此使用!'
+                    IList<ProductPart> partlist = new List<ProductPart>();
+                    ProductPart cond = new ProductPart();
+                    cond.PartSn = inputCOA;
+                    partlist = productRep.GetProductPartList(cond);
+                    foreach (ProductPart part in partlist)
+                    {
+                        if (part.ProductID != curProduct.ProId)
+                        {
+                            erpara.Add(sessionKey);
+                            ex = new FisException("PAK148", erpara);//“该COA 已与其它Product 结合，请联系相关人员!”
+                            nodeStr = ex.mErrmsg;
+
+                            retList.Add(nodeStr);
+                            retList.Add("");
+                            return retList;
+
+                        }
+                    }
+                    //保存正确COA
+                    if (proPart == null)
+                    {
+                        curSession.AddValue(Session.SessionKeys.COASN, inputCOA);
+                        curSession.AddValue("COAPart", proPart);
+
+                    }
+
+                    retList.Add(nodeStr);
+                    retList.Add(inputCOA);
+                    return retList;
+
+                }
+            }
+            catch (FisException e)
+            {
+                logger.Error(e.mErrmsg);
+                throw e;
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+                throw e;
+            }
+            finally
+            {
+                logger.Debug("(CombineCOAandDNNew)checkCOA end,"
+                   + " [prodId]: " + prodId);
+            }
+
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="prodId"></param>
+        /// <param name="printItems"></param>
+        public ArrayList save(string prodId, IList<PrintItem> printItems)
+        {
+            logger.Debug("(CombineCOAandDNNewImpl)save start, [prodId]: " + prodId);
+            FisException ex;
+            List<string> erpara = new List<string>();
+
+            ArrayList retList = new ArrayList();
+
+            string sessionKey = prodId;
+
+            try
+            {
+                Session session = SessionManager.GetInstance.GetSession(sessionKey, SessionType);
+
+                if (session == null)
+                {
+                    erpara.Add(sessionKey);
+                    ex = new FisException("CHK021", erpara);
+                    throw ex;
+                }
+                else
+                {
+                    session.AddValue(Session.SessionKeys.PrintItems, printItems);
+                    session.AddValue(Session.SessionKeys.IsComplete, true);
+                    session.Exception = null;
+                    session.SwitchToWorkFlow();
+
+                    //check workflow exception
+                    if (session.Exception != null)
+                    {
+                        if (session.GetValue(Session.SessionKeys.WFTerminated) != null)
+                        {
+                            session.ResumeWorkFlow();
+                        }
+
+                        throw session.Exception;
+                    }
+
+                    Product curProduct = (Product)session.GetValue(Session.SessionKeys.Product);
+                    Delivery curDn = (Delivery)session.GetValue(Session.SessionKeys.Delivery);
+                    IList<PrintItem> printList = (IList<PrintItem>)session.GetValue(Session.SessionKeys.PrintItems);
+
+                    //Model 的第10，11码是”29” 或者”39” 的产品是出货日本的产品；否则，是非出货日本的产品
+                    string jpmodel = curProduct.Model.Substring(9, 2);
+                    bool jpflag = false;
+
+                    if((jpmodel == "29" || jpmodel == "39") && CheckJapanByPart(curProduct.Model))
+                    {
+                        jpflag = true;
+                    }
+
+                    string bindError = (string)session.GetValue("BindDNError");
+
+                    string custPN = "";
+                    DNForUI autoDn = new DNForUI();
+                    if (!curProduct.IsBT)
+                    {
+                        autoDn.DeliveryNo = curDn.DeliveryNo;
+                        autoDn.ModelName = curDn.ModelName;
+                        custPN = deliveryRep.GetDeliveryInfoValue(curDn.DeliveryNo, "PartNo");
+                        int startindex = custPN.IndexOf("/") + 1;
+                        if (startindex < 0)
+                        {
+                            startindex = 0;
+                        }
+                        autoDn.Editor = custPN.Substring(startindex, custPN.Length - startindex);//CustomerPN
+                        autoDn.PoNo = curDn.PoNo;
+                        autoDn.ShipDate_Str = curDn.ShipDate.Year.ToString("d4") + "/"
+                            + curDn.ShipDate.Month.ToString("d2") + "/" + curDn.ShipDate.Day.ToString("d2");
+                        autoDn.Qty = curDn.Qty;
+                        IList<IProduct> productList = new List<IProduct>();
+                        productList = productRep.GetProductListByDeliveryNo(curDn.DeliveryNo);
+                        autoDn.ShipmentID = Convert.ToString(productList.Count);//packetQty
+                    }
+
+                    retList.Add(printList);
+                    retList.Add(jpflag);
+                    retList.Add(autoDn);
+
+
+                    return retList;
+                }
+            }
+            catch (FisException e)
+            {
+                logger.Error(e.mErrmsg);
+                throw e;
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+                throw e;
+            }
+            finally
+            {
+                logger.Debug("(CombineCOAandDNNewImpl)save end, [prodId]: " + prodId);
+            }
+        }
+        private bool CheckJapanByPart(string model)
+        {
+            string strSQL = @"select count(*) from ModelBOM a,
+                                                 PartInfo b
+                                                  where a.Component=b.PartNo
+                                                     and a.Material=@model
+                                                     and b.InfoType='JPWRT'
+                                                     and b.InfoValue='Y' ";
+            SqlParameter paraName = new SqlParameter("@model", SqlDbType.VarChar, 32);
+            paraName.Direction = ParameterDirection.Input;
+            paraName.Value = model;
+            int r = (int)SqlHelper.ExecuteScalar(SqlHelper.ConnectionString_GetData,
+                                    System.Data.CommandType.Text,
+                                  strSQL, paraName);
+            bool b = r == 0 ? false : true;
+            return b;
+        }
+
+        /// <summary>
+        /// 取消工作流
+        /// </summary>
+        /// <param name="prodId"></param>
+        public void cancel(string prodId)
+        {
+            logger.Debug("(CombineCOAandDNNewImpl)Cancel start, [prodId]:" + prodId);
+            //FisException ex;
+            List<string> erpara = new List<string>();
+            string sessionKey = prodId;
+
+            try
+            {
+                Session session = SessionManager.GetInstance.GetSession(sessionKey, SessionType);
+
+                if (session != null)
+                {
+                    SessionManager.GetInstance.RemoveSession(session);
+                }
+            }
+            catch (FisException e)
+            {
+                logger.Error(e.mErrmsg);
+                throw e;
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+                throw e;
+            }
+            finally
+            {
+                logger.Debug("(CombineCOAandDNNewImpl)Cancel end, [prodId]:" + prodId);
+            }
+        }
+
+
+        #endregion
+
+
+
+        #region "methods do not interact with the running workflow"
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+
+        #endregion
+    }
+}

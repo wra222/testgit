@@ -1,0 +1,10 @@
+D:\TT\EDITS(received)\IDAutomation_PDF417FontEncoderDEMO\IDAutomation_PDF417FontEncoderDEMO\Dotnet DLL and Forms Control\bin\PDF417FontTest.exe
+D:\TT\EDITS(received)\IDAutomation_PDF417FontEncoderDEMO\IDAutomation_PDF417FontEncoderDEMO\Dotnet DLL and Forms Control\bin\PDF417FontTest.pdb
+D:\TT\EDITS(received)\IDAutomation_PDF417FontEncoderDEMO\IDAutomation_PDF417FontEncoderDEMO\Dotnet DLL and Forms Control\bin\PDF417FontTest.xml
+D:\TT\EDITS(received)\IDAutomation_PDF417FontEncoderDEMO\IDAutomation_PDF417FontEncoderDEMO\Dotnet DLL and Forms Control\bin\idautomation.pdf417.dll
+D:\TT\EDITS(received)\IDAutomation_PDF417FontEncoderDEMO\IDAutomation_PDF417FontEncoderDEMO\Dotnet DLL and Forms Control\obj\Debug\ResolveAssemblyReference.cache
+D:\TT\EDITS(received)\IDAutomation_PDF417FontEncoderDEMO\IDAutomation_PDF417FontEncoderDEMO\Dotnet DLL and Forms Control\obj\Debug\PDF417FontTest.Form1.resources
+D:\TT\EDITS(received)\IDAutomation_PDF417FontEncoderDEMO\IDAutomation_PDF417FontEncoderDEMO\Dotnet DLL and Forms Control\obj\Debug\PDF417FontTest.vbproj.GenerateResource.Cache
+D:\TT\EDITS(received)\IDAutomation_PDF417FontEncoderDEMO\IDAutomation_PDF417FontEncoderDEMO\Dotnet DLL and Forms Control\obj\Debug\PDF417FontTest.exe
+D:\TT\EDITS(received)\IDAutomation_PDF417FontEncoderDEMO\IDAutomation_PDF417FontEncoderDEMO\Dotnet DLL and Forms Control\obj\Debug\PDF417FontTest.xml
+D:\TT\EDITS(received)\IDAutomation_PDF417FontEncoderDEMO\IDAutomation_PDF417FontEncoderDEMO\Dotnet DLL and Forms Control\obj\Debug\PDF417FontTest.pdb

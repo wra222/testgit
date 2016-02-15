@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AB24FFBC-EDC0-4216-9F61-7C2EC693A403}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IMES_Reports</RootNamespace>
+    <AssemblyName>IMES_Reports</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>876968BF6D1DA9A81B54EFFC956DA3B25CE93A49</ManifestCertificateThumbprint>
+    <ManifestKeyFile>IMES_Reports_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>true</SignManifests>
+    <PublishUrl>ftp://10.96.183.29/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://10.96.183.29/IMES_Reports/</InstallUrl>
+    <UpdateUrl>http://10.96.183.29/IMES_Reports/</UpdateUrl>
+    <ProductName>DeskTop Reports</ProductName>
+    <PublisherName>Inventec</PublisherName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>HPIMES_Reports.htm</WebPage>
+    <ApplicationRevision>20</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Register, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>App_Code\Register.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Add_new.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add_new.Designer.cs">
+      <DependentUpon>Add_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fly_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fly_Form.Designer.cs">
+      <DependentUpon>Fly_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flash_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flash_Form.Designer.cs">
+      <DependentUpon>Flash_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Input_Output.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Input_Output.Designer.cs">
+      <DependentUpon>Input_Output.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main_form.Designer.cs">
+      <DependentUpon>Main_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Add_new.resx">
+      <DependentUpon>Add_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flash_Form.resx">
+      <DependentUpon>Flash_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fly_Form.resx">
+      <DependentUpon>Fly_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Input_Output.resx">
+      <DependentUpon>Input_Output.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main_form.resx">
+      <DependentUpon>Main_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QC Reports.resx">
+      <DependentUpon>QC Reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Register_Form.resx">
+      <DependentUpon>Register_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="QC Reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QC Reports.Designer.cs">
+      <DependentUpon>QC Reports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Register_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Register_Form.Designer.cs">
+      <DependentUpon>Register_Form.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\37d3d539b6003af3e5dc958d342ac65c1138b6fd.jpg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\11111111111111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\biankuang2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wra222_1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="IMES_Reports_TemporaryKey.pfx" />
+    <None Include="Resources\wra222_2.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Code\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

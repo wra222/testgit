@@ -1,0 +1,25 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="MaterialReturn" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplet" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<IfElseActivity x:Name="IfComplete">
+				<IfElseBranchActivity x:Name="NotComplete">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplet" />
+					</IfElseBranchActivity.Condition>
+					<ns0:GetMaterial Customer="{ActivityBind MaterialReturn,Path=Customer}" NotExistException="True" SessionType="{ActivityBind MaterialReturn,Path=SessionType}" Editor="{ActivityBind MaterialReturn,Path=Editor}" IsSingleCT="True" Station="{ActivityBind MaterialReturn,Path=Station}" x:Name="getMaterial1" Line="{ActivityBind MaterialReturn,Path=PdLine}" Key="{ActivityBind MaterialReturn,Path=Key}" />
+					<ns0:MaterialBlockStation Customer="{ActivityBind MaterialReturn,Path=Customer}" Station="{ActivityBind MaterialReturn,Path=Station}" SessionType="{ActivityBind MaterialReturn,Path=SessionType}" Editor="{ActivityBind MaterialReturn,Path=Editor}" IsSingleCT="True" x:Name="materialBlockStation1" Line="{ActivityBind MaterialReturn,Path=PdLine}" Key="{ActivityBind MaterialReturn,Path=Key}" IsStopWF="NotStop" />
+					<ns0:SaveMaterialCTList Customer="{ActivityBind MaterialReturn,Path=Customer}" x:Name="saveMaterialCTList1" SessionType="{ActivityBind MaterialReturn,Path=SessionType}" Editor="{ActivityBind MaterialReturn,Path=Editor}" Station="{ActivityBind MaterialReturn,Path=Station}" Line="{ActivityBind MaterialReturn,Path=PdLine}" Key="{ActivityBind MaterialReturn,Path=Key}" />
+					<ns0:WaitInput Customer="{ActivityBind MaterialReturn,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind MaterialReturn,Path=SessionType}" Editor="{ActivityBind MaterialReturn,Path=Editor}" Station="{ActivityBind MaterialReturn,Path=Station}" Line="{ActivityBind MaterialReturn,Path=PdLine}" Key="{ActivityBind MaterialReturn,Path=Key}" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:GetMaterial Customer="{ActivityBind MaterialReturn,Path=Customer}" NotExistException="False" SessionType="{ActivityBind MaterialReturn,Path=SessionType}" Editor="{ActivityBind MaterialReturn,Path=Editor}" IsSingleCT="True" Enabled="False" Station="{ActivityBind MaterialReturn,Path=Station}" x:Name="getMaterial2" Line="{ActivityBind MaterialReturn,Path=PdLine}" Key="{ActivityBind MaterialReturn,Path=Key}" />
+	<ns0:DBScope Station="{ActivityBind MaterialReturn,Path=Station}" x:Name="dbScope1" Key="{ActivityBind MaterialReturn,Path=Key}" SessionType="{ActivityBind MaterialReturn,Path=SessionType}">
+		<ns0:UpdateMaterialStatus Customer="{ActivityBind MaterialReturn,Path=Customer}" Station="{ActivityBind MaterialReturn,Path=Station}" SessionType="{ActivityBind MaterialReturn,Path=SessionType}" Editor="{ActivityBind MaterialReturn,Path=Editor}" IsSingleCT="False" x:Name="updateMaterialStatus1" Line="{ActivityBind MaterialReturn,Path=PdLine}" Key="{ActivityBind MaterialReturn,Path=Key}" />
+		<ns0:WriteMaterialLog Customer="{ActivityBind MaterialReturn,Path=Customer}" Station="{ActivityBind MaterialReturn,Path=Station}" SessionType="{ActivityBind MaterialReturn,Path=SessionType}" Editor="{ActivityBind MaterialReturn,Path=Editor}" IsSingleCT="False" x:Name="writeMaterialLog1" Line="{ActivityBind MaterialReturn,Path=PdLine}" Key="{ActivityBind MaterialReturn,Path=Key}" LogActionName="Material Return" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

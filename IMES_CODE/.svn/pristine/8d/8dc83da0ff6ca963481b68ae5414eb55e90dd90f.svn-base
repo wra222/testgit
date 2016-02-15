@@ -1,0 +1,143 @@
+﻿using System;
+// INVENTEC corporation (c)2009 all rights reserved. 
+// Description: 
+//                         
+// Update: 
+// Date         Name                         Reason 
+// ==========   =======================      ============
+// 2011-12-19   210003                       Create
+// Known issues:
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using IMES.CheckItemModule.Interface;
+using IMES.FisObject.Common.FisBOM;
+using IMES.FisObject.Common.Part;
+using System.ComponentModel.Composition;
+using IMES.Infrastructure;
+using IMES.FisObject.FA.Product;
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+using IMES.DataModel;
+using IMES.CheckItemModule.Utility;
+using IMES.FisObject.Common.Model;
+using System.Text.RegularExpressions;
+
+namespace IMES.CheckItemModule.CheckCT.Filter
+{
+    [Export(typeof(IFilterModule))]
+    [ExportMetadata("ProgramName", "IMES.CheckItemModule.CheckCT.Filter.dll")]
+    public class Filter : IFilterModule, ITreeTraversal
+    {
+        private const string part_check_type = "CheckCT";
+        private Session _currentSession;
+        private IList<CheckItemTypeRuleDef> _lstChkItemRule;
+        private string _station;
+        IList<KPVendorCode> kpVCList = new List<KPVendorCode>();
+
+        public object FilterBOM(object hierarchical_bom, string station, object main_object)
+        {
+            _lstChkItemRule = null;
+            _station = station;
+            SetSession(main_object);
+            SetCheckItemTypeRule();
+            IFlatBOM ret = null;
+            try
+            {
+            IList<IFlatBOMItem> flat_bom_items = new List<IFlatBOMItem>();
+            var product = _currentSession.GetValue(Session.SessionKeys.Product) as IProduct;
+            if (product == null)
+            {
+                throw new FisException("Product in session is null in CheckItemModule.CheckCT.Filter");
+            }
+           
+            string _rgx="";
+            if(_lstChkItemRule.Count==0)
+            {
+             throw new FisException("CheckItemTypeRule is null in CheckItemModule.CheckCT.Filter");
+            }
+            
+            IList<IProductPart> lstPrdPart = product.ProductParts;
+            foreach (IProductPart productPart in lstPrdPart)
+            { 
+              
+               foreach (CheckItemTypeRuleDef chk in _lstChkItemRule)
+               {
+                   _rgx = chk.PartType;
+                   Regex rgx = new Regex(_rgx);
+                   if (rgx.IsMatch(productPart.CheckItemType))
+                   {
+                       IList<IPart> share_parts = new List<IPart>();
+                       IPart part = new Part(productPart.PartID, productPart.BomNodeType, productPart.PartType
+                                                        , string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, DateTime.Now, DateTime.Now,  string.Empty);
+                       kpVCList.Add(new KPVendorCode
+                       {
+                           PartNo = productPart.PartID,
+                           VendorCode = productPart.PartSn
+                       });
+                       //part.AddAttribute(new PartInfo(1, productPart.PartID, "CT_KEY", productPart.PartSn, "", DateTime.Now, DateTime.Now));
+                       share_parts.Add(part);
+                       var kp_flat_bom_item = new FlatBOMItem(1, part_check_type, share_parts);
+                       kp_flat_bom_item.Tag = kpVCList;
+                       kp_flat_bom_item.PartNoItem = productPart.PartID;
+                       kp_flat_bom_item.Descr = productPart.PartType;
+                       flat_bom_items.Add(kp_flat_bom_item);
+
+                   }
+           
+               }
+            
+            }
+            if (flat_bom_items.Count > 0)
+                {
+                    ret = new FlatBOM(flat_bom_items);
+                }
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+
+            return ret;
+        }
+       
+     
+   
+        private void SetSession(object main_object)
+        {
+            string objType = main_object.GetType().ToString();
+            Session.SessionType sessionType = Session.SessionType.Product;
+            if (main_object.GetType().Equals(typeof(IMES.FisObject.FA.Product.Product)))
+            {
+                IProduct prd = (IProduct)main_object;
+                _currentSession = SessionManager.GetInstance.GetSession
+                                               (prd.ProId, sessionType);
+            }
+            else if (main_object.GetType().Equals(typeof(IMES.Infrastructure.Session)))
+            {
+                _currentSession = (Session)main_object;
+            }
+
+            if (_currentSession == null)
+            {
+                throw new FisException("Can not get session in CheckCT module");
+            }
+        }
+        private void SetCheckItemTypeRule()
+        {
+            var bomRepository = RepositoryFactory.GetInstance().GetRepository<IBOMRepository>();
+            //IList<CheckItemTypeRuleDef> lst =
+            //    bomRepository.GetCheckItemTypeRuleWithPriority(part_check_type, line, _station, family);
+            _lstChkItemRule =
+              bomRepository.GetCheckItemTypeRuleWithPriority(part_check_type, null, _station, null);
+            //if (lst.Count > 0)
+            //{
+            //    var min = lst.Select(p => p.Priority).Min();
+            //    _lstChkItemRule = lst.Where(p => p.Priority == min).ToList();
+            //}
+
+        }
+        public bool CheckCondition(object node)
+        { return true; }
+    }
+    
+}

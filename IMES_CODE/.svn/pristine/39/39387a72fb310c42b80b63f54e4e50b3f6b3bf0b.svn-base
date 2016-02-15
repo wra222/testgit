@@ -1,0 +1,101 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="ICTInput" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetMB Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="getMB1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" MBSnSessionKey="{x:Null}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+	<ns0:BlockStation Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" ProcessType="MB" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+	<IfElseActivity x:Name="CheckShipMode">
+		<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="JudgeFRU" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind ICTInput,Path=Station}" x:Name="dbScope1" Key="{ActivityBind ICTInput,Path=Key}" SessionType="{ActivityBind ICTInput,Path=SessionType}">
+				<ns0:GetMBModel Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="getMBModel1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+				<ns0:AcquireCustomerSnForBN Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="acquireCustomerSnForBN1" SessionType="{ActivityBind ICTInput,Path=SessionType}" SessionId="00000000-0000-0000-0000-000000000000" Editor="{ActivityBind ICTInput,Path=Editor}" Enabled="False" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+				<ns0:UpdateMBCustSN Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="updateMBCustSN1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Enabled="False" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseBranchActivity2" />
+	</IfElseActivity>
+	<ns0:WaitInput Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="ifNoDefect">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="judgeNoDefect" />
+			</IfElseBranchActivity.Condition>
+			<IfElseActivity x:Name="ifElseActivity2">
+				<IfElseBranchActivity x:Name="ifMultiMB">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="JudgeMultiMB" />
+					</IfElseBranchActivity.Condition>
+					<ns0:DBScope Station="{ActivityBind ICTInput,Path=Station}" x:Name="dbScope2" Key="{ActivityBind ICTInput,Path=Key}" SessionType="{ActivityBind ICTInput,Path=SessionType}">
+						<ns0:AcquireChildMBSn Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="acquireChildMBSn1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:GenerateMBSn Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="generateMBSn1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:CloseMB Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="closeMB1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<WhileActivity x:Name="whileActivity1">
+							<WhileActivity.Condition>
+								<RuleConditionReference ConditionName="JudgeLoop" />
+							</WhileActivity.Condition>
+							<SequenceActivity x:Name="sequenceActivity1">
+								<ns0:SetChildMBSN Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="setChildMBSN1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+								<ns0:AcquireMacSection Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="acquireMacSection1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+								<ns0:BindMAC Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="bindMAC1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+								<IfElseActivity x:Name="ifElseActivity3">
+									<IfElseBranchActivity x:Name="ifElseBranchActivity3">
+										<IfElseBranchActivity.Condition>
+											<RuleConditionReference ConditionName="JudgeFRU" />
+										</IfElseBranchActivity.Condition>
+										<ns0:AcquireCustomerSnForBN Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="acquireCustomerSnForBN2" SessionType="{ActivityBind ICTInput,Path=SessionType}" SessionId="00000000-0000-0000-0000-000000000000" Editor="{ActivityBind ICTInput,Path=Editor}" CheckRange="True" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+										<ns0:UpdateMBCustSN Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="updateMBCustSN2" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+									</IfElseBranchActivity>
+									<IfElseBranchActivity x:Name="ifElseBranchActivity4" />
+								</IfElseActivity>
+								<ns0:GenerateUUID Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="generateUUID1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Enabled="False" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+								<ns0:BindUUID Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="bindUUID1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Enabled="False" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+								<ns0:BindECR Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="bindECR1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+								<ns0:BindCustomVersion Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="bindCustomVersion1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Enabled="False" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+								<ns0:BindIECVersion Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="bindIECVersion1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Enabled="False" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+								<ns0:WriteMBLog Customer="{ActivityBind ICTInput,Path=Customer}" Station="{ActivityBind ICTInput,Path=Station}" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" IsPass="True" x:Name="writeMBLog2" IsSingle="True" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+								<ns0:WritePCBTestLog Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="writePCBTestLog2" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+								<ns0:WriteMBInfo Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="writeMBInfo3" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" SessionParaName="ShipMode" Station="{ActivityBind ICTInput,Path=Station}" InfoType="ShipMode" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+								<ns0:Print Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="print2" SessionType="{ActivityBind ICTInput,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" MOFrom="No" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" DnFrom="No" />
+							</SequenceActivity>
+						</WhileActivity>
+					</ns0:DBScope>
+				</IfElseBranchActivity>
+				<IfElseBranchActivity x:Name="ifSingleMB">
+					<ns0:DBScope Station="{ActivityBind ICTInput,Path=Station}" x:Name="dbScope3" Key="{ActivityBind ICTInput,Path=Key}" SessionType="{ActivityBind ICTInput,Path=SessionType}">
+						<ns0:AcquireMacSection Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="acquireMacSection2" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:BindMAC Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="bindMAC2" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<IfElseActivity x:Name="ifElseActivity4">
+							<IfElseBranchActivity x:Name="ifElseBranchActivity5">
+								<IfElseBranchActivity.Condition>
+									<RuleConditionReference ConditionName="JudgeFRU" />
+								</IfElseBranchActivity.Condition>
+								<ns0:AcquireCustomerSnForBN Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="acquireCustomerSnForBN3" SessionType="{ActivityBind ICTInput,Path=SessionType}" SessionId="00000000-0000-0000-0000-000000000000" Editor="{ActivityBind ICTInput,Path=Editor}" CheckRange="True" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+								<ns0:UpdateMBCustSN Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="updateMBCustSN3" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+							</IfElseBranchActivity>
+							<IfElseBranchActivity x:Name="ifElseBranchActivity6" />
+						</IfElseActivity>
+						<ns0:GenerateUUID Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="generateUUID2" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Enabled="False" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:BindUUID Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="bindUUID2" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Enabled="False" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:BindECR Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="bindECR2" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:BindCustomVersion Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="bindCustomVersion2" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Enabled="False" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:BindIECVersion Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="bindIECVersion2" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Enabled="False" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:UpdateMBStatus Customer="{ActivityBind ICTInput,Path=Customer}" Station="{ActivityBind ICTInput,Path=Station}" SessionType="{ActivityBind ICTInput,Path=SessionType}" ManualStation="{x:Null}" Editor="{ActivityBind ICTInput,Path=Editor}" IsPass="Pass" x:Name="updateMBStatus3" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:WriteMBLog Customer="{ActivityBind ICTInput,Path=Customer}" Station="{ActivityBind ICTInput,Path=Station}" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" IsPass="True" x:Name="writeMBLog3" IsSingle="True" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:WritePCBTestLog Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="writePCBTestLog3" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:WriteMBInfo Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="writeMBInfo2" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" SessionParaName="ShipMode" Station="{ActivityBind ICTInput,Path=Station}" InfoType="ShipMode" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:Print Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="print1" SessionType="{ActivityBind ICTInput,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" MOFrom="No" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" DnFrom="No" />
+					</ns0:DBScope>
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifDefect">
+			<ns0:DBScope Station="{ActivityBind ICTInput,Path=Station}" x:Name="dbScope4" Key="{ActivityBind ICTInput,Path=Key}" SessionType="{ActivityBind ICTInput,Path=SessionType}">
+				<ns0:WritePCBTestLog Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="writePCBTestLog1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+				<ns0:UpdateMBStatus Customer="{ActivityBind ICTInput,Path=Customer}" Station="{ActivityBind ICTInput,Path=Station}" SessionType="{ActivityBind ICTInput,Path=SessionType}" ManualStation="{x:Null}" Editor="{ActivityBind ICTInput,Path=Editor}" IsPass="Fail" x:Name="updateMBStatus1" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+				<ns0:WriteMBLog Customer="{ActivityBind ICTInput,Path=Customer}" Station="{ActivityBind ICTInput,Path=Station}" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" IsPass="False" x:Name="writeMBLog1" IsSingle="True" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+				<ns0:WriteMBInfo Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="writeMBInfo1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" SessionParaName="ShipMode" Station="{ActivityBind ICTInput,Path=Station}" InfoType="ShipMode" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+				<ns0:Alarm Customer="{ActivityBind ICTInput,Path=Customer}" alarmType="MB" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Enabled="False" Station="{ActivityBind ICTInput,Path=Station}" x:Name="alarm1" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

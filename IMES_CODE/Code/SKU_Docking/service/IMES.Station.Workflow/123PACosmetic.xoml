@@ -1,0 +1,62 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="_123PACosmetic" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProductByInput Customer="{ActivityBind _123PACosmetic,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="{ActivityBind _123PACosmetic,Path=Station}" x:Name="getProductByInput1" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" IsStopWF="Stop" InputType="CustSN" />
+	<ns0:BlockStation Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" ProcessType="Product" Station="{ActivityBind _123PACosmetic,Path=Station}" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+	<ns0:CheckReturnStation Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="checkReturnStation1" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="{ActivityBind _123PACosmetic,Path=Station}" AttrName="FAIOutputReturnStation" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" HasReturnStationThrowError="True" />
+	<ns0:CheckAndSetQTime Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="checkAndSetQTime1" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="{ActivityBind _123PACosmetic,Path=Station}" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" RemainLogDay="2" />
+	<ns0:CheckPilotMoState Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="checkPilotMoState1" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="{ActivityBind _123PACosmetic,Path=Station}" AllowPilotMoState="Release" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" IsStopWF="True" Stage="FA" />
+	<ns0:CheckAndSetColorMsg Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="checkAndSetColorMsg1" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="{ActivityBind _123PACosmetic,Path=Station}" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+	<ns0:CheckImageDownLoadStation Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="checkImageDownLoadStation1" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" NoNeedOSImageThrowError="False" CheckDefaultDLStation="6A~67" Editor="{ActivityBind _123PACosmetic,Path=Editor}" IsGetQCPIAStatus="True" EAPIAOutStation="6A" Station="{ActivityBind _123PACosmetic,Path=Station}" CheckLatestImageLog="True" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" ImageDownLoadStation="66" />
+	<ns0:CheckItem Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="checkItem1" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="{ActivityBind _123PACosmetic,Path=Station}" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+	<ns0:CheckWWANAndPCID Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="CheckWWANAndPCID1" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="{ActivityBind _123PACosmetic,Path=Station}" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+	<ns0:WaitInput Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="{ActivityBind _123PACosmetic,Path=Station}" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+	<ns0:DBScope Station="{ActivityBind _123PACosmetic,Path=Station}" x:Name="dbScope1" Key="{ActivityBind _123PACosmetic,Path=Key}" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}">
+		<ns0:CheckAndSetPAKFAIModel Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="checkAndSetPAKFAIModel1" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" StoreProdInfoType="FAIinPAK" Station="{ActivityBind _123PACosmetic,Path=Station}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+		<IfElseActivity x:Name="judgeDefectCode">
+			<IfElseBranchActivity x:Name="NoDefectCode">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="IsNull" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteProductTestLog Customer="{ActivityBind _123PACosmetic,Path=Customer}" Station="{ActivityBind _123PACosmetic,Path=Station}" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" IsPass="True" x:Name="writeProductTestLog1" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Status="Pass" Station="{ActivityBind _123PACosmetic,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="{ActivityBind _123PACosmetic,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+				<ns0:GetProductQCForFATest Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="getProductQCForPACosmetic1" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="{ActivityBind _123PACosmetic,Path=Station}" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity2">
+					<IfElseBranchActivity x:Name="ifElseBranchActivity3">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="isPIA" />
+						</IfElseBranchActivity.Condition>
+						<ns0:WriteQCStatus Customer="{ActivityBind _123PACosmetic,Path=Customer}" Remark="{x:Null}" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" ProductAttrName="{x:Null}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="{ActivityBind _123PACosmetic,Path=Station}" Status="5" x:Name="writeQCStatus1" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" Type="PIA1" />
+						<ns0:WriteProductLog Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="writeProductLog3" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="71" Status="Pass" IsSingle="True" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="updateProductStatus3" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Status="Pass" Station="71" IsReturnStatoin="False" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="ifElseBranchActivity4">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="NoPIA" />
+						</IfElseBranchActivity.Condition>
+						<ns0:WriteQCStatus Customer="{ActivityBind _123PACosmetic,Path=Customer}" Remark="{x:Null}" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" ProductAttrName="{x:Null}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="{ActivityBind _123PACosmetic,Path=Station}" Status="1" x:Name="writeQCStatus2" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" Type="PIA1" />
+						<ns0:WriteProductLog Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="writeProductLog4" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="78" Status="Pass" IsSingle="True" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind FATestStation,Path=Customer}" Enabled="False" x:Name="updateProductStatus4" SessionType="{ActivityBind FATestStation,Path=SessionType}" Editor="{ActivityBind FATestStation,Path=Editor}" Status="Fail" Station="{ActivityBind FATestStation,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity Enabled="False" x:Name="ifElseBranchActivity5" />
+				</IfElseActivity>
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="HaveDefectCode">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="IsNotNull" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteProductTestLog Customer="{ActivityBind _123PACosmetic,Path=Customer}" Station="{ActivityBind _123PACosmetic,Path=Station}" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" x:Name="writeProductTestLog2" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Status="Fail" Station="{ActivityBind _123PACosmetic,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="{ActivityBind _123PACosmetic,Path=Station}" Status="Fail" IsSingle="True" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+	<IfElseActivity x:Name="CheckDefectCode">
+		<IfElseBranchActivity x:Name="HasDefectHoldRule">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="DefectHoldRule" />
+			</IfElseBranchActivity.Condition>
+			<ns0:CheckAndSetDefectHoldRule Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="checkAndSetDefectHoldRule1" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="{ActivityBind _123PACosmetic,Path=Station}" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" />
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<ns0:CheckShipDateAndSetMsg Customer="{ActivityBind _123PACosmetic,Path=Customer}" x:Name="checkShipDateAndSetMsg1" SessionType="{ActivityBind _123PACosmetic,Path=SessionType}" Editor="{ActivityBind _123PACosmetic,Path=Editor}" Station="{ActivityBind _123PACosmetic,Path=Station}" Line="{ActivityBind _123PACosmetic,Path=PdLine}" Key="{ActivityBind _123PACosmetic,Path=Key}" IsThrowException="False" />
+</ns0:BaseFlow>

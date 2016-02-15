@@ -1,0 +1,21 @@
+/* 代码整理：懒人之家 www.lanrenzhijia.com */
+
+#topnavbar{align="left";width:100%;height:41px;_height:35px;background:url(../../webroot/images/topnbg.png) 0 -30px repeat-x;position:fixed;_position:absolute;z-index:999;display:none;_top:expression(this.scrollTop=document.documentElement.scrollTop);}
+#topnanv{height:35px;line-height:35px;font-size:14px;margin:0 auto;}
+#anvlfteb{float:left;height:35px;position:relative;padding:0 1px;}
+.defu a,.posbox a{display:block;padding:0 18px;color:#FFF;text-decoration:none;}
+.defu a:hover,.posbox a:hover{color:#FFF;text-decoration:none;}
+.defu{background:#111;float:left;}
+.posbox{position:relative;width:64px;float:left;}
+.posbox a{padding:0 23px 0 13px;}
+.posbox i{width:7px;height:4px;background:url(../img/up.gif) 0 -70px no-repeat;position:absolute;top:15px;right:10px;overflow:hidden;}
+#topnanv .anvh a{background:#111;}
+#topnanv .anvh i{background-position:0 -75px;}
+.posiabox{position:absolute;top:32px;left:1px;display:none;padding-top:10px;background:url(../../webroot/images/loadpic.gif) -999px no-repeat;}
+#seledbox{width:114px;}
+#seledbox div{background:#FFF;box-shadow:0 0 8px #999;border:1px solid #999;font-size:12px;padding:5px 0;overflow:hidden;}
+#seledbox a{color:#444;text-decoration:none;width:100px;height:20px;overflow:hidden;display:block;line-height:20px;padding:6px 0 6px 12px;border-bottom:1px dotted #DDD;}
+#seledbox a:hover{background:#EEE;}
+#seledbox img{float:left;width:20px;height:20px;margin-right:8px;}
+#loginbtm{float:right;padding:0 15px;color:#FFF;background:#900;position:relative;}
+/* 代码整理：懒人之家 www.lanrenzhijia.com */

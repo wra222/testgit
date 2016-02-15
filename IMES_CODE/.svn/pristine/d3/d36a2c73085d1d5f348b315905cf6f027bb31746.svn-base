@@ -1,0 +1,228 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FFA0FABC-BF50-4026-8258-84DD936925D0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>IMES.Docking.Workflow</RootNamespace>
+    <AssemblyName>IMES.Docking.Workflow</AssemblyName>
+    <ProjectTypeGuids>{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IMES.Activity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.FisObject, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.Extend, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.FisException, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System.Workflow.Activities">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Workflow.ComponentModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Workflow.Runtime">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.WorkflowServices">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BoardInputForDocking.xoml.cs">
+      <DependentUpon>BoardInputForDocking.xoml</DependentUpon>
+    </Compile>
+    <Compile Include="CombinePack.xoml.cs">
+      <DependentUpon>CombinePack.xoml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BoardInputForDocking.rules">
+      <DependentUpon>BoardInputForDocking.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CombinePack.rules">
+      <DependentUpon>CombinePack.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="combinepcbinlot.rules">
+      <DependentUpon>CombinePCBinLot.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CombinePoInCarton.rules">
+      <DependentUpon>CombinePoInCarton.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CombineTmp.rules">
+      <DependentUpon>CombineTmp.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="COOLabelRePrint.rules">
+      <DependentUpon>COOLabelRePrint.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CooLabelRun.rules">
+      <DependentUpon>CooLabelRun.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EPIAInput.rules">
+      <DependentUpon>EPIAInput.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fambreturn.rules">
+      <DependentUpon>fambreturn.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerateCustomerSNForDocking.rules">
+      <DependentUpon>GenerateCustomerSNForDocking.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ICTInputDocking.rules">
+      <DependentUpon>ICTInputDocking.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EPIAOutput.rules">
+      <DependentUpon>EPIAOutput.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OQCRepairForDocking.rules">
+      <DependentUpon>OQCRepairForDocking.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PACosmeticForDocking.rules">
+      <DependentUpon>PACosmeticForDocking.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PalletVerifyDataForDocking.rules">
+      <DependentUpon>PalletVerifyDataForDocking.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAQCOutputForDocking.rules">
+      <DependentUpon>PAQCOutputForDocking.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAQCRepairForDocking.rules">
+      <DependentUpon>PAQCRepairForDocking.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PCAOQCOutputForDocking.rules">
+      <DependentUpon>PCAOQCOutputForDocking.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FATestStationForDocking.rules">
+      <DependentUpon>FATestStationForDocking.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PCARepairForDocking.rules">
+      <DependentUpon>PCARepairForDocking.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PCATestforLotForDocking.rules">
+      <DependentUpon>PCATestforlotForDocking.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShipToLabelPrint.rules">
+      <DependentUpon>ShipToLabelPrint.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShipToLabelRePrint.rules">
+      <DependentUpon>ShipToLabelRePrint.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FARepairForDocking.rules">
+      <DependentUpon>FARepairForDocking.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnpackByDN.rules">
+      <DependentUpon>UnpackByDN.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnpackBySN.rules">
+      <DependentUpon>UnpackBySN.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnpackDNBySN.rules">
+      <DependentUpon>UnpackDNBySN.xoml</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="002MBLabelPrint.xoml" />
+    <Content Include="002MBLabelReprint.xoml" />
+    <Content Include="BoardInputForDocking.xoml" />
+    <Content Include="ChangeModelDocking.xoml" />
+    <Content Include="CombinePack.xoml" />
+    <Content Include="CombinePCBinLot.xoml" />
+    <Content Include="CombinePoInCarton.xoml" />
+    <Content Include="CombineTmp.xoml" />
+    <Content Include="CooLabelBlock.xoml" />
+    <Content Include="COOLabelPrint.xoml" />
+    <Content Include="COOLabelRePrint.xoml" />
+    <Content Include="CooLabelRun.xoml" />
+    <Content Include="ECRReprintDocking.xoml" />
+    <Content Include="EPIAInput.xoml" />
+    <Content Include="EPIAOutput.xoml" />
+    <Content Include="FPCBoardLabelPrint.xoml" />
+    <Content Include="FAMBReturn.xoml" />
+    <Content Include="FATestStationForDocking.xoml" />
+    <Content Include="ICTInputDocking.xoml" />
+    <Content Include="OfflineLabelPrint.xoml">
+      <SubType>Component</SubType>
+    </Content>
+    <Content Include="OQCRepairForDocking.xoml" />
+    <Content Include="PACosmeticForDocking.xoml" />
+    <Content Include="PakUnitWeightForDocking.xoml" />
+    <Content Include="GenerateCustomerSNForDocking.xoml" />
+    <Content Include="GenerateCustomerSNForDockingReprint.xoml" />
+    <Content Include="GenSMTMO.xoml" />
+    <Content Include="GenSMTMODel.xoml" />
+    <Content Include="PalletDataVerifyReprint.xoml" />
+    <Content Include="PalletVerifyDataForDocking.xoml" />
+    <Content Include="PalletWeightForDocking.xoml" />
+    <Content Include="PAQCOutputForDocking.xoml" />
+    <Content Include="PAQCRepairForDocking.xoml" />
+    <Content Include="PCAOQCOutputForDocking.xoml" />
+    <Content Include="PCAReceiveReturnMB.xoml" />
+    <Content Include="PCARepairForDocking.xoml" />
+    <Content Include="PCAOQCCosmeticForDocking.xoml" />
+    <Content Include="PCATestforlotForDocking.xoml" />
+    <Content Include="PoDataDeleteDNForDocking.xoml" />
+    <Content Include="PrintShipToLabelFRUForDocking.xoml" />
+    <Content Include="ProdIDDismantleDocking.xoml" />
+    <Content Include="RegenerateCustSNForDocking.xoml" />
+    <Content Include="ReprintCombinPoInCarton.xoml" />
+    <Content Include="REVLabelPrintForDocking.xoml" />
+    <Content Include="ProdIdPrint.xoml" />
+    <Content Include="ProdIdRePrint.xoml" />
+    <Content Include="ShipToLabelPrint.xoml" />
+    <Content Include="ShipToLabelRePrint.xoml" />
+    <Content Include="UnpackByDN.xoml" />
+    <Content Include="UnpackBySN.xoml" />
+    <Content Include="UnpackDNBySN.xoml" />
+    <Content Include="UploadPoDataForDocking.xoml" />
+    <Content Include="VirtualMoDelForDocking.xoml" />
+    <Content Include="VirtualMoForDocking.xoml" />
+    <Content Include="FARepairForDocking.xoml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Windows Workflow Foundation\v3.5\Workflow.Targets" />
+</Project>

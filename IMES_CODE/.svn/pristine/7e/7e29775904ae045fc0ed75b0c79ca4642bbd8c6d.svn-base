@@ -1,0 +1,94 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="FADismantle" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="ifProductDismantle">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="DismantleType" />
+			</IfElseBranchActivity.Condition>
+			<ns0:CheckProductIsCleanRoom Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="checkProductIsCleanRoom1" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" CheckedResultVariable="IsCleanRoom" />
+			<IfElseActivity x:Name="ifCleanRoom">
+				<IfElseBranchActivity x:Name="isCleanRoom">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="wasCleanRoom" />
+					</IfElseBranchActivity.Condition>
+					<ns0:DBScope Station="{ActivityBind FADismantle,Path=Station}" x:Name="dbScope6" Key="{ActivityBind FADismantle,Path=Key}" SessionType="{ActivityBind FADismantle,Path=SessionType}">
+						<ns0:UpdateProductStatus Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="updateProductStatus3" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Status="Pass" Station="CR15" IsReturnStatoin="False" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+						<ns0:WriteProductLog Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="writeProductLog6" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="DM" Status="Pass" IsSingle="True" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+						<ns0:RegetProductFromBackup Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="regetProductFromBackup1" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+						<ns0:BackupForUnpack Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="backupForUnpack2" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+						<ns0:DismantleProduct Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="dismantleProduct2" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="updateProductStatus4" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Status="Pass" Station="38" IsReturnStatoin="False" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+						<ns0:WriteProductLog Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="writeProductLog7" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="38" Status="Pass" IsSingle="True" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+					</ns0:DBScope>
+				</IfElseBranchActivity>
+				<IfElseBranchActivity x:Name="NoneCleanRoom">
+					<ns0:DBScope Station="{ActivityBind FADismantle,Path=Station}" x:Name="dbScope1" Key="{ActivityBind FADismantle,Path=Key}" SessionType="{ActivityBind FADismantle,Path=SessionType}">
+						<ns0:RemoveUPSAst Customer="{ActivityBind FADismantle,Path=Customer}" IsRemoveCDSISpecialDet="True" x:Name="removeUPSAst1" SessionType="{ActivityBind FADismantle,Path=SessionType}" IsRemoveAstPart="False" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+						<ns0:ReleaseCombinedAstNumber Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="releaseCombinedAstNumber1" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+						<ns0:BackupForUnpack Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="backupForUnpack1" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+						<ns0:DismantleProduct Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="dismantleProduct1" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Status="Pass" Station="38" IsReturnStatoin="False" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+						<ns0:WriteProductLog Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="38" Status="Pass" IsSingle="True" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+					</ns0:DBScope>
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifKP">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="DismantleKP" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind FADismantle,Path=Station}" x:Name="dbScope2" Key="{ActivityBind FADismantle,Path=Key}" SessionType="{ActivityBind FADismantle,Path=SessionType}">
+				<ns0:DismantleKP Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="DismantleKPT" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Status="Pass" Station="38" IsReturnStatoin="False" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="DisKP" Status="Pass" IsSingle="True" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifAST">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="DismantleAST" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind FADismantle,Path=Station}" x:Name="dbScope3" Key="{ActivityBind FADismantle,Path=Key}" SessionType="{ActivityBind FADismantle,Path=SessionType}">
+				<ns0:RemoveUPSAst Customer="{ActivityBind FADismantle,Path=Customer}" IsRemoveCDSISpecialDet="False" x:Name="removeUPSAst2" SessionType="{ActivityBind FADismantle,Path=SessionType}" IsRemoveAstPart="True" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:ReleaseCombinedAstNumber Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="releaseCombinedAstNumber2" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:DismantleAST Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="dismantleAST1" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Enabled="False" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="writeProductLog3" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="DisAST" Status="Pass" IsSingle="True" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifIMEI">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="DismantletypeIMEI" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind FADismantle,Path=Station}" x:Name="dbScope4" Key="{ActivityBind FADismantle,Path=Key}" SessionType="{ActivityBind FADismantle,Path=SessionType}">
+				<ns0:Dismantleimei Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="dismantleimei1" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="writeProductLog4" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="DM" Status="Pass" IsSingle="True" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifWM">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="DismantletypeWM" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind FADismantle,Path=Station}" x:Name="dbScope5" Key="{ActivityBind FADismantle,Path=Key}" SessionType="{ActivityBind FADismantle,Path=SessionType}">
+				<ns0:DismantleXYZ Customer="{ActivityBind FADismantle,Path=Customer}" Station="{ActivityBind FADismantle,Path=Station}" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" DismantleInfoTypes="WM" x:Name="dismantleXYZ1" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="writeProductLog5" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="DM" Status="Pass" IsSingle="True" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifWIN8KEY">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="WIN8KEY" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind FADismantle,Path=Station}" x:Name="dbScope7" Key="{ActivityBind FADismantle,Path=Key}" SessionType="{ActivityBind FADismantle,Path=SessionType}">
+				<ns0:DismantleOA3Key Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="dismantleOA3Key1" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:DismantleXYZ Customer="{ActivityBind FADismantle,Path=Customer}" Station="{ActivityBind FADismantle,Path=Station}" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" DismantleInfoTypes="COA,Key,P/N" x:Name="dismantleXYZ2" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="writeProductLog8" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Status="Pass" IsSingle="True" Line="DisKey" Key="{ActivityBind FADismantle,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifUPSAST">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="isupsast" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind FADismantle,Path=Station}" x:Name="dbScope8" Key="{ActivityBind FADismantle,Path=Key}" SessionType="{ActivityBind FADismantle,Path=SessionType}">
+				<ns0:RemoveUPSAst Customer="{ActivityBind FADismantle,Path=Customer}" IsRemoveCDSISpecialDet="False" x:Name="removeUPSAst3" SessionType="{ActivityBind FADismantle,Path=SessionType}" IsRemoveAstPart="True" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="writeProductLog9" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Status="Pass" IsSingle="True" Line="DisUPS" Key="{ActivityBind FADismantle,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

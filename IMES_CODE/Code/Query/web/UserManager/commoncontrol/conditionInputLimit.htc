@@ -1,0 +1,49 @@
+<PUBLIC:COMPONENT>
+<PUBLIC:ATTACH EVENT="onkeypress"  ONEVENT="DoKeyPress()" />
+<PUBLIC:ATTACH EVENT="onpaste"  ONEVENT="DoPaste()" /> 
+<PUBLIC:ATTACH EVENT="ondrop"  ONEVENT="event.returnValue=false;" /> 
+  
+<SCRIPT LANGUAGE="JScript">   
+/*
+	Create by:lzy
+	Date:2007-11-13
+	Function:limit the input content.
+*/ 	
+	function DoKeyPress()
+	{  
+  
+ 	 	if (event.keyCode == 39)
+		{			
+			event.returnValue=false;
+			return false;	
+		}	
+
+	}
+	
+	function DoPaste()
+	{ 
+		var reValue=window.clipboardData.getData("Text");	 
+	
+		try{ 
+			if (reValue.indexOf("\'")!=-1)
+			{
+				var re = /\'/g;            
+				reValue=reValue.replace(re,"" );    
+ 				if(! window.clipboardData.setData("Text",reValue)==true)
+					window.event.returnValue=false;
+			} 
+			
+		}
+		catch(e)
+		{
+			//如果剪切板数据转换失败，取消本次拷贝操作。
+			event.returnValue=false;
+			return false;	
+			
+		}
+		
+	}
+	 
+</SCRIPT> 
+</PUBLIC:COMPONENT>
+

@@ -1,0 +1,472 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>日报By制程</title>
+    
+    <link rel="stylesheet" href="../../css/tanchu.css" media="all" />
+   <script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+
+     
+    <link rel="stylesheet" href="../../bootstrap-table/bootstrap-table.css" />
+    <script src="../../bootstrap/js/bootstrap.js"></script>
+    <script src="../../bootstrap-table/bootstrap-table.js"></script>
+    <script src="../../bootstrap-table/bootstrap-table-export.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap/tableExport.js"></script>
+    <link href="../../bootstrap/css/bootstrap/bootstrap.min.css" rel="stylesheet" />            <link type="text/css" rel="stylesheet" href="../../css/timer.css" />
+<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+<script src="../../js/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="../../js/jquery.ui.datepicker-zh-CN.js"></script>
+<script src="../../js/jquery-ui-timepicker-addon.js"></script>
+<script src="../../js/jquery-ui-timepicker-zh-CN.js"></script>
+
+<style type="text/css">
+        .table1 {
+            width: 1220px;
+            font-size: 13px;
+        }
+
+        .textbb {
+            left: 20px;
+            font-size: 13px;
+        }
+
+        .test {
+            position: absolute; /* 按鈕"按條件查詢"的上下位置 */
+            right: 380px;
+            top: 0px;
+            width: 100px;
+            height: 40px;
+        }
+
+        .Sumbb {
+            position: absolute; /* 這里是指定"按條件查詢"中的"查詢"鍵高度位置*/
+            top: 212px;
+        }
+        .navbar-brand1 {
+                    position: absolute;
+                    top: 10px;
+                    float: left;
+                    height: 50px;
+                    width: 400px;
+                    padding: 15px 55px;
+                    font-size: 18px;
+                    line-height: 20px;
+                    font-weight: bold;
+                    color: #000;
+                    font-family: 'Microsoft YaHei';
+                }
+                 .tips { color:#f00; font-size:15px; }
+    </style>    <script type="text/javascript">        
+    jQuery(document).ready(function($) {
+            $('.theme-login').click(function() {
+                $('.theme-popover-mask').fadeIn(100);
+                $('.theme-popover').slideDown(200);
+            })
+            $('.theme-poptit .close').click(function() {
+                $('.theme-popover-mask').fadeOut(100);
+                $('.theme-popover').slideUp(200);
+            })
+
+        })
+       function ClearAll() {
+           $("#act_start_time").val("");
+           $("#act_stop_time").val("");
+           $("#DLPdline").val("");
+
+       }
+       function getUrlParam(name) {
+           var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+           var r = window.location.search.substr(1).match(reg);
+           if (r != null) return unescape(r[2]); return null;
+       }
+
+        $(function() {
+
+
+            $('#btnSelected').click(function() {
+                var begtime = $("#act_start_time").val();
+                var endtime = $("#act_stop_time").val();
+               
+                var process = $("#DLProcess").val();
+
+                if (begtime > endtime) {
+                    alert("开始时间不能大于结束时间!");
+                    return false;
+                }
+                
+
+                $('#reportTable').bootstrapTable('refresh', {
+                url: '../../Service/Commn_GetUPHDara.ashx?TYPE=Efficiency_Process_Hour&Process=' + process  + '&BeginTime=' + begtime + '&EndTime=' + endtime + ''
+                });
+
+                $("#tanchuang").hide();
+            });
+            var d = new Date();
+            var nowtime = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + (d.getDate());
+            var urlprocess = getUrlParam("Process");
+
+            $('#reportTable').bootstrapTable({
+                dataType: 'JSON',
+                method: 'get',
+                url: '../../Service/Commn_GetUPHDara.ashx?TYPE=Efficiency_Process_Hour&Process=' + urlprocess + '&BeginTime=' + nowtime + '&EndTime=' + nowtime + '',
+
+                cache: false,
+                height: 380,
+                striped: true,
+                pagination: true,
+                pageSize: 20,
+                pageNumber: 1,
+                pageList: [20, 50, 100, 150, 249, 5000],
+                search: true,
+                showToggle: true,
+                showColumns: true,
+                showRefresh: true,
+                showExport: true,
+                exportTypes: ['excel'],
+                search: true,
+                clickToSelect: true,
+                columns: [
+                   { field: "Dt", title: "日期", align: "center", valign: "middle", sortable: "true" },
+                   { field: "Process", title: "制程", align: "center", valign: "middle", sortable: "true" },
+                   { field: "Hour", title: "时间", align: "center", valign: "middle", sortable: "true" },
+                   { field: "Attend_normal", title: "应出勤", align: "center", valign: "middle", sortable: "true" },
+                   { field: "Attend", title: "实际出勤", align: "center", valign: "middle", sortable: "true" },
+                   { field: "Qty", title: "产出", align: "center", valign: "middle", sortable: "true" },
+                   { field: "Cap_ST", title: "满载工时", align: "center", valign: "middle", sortable: "true" },
+                   { field: "Out_ST", title: "产出工时", align: "center", valign: "middle", sortable: "true" },
+                   { field: "In_ST", title: "投入工时", align: "center", valign: "middle", sortable: "true" },
+                   { field: "PerST", title: "开线率（%）", align: "center", valign: "middle", sortable: "true", formatter: function(value) { return value + '%'; }, cellStyle: function(value) { if (parseInt(value) < 90) return { classes: 'tips' }; else return {} } },
+                   { field: "PerEff", title: "生产效率（%）", align: "center", valign: "middle", sortable: "true", formatter: function(value) { return value + '%'; }, cellStyle: function(value) { if (parseInt(value) < 90) return { classes: 'tips' }; else return {} } },
+                   { field: "PerOut", title: "整体产出率（%）", align: "center", valign: "middle", sortable: "true", formatter: function(value) { return value + '%'; }, cellStyle: function(value) { if (parseInt(value) < 90) return { classes: 'tips' }; else return {} } },
+                   { field: "PCQty", title: "排单数", align: "center", valign: "middle", sortable: "true" }
+                  ],
+                onPageChange: function(size, number) {
+                },
+                formatNoMatches: function() {
+                    return 'No Data！';
+                }
+            });
+
+
+            $.ajax({
+                type: "post",
+                async: false,
+                url: '../../Service/Commn_GetUPHDara.ashx?TYPE=Efficiency_Process_Hour_Echart&Process=' + urlprocess + '&BeginTime=' + nowtime + '&EndTime=' + nowtime + '',
+                dataType: "json",
+                success: inputSucc,
+                error: inputFail
+            });          
+        });
+            </script>
+
+</head>
+<body >
+
+ 
+        <div id="tab" style="width: 100%; height: 50%; position: absolute; border: 1px" >              <div class="theme-popover" id="tanchuang">
+            <div class="theme-poptit">
+                <a href="javascript:;" title="关闭" class="close">×</a>
+                <h4 class="bbaah3">輸入需要查詢的條件</h4>
+            </div>
+            <p></p>
+            <div id="Div4" runat="server">
+
+                <ol class="col-md-6 col-md-push-6">
+                   <li><strong>结束时间：</strong>
+                                        <input name="act_stop_time" id="act_stop_time" type="text" class="text-box" value="" placeholder="结束时间" title="结束时间≥开始时间" readonly="readonly" style="cursor:pointer;"/>
+                   </li>
+    
+               </ol>
+                <ol class="col-md-6 col-md-pull-6">
+                    <li><strong>开始时间：</strong>
+                               <input name="act_start_time"  id="act_start_time" type="text" class="text-box" value="" placeholder="开始时间" title="开始时间" readonly="readonly" style="cursor:pointer;"/>
+                    </li>
+                 </ol>
+              
+                <ol class="col-md-6 col-md-pull-0">
+                    <li><strong>Process：</strong>
+                    <select id="DLProcess" class="form-control">
+                    <option> SA</option>
+                     <option> FA</option>
+                      <option> PAK</option>
+                  
+                    </select>
+                    </li>
+                </ol>
+                
+                <!--<ol class="col-md-6 col-md-pull-0">
+                  <script type="text/javascript">
+                      $(document).ready(function() {
+                      var process = $('#DLProcess').children('option:selected').val();
+                      $.getJSON('../../Service/Commn_GetUPHDara.ashx?TYPE=GetPdline&Process=' + process, function(data) {
+                            var option = "";
+                            $.each(data, function(i, item) { option += "<option value=\"" + item.Line + "\">" + item.Line + "</option>"; });
+                            $("#DLPdline").append(option);
+                        });
+                    });
+                    </script>
+                <li><strong>Line：</strong><select id="DLPdline" class="form-control"><option value=""></option>
+                </select></li>
+               </ol> -->               <!-- <ol class="col-md-6 col-md-push-0 dropup"></ol>-->
+                <ol class="col-md-10 col-md-push-4">
+                    <br>
+                    <li>
+                        <input type="button" class="btnt btnt-primary1" id="btnSelected" onclick="GetAjaxChartData()" value="查&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;询" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="ClearAll()" class="btnt btnt-primary1" id="Button1" value="重&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;置" /></li>
+                </ol>
+
+            </div>       </div>
+     
+              <div id="reportTableDiv">
+                  <nav>
+                           
+                              <i  class="navbar-brand1">效率明细查询頁面</i>
+                           
+                
+                             <div class="test" style="z-index: 988;top:10px;border: 0 ">
+                                   <a class="btnt btnt-primary1 btn-large theme-login"   href="javascript:;">按條件查詢</a>
+                              </div>
+                    </nav>
+                    <table id="reportTable" >
+                    </table>
+            </div>
+        </div>
+       
+        
+        <div id="main" style="width: 100%; height: 50%; z-index: -1; position: absolute; top: 60%; left: 0px; border: 1px solid #eee;">
+     
+           <script type="text/javascript" src="../../echarts-2.2.7/build/source/echarts.js"></script>
+     
+            <script type="text/javascript">
+
+        // 路径配置
+        // 路径配置
+
+        require.config({
+            paths: {
+                echarts: '../../echarts-2.2.7/build/dist'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/line',
+                'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+            ], DrawEChart
+            )
+        var myChart;
+        function DrawEChart(ec) {
+            myChart = ec.init(document.getElementById('main'));
+            var ecConfig = require('echarts/config');
+            option = {
+                title: {
+                    text: '生产效率日报（制程）',
+                    subtext: '',
+                    x: 0,   //這個指示位置,單位px
+                    y: 0,
+                    textStyle: {
+                        color: '#C1232B',
+                        fontWeight: 'bolder'
+                    }
+
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    },
+                    formatter: '{b}<br/>{a0}:{c0}pcs<br/>{a1}:{c1}%<br/>{a2}:{c2}%<br/>{a3}:{c3}%<br/>'
+                },
+                toolbox: {
+                    y: 0,
+                    show: true,
+                    feature: {
+                        mark: { show: true },
+                        dataView: { show: true, readOnly: false },
+                        magicType: { show: true, type: ['line', 'bar'] },
+                        restore: { show: true },
+                        saveAsImage: { show: true }
+                    }
+                },
+                calculable: true,
+                legend: {
+                    selected: {},
+                    data: []
+                },
+                xAxis: [
+                                {
+                                    type: 'category',
+                                    data: []
+                                }
+                        ],
+                yAxis: [
+                            {
+                                type: 'value',
+                                name: '数量',
+                                axisLabel: {
+                                    formatter: '{value} pcs'
+                                }
+                            },
+                            {
+                                type: 'value',
+                                name: '百分比',
+                                axisLabel: {
+                                    formatter: '{value} %'
+                                }
+                            }
+                        ],
+                series: [
+                                         {
+                                             name: '产出',
+                                             type: 'bar',
+                                             stack: 'sum',
+                                             itemStyle: {
+                                                 normal: {
+                                                 color: '#60c0dd',
+                                                 label: { show: true, formatter: '{c} pcs' }
+
+                                                 }
+                                             },
+                                             data: []
+                                         },
+                                            {
+                                                name: '效率',
+                                                type: 'line',
+                                                yAxisIndex: 1,
+                                                itemStyle: {
+                                                    normal: {
+                                                        color: '#d7504b',
+                                                        label: {
+                                                            show: true, formatter: '{c} %',
+                                                            textStyle: {
+                                                            //fontWeight: 'bolder',
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            data: []
+                                        }, {
+                                            name: 'UPH',
+                                            type: 'line',
+                                            yAxisIndex: 1,
+                                            itemStyle: {
+                                                normal: {
+                                                    color: '#00FF00',
+                                                    label: {
+                                                        show: true, formatter: '{c} %',
+                                                        textStyle: {
+                                                        //fontWeight: 'bolder',
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        data: []
+                                    },
+                                    {
+                                        name: '',
+                                        type: 'line',
+                                        yAxisIndex: 1,
+                                        itemStyle: {
+                                            normal: {
+                                            color: '#0000CD',
+                                                label: {
+                                                    show: true, formatter: '{c} %',
+                                                    textStyle: {
+                                                    //fontWeight: 'bolder',
+                                                }
+                                            }
+                                        }
+                                    },
+                                    data: []
+                                }
+
+                         ]
+
+
+
+            };
+            myChart.setOption(option); 
+        }
+             //setInterval(AutoRefresh, 1000*60);
+            function AutoRefresh() {
+                var options = myChart.getOption();
+                myChart.showLoading({
+                    text: "图表数据正在努力加载..."
+                });
+               // myChart.refresh(true);
+                GetAjaxChartData();
+            }
+        
+
+        function GetAjaxChartData() {
+            var begtime = $("#act_start_time").val();
+            var endtime = $("#act_stop_time").val();
+            var process = $("#DLProcess").val();
+            $.ajax({
+                type: "post",
+                async: false,
+                url: '../../Service/Commn_GetUPHDara.ashx?TYPE=Efficiency_Process_Hour_Echart&Process=' + process + '&BeginTime=' + begtime + '&EndTime=' + endtime + '',
+                dataType: "json",
+                success: inputSucc,
+                error: inputFail
+            });
+          }
+
+       function inputSucc(GetYieldAnalysis) {
+                if (GetYieldAnalysis) {
+                    drawseries(option, GetYieldAnalysis)//根据返回的数据自动添加线条
+                    myChart.hideLoading();
+                    myChart.setOption(option, true);
+                }
+
+
+            }
+
+       function drawseries(option, ChartItem) {
+                var seriesArray = new Array();
+                var legendlist = new Array(); //图例
+                var XValue; //X轴
+                var selecteditems = new Array();
+
+                seriesArray = ChartItem;
+                option.xAxis[0].data =seriesArray[0].XValue;
+
+                option.series[0].data = seriesArray[0].SeriesValues;
+                option.series[0].name = seriesArray[0].Name;
+                option.series[1].data = seriesArray[1].SeriesValues;
+                option.series[1].name = seriesArray[1].Name;
+                option.series[2].data = seriesArray[2].SeriesValues;
+                option.series[2].name = seriesArray[2].Name;
+                option.series[3].data = seriesArray[3].SeriesValues;
+                option.series[3].name = seriesArray[3].Name;
+                legendlist.push(seriesArray[0].Name);
+                legendlist.push(seriesArray[1].Name);
+                legendlist.push(seriesArray[2].Name);
+                legendlist.push(seriesArray[3].Name);
+                option.legend.data = legendlist;
+                option.title.subtext = seriesArray[0].Subtext;
+
+
+            }
+            function inputFail(result) {
+                var options = myChart.getOption();
+                myChart.showLoading({
+                    text: "效率系统服务连接失败..."
+                });
+
+            }
+        
+        
+         </script>
+        </div>
+    
+   
+    <script type="text/javascript">
+        $("input[name='act_start_time'],input[name='act_stop_time']").datetimepicker();
+    </script>
+</body>
+</html>
+

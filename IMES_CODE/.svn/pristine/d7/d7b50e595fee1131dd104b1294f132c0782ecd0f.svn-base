@@ -1,0 +1,142 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data.Linq;
+using System.Data.Linq.Mapping;
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
+
+namespace UPH.Entity.Repository.Meta.IMESSKU
+{
+    [Table(Name = "Efficiency_Day")]
+    [Serializable]
+    public class Efficiency_Day
+    {
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public string Dt;
+         [Column(UpdateCheck = UpdateCheck.Never)]
+        public string Process;
+         [Column(UpdateCheck = UpdateCheck.Never)]
+        public string PdLine;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public int Attend_normal_D;
+         [Column(UpdateCheck = UpdateCheck.Never)]
+        public int Attend_normal_N;
+           [Column(UpdateCheck = UpdateCheck.Never)]
+        public int Attend_D;
+           [Column(UpdateCheck = UpdateCheck.Never)]
+        public int Attend_N;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public int Qty;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal Cap_ST;
+         [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal Out_ST;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal In_ST;
+         [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal PerST;
+         [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal PerEff;
+         [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal PerOut;
+          [Column(UpdateCheck = UpdateCheck.Never)]
+        public int PCQty;
+    }
+    [Table(Name = "Efficiency_Process_Day")]
+    [Serializable]
+    public class Efficiency_Process_Day
+    {
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public string Dt;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public string Process;
+       
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public int Attend_normal_D;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public int Attend_normal_N;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public int Attend_D;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public int Attend_N;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public int Qty;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal Cap_ST;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal Out_ST;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal In_ST;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal PerST;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal PerEff;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal PerOut;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public int PCQty;
+    }
+    [Table(Name = "Efficiency_Process_Hour")]
+    [Serializable]
+    public class Efficiency_Process_Hour
+    {
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public string Dt;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public string Process;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public string Hour;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public int Attend_normal;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public int Attend;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public int Qty;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal Cap_ST;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal Out_ST;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal In_ST;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal PerST;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal PerEff;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal PerOut;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public int PCQty;
+    }
+
+    [Table(Name = "ProductQty")]
+    [Serializable]
+    public class ProductQty
+    {
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public string ShipDate;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal TotalQty;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal WaitPackQty;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal PalletQty;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal PLTWQty;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal PGIQty;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal WaitPackRate;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal PalletRate;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal PLTWRate;
+        [Column(UpdateCheck = UpdateCheck.Never)]
+        public decimal PGIRate;
+        
+    }
+
+
+}

@@ -1,0 +1,6 @@
+E:\IMES_CODE\Code\Query\bin\IMES.Query.ConsoleHost.exe.config
+E:\IMES_CODE\Code\Query\bin\IMES.Query.ConsoleHost.exe
+E:\IMES_CODE\Code\Query\bin\IMES.Query.ConsoleHost.pdb
+E:\IMES_CODE\Code\Query\IMESService\IMES.Query.ConsoleHost\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\Query\IMESService\IMES.Query.ConsoleHost\obj\Debug\IMES.Query.ConsoleHost.exe
+E:\IMES_CODE\Code\Query\IMESService\IMES.Query.ConsoleHost\obj\Debug\IMES.Query.ConsoleHost.pdb

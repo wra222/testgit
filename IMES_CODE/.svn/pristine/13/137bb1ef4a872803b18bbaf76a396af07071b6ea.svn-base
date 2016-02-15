@@ -1,0 +1,74 @@
+2014-08-26 13:55:08,368 [4] INFO  ASP.global_asax [(null)] - BEGIN: Application_Start()
+2014-08-26 13:55:08,388 [4] DEBUG ASP.global_asax [(null)] - Current AppDomainId:d9fafe26-1-130535061062374568
+2014-08-26 13:55:08,391 [4] DEBUG ASP.global_asax [(null)] - Current AppDomainAppPath:C:\Users\icc112589\Desktop\Interface\Interface\
+2014-08-26 13:55:08,394 [4] DEBUG ASP.global_asax [(null)] - Current AppDomainAppId:d9fafe26
+2014-08-26 13:55:08,397 [4] INFO  ASP.global_asax [(null)] - END: Application_Start()
+2014-08-26 13:55:08,430 [4] INFO  ASP.global_asax [(null)] - BEGIN: Init()
+2014-08-26 13:55:08,433 [4] DEBUG ASP.global_asax [(null)] - Current AppDomainId:d9fafe26-1-130535061062374568
+2014-08-26 13:55:08,435 [4] DEBUG ASP.global_asax [(null)] - Current AppDomainAppPath:C:\Users\icc112589\Desktop\Interface\Interface\
+2014-08-26 13:55:08,438 [4] DEBUG ASP.global_asax [(null)] - Current AppDomainAppId:d9fafe26
+2014-08-26 13:55:08,440 [4] INFO  ASP.global_asax [(null)] - END: Init()
+2014-08-26 13:55:09,775 [5] INFO  ASP.global_asax [(null)] - BEGIN: Application_Error()
+2014-08-26 13:55:09,782 [5] DEBUG ASP.global_asax [(null)] - Current AppDomainId:d9fafe26-1-130535061062374568
+2014-08-26 13:55:09,785 [5] DEBUG ASP.global_asax [(null)] - Current AppDomainAppPath:C:\Users\icc112589\Desktop\Interface\Interface\
+2014-08-26 13:55:09,787 [5] DEBUG ASP.global_asax [(null)] - Current AppDomainAppId:d9fafe26
+2014-08-26 13:55:09,798 [5] ERROR ASP.global_asax [(null)] - System.Web.HttpException: 檔案不存在。
+   於 System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   於 System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context)
+   於 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   於 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   於 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2014-08-26 13:55:09,818 [5] INFO  ASP.global_asax [(null)] - END: Application_Error()
+2014-08-26 13:55:29,001 [9] INFO  ASP.global_asax [(null)] - BEGIN: Application_Error()
+2014-08-26 13:55:29,007 [9] DEBUG ASP.global_asax [(null)] - Current AppDomainId:d9fafe26-1-130535061062374568
+2014-08-26 13:55:29,012 [9] DEBUG ASP.global_asax [(null)] - Current AppDomainAppPath:C:\Users\icc112589\Desktop\Interface\Interface\
+2014-08-26 13:55:29,015 [9] DEBUG ASP.global_asax [(null)] - Current AppDomainAppId:d9fafe26
+2014-08-26 13:55:29,018 [9] ERROR ASP.global_asax [(null)] - System.Web.HttpException: 檔案不存在。
+   於 System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   於 System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context)
+   於 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   於 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   於 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2014-08-26 13:55:29,022 [9] INFO  ASP.global_asax [(null)] - END: Application_Error()
+2014-08-26 13:57:15,223 [4] DEBUG IMES.EoLA.GetModel [(null)] - BEGIN: GetModelResponse(CustSN:5CG3219020)
+2014-08-26 13:57:15,229 [4] DEBUG IMES.LD.SqlHelper [(null)] - Connect String :Data Source=10.99.183.192;Initial Catalog=HPIMES;Persist Security Info=True;User ID=imes2012;Password=iccfis=123;APP=IMESWS01
+2014-08-26 13:57:15,236 [4] DEBUG IMES.LD.SqlHelper [(null)] - SQL Statement :select top 1 a.ProductID,a.CUSTSN,a.Model,b.Family,c.CustomerID
+                              from   Product a, Model b ,Family c
+                              where  a.Model = b.Model  and c.Family=b.Family
+                                     and (a.CUSTSN =@SN or a.ProductID =@SN)
+                              order by a.Cdt
+2014-08-26 13:58:15,029 [4] ERROR IMES.EoLA.GetModel [(null)] - 建立連接至 SQL Server 時，發生網路相關或執行個體特定的錯誤。找不到或無法存取伺服器。確認執行個名稱是否正確，以及 SQL Server 是否設定為允許遠端連線。 (provider: 具名的管線提供者, error: 40 - 無法開啟至 SQL Server 的連接)
+System.Data.SqlClient.SqlException: 建立連接至 SQL Server 時，發生網路相關或執行個體特定的錯誤。找不到或無法存取伺服器。確認執行個名稱是否正確，以及 SQL Server 是否設定為允許遠端連線。 (provider: 具名的管線提供者, error: 40 - 無法開啟至 SQL Server 的連接)
+   於 IMES.LD.Execute.modelResponseMsg(String sn) 於 C:\Users\icc112589\Desktop\Interface\Interface\App_Code\Execute.cs: 行 97
+   於 IMES.EoLA.GetModel.GetModelResponse(String CustSN) 於 C:\Users\icc112589\Desktop\Interface\Interface\IMES.EoLA.GetModel\GetModel.asmx.cs: 行 44
+2014-08-26 13:58:15,038 [4] DEBUG IMES.EoLA.GetModel [(null)] - Reponse data:CustSN:5CG3219020 ProductID: Model: Family: Customer: ErrorCode:-2 Message:建立連接至 SQL Server 時，發生網路相關或執行個體特定的錯誤。找不到或無法存取伺服器。確認執行個名稱是否正確，以及 SQL Server 是否設定為允許遠端連線。 (provider: 具名的管線提供者, error: 40 - 無法開啟至 SQL Server 的連接)
+2014-08-26 13:58:15,042 [4] DEBUG IMES.EoLA.GetModel [(null)] - END: GetModelResponse()
+2014-08-26 14:00:17,221 [9] INFO  ASP.global_asax [(null)] - BEGIN: Application_End()
+2014-08-26 14:00:17,224 [9] DEBUG ASP.global_asax [(null)] - Current AppDomainId:d9fafe26-1-130535061062374568
+2014-08-26 14:00:17,227 [9] DEBUG ASP.global_asax [(null)] - Current AppDomainAppPath:C:\Users\icc112589\Desktop\Interface\Interface\
+2014-08-26 14:00:17,229 [9] DEBUG ASP.global_asax [(null)] - Current AppDomainAppId:d9fafe26
+2014-08-26 14:00:17,232 [9] INFO  ASP.global_asax [(null)] - END: Application_End()
+2014-08-26 14:00:18,655 [5] INFO  ASP.global_asax [(null)] - BEGIN: Application_Start()
+2014-08-26 14:00:18,671 [5] DEBUG ASP.global_asax [(null)] - Current AppDomainId:d9fafe26-2-130535064183904568
+2014-08-26 14:00:18,675 [5] DEBUG ASP.global_asax [(null)] - Current AppDomainAppPath:C:\Users\icc112589\Desktop\Interface\Interface\
+2014-08-26 14:00:18,678 [5] DEBUG ASP.global_asax [(null)] - Current AppDomainAppId:d9fafe26
+2014-08-26 14:00:18,681 [5] INFO  ASP.global_asax [(null)] - END: Application_Start()
+2014-08-26 14:00:18,693 [5] INFO  ASP.global_asax [(null)] - BEGIN: Init()
+2014-08-26 14:00:18,696 [5] DEBUG ASP.global_asax [(null)] - Current AppDomainId:d9fafe26-2-130535064183904568
+2014-08-26 14:00:18,699 [5] DEBUG ASP.global_asax [(null)] - Current AppDomainAppPath:C:\Users\icc112589\Desktop\Interface\Interface\
+2014-08-26 14:00:18,703 [5] DEBUG ASP.global_asax [(null)] - Current AppDomainAppId:d9fafe26
+2014-08-26 14:00:18,706 [5] INFO  ASP.global_asax [(null)] - END: Init()
+2014-08-26 14:00:33,378 [9] DEBUG IMES.EoLA.GetModel [(null)] - BEGIN: GetModelResponse(CustSN:5CG3219020)
+2014-08-26 14:00:33,383 [9] DEBUG IMES.LD.SqlHelper [(null)] - Connect String :Data Source=10.96.183.192;Initial Catalog=HPIMES;Persist Security Info=True;User ID=imes2012;Password=iccfis=123;APP=IMESWS01
+2014-08-26 14:00:33,387 [9] DEBUG IMES.LD.SqlHelper [(null)] - SQL Statement :select top 1 a.ProductID,a.CUSTSN,a.Model,b.Family,c.CustomerID
+                              from   Product a, Model b ,Family c
+                              where  a.Model = b.Model  and c.Family=b.Family
+                                     and (a.CUSTSN =@SN or a.ProductID =@SN)
+                              order by a.Cdt
+2014-08-26 14:00:35,383 [9] DEBUG IMES.EoLA.GetModel [(null)] - Reponse data:CustSN:5CG3219020 ProductID:A35500029  Model:PCBE14AAE16Y Family:HARVEY6U 1.0 Customer:HP ErrorCode:0 Message:
+2014-08-26 14:00:35,394 [9] DEBUG IMES.EoLA.GetModel [(null)] - END: GetModelResponse()
+2014-08-26 15:50:37,765 [3] INFO  ASP.global_asax [(null)] - BEGIN: Application_End()
+2014-08-26 15:50:37,773 [3] DEBUG ASP.global_asax [(null)] - Current AppDomainId:d9fafe26-2-130535064183904568
+2014-08-26 15:50:37,779 [3] DEBUG ASP.global_asax [(null)] - Current AppDomainAppPath:C:\Users\icc112589\Desktop\Interface\Interface\
+2014-08-26 15:50:37,787 [3] DEBUG ASP.global_asax [(null)] - Current AppDomainAppId:d9fafe26
+2014-08-26 15:50:37,791 [3] INFO  ASP.global_asax [(null)] - END: Application_End()

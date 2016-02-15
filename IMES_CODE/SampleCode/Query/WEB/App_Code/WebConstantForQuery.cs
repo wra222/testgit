@@ -1,0 +1,120 @@
+﻿
+using System;
+using System.Data;
+using System.Configuration;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+
+namespace com.inventec.iMESWEB
+{
+    public partial class WebConstant
+    {
+
+        public const string IFamilyBObject = "IMESQueryService.IFamily";
+        public const string ConfigDB = "IMESQueryService.IConfigDB";
+        
+        
+        //Added By Dean 20111229        
+        public const string Station = "IMESQueryService.IStation";
+        public const string Model = "IMESQueryService.IModel";
+        public const string PdLine = "IMESQueryService.IPdLine";
+
+        public const string COAStatus = "IMESQueryService.ICOAStatus";
+
+        public const string IPAK_ASTReport = "IMESQueryService.IPAK_ASTReport";
+        public const string IPAK_KitPartQuery = "IMESQueryService.IPAK_KitPartQuery";
+        public const string IPAK_KitFloatLocQuery = "IMESQueryService.IPAK_KitFloatLocQuery";
+        public const string IPAK_ASTeSOP = "IMESQueryService.IPAK_ASTeSOP";
+
+
+        public const string ISA_PCBInfo = "IMESQueryService.ISA_PCBInfo";
+        public const string ISA_FAReturnPCAQuery = "IMESQueryService.ISA_FAReturnPCA";
+        public const string ISA_SAMBRepair = "IMESQueryService.ISA_SAMBRepair";
+        public const string ISA_TestDefect = "IMESQueryService.ISA_TestDefect";
+        public const string ISA_PCBStationQuery = "IMESQueryService.ISA_PCBStation";
+
+        public const string PIADefectList = "IMESQueryService.IFA_PIADefectList";
+        public const string ProductInfo = "IMESQueryService.IFA_ProductInfo";
+        public const string PrdIdOnLine = "IMESQueryService.IFA_PrdIdOnLine";
+        public const string SNByFamily = "IMESQueryService.IFA_SNByFamily";
+        public const string ProductYield = "IMESQueryService.IFA_ProductYield";
+        public const string MPInput = "IMESQueryService.IFA_MPInput";
+        public const string EPIAModelList = "IMESQueryService.IFA_EPIAModelList";
+        public const string PoWIPTracking = "IMESQueryService.IFA_PoWIPTracking";
+        public const string ModelBOM = "IMESQueryService.IFA_ModelBOM";
+        public const string ProductStatement = "IMESQueryService.IFA_ProductStatement";
+        public const string MaterialUsed = "IMESQueryService.IFA_MaterialUsed";
+        
+
+        public const string VirtualPalletInfo = "IMESQueryService.IPAK_VirtualPalletInfo";
+        public const string PackingDailyReport = "IMESQueryService.IPAK_PackingDailyReport";
+        public const string PakBufferQuery = "IMESQueryService.IPAK_PakBufferQuery";
+        public const string PLTDimension = "IMESQueryService.IPAK_PLTDimension";
+        public const string PackingDataQuery = "IMESQueryService.IPAK_PackingDataQuery";
+        public const string BTLocQuery = "IMESQueryService.IPAK_BTLocQuery";
+        public const string ASTQuery = "IMESQueryService.IPAK_ASTQuery";
+        public const string ShipLogQuery = "IMESQueryService.IPAK_ShipLogQuery";
+        public const string StatusByDeliveryNo = "IMESQueryService.IPAK_StatusByDeliveryNo";
+        public const string PAQCUnTest = "IMESQueryService.IPAK_PAQCUnTest";
+        public const string NonBulkPalletSummaryRpt = "IMESQueryService.IPAK_NonBulkPalletSummaryRpt";
+        public const string BulkPalletReport = "IMESQueryService.IPAK_BulkPalletReport";
+
+
+        public const string ChepPallet = "IMESQueryService.IPAK_ChepPallet";
+        public const string COAStockQty = "IMESQueryService.IPAK_COAStockQty";
+        public const string COAStatusReport = "IMESQueryService.IPAK_COAStatusReport";
+        
+        public const string CDSIPOQuery = "IMESQueryService.IPAK_CDSIPOQuery";
+        public const string FirstPizza = "IMESQueryService.IPAK_FirstPizza";
+        public const string PartQuery = "IMESService.Common";
+                                            
+        public const string QueryCommon = "IMESQueryService.IQueryCommon";
+
+        public const string FA_QueryByPartSN = "IMESQueryService.IFA_QueryByPartSN";
+        public const string PAK_Common = "IMESQueryService.IPAK_Common";
+
+        public const string PAK_Query87Product = "IMESQueryService.IPAK_Query87Product";
+
+        public const string ISA_PCBInputQuery = "IMESQueryService.ISA_PCBInputQuery";
+
+        public const string IFA_MOQuery = "IMESQueryService.IFA_MOQuery";
+        public const string IProductEfficiency = "IMESQueryService.IFA_ProductEfficiency";
+        public const string ISA_PCBNoQuery = "IMESQueryService.ISA_PCBNoQuery";
+        public const string PAK_WipTracking = "IMESQueryService.IPAK_WipTracking";
+        public const string IPAK_COAStoreQuery = "IMESQueryService.IPAK_COAStoreQuery";
+        public const string IFA_KeyPartDefectReport = "IMESQueryService.IFA_KeyPartDefectReport";
+        public const string ISA_PCBTestReport = "IMESQueryService.ISA_PCBTestReport";
+
+        public const string IPAK_PAQCSortingQuery = "IMESQueryService.IPAK_PAQCSortingQuery";
+        public const string IPAK_StandModelWeight = "IMESQueryService.IPAK_StandModelWeight";
+
+        public const string IRBPC_Tool = "IMESQueryService.IRBPC_Tool";
+        public const string IFA_ProductImageDownTimeout = "IMESQueryService.IFA_ProductImageDownTimeout";
+        public const string IPAK_COARMAQuery = "IMESQueryService.IPAK_COARMAQuery";
+        public const string ISA_PCBLotQuery = "IMESQueryService.ISA_PCBLotQuery";
+        public const string PAK_UnShipSnList = "IMESQueryService.IPAK_UnShipSnList";
+        public const string IPAK_IdleTime = "IMESQueryService.IPAK_IdleTime";
+        public const string ISA_SABANDIT = "IMESQueryService.ISA_SABANDIT";
+        public const string IPAK_Warehouse1 = "IMESQueryService.IPAK_Warehouse1";
+        public const string IPAK_PLT3= "IMESQueryService.IPAK_PLT3";
+        public const string IPAK_ShipPLT3 = "IMESQueryService.IPAK_ShipPLT3";
+        public const string IModel_ASTQyery = "IMESQueryService.IModel_ASTQyery";
+        public const string IPAK_DockSnQuery = "IMESQueryService.IPAK_DockSnQuery";
+        public const string IFA_ProductPlanInputQuery = "IMESQueryService.IFA_ProductPlanInputQuery";
+        public const string IFA_IMG_2PPQuery = "IMESQueryService.IFA_IMG_2PPQuery";
+		public const string IPAK_BsamLocationQuery = "IMESQueryService.IPAK_BsamLocationQuery";
+        public const string IPAK_BsamShipSnList = "IMESQueryService.IPAK_BsamShipSnList";
+        public const string ISA_CpuQuery = "IMESQueryService.ISA_CpuQuery";
+        public const string IFA_MastereSOPQuery = "IMESQueryService.IFA_MastereSOPQuery";
+        public const string IFA_ProductRepairQuery = "IMESQueryService.IFA_ProductRepairQuery";
+        public const string MaterialBoxQuery = "IMESQueryService.IPAK_MaterialBoxQuery";
+        public const string IFA_KeyPartsRequirementQuery = "IMESQueryService.IFA_KeyPartsRequirementQuery";
+
+    }
+}

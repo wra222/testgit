@@ -1,0 +1,171 @@
+﻿var IMESUti = IMESUti || {};
+IMESUti.Message=( function() {
+    
+   //********** private **********
+   var noSupportMessage = "Your browser cannot support WebSocket!"; 
+   var ws; 
+   var xmlhttp; 
+   var subScribeData;   
+   function GetNow()
+	{
+			var now = new Date(); 
+			var datetime = now.getFullYear()+'/'+(now.getMonth()+1)+'/'+now.getDate(); 
+				datetime += ' '+now.getHours()+':'+now.getMinutes()+':'+now.getSeconds(); 
+			return datetime;	
+	}
+	
+	function getXmlHttp() 
+	{
+			if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari	    
+				return new XMLHttpRequest();
+				}
+
+				// code for IE6, IE5
+			return new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	
+	function CheckJSONObject() {
+             if (typeof (JSON) == 'undefined') 
+			{ 
+				$('script').append($("<script type='text/javascript' src='json2.js'>"));
+			} 				
+    }
+	
+	function PostHttp(url,subject, data,SucessFunction, ErrorFunction) {
+			if (!xmlhttp)
+			{
+				xmlhttp=getXmlHttp();
+			}
+			xmlhttp.open('POST', url, true); //async mode
+
+			xmlhttp.onreadystatechange = function() {        
+				if (xmlhttp.readyState == 4) {
+					var responseText = xmlhttp.responseText;
+					if (xmlhttp.status == 200) {						
+						if (typeof (SucessFunction) === 'function') 
+						{ 
+							SucessFunction(url,subject, data, responseText);
+						}
+					}else {						
+						if (typeof (ErrorFunction) === 'function')
+						{			
+							ErrorFunction(url,subject,data,xmlhttp.status);
+						}
+					}					
+				}
+			};
+			
+			xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=utf-8');    
+			//xmlhttp.send('{"Cmd":"P","Subject":"Test","Context":"test1234"}');			
+			var dataObj={ Cmd:'P',
+					   Subject:subject,
+					   Context:data,
+					   Timestamp:GetNow()			
+						};
+					
+			CheckJSONObject();		
+			var sendData= JSON.stringify(dataObj);	
+			xmlhttp.send(sendData);				
+	}			
+	
+	 function connectSocketServer(wsUrl,OnMessageCallBack,onOpenFunctionCallBack, onCloseCallBack) {
+                var support = 'MozWebSocket' in window ? 'MozWebSocket' : ('WebSocket' in window ? 'WebSocket' : null);
+
+                if (support == null) {
+                    alter( noSupportMessage);
+                    return;
+                }
+                
+                // create a new websocket and connect ws://10.96.183.193:2012/
+                ws = new window[support](wsUrl);
+
+                // when data is comming from the server, this metod is called
+                ws.onmessage = function (evt) {                    
+					CheckJSONObject();
+					var rawData=evt.data;
+					var obj=JSON.parse(rawData);
+					if (typeof (OnMessageCallBack) === 'function')
+					{			
+						OnMessageCallBack(rawData,obj.Context);
+					}					
+                };
+
+                // when the connection is established, this method is called
+                ws.onopen = function () {
+					if (typeof (onOpenFunctionCallBack) === 'function')
+					{			
+						onOpenFunctionCallBack();
+					}
+					if (subScribeData){
+						var data={
+							Cmd:'S',
+							Subject:subScribeData.Subject,					   
+							Timestamp:GetNow()			
+						};
+						CheckJSONObject();
+						var sendData =JSON.stringify(data);	
+						ws.send(sendData);
+						if (typeof (subScribeData.OnSent) === 'function')
+						{			
+							subScribeData.OnSent(wsUrl,sendData);
+						}
+						
+						subScribeData=null;
+					}	
+                };
+
+                // when the connection is closed, this method is called
+                ws.onclose = function () {
+                    if (typeof (onCloseCallBack) === 'function')
+					{			
+						onCloseCallBack();
+					} 
+					ws = null;	
+                }
+            }
+	function sendMessage(wsUrl,subject,OnSentCallBack,OnMessageCallBack,onOpenFunctionCallBack, onCloseCallBack) {
+                if (!ws) {
+					connectSocketServer(wsUrl,OnMessageCallBack,onOpenFunctionCallBack, onCloseCallBack);
+					subScribeData={
+						Wsurl:wsUrl,
+						Subject:subject,
+						OnSent:OnSentCallBack
+					};
+				}else{
+					var data={
+					   Cmd:'S',
+					   Subject:subject,					   
+					   Timestamp:GetNow()			
+					};
+					CheckJSONObject();
+					var sendData =JSON.stringify(data);	
+					ws.send(sendData);
+					 if (typeof (OnSentCallBack) === 'function')
+					{			
+						OnSentCallBack(wsUrl,sendData);
+					}
+				}
+     }
+	function closeWS()
+	{
+		if (ws) {
+                    ws.close();
+                }
+	}
+     //********** private ********** 
+    return  {
+			 Publish:function(url,subject,data,SucessFunction, ErrorFunction)
+			 {
+				 PostHttp(url,subject,data,SucessFunction, ErrorFunction)
+			 },
+			 Subscribe:function(wsUrl,subject,OnSentFunction, OnMessageFunction, OnOpenFunction, onCloseFunction)
+			 {
+				 sendMessage(wsUrl,subject,OnSentFunction,OnMessageFunction, OnOpenFunction, onCloseFunction)
+			 },
+			 DisconnectWS:function()
+			 {
+				closeWS();
+			 }
+    };
+}
+)();

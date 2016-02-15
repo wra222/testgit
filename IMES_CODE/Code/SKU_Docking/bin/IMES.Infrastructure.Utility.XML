@@ -1,0 +1,398 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IMES.Infrastructure.Utility</name>
+    </assembly>
+    <members>
+        <member name="T:IMES.Infrastructure.Utility.RuleSets.RuleSetManagerFactory">
+            <summary>
+            RuleSet管理器的工厂类
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.Utility.ICache">
+            <summary>
+            Cache相关接口
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.ICache.IsCached">
+            <summary>
+            Cache功能是否打开
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.ICache.ProcessItem(IMES.DataModel.CacheUpdateInfo)">
+            <summary>
+            处理一个Cache更新请求
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.Generates.cust.DynamicGenerator.GetAComposer(System.String,System.String,System.Object[])">
+            <summary>
+            獲得一個繼承了IComposer接口的類的實例
+            </summary>
+            <param name="assemblyFileName">程序集名稱</param>
+            <param name="classNameWithNS">類的名稱(帶命名空間)</param>
+            <param name="ctorParams">構造函數所用參數</param>
+            <returns>類的實例</returns>
+            <remarks></remarks>
+        </member>
+        <member name="T:IMES.Infrastructure.Utility.CloneTool">
+            <summary>
+            对象拷贝工具类
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.CloneTool.DoDeepCopyObj(System.Object)">
+            <summary>
+            深拷贝一个对象实例
+            局限性: 至少 IDictionary 的不能被深拷贝.
+            </summary>
+            <param name="obj">被拷贝的对象</param>
+            <returns>拷贝出来的对象</returns>
+        </member>
+        <member name="F:IMES.Infrastructure.Utility.Generates.intf.ISequenceConverter._mathSequenceWithCarryNumberRule">
+            <summary>
+            進位規則
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:IMES.Infrastructure.Utility.RuleSets.RuleDesigner">
+            <summary>
+            Rule/RuleSet的设计器
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.Utility.RuleSets.RemotingRuleSetManager">
+            <summary>
+            以文件为存储形式的RuleSet的管理器
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.Utility.RuleSets.IRulesetManager">
+            <summary>
+            RuleSet的管理接口
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.RuleSets.IRulesetManager.getRuleSet(System.String,System.String,System.String)">
+            <summary>
+            获取一个指定的RuleSet
+            </summary>
+            <param name="site">流程所在Site</param>
+            <param name="station">流程所在Station</param>
+            <param name="name">RuleSetName</param>
+            <returns>RuleSet</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.RuleSets.IRulesetManager.saveRuleSet(System.String,System.String,System.String,System.Workflow.Activities.Rules.RuleSet)">
+            <summary>
+            保存一个RuleSet
+            </summary>
+            <param name="site">流程所在Site</param>
+            <param name="station">流程所在Station</param>
+            <param name="name">RuleSet Name</param>
+            <param name="ruleSet">RuleSet内容</param>
+            <remarks></remarks>
+        </member>
+        <member name="T:IMES.Infrastructure.Utility.Generates.SNTemplateManager">
+            <summary>
+            序列号生成管理类
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Utility.Generates.SNTemplateManager._keyAndArray">
+            <summary>
+            SN Generate模版緩存
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:IMES.Infrastructure.Utility.Generates.SNTemplateManager._snRuleFileDirtyBits">
+            <summary>
+            Rules緩存賍位
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.Generates.SNTemplateManager.Add(System.String,IMES.Infrastructure.Utility.Generates.IConverter[])">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="array"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Utility.ToStringTool">
+            <summary>
+            对象字符串化类
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.ToStringTool.ToString(System.Object)">
+            <summary>
+            将Object转换成字符串
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.ToStringTool.ObjFieldsToString(System.Object)">
+            <summary>
+            将实体的属性字段拼成串
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.ToStringTool.IsLike(System.String,System.String)">
+            <summary>
+            字符串是否符合SQL通配符表达式(LIKE)
+            </summary>
+            <param name="sqlWildcardStr">SQL通配符表达式</param>
+            <param name="strToCmp">要检查的字符串</param>
+            <returns>LIKE与否</returns>
+        </member>
+        <member name="T:IMES.Infrastructure.Utility.RuleSets.DeserializedRuleSetsManager">
+            <summary>
+            Rule Set反序列化管理器
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.RuleSets.DeserializedRuleSetsManager.LoadAll">
+            <summary>
+            预加载所有的Rule Set到主存.
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.RuleSets.DeserializedRuleSetsManager.getRuleSet(System.String,System.String)">
+            <summary>
+            获得一个Rule Set
+            </summary>
+            <param name="fileName"></param>
+            <param name="ruleSetName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:IMES.Infrastructure.Utility.RuleSets.DeserializedRuleSetsManager.getInstance">
+            <summary>
+            Singleton Method
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.Utility.Cache.DataChangeMediator">
+            <summary>
+            Cache数据更新协调管理器
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.Cache.DataChangeMediator.AddChangeDemand(IMES.DataModel.CacheUpdateInfo)">
+            <summary>
+            增加一个Cache变更请求
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.Cache.DataChangeMediator.Start">
+            <summary>
+            开始处理线程
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.Cache.DataChangeMediator.Process">
+            <summary>
+            处理线程的过程
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.Cache.DataChangeMediator.CheckCacheSwitchOpen(System.String)">
+            <summary>
+            判断一种Cache的开关是否是打开状态
+            </summary>
+            <param name="cst"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.Cache.DataChangeMediator.RefreshAllCache">
+            <summary>
+            做一次所有Cache的刷新操作
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.Cache.DataChangeMediator.UpdateCacheNow">
+            <summary>
+            处理一个Cache变更请求
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.Utility.Cache.DataChangeMediator.CacheSwitchType">
+            <summary>
+            Cache的种类
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.Utility.Generates.WeekRuleResult">
+            <summary>
+            哪一年的第幾周的第幾天
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.Utility.RuleSets.FileRuleSetManager">
+            <summary>
+            以文件为存储形式的RuleSet的管理器
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.Generates.WeekRuleEngine.Calculate(System.String,System.DateTime)">
+            <summary>
+            根據WeekRule計算指定日期屬於哪一年的哪一周哪一天
+            </summary>
+            <param name="weekRule">由3位組成:[周劃分點(必需)(取值：0-6 (Sun.to Sat.))] + [允許"少於7天的周"(必需) (取值：0或1)] + [六种交界比例的歸前或歸后選擇(當上一位為0時必需賦有效值)(取值：0-6),或無效值X,X代表無效]</param>
+            <param name="dat">需要計算的日期</param>
+            <returns>計算的結果實體</returns>
+        </member>
+        <member name="T:IMES.Infrastructure.Utility.Generates.SNComposer">
+            <summary>
+            序列号生成器
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.Generates.SNComposer.Add(IMES.Infrastructure.Utility.Generates.NumberElement)">
+            <summary>
+            Add a number element
+            </summary>
+            <param name="ne">The number element to add</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.Generates.SNComposer.Calculate">
+            <summary>
+            Calculate the value of the number that is represented by the content
+            </summary>
+            <returns>The SN without the sequence tail</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.Generates.SNComposer.Modify(System.Int32,IMES.Infrastructure.Utility.Generates.NumberElement)">
+            <summary>
+            Modify a number element
+            </summary>
+            <param name="idx"></param>
+            <param name="ne"></param>
+            <remarks></remarks>
+        </member>
+        <member name="T:IMES.Infrastructure.Utility.Tools.BackgroundThreadNotifier">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Utility.Tools.BackgroundThreadNotifier.ServiceStopNotifier">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule">
+            <summary>
+            有進位數學Bits數規則
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.#ctor(System.Int32,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="iBits"></param>
+            <param name="charCollection"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.#ctor(System.Int32,System.String,System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="iBits"></param>
+            <param name="charCollection"></param>
+            <param name="maxNumber"></param>
+            <param name="minNumber"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.#ctor(System.Int32,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="iBits"></param>
+            <param name="charCollection"></param>
+            <param name="maxNumber"></param>
+            <param name="minNumber"></param>
+            <param name="iStep"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.IncreaseToNumber(System.String,System.Int32)">
+            <summary>
+            得到一個數步進幾次的值
+            </summary>
+            <param name="numberStart">起始數</param>
+            <param name="count">步進次數</param>
+            <returns>所得值</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.CalculateDifference(System.String,System.String)">
+            <summary>
+            计算2个数之间的差
+            </summary>
+            <param name="numberStart"></param>
+            <param name="numberEnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.Increase(System.Char)">
+            <summary>
+            一位字符增一個Step
+            </summary>
+            <param name="bit"></param>
+            <returns>得到的步進一次結果</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.Increase(System.Char,System.Int32)">
+            <summary>
+            一位字符增指定次數
+            </summary>
+            <param name="bit"></param>
+            <returns>得到的步進一次結果</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.Cmp(System.Char,System.Char)">
+            <summary>
+            比較2個字符在charCollection中的大小關係
+            </summary>
+            <param name="bit1"></param>
+            <param name="bit2"></param>
+            <returns>1: 大於,0: 等於, -1: 小於</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.Cmp(System.String,System.String)">
+            <summary>
+            比較2個數的大小關係
+            </summary>
+            <param name="num1"></param>
+            <param name="num2"></param>
+            <returns>1: 大於,0: 等於, -1: 小於</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.Substract(System.Char,System.Char)">
+            <summary>
+            bit1 - bit2
+            </summary>
+            <param name="bit1"></param>
+            <param name="bit2"></param>
+            <returns>差</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.InCharCollection(System.String)">
+            <summary>
+            判斷一個數的字符是否在指定字符集中
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.GetGeneralMaxNumber">
+            <summary>
+            獲得現有bit和charCollection的最大數
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.GetGeneralMinNumber">
+            <summary>
+            獲得現有bit和charCollection的最小數
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.iBits">
+            <summary>
+            最大位数
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.MaxNumber">
+            <summary>
+            最大值
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.MinNumber">
+            <summary>
+            最小值
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Utility.MathSequenceWithCarryNumberRule.iStep">
+            <summary>
+            步进值
+            </summary>
+        </member>
+    </members>
+</doc>

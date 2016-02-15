@@ -1,0 +1,10 @@
+C:\Projects\Test\FOPCommandWrap\TestForm\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\Test\FOPCommandWrap\TestForm\obj\Debug\TestForm.Form1.resources
+C:\Projects\Test\FOPCommandWrap\TestForm\obj\Debug\TestForm.Properties.Resources.resources
+C:\Projects\Test\FOPCommandWrap\TestForm\obj\Debug\TestForm.csproj.GenerateResource.Cache
+C:\Projects\Test\FOPCommandWrap\TestForm\bin\Debug\TestForm.exe
+C:\Projects\Test\FOPCommandWrap\TestForm\bin\Debug\TestForm.pdb
+C:\Projects\Test\FOPCommandWrap\TestForm\bin\Debug\FOPWrap.dll
+C:\Projects\Test\FOPCommandWrap\TestForm\bin\Debug\FOPWrap.pdb
+C:\Projects\Test\FOPCommandWrap\TestForm\obj\Debug\TestForm.exe
+C:\Projects\Test\FOPCommandWrap\TestForm\obj\Debug\TestForm.pdb

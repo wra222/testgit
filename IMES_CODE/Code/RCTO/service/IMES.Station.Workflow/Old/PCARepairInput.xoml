@@ -1,0 +1,16 @@
+<ns0:BaseFlow Customer="{p1:Null}" x:Name="PCARepairInput" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetMB Customer="{ActivityBind PCARepairInput,Path=Customer}" x:Name="getMB1" SessionType="{ActivityBind PCARepairInput,Path=SessionType}" Editor="{ActivityBind PCARepairInput,Path=Editor}" Station="{ActivityBind PCARepairInput,Path=Station}" MBSnSessionKey="{x:Null}" Line="{ActivityBind PCARepairInput,Path=PdLine}" Key="{ActivityBind PCARepairInput,Path=Key}" />
+	<ns0:BlockStation Customer="{ActivityBind PCARepairInput,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind PCARepairInput,Path=SessionType}" Editor="{ActivityBind PCARepairInput,Path=Editor}" ProcessType="MB" Station="{ActivityBind PCARepairInput,Path=Station}" Line="{ActivityBind PCARepairInput,Path=PdLine}" Key="{ActivityBind PCARepairInput,Path=Key}" />
+	<ns0:DBScope Station="{ActivityBind PCARepairInput,Path=Station}" x:Name="dbScope1" Key="{ActivityBind PCARepairInput,Path=Key}" SessionType="{ActivityBind PCARepairInput,Path=SessionType}">
+		<IfElseActivity x:Name="ifFirstRepair">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="IsFirstRepair" />
+				</IfElseBranchActivity.Condition>
+				<ns0:GenerateRepairByTestLog Customer="{ActivityBind PCARepairInput,Path=Customer}" x:Name="generateRepairByTestLog1" SessionType="{ActivityBind PCARepairInput,Path=SessionType}" Editor="{ActivityBind PCARepairInput,Path=Editor}" RepairStationType="SA" Station="{ActivityBind PCARepairInput,Path=Station}" Line="{ActivityBind PCARepairInput,Path=PdLine}" Key="{ActivityBind PCARepairInput,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<ns0:UpdateMBStatus Customer="{ActivityBind PCARepairInput,Path=Customer}" Station="{ActivityBind PCARepairInput,Path=Station}" SessionType="{ActivityBind PCARepairInput,Path=SessionType}" ManualStation="{x:Null}" Editor="{ActivityBind PCARepairInput,Path=Editor}" IsPass="Pass" x:Name="updateMBStatus1" Line="{ActivityBind PCARepairInput,Path=PdLine}" Key="{ActivityBind PCARepairInput,Path=Key}" />
+		<ns0:WriteMBLog Customer="{ActivityBind PCARepairInput,Path=Customer}" Station="{ActivityBind PCARepairInput,Path=Station}" SessionType="{ActivityBind PCARepairInput,Path=SessionType}" Editor="{ActivityBind PCARepairInput,Path=Editor}" IsPass="True" x:Name="writeMBLog1" IsSingle="True" Line="{ActivityBind PCARepairInput,Path=PdLine}" Key="{ActivityBind PCARepairInput,Path=Key}" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

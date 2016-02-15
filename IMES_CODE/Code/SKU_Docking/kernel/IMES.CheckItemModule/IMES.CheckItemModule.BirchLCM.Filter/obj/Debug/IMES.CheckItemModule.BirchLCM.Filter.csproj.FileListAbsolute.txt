@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.CheckItemModule.BirchLCM.Filter.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.CheckItemModule.BirchLCM.Filter.pdb
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.BirchLCM.Filter\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.BirchLCM.Filter\obj\Debug\IMES.CheckItemModule.BirchLCM.Filter.dll
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.BirchLCM.Filter\obj\Debug\IMES.CheckItemModule.BirchLCM.Filter.pdb

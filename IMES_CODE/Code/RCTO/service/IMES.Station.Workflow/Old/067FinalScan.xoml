@@ -1,0 +1,21 @@
+<ns0:BaseFlow Customer="{p1:Null}" x:Name="_067FinalScan" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" SessionType="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetPickIDCtrlByPickID Customer="{ActivityBind _067FinalScan,Path=Customer}" x:Name="getForwarderByTruckID1" Editor="{ActivityBind _067FinalScan,Path=Editor}" Station="{ActivityBind _067FinalScan,Path=Station}" SessionType="{ActivityBind _067FinalScan,Path=SessionType}" Line="{ActivityBind _067FinalScan,Path=PdLine}" Key="{ActivityBind _067FinalScan,Path=Key}" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="WhileCondition" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind _067FinalScan,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind _067FinalScan,Path=SessionType}" Editor="{ActivityBind _067FinalScan,Path=Editor}" Station="{ActivityBind _067FinalScan,Path=Station}" Line="{ActivityBind _067FinalScan,Path=PdLine}" Key="{ActivityBind _067FinalScan,Path=Key}" />
+			<IfElseActivity x:Name="ifElseActivity1">
+				<IfElseBranchActivity x:Name="ifNotComplete">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplete" />
+					</IfElseBranchActivity.Condition>
+					<ns0:DBScope Station="{ActivityBind _067FinalScan,Path=Station}" SessionType="{ActivityBind _067FinalScan,Path=SessionType}" x:Name="dbScopeOther" Key="{ActivityBind _067FinalScan,Path=Key}">
+						<ns0:UpdateFwdPltStatus Customer="{ActivityBind _067FinalScan,Path=Customer}" x:Name="SaveDataForPickCard1" Editor="{ActivityBind _067FinalScan,Path=Editor}" Station="{ActivityBind _067FinalScan,Path=Station}" SessionType="{ActivityBind _067FinalScan,Path=SessionType}" Line="{ActivityBind _067FinalScan,Path=PdLine}" Key="{ActivityBind _067FinalScan,Path=Key}" />
+					</ns0:DBScope>
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+</ns0:BaseFlow>

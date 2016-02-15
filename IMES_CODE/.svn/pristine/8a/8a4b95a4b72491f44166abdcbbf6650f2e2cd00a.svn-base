@@ -1,0 +1,1308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cn_CmbMacRangeStatusItemText1" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="cn_CmbMacRangeStatusItemText2" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="cn_CmbMacRangeStatusItemText3" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="cn_CmbMacRangeStatusItemValue1" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="cn_CmbMacRangeStatusItemValue2" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="cn_CmbMacRangeStatusItemValue3" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="cn_CmbMaintainCheckBitText1" xml:space="preserve">
+    <value>不包含</value>
+  </data>
+  <data name="cn_CmbMaintainCheckBitText2" xml:space="preserve">
+    <value>包含</value>
+  </data>
+  <data name="cn_CmbMaintainCheckBitValue1" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cn_CmbMaintainCheckBitValue2" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cn_CmbMaintainCheckItemTypeText1" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="cn_CmbMaintainCheckItemTypeText2" xml:space="preserve">
+    <value>PartType</value>
+  </data>
+  <data name="cn_CmbMaintainCheckItemTypeText3" xml:space="preserve">
+    <value>PN</value>
+  </data>
+  <data name="cn_CmbMaintainCheckTypeText1" xml:space="preserve">
+    <value>CheckValue</value>
+  </data>
+  <data name="cn_CmbMaintainCheckTypeText2" xml:space="preserve">
+    <value>CheckExist</value>
+  </data>
+  <data name="cn_CmbMaintainCheckTypeText3" xml:space="preserve">
+    <value>CheckExistValue</value>
+  </data>
+  <data name="cn_CmbMaintainCheckTypeText4" xml:space="preserve">
+    <value>CollectValue </value>
+  </data>
+  <data name="cn_CmbMaintainCheckTypeValue1" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cn_CmbMaintainCheckTypeValue2" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cn_CmbMaintainCheckTypeValue3" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cn_CmbMaintainCheckTypeValue4" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cn_CmbMaintainItemTypeText1" xml:space="preserve">
+    <value>基础属性</value>
+  </data>
+  <data name="cn_CmbMaintainItemTypeText2" xml:space="preserve">
+    <value>扩展属性</value>
+  </data>
+  <data name="cn_CmbMaintainItemTypeText3" xml:space="preserve">
+    <value>Model属性</value>
+  </data>
+  <data name="cn_CmbMaintainItemTypeText4" xml:space="preserve">
+    <value>PartType</value>
+  </data>
+  <data name="cn_CmbMaintainItemTypeValue1" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cn_CmbMaintainItemTypeValue2" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cn_CmbMaintainItemTypeValue3" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cn_CmbMaintainItemTypeValue4" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cn_CmbMaintainModeText1" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="cn_CmbMaintainModeText2" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="cn_CmbMaintainModeValue1" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cn_CmbMaintainModeValue2" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cn_CmbMaintainNeedCheckText1" xml:space="preserve">
+    <value>不需要</value>
+  </data>
+  <data name="cn_CmbMaintainNeedCheckText2" xml:space="preserve">
+    <value>需要通用Check</value>
+  </data>
+  <data name="cn_CmbMaintainNeedCheckValue1" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cn_CmbMaintainNeedCheckValue2" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cn_CmbMaintainNeedSaveText1" xml:space="preserve">
+    <value>不需要</value>
+  </data>
+  <data name="cn_CmbMaintainNeedSaveText2" xml:space="preserve">
+    <value>需要通用保存</value>
+  </data>
+  <data name="cn_CmbMaintainNeedSaveText3" xml:space="preserve">
+    <value>需要特殊保存</value>
+  </data>
+  <data name="cn_CmbMaintainNeedSaveValue1" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cn_CmbMaintainNeedSaveValue2" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cn_CmbMaintainNeedSaveValue3" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cn_CmbMaintainValueTypeText1" xml:space="preserve">
+    <value>SN</value>
+  </data>
+  <data name="cn_CmbMaintainValueTypeText2" xml:space="preserve">
+    <value>PN</value>
+  </data>
+  <data name="cn_CmbMaintainValueTypeText3" xml:space="preserve">
+    <value>GCode</value>
+  </data>
+  <data name="cn_CmbWarrantyCodeItemText1" xml:space="preserve">
+    <value>J-正批货</value>
+  </data>
+  <data name="cn_CmbWarrantyCodeItemText2" xml:space="preserve">
+    <value>H-IEC FRU</value>
+  </data>
+  <data name="cn_CmbWarrantyCodeItemText3" xml:space="preserve">
+    <value>C-IPC FRU</value>
+  </data>
+  <data name="cn_CmbWarrantyCodeItemText4" xml:space="preserve">
+    <value>P-IPC RMA</value>
+  </data>
+  <data name="cn_CmbWarrantyCodeItemValue1" xml:space="preserve">
+    <value>J</value>
+  </data>
+  <data name="cn_CmbWarrantyCodeItemValue2" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="cn_CmbWarrantyCodeItemValue3" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="cn_CmbWarrantyCodeItemValue4" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="cn_CmbWarrantyFormatItemText1" xml:space="preserve">
+    <value>YYM</value>
+  </data>
+  <data name="cn_CmbWarrantyFormatItemText2" xml:space="preserve">
+    <value>YMM</value>
+  </data>
+  <data name="cn_CmbWarrantyFormatItemValue1" xml:space="preserve">
+    <value>YYM</value>
+  </data>
+  <data name="cn_CmbWarrantyFormatItemValue2" xml:space="preserve">
+    <value>YMM</value>
+  </data>
+  <data name="cn_CmbWarrantyTypeItemText1" xml:space="preserve">
+    <value>KPDateCode</value>
+  </data>
+  <data name="cn_CmbWarrantyTypeItemText2" xml:space="preserve">
+    <value>MBDateCode</value>
+  </data>
+  <data name="cn_CmbWarrantyTypeItemText3" xml:space="preserve">
+    <value>VBDateCode</value>
+  </data>
+  <data name="cn_CmbWarrantyTypeItemValue1" xml:space="preserve">
+    <value>KPDateCode</value>
+  </data>
+  <data name="cn_CmbWarrantyTypeItemValue2" xml:space="preserve">
+    <value>MBDateCode</value>
+  </data>
+  <data name="cn_CmbWarrantyTypeItemValue3" xml:space="preserve">
+    <value>VBDateCode</value>
+  </data>
+  <data name="eng_CmbMacRangeStatusItemText1" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="eng_CmbMacRangeStatusItemText2" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="eng_CmbMacRangeStatusItemText3" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="eng_CmbMacRangeStatusItemValue1" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="eng_CmbMacRangeStatusItemValue2" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="eng_CmbMacRangeStatusItemValue3" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="eng_CmbMaintainCheckBitText1" xml:space="preserve">
+    <value>不包含</value>
+  </data>
+  <data name="eng_CmbMaintainCheckBitText2" xml:space="preserve">
+    <value>包含</value>
+  </data>
+  <data name="eng_CmbMaintainCheckBitValue1" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="eng_CmbMaintainCheckBitValue2" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="eng_CmbMaintainCheckItemTypeText1" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="eng_CmbMaintainCheckItemTypeText2" xml:space="preserve">
+    <value>PartType</value>
+  </data>
+  <data name="eng_CmbMaintainCheckItemTypeText3" xml:space="preserve">
+    <value>PN</value>
+  </data>
+  <data name="eng_CmbMaintainCheckTypeText1" xml:space="preserve">
+    <value>CheckValue</value>
+  </data>
+  <data name="eng_CmbMaintainCheckTypeText2" xml:space="preserve">
+    <value>CheckExist</value>
+  </data>
+  <data name="eng_CmbMaintainCheckTypeText3" xml:space="preserve">
+    <value>CheckExistValue</value>
+  </data>
+  <data name="eng_CmbMaintainCheckTypeText4" xml:space="preserve">
+    <value>CollectValue </value>
+  </data>
+  <data name="eng_CmbMaintainCheckTypeValue1" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="eng_CmbMaintainCheckTypeValue2" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="eng_CmbMaintainCheckTypeValue3" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="eng_CmbMaintainCheckTypeValue4" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="eng_CmbMaintainItemTypeText1" xml:space="preserve">
+    <value>基础属性</value>
+  </data>
+  <data name="eng_CmbMaintainItemTypeText2" xml:space="preserve">
+    <value>扩展属性</value>
+  </data>
+  <data name="eng_CmbMaintainItemTypeText3" xml:space="preserve">
+    <value>Model属性</value>
+  </data>
+  <data name="eng_CmbMaintainItemTypeText4" xml:space="preserve">
+    <value>PartType</value>
+  </data>
+  <data name="eng_CmbMaintainItemTypeValue1" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="eng_CmbMaintainItemTypeValue2" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="eng_CmbMaintainItemTypeValue3" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="eng_CmbMaintainItemTypeValue4" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="eng_CmbMaintainModeText1" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="eng_CmbMaintainModeText2" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="eng_CmbMaintainModeValue1" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="eng_CmbMaintainModeValue2" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="eng_CmbMaintainNeedCheckText1" xml:space="preserve">
+    <value>不需要</value>
+  </data>
+  <data name="eng_CmbMaintainNeedCheckText2" xml:space="preserve">
+    <value>需要通用Check</value>
+  </data>
+  <data name="eng_CmbMaintainNeedCheckValue1" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="eng_CmbMaintainNeedCheckValue2" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="eng_CmbMaintainNeedSaveText1" xml:space="preserve">
+    <value>不需要</value>
+  </data>
+  <data name="eng_CmbMaintainNeedSaveText2" xml:space="preserve">
+    <value>需要通用保存</value>
+  </data>
+  <data name="eng_CmbMaintainNeedSaveText3" xml:space="preserve">
+    <value>需要特殊保存</value>
+  </data>
+  <data name="eng_CmbMaintainNeedSaveValue1" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="eng_CmbMaintainNeedSaveValue2" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="eng_CmbMaintainNeedSaveValue3" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="eng_CmbMaintainValueTypeText1" xml:space="preserve">
+    <value>SN</value>
+  </data>
+  <data name="eng_CmbMaintainValueTypeText2" xml:space="preserve">
+    <value>PN</value>
+  </data>
+  <data name="eng_CmbMaintainValueTypeText3" xml:space="preserve">
+    <value>GCode</value>
+  </data>
+  <data name="eng_CmbWarrantyCodeItemText1" xml:space="preserve">
+    <value>J-正批货</value>
+  </data>
+  <data name="eng_CmbWarrantyCodeItemText2" xml:space="preserve">
+    <value>H-IEC FRU</value>
+  </data>
+  <data name="eng_CmbWarrantyCodeItemText3" xml:space="preserve">
+    <value>C-IPC FRU</value>
+  </data>
+  <data name="eng_CmbWarrantyCodeItemText4" xml:space="preserve">
+    <value>P-IPC RMA</value>
+  </data>
+  <data name="eng_CmbWarrantyCodeItemValue1" xml:space="preserve">
+    <value>J</value>
+  </data>
+  <data name="eng_CmbWarrantyCodeItemValue2" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="eng_CmbWarrantyCodeItemValue3" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="eng_CmbWarrantyCodeItemValue4" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="eng_CmbWarrantyFormatItemText1" xml:space="preserve">
+    <value>YYM</value>
+  </data>
+  <data name="eng_CmbWarrantyFormatItemText2" xml:space="preserve">
+    <value>YMM</value>
+  </data>
+  <data name="eng_CmbWarrantyFormatItemValue1" xml:space="preserve">
+    <value>YYM</value>
+  </data>
+  <data name="eng_CmbWarrantyFormatItemValue2" xml:space="preserve">
+    <value>YMM</value>
+  </data>
+  <data name="eng_CmbWarrantyTypeItemText1" xml:space="preserve">
+    <value>KPDateCode</value>
+  </data>
+  <data name="eng_CmbWarrantyTypeItemText2" xml:space="preserve">
+    <value>MBDateCode</value>
+  </data>
+  <data name="eng_CmbWarrantyTypeItemText3" xml:space="preserve">
+    <value>VBDateCode</value>
+  </data>
+  <data name="eng_CmbWarrantyTypeItemValue1" xml:space="preserve">
+    <value>KPDateCode</value>
+  </data>
+  <data name="eng_CmbWarrantyTypeItemValue2" xml:space="preserve">
+    <value>MBDateCode</value>
+  </data>
+  <data name="eng_CmbWarrantyTypeItemValue3" xml:space="preserve">
+    <value>VBDateCode</value>
+  </data>
+  <data name="cn_CmbModelStatusItemValue1" xml:space="preserve">
+    <value>normal</value>
+  </data>
+  <data name="cn_CmbModelStatusItemValue2" xml:space="preserve">
+    <value>hold</value>
+  </data>
+  <data name="cn_CmbShipTypeItemValue1" xml:space="preserve">
+    <value>PC</value>
+  </data>
+  <data name="cn_CmbShipTypeItemValue2" xml:space="preserve">
+    <value>FRU</value>
+  </data>
+  <data name="cn_CmbShipTypeItemValue3" xml:space="preserve">
+    <value>BaseModel</value>
+  </data>
+  <data name="eng_CmbModelStatusItemValue1" xml:space="preserve">
+    <value>normal</value>
+  </data>
+  <data name="eng_CmbModelStatusItemValue2" xml:space="preserve">
+    <value>hold</value>
+  </data>
+  <data name="eng_CmbShipTypeItemValue1" xml:space="preserve">
+    <value>PC</value>
+  </data>
+  <data name="eng_CmbShipTypeItemValue2" xml:space="preserve">
+    <value>FRU</value>
+  </data>
+  <data name="eng_CmbShipTypeItemValue3" xml:space="preserve">
+    <value>BaseModel</value>
+  </data>
+  <data name="cn_CmbMaintainCheckItemTypeValue1" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cn_CmbMaintainCheckItemTypeValue2" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cn_CmbMaintainCheckItemTypeValue3" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="eng_CmbMaintainCheckItemTypeValue1" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="eng_CmbMaintainCheckItemTypeValue2" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="eng_CmbMaintainCheckItemTypeValue3" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cn_CmbMaintainStationObjectText1" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="cn_CmbMaintainStationObjectText2" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="cn_CmbMaintainStationObjectText3" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="cn_CmbMaintainStationTypeText1" xml:space="preserve">
+    <value>SATest</value>
+  </data>
+  <data name="cn_CmbMaintainStationTypeText2" xml:space="preserve">
+    <value>SARepair</value>
+  </data>
+  <data name="cn_CmbMaintainStationTypeText3" xml:space="preserve">
+    <value>SAOperation</value>
+  </data>
+  <data name="cn_CmbMaintainStationTypeText4" xml:space="preserve">
+    <value>FATest</value>
+  </data>
+  <data name="cn_CmbMaintainStationTypeText5" xml:space="preserve">
+    <value>FARepair</value>
+  </data>
+  <data name="cn_CmbMaintainStationTypeText6" xml:space="preserve">
+    <value>FAOperation</value>
+  </data>
+  <data name="eng_CmbMaintainStationObjectText1" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="eng_CmbMaintainStationObjectText2" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="eng_CmbMaintainStationObjectText3" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="eng_CmbMaintainStationTypeText1" xml:space="preserve">
+    <value>SATest</value>
+  </data>
+  <data name="eng_CmbMaintainStationTypeText2" xml:space="preserve">
+    <value>SARepair</value>
+  </data>
+  <data name="eng_CmbMaintainStationTypeText3" xml:space="preserve">
+    <value>SAOperation</value>
+  </data>
+  <data name="eng_CmbMaintainStationTypeText4" xml:space="preserve">
+    <value>FATest</value>
+  </data>
+  <data name="eng_CmbMaintainStationTypeText5" xml:space="preserve">
+    <value>FARepair</value>
+  </data>
+  <data name="eng_CmbMaintainStationTypeText6" xml:space="preserve">
+    <value>FAOperation</value>
+  </data>
+  <data name="cn_CmbMaintainStationObjectValue1" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cn_CmbMaintainStationObjectValue2" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cn_CmbMaintainStationObjectValue3" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="eng_CmbMaintainStationObjectValue1" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="eng_CmbMaintainStationObjectValue2" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="eng_CmbMaintainStationObjectValue3" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cn_CmbMaintainStationTypeText7" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="eng_CmbMaintainStationTypeText7" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckItemText1" xml:space="preserve">
+    <value>PoNo</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckItemText2" xml:space="preserve">
+    <value>AST</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckItemText3" xml:space="preserve">
+    <value>UUID</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckItemText4" xml:space="preserve">
+    <value>MAC</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckItemText5" xml:space="preserve">
+    <value>CustPo</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckItemText6" xml:space="preserve">
+    <value>Wareless MAC</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckItemText7" xml:space="preserve">
+    <value>OrdRefrence</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckItemValue1" xml:space="preserve">
+    <value>PoNo</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckItemValue2" xml:space="preserve">
+    <value>AST</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckItemValue3" xml:space="preserve">
+    <value>UUID</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckItemValue4" xml:space="preserve">
+    <value>MAC</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckItemValue5" xml:space="preserve">
+    <value>CustPo</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckItemValue6" xml:space="preserve">
+    <value>Wareless MAC</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckItemValue7" xml:space="preserve">
+    <value>OrdRefrence</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckStationText1" xml:space="preserve">
+    <value>65 After MVS</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckStationText2" xml:space="preserve">
+    <value>8C Combine Pizza</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckStationText3" xml:space="preserve">
+    <value>85 Unit Weight</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckStationValue1" xml:space="preserve">
+    <value>65</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckStationValue2" xml:space="preserve">
+    <value>8C</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckStationValue3" xml:space="preserve">
+    <value>85</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckTypeText1" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckTypeText2" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckTypeText3" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckTypeText4" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckTypeValue1" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckTypeValue2" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckTypeValue3" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckTypeValue4" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckItemText1" xml:space="preserve">
+    <value>PoNo</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckItemText2" xml:space="preserve">
+    <value>AST</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckItemText3" xml:space="preserve">
+    <value>UUID</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckItemText4" xml:space="preserve">
+    <value>MAC</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckItemText5" xml:space="preserve">
+    <value>CustPo</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckItemText6" xml:space="preserve">
+    <value>Wareless MAC</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckItemText7" xml:space="preserve">
+    <value>OrdRefrence</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckItemValue1" xml:space="preserve">
+    <value>PoNo</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckItemValue2" xml:space="preserve">
+    <value>AST</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckItemValue3" xml:space="preserve">
+    <value>UUID</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckItemValue4" xml:space="preserve">
+    <value>MAC</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckItemValue5" xml:space="preserve">
+    <value>CustPo</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckItemValue6" xml:space="preserve">
+    <value>Wareless MAC</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckItemValue7" xml:space="preserve">
+    <value>OrdRefrence</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckStationText1" xml:space="preserve">
+    <value>65 After MVS</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckStationText2" xml:space="preserve">
+    <value>8C Combine Pizza</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckStationText3" xml:space="preserve">
+    <value>85 Unit Weight</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckStationValue1" xml:space="preserve">
+    <value>65</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckStationValue2" xml:space="preserve">
+    <value>8C</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckStationValue3" xml:space="preserve">
+    <value>85</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckTypeText1" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckTypeText2" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckTypeText3" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckTypeText4" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckTypeValue1" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckTypeValue2" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckTypeValue3" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckTypeValue4" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="cn_CmbKittingCodeTypeText1" xml:space="preserve">
+    <value>FA Part</value>
+  </data>
+  <data name="cn_CmbKittingCodeTypeValue1" xml:space="preserve">
+    <value>FA Part</value>
+  </data>
+  <data name="eng_CmbKittingCodeTypeText1" xml:space="preserve">
+    <value>FA Part</value>
+  </data>
+  <data name="eng_CmbKittingCodeTypeValue1" xml:space="preserve">
+    <value>FA Part</value>
+  </data>
+  <data name="cn_CmbKittingCodeTypeText2" xml:space="preserve">
+    <value>FA Label</value>
+  </data>
+  <data name="cn_CmbKittingCodeTypeText3" xml:space="preserve">
+    <value>PAK Part</value>
+  </data>
+  <data name="cn_CmbKittingCodeTypeText4" xml:space="preserve">
+    <value>PAK Label</value>
+  </data>
+  <data name="cn_CmbKittingCodeTypeText5" xml:space="preserve">
+    <value>FA PdLine</value>
+  </data>
+  <data name="cn_CmbKittingCodeTypeText6" xml:space="preserve">
+    <value>PAK PdLine</value>
+  </data>
+  <data name="cn_CmbKittingCodeTypeValue2" xml:space="preserve">
+    <value>FA Label</value>
+  </data>
+  <data name="cn_CmbKittingCodeTypeValue3" xml:space="preserve">
+    <value>PAK Part</value>
+  </data>
+  <data name="cn_CmbKittingCodeTypeValue4" xml:space="preserve">
+    <value>PAK Label</value>
+  </data>
+  <data name="cn_CmbKittingCodeTypeValue5" xml:space="preserve">
+    <value>FA PdLine</value>
+  </data>
+  <data name="cn_CmbKittingCodeTypeValue6" xml:space="preserve">
+    <value>PAK PdLine</value>
+  </data>
+  <data name="eng_CmbKittingCodeTypeText2" xml:space="preserve">
+    <value>FA Label</value>
+  </data>
+  <data name="eng_CmbKittingCodeTypeText3" xml:space="preserve">
+    <value>PAK Part</value>
+  </data>
+  <data name="eng_CmbKittingCodeTypeText4" xml:space="preserve">
+    <value>PAK Label</value>
+  </data>
+  <data name="eng_CmbKittingCodeTypeText5" xml:space="preserve">
+    <value>FA PdLine</value>
+  </data>
+  <data name="eng_CmbKittingCodeTypeText6" xml:space="preserve">
+    <value>PAK PdLine</value>
+  </data>
+  <data name="eng_CmbKittingCodeTypeValue2" xml:space="preserve">
+    <value>FA Label</value>
+  </data>
+  <data name="eng_CmbKittingCodeTypeValue3" xml:space="preserve">
+    <value>PAK Part</value>
+  </data>
+  <data name="eng_CmbKittingCodeTypeValue4" xml:space="preserve">
+    <value>PAK Label</value>
+  </data>
+  <data name="eng_CmbKittingCodeTypeValue5" xml:space="preserve">
+    <value>FA PdLine</value>
+  </data>
+  <data name="eng_CmbKittingCodeTypeValue6" xml:space="preserve">
+    <value>PAK PdLine</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoKittingTypeText1" xml:space="preserve">
+    <value>FA Kitting</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoKittingTypeText2" xml:space="preserve">
+    <value>PAK Kitting</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoKittingTypeText3" xml:space="preserve">
+    <value>FA Label</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoKittingTypeText4" xml:space="preserve">
+    <value>PAK Label</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoKittingTypeValue1" xml:space="preserve">
+    <value>FA Kitting</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoKittingTypeValue2" xml:space="preserve">
+    <value>PAK Kitting</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoKittingTypeValue3" xml:space="preserve">
+    <value>FA Label</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoKittingTypeValue4" xml:space="preserve">
+    <value>PAK Label</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoKittingTypeText1" xml:space="preserve">
+    <value>FA Kitting</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoKittingTypeText2" xml:space="preserve">
+    <value>PAK Kitting</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoKittingTypeText3" xml:space="preserve">
+    <value>FA Label</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoKittingTypeText4" xml:space="preserve">
+    <value>PAK Label</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoKittingTypeValue1" xml:space="preserve">
+    <value>FA Kitting</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoKittingTypeValue2" xml:space="preserve">
+    <value>PAK Kitting</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoKittingTypeValue3" xml:space="preserve">
+    <value>FA Label</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoKittingTypeValue4" xml:space="preserve">
+    <value>PAK Label</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoStationText1" xml:space="preserve">
+    <value>DDD Kitting 1</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoStationText2" xml:space="preserve">
+    <value>DDD Kitting 2</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoStationText3" xml:space="preserve">
+    <value>DDD Kitting 3</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoStationText4" xml:space="preserve">
+    <value>DDD Kitting 4</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoStationText5" xml:space="preserve">
+    <value>DDD Kitting 5</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoStationText6" xml:space="preserve">
+    <value>DDD Kitting 6</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoStationValue1" xml:space="preserve">
+    <value>DDD Kitting 1</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoStationValue2" xml:space="preserve">
+    <value>DDD Kitting 2</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoStationValue3" xml:space="preserve">
+    <value>DDD Kitting 3</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoStationValue4" xml:space="preserve">
+    <value>DDD Kitting 4</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoStationValue5" xml:space="preserve">
+    <value>DDD Kitting 5</value>
+  </data>
+  <data name="cn_CmbMaintainLightNoStationValue6" xml:space="preserve">
+    <value>DDD Kitting 6</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoStationText1" xml:space="preserve">
+    <value>DDD Kitting 1</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoStationText2" xml:space="preserve">
+    <value>DDD Kitting 2</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoStationText3" xml:space="preserve">
+    <value>DDD Kitting 3</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoStationText4" xml:space="preserve">
+    <value>DDD Kitting 4</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoStationText5" xml:space="preserve">
+    <value>DDD Kitting 5</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoStationText6" xml:space="preserve">
+    <value>DDD Kitting 6</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoStationValue1" xml:space="preserve">
+    <value>DDD Kitting 1</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoStationValue2" xml:space="preserve">
+    <value>DDD Kitting 2</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoStationValue3" xml:space="preserve">
+    <value>DDD Kitting 3</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoStationValue4" xml:space="preserve">
+    <value>DDD Kitting 4</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoStationValue5" xml:space="preserve">
+    <value>DDD Kitting 5</value>
+  </data>
+  <data name="eng_CmbMaintainLightNoStationValue6" xml:space="preserve">
+    <value>DDD Kitting 6</value>
+  </data>
+  <data name="cn_CmbMaintainGradeGradeItemValue1" xml:space="preserve">
+    <value>UMA</value>
+  </data>
+  <data name="cn_CmbMaintainGradeGradeItemValue2" xml:space="preserve">
+    <value>DIS</value>
+  </data>
+  <data name="cn_CmbMaintainStationTypeText8" xml:space="preserve">
+    <value>PAKKitting</value>
+  </data>
+  <data name="eng_CmbMaintainGradeGradeItemValue1" xml:space="preserve">
+    <value>UMA</value>
+  </data>
+  <data name="eng_CmbMaintainGradeGradeItemValue2" xml:space="preserve">
+    <value>DIS</value>
+  </data>
+  <data name="eng_CmbMaintainStationTypeText8" xml:space="preserve">
+    <value>PAKKitting</value>
+  </data>
+  <data name="cn_CmbMaitainITCNDDefectCheckItemText1" xml:space="preserve">
+    <value>M/B</value>
+  </data>
+  <data name="cn_CmbMaitainITCNDDefectCheckItemText2" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="cn_CmbMaitainITCNDDefectCheckItemValue1" xml:space="preserve">
+    <value>M/B</value>
+  </data>
+  <data name="cn_CmbMaitainITCNDDefectCheckItemValue2" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="eng_CmbMaintainITCNDDefectCheckItemValue1" xml:space="preserve">
+    <value>M/B</value>
+  </data>
+  <data name="eng_CmbMaintainITCNDDefectCheckItemValue2" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="eng_CmbMaitainITCNDDefectCheckItemText1" xml:space="preserve">
+    <value>M/B</value>
+  </data>
+  <data name="eng_CmbMaitainITCNDDefectCheckItemText2" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="cn_CmbMaitainRepairInfoTypeText1" xml:space="preserve">
+    <value>SACause</value>
+  </data>
+  <data name="cn_CmbMaitainRepairInfoTypeText2" xml:space="preserve">
+    <value>FACause</value>
+  </data>
+  <data name="cn_CmbMaitainRepairInfoTypeText3" xml:space="preserve">
+    <value>RMACause</value>
+  </data>
+  <data name="cn_CmbMaitainRepairInfoTypeText4" xml:space="preserve">
+    <value>Obligation</value>
+  </data>
+  <data name="cn_CmbMaitainRepairInfoTypeText5" xml:space="preserve">
+    <value>MajorPart</value>
+  </data>
+  <data name="cn_CmbMaitainRepairInfoTypeText6" xml:space="preserve">
+    <value>Component</value>
+  </data>
+  <data name="cn_CmbMaitainRepairInfoTypeValue1" xml:space="preserve">
+    <value>SACause</value>
+  </data>
+  <data name="cn_CmbMaitainRepairInfoTypeValue2" xml:space="preserve">
+    <value>FACause</value>
+  </data>
+  <data name="cn_CmbMaitainRepairInfoTypeValue3" xml:space="preserve">
+    <value>RMACause</value>
+  </data>
+  <data name="cn_CmbMaitainRepairInfoTypeValue4" xml:space="preserve">
+    <value>Obligation</value>
+  </data>
+  <data name="cn_CmbMaitainRepairInfoTypeValue5" xml:space="preserve">
+    <value>MajorPart</value>
+  </data>
+  <data name="cn_CmbMaitainRepairInfoTypeValue6" xml:space="preserve">
+    <value>Component</value>
+  </data>
+  <data name="eng_CmbMaitainRepairInfoTypeText1" xml:space="preserve">
+    <value>SA Cause</value>
+  </data>
+  <data name="eng_CmbMaitainRepairInfoTypeText2" xml:space="preserve">
+    <value>FA Cause</value>
+  </data>
+  <data name="eng_CmbMaitainRepairInfoTypeText3" xml:space="preserve">
+    <value>RMA Cause</value>
+  </data>
+  <data name="eng_CmbMaitainRepairInfoTypeText4" xml:space="preserve">
+    <value>Obligation</value>
+  </data>
+  <data name="eng_CmbMaitainRepairInfoTypeText5" xml:space="preserve">
+    <value>Major Part</value>
+  </data>
+  <data name="eng_CmbMaitainRepairInfoTypeText6" xml:space="preserve">
+    <value>Component</value>
+  </data>
+  <data name="eng_CmbMaitainRepairInfoTypeValue1" xml:space="preserve">
+    <value>SA Cause</value>
+  </data>
+  <data name="eng_CmbMaitainRepairInfoTypeValue2" xml:space="preserve">
+    <value>FA Cause</value>
+  </data>
+  <data name="eng_CmbMaitainRepairInfoTypeValue3" xml:space="preserve">
+    <value>RMA Cause</value>
+  </data>
+  <data name="eng_CmbMaitainRepairInfoTypeValue4" xml:space="preserve">
+    <value>Obligation</value>
+  </data>
+  <data name="eng_CmbMaitainRepairInfoTypeValue5" xml:space="preserve">
+    <value>Major Part</value>
+  </data>
+  <data name="eng_CmbMaitainRepairInfoTypeValue6" xml:space="preserve">
+    <value>Component</value>
+  </data>
+  <data name="cn_CmbLightStationItemText1" xml:space="preserve">
+    <value>FA</value>
+  </data>
+  <data name="cn_CmbLightStationItemText2" xml:space="preserve">
+    <value>PA</value>
+  </data>
+  <data name="cn_CmbLightStationItemValue1" xml:space="preserve">
+    <value>FA</value>
+  </data>
+  <data name="cn_CmbLightStationItemValue2" xml:space="preserve">
+    <value>PA</value>
+  </data>
+  <data name="eng_CmbLightStationItemText1" xml:space="preserve">
+    <value>FA</value>
+  </data>
+  <data name="eng_CmbLightStationItemValue1" xml:space="preserve">
+    <value>FA</value>
+  </data>
+  <data name="eng_CmbLightStationItemValue2" xml:space="preserve">
+    <value>PA</value>
+  </data>
+  <data name="eng__CmbLightStationItemText2" xml:space="preserve">
+    <value>PA</value>
+  </data>
+  <data name="cn_CmbMaintainStationTypeText9" xml:space="preserve">
+    <value>FACombine</value>
+  </data>
+  <data name="eng_CmbMaintainStationTypeText9" xml:space="preserve">
+    <value>FACombine</value>
+  </data>
+  <data name="cn_CmbMaintainProcessTypeText1" xml:space="preserve">
+    <value>PCB</value>
+  </data>
+  <data name="cn_CmbMaintainProcessTypeText2" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="cn_CmbMaintainProcessTypeValue1" xml:space="preserve">
+    <value>PCB</value>
+  </data>
+  <data name="cn_CmbMaintainProcessTypeValue2" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="eng_CmbMaintainProcessTypeText1" xml:space="preserve">
+    <value>PCB</value>
+  </data>
+  <data name="eng_CmbMaintainProcessTypeText2" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="eng_CmbMaintainProcessTypeValue1" xml:space="preserve">
+    <value>PCB</value>
+  </data>
+  <data name="eng_CmbMaintainProcessTypeValue2" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="cn_CmbMaintainStageText1" xml:space="preserve">
+    <value>SMT</value>
+  </data>
+  <data name="cn_CmbMaintainStageText2" xml:space="preserve">
+    <value>SA</value>
+  </data>
+  <data name="cn_CmbMaintainStageText3" xml:space="preserve">
+    <value>FA</value>
+  </data>
+  <data name="cn_CmbMaintainStageText4" xml:space="preserve">
+    <value>PAK</value>
+  </data>
+  <data name="cn_CmbMaintainStageValue1" xml:space="preserve">
+    <value>SMT</value>
+  </data>
+  <data name="cn_CmbMaintainStageValue2" xml:space="preserve">
+    <value>SA</value>
+  </data>
+  <data name="cn_CmbMaintainStageValue3" xml:space="preserve">
+    <value>FA</value>
+  </data>
+  <data name="cn_CmbMaintainStageValue4" xml:space="preserve">
+    <value>PAK</value>
+  </data>
+  <data name="eng_CmbMaintainStageText1" xml:space="preserve">
+    <value>SMT</value>
+  </data>
+  <data name="eng_CmbMaintainStageText2" xml:space="preserve">
+    <value>SA</value>
+  </data>
+  <data name="eng_CmbMaintainStageText3" xml:space="preserve">
+    <value>FA</value>
+  </data>
+  <data name="eng_CmbMaintainStageText4" xml:space="preserve">
+    <value>PAK</value>
+  </data>
+  <data name="eng_CmbMaintainStageValue1" xml:space="preserve">
+    <value>SMT</value>
+  </data>
+  <data name="eng_CmbMaintainStageValue2" xml:space="preserve">
+    <value>SA</value>
+  </data>
+  <data name="eng_CmbMaintainStageValue3" xml:space="preserve">
+    <value>FA</value>
+  </data>
+  <data name="eng_CmbMaintainStageValue4" xml:space="preserve">
+    <value>PAK</value>
+  </data>
+  <data name="cn_CmbMaintainLightDescrItemValue1" xml:space="preserve">
+    <value>China label</value>
+  </data>
+  <data name="cn_CmbMaintainLightDescrItemValue2" xml:space="preserve">
+    <value>TaiWan label</value>
+  </data>
+  <data name="eng_CmbMaintainLightDescrItemValue1" xml:space="preserve">
+    <value>China label</value>
+  </data>
+  <data name="eng_CmbMaintainLightDescrItemValue2" xml:space="preserve">
+    <value>TaiWan label</value>
+  </data>
+  <data name="cn_CmbMaitainITCNDCheckSettingText1" xml:space="preserve">
+    <value>Exist</value>
+  </data>
+  <data name="cn_CmbMaitainITCNDCheckSettingText2" xml:space="preserve">
+    <value>Unique</value>
+  </data>
+  <data name="cn_CmbMaitainITCNDCheckSettingValue1" xml:space="preserve">
+    <value>Exist</value>
+  </data>
+  <data name="cn_CmbMaitainITCNDCheckSettingValue2" xml:space="preserve">
+    <value>Unique</value>
+  </data>
+  <data name="eng_CmbMaitainITCNDCheckSettingText1" xml:space="preserve">
+    <value>Exist</value>
+  </data>
+  <data name="eng_CmbMaitainITCNDCheckSettingText2" xml:space="preserve">
+    <value>Unique</value>
+  </data>
+  <data name="eng_CmbMaitainITCNDCheckSettingValue1" xml:space="preserve">
+    <value>Exist</value>
+  </data>
+  <data name="eng_CmbMaitainITCNDCheckSettingValue2" xml:space="preserve">
+    <value>Unique</value>
+  </data>
+  <data name="cn_CmbWarrantyTypeItemText0" xml:space="preserve">
+    <value>DKDateCode</value>
+  </data>
+  <data name="cn_CmbWarrantyTypeItemValue0" xml:space="preserve">
+    <value>DKDateCode</value>
+  </data>
+  <data name="eng_CmbWarrantyTypeItemText0" xml:space="preserve">
+    <value>DKDateCode</value>
+  </data>
+  <data name="eng_CmbWarrantyTypeItemValue0" xml:space="preserve">
+    <value>DKDateCode</value>
+  </data>
+  <data name="cn_CmbMBMaintainTypeText1" xml:space="preserve">
+    <value>C(PC)</value>
+  </data>
+  <data name="cn_CmbMBMaintainTypeText2" xml:space="preserve">
+    <value>R(RCTO)</value>
+  </data>
+  <data name="cn_CmbMBMaintainTypeValue1" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="cn_CmbMBMaintainTypeValue2" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="eng_CmbMBMaintainTypeText1" xml:space="preserve">
+    <value>C(PC)</value>
+  </data>
+  <data name="eng_CmbMBMaintainTypeText2" xml:space="preserve">
+    <value>R(RCTO)</value>
+  </data>
+  <data name="eng_CmbMBMaintainTypeValue1" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="eng_CmbMBMaintainTypeValue2" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckItemText8" xml:space="preserve">
+    <value>WM</value>
+  </data>
+  <data name="cn_CmbMaintainAssetRuleCheckItemValue8" xml:space="preserve">
+    <value>WM</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckItemText8" xml:space="preserve">
+    <value>WM</value>
+  </data>
+  <data name="eng_CmbMaintainAssetRuleCheckItemValue8" xml:space="preserve">
+    <value>WM</value>
+  </data>
+  <data name="cn_CmbMaintainStationTypeText10" xml:space="preserve">
+    <value>Material</value>
+  </data>
+  <data name="eng_CmbMaintainStationTypeText10" xml:space="preserve">
+    <value>Material</value>
+  </data>
+  <data name="cn_CmbMaintainProcessTypeText3" xml:space="preserve">
+    <value>Material</value>
+  </data>
+  <data name="cn_CmbMaintainProcessTypeValue3" xml:space="preserve">
+    <value>Material</value>
+  </data>
+  <data name="eng_CmbMaintainProcessTypeText3" xml:space="preserve">
+    <value>Material</value>
+  </data>
+  <data name="eng_CmbMaintainProcessTypeValue3" xml:space="preserve">
+    <value>Material</value>
+  </data>
+</root>

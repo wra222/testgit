@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{25ABF675-40CB-44E6-9AB4-346870D8795E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IMES.Station.Interface</RootNamespace>
+    <AssemblyName>IMES.Station.Interface</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\IMES.Station.Interface.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IMES.DataModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BIRCHIntf\IAssignModel.cs" />
+    <Compile Include="BIRCHIntf\ICombineCartonInDN_BIRCH.cs" />
+    <Compile Include="BIRCHIntf\ITravelCardWithCollectKP.cs" />
+    <Compile Include="BIRCHIntf\IPalletVerify_BIRCH.cs" />
+    <Compile Include="BSamIntf\IUnpackDNByCarton.cs" />
+    <Compile Include="BSamIntf\ICartonWeight.cs" />
+    <Compile Include="BSamIntf\ICombineCartonInDN.cs" />
+    <Compile Include="CommonIntf\Common.cs" />
+    <Compile Include="DefectComponent\IDefectComponentPrint.cs" />
+    <Compile Include="DefectComponent\IDefectComponentRejudge.cs" />
+    <Compile Include="FAI\IFAIFARelease.cs" />
+    <Compile Include="FAI\IFAIInput.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FAI\IFAIOutput.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FAI\IFAIPAKRelease.cs" />
+    <Compile Include="IDataUpdated.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryInf\FAQuery.cs" />
+    <Compile Include="QueryInf\PCAQuery.cs" />
+    <Compile Include="StationIntf\ISAInputXRay.cs" />
+    <Compile Include="StationIntf\IAutoICTTest.cs" />
+    <Compile Include="StationIntf\IChangeSamplePO.cs" />
+    <Compile Include="StationIntf\ICheckAst.cs" />
+    <Compile Include="StationIntf\ICommonLabelPrint.cs" />
+    <Compile Include="StationIntf\IDismantlePilotRun.cs" />
+    <Compile Include="StationIntf\IMBAssignTestType.cs" />
+    <Compile Include="StationIntf\IPakUnitWeightNew.cs" />
+    <Compile Include="StationIntf\IPilotRunMO.cs" />
+    <Compile Include="StationIntf\IWHInspection.cs" />
+    <Compile Include="StationIntf\IMaterialReturn.cs" />
+    <Compile Include="StationIntf\ICheckCombineCT.cs" />
+    <Compile Include="StationIntf\ICT13KeyPartsRequirementQuery.cs" />
+    <Compile Include="StationIntf\IReleaseProductIDHold.cs" />
+    <Compile Include="StationIntf\IPCAReceiveReturnMB.cs" />
+    <Compile Include="StationIntf\IAoiOfflineKbCheck.cs" />
+    <Compile Include="StationIntf\IESOPandAoiKbTest.cs" />
+    <Compile Include="StationIntf\ICheckDoorSn.cs" />
+    <Compile Include="StationIntf\002MBLabelPrint.cs" />
+    <Compile Include="StationIntf\BGAOutput.cs" />
+    <Compile Include="StationIntf\ChangeAST.cs" />
+    <Compile Include="StationIntf\COAReturn.cs" />
+    <Compile Include="StationIntf\CombinePcbInLot.cs" />
+    <Compile Include="StationIntf\IUnpackCombinePizza.cs" />
+    <Compile Include="StationIntf\IUnpackOfflinePizza.cs" />
+    <Compile Include="StationIntf\OfflinePizzaKitting.cs" />
+    <Compile Include="StationIntf\IConbimeOfflinePizza.cs" />
+    <Compile Include="BIRCHIntf\ICollectTabletFaPart.cs" />
+    <Compile Include="StationIntf\ICommonImpl2.cs" />
+    <Compile Include="StationIntf\IMultiUnPack.cs" />
+    <Compile Include="StationIntf\ITravelCardPrint_ProductPlan.cs" />
+    <Compile Include="StationIntf\IProductionPlan.cs" />
+    <Compile Include="StationIntf\IDOAMBUpload.cs" />
+    <Compile Include="StationIntf\IKBEsop.cs" />
+    <Compile Include="StationIntf\IProductReinput.cs" />
+    <Compile Include="StationIntf\IUpdateConsolidate.cs" />
+    <Compile Include="StationIntf\Loc2PP.cs" />
+    <Compile Include="StationIntf\ReturnUsedKeys.cs" />
+    <Compile Include="StationIntf\ICombineCOAandDNNew.cs" />
+    <Compile Include="StationIntf\IKeyPartsRequirementQuery.cs" />
+    <Compile Include="StationIntf\KPRepair.cs" />
+    <Compile Include="StationIntf\IRepairInfo.cs" />
+    <Compile Include="StationIntf\PAQCSorting.cs" />
+    <Compile Include="StationIntf\IChangeModel.cs" />
+    <Compile Include="StationIntf\KBCTCheck.cs" />
+    <Compile Include="StationIntf\KPDefectInput.cs" />
+    <Compile Include="StationIntf\PCAOQCCosmetic.cs" />
+    <Compile Include="StationIntf\PCAOQCInput.cs" />
+    <Compile Include="StationIntf\ROMEOBattery.cs" />
+    <Compile Include="StationIntf\SMTDefectInput.cs" />
+    <Compile Include="StationIntf\ModelWeight.cs" />
+    <Compile Include="StationIntf\IDTPalletControl.cs" />
+    <Compile Include="StationIntf\IDismantlePalletWeight.cs" />
+    <Compile Include="StationIntf\IICTInput.cs" />
+    <Compile Include="StationIntf\PAQCRepair.cs" />
+    <Compile Include="StationIntf\PCAOQCOutput.cs" />
+    <Compile Include="StationIntf\IPCARepairTest.cs" />
+    <Compile Include="StationIntf\IVGALabelPrint.cs" />
+    <Compile Include="StationIntf\MBSplit.cs" />
+    <Compile Include="StationIntf\FAMBReturn.cs" />
+    <Compile Include="StationIntf\IQueryBorrow.cs" />
+    <Compile Include="StationIntf\GenSMTMO.cs" />
+    <Compile Include="StationIntf\021BoardInput.cs" />
+    <Compile Include="StationIntf\BGAInput.cs" />
+    <Compile Include="StationIntf\ChangeToEPIAPIA.cs" />
+    <Compile Include="StationIntf\CNCardStatusChange.cs" />
+    <Compile Include="StationIntf\COAStatusChange.cs" />
+    <Compile Include="StationIntf\CombineAST.cs" />
+    <Compile Include="StationIntf\CombineCOAandDN.cs" />
+    <Compile Include="StationIntf\CombineDNPalletforBT.cs" />
+    <Compile Include="StationIntf\CombineKeyParts.cs" />
+    <Compile Include="StationIntf\CombinePizza.cs" />
+    <Compile Include="StationIntf\AssignWHLocation.cs" />
+    <Compile Include="StationIntf\COARemoval.cs" />
+    <Compile Include="StationIntf\FADismantle.cs" />
+    <Compile Include="StationIntf\FARepair.cs" />
+    <Compile Include="StationIntf\IBorrowControl.cs" />
+    <Compile Include="StationIntf\IIECLabelPrint.cs" />
+    <Compile Include="StationIntf\IPCAShippingLabelPrint.cs" />
+    <Compile Include="StationIntf\ITCNDCheck.cs" />
+    <Compile Include="StationIntf\CNCardReceive.cs" />
+    <Compile Include="StationIntf\MasterLabelPrint.cs" />
+    <Compile Include="StationIntf\MBCombineCPU.cs" />
+    <Compile Include="StationIntf\PCATestStation.cs" />
+    <Compile Include="StationIntf\PCAMBContact.cs" />
+    <Compile Include="StationIntf\PCARepair.cs" />
+    <Compile Include="StationIntf\PCARepairInput.cs" />
+    <Compile Include="StationIntf\PIAOutput.cs" />
+    <Compile Include="StationIntf\PrintInatelICASA.cs" />
+    <Compile Include="StationIntf\ScanningList.cs" />
+    <Compile Include="StationIntf\ShipToCartonLabel.cs" />
+    <Compile Include="StationIntf\SpecialModelForItcnd.cs" />
+    <Compile Include="StationIntf\TravelCardPrint.cs" />
+    <Compile Include="StationIntf\PrDelete.cs" />
+    <Compile Include="StationIntf\PackingList.cs" />
+    <Compile Include="StationIntf\OfflineLabelPrint.cs" />
+    <Compile Include="StationIntf\KittingInput.cs" />
+    <Compile Include="StationIntf\IPrintContentWarranty.cs" />
+    <Compile Include="StationIntf\LabelLightGuide.cs" />
+    <Compile Include="StationIntf\026OQCOutput.cs" />
+    <Compile Include="StationIntf\045PalletDataCollection.cs" />
+    <Compile Include="StationIntf\053CombinePOInCarton.cs" />
+    <Compile Include="StationIntf\054PalletDataCollectionTRO.cs" />
+    <Compile Include="StationIntf\056POData.cs" />
+    <Compile Include="StationIntf\071PrintShiptoCartonLabel.cs" />
+    <Compile Include="StationIntf\100TPCBCollection.cs" />
+    <Compile Include="StationIntf\OnlineGenerateAST.cs" />
+    <Compile Include="StationIntf\PoData.cs" />
+    <Compile Include="StationIntf\TravelCardPrint_excel.cs" />
+    <Compile Include="StationIntf\UpdateShipDate.cs" />
+    <Compile Include="StationIntf\VirtualMo.cs" />
+    <Compile Include="StationIntf\PakUnitWeight.cs" />
+    <Compile Include="StationIntf\022GenerateCustomerSN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\066PickCard.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\FATestStation.cs" />
+    <Compile Include="StationIntf\FinalScan.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\BTChange.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\AssetTagLabelPrint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\AFTMVS.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\IPackingPizza.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\ForceEOQC.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\043PAQCOutput.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\044PalletWeight.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\070Unpack.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\211PACosmetic.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\ChangeKeyParts.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\CombineTPM.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\ImageDownload.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\UploadShipmentData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\PizzaKitting.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\PodLabelCheck.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\SNCheck.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\PalletVerifyFDEOnly.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\PalletVerify.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\OQCRepair.cs" />
+    <Compile Include="StationIntf\PDPALabel01.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\PDPALabel02.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StationIntf\WHPalletControl.cs" />
+    <Compile Include="TRISIntf\IEEPLabelPrint.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="StationIntf\Old\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

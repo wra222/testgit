@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E3091CC1-EFBA-4BCD-8B52-F8E26CB2DA3C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IMES.CheckItemModule.CQ.Win7SPS.Filter</RootNamespace>
+    <AssemblyName>IMES.CheckItemModule.CQ.Win7SPS.Filter</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition, Version=2010.2.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Filter.cs" />
+    <Compile Include="MatchModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\IMES.CheckItemModule.Utility\IMES.CheckItemModule.Utility.csproj">
+      <Project>{C7C62805-C8FC-41B7-8B08-9234F69AAB49}</Project>
+      <Name>IMES.CheckItemModule.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IMES.FisObject\IMES.FisObject.csproj">
+      <Project>{846E29D1-953C-4084-9CCC-779AE966403A}</Project>
+      <Name>IMES.FisObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IMES.Infrastructure.DataModel\IMES.Infrastructure.DataModel.csproj">
+      <Project>{11CDE432-CA3F-4D23-A47F-0FCC66EED40B}</Project>
+      <Name>IMES.Infrastructure.DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IMES.Infrastructure.FisException\IMES.Infrastructure.FisException.csproj">
+      <Project>{1D699CAC-1844-4480-BACA-FC41984D17EC}</Project>
+      <Name>IMES.Infrastructure.FisException</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IMES.Infrastructure.Session\IMES.Infrastructure.Session.csproj">
+      <Project>{430577FB-1837-4762-A2DF-AE29985C285C}</Project>
+      <Name>IMES.Infrastructure.Session</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IMES.Infrastructure.Utility\IMES.Infrastructure.Utility.csproj">
+      <Project>{BA3DBA2B-DEE2-4E26-8AEB-3F805C542711}</Project>
+      <Name>IMES.Infrastructure.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IMES.Infrastructure\IMES.Infrastructure.csproj">
+      <Project>{7514032C-D9C3-4BA9-AAEE-D44923A6BA98}</Project>
+      <Name>IMES.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.CheckItemModule.Interface\IMES.CheckItemModule.Interface.csproj">
+      <Project>{086F5981-D5CA-4E71-9F86-EC2CF079DE1D}</Project>
+      <Name>IMES.CheckItemModule.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

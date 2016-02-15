@@ -1,0 +1,26 @@
+<ns0:BaseFlow Customer="{p1:Null}" x:Name="_069PAQCInput" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" SessionType="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind _069PAQCInput,Path=Customer}" x:Name="getProductByInput1" Editor="{ActivityBind _069PAQCInput,Path=Editor}" Station="{ActivityBind _069PAQCInput,Path=Station}" SessionType="{ActivityBind _069PAQCInput,Path=SessionType}" Line="{ActivityBind _069PAQCInput,Path=PdLine}" Key="{ActivityBind _069PAQCInput,Path=Key}" />
+	<ns0:BlockStation Customer="{ActivityBind _069PAQCInput,Path=Customer}" x:Name="blockStation1" Editor="{ActivityBind _069PAQCInput,Path=Editor}" ProcessType="Product" Station="{ActivityBind _069PAQCInput,Path=Station}" SessionType="{ActivityBind _069PAQCInput,Path=SessionType}" Line="{ActivityBind _069PAQCInput,Path=PdLine}" Key="{ActivityBind _069PAQCInput,Path=Key}" />
+	<ns0:VotePAQC Customer="{ActivityBind _069PAQCInput,Path=Customer}" x:Name="votePAQC1" Editor="{ActivityBind _069PAQCInput,Path=Editor}" Station="{ActivityBind _069PAQCInput,Path=Station}" SessionType="{ActivityBind _069PAQCInput,Path=SessionType}" Line="{ActivityBind _069PAQCInput,Path=PdLine}" Key="{ActivityBind _069PAQCInput,Path=Key}" />
+	<IfElseActivity x:Name="ifElsePAQCOther">
+		<IfElseBranchActivity x:Name="ifElsePAQC">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="PAQCCondition" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind _069PAQCInput,Path=Station}" SessionType="{ActivityBind _069PAQCInput,Path=SessionType}" x:Name="dbScopePAQC" Key="{ActivityBind _069PAQCInput,Path=Key}">
+				<ns0:UpdateProductStatus Customer="{ActivityBind _069PAQCInput,Path=Customer}" x:Name="updateProductStatusPAQC" Status="Pass" Editor="{ActivityBind _069PAQCInput,Path=Editor}" Station="Q1" SessionType="{ActivityBind _069PAQCInput,Path=SessionType}" IsReturnStatoin="False" Line="{ActivityBind _069PAQCInput,Path=PdLine}" Key="{ActivityBind _069PAQCInput,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind _069PAQCInput,Path=Customer}" x:Name="writeProductLogPAQC" Status="Pass" Editor="{ActivityBind _069PAQCInput,Path=Editor}" Station="Q1" SessionType="{ActivityBind _069PAQCInput,Path=SessionType}" IsSingle="True" Line="{ActivityBind _069PAQCInput,Path=PdLine}" Key="{ActivityBind _069PAQCInput,Path=Key}" />
+				<ns0:WriteQCStatus Customer="{ActivityBind _069PAQCInput,Path=Customer}" x:Name="writeQCStatusPAQC" Status="8" Editor="{ActivityBind _069PAQCInput,Path=Editor}" Station="{ActivityBind _069PAQCInput,Path=Station}" SessionType="{ActivityBind _069PAQCInput,Path=SessionType}" Line="{ActivityBind _069PAQCInput,Path=PdLine}" Key="{ActivityBind _069PAQCInput,Path=Key}" Type="PAQC" />
+			</ns0:DBScope>
+			<ns0:Print Customer="{ActivityBind _069PAQCInput,Path=Customer}" x:Name="print1" PartNoFrom="No" Editor="{ActivityBind _069PAQCInput,Path=Editor}" DnFrom="No" Station="{ActivityBind _069PAQCInput,Path=Station}" SessionType="{ActivityBind _069PAQCInput,Path=SessionType}" MOFrom="No" ModelFrom="No" Line="{ActivityBind _069PAQCInput,Path=PdLine}" Key="{ActivityBind _069PAQCInput,Path=Key}" />
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseOther">
+			<ns0:DBScope Station="{ActivityBind _069PAQCInput,Path=Station}" SessionType="{ActivityBind _069PAQCInput,Path=SessionType}" x:Name="dbScopeOther" Key="{ActivityBind _069PAQCInput,Path=Key}">
+				<ns0:UpdateProductStatus Customer="{ActivityBind _069PAQCInput,Path=Customer}" x:Name="updateProductStatusOther" Status="Pass" Editor="{ActivityBind _069PAQCInput,Path=Editor}" Station="QO" SessionType="{ActivityBind _069PAQCInput,Path=SessionType}" IsReturnStatoin="False" Line="{ActivityBind _069PAQCInput,Path=PdLine}" Key="{ActivityBind _069PAQCInput,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind _069PAQCInput,Path=Customer}" x:Name="writeProductLogOther" Status="Pass" Editor="{ActivityBind _069PAQCInput,Path=Editor}" Station="QO" SessionType="{ActivityBind _069PAQCInput,Path=SessionType}" IsSingle="True" Line="{ActivityBind _069PAQCInput,Path=PdLine}" Key="{ActivityBind _069PAQCInput,Path=Key}" />
+				<ns0:WriteQCStatus Customer="{ActivityBind _069PAQCInput,Path=Customer}" x:Name="writeQCStatusOther" Status="1" Editor="{ActivityBind _069PAQCInput,Path=Editor}" Station="{ActivityBind _069PAQCInput,Path=Station}" SessionType="{ActivityBind _069PAQCInput,Path=SessionType}" Line="{ActivityBind _069PAQCInput,Path=PdLine}" Key="{ActivityBind _069PAQCInput,Path=Key}" Type="PAQC" />
+			</ns0:DBScope>
+			<ns0:Print Customer="{ActivityBind _069PAQCInput,Path=Customer}" x:Name="print2" PartNoFrom="No" Editor="{ActivityBind _069PAQCInput,Path=Editor}" DnFrom="No" Station="{ActivityBind _069PAQCInput,Path=Station}" SessionType="{ActivityBind _069PAQCInput,Path=SessionType}" MOFrom="No" ModelFrom="No" Line="{ActivityBind _069PAQCInput,Path=PdLine}" Key="{ActivityBind _069PAQCInput,Path=Key}" />
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

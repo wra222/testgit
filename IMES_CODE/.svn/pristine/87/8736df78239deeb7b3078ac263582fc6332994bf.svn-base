@@ -1,0 +1,42 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="097TPCBTPLabel" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="ifGetVCode">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="isGetVCode" />
+			</IfElseBranchActivity.Condition>
+			<ns0:GetVCode Customer="{ActivityBind 097TPCBTPLabel,Path=Customer}" x:Name="getVCode1" SessionType="{ActivityBind 097TPCBTPLabel,Path=SessionType}" Editor="{ActivityBind 097TPCBTPLabel,Path=Editor}" Station="{ActivityBind 097TPCBTPLabel,Path=Station}" Line="{ActivityBind 097TPCBTPLabel,Path=PdLine}" Key="{ActivityBind 097TPCBTPLabel,Path=Key}" />
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifSave">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="isSave" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind 097TPCBTPLabel,Path=Station}" x:Name="dbScope4" Key="{ActivityBind 097TPCBTPLabel,Path=Key}" SessionType="{ActivityBind 097TPCBTPLabel,Path=SessionType}">
+				<ns0:CheckVCodeCombineStatus Customer="{ActivityBind 097TPCBTPLabel,Path=Customer}" x:Name="checkVCodeCombineStatus1" SessionType="{ActivityBind 097TPCBTPLabel,Path=SessionType}" Editor="{ActivityBind 097TPCBTPLabel,Path=Editor}" Station="{ActivityBind 097TPCBTPLabel,Path=Station}" Line="{ActivityBind 097TPCBTPLabel,Path=PdLine}" Key="{ActivityBind 097TPCBTPLabel,Path=Key}" />
+				<ns0:SaveVCode Customer="{ActivityBind 097TPCBTPLabel,Path=Customer}" x:Name="saveVCode1" SessionType="{ActivityBind 097TPCBTPLabel,Path=SessionType}" Editor="{ActivityBind 097TPCBTPLabel,Path=Editor}" Station="{ActivityBind 097TPCBTPLabel,Path=Station}" Line="{ActivityBind 097TPCBTPLabel,Path=PdLine}" Key="{ActivityBind 097TPCBTPLabel,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifDelete">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="isDelete" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind 097TPCBTPLabel,Path=Station}" x:Name="dbScope3" Key="{ActivityBind 097TPCBTPLabel,Path=Key}" SessionType="{ActivityBind 097TPCBTPLabel,Path=SessionType}">
+				<ns0:DeleteVCode Customer="{ActivityBind 097TPCBTPLabel,Path=Customer}" x:Name="deleteVCode1" SessionType="{ActivityBind 097TPCBTPLabel,Path=SessionType}" Editor="{ActivityBind 097TPCBTPLabel,Path=Editor}" Station="{ActivityBind 097TPCBTPLabel,Path=Station}" Line="{ActivityBind 097TPCBTPLabel,Path=PdLine}" Key="{ActivityBind 097TPCBTPLabel,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity Enabled="False" x:Name="ifQuery">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="isQuery" />
+			</IfElseBranchActivity.Condition>
+			<ns0:QueryVCode Customer="{ActivityBind 097TPCBTPLabel,Path=Customer}" x:Name="QueryDB" SessionType="{ActivityBind 097TPCBTPLabel,Path=SessionType}" Editor="{ActivityBind 097TPCBTPLabel,Path=Editor}" Station="{ActivityBind 097TPCBTPLabel,Path=Station}" Line="{ActivityBind 097TPCBTPLabel,Path=PdLine}" Key="{ActivityBind 097TPCBTPLabel,Path=Key}" />
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifPrint">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="isPrint" />
+			</IfElseBranchActivity.Condition>
+			<ns0:CheckVCode Customer="{ActivityBind 097TPCBTPLabel,Path=Customer}" x:Name="checkVCode1" SessionType="{ActivityBind 097TPCBTPLabel,Path=SessionType}" Editor="{ActivityBind 097TPCBTPLabel,Path=Editor}" Station="{ActivityBind 097TPCBTPLabel,Path=Station}" Line="{ActivityBind 097TPCBTPLabel,Path=PdLine}" Key="{ActivityBind 097TPCBTPLabel,Path=Key}" />
+			<ns0:DBScope Station="{ActivityBind 097TPCBTPLabel,Path=Station}" x:Name="dbScope1" Key="{ActivityBind 097TPCBTPLabel,Path=Key}" SessionType="{ActivityBind 097TPCBTPLabel,Path=SessionType}">
+				<ns0:Print Customer="{ActivityBind 097TPCBTPLabel,Path=Customer}" x:Name="print1" SessionType="{ActivityBind 097TPCBTPLabel,Path=SessionType}" Editor="{ActivityBind 097TPCBTPLabel,Path=Editor}" Station="{ActivityBind 097TPCBTPLabel,Path=Station}" Line="{ActivityBind 097TPCBTPLabel,Path=PdLine}" Key="{ActivityBind 097TPCBTPLabel,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

@@ -1,0 +1,24 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="MBBorrowContro" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetMB Customer="{ActivityBind MBBorrowContro,Path=Customer}" NotExistException="BOR001" SessionType="{ActivityBind MBBorrowContro,Path=SessionType}" Editor="{ActivityBind MBBorrowContro,Path=Editor}" Station="{ActivityBind MBBorrowContro,Path=Station}" MBSnSessionKey="" x:Name="getMB1" Line="{ActivityBind MBBorrowContro,Path=PdLine}" Key="{ActivityBind MBBorrowContro,Path=Key}" />
+	<ns0:CheckBorrowMB Customer="{ActivityBind MBBorrowContro,Path=Customer}" x:Name="checkBorrowMB1" SessionType="{ActivityBind MBBorrowContro,Path=SessionType}" Editor="{ActivityBind MBBorrowContro,Path=Editor}" Station="{ActivityBind MBBorrowContro,Path=Station}" Line="{ActivityBind MBBorrowContro,Path=PdLine}" Key="{ActivityBind MBBorrowContro,Path=Key}" />
+	<ns0:WaitInput Customer="{ActivityBind MBBorrowContro,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind MBBorrowContro,Path=SessionType}" Editor="{ActivityBind MBBorrowContro,Path=Editor}" Station="{ActivityBind MBBorrowContro,Path=Station}" Line="{ActivityBind MBBorrowContro,Path=PdLine}" Key="{ActivityBind MBBorrowContro,Path=Key}" />
+	<IfElseActivity x:Name="BorrowOrReturn">
+		<IfElseBranchActivity x:Name="Borrow">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="IsBorrow" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind MBBorrowContro,Path=Station}" x:Name="dbScope1" Key="{ActivityBind MBBorrowContro,Path=Key}" SessionType="{ActivityBind MBBorrowContro,Path=SessionType}">
+				<ns0:InsertBorrowLog Customer="{ActivityBind MBBorrowContro,Path=Customer}" x:Name="insertBorrowLog1" SessionType="{ActivityBind MBBorrowContro,Path=SessionType}" Editor="{ActivityBind MBBorrowContro,Path=Editor}" Station="{ActivityBind MBBorrowContro,Path=Station}" Status="B" Line="{ActivityBind MBBorrowContro,Path=PdLine}" Key="{ActivityBind MBBorrowContro,Path=Key}" />
+				<ns0:UpdateMBStatus Customer="{ActivityBind MBBorrowContro,Path=Customer}" ManualStation="" SessionType="{ActivityBind MBBorrowContro,Path=SessionType}" x:Name="updateMBStatus2" Editor="{ActivityBind MBBorrowContro,Path=Editor}" IsPass="Pass" Station="WJ" Line="{ActivityBind MBBorrowContro,Path=PdLine}" Key="{ActivityBind MBBorrowContro,Path=Key}" />
+				<ns0:WriteMBLog Customer="{ActivityBind MBBorrowContro,Path=Customer}" LineSuffix="{x:Null}" ManualStation="{x:Null}" SessionType="{ActivityBind MBBorrowContro,Path=SessionType}" x:Name="writeMBLog2" Editor="{ActivityBind MBBorrowContro,Path=Editor}" IsPass="True" Station="WJ" IsSingle="True" Line="{ActivityBind MBBorrowContro,Path=PdLine}" Key="{ActivityBind MBBorrowContro,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ReturnMB">
+			<ns0:DBScope Station="{ActivityBind MBBorrowContro,Path=Station}" x:Name="dbScope2" Key="{ActivityBind MBBorrowContro,Path=Key}" SessionType="{ActivityBind MBBorrowContro,Path=SessionType}">
+				<ns0:UpdateBorrowLog Customer="{ActivityBind MBBorrowContro,Path=Customer}" x:Name="updateBorrowLog1" SessionType="{ActivityBind MBBorrowContro,Path=SessionType}" Editor="{ActivityBind MBBorrowContro,Path=Editor}" Station="{ActivityBind MBBorrowContro,Path=Station}" Status="R" Line="{ActivityBind MBBorrowContro,Path=PdLine}" Key="{ActivityBind MBBorrowContro,Path=Key}" />
+				<ns0:UpdateMBStatus Customer="{ActivityBind MBBorrowContro,Path=Customer}" ManualStation="ReturnWC" SessionType="{ActivityBind MBBorrowContro,Path=SessionType}" x:Name="updateMBStatus3" Editor="{ActivityBind MBBorrowContro,Path=Editor}" IsPass="Pass" Station="10" Line="{ActivityBind MBBorrowContro,Path=PdLine}" Key="{ActivityBind MBBorrowContro,Path=Key}" />
+				<ns0:WriteMBLog Customer="{ActivityBind MBBorrowContro,Path=Customer}" LineSuffix="{x:Null}" ManualStation="ReturnWC" SessionType="{ActivityBind MBBorrowContro,Path=SessionType}" x:Name="writeMBLog3" Editor="{ActivityBind MBBorrowContro,Path=Editor}" IsPass="True" Station="10" IsSingle="True" Line="{ActivityBind MBBorrowContro,Path=PdLine}" Key="{ActivityBind MBBorrowContro,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

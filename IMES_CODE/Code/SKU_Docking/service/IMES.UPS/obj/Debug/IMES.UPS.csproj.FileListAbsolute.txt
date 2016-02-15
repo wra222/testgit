@@ -1,0 +1,6 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.UPS.dll.config
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.UPS.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.UPS.pdb
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.UPS\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.UPS\obj\Debug\IMES.UPS.dll
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.UPS\obj\Debug\IMES.UPS.pdb

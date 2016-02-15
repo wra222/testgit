@@ -1,0 +1,610 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using UPH.Interface;
+using log4net;
+using System.Reflection;
+using UPH.DB;
+using UPH.Entity.Infrastructure.Framework;
+using UPH.Entity.Infrastructure.Interface;
+using UPH.Entity.Repository.Meta.IMESSKU;
+using System.Data;
+
+namespace UPH.Implementation
+{
+    public  class UPH:MarshalByRefObject,IUPH
+
+    {
+        private static ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public IList<ProductUPHInfo> GetAllProductUPHInfo()
+        {
+            string methodName = MethodBase.GetCurrentMethod().Name;
+            BaseLog.LoggingBegin(logger, methodName);
+            IList<ProductUPHInfo> ret = new List<ProductUPHInfo>();
+            try
+            {
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    IRepository<ProductUPH> ecoModelRep = new Repository<ProductUPH>("UPHDBServer");//连接字符串 查询ProductUPH 表的数据
+                        ret = (from q in ecoModelRep.Query()
+                               select new ProductUPHInfo
+                               {
+                                   ID=q.ID,
+                                   Date=q.Date,
+                                   Line=q.Line,
+                                   Lesson=q.Lesson,
+                                   TimeRange=q.TimeRange,
+                                   Family=q.Family,
+                                   ProductRatio=q.ProductRatio
+                               }).ToList();
+                    }
+                   
+                 return ret;
+                
+            }
+            catch (Exception e)
+            {
+                BaseLog.LoggingError(logger, MethodBase.GetCurrentMethod(), e);
+                throw;
+            }
+            finally
+            {
+                BaseLog.LoggingEnd(logger, methodName);
+            }
+        }
+
+        public IList<ProductUPHInfo> GetProductUPHInfoList(DateTime fromtime, DateTime totime)
+        {
+            string methodName = MethodBase.GetCurrentMethod().Name;
+            BaseLog.LoggingBegin(logger, methodName);
+            IList<ProductUPHInfo> ret = new List<ProductUPHInfo>();
+            try
+            {
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    IRepository<ProductUPH> ecoModelRep = new Repository<ProductUPH>("UPHDBServer");//连接字符串 查询ProductUPH 表的数据
+                    ret = (from q in ecoModelRep.Query()
+                           where q.Date >= fromtime
+                               && q.Date <= totime
+                           select new ProductUPHInfo
+                           {
+                               ID = q.ID,
+                               Date = q.Date,
+                               Line = q.Line,
+                               Lesson = q.Lesson,
+                               TimeRange = q.TimeRange,
+                               Family = q.Family,
+                               ProductRatio = q.ProductRatio
+                           }).ToList();
+                }
+
+                return ret;
+
+            }
+            catch (Exception e)
+            {
+                BaseLog.LoggingError(logger, MethodBase.GetCurrentMethod(), e);
+                throw;
+            }
+            finally
+            {
+                BaseLog.LoggingEnd(logger, methodName);
+            }
+        
+        }
+
+
+        public void AddProductUPHInfo(ProductUPHInfo itemui)
+        {
+            string methodName = MethodBase.GetCurrentMethod().Name;
+            BaseLog.LoggingBegin(logger, methodName);
+            try
+            {
+               
+                 ProductUPH items = new ProductUPH
+                    {
+                        Date = itemui.Date,
+                        Line = itemui.Line,
+                        Lesson = itemui.Lesson,
+                        TimeRange = itemui.TimeRange,
+                        Family = itemui.Family,
+                        ProductRatio = itemui.ProductRatio
+
+                    };
+                    using (UnitOfWork uow = new UnitOfWork())
+                    {
+                        IRepository<ProductUPH> ecoModelRep = new Repository<ProductUPH>("UPHDBServer");
+                        ecoModelRep.Insert(items);
+                        uow.Commit();
+                    }
+               
+               
+               
+                }
+             catch (Exception e)
+                {
+                    BaseLog.LoggingError(logger, MethodBase.GetCurrentMethod(), e);
+                    throw;
+                }
+             finally
+                {
+                    BaseLog.LoggingEnd(logger, methodName);
+                }
+        
+        }
+
+
+        public void DelProductUPHInfo(ProductUPHInfo itemui) 
+        {
+
+            string methodName = MethodBase.GetCurrentMethod().Name;
+            BaseLog.LoggingBegin(logger, methodName);
+            try
+            {
+                ProductUPH items = new ProductUPH
+                {
+                    ID=itemui.ID,
+                    Date = itemui.Date,
+                    Line = itemui.Line,
+                    Lesson = itemui.Lesson,
+                    TimeRange = itemui.TimeRange,
+                    Family = itemui.Family,
+                    ProductRatio = itemui.ProductRatio
+
+                };
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    IRepository<ProductUPH> ecoModelRep = new Repository<ProductUPH>("UPHDBServer");
+                    ecoModelRep.Delete(items, true);//删掉记录 根据设置的条件
+                    uow.Commit();
+                }
+
+            }
+            catch (Exception e)
+            {
+                BaseLog.LoggingError(logger, MethodBase.GetCurrentMethod(), e);
+                throw;
+            }
+            finally
+            {
+                BaseLog.LoggingEnd(logger, methodName);
+            }
+        }
+
+        public void UpdateProductUPHInfo(ProductUPHInfo item)
+        {
+            string methodName = MethodBase.GetCurrentMethod().Name;
+            BaseLog.LoggingBegin(logger, methodName);
+            try
+            {
+                ProductUPH items = new ProductUPH
+                {
+                   ID = item.ID,
+                    Date = item.Date,
+                    Line = item.Line,
+                    Lesson = item.Lesson,
+                    TimeRange = item.TimeRange,
+                    Family = item.Family,
+                    ProductRatio = item.ProductRatio
+
+                };
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    IRepository<ProductUPH> ecoModelRep = new Repository<ProductUPH>("UPHDBServer");
+                    ecoModelRep.Update(items);
+                    uow.Commit();
+                }
+
+            }
+            catch (Exception e)
+            {
+                BaseLog.LoggingError(logger, MethodBase.GetCurrentMethod(), e);
+                throw;
+            }
+            finally
+            {
+                BaseLog.LoggingEnd(logger, methodName);
+            }
+        }
+       
+        public bool CheckDuplicateData(ProductUPHInfo item)
+        {
+            bool re = false;
+            string methodName = MethodBase.GetCurrentMethod().Name;
+            BaseLog.LoggingBegin(logger, methodName);
+            IList<ProductUPHInfo> ret = new List<ProductUPHInfo>();
+            try
+            {
+                IRepository<ProductUPH> ecoModelRep = new Repository<ProductUPH>("UPHDBServer");//连接字符串 查询ProductUPH 表的数据
+                    ret = (from q in ecoModelRep.Query()
+                           where q.Date == item.Date
+                               && q.Line == item.Line
+                           select new ProductUPHInfo
+                           {
+                               Date = q.Date,
+                               Line = q.Line,
+                               Lesson = q.Lesson,
+                               TimeRange = q.TimeRange,
+                               Family = q.Family,
+                               ProductRatio = q.ProductRatio
+                           }).ToList();
+                    if (ret.Count != 0)
+                    {
+                        re = true;
+                        //throw new Exception("Duplicate AstCode!");
+                    
+                    }
+                    return re;
+            }
+            catch (Exception e)
+            {
+                BaseLog.LoggingError(logger, MethodBase.GetCurrentMethod(), e);
+                throw;
+            }
+            finally
+            {
+                BaseLog.LoggingEnd(logger, methodName);
+            }
+        
+        
+        }
+
+        /// <summary>
+        /// SQL
+        /// </summary>
+        /// <param name="Connection"></param>
+        /// <param name="Station"></param>
+        /// <param name="QueryType"></param>
+        /// <param name="FromDate"></param>
+        /// <param name="ToDate"></param>
+        /// <param name="Line"></param>
+        /// <param name="List"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public DataTable GetLocRinDown(string Connection, string Station, string QueryType, string FromDate, string ToDate, string Line, string List, IList<string> model)
+        {
+            string methodName = MethodBase.GetCurrentMethod().Name;
+            try
+            {
+
+
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("exec sp_Query_FA_LocQuery @Station,@QueryType,@BeginTime,@EndTime,@Line,@list,@Model ");
+                DataTable dt = new DataTable();
+                dt = SQLHelper.ExecuteDataFill(Connection,
+                                             System.Data.CommandType.Text,
+                                             sb.ToString(),
+                                              SQLHelper.CreateSqlParameter("@Station", Station.Trim()),
+                                              SQLHelper.CreateSqlParameter("@QueryType", QueryType.Trim()),
+                                                 SQLHelper.CreateSqlParameter("@BeginTime", FromDate),
+                                                    SQLHelper.CreateSqlParameter("@EndTime", ToDate),
+                                                     SQLHelper.CreateSqlParameter("@Line", Line),
+                                                     SQLHelper.CreateSqlParameter("@list", List),
+                                                     SQLHelper.CreateSqlParameter("@Model", string.Join("','", model.ToArray()))
+                                              );
+
+                return dt;
+
+            }
+            catch (Exception e)
+            {
+                BaseLog.LoggingError(logger, MethodBase.GetCurrentMethod(), e);
+                throw;
+            }
+            finally
+            {
+                BaseLog.LoggingEnd(logger, methodName);
+            }
+        }
+
+        public List<string> GetUPHLine()
+        {
+            List<string> ret = new List<string>();
+            StringBuilder sb = new StringBuilder();
+                sb.AppendLine("SELECT distinct Line FROM ProductUPH order by Line ");
+                DataTable dt = new DataTable();
+
+                string Connection = SQLHelper.ConnectionString_ONLINE(0);
+                dt = SQLHelper.ExecuteDataFill(Connection,
+                                                System.Data.CommandType.Text,
+                                                  sb.ToString());
+               
+            foreach (DataRow dr in dt.Rows)
+            {
+                string line = dr["Line"].ToString();
+                ret.Add(line);
+            }
+            return ret;
+        }
+        public DataTable GetUPH(string line)
+        {
+            string sqlCMD = "SELECT*FROM UPH_Report where Line=@Line  ORDER BY TimeRange";
+             DataTable  dt = SQLHelper.ExecuteDataFill(SQLHelper.ConnectionString_ONLINE(0),
+                                           System.Data.CommandType.Text,
+                                           sqlCMD,
+                                            SQLHelper.CreateSqlParameter("Line", line.Trim())
+                                         
+                                            );
+             return dt;
+        
+        }
+
+        public List<string> GetUPHLine(string process)
+        {
+            List<string> ret = new List<string>();
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("SELECT distinct PdLine as Line FROM UPH_Report where Process=@Process order by Line ");
+            DataTable dt = new DataTable();
+
+            string Connection = SQLHelper.ConnectionString_ONLINE(0);
+            dt = SQLHelper.ExecuteDataFill(Connection,
+                                            System.Data.CommandType.Text,
+                                              sb.ToString(),
+                                                 SQLHelper.CreateSqlParameter("Process", process.Trim()));
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                string line = dr["Line"].ToString();
+                ret.Add(line);
+            }
+            return ret;
+        }
+
+        public DataTable GetUPH(string line, string Process, DateTime begin, DateTime end)
+        {
+            string sqlCMD = "SELECT *FROM UPH_Report where PdLine=@Line AND Process=@Process and Dt Between @Begin and @End ORDER BY Dt";
+            DataTable dt = SQLHelper.ExecuteDataFill(SQLHelper.ConnectionString_ONLINE(0),
+                                          System.Data.CommandType.Text,
+                                          sqlCMD,
+                                           SQLHelper.CreateSqlParameter("Line", line.Trim()),
+                                            SQLHelper.CreateSqlParameter("Process", Process.Trim()),
+                                              SQLHelper.CreateSqlParameter("Begin", begin),
+                                                SQLHelper.CreateSqlParameter("End",end)
+
+                                           );
+            return dt;
+
+        }
+        public DataTable GetUPH_Month(string line, string Process, DateTime begin, DateTime end)
+        {
+            string sqlCMD = "SELECT *FROM UPH_Report_Month where PdLine=@Line AND Process=@Process and Dt Between @Begin and @End ORDER BY Dt";
+            DataTable dt = SQLHelper.ExecuteDataFill(SQLHelper.ConnectionString_ONLINE(0),
+                                          System.Data.CommandType.Text,
+                                          sqlCMD,
+                                           SQLHelper.CreateSqlParameter("Line", line.Trim()),
+                                            SQLHelper.CreateSqlParameter("Process", Process.Trim()),
+                                              SQLHelper.CreateSqlParameter("Begin", begin),
+                                                SQLHelper.CreateSqlParameter("End", end)
+
+                                           );
+            return dt;
+
+        }
+
+        public DataTable GetUPH_OutPut(string line, string Process, DateTime begin)
+        {
+            string sqlCMD = "SELECT *FROM UPH_Report_OutPut where PdLine=@Line AND Process=@Process and Dt = @Begin  ORDER BY Dt";
+            DataTable dt = SQLHelper.ExecuteDataFill(SQLHelper.ConnectionString_ONLINE(0),
+                                          System.Data.CommandType.Text,
+                                          sqlCMD,
+                                           SQLHelper.CreateSqlParameter("Line", line.Trim()),
+                                            SQLHelper.CreateSqlParameter("Process", Process.Trim()),
+                                              SQLHelper.CreateSqlParameter("Begin", begin)
+                                             
+
+                                           );
+            return dt;
+
+        }
+
+        public List<string> GetUPHLine_OutPut(string process, DateTime begin)
+        {
+            List<string> ret = new List<string>();
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("SELECT distinct PdLine as Line FROM UPH_Report_OutPut where Process=@Process and Dt=@DT order by Line ");
+            DataTable dt = new DataTable();
+
+            string Connection = SQLHelper.ConnectionString_ONLINE(0);
+            dt = SQLHelper.ExecuteDataFill(Connection,
+                                            System.Data.CommandType.Text,
+                                              sb.ToString(),
+                                                 SQLHelper.CreateSqlParameter("Process", process.Trim()),
+                                                 SQLHelper.CreateSqlParameter("DT", begin)
+                                                 
+                                                 );
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                string line = dr["Line"].ToString();
+                ret.Add(line);
+            }
+            return ret;
+        }
+
+        public List<PdLine> EffPdline(string Process)
+        {
+            List<PdLine> ret = new List<PdLine>();
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("SELECT distinct PdLine,Description FROM PdLine where Process=@Process order by PdLine ");
+            DataTable dt = new DataTable();
+
+            string Connection = SQLHelper.ConnectionString_ONLINE(0);
+            dt = SQLHelper.ExecuteDataFill(Connection,
+                                            System.Data.CommandType.Text,
+                                              sb.ToString(),
+                                                 SQLHelper.CreateSqlParameter("Process", Process.Trim()));
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                string line_ = dr["PdLine"].ToString();
+                string Description_ = dr["Description"].ToString();
+                PdLine PD = new PdLine { Line = line_, Description = Description_ };
+                ret.Add(PD);
+            }
+            return ret;
+        
+        }
+        public List<Efficiency_Hour> GetEfficiency_Hour(string line, string Process, DateTime begin, DateTime end)
+        {
+
+            string methodName = MethodBase.GetCurrentMethod().Name;
+            BaseLog.LoggingBegin(logger, methodName);
+            List<Efficiency_Hour> ret = new List<Efficiency_Hour>();
+            try
+            {
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    IRepository<Efficiency_Hour> ecoModelRep = new Repository<Efficiency_Hour>("UPHDBServer");//连接字符串 查询ProductUPH 表的数据
+                    ret = (from q in ecoModelRep.Query()
+                           where Convert.ToDateTime(q.Dt) >= begin && Convert.ToDateTime(q.Dt) <= end
+                                  && q.PdLine == line && q.Process == Process
+                           select q).OrderBy(x=>x.Dt).ThenBy(x=>Convert.ToInt32(x.Hour)).ToList();
+                }
+
+                return ret;
+
+            }
+            catch (Exception e)
+            {
+                BaseLog.LoggingError(logger, MethodBase.GetCurrentMethod(), e);
+                throw;
+            }
+            finally
+            {
+                BaseLog.LoggingEnd(logger, methodName);
+            }
+        }
+        public DataTable GetEfficiency_Hour_Echart(string line, string Process, DateTime begin, DateTime end)
+        {
+            string sqlCMD = "SELECT *FROM Efficiency_Hour_Report where PdLine=@Line AND Process=@Process and Dt Between @Begin and @End ORDER BY Dt,convert(int,Hour)";
+            DataTable dt = SQLHelper.ExecuteDataFill(SQLHelper.ConnectionString_ONLINE(0),
+                                          System.Data.CommandType.Text,
+                                          sqlCMD,
+                                           SQLHelper.CreateSqlParameter("Line", line.Trim()),
+                                            SQLHelper.CreateSqlParameter("Process", Process.Trim()),
+                                              SQLHelper.CreateSqlParameter("Begin", begin),
+                                                SQLHelper.CreateSqlParameter("End", end)
+
+                                           );
+            return dt;
+        }
+
+        public List<Efficiency_Day> GetEfficiency_Day(string line, string Process, DateTime begin, DateTime end)
+        {
+            string methodName = MethodBase.GetCurrentMethod().Name;
+            BaseLog.LoggingBegin(logger, methodName);
+            List<Efficiency_Day> ret = new List<Efficiency_Day>();
+            try
+            {
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    IRepository<Efficiency_Day> ecoModelRep = new Repository<Efficiency_Day>("UPHDBServer");//连接字符串 查询ProductUPH 表的数据
+                    ret = (from q in ecoModelRep.Query()
+                           where Convert.ToDateTime(q.Dt) >= begin && Convert.ToDateTime(q.Dt) <= end
+                                  && q.PdLine == line && q.Process == Process
+                           select q).OrderBy(x=>x.Dt).ToList();
+                }
+
+                return ret;
+
+            }
+            catch (Exception e)
+            {
+                BaseLog.LoggingError(logger, MethodBase.GetCurrentMethod(), e);
+                throw;
+            }
+            finally
+            {
+                BaseLog.LoggingEnd(logger, methodName);
+            }
+        }
+        public List<Efficiency_Process_Day> GetEfficiency_Process_Day(string Process, DateTime begin, DateTime end)
+        {
+            string methodName = MethodBase.GetCurrentMethod().Name;
+            BaseLog.LoggingBegin(logger, methodName);
+            List<Efficiency_Process_Day> ret = new List<Efficiency_Process_Day>();
+            try
+            {
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    IRepository<Efficiency_Process_Day> ecoModelRep = new Repository<Efficiency_Process_Day>("UPHDBServer");//连接字符串 查询ProductUPH 表的数据
+                    ret = (from q in ecoModelRep.Query()
+                           where Convert.ToDateTime(q.Dt) >= begin && Convert.ToDateTime(q.Dt) <= end
+                                  &&q.Process == Process
+                           select q).OrderBy(x=>x.Dt).ToList();
+                }
+
+                return ret;
+
+            }
+            catch (Exception e)
+            {
+                BaseLog.LoggingError(logger, MethodBase.GetCurrentMethod(), e);
+                throw;
+            }
+            finally
+            {
+                BaseLog.LoggingEnd(logger, methodName);
+            }
+        }
+        public List<Efficiency_Process_Hour> GetEfficiency_Process_Hour(string Process, DateTime begin, DateTime end)
+        {
+            string methodName = MethodBase.GetCurrentMethod().Name;
+            BaseLog.LoggingBegin(logger, methodName);
+            List<Efficiency_Process_Hour> ret = new List<Efficiency_Process_Hour>();
+            try
+            {
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    IRepository<Efficiency_Process_Hour> ecoModelRep = new Repository<Efficiency_Process_Hour>("UPHDBServer");//连接字符串 查询ProductUPH 表的数据
+                    ret = (from q in ecoModelRep.Query()
+                           where Convert.ToDateTime(q.Dt) >= begin && Convert.ToDateTime(q.Dt) <= end
+                                  &&   q.Process == Process
+                           select q).OrderBy(x=>x.Dt).ThenBy(y=>Convert.ToInt32(y.Hour)).ToList();
+                }
+
+                return ret;
+
+            }
+            catch (Exception e)
+            {
+                BaseLog.LoggingError(logger, MethodBase.GetCurrentMethod(), e);
+                throw;
+            }
+            finally
+            {
+                BaseLog.LoggingEnd(logger, methodName);
+            }
+        }
+        public List<ProductQty> GetProductQty()
+        {
+            string methodName = MethodBase.GetCurrentMethod().Name;
+            BaseLog.LoggingBegin(logger, methodName);
+            List<ProductQty> ret = new List<ProductQty>();
+            try
+            {
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    IRepository<ProductQty> ecoModelRep = new Repository<ProductQty>("UPHDBServer");//连接字符串 查询ProductUPH 表的数据
+                    ret = (from q in ecoModelRep.Query()
+                           select q).OrderBy(x => x.ShipDate).ToList();
+                }
+
+                return ret;
+
+            }
+            catch (Exception e)
+            {
+                BaseLog.LoggingError(logger, MethodBase.GetCurrentMethod(), e);
+                throw;
+            }
+            finally
+            {
+                BaseLog.LoggingEnd(logger, methodName);
+            }
+        }
+
+
+    }
+}

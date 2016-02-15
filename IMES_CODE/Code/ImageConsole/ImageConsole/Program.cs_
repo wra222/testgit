@@ -1,0 +1,358 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.IO;
+using System.Net.Sockets;
+
+namespace ImageConsole
+{
+        
+    class Program
+    {
+        static TcpClient client = null;
+        static StreamReader receiver = null;
+        static StreamWriter sender = null;
+        static int waittingtime = 2000;
+        /// <summary>
+        /// 1=functionname:EntryShelfNo;ExitWork;All_ShelfStatus
+        /// 2=shelfno
+        /// 3=downloadresult
+        /// 4=shelfnostatus:0x101：Free.（無産品）;0x201：During.（投入中）;0x301：Downloading.（Download中;0x5FE：OK Complete.（OK完畢）;0x5FF：NG Complete.（NG完畢）;0x401：Exiting.（排出中）
+        /// 5=Socketip, 
+        /// 6=SocketportNo
+        /// </summary>
+        /// <param name="args"></param>
+        static void   Main(string[] args)
+        {
+            try
+            {
+                
+                if (args.Length < 6)
+                {
+                    Console.WriteLine("Fail;Need param,Count={0} ", args.Length);
+                    Thread.Sleep(waittingtime);
+                    return;  
+                }
+               
+                string functionname = args[0];
+                ushort shelfno = ushort.Parse(args[1]);
+                string  downloadresult = args[2];
+                string  shelfnostatus =args[3];
+                string Socketip = args[4];
+                int SocketportNo = Convert.ToInt16(args[5]);
+                
+
+
+                if (functionname.Trim() == "EntryShelfNo")
+                {
+                  EntryShelfNo(Socketip,SocketportNo);
+                }
+              
+                else if (functionname.Trim() == "ExitWork")
+                {
+                    ExitWork(shelfno, downloadresult, Socketip, SocketportNo);
+                }
+                else if (functionname.Trim() == "All_ShelfStatus")
+                { 
+                    ushort work_shelfStatus=new ushort();
+                    if (shelfnostatus=="Free")
+                    {
+                       work_shelfStatus=0x101;
+                    }
+                    else if (shelfnostatus=="During")
+                    {
+                      work_shelfStatus=0x201;
+                    }
+                     else if (shelfnostatus=="Downloading")
+                    {
+                      work_shelfStatus=0x301;
+                    }
+                     else if (shelfnostatus=="OK Complete")
+                    {
+                      work_shelfStatus=0x5FE;
+                    }
+                     else if (shelfnostatus=="NG Complete")
+                    {
+                      work_shelfStatus=0x5FF;
+                    }
+                     else if (shelfnostatus=="Exiting")
+                    {
+                      work_shelfStatus=0x401;
+                    }
+                     All_ShelfStatus(work_shelfStatus,Socketip,  SocketportNo);
+                }
+             
+                else
+                {
+                    Console.WriteLine("Wrong Function Name ,System Support:EntryShelfNo;ExitWork;All_ShelfStatus");
+                    Thread.Sleep(waittingtime);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        static bool SocketConnect(string ip, int portNo)
+        {
+            try
+            {
+                client = new TcpClient(ip, portNo);
+                client.NoDelay = true;
+                Stream stream = client.GetStream();
+                receiver = new StreamReader(stream);
+                sender = new StreamWriter(stream);
+                sender.AutoFlush = true;
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        static bool SocketSend(char[] buffer, int size)
+        {
+            try
+            {
+                sender.Write(buffer, 0, size);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        static bool SocketRecv(char[] buffer, int size, out int receivedSize)
+        {
+            try
+            {
+                receivedSize = receiver.Read(buffer, 0, size);
+                receiver.DiscardBufferedData();
+                return true;
+            }
+            catch (Exception)
+            {
+                receivedSize = 0;
+                return false;
+            }
+        }
+        static void EntryShelfNo(string Socketip, int SocketportNo)
+        {
+            bool ret = false;
+            char[] sendBuffer = new char[]
+	                                        {
+		                                        (char)0x50, (char)0x00, (char)0x00, (char)0xFF, (char)0xFF, (char)0x03, (char)0x00,
+		                                        (char)0x0C,										// Packet Data Length Low
+		                                        (char)0x00,										// Packet Data Length Hi
+		                                        (char)0x10, (char)0x00,
+		                                        (char)0x01, (char)0x04,									// Sub Command
+                                                (char)0x00, (char)0x00,
+                                                (char)0xE8, (char)0x03, (char)0x00,							// D0003E8(D1000):EntryShelfNo
+                                                (char)0xA8,										// D reg
+                                                (char)0x01,										// Length Low
+		                                       (char) 0x00										// Length Hi
+	                                        };
+
+
+
+            // ソケット接続
+            ret = SocketConnect(Socketip, SocketportNo);
+            if (!ret)
+            {
+                Console.WriteLine("Fail;SocketConnect Fail ");
+                Thread.Sleep(waittingtime);
+                return;
+            }
+            ret = SocketSend(sendBuffer, 21);
+            if (!ret)
+            {
+                Console.WriteLine("Fail;Socket SendData Fail ");
+                Thread.Sleep(waittingtime);
+                return;
+            }
+
+            // ソケット受信
+
+            char[] receiveBuffer = new char[1024];
+            for (int i = 0; i < 1024; ++i)
+            {
+                receiveBuffer[i] = (char)0x00;
+            }
+
+            int receiveSize;
+            ret = SocketRecv(receiveBuffer, 1024, out receiveSize);
+            if (!ret)
+            {
+                Console.WriteLine("Fail;Socket receive data Fail ");
+                Thread.Sleep(waittingtime);
+                return;
+            }
+
+            // ソケット切断
+            client.Close();
+
+            char lowdata = receiveBuffer[11];
+            char hidata = receiveBuffer[12];
+            ushort wShelfNo = (ushort)(hidata << 8);
+            wShelfNo = (ushort)(wShelfNo & 0xFF00);
+            wShelfNo = (ushort)(wShelfNo | lowdata);
+            Console.WriteLine("Pass;" + wShelfNo);
+            return;
+        
+        }
+        static void ExitWork(ushort shelfno,string downloadresult,string Socketip, int SocketportNo)
+        {
+            bool ret = false;
+            char[] sendBuffer = new char[]
+	                                        {
+		                                       (char)0x50, (char)0x00, (char)0x00, (char)0xFF, (char)0xFF, (char)0x03, (char)0x00,
+		                                        (char)0x12,										// Packet Data Length Low
+		                                        (char)0x00,										// Packet Data Length Hi
+		                                        (char)0x10, (char)0x00,
+		                                        (char)0x01, (char)0x14,									// Sub Command
+		                                        (char)0x00, (char)0x00,
+		                                        (char)0x4C, (char)0x04, (char)0x00,							// D00044C(D1100):ShelfNo of ExitWork
+													                                                                            // D00044E(D1102):Result of ExitWork
+		                                        (char)0xA8,										                        // D reg
+		                                        (char)0x03,										                        // Length Low
+		                                        (char)0x00,										                        // Length Hi
+		                                        (char)0x00, (char)0x00,									// Change Data D1100
+		                                        (char)0x00, (char)0x00,									// Change Data D1101
+		                                        (char)0x00, (char)0x00									// Change Data D1102
+	                                        };
+
+
+
+            // ソケット接続
+            ret = SocketConnect(Socketip, SocketportNo);
+            if (!ret)
+            {
+                Console.WriteLine("Fail;SocketConnect Fail ");
+                Thread.Sleep(waittingtime);
+                return;
+            }
+
+            char hidata = (char)(shelfno >> 8);
+            char lowdata = (char)shelfno;
+            sendBuffer[21] = lowdata;
+            sendBuffer[22] = hidata;
+
+            ushort work_result;
+            if (downloadresult == "OK")
+            {				// OK	
+                work_result = 0x05FE;
+            }
+            else
+            {							// NG
+                work_result = 0x05FF;
+            }
+            hidata = (char)(work_result >> 8);
+            lowdata = (char)work_result;
+            sendBuffer[25] = (char)lowdata;
+            sendBuffer[26] = (char)hidata;
+
+            // ソケット?信
+            ret = SocketSend(sendBuffer, 27);
+            if (!ret)
+            {
+                Console.WriteLine("Fail;Socket SendData Fail ");
+                Thread.Sleep(waittingtime);
+                return;
+            }
+
+            // ソケット受信
+
+            char[] receiveBuffer = new char[1024];
+            for (int i = 0; i < 1024; ++i)
+            {
+                receiveBuffer[i] = (char)0x00;
+            }
+
+            int receiveSize;
+            ret = SocketRecv(receiveBuffer, 1024, out receiveSize);
+            if (!ret)
+            {
+                Console.WriteLine("Fail;Socket receive data Fail ");
+                Thread.Sleep(waittingtime);
+                return;
+            }
+
+            // ソケット切断
+            client.Close();
+            Console.Write("Pass;DownLoad OK ");
+            Thread.Sleep(waittingtime);
+            return;
+        }
+        static void All_ShelfStatus(ushort ShelfStatus ,string Socketip, int SocketportNo)
+        { 
+                   bool ret = false;
+	                char[] SendBuffer = new char[]
+	                {
+		                (char)0x50, (char)0x00, (char)0x00, (char)0xFF, (char)0xFF, (char)0x03, (char)0x00,
+		                (char)0x0C,										// Packet Data Length Low
+		                (char)0x00,										// Packet Data Length Hi
+		               (char) 0x10, (char)0x00,
+		                (char)0x01, (char)0x04,									// Sub Command
+		                (char)0x00, (char)0x00,
+		               (char) 0xDC, (char)0x05, (char)0x00,							// D0005DC(D1500):EntryShelfNo
+		               (char) 0xA8,										// D reg
+		               (char) 0xFA,										// Length Low
+		               (char) 0x00										// Length Hi
+	                };
+
+
+	               ret = SocketConnect(Socketip, SocketportNo);
+                    if (!ret)
+                    {
+                        Console.WriteLine("Fail;SocketConnect Fail ");
+                        Thread.Sleep(waittingtime);
+                        return;
+                    }
+                      ret = SocketSend(SendBuffer, 21);
+                    if (!ret)
+                    {
+                        Console.WriteLine("Fail;Socket SendData Fail ");
+                        Thread.Sleep(waittingtime);
+                        return;
+                    }
+
+                    char[] receiveBuffer = new char[1024];
+                    for (int i = 0; i < 1024; ++i)
+                   {
+                      receiveBuffer[i] = (char)0x00;
+                    }
+	                int ReceiveSize;
+                    ret = SocketRecv(receiveBuffer, 1024, out ReceiveSize);
+                    if (!ret)
+                    {
+                        Console.WriteLine("Fail;Socket receive data Fail ");
+                        Thread.Sleep(waittingtime);
+                        return;
+                    }
+
+	                // 
+                    client.Close();
+                    char lowdata;
+                    char hidata;
+                  //  ushort ShelfStatus ;
+	                for( int i=0 ; i<250 ; i++ ) {
+                        lowdata = (char)receiveBuffer[11 + i * 2];
+                        hidata = (char)receiveBuffer[12 + i * 2];
+                        ShelfStatus = (ushort) (hidata << 8);
+                        ShelfStatus = (ushort) (ShelfStatus & 0xFF00);
+                        ShelfStatus = (ushort) (ShelfStatus | lowdata);
+                        ShelfStatus++;
+	                }
+
+                    Console.WriteLine("Pass;");
+                    Thread.Sleep(waittingtime);
+                    return;
+                }
+               
+                
+        }
+
+    
+}

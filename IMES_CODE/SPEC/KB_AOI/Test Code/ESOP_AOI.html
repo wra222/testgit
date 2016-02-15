@@ -1,0 +1,459 @@
+<html>
+<head>
+<meta name=VI60_defaultClientScript content=VBScript>
+<meta http-equiv="Content-Type" content="text/html">
+<OBJECT id=Microsoft_Licensed_Class_Manager_1_0 
+classid=clsid:5220cb21-c88d-11cf-b347-00aa00a28331><PARAM NAME="LPKPath" VALUE="/eBgSys/cab/eBg.LPK"></OBJECT>
+<OBJECT id=WF style="LEFT: 14px; TOP: 20px" 
+ codebase="/eBgSys/cab/WebTools.CAB#version=2,1,0,2" 
+classid=CLSID:3B31BE3B-3F15-412B-A80C-228FECACA92B></OBJECT> 
+<SCRIPT ID=clientEventHandlersVBS LANGUAGE=vbscript>
+<!--
+'============================================================================================
+Dim msql,UserName,ModelList,j,lable,PassTag
+'--Vincent add for queue message
+Dim queue,xmlhttp,sn
+
+Sub window_onload
+	UserName=WF.ATrim(WF.GetINI("FIS","UserName","","C:\CQFIS\FIS2000.INI"))
+	with DB
+		'.Server=WF.GetINI("FIS","RDS_Server","","C:\CQFIS\FIS2000.INI")
+		.Server="http://10.96.183.10"
+		.ExecuteOptions=1
+		.FetchOptions=1
+		.Handler="MSDFMAP.Handler"
+		'.Connect="Data Source=" & WF.GetINI("FIS","ConnectString","","C:\CQFIS\FIS2000.INI")
+		.Connect="Data Source=IPC_PAK_OLTP"
+		.SQL="select @@servername"
+		.Refresh
+		window.status="Your SQL server is " & .Recordset.Fields(0)
+		
+	end with
+	
+	if instr(window.navigator.appVersion,"NT")>0 then
+		ErrWavPath="c:\WINNT\Media\"
+	else
+		ErrWavPath="c:\Windows\Media\"
+	end if
+    OkWav.value=WF.GetINI("FIS","OkWav","","C:\CQFIS\FIS2000.INI")
+    ErrWav.value=WF.GetINI("FIS","ErrWav","","C:\CQFIS\FIS2000.INI")
+    Grid1.FormatString = "|<Parts Type  |<Part No.   |<Scaned Data           " 
+    Grid1.MergeCells=3
+    Grid1.MergeCol(1)=true
+    Grid1.MergeCol(2)=true
+
+	Set queue = CreateObject("Scripting.Dictionary")
+	
+	
+ 
+End Sub
+'==================================================================================
+Sub OkWav_onblur
+	i=WF.WriteINI("FIS", "OkWav",OkWav.value,"C:\CQFIS\FIS2000.INI")
+End Sub
+Sub ErrWav_onblur
+	i=WF.WriteINI("FIS", "ErrWav",ErrWav.value,"C:\CQFIS\FIS2000.INI")
+End Sub
+ 
+'==================================================================================
+Sub ErrMsg (MsgStr)
+	msg.value=MsgStr
+	if len(trim(ErrWav.value))=0 then
+		WF.ErrMusic ErrWavPath & "tada.WAV",1
+	else
+		WF.ErrMusic ErrWav.value,1
+	end if
+End Sub
+Sub OkMsg (MsgStr)
+	msg.value=MsgStr
+	if len(trim(OkWav.value))=0 then
+		WF.ErrMusic ErrWavPath & "chimes.WAV",1
+	else
+		WF.ErrMusic OkWav.value,1
+	end if
+End Sub
+ 
+'==================================================================================
+Sub txtData_onkeyup
+	txtData.value=UCASE(txtData.value)
+End Sub
+'==================================================================================
+Sub txtData_onkeydown
+	if window.event.keyCode=13 then txtData_onblur
+End Sub
+ 
+Sub txtData_onblur
+        PassTag=0
+	txtData.value=UCASE(trim(txtData.value))
+	If Len(txtData.value) = 0 Then Exit Sub
+       	
+	if 	Len(txtData.value)=10 and left(txtData.value,3)="5CG" then 
+		txtPcr1.style.backgroundImage=""
+	        txtPcr2.style.backgroundImage=""
+	        txtPcr3.style.backgroundImage=""
+	        txtPcr4.style.backgroundImage=""
+                txtPcr5.style.backgroundImage=""
+                txtPcr6.style.backgroundImage=""
+		txtSno.value =trim(txtData.value )
+		txtData.value=""
+		txtData.focus
+                msg.value=""
+ 		
+		'DB.SQL="op_CooCoaCheck1_FV '"&txtData.value&"','','21'"
+		'DB.Refresh
+		'if DB.Recordset.fields(0)="1" then
+		'	ErrMsg "¥s•g•ÓPA Lable 2."
+		'	txtData.value=""
+		'	txtData.focus 
+		'	exit sub
+		'end if 
+	 
+		DB.SQL="rpt_Label_ESop_zty '"&trim(txtSno.value)&"'"
+		'inputbox "","",DB.SQL
+		DB.Refresh 
+	
+ 
+		if DB.Recordset.fields(0)="0" then
+			ErrMsg (DB.Recordset.fields(1))
+			txtSno.value=""
+			exit sub
+		else            
+			arr=DB.Recordset.GetRows()
+			for i=0 to ubound(arr,2)
+				j=0
+				picpacth= WF.GetINI("FIS","RDS_Server","","C:\CQFIS\FIS2000.INI") & "/IPC/MP/PICTURE/"&trim(arr(2,i))
+				'msgbox picpacth
+				lable= arr(1,i)
+				'msgbox lable
+				j=i+1
+				if(Trim(lable)<>"Logo label") then
+				
+				if  j=1then
+				txtPcr1.style.backgroundImage="url("&picpacth&")"
+			
+				elseif j=2 then
+				'msgbox "url("&picpacth&")"
+				txtPcr2.style.backgroundImage="url("&picpacth&")"
+ 
+				elseif j=3 then
+				
+				txtPcr3.style.backgroundImage="url("&picpacth&")"
+ 
+				elseif j=4 then
+				
+				txtPcr4.style.backgroundImage="url("&picpacth&")"
+				elseif j=5 then
+				
+				txtPcr5.style.backgroundImage="url("&picpacth&")"
+				elseif j=6 then
+				
+				txtPcr6.style.backgroundImage="url("&picpacth&")"	
+				end if 
+			      end if
+			next 
+		end if	
+	
+	                          ' DB.SQL="exec FA.dbo.op_AST_Grid_test '"&trim(txtSno.value)&"'"
+		                  'DB.Refresh	
+		                  'if DB.Recordset.fields.count=1 then
+		                  ' msgbox  DB.Recordset.fields(0)
+	
+			          '	exit sub
+		                  'elseif not DB.Recordset.eof then
+		                  '    RefreshGrid
+		                  '   ErrMsg "¥s•Ó Seal Label"
+		                  '    exit sub  
+		                  'end if    
+		
+		 OkMsg ("picture QTY must be "&j)
+		
+ 
+	 elseif  len(txtData.value)=4 and txtData.value="7777" and txtSno.value<>"" and ROWChk  then 
+		DB.SQL="rpt_Label_ESop_Save '"&trim(txtSno.value)&"'"
+		DB.Refresh
+		txtSno.value=""
+		txtData.value=""
+		OkMsg ("PASS,This machine is adverse ESOP ")
+ 
+    elseif txtData.value="9999" and len(txtData.value)=4    then
+       txtData.value=""
+            txtData.focus 
+        	DB.SQL="[op_KbMsg_ToAccess_SN] '"&txtSno.value&"' "
+            ' inputbox "","",DB.SQL
+            DB.Refresh
+            if isnull(DB.Recordset.fields(0)) or DB.Recordset.fields(0)="" then
+				ErrMsg ("±z¿é¤JªºSNµLªk¬d¸ß¨ìlabel«H®§¡A½Ð½T»{¡I")
+                txtSno.value=""
+				txtData.value=""
+				exit sub
+            end if
+			if not DB.Recordset.eof then
+				
+				dim sn,kbPartNo,lbPartNo,url
+				
+				sn=trim(DB.Recordset.fields(0))
+				kbPartNo=trim(DB.Recordset.fields(3))
+				lbPartNo=trim(DB.Recordset.fields(4))
+				url = "http://127.0.0.1:8686/AOI?SN=%sn%&KBPartNo=%kb%&LabelPartNo=%lb%"
+				url=Replace(url,"%sn%",trim(sn))
+				url=Replace(url,"%kb%",trim(kbPartNo))
+				url=Replace(url,"%lb%",trim(lbPartNo))
+				
+				if queue.Count=0 then
+					call SendAOICmd( url, sn)
+				end if				
+				queue.Add sn,url
+				
+				txtData.focus 
+				txtData.value=""
+				PassTag=1	
+				
+			end if
+	elseif txtData.value<>"7777" and left(txtData.value,3)<>"5CG" and txtSno.value<>"" and txtData.value<>"" then 
+	    call inputData
+	   txtData.value=""
+	else
+                
+		ErrMsg ("Wrong Code:"&txtData.value) 
+		txtData.focus 
+		txtData.value=""
+		exit sub
+	end if 
+ 
+          
+ 
+if ROWChk and  txtSno.value<>"" and PassTag=1 then 
+	DB.SQL="op_CooCoaCheck1_FV '"&txtSno.value&"','','23'"
+    DB.Refresh 
+    txtSno.value="" 
+     txtData.focus 
+    txtData.value=""
+    Grid1.Rows=1         
+    Grid1.Refresh
+    OkMsg ("PASS,picture QTY must be "&j)
+	txtData.focus 
+      call  boxclose()
+ end if 		
+end sub 
+ 
+Function ROWChk
+	ROWChk=True
+	With Grid1
+		for i=1 to .Rows-1
+			if  trim(.TextMatrix(i,3))="" and  trim(.TextMatrix(i,2))<>"" then
+				ROWChk=False
+				exit function
+			end if
+		next
+	End With
+End Function
+				
+Sub InputData
+	with Grid1
+	for i=1 to .Rows-1
+	 IF trim(.TextMatrix(i,2))=trim(txtData.value) then 
+	    .TextMatrix(i,3)=trim(txtData.value)	
+	    exit sub    
+	  end if
+	next
+	end with
+	txtData.value=""
+	ErrMsg " Wrong Code."
+	txtData.focus 
+End Sub
+ 
+Sub RefreshGrid
+    Grid1.FormatString = "|<Parts Type  |<Part No.   |<Scaned Data           " 
+	Grid1.Rows=1         
+    Grid1.Refresh
+ 
+    IF DB.Recordset.RecordCount>0 THEN
+		Grid1.Rows=DB.Recordset.RecordCount+1
+		Grid1.Row=1
+		Grid1.Col=1
+		Grid1.RowSel=DB.Recordset.RecordCount
+		Grid1.ColSel=DB.Recordset.Fields.Count
+		Grid1.Clip=DB.Recordset.GetString()
+		Grid1.Refresh
+		Grid1.Row=1
+	
+ 
+	end if
+	 
+   
+End Sub
+
+Sub SendAOICmd(url, sn)
+        Set xmlhttp = CreateObject("MSXML2.XMLHTTP.3.0")
+		xmlhttp.onreadystatechange = getRef("HandleReceiveData")
+		xmlhttp.open "GET", url, true 'async mode
+		xmlhttp.setRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+		xmlhttp.send ""  
+		
+End Sub
+
+Sub HandleReceiveData
+		dim xmlDoc
+		dim url
+		dim dataSN,arrayItems, arrayKeys
+		
+		
+		if xmlhttp.readyState = 4 then
+		   if xmlhttp.status =200 then
+				'MsgBox  "Success!!"
+				set xmlDoc = CreateObject("Msxml2.DOMDocument")
+				xmlDoc.async = false
+				xmlDoc.loadXML(xmlhttp.responseText)
+				
+				dataSN=xmlDoc.selectSingleNode("//Device/SN").text 
+				result=xmlDoc.selectSingleNode("//Device/Result").text 
+				errorCode=xmlDoc.selectSingleNode("//Device/ErrorCode").text
+				errorDescr=xmlDoc.selectSingleNode("//Device/ErrorDescr").text
+				
+				'MsgBox "SN=" & dataSN& " result=" & result & " errorCode=" & errorCode & " errorDescr=" & errorDescr
+				
+				PassTag=0	
+                
+				if result="Pass" then
+                   PassTag=1
+				else 
+                  
+					' msgbox result_AOI(2)&result_AOI(3) 
+					ErrMsg(dataSN & errorCode &errorDescr)
+					arrayKeys = queue.Keys
+					PassTag=0  
+					DB.SQL="op_CooCoaCheck1_FV '"& arrayKeys(0) & "','','24'"
+					DB.Refresh       
+					txtData.focus 
+					txtData.value=""
+					txtPcr1.style.backgroundImage=""
+					txtPcr2.style.backgroundImage=""
+					txtPcr3.style.backgroundImage=""
+					txtPcr4.style.backgroundImage=""
+					txtPcr5.style.backgroundImage=""
+					txtPcr6.style.backgroundImage=""
+					exit sub
+				end if
+			else
+				ErrMsg(xmlhttp.readyState & " " & xmlhttp.status & " " & xmlhttp.statusText)
+			end if
+			
+			queue.Remove(sn)
+			
+			'Check Queue has data
+			sn=""
+			if queue.Count >0 then
+			   arrayItems = queue.Items
+			   arrayKeys = queue.Keys
+			   sn=arrayKeys(0) 
+			   url=arrayItems(0)
+			   call SendAOICmd(url, sn)
+			end if		
+		end if
+
+	End Sub
+
+ 
+function AOI_Test(sn,kb,lb)
+    txtData.value=""
+     call boxshow()
+  set xmlhttp = CreateObject("MSXML2.XMLHTTP.3.0")
+     set xmlDoc = CreateObject("Msxml2.DOMDocument")
+ 
+      Url = "http://127.0.0.1:8686/AOI?SN=%sn%&KBPartNo=%kb%&LabelPartNo=%lb%"
+ 
+    Data="<?xml version=""1.0"" encoding=""utf-8""?><Device><SN>%sn%</SN><KBPartNo>%kb%</KBPartNo><LabelPartNo>%lb%</LabelPartNo></Device>"
+     'Data="<?xml version=""1.0"" encoding=""utf-8""?><Device><SN>%sn%</SN><KBPartNo>%kb%</KBPartNo><LabelPartNo>%lb%</LabelPartNo></Device>"
+     Url=Replace(Url,"%sn%",trim(sn))
+     Url=Replace(Url,"%kb%",trim(kb))
+     Url=Replace(Url,"%lb%",trim(lb))
+ 
+     xmlhttp.open "POST", Url, False
+ 
+     xmlhttp.setRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+                   '========================
+                   'xmlhttp.setRequestHeader "Data", Data
+                   'msg.value=Url
+                   'MsgBox   Url
+                   'xmlhttp.send Data
+                   '=======================
+     xmlhttp.send ""
+ 
+                       'inputbox "","",Data
+     if xmlhttp.readyState = 4 and xmlhttp.status =200 then
+	xmlDoc.async = false
+	xmlDoc.loadXML(xmlHTTP.responseText)
+	
+	sn=xmlDoc.selectSingleNode("//Device/SN").text 
+	result=xmlDoc.selectSingleNode("//Device/Result").text 
+	errorCode=xmlDoc.selectSingleNode("//Device/ErrorCode").text
+	errorDescr=xmlDoc.selectSingleNode("//Device/ErrorDescr").text
+        dim ret(3)
+         'MsgBox "result=" & result & " errorCode=" & errorCode & " errorDescr=" & errorDescr
+         ret(1) =result 
+         ret(2) =errorCode 
+         ret(3) =errorDescr 
+         AOI_Test = ret
+        'AOI_Test="result=" & result & " errorCode=" & errorCode & " errorDescr=" & errorDescr
+         
+	'MsgBox "sn=" & sn  & " result=" & result & " errorCode=" & errorCode & " errorDescr=" & errorDescr 
+    else
+        ErrMsg(xmlhttp.statusText)
+        'MsgBox xmlhttp.readyState & " " + xmlhttp.status + " " + xmlhttp.statusText
+        
+    end if
+ 
+end function
+ 
+ 
+-->
+</SCRIPT>
+</head>
+<body bgColor=#ccdeff text=#b22222 rightMargin=12>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<OBJECT id=DB style="LEFT: 49px; WIDTH: 27px; TOP: 15px; HEIGHT: 15px" 
+classid=clsid:BD96C556-65A3-11D0-983A-00C04FC29E33><PARAM NAME="ExecuteOptions" VALUE="2"><PARAM NAME="FetchOptions" VALUE="3"><PARAM NAME="SortDirection" VALUE="-1"><PARAM NAME="InternetTimeout" VALUE="300000"></OBJECT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT 
+id=txtData 
+style="FONT-WEIGHT: bold; Z-INDEX: 111; LEFT: 109px; WIDTH: 200px; FONT-FAMILY: ; POSITION: absolute; TOP: 4px; HEIGHT: 32px" 
+size=1 name=txtData>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SELECT id=CmbSt name=CmbSt size=1 
+style="FONT-SIZE: 15px; Z-INDEX: 111; LEFT: 712px; VISIBILITY: hidden; WIDTH: 200px; FONT-FAMILY: ; POSITION: absolute; TOP: 7px; HEIGHT: 32px"><OPTION selected value=""></OPTION><OPTION 
+  value=""></OPTION><INPUT id=txtPcr1 
+style="FONT-WEIGHT: bold; Z-INDEX: 111; LEFT: 9px; WIDTH: 300px; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: ; POSITION: absolute; TOP: 86px; 
+HEIGHT: 198px; BACKGROUND-COLOR: #ccdeff" size=1 name=txtPcr1> <INPUT id=Lbl1 name=text1 readOnly size=16 
+style="FONT-WEIGHT: bold; FONT-SIZE: large; Z-INDEX: 124; LEFT: 12px; WIDTH: 96px; COLOR: yellow; BORDER-TOP-STYLE: inset; FONT-FAMILY: Fixedsys; BORDER-RIGHT-STYLE: inset; BORDER-LEFT-STYLE: inset; POSITION: absolute; TOP: 4px; HEIGHT: 32px; BACKGROUND-COLOR: red; TEXT-DECORATION: blink; 
+BORDER-BOTTOM-STYLE: inset" value="Data Entry"> <INPUT id=txtPcr4 
+style="FONT-WEIGHT: bold; Z-INDEX: 111; LEFT: 9px; WIDTH: 300px; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: ; POSITION: absolute; TOP: 289px; HEIGHT: 198px; 
+BACKGROUND-COLOR: #ccdeff" size=1 name=txtPcr4><INPUT id=txtPcr3 
+style="FONT-WEIGHT: bold; Z-INDEX: 111; LEFT: 613px; WIDTH: 300px; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: ; POSITION: absolute; TOP: 86px; HEIGHT: 198px; 
+BACKGROUND-COLOR: #ccdeff" size=1 name=txtPcr3><INPUT id=txtPcr2 
+style="FONT-WEIGHT: bold; Z-INDEX: 111; LEFT: 311px; WIDTH: 300px; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: ; POSITION: absolute; TOP: 86px; HEIGHT: 198px; 
+BACKGROUND-COLOR: #ccdeff" size=1 name=txtPcr2>
+<INPUT id=txtPcr5 
+style="FONT-WEIGHT: bold; Z-INDEX: 111; LEFT: 311px; WIDTH: 300px; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: ; POSITION: absolute; TOP: 289px; HEIGHT: 198px; 
+BACKGROUND-COLOR: #ccdeff" size=1 name=txtPcr5>
+<INPUT id=txtPcr6 
+style="FONT-WEIGHT: bold; Z-INDEX: 111; LEFT: 613px; WIDTH: 300px; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: ; POSITION: absolute; TOP: 289px; HEIGHT: 198px; 
+BACKGROUND-COLOR: #ccdeff" size=1 name=txtPcr6>  <INPUT id=Lbl1 
+style="FONT-WEIGHT: bold; FONT-SIZE: large; Z-INDEX: 124; LEFT: 312px; WIDTH: 96px; BORDER-TOP-STYLE: inset; FONT-FAMILY: Fixedsys; BORDER-RIGHT-STYLE: inset; BORDER-LEFT-STYLE: inset; POSITION: absolute; TOP: 4px; HEIGHT: 32px; BACKGROUND-COLOR: antiquewhite; TEXT-DECORATION: blink; BORDER-BOTTOM-STYLE: inset" 
+readOnly size=16 value="Serial No" name=text1> <INPUT id=Lbl1 
+style="FONT-WEIGHT: bold; FONT-SIZE: large; Z-INDEX: 124; LEFT: 613px; VISIBILITY: hidden; WIDTH: 96px; BORDER-TOP-STYLE: inset; FONT-FAMILY: Fixedsys; BORDER-RIGHT-STYLE: inset; BORDER-LEFT-STYLE: inset; POSITION: absolute; TOP: 3px; HEIGHT: 32px; BACKGROUND-COLOR: antiquewhite; TEXT-DECORATION: blink; 
+BORDER-BOTTOM-STYLE: inset" readOnly size=16 value="Station" name=text1><INPUT id=txtSno 
+style="FONT-WEIGHT: bold; Z-INDEX: 111; LEFT: 410px; WIDTH: 200px; FONT-FAMILY: ; POSITION: absolute; TOP: 4px; HEIGHT: 32px" 
+size=1 name=txtSno>
+<INPUT id=Msg 
+style="FONT-WEIGHT: bold; FONT-SIZE: large; Z-INDEX: 111; LEFT: 10px; WIDTH: 905px; FONT-FAMILY: ; POSITION: absolute; TOP: 38px; 
+HEIGHT: 45px; BACKGROUND-COLOR: lightyellow" size=1 name=Msg> <INPUT id=OkWav 
+style="FONT-WEIGHT: bold; FONT-SIZE: 16px; Z-INDEX: 120; LEFT: 664px; WIDTH: 216px; BORDER-TOP-STYLE: inset; FONT-FAMILY: Arial; BORDER-RIGHT-STYLE: inset; BORDER-LEFT-STYLE: inset; POSITION: absolute; TOP: 505px; HEIGHT: 26px; BACKGROUND-COLOR: white; TEXT-DECORATION: blink; BORDER-BOTTOM-STYLE: inset" 
+tabIndex=-1 name=OkWav><INPUT id=ErrWav 
+style="FONT-WEIGHT: bold; FONT-SIZE: 16px; Z-INDEX: 120; LEFT: 666px; WIDTH: 214px; BORDER-TOP-STYLE: inset; FONT-FAMILY: Arial; BORDER-RIGHT-STYLE: inset; BORDER-LEFT-STYLE: inset; POSITION: absolute; TOP: 534px; HEIGHT: 26px; BACKGROUND-COLOR: white; TEXT-DECORATION: blink; BORDER-BOTTOM-STYLE: inset" 
+tabIndex=-1 name=ErrWav><INPUT id=Lbl 
+style="FONT-WEIGHT: bold; FONT-SIZE: 16px; Z-INDEX: 120; LEFT: 576px; WIDTH: 88px; BORDER-TOP-STYLE: inset; FONT-FAMILY: Arial; BORDER-RIGHT-STYLE: inset; BORDER-LEFT-STYLE: inset; POSITION: absolute; TOP: 506px; HEIGHT: 26px; BACKGROUND-COLOR: yellow; TEXT-DECORATION: blink; BORDER-BOTTOM-STYLE: inset" 
+tabIndex=-1 readOnly size=18 value="OK Wav" name=Lbl><INPUT id=Lbl 
+style="FONT-WEIGHT: bold; FONT-SIZE: 16px; Z-INDEX: 120; LEFT: 575px; WIDTH: 89px; BORDER-TOP-STYLE: inset; FONT-FAMILY: Arial; BORDER-RIGHT-STYLE: inset; BORDER-LEFT-STYLE: inset; POSITION: absolute; TOP: 535px; HEIGHT: 26px; BACKGROUND-COLOR: yellow; TEXT-DECORATION: blink; BORDER-BOTTOM-STYLE: inset" 
+tabIndex=-1 readOnly value="Error Wav" name=Lbl>
+<OBJECT id=Grid1 
+style="Z-INDEX: 112; LEFT: 15px; WIDTH: 477px; FONT-FAMILY: Fixedsys; POSITION: absolute; TOP: 498px; HEIGHT: 109px" 
+tabIndex=-1 codeBase=/eBgSys/cab/MsFlxGrd.cab height=109 width=477 
+classid=clsid:6262D3A0-531B-11CF-91F6-C2863C385E30 name=Grid1 VIEWASTEXT><PARAM NAME="_ExtentX" VALUE="12621"><PARAM NAME="_ExtentY" VALUE="2884"><PARAM NAME="_Version" VALUE="393216"><PARAM NAME="Rows" VALUE="3"><PARAM NAME="Cols" VALUE="2"><PARAM NAME="FixedRows" VALUE="1"><PARAM NAME="FixedCols" VALUE="1"><PARAM NAME="RowHeightMin" VALUE="0"><PARAM NAME="BackColor" VALUE="-2147483643"><PARAM NAME="ForeColor" VALUE="-2147483640"><PARAM NAME="BackColorFixed" VALUE="16777088"><PARAM NAME="ForeColorFixed" VALUE="8388608"><PARAM NAME="BackColorSel" VALUE="16777215"><PARAM NAME="ForeColorSel" VALUE="-2147483635"><PARAM NAME="BackColorBkg" VALUE="8421504"><PARAM NAME="GridColor" VALUE="12632256"><PARAM NAME="GridColorFixed" VALUE="0"><PARAM NAME="WordWrap" VALUE="0"><PARAM NAME="Redraw" VALUE="-1"><PARAM NAME="AllowBigSelection" VALUE="-1"><PARAM NAME="ScrollTrack" VALUE="0"><PARAM NAME="Enabled" VALUE="-1"><PARAM NAME="RightToLeft" VALUE="0"><PARAM NAME="TextStyle" VALUE="0"><PARAM NAME="TextStyleFixed" VALUE="0"><PARAM NAME="FocusRect" VALUE="1"><PARAM NAME="HighLight" VALUE="1"><PARAM NAME="FillStyle" VALUE="0"><PARAM NAME="GridLines" VALUE="1"><PARAM NAME="GridLinesFixed" VALUE="2"><PARAM NAME="ScrollBars" VALUE="3"><PARAM NAME="SelectionMode" VALUE="0"><PARAM NAME="MergeCells" VALUE="0"><PARAM NAME="AllowUserResizing" VALUE="1"><PARAM NAME="PictureType" VALUE="0"><PARAM NAME="BorderStyle" VALUE="1"><PARAM NAME="Appearance" VALUE="1"><PARAM NAME="MousePointer" VALUE="1"><PARAM NAME="GridLineWidth" VALUE="1"><PARAM NAME="FormatString" VALUE=""><PARAM NAME="OLEDropMode" VALUE="0"></OBJECT>&nbsp;  
+
+</body>
+</html>

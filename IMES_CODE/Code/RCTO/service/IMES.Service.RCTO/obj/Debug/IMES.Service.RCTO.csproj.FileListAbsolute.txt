@@ -1,0 +1,8 @@
+E:\IMES_CODE\Code\RCTO\bin\IMES.Service.RCTO.exe.config
+E:\IMES_CODE\Code\RCTO\bin\IMES.Service.RCTO.exe
+E:\IMES_CODE\Code\RCTO\bin\IMES.Service.RCTO.pdb
+E:\IMES_CODE\Code\RCTO\service\IMES.Service.RCTO\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\service\IMES.Service.RCTO\obj\Debug\IMES.Service.RCTO.ProjectInstaller.resources
+E:\IMES_CODE\Code\RCTO\service\IMES.Service.RCTO\obj\Debug\IMES.Service.RCTO.csproj.GenerateResource.Cache
+E:\IMES_CODE\Code\RCTO\service\IMES.Service.RCTO\obj\Debug\IMES.Service.RCTO.exe
+E:\IMES_CODE\Code\RCTO\service\IMES.Service.RCTO\obj\Debug\IMES.Service.RCTO.pdb

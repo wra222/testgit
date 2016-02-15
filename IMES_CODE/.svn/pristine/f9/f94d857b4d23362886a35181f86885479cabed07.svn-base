@@ -1,0 +1,29 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="100TPCBCollection" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="ifSaveTPCB">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="isSaveTPCB" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind 100TPCBCollection,Path=Station}" x:Name="dbScope1" Key="{ActivityBind 100TPCBCollection,Path=Key}" SessionType="{ActivityBind 100TPCBCollection,Path=SessionType}">
+				<ns0:SaveTPCB Customer="{ActivityBind 100TPCBCollection,Path=Customer}" x:Name="saveTPCB1" SessionType="{ActivityBind 100TPCBCollection,Path=SessionType}" Editor="{ActivityBind 100TPCBCollection,Path=Editor}" Station="{ActivityBind 100TPCBCollection,Path=Station}" Line="{ActivityBind 100TPCBCollection,Path=PdLine}" Key="{ActivityBind 100TPCBCollection,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifDeleteTPCB">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="isDeleteTPCB" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind 100TPCBCollection,Path=Station}" x:Name="dbScope2" Key="{ActivityBind 100TPCBCollection,Path=Key}" SessionType="{ActivityBind 100TPCBCollection,Path=SessionType}">
+				<ns0:DeleteTPCB Customer="{ActivityBind 100TPCBCollection,Path=Customer}" x:Name="deleteTPCB1" SessionType="{ActivityBind 100TPCBCollection,Path=SessionType}" Editor="{ActivityBind 100TPCBCollection,Path=Editor}" Station="{ActivityBind 100TPCBCollection,Path=Station}" Line="{ActivityBind 100TPCBCollection,Path=PdLine}" Key="{ActivityBind 100TPCBCollection,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifSaveDet">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="isSaveTPBCDet" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind 100TPCBCollection,Path=Station}" x:Name="dbScope3" Key="{ActivityBind 100TPCBCollection,Path=Key}" SessionType="{ActivityBind 100TPCBCollection,Path=SessionType}">
+				<ns0:CheckTPCBDet Customer="{ActivityBind 100TPCBCollection,Path=Customer}" x:Name="checkTPCBDet1" SessionType="{ActivityBind 100TPCBCollection,Path=SessionType}" Editor="{ActivityBind 100TPCBCollection,Path=Editor}" Enabled="False" Station="{ActivityBind 100TPCBCollection,Path=Station}" Line="{ActivityBind 100TPCBCollection,Path=PdLine}" Key="{ActivityBind 100TPCBCollection,Path=Key}" />
+				<ns0:SaveTPCBDet Customer="{ActivityBind 100TPCBCollection,Path=Customer}" x:Name="saveTPCBDet1" SessionType="{ActivityBind 100TPCBCollection,Path=SessionType}" Editor="{ActivityBind 100TPCBCollection,Path=Editor}" Station="{ActivityBind 100TPCBCollection,Path=Station}" Line="{ActivityBind 100TPCBCollection,Path=PdLine}" Key="{ActivityBind 100TPCBCollection,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

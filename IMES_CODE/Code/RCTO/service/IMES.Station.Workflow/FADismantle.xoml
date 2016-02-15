@@ -1,0 +1,44 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="FADismantle" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="DismantleType" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind FADismantle,Path=Station}" x:Name="dbScope1" Key="{ActivityBind FADismantle,Path=Key}" SessionType="{ActivityBind FADismantle,Path=SessionType}">
+				<ns0:BackupForUnpack Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="backupForUnpack1" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:DismantleProduct Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="dismantleProduct1" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Status="Pass" Station="38" IsReturnStatoin="False" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="38" Status="Pass" IsSingle="True" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="DismantleKP" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind FADismantle,Path=Station}" x:Name="dbScope2" Key="{ActivityBind FADismantle,Path=Key}" SessionType="{ActivityBind FADismantle,Path=SessionType}">
+				<ns0:DismantleKP Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="DismantleKPT" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Status="Pass" Station="38" IsReturnStatoin="False" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="DisKP" Status="Pass" IsSingle="True" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseBranchActivity3">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="DismantleAST" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind FADismantle,Path=Station}" x:Name="dbScope3" Key="{ActivityBind FADismantle,Path=Key}" SessionType="{ActivityBind FADismantle,Path=SessionType}">
+				<ns0:DismantleAST Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="dismantleAST1" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="writeProductLog3" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="DisAST" Status="Pass" IsSingle="True" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseBranchActivity4">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="DismantletypeIMEI" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind FADismantle,Path=Station}" x:Name="dbScope4" Key="{ActivityBind FADismantle,Path=Key}" SessionType="{ActivityBind FADismantle,Path=SessionType}">
+				<ns0:Dismantleimei Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="dismantleimei1" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="{ActivityBind FADismantle,Path=Station}" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind FADismantle,Path=Customer}" x:Name="writeProductLog4" SessionType="{ActivityBind FADismantle,Path=SessionType}" Editor="{ActivityBind FADismantle,Path=Editor}" Station="DM" Status="Pass" IsSingle="True" Line="{ActivityBind FADismantle,Path=PdLine}" Key="{ActivityBind FADismantle,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseBranchActivity5" />
+	</IfElseActivity>
+</ns0:BaseFlow>

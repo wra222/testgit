@@ -1,0 +1,253 @@
+﻿<%--
+/*
+* INVENTEC corporation ©2011 all rights reserved. 
+* Description: 2PP Iutput
+* Update: 
+* Date        Name                  Reason 
+* ==========  ===================== =====================================
+* Known issues:
+* TODO：
+* 
+*/
+ --%>
+<%@ MasterType VirtualPath="~/MasterPage.master" %>
+
+<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
+    CodeFile="Loc2PP.aspx.cs" Inherits="FA_Loc2PP" Title="无标题页" %>
+
+<%@ Import Namespace="com.inventec.iMESWEB" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="iMESContent" runat="Server">
+
+    <script type="text/javascript" src="../CommonControl/JS/iMESCommonUse.js"></script>
+
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+        <Services>
+            <asp:ServiceReference Path="~/FA/Service/WebServiceLoc2PP.asmx" />
+        </Services>
+    </asp:ScriptManager>
+    <div id="container" style="width: 95%; border: solid 0px red; margin: 0 auto;">
+        <div id="div1">
+            <table width="100%">
+                <tr>
+                    <td style="width: 20%">
+                        <asp:Label ID="lblLocType" runat="server" CssClass="iMes_label_13pt" Text="LocType"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:DropDownList id="selLocType"  runat="server" Width="200px"></asp:DropDownList>
+                    </td>
+                   
+                </tr>
+				<tr>
+                    <td style="width: 20%">
+                        <asp:Label ID="lblDataEntry" runat="server" class="iMes_DataEntryLabel"></asp:Label>
+                    </td>
+                    <td>
+                        <iMES:Input ID="txtEntry" runat="server" ProcessQuickInput="true" CanUseKeyboard="true"
+                            Width="99%" IsClear="true" IsPaste="true" />
+                    </td>
+                   
+                </tr>
+                <tr>
+                    <td style="width: 20%">
+                        <asp:Label ID="lblProdId" runat="server" CssClass="iMes_label_13pt"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:Label ID="lblProdIdContent" runat="server" CssClass="iMes_label_11pt" Text=""></asp:Label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <asp:UpdatePanel ID="updatePanel" runat="server">
+        </asp:UpdatePanel>
+    </div>
+
+    <script language="javascript" type="text/javascript">
+        var editor = "";
+        var customer = "";
+        var station = "";
+        var inputObj;
+        var emptyPattern = /^\s*$/;
+        var ProdId = "";
+        var ProdId_input = "";
+		var Loc2PP_input = "";
+
+        var msgInputSno = '<%=Resources.iMESGlobalMessage.ResourceManager.GetString(Pre + "_msgInputSno") %>';
+        var msgInput_translate = '<%=this.GetLocalResourceObject(Pre + "_msgInput_translate").ToString()%>';
+        var msgSuccess_translate = '<%=this.GetLocalResourceObject(Pre + "_msgSuccess_translate").ToString()%>';
+        var msgErrLocLen9 = '<%=this.GetLocalResourceObject(Pre + "_msgErrLocLen9").ToString()%>';
+        var msgErrProdId = '<%=this.GetLocalResourceObject(Pre + "_msgErrProdId").ToString()%>';
+		var msgErrLocType = '<%=this.GetLocalResourceObject(Pre + "_msgErrLocType").ToString()%>';
+
+        window.onload = function() 
+        {
+            inputObj = getCommonInputObject();
+            getAvailableData("input");
+            station = '<%=Request["Station"] %>';
+            editor = "<%=UserId%>";
+            customer = "<%=Customer%>";
+        };
+
+        window.onbeforeunload = function() 
+        {
+            OnCancel();
+        };
+        
+        function initPage() 
+        {
+            setInputOrSpanValue(document.getElementById("<%=lblProdIdContent.ClientID %>"), "");
+            ProdId = "";
+            ProdId_input = "";
+			Loc2PP_input = "";
+        }
+
+        function input(inputData) 
+        {
+            if (inputData == "") 
+            {
+                alert(msgInputSno);
+                ShowInfo(msgInputSno);
+                callNextInput();
+                return;
+            }
+            else
+            {
+                ShowInfo("");
+                var objLocType = document.getElementById("<%=selLocType.ClientID%>");
+                if (objLocType == '' || objLocType==null)
+                {
+                     ShowInfo("Please Select LocType");
+                      callNextInput();
+                       return;
+                }
+			    if(ProdId=='') {
+					ProdId_input = SubStringSN(inputData.toString(),"ProdId");
+					beginWaitingCoverDiv();
+					WebServiceLoc2PP.ChkProdId(ProdId_input, inputSnoSucc, inputFail);
+			    }
+			    else {
+			        Loc2PP_input = inputData.toString();
+			        if (Loc2PP_input.length != 8) {
+			            ShowInfo(msgErrLocLen9);
+			            return;
+			        }
+				
+					if (Loc2PP_input.substring(0, 3) != objLocType.value) {
+			            ShowInfo(msgErrLocType);
+			            return;
+			        }
+			        beginWaitingCoverDiv();
+					WebServiceLoc2PP.inputLoc(ProdId_input, Loc2PP_input, editor, station, customer, saveSucc, saveFail);
+			    }
+                return;
+            }
+        }
+
+        function ShowErr(msg) {
+            endWaitingCoverDiv();
+            ShowInfo(msg);
+            alert(msg);
+            callNextInput();
+            //ShowMessage(msg);
+        }
+        
+        function inputSnoSucc(result) 
+        {
+            endWaitingCoverDiv();
+            if (result == '') {
+                ShowErr(msgErrProdId);
+                callNextInput();
+                return;
+            }
+            setInfo(result);
+            //ShowMessage('Please input LOC');
+            var objLocType = document.getElementById("<%=selLocType.ClientID%>");
+            if (objLocType.value == "AD") {
+                beginWaitingCoverDiv();
+                WebServiceLoc2PP.inputLoc(ProdId_input, objLocType.value, editor, station, customer, saveSucc, saveFail);
+            }
+            else {
+                ShowInfo('Please input LOC');
+                callNextInput();
+            }
+        }
+
+        function saveSucc(result) 
+        {
+            endWaitingCoverDiv();
+            if (result == null ) {
+                var show_save_success_msg = "[" + ProdId_input + "] " + "  Image未上传下一步信息!!";
+            }
+            else if (  result.length != 8) {
+                if (result == "P2")
+                    var show_save_success_msg = "[" + ProdId_input + "] " + " 請進入2PP区域!!";
+
+                else if (result == "P3")
+                    var show_save_success_msg = "[" + ProdId_input + "] " + " 請進入OA3区域!!";
+                else {
+                    var show_save_success_msg = "[" + ProdId_input + "] " + "!!";
+                }   
+                
+            }
+            else {
+                var show_save_success_msg = "[" + ProdId_input + "] " + msgSuccess_translate + " [" + result + "]";
+            }
+            ExitPage();
+            initPage();
+            ShowSuccessfulInfo(true, show_save_success_msg);
+            callNextInput();
+        }
+        
+        function saveFail(result) {
+            endWaitingCoverDiv();
+            ShowMessage(result.get_message());
+            ShowInfo(result.get_message());
+            callNextInput();
+        }
+
+        function inputFail(result) 
+        {
+            ShowMessage(result.get_message());
+            ShowInfo(result.get_message());
+            WebServiceLoc2PP.cancel(ProdId_input);
+            endWaitingCoverDiv();
+            callNextInput();
+        }
+
+        function setInfo(info) 
+        {
+            //set value to the label
+            ProdId = info;
+            setInputOrSpanValue(document.getElementById("<%=lblProdIdContent.ClientID %>"), ProdId);
+        }
+
+        function OnCancel() 
+        {
+            if (ProdId != "") 
+            {
+                WebServiceLoc2PP.cancel(ProdId);
+            }
+        }
+
+        function callNextInput() 
+        {
+            getCommonInputObject().value = "";
+            getCommonInputObject().focus();
+            getAvailableData("input");
+        }
+
+        function ExitPage() 
+        {
+            OnCancel();
+        }
+
+        function ResetPage() 
+        {
+            ExitPage();
+            initPage();
+            ShowInfo("");
+            callNextInput();
+        }
+
+    </script>
+
+</asp:Content>

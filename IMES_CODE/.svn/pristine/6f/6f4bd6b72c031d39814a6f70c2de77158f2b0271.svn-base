@@ -1,0 +1,66 @@
+<HTML xmlns:IE><HEAD>
+<TITLE>Calendar0000</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=UTF-8">
+<script language="javascript">
+var strDate;
+function calendar_OnClick() 
+{
+   var strYear
+   var strMonth
+   var strDay
+   var e = window.event.srcElement;
+   var textout = window.parent.textoutObj;
+   if (e.tagName == "TD") 
+   {
+		if ( !e.day ) return  // The calendar is read only
+		strYear = new String(cal.year);
+		strMonth = new String(cal.month);
+		strDay = new String (cal.day);
+		if (strMonth.length < 2)
+			strMonth = "0" + strMonth;
+		if (strDay.length < 2)
+			strDay = "0" + strDay;
+		strDate  = strYear + "-" + strMonth + "-" + strDay;
+		//alert(typeof(window.parent));
+		window.parent.document.all("position").style.display = 'none';
+		if (textout.tagName == "INPUT")
+			textout.value = strDate;
+		else
+			textout.innerText = strDate;
+	   if(typeof(window.parent.calClosed)=="function")//event of close calentar
+	   {
+	      setTimeout("window.parent.calClosed()", 1);
+	   }
+   }
+}
+</SCRIPT>
+<script FOR=window EVENT=onload>
+	
+    window.parent.blCalReady = true;
+    //alert("SubFrameCal_onload: " + window.parent.blCalReady);
+</SCRIPT>
+<STYLE>
+@media all 
+{
+  IE\:Calendar 
+  {
+    behavior: url("calendar_ML.htc") ;
+    width : 33%;
+  }
+}
+  A:link { color:#003399; text-decoration:none; }
+  A:visited { color:#6699CC; text-decoration:none; }
+  A:hover { text-decoration:underline; }
+</STYLE>
+</HEAD>
+<BODY topmargin="0" leftmargin="0">
+<CENTER>
+<table border='0' cellPadding='0' cellSpacing='0' id='CalTable'>
+<tr><td LANGUAGE='javascript' onclick="calendar_OnClick()">
+<IE:Calendar id="cal" monthLength="short" dayLength="short" style="width : 200px; height : 170px; border : 1px solid black;" > </IE:Calendar>
+	</td></tr>
+</table>
+</CENTER>
+</BODY>
+</HTML>
+

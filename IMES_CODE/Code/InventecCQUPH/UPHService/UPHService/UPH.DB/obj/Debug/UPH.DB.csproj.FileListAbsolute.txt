@@ -1,0 +1,10 @@
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\UPH.DB\bin\Debug\UPH.DB.dll
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\UPH.DB\bin\Debug\UPH.DB.pdb
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\UPH.DB\bin\Debug\log4net.dll
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\UPH.DB\obj\Debug\ResolveAssemblyReference.cache
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\UPH.DB\obj\Debug\UPH.DB.dll
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\UPH.DB\obj\Debug\UPH.DB.pdb
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\bin\UPH.DB.dll
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\bin\UPH.DB.pdb
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPH.DB.dll
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPH.DB.pdb

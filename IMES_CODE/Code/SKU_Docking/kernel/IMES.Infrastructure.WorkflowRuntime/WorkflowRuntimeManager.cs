@@ -1,0 +1,551 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml;
+using System.Reflection;
+using System.Configuration;
+using System.Workflow.Runtime;
+using System.Workflow.Runtime.Hosting;
+using System.Workflow.ComponentModel.Compiler;
+
+using IMES.Infrastructure;
+using IMES.Infrastructure.UnitOfWork;
+
+using log4net;
+using IMES.Infrastructure.Utility;
+
+[assembly:log4net.Config.XmlConfiguratorAttribute(Watch = true)]
+
+namespace IMES.Infrastructure.WorkflowRuntime
+{
+    public class WorkflowRuntimeManager
+    {
+        private static ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        private static readonly string MsgBegin = "{0} BEGIN: {1}";
+        private static readonly string MsgEnd = "{0} END: {1}";
+        private static readonly string MsgError = "{0} ERROR: {1}";
+
+        private static readonly string MsgTxnAlive = "IsStillSomeConn: {0}, IsStillSomeTrans: {1}.";
+        private static readonly string MsgTxnScope ="Embeded: {0}, ErrOccured: {1}, InScopeTag: {2}.";
+        private static readonly string MsgTxnRollBack ="Exception when rollback compulsorily: {0}.";
+        private static readonly string MsgTxnCommit="Exception when commit compulsorily: {0}.";
+        private static readonly string MsgTxnDispose="Exception when dispose compulsorily: {0}.";
+        private static readonly string MsgTxnClose="Exception when close compulsorily: {0}.";
+
+        private static readonly string MsgWFCompleted="The workflow:{0} of session:{1} station:{2} line:{3} editor:{4} HostWaitingCount:{5} WFWaitingCount:{6} completed. ";
+        private static readonly string MsgWFNoSessionCompleted="The workflow:{0} InstanceId:{1} of no session completed. ";
+
+        private static readonly string MsgWFTerminated = "The workflow of session:{0} station:{1} line:{2} editor:{3} HostWaitingCount:{4} WFWaitingCount:{5} terminated error trace: {6}. ";
+        private static readonly string MsgWFNoSessionTerminated="The workflow InstanceId:{0} of no session terminated error trace: {1}. ";
+
+        private static readonly string MethodCreateXomlFisWorkflow = "WorkflowRuntimeManager::CreateXomlFisWorkflow";
+        private static readonly string MethodWorkflowTerminated = "WorkflowRuntimeManager::WorkflowTerminated";
+        private static readonly string MethodRollBackTransWhenTerminated = "WorkflowRuntimeManager::MethodRollBackTransWhenTerminated";
+        private static readonly string MethodWorkflowCompleted = "WorkflowRuntimeManager::WorkflowCompleted";
+
+        public delegate void WorkflowsEvent(string methodName, object[] args);
+        public delegate void WorkflowsException(string methodName, object[] args, Exception ex);
+
+        #region . Singleton .
+        private static WorkflowRuntimeManager _instance = null;
+
+        public static WorkflowRuntimeManager getInstance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new WorkflowRuntimeManager();
+                return _instance;
+            }
+        }
+
+        private WorkflowRuntimeManager()
+        {
+            this._runtime = new System.Workflow.Runtime.WorkflowRuntime("defaultRuntime");
+            this._runtime.WorkflowTerminated += _workflowRuntime_WorkflowTerminated;
+            this._runtime.WorkflowCompleted += _workflowRuntime_WorkflowCompleted;
+//            SqlWorkflowPersistenceService persistence = new SqlWorkflowPersistenceService(string.Format(ConfigurationManager.ConnectionStrings["DBServer"].ToString(), ConfigurationManager.AppSettings["SqlPersistence"]));
+//            this.AddService(persistence);
+        }
+        #endregion
+
+        private System.Workflow.Runtime.WorkflowRuntime _runtime = null;
+
+        private static object syncObj_WFService = new object();
+
+        public object AddService(object service)
+        {
+            lock (syncObj_WFService)
+            {
+                object svc = this._runtime.GetService(service.GetType());
+                if (svc == null)
+                {
+                    this._runtime.AddService(service);
+                    return service;
+                }
+                else
+                {
+                    return svc;
+                }
+            }
+        }
+        public void RemoveService(object service)
+        {
+            lock (syncObj_WFService)
+            {
+                this._runtime.RemoveService(service);
+            }
+        }
+
+        /// <summary>
+        /// 创建Workflow实例
+        /// </summary>
+        /// <param name="workflowType">workflow类型</param>
+        /// <param name="parameters">workflow的输入参数</param>
+        /// <returns>创建出的workflow实例</returns>
+        public WorkflowInstance CreateFisWorkflow(Type workflowType, Dictionary<string, object> parameters)
+        {
+            WorkflowInstance instance = this._runtime.CreateWorkflow(workflowType, parameters);           
+            return instance;
+        }
+
+        //public event WorkflowsEvent BeginCreateXomlFisWorkflow;
+        //public event WorkflowsEvent EndCreateXomlFisWorkflow;
+        //public event WorkflowsException ErrorInCreateXomlFisWorkflow;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="markupFileName"></param>
+        /// <param name="rulesMarkupFileName"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public WorkflowInstance CreateXomlFisWorkflow(string markupFileName, string rulesMarkupFileName, Dictionary<string, object> parameters)
+        {
+            //if (BeginCreateXomlFisWorkflow != null)
+            //    BeginCreateXomlFisWorkflow(MethodBase.GetCurrentMethod(), new object[] { markupFileName, rulesMarkupFileName, parameters });
+            //MethodBase curMethod = MethodBase.GetCurrentMethod();
+            try
+            {
+                WorkflowRuntimeManagerMethodsBeginning(MethodCreateXomlFisWorkflow, new object[] { markupFileName, rulesMarkupFileName, parameters });
+                XmlReader wfReader = null;
+                XmlReader rulesReader = null;
+                WorkflowInstance instance = null;
+                string currentPath = AppDomain.CurrentDomain.BaseDirectory;
+
+                try
+                {
+                    wfReader = XmlReader.Create(currentPath + markupFileName);
+                    if (!string.IsNullOrEmpty(rulesMarkupFileName))
+                        rulesReader = XmlReader.Create(currentPath + rulesMarkupFileName);
+                    instance = this._runtime.CreateWorkflow(wfReader, rulesReader, parameters);                   
+                }
+                catch (WorkflowValidationFailedException e)
+                {
+                    foreach (ValidationError validErr in e.Errors)
+                        //Console.WriteLine(validErr.ErrorText);
+                        logger.Error(validErr.ErrorText, e);
+                    throw e;
+                }
+                finally
+                {
+                    if (wfReader != null)
+                        wfReader.Close();
+
+                    if (rulesReader != null)
+                        rulesReader.Close();
+                   
+                }
+                return instance;
+            }
+            catch (Exception ex)
+            {
+                WorkflowRuntimeManagerMethodsErroring(MethodCreateXomlFisWorkflow, new object[] { markupFileName, rulesMarkupFileName, parameters }, ex);
+                //if (ErrorInCreateXomlFisWorkflow != null)
+                //    ErrorInCreateXomlFisWorkflow(MethodBase.GetCurrentMethod(), new object[] { markupFileName, rulesMarkupFileName, parameters }, ex);
+                throw ex;
+            }
+            finally
+            {
+                WorkflowRuntimeManagerMethodsEndding(MethodCreateXomlFisWorkflow, new object[] { markupFileName, rulesMarkupFileName, parameters });
+                //if (EndCreateXomlFisWorkflow != null)d
+                //    EndCreateXomlFisWorkflow(MethodBase.GetCurrentMethod(), new object[] { markupFileName, rulesMarkupFileName, parameters });
+            }
+        }
+
+        //public static event WorkflowsEvent Begin_workflowRuntime_WorkflowTerminated;
+        //public static event WorkflowsEvent End_workflowRuntime_WorkflowTerminated;
+
+        /// <summary>
+        /// WorkflowTerminated事件的处理方法
+        /// </summary>
+        /// <param name="sender">事件发起对象</param>
+        /// <param name="e">事件参数</param>
+        private static void _workflowRuntime_WorkflowTerminated(object sender, WorkflowTerminatedEventArgs e)
+        {
+            //if (Begin_workflowRuntime_WorkflowTerminated != null)
+            //    Begin_workflowRuntime_WorkflowTerminated(MethodBase.GetCurrentMethod(), new object[] { sender,e.WorkflowInstance.GetWorkflowDefinition().Name, e.WorkflowInstance.InstanceId,e.Exception });
+            //MethodBase curMethod = MethodBase.GetCurrentMethod();
+            try
+            {
+                //RollBackTransWhenTerminated();
+                WorkflowRuntimeManagerMethodsBeginning(MethodWorkflowTerminated, new object[] { e.WorkflowInstance.InstanceId, e.Exception });
+                BindCacheManager.RemoveByValue(e.WorkflowInstance.InstanceId.ToString());
+                Session session = SessionManager.GetInstance.GetSessionByInstanceId(e.WorkflowInstance.InstanceId);
+                if (session != null)
+                {
+                    if (e.Exception is FisException)
+                    {
+                        session.Exception = (FisException)e.Exception;
+                    }
+                    else if (e.Exception.InnerException is FisException)
+                    {
+                        session.Exception = (FisException)e.Exception.InnerException;
+                    }
+                    else
+                    {
+                        session.Exception = e.Exception;
+                    }
+
+                    //Console.WriteLine(String.Format("The workflow of session {0} terminated: {1}. ", SessionManager.GetInstance.GetSessionKeyByInstanceId(e.WorkflowInstance.InstanceId), session.Exception.Message));
+                    //int waitingCount = session.GetHostWaitingCount;
+                    //int wfWaitingCount = session.GetWFWaitingCount;
+                    if (session.GetHostWaitingCount > 1 || session.GetWFWaitingCount > 0)
+                    {
+                        logger.WarnFormat(MsgWFTerminated,
+                                                     session.Key,
+                                                     session.Station ?? string.Empty,
+                                                     session.Line ?? string.Empty,
+                                                     session.Editor ?? string.Empty,
+                                                     session.GetHostWaitingCount.ToString(),
+                                                      session.GetWFWaitingCount.ToString(),
+                                                     session.Exception.Message);
+                    }
+                    session.AddValue(Session.SessionKeys.WFTerminated, true);
+                    //Remove session first
+                    //Vincent 2014-07-10: Change to not terminate WF
+                    //SessionManager.GetInstance.RemoveSession(session, false);
+                    //Vincent 2014-11-15 Change to remove session and terminate wf & Host thread 
+                    SessionManager.GetInstance.RemoveSession(session);
+                    #region release wf&Host thread in terminateWF  function
+                    //for (int i = 0; i < waitingCount; ++i)
+                    //{
+                    //    session.ResumeHost();
+                    //}
+                    //session.WaitHostHandle.Close();
+
+                    //////Vincent 2014-07-10: Change to not terminate WF
+                    ////SessionManager.GetInstance.RemoveSession(session, false);
+
+                    ////after remove session then resume wf thread
+                    //for (int i = 0; i < wfWaitingCount; ++i)
+                    //{
+                    //    session.ResumeWorkFlow();
+                    //}
+                    //session.WaitWorkflowHandle.Close();
+                    #endregion
+                }
+                else
+                {
+                    logger.WarnFormat(MsgWFNoSessionTerminated,
+                                                   e.WorkflowInstance.InstanceId, e.Exception.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex.ToString());
+                logger.Error(MethodWorkflowTerminated, ex);
+            }
+            finally
+            {
+                #region trash
+                //try
+                //{
+                    //System.Threading.Monitor.Exit(SessionManager.GetInstance.SynObject_getMRP)
+                //}
+                //catch (Exception ex)
+                //{
+                //}
+                #endregion
+
+                MakeSureTransactionDisposed();
+                WorkflowRuntimeManagerMethodsEndding(MethodWorkflowTerminated, new object[] { e.WorkflowInstance.InstanceId });
+                //if (End_workflowRuntime_WorkflowTerminated != null)
+                //    End_workflowRuntime_WorkflowTerminated(MethodBase.GetCurrentMethod(), new object[] { sender, e.WorkflowInstance.GetWorkflowDefinition().Name, e.WorkflowInstance.InstanceId, e.Exception });
+            }
+        }
+
+        public static event WorkflowsEvent Begin_RollBackTransWhenTerminated;
+        public static event WorkflowsEvent End_RollBackTransWhenTerminated;
+        public static event WorkflowsException ErrorInRollBackTransWhenTerminated;
+
+        private static void RollBackTransWhenTerminated()
+        {
+            //var logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+            if (Begin_RollBackTransWhenTerminated != null)
+                Begin_RollBackTransWhenTerminated(MethodRollBackTransWhenTerminated, new object[] { });
+
+            try
+            {
+                //logger.Error("Begin: WorkflowRuntimeManager::RollBackTransWhenTerminated() For SqlTransactionManager.Rollback()");
+                SqlTransactionManager.Rollback();
+                //logger.Error("End  : WorkflowRuntimeManager::RollBackTransWhenTerminated() For SqlTransactionManager.Rollback()");
+            }
+            catch (Exception ex)
+            {
+                if (ErrorInRollBackTransWhenTerminated != null)
+                    ErrorInRollBackTransWhenTerminated(MethodRollBackTransWhenTerminated, new object[] { }, ex);
+                throw ex;
+            }
+            finally
+            {
+                //logger.Error("Begin: WorkflowRuntimeManager::RollBackTransWhenTerminated() For SqlTransactionManager.Dispose~End()");
+                SqlTransactionManager.Dispose();
+                SqlTransactionManager.End();
+                //logger.Error("End  : WorkflowRuntimeManager::RollBackTransWhenTerminated() For SqlTransactionManager.Dispose~End()");
+
+                if (End_RollBackTransWhenTerminated != null)
+                    End_RollBackTransWhenTerminated(MethodRollBackTransWhenTerminated, new object[] { });
+            }
+        }
+
+        //public static event WorkflowsEvent Begin_workflowRuntime_WorkflowCompleted;
+        //public static event WorkflowsEvent End_workflowRuntime_WorkflowCompleted;
+
+        /// <summary>
+        /// WorkflowCompleted事件的处理方法
+        /// </summary>
+        /// <param name="sender">事件发起对象</param>
+        /// <param name="e">事件参数</param>
+        private static void _workflowRuntime_WorkflowCompleted(object sender, WorkflowCompletedEventArgs e)
+        {
+            //if (Begin_workflowRuntime_WorkflowCompleted != null)
+            //    Begin_workflowRuntime_WorkflowCompleted(MethodBase.GetCurrentMethod(), new object[] { sender, e.WorkflowInstance.GetWorkflowDefinition().Name, e.WorkflowInstance.InstanceId});
+            //MethodBase curMethod=MethodBase.GetCurrentMethod();
+            try
+            {
+                WorkflowRuntimeManagerMethodsBeginning(MethodWorkflowCompleted, new object[] { e.WorkflowInstance.InstanceId });
+                BindCacheManager.RemoveByValue(e.WorkflowInstance.InstanceId.ToString());
+                Session session = SessionManager.GetInstance.GetSessionByInstanceId(e.WorkflowInstance.InstanceId);
+                if (session != null)
+                {
+                    //Console.WriteLine(String.Format("The workflow of session {0} completed. ", SessionManager.GetInstance.GetSessionKeyByInstanceId(e.WorkflowInstance.InstanceId)));
+                    //int waitingCount = session.GetHostWaitingCount;
+                    //int wfWaitingCount = session.GetWFWaitingCount;
+
+                    if (logger.IsDebugEnabled)
+                    {
+                        logger.DebugFormat(MsgWFCompleted,
+                                                        e.WorkflowDefinition == null ? string.Empty : e.WorkflowDefinition.Name,
+                                                        session.Key,
+                                                        session.Station ?? string.Empty,
+                                                        session.Line ?? string.Empty,
+                                                        session.Editor ?? string.Empty,
+                                                        session.GetHostWaitingCount.ToString(),
+                                                        session.GetWFWaitingCount.ToString());
+                    }
+
+                    if (session.GetHostWaitingCount > 1 || session.GetWFWaitingCount > 0)
+                    {
+                        logger.WarnFormat(MsgWFCompleted,
+                                                           e.WorkflowDefinition == null ? string.Empty : e.WorkflowDefinition.Name,
+                                                           session.Key,
+                                                           session.Station ?? string.Empty,
+                                                           session.Line ?? string.Empty,
+                                                           session.Editor ?? string.Empty,
+                                                          session.GetHostWaitingCount.ToString(),
+                                                          session.GetWFWaitingCount.ToString());
+                    }
+                    //Remove session first
+                    //Vincent 2014-07-10: Change to not terminate WF
+                    //SessionManager.GetInstance.RemoveSession(session, false);
+                    //Vincent 2014-11-15 Change to remove session and terminate wf & Host thread 
+                    SessionManager.GetInstance.RemoveSession(session);
+                    #region release wf&Host thread in terminateWF  function
+                    //for (int i = 0; i < waitingCount; ++i)
+                    //{
+                    //    session.ResumeHost();
+                    //}
+                    //session.WaitHostHandle.Close();
+                    ////SessionManager.GetInstance.RemoveSession(session, false);
+
+                    ////after remove session then resume wf thread
+                    //for (int i = 0; i < wfWaitingCount; ++i)
+                    //{
+                    //    session.ResumeWorkFlow();
+                    //}
+                    //session.WaitWorkflowHandle.Close();
+                    #endregion
+                }
+                else
+                {
+                    logger.WarnFormat(MsgWFNoSessionCompleted,
+                                                  e.WorkflowDefinition == null ? string.Empty: e.WorkflowDefinition.Name,
+                                                   e.WorkflowInstance.InstanceId);
+                }
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex.ToString());
+                logger.Error(MethodWorkflowCompleted, ex);
+            }
+            finally
+            {
+                MakeSureTransactionDisposed();
+                WorkflowRuntimeManagerMethodsEndding(MethodWorkflowCompleted, new object[] { e.WorkflowInstance.InstanceId });
+                //if (End_workflowRuntime_WorkflowCompleted != null)
+                //    End_workflowRuntime_WorkflowCompleted(MethodBase.GetCurrentMethod(), new object[] { sender, e.WorkflowInstance.GetWorkflowDefinition().Name, e.WorkflowInstance.InstanceId });
+            }
+        }
+
+        private static void MakeSureTransactionDisposed()
+        {
+            // Rollback it if there's any outstanding transaction
+            if (SqlTransactionManager.IsStillSomeConn() || SqlTransactionManager.IsStillSomeTrans())
+            {
+                //var logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                logger.ErrorFormat(MsgTxnAlive, SqlTransactionManager.IsStillSomeConn(), SqlTransactionManager.IsStillSomeTrans());
+                var info = SqlTransactionManager.GetCurrentSqlTransactionManagerInfo();
+                logger.ErrorFormat(MsgTxnScope, info.Embeded, info.ErrOccured, info.InScopeTag);
+                try
+                {
+                    SqlTransactionManager.RollbackCompulsorily();
+                }
+                catch (Exception ex)
+                {
+                    logger.ErrorFormat(MsgTxnRollBack, ex.Message);
+                    try
+                    {
+                        SqlTransactionManager.CommitCompulsorily();
+                    }
+                    catch (Exception exi)
+                    {
+                        logger.ErrorFormat(MsgTxnCommit, exi.Message);
+                    }
+                }
+                finally
+                {
+                    try
+                    {
+                        SqlTransactionManager.DisposeCompulsorily();
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.ErrorFormat(MsgTxnDispose, ex.Message);
+                    }
+                    try
+                    {
+                        SqlTransactionManager.CloseCompulsorily();
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.ErrorFormat(MsgTxnClose, ex.Message);
+                    }
+                }
+            }
+            SqlTransactionManager.ResetCompulsorily();
+        }
+        //Vincent 2014-07-15 add log file method
+        #region log file method
+        private static void WorkflowRuntimeManagerMethodsBeginning(string methodName, object[] args)
+        {
+            try
+            {
+                if (logger.IsDebugEnabled)
+                {
+                    //logger.Debug(methodInfo.DeclaringType + "::" + methodInfo.Name + " BEGIN: " + ToStringTool.ToString(args));
+                    logger.DebugFormat(MsgBegin, methodName, ToStringTool.ToString(args));
+                }
+            }
+            catch(Exception e)
+            {
+                logger.Error("WorkflowRuntimeManagerMethodsBeginning", e);
+            }
+        }
+
+        private static void WorkflowRuntimeManagerMethodsEndding(string methodName, object[] args)
+        {
+            try
+            {
+                if (logger.IsDebugEnabled)
+                {                 
+                  //logger.Debug(methodInfo.DeclaringType + "::" + methodInfo.Name + "   END: " + ToStringTool.ToString(args));
+                    logger.DebugFormat(MsgEnd, methodName, ToStringTool.ToString(args));
+                }
+            }
+            catch(Exception e)
+            {
+                logger.Error("WorkflowRuntimeManagerMethodsEndding", e);
+            }
+        }
+
+        private static void WorkflowRuntimeManagerMethodsErroring(string methodName, object[] args, Exception ex)
+        {
+            try
+            {
+                //logger.Error(methodInfo.DeclaringType + "::" + methodInfo.Name + " ERROR: " + ToStringTool.ToString(args), ex);
+                logger.Error(string.Format(MsgError, methodName, ToStringTool.ToString(args)), ex);
+            }
+            catch (Exception e)
+            {
+                logger.Error("WorkflowRuntimeManagerMethodsErroring", e);
+            }
+        }
+        #endregion
+    }
+
+    internal class WorkflowRuntimeManagerLogger
+    {
+        private static ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        private static readonly string MsgBegin = "{0} BEGIN: {1}";
+        private static readonly string MsgEnd = "{0} END: {1}";
+        private static readonly string MsgError = "{0} ERROR: {1}";
+
+        static WorkflowRuntimeManagerLogger() { SetLogger(); }
+
+        public static void SetLogger()
+        {
+            WorkflowRuntimeManager.Begin_RollBackTransWhenTerminated += new WorkflowRuntimeManager.WorkflowsEvent(WorkflowRuntimeManagerMethodsBeginning);
+            WorkflowRuntimeManager.End_RollBackTransWhenTerminated += new WorkflowRuntimeManager.WorkflowsEvent(WorkflowRuntimeManagerMethodsEndding);
+            WorkflowRuntimeManager.ErrorInRollBackTransWhenTerminated += new WorkflowRuntimeManager.WorkflowsException(WorkflowRuntimeManagerMethodsErroring);
+            
+            //WorkflowRuntimeManager.Begin_workflowRuntime_WorkflowCompleted += new WorkflowRuntimeManager.WorkflowsEvent(WorkflowRuntimeManagerMethodsBeginning);
+            //WorkflowRuntimeManager.Begin_workflowRuntime_WorkflowTerminated += new WorkflowRuntimeManager.WorkflowsEvent(WorkflowRuntimeManagerMethodsBeginning);
+
+            //WorkflowRuntimeManager.End_workflowRuntime_WorkflowCompleted += new WorkflowRuntimeManager.WorkflowsEvent(WorkflowRuntimeManagerMethodsEndding);
+            //WorkflowRuntimeManager.End_workflowRuntime_WorkflowTerminated += new WorkflowRuntimeManager.WorkflowsEvent(WorkflowRuntimeManagerMethodsEndding);
+
+            //WorkflowRuntimeManager.BeginCreateXomlFisWorkflow += new WorkflowRuntimeManager.WorkflowsEvent(WorkflowRuntimeManagerMethodsBeginning);
+            //WorkflowRuntimeManager.EndCreateXomlFisWorkflow += new WorkflowRuntimeManager.WorkflowsEvent(WorkflowRuntimeManagerMethodsEndding);
+            //WorkflowRuntimeManager.ErrorInCreateXomlFisWorkflow += new WorkflowRuntimeManager.WorkflowsException(WorkflowRuntimeManagerMethodsErroring);
+        }
+
+        private static void WorkflowRuntimeManagerMethodsBeginning(string methodName, object[] args)
+        {
+            if (logger.IsDebugEnabled)
+            {
+                //logger.Debug(methodInfo.DeclaringType + "::" + methodInfo.Name + " BEGIN: " + ToStringTool.ToString(args));
+                logger.DebugFormat(MsgBegin, methodName, ToStringTool.ToString(args));
+            }
+        }
+
+        private static void WorkflowRuntimeManagerMethodsEndding(string methodName, object[] args)
+        {
+            if (logger.IsDebugEnabled)
+            {
+                //logger.Debug(methodInfo.DeclaringType + "::" + methodInfo.Name + "   END: " + ToStringTool.ToString(args));
+                logger.DebugFormat(MsgEnd, methodName, ToStringTool.ToString(args));
+            }
+        }
+
+        private static void WorkflowRuntimeManagerMethodsErroring(string methodName, object[] args, Exception ex)
+        {           
+             //logger.Error(methodInfo.DeclaringType + "::" + methodInfo.Name + " ERROR: " + ToStringTool.ToString(args), ex);             
+            logger.Error(string.Format(MsgError, methodName, ToStringTool.ToString(args)), ex);
+        }
+    }
+}

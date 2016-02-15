@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="connectionstring" value="User ID=imes_qry; Data Source=10.96.183.202,998;Password=imes_qry;Initial Catalog=HPIMES_Rep;" />
+    <add key="IsActive" value="YES" />
+    <add key="IsAuto" value="YES" />
+    <add key="Data_for_Delivery" value="SP_HP_Float_PGI '1' " />
+    <add key="Data_for_QC" value="SP_HP_Float_ProductYield '1' " />
+    <add key="Data_for_WIP" value="" />
+    <add key="Data_for_Input" value="SP_HP_Float_ProductYield '2' " />
+    <add key="Data_for_Product" value="exec dbo.rpt_Product_Generate" />
+    <add key="Data_for_InputOutput" value="exec SP_HP_Float_FAInput  '1'" />
+    <add key="Data_for_QCReports" value="exec  SP_HP_Float_ProductYield '3'" />
+    <add key="Btn_For_WIP" value="YES" />
+    <add key="Btn_For_QC" value="YES" />
+    <add key="Btn_For_Delivery" value="YES" />
+    <add key="Btn_For_Product" value="YES" />
+    <add key="NetCheck" value="10.96.183.2" />
+    <add key="IsOpen" value="NO" />
+    <add key="TemplatePATH" value="Template" />
+    <add key="ClientSettingsProvider.ServiceUri" value="" />
+  </appSettings>
+  <windows>
+    <appSettings>
+      <add key="Sp_Type1" value="aaa" />
+      <add key="Sp_Type2" value="bbb" />
+    </appSettings>
+  </windows>
+  <system.web>
+    <membership defaultProvider="ClientAuthenticationMembershipProvider">
+      <providers>
+        <add name="ClientAuthenticationMembershipProvider" type="System.Web.ClientServices.Providers.ClientFormsAuthenticationMembershipProvider, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" />
+      </providers>
+    </membership>
+    <roleManager defaultProvider="ClientRoleProvider" enabled="true">
+      <providers>
+        <add name="ClientRoleProvider" type="System.Web.ClientServices.Providers.ClientRoleProvider, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" cacheTimeout="86400" />
+      </providers>
+    </roleManager>
+  </system.web>
+</configuration>

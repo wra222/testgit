@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.KB.Filter.dll
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.KB.Filter.pdb
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.KB.Filter\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.KB.Filter\obj\Debug\IMES.CheckItemModule.KB.Filter.dll
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.KB.Filter\obj\Debug\IMES.CheckItemModule.KB.Filter.pdb

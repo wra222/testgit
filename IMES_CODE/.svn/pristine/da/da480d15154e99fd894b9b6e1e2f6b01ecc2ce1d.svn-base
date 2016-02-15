@@ -1,0 +1,77 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="_PackingList" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:ns1="clr-namespace:IMES.Activity.Special;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:CheckDataForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkDataForPackingList2" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" />
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="DN">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="DN" />
+			</IfElseBranchActivity.Condition>
+			<ns1:CheckEDIForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkEDIForPackingList1" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="DN" />
+			<ns1:CheckInstrForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkInstrForPackingList1" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="DN" />
+			<ns0:DBScope Station="{ActivityBind _PackingList,Path=Station}" x:Name="dbScope1" Key="{ActivityBind _PackingList,Path=Key}" SessionType="{ActivityBind _PackingList,Path=SessionType}">
+				<ns1:SaveForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="saveForPackingList1" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="DN" />
+				<ns1:CheckBindForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkBindForPackingList1" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="DN" />
+			</ns0:DBScope>
+			<ns0:CheckTrackForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkTrackForPackingList1" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" />
+			<ns1:CreateFileForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="createFileForPackingList1" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="DN" />
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+			<IfElseActivity x:Name="ifElseActivity2">
+				<IfElseBranchActivity x:Name="Shipment">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="Shipment" />
+					</IfElseBranchActivity.Condition>
+					<ns1:CheckEDIForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkEDIForPackingList2" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="Shipment" />
+					<ns1:CheckInstrForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkInstrForPackingList2" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="Shipment" />
+					<ns0:DBScope Station="{ActivityBind _PackingList,Path=Station}" x:Name="dbScope2" Key="{ActivityBind _PackingList,Path=Key}" SessionType="{ActivityBind _PackingList,Path=SessionType}">
+						<ns1:SaveForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="saveForPackingList2" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="Shipment" />
+						<ns1:CheckBindForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkBindForPackingList2" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="Shipment" />
+					</ns0:DBScope>
+					<ns0:CheckTrackForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkTrackForPackingList2" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" />
+					<ns1:CreateFileForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="createFileForPackingList2" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="Shipment" />
+				</IfElseBranchActivity>
+				<IfElseBranchActivity x:Name="ifElseBranchActivity4">
+					<IfElseActivity x:Name="ifElseActivity4">
+						<IfElseBranchActivity x:Name="Waybill">
+							<IfElseBranchActivity.Condition>
+								<RuleConditionReference ConditionName="Waybill" />
+							</IfElseBranchActivity.Condition>
+							<ns1:CheckEDIForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkEDIForPackingList4" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="Waybill" />
+							<ns1:CheckInstrForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkInstrForPackingList4" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="Waybill" />
+							<ns0:DBScope Station="{ActivityBind _PackingList,Path=Station}" x:Name="dbScope4" Key="{ActivityBind _PackingList,Path=Key}" SessionType="{ActivityBind _PackingList,Path=SessionType}">
+								<ns1:SaveForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="saveForPackingList4" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="Waybill" />
+								<ns1:CheckBindForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkBindForPackingList4" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="Waybill" />
+							</ns0:DBScope>
+							<ns0:CheckTrackForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkTrackForPackingList4" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" />
+							<ns1:CreateFileForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="createFileForPackingList4" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="Waybill" />
+						</IfElseBranchActivity>
+						<IfElseBranchActivity x:Name="ifElseBranchActivity3">
+							<IfElseActivity x:Name="ifElseActivity3">
+								<IfElseBranchActivity x:Name="BOL">
+									<IfElseBranchActivity.Condition>
+										<RuleConditionReference ConditionName="BOL" />
+									</IfElseBranchActivity.Condition>
+									<WhileActivity x:Name="whileActivity1">
+										<WhileActivity.Condition>
+											<RuleConditionReference ConditionName="dnList" />
+										</WhileActivity.Condition>
+										<SequenceActivity x:Name="sequenceActivity1">
+											<ns0:BolDnForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="bolDnForPackingList1" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" />
+											<ns1:CheckEDIForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkEDIForPackingList3" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="DN" />
+											<ns1:CheckInstrForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkInstrForPackingList3" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="DN" />
+											<ns0:DBScope Station="{ActivityBind _PackingList,Path=Station}" x:Name="dbScope3" Key="{ActivityBind _PackingList,Path=Key}" SessionType="{ActivityBind _PackingList,Path=SessionType}">
+												<ns1:SaveForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="saveForPackingList3" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="DN" />
+												<ns1:CheckBindForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkBindForPackingList3" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="DN" />
+											</ns0:DBScope>
+											<ns0:CheckTrackForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="checkTrackForPackingList3" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" />
+											<ns1:CreateFileForPackingList Customer="{ActivityBind _PackingList,Path=Customer}" x:Name="createFileForPackingList3" SessionType="{ActivityBind _PackingList,Path=SessionType}" Editor="{ActivityBind _PackingList,Path=Editor}" Station="{ActivityBind _PackingList,Path=Station}" Line="{ActivityBind _PackingList,Path=PdLine}" Key="{ActivityBind _PackingList,Path=Key}" InputType="BOLDN" />
+										</SequenceActivity>
+									</WhileActivity>
+								</IfElseBranchActivity>
+							</IfElseActivity>
+						</IfElseBranchActivity>
+					</IfElseActivity>
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

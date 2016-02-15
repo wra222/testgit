@@ -1,0 +1,42 @@
+<ns0:BaseFlow Customer="{p1:Null}" x:Name="FinalScan" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetPickIDCtrlByPickID Customer="{ActivityBind FinalScan,Path=Customer}" x:Name="GetPickIDCtrlByPickID1" SessionType="{ActivityBind FinalScan,Path=SessionType}" Editor="{ActivityBind FinalScan,Path=Editor}" Station="{ActivityBind FinalScan,Path=Station}" Line="{ActivityBind FinalScan,Path=PdLine}" Key="{ActivityBind FinalScan,Path=Key}" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="WhileCondition" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind FinalScan,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind FinalScan,Path=SessionType}" Editor="{ActivityBind FinalScan,Path=Editor}" Station="{ActivityBind FinalScan,Path=Station}" Line="{ActivityBind FinalScan,Path=PdLine}" Key="{ActivityBind FinalScan,Path=Key}" />
+			<IfElseActivity x:Name="ifElseActivity1">
+				<IfElseBranchActivity x:Name="ifNotComplete">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplete" />
+					</IfElseBranchActivity.Condition>
+					<ns0:DBScope Station="{ActivityBind FinalScan,Path=Station}" x:Name="dbScopeOther" Key="{ActivityBind FinalScan,Path=Key}" SessionType="{ActivityBind FinalScan,Path=SessionType}">
+						<ns0:UpdateFwdPltStatus Customer="{ActivityBind FinalScan,Path=Customer}" x:Name="UpdateFwdPltStatus1" SessionType="{ActivityBind FinalScan,Path=SessionType}" Editor="{ActivityBind FinalScan,Path=Editor}" Station="{ActivityBind FinalScan,Path=Station}" Line="{ActivityBind FinalScan,Path=PdLine}" Key="{ActivityBind FinalScan,Path=Key}" />
+						<IfElseActivity x:Name="ifElseActivity3">
+							<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+								<IfElseBranchActivity.Condition>
+									<RuleConditionReference ConditionName="PalletnoExist" />
+								</IfElseBranchActivity.Condition>
+								<ns0:UpdatePalletStatus Customer="{ActivityBind FinalScan,Path=Customer}" x:Name="updatePalletStatus1" SessionType="{ActivityBind FinalScan,Path=SessionType}" Editor="{ActivityBind FinalScan,Path=Key}" Station="OT" Line="{ActivityBind FinalScan,Path=PdLine}" Key="{ActivityBind FinalScan,Path=Key}" />
+								<ns0:WritePalletLog Customer="{ActivityBind FinalScan,Path=Customer}" x:Name="writePalletLog1" SessionType="{ActivityBind FinalScan,Path=SessionType}" Editor="{ActivityBind GetPickIDCtrlByPickID1,Path=Key}" Station="OT" Line="{ActivityBind FinalScan,Path=PdLine}" Key="{ActivityBind FinalScan,Path=Key}" />
+							</IfElseBranchActivity>
+						</IfElseActivity>
+						<ns0:DeleteChepPLTAndUpdatePalletRfid Customer="{ActivityBind FinalScan,Path=Customer}" x:Name="deleteChepPLTAndUpdatePalletRfid1" SessionType="{ActivityBind FinalScan,Path=SessionType}" Editor="{ActivityBind FinalScan,Path=Editor}" Station="{ActivityBind FinalScan,Path=Station}" Line="{ActivityBind FinalScan,Path=PdLine}" Key="{ActivityBind FinalScan,Path=Key}" />
+						<IfElseActivity x:Name="ifElseActivity2">
+							<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+								<IfElseBranchActivity.Condition>
+									<RuleConditionReference ConditionName="IsNotInPalletButInWH_PLTMas" />
+								</IfElseBranchActivity.Condition>
+								<ns0:UpdateWHPltMas Customer="{ActivityBind FinalScan,Path=Customer}" x:Name="updateWHPltMas1" SessionType="{ActivityBind FinalScan,Path=SessionType}" Editor="{ActivityBind FinalScan,Path=Key}" Station="{ActivityBind FinalScan,Path=Station}" WC="OT" Line="{ActivityBind FinalScan,Path=PdLine}" Key="{ActivityBind FinalScan,Path=Key}" />
+								<ns0:WriteWHPltLog Customer="{ActivityBind FinalScan,Path=Customer}" x:Name="writeWHPltLog1" SessionType="0" Editor="{ActivityBind FinalScan,Path=Key}" PltFromSessionKey="{x:Null}" Station="OT" Line="{ActivityBind FinalScan,Path=PdLine}" Key="{ActivityBind FinalScan,Path=Key}" />
+								<ns0:UpdatePakWhLocTMP Customer="{ActivityBind FinalScan,Path=Customer}" x:Name="updatePakWhLocTMP1" SessionType="{ActivityBind FinalScan,Path=SessionType}" Editor="{ActivityBind FinalScan,Path=Key}" Station="{ActivityBind FinalScan,Path=Station}" Line="{ActivityBind FinalScan,Path=PdLine}" Key="{ActivityBind FinalScan,Path=Key}" />
+								<ns0:UpdatePakWhLoc Customer="{ActivityBind FinalScan,Path=Customer}" x:Name="updatePakWhLoc1" SessionType="{ActivityBind FinalScan,Path=SessionType}" Editor="{ActivityBind FinalScan,Path=Key}" Station="{ActivityBind FinalScan,Path=Station}" Line="{ActivityBind FinalScan,Path=PdLine}" Key="{ActivityBind FinalScan,Path=Key}" />
+							</IfElseBranchActivity>
+						</IfElseActivity>
+					</ns0:DBScope>
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+</ns0:BaseFlow>

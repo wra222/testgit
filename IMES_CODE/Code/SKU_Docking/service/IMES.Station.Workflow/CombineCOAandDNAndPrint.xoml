@@ -1,0 +1,69 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="CombineCOAandDNAndPrint" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="ifNotBSAM">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="NonBSAM" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" x:Name="dbScope1" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}">
+				<IfElseActivity x:Name="ifNonBT">
+					<IfElseBranchActivity x:Name="NonBT">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="NonBT" />
+						</IfElseBranchActivity.Condition>
+						<ns0:AssignDeliveryForNonBT Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" x:Name="assignDeliveryForNonBT1" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+				<IfElseActivity x:Name="IfNonBT2">
+					<IfElseBranchActivity x:Name="NonBT2">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="NonBT2" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateDeliveryStatus Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" x:Name="updateDeliveryStatus1" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" Status="87" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+				<ns0:GetProduct Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" x:Name="getProduct1" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" InputType="CustSN" />
+				<ns0:BindCoaToProduct Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" x:Name="bindCoaToProduct1" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" />
+				<ns0:GetProduct Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" x:Name="getProduct2" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" InputType="CustSN" />
+				<ns0:PAQC Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" Remark="P" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" ProductAttrName="" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" IsWriteProductLog="True" Station="PQ" NotQCStatus="1" QCStatus="8" x:Name="paqc1" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" IsStopWF="True" Type="PAQC" />
+				<ns0:CheckOfflinePizzaFamily Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" x:Name="checkOfflinePizzaFamily1" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity2">
+					<IfElseBranchActivity x:Name="ifNotOfflinePizzaFamily1">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="isNotOfflinePizzaFamily1" />
+						</IfElseBranchActivity.Condition>
+						<ns0:GetPizzaID Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" x:Name="getPizzaID1" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="ifElseBranchActivity2" />
+				</IfElseActivity>
+				<ns0:UpdateProductStatus Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Status="Pass" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" />
+				<ns0:Print Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" NotExistException="True" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" x:Name="print1" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" MOFrom="No" ModelFrom="No" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" DnFrom="No" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifBSAM">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="isBSAM" />
+			</IfElseBranchActivity.Condition>
+			<ns0:GetProduct Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" x:Name="getProduct3" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" InputType="CustSN" />
+			<ns0:CheckOfflinePizzaFamily Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" x:Name="checkOfflinePizzaFamily2" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" />
+			<IfElseActivity x:Name="ifElseActivity3">
+				<IfElseBranchActivity x:Name="ifNotOfflinePizzaFamily2">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="isNotOfflinePizzaFamily1" />
+					</IfElseBranchActivity.Condition>
+					<ns0:GetPizzaID Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" x:Name="getPizzaID2" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" />
+				</IfElseBranchActivity>
+				<IfElseBranchActivity x:Name="ifElseBranchActivity3" />
+			</IfElseActivity>
+			<ns0:TxnScope Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" x:Name="txnScope1" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}">
+				<ns0:BindCoaToProduct Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" x:Name="bindCoaToProduct2" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" />
+				<ns0:PAQC Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" Remark="P" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" ProductAttrName="" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" IsWriteProductLog="True" Station="PQ" NotQCStatus="1" QCStatus="8" x:Name="paqc2" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" IsStopWF="True" Type="PAQC" />
+				<ns0:MoveInBSamLoc Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" x:Name="moveInBSamLoc1" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Status="Pass" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" />
+				<ns0:Print Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" NotExistException="True" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" x:Name="print2" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" MOFrom="No" ModelFrom="No" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" DnFrom="No" />
+				<ns0:WritePrintLog Customer="{ActivityBind CombineCOAandDNAndPrint,Path=Customer}" x:Name="writePrintLog1" SessionType="{ActivityBind CombineCOAandDNAndPrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNAndPrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNAndPrint,Path=Station}" Line="{ActivityBind CombineCOAandDNAndPrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNAndPrint,Path=Key}" />
+			</ns0:TxnScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

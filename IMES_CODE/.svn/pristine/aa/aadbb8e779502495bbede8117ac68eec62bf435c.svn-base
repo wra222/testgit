@@ -1,0 +1,59 @@
+﻿<%@ WebService Language="C#" Class="WebServiceEchart" %>
+
+using System;
+using System.Web;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using com.inventec.system;
+using System.Collections.Generic;
+using com.inventec.imes.dao;
+
+[WebService(Namespace = "http://tempuri.org/")]
+[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+// To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+[System.Web.Script.Services.ScriptService]
+public class WebServiceEchart  : System.Web.Services.WebService {
+
+    [WebMethod]
+    public string HelloWorld() {
+        return "Hello World";
+    }
+
+    [WebMethod]
+    public ChartItem GetData()
+    {
+        ChartItem chart = new ChartItem();
+        List<SeriesType> SeriesAll = new List<SeriesType>();
+        
+        chart.Title = "HJT 自定义控件";
+        IList<string> linelist = AuthorityDao.Instance.GetUPHLine();
+       
+        foreach (string line in linelist)
+        {
+            System.Data.DataTable dt = AuthorityDao.Instance.GetUPH(line);
+
+            SeriesType aeriestype1 = new SeriesType();//定义线条模型
+            List<string> Series1 = new List<string>();//定义线条数据
+            List<string> XList = new List<string>();//定义线条的X轴
+
+            foreach (System.Data.DataRow dr in dt.Rows)//把X轴 和Y轴数据变为数组给Echart
+            {
+                XList.Add(dr["TimeRange"].ToString());
+                Series1.Add(dr["ProductRatio"].ToString());
+                
+            }
+            aeriestype1.Name = line;//线条的名字
+            aeriestype1.SeriesValues = Series1;//线条赋值
+            aeriestype1.XValue = XList;//线条的X轴
+            SeriesAll.Add(aeriestype1);
+
+        }
+        chart.Series = SeriesAll;//存放多个线条
+
+        return chart;
+
+
+    }
+    
+}
+

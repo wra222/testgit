@@ -1,0 +1,930 @@
+﻿<%--
+/*
+ * INVENTEC corporation: 2011 all rights reserved. 
+ * Description:Unit Weight
+ * UI:CI-MES12-SPEC-PAK-UI Unit Weight.docx –2011/11/25
+ * UC:CI-MES12-SPEC-PAK-UC Unit Weight.docx –2011/11/25         
+
+ * UC Revision：  4078
+ */
+--%>
+
+<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
+    CodeFile="UnitWeightNew.aspx.cs" Inherits="UnitWeightNew" Title="Untitled Page" %>
+
+<%@ Import Namespace="com.inventec.iMESWEB" %>
+<%@ MasterType VirtualPath="~/MasterPage.master" %>
+<%@ Register Src="~/CommonControl/WeightTypeControl.ascx" TagName="WeightTypeControl"
+    TagPrefix="uc1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="iMESContent" runat="Server">
+
+    <script type="text/javascript" src="../CommonControl/JS/iMESCommonUse.js"></script>
+
+    <script type="text/javascript" src="../CommonControl/jquery/js/jquery-1.7.1.min.js"></script>
+
+    <script type="text/javascript" src="../CommonControl/jquery/js/jquery.exclusionInOut.js"></script>
+
+    <asp:ScriptManager runat="server" ID="SM" EnablePartialRendering="true">
+        <Services>
+            <asp:ServiceReference Path="~/PAK/Service/WebServiceUnitWeightNew.asmx" />
+        </Services>
+    </asp:ScriptManager>
+    <div id="divUnitWeight" style="z-index: 0;">
+        <fieldset style="width: 95%" align="center">
+            <legend id="lblProductInfo" runat="server" style="color: Blue" class="iMes_label_13pt">
+            </legend>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+                <tr style="height: 30px" align="left">
+                    <td width="16%" id="v_1">
+                        <asp:Label ID="lblCustSN" runat="server" class="iMes_label_13pt"> </asp:Label>
+                    </td>
+                    <td width="24%">
+                        <asp:Label runat="server" ID="lblCustSN_Display" Width="90%" Text="" CssClass="iMes_textbox_input_Disabled"></asp:Label>
+                    </td>
+                    <td width="16%">
+                        <asp:Label ID="lblProdId" runat="server" class="iMes_label_13pt"> </asp:Label>
+                    </td>
+                    <td width="24%">
+                        <asp:Label runat="server" ID="lblProdId_Display" Width="90%" Text="" CssClass="iMes_textbox_input_Disabled"></asp:Label>
+                    </td>
+                </tr>
+                <tr style="height: 30px" align="left">
+                    <td width="16%">
+                        <asp:Label ID="lblModel" runat="server" class="iMes_label_13pt"> </asp:Label>
+                    </td>
+                    <td width="24%">
+                        <asp:Label runat="server" ID="lblModel_Display" Width="90%" Text="" CssClass="iMes_textbox_input_Disabled"></asp:Label>
+                    </td>
+                    <td width="16%">
+                        <asp:Label ID="lblStdWeight" runat="server" class="iMes_label_13pt"> </asp:Label>
+                    </td>
+                    <td width="24%">
+                        <asp:Label runat="server" ID="lblStdWeight_Display" Width="90%" Text="" CssClass="iMes_textbox_input_Disabled"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" align="left">
+                        <asp:Label ID="lblAdaptor" runat="server" class="iMes_DataEntryLabel"> </asp:Label>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset style="width: 95%">
+            <legend align="left" style="height: 20px">
+                <asp:Label ID="lblLabelList" runat="server" CssClass="iMes_label_13pt"></asp:Label>
+            </legend>
+            <table width="100%" border="0" style="table-layout: fixed;">
+                <tr>
+                    <td>
+                        <iMES:GridViewExt ID="gd" runat="server" AutoGenerateColumns="true" GvExtWidth="100%"
+                            GvExtHeight="180px" Style="top: 0px; left: 0px" Width="98%" Height="180px" SetTemplateValueEnable="False"
+                            HighLightRowPosition="3" AutoHighlightScrollByValue="True">
+                        </iMES:GridViewExt>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <table width="95%" cellpadding="0" cellspacing="0" border="0" align="center" style="height: 100px">
+            <tr>
+                <td width="35%" align="left" style="text-align: center">
+                    <asp:Label ID="lblUnitWeight" runat="server" class="iMes_label_30pt_Black"> </asp:Label>
+                </td>
+                <td width="35%" align="left" style="text-align: left">
+                    <asp:Label ID="lblUnitWeightValue" runat="server" class="iMes_label_30pt_Red_Underline"
+                        Font-Bold="True" ForeColor="Red"> </asp:Label>
+                </td>
+                <td width="35%" align="right" style="text-align: left">
+                    <asp:Label ID="lblPAQC" runat="server" class="iMes_label_30pt_Red"> </asp:Label>
+                </td>
+            </tr>
+        </table>
+        <table width="95%" cellpadding="0" cellspacing="0" border="0" align="center" style="height: 50px">
+            <tr valign="middle">
+                <td width="16%" align="left">
+                    <asp:Label ID="lblDataEntry" runat="server" class="iMes_DataEntryLabel"> </asp:Label>
+                </td>
+                <td width="50%" align="left">
+                    <iMES:Input ID="txtDataEntry" runat="server" ProcessQuickInput="true" Width="98%"
+                        CanUseKeyboard="true" IsPaste="true" MaxLength="50" InputRegularExpression="^[-0-9a-zA-Z\+\s\*\:]*$"
+                        ReplaceRegularExpression="[^-0-9a-zA-Z\+\s\*]" />
+                </td>
+                <td align="right">
+                    <input id="btnPrintSetting" style="height: auto" type="button" runat="server" onclick="showPrintSettingDialog()"
+                        class="iMes_button" onmouseover="this.className='iMes_button_onmouseover'" onmouseout="this.className='iMes_button_onmouseout'" />
+                    &nbsp;
+                </td>
+                <td align="right">
+                    <input id="btnReprint" style="height: auto" type="button" runat="server" onclick="rePrint()"
+                        class="iMes_button" onmouseover="this.className='iMes_button_onmouseover'" onmouseout="this.className='iMes_button_onmouseout'" />
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+        <table width="95%" cellpadding="0" cellspacing="0" border="0" align="center">
+            <tr>
+                <td>
+                </td>
+                <asp:UpdatePanel ID="UpdatePanelAll" runat="server" RenderMode="Inline">
+                    <ContentTemplate>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </tr>
+        </table>
+    </div>
+
+    <script language="javascript" for="objMSComm" event="OnComm">  
+
+// MSComm1控件每遇到 OnComm 事件就调用 MSComm1_OnComm()函数
+objMSComm_OnComm();
+  
+    </script>
+
+    <script language="javascript" type="text/javascript">
+ 
+
+
+var msgSuccess='<%=Resources.iMESGlobalMessage.ResourceManager.GetString(Pre + "_msgSuccess") %>';
+var msgSystemError =  '<%=Resources.iMESGlobalMessage.ResourceManager.GetString(Pre + "_msgSystemError") %>';
+var msgPrintSettingPara='<%=Resources.iMESGlobalMessage.ResourceManager.GetString(Pre + "_msgPrintSettingPara") %>';  
+var msgInput='<%=Resources.iMESGlobalMessage.ResourceManager.GetString(Pre + "msgInputSN") %>';  
+
+var msgNoCustSN = '<%=this.GetLocalResourceObject(Pre + "_msgNoCustSN").ToString() %>';
+var msgInputNull = '<%=this.GetLocalResourceObject(Pre + "_msgInputNull").ToString() %>';
+var msgInvalidSN =  '<%=this.GetLocalResourceObject(Pre + "_msgInvalidSN").ToString() %>';
+var msgCustSNErr ='<%=this.GetLocalResourceObject(Pre + "_msgCustSNErr").ToString() %>';
+var msgUnitWeightNull ='<%=this.GetLocalResourceObject(Pre + "_msgUnitWeightNull").ToString() %>';
+var msgTolerance ='<%=this.GetLocalResourceObject(Pre + "_msgTolerance").ToString() %>';
+var PAQCDisplay = '<%=this.GetLocalResourceObject(Pre + "_lblPAQC").ToString() %>';
+var AdaptorDisplay =  '<%=this.GetLocalResourceObject(Pre + "_lblAdaptor").ToString() %>';
+var IndiaDisplay = '<%=this.GetLocalResourceObject(Pre + "_lblIndia").ToString() %>';
+var msgPDFFileNull1 = '<%=this.GetLocalResourceObject(Pre + "_msgPDFFileNull1").ToString() %>';
+var msgPDFFileNull2 = '<%=this.GetLocalResourceObject(Pre + "_msgPDFFileNull2").ToString() %>';
+var msgNoPODLabelFile = '<%=this.GetLocalResourceObject(Pre + "_msgNoPODLabelFile").ToString() %>';
+var msgPDFPrinterNull ='<%=this.GetLocalResourceObject(Pre + "_msgPDFPrinterNull").ToString() %>';
+var msgPAQCDispaly='<%=this.GetLocalResourceObject(Pre + "_msgPAQCDispaly").ToString() %>';
+var msgPrintLabelName ='<%=this.GetLocalResourceObject(Pre + "_msgPrintLabelName").ToString() %>';
+
+var inputControl =getCommonInputObject();
+var editor = "<%=UserId%>";
+var customer = '<%=Customer %>';
+var station = '<%=Request["Station"] %>';
+var pcode ='<%=Request["PCode"] %>';  
+var accountId='<%=Request["AccountId"] %>';
+var login ='<%=Request["Login"] %>';
+var pdfClinetPath ="<%=PDFClinetPath%>";
+var WeightFilePath ="<%=UnitWeightFilePath%>";
+
+var model ="";
+var productID = "";
+var custSN = "";
+var partType ="";  // Part Info: YBJ, YB, YAB, YABJ, YJ, YAJ, YA
+var printlabeltype1 =""; // print Config Label
+var printlabeltype2 =""; // print POD Label
+var EditsFISAddr ="";
+var lstPrintItem;
+var actWeight;
+var pdfFlag=false;
+var custInput = false;
+var saveFlag = false;
+var hostname = getClientHostName();
+var ConfigLabelValueCollection = new Array();
+
+var bufferLength="";
+var splitPara="";
+var subInputlength="";
+var printerpath="";
+var displayPQAC=false;
+var color = "";
+var blackPrinter = "";
+var whitePrinter = "";
+var podLabelPath = "";
+var site = "";
+var paqcDisplyMsg="";
+var DEFAULT_ROW_NUM =9;
+var tbl = "<%=gd.ClientID %>";
+var defectCount = 0;
+var defectInTable = [];
+var passQty = 0;
+var failQty = 0;
+var_FAI="";
+document.body.onload = function() {
+    try {
+
+		$.exclusionInOut({ acquire: function() {
+			return setCommPara("U",WeightFilePath);
+		},
+		release: function() {
+			var objMSComm =document.getElementById("objMSComm");
+			if (objMSComm && objMSComm.PortOpen) {
+				objMSComm.PortOpen = false;
+			}
+			return true;
+		}
+		});
+  
+        callNextInput();
+         WebServiceUnitWeightNew.GetPODLabelPathAndSite(onGetPathSucceed, onFailed);
+
+    }
+    catch (e) {
+        alert(e.description);
+    }
+};
+
+
+ function onGetPathSucceed(result) {
+   //      site = result[0];
+         podLabelPath = result[0];
+     }
+
+function onFailed(result) {
+     endWaitingCoverDiv();
+     ResetPage();
+     ShowMessage(result.get_message());
+     ShowInfo(result.get_message());
+ }
+var weightBuffer="";
+function objMSComm_OnComm()
+{
+    var objMSComm = document.getElementById("objMSComm");
+   if(objMSComm.CommEvent != 2)
+   { 
+        //如果不是接收事件,就返回   
+		 return;
+	}
+    else if(objMSComm.CommEvent==2)//如果是接收事件  
+    {
+        weightBuffer= objMSComm.Input;
+        //ShowInfo(weightBuffer);
+        var result;
+        var idx;
+  	    if(weighttype=="")
+	    {      
+	        idx = weightBuffer.indexOf("\r\n");
+	        if(idx<4)
+	        {
+	           idx=30;
+	        }
+            result = weightBuffer.substring(0, idx);
+        }
+		else
+		{
+		    idx = weightBuffer.indexOf(weighttype);
+		    result = weightBuffer.substring(idx);
+		    idx = result.indexOf("\r\n");
+            result = result.substring(0, idx);
+		}
+
+       var weight = getNumber(result);
+       if (weight === false) {
+         document.getElementById("<%=lblUnitWeightValue.ClientID%>").innerText = "";
+       } else {
+         document.getElementById("<%=lblUnitWeightValue.ClientID%>").innerText = weight;
+       } 
+
+    }
+    
+}  
+
+function getNumber(str) 
+{
+	var result = false;
+	if (typeof (str) == 'string')
+	{
+		    result = str.replace(/[^\d\.]/g, '');
+		    result = isNaN(result) ? false : parseFloat(result);
+
+	}
+
+	return result;
+}
+
+
+function processDataEntry(inputStr)
+{
+ShowInfo("");
+   lstPrintItem = getPrintItemCollection();
+     if (lstPrintItem == null || lstPrintItem == "") {
+        alert(msgPrintSettingPara);
+        callNextInput();
+        return;
+    }
+    var inputData = inputStr.trim();
+    actWeight=document.getElementById("<%=lblUnitWeightValue.ClientID%>").innerText; 
+    if (inputData == "") 
+    {
+        alert(msgInputNull);
+        callNextInput();
+        return;
+    }
+    if (actWeight==null || actWeight=="")
+    {
+        if (Boolean( <%=isTestWeight%> ))
+        {
+            alert("TEST!");
+            actWeight = "100.00";
+            document.getElementById("<%=lblUnitWeightValue.ClientID%>").innerText="100.00";
+        }
+    }
+    if (actWeight=="")
+    {
+        alert(msgUnitWeightNull);
+        callNextInput();
+        return ;
+    }
+    if (inputData == "7777") {
+        ResetPage();
+        return;
+    }
+                 
+    if(!custInput)
+    {
+         inputCustSN(inputData.toUpperCase());
+    }
+   else
+   {
+      checkPart(inputData);
+   }
+}
+
+ function inputCustSN(inputData)
+ {
+    var b=CheckCustomerSN(inputData);
+    if(b)
+    {
+      custSN = inputData;   
+      inputCustomerSN();
+    }
+    else
+    {
+      alert(msgNoCustSN);
+      callNextInput();
+    }
+ 
+ }
+
+ function inputCustomerSN() 
+ {
+      beginWaitingCoverDiv();
+      var line = "";
+      WebServiceUnitWeightNew.inputCustSN(custSN, actWeight,line, editor, station, customer,onCustSucceed,onCustFailed);        
+ }
+
+ function onCustSucceed(result)
+{
+     endWaitingCoverDiv();
+     if (result == null) {
+        ShowInfo("");
+        alert(msgSystemError);
+        ShowInfo(msgSystemError);
+     }
+     else if (result[0] == "CHK020") {
+             ShowErrorMessage(result[1]);
+     }
+     else if (result[0]==SUCCESSRET){
+        custInput = true;  
+        document.getElementById("<%=lblCustSN_Display.ClientID %>").innerText = custSN;
+        var sUnitWeightNew=result[1][0];
+        productID =sUnitWeightNew.ProductID; 
+        document.getElementById("<%=lblProdId_Display.ClientID %>").innerText = sUnitWeightNew.ProductID;
+        document.getElementById("<%=lblModel_Display.ClientID %>").innerText =sUnitWeightNew.Model;
+        model = sUnitWeightNew.Model;
+        _FAI = sUnitWeightNew.FAI;
+        //	Standard Weight – IMES_GetData..ModelWeight.UnitWeight（需转换为decimal(10,2)） – 如果没有取到，则标准重量为NULL (这台机器后面就不需要进行标准重量的比较了)
+        if (sUnitWeightNew.StandardWeight==-1)
+        {
+            document.getElementById("<%=lblStdWeight_Display.ClientID %>").innerText = "NULL";
+        }
+        else
+        {
+            document.getElementById("<%=lblStdWeight_Display.ClientID %>").innerText = sUnitWeightNew.StandardWeight;
+        }
+        
+        labelDisplay(sUnitWeightNew.PAQC);
+        labelDisplay(sUnitWeightNew.IndiaLabel);
+        printlabeltype1 = sUnitWeightNew.ConfigLabel;
+        printlabeltype2 =sUnitWeightNew.PODLabel;
+        EditsFISAddr =sUnitWeightNew.EditsFISAddr;
+        defectInTable=sUnitWeightNew.BomItemList;
+        setTable(defectInTable);
+         setRowSelectedOrNotSelectedByIndex(0, false, tbl);    
+        printerpath= '<%=System.Configuration.ConfigurationManager.AppSettings["ClientBatFilePath"] %>';
+        if (printerpath.charAt(printerpath.length - 1) != "\\")
+           { printerpath = printerpath + "\\";}
+       if (printlabeltype2 == "PODLabel")
+        {
+            checkPODLabelPdfExist();
+        }
+        checkData(defectInTable.length);       
+     }
+     else {
+        ShowInfo("");
+        var content = result[0];
+        alert(content);
+        ShowInfo(content);
+    }
+    
+     callNextInput(); 
+}
+
+ function onCustFailed(result) {
+     endWaitingCoverDiv();
+     ExitPage();
+     clearInfo();
+     ShowMessage(result.get_message());
+     ShowInfo(result.get_message());
+     custInput = false;
+     callNextInput();
+ }
+ 
+ function checkPODLabelPdfExist()
+ {
+    var pdfFileName = pdfClinetPath;
+    pdfFileName=podLabelPath;
+    if (pdfClinetPath.slice(-1)!="\\")
+    {
+        pdfFileName += "\\";
+    }
+   pdfFileName += model+".Pdf";
+   var Fs = new ActiveXObject("Scripting.FileSystemObject");
+   if (!Fs.FileExists(pdfFileName))
+    {
+        ResetPage();
+        ShowMessage(msgNoPODLabelFile);
+        ShowInfo(msgNoPODLabelFile);
+    }
+ }
+ 
+ function labelDisplay(labelType) {
+     if (labelType == "P8") {
+             paqcDisplyMsg= 'S'+PAQCDisplay;
+            document.getElementById("<%=lblPAQC.ClientID %>").innerText = paqcDisplyMsg;
+           
+            displayPQAC=true;
+            return;
+        }
+     else if (labelType == "PB") {
+            document.getElementById("<%=lblPAQC.ClientID %>").innerText = PAQCDisplay;
+            paqcDisplyMsg= PAQCDisplay;
+            displayPQAC=true;
+            return;
+      }
+      else if (labelType == "PC") {
+            paqcDisplyMsg= 'HP '+PAQCDisplay;
+            document.getElementById("<%=lblPAQC.ClientID %>").innerText =paqcDisplyMsg;
+            
+            displayPQAC=true;
+            return;
+      }        
+     else if(labelType == "A") {
+            document.getElementById("<%=lblAdaptor.ClientID %>").innerText = AdaptorDisplay;
+            return;
+        }
+     else if(labelType == "I") {
+            document.getElementById("<%=lblAdaptor.ClientID %>").innerText = IndiaDisplay;
+            return;
+        }
+ }
+ function setTable(info) {
+
+            var bomList = info;
+            for (var i = 0; i < bomList.length; i++) {
+                var rowArray = new Array();
+                var rw;
+                var collection = bomList[i]["collectionData"];
+                var parts = bomList[i]["parts"];
+                var tmpstr="";
+
+                if (bomList[i]["PartNoItem"] == null) {
+                    rowArray.push(" ");
+                }
+                else {
+                    rowArray.push(bomList[i]["PartNoItem"]);
+                }
+                rowArray.push(bomList[i]["tp"]);
+                if (bomList[i]["description"] == null) {
+                    rowArray.push(" ");
+                }
+                else {
+                    rowArray.push(bomList[i]["description"]);
+                }
+                
+                rowArray.push(bomList[i]["qty"]);
+                rowArray.push(bomList[i]["scannedQty"]);
+                coll = "";
+                for (var j = 0; j < collection.length; j++) {
+                    tmpstr = tmpstr + " " + collection[j]["pn"];
+                }
+                rowArray.push(tmpstr); //["collectionData"]);
+            
+                if (i < 8) {
+                    eval("ChangeCvExtRowByIndex_" + tbl + "(rowArray, false, i+1);");
+                    setSrollByIndex(i, true, tbl);
+                }
+                else {
+                    eval("rw = AddCvExtRowToBottom_" + tbl + "(rowArray, false);");
+                    setSrollByIndex(i, true, tbl);
+                    rw.cells[1].style.whiteSpace = "nowrap";
+                }
+                setSrollByIndex(0, true, tbl);                 
+            }
+        }
+ function isInArray(array, search)
+{
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] === search) {
+            return true;
+        }
+    }
+    return false;
+}
+function checkData(len)
+{
+  if(actWeight == "" || actWeight== null )
+    {
+        alert(msgUnitWeightNull);
+        ShowInfo(msgUnitWeightNull);
+        callNextInput();
+        return;
+    }
+    else if(len==0)
+    { 
+        Save();
+    }
+}
+   function checkPart(data) {
+            WebServiceUnitWeightNew.checkPart(productID, data, onCheckSuccess, onCheckFail);
+        }
+        var iSelect=0;
+function updateTable(result) {
+            
+            var index = -1;
+            for (var i = 0; i < defectInTable.length; i++) {
+                var found = -1;
+                for (var j = 0; j < defectInTable[i]["parts"].length; j++) {
+                    if (defectInTable[i]["parts"][j]["id"] == result["PNOrItemName"]) {
+                        found = j;
+                        defectInTable[i]["scannedQty"]++; 
+         
+                        break;
+                    }
+                }
+                if (found >= 0) {
+                    index = i;
+                    break; 
+                }
+            }
+            iSelect=index;
+            return index;
+        }
+        
+        function onCheckSuccess(result) {
+           setRowSelectedOrNotSelectedByIndex(iSelect, false, tbl);  
+            var index = updateTable(result[1]);
+            if (index< 0) {
+                ShowInfo("System error!");
+                callNextInput();
+                return; 
+            }
+            var con = document.getElementById(tbl).rows[index + 1];
+            con.cells[4].innerText = defectInTable[index]["scannedQty"];
+            con.cells[5].innerText = con.cells[5].innerText + " " + result[1]["PNOrItemName"];
+            con.cells[5].title = con.cells[5].innerText;
+            setRowSelectedOrNotSelectedByIndex(index, true, tbl);     //设置当前高亮行
+            var bFinished = checkFinished(index);
+            if (bFinished == true) {
+               beginWaitingCoverDiv();
+               Save();
+                inputFlag = false;
+            }
+            callNextInput();
+        }
+
+        function onCheckFail(result) {
+            ShowInfo(result.get_message());
+            callNextInput();
+        }
+            function checkFinished(index) {
+            var ret = true;
+            for (var i = 0; i < defectInTable.length; i++) {
+                if (defectInTable[i]["qty"] != defectInTable[i]["scannedQty"]) {
+                    ret = false; 
+                    break;
+                }
+            }
+            
+            return ret;
+        }
+    function Save()
+    {
+          GetPrinterName(lstPrintItem);
+          var newPrintItemArr = new Array();
+          for (var i = 0; i < lstPrintItem.length; i++) {
+          if (lstPrintItem[i].LabelType.toUpperCase().indexOf("WHITE") == -1 &&
+             lstPrintItem[i].LabelType.toUpperCase().indexOf("BLACK") == -1) {
+                                     newPrintItemArr.push(lstPrintItem[i]);
+                                 }
+         }
+         WebServiceUnitWeightNew.Save(productID,model, newPrintItemArr,onSaveSuceed,onSaveFailed);
+    }
+
+function onSaveSuceed(result)
+{
+     endWaitingCoverDiv();
+     var printBranch = null;
+     if (result == null) {
+        ShowInfo("");
+        alert(msgSystemError);
+        ShowInfo(msgSystemError);
+        ResetPage();
+     }
+     else if (result[0]==SUCCESSRET){
+       saveFlag =true;
+       pdfFlag=false;
+       color =result[2];
+
+////==================================Print=======================================         
+        
+        if (printlabeltype1 == "ConfigLabel"){
+            printBranch = "C";
+        }
+        if (printlabeltype2 == "PODLabel"){
+            printBranch= "P";
+            if(printlabeltype1 == "ConfigLabel"){
+                printBranch ="CP";
+            }
+        }
+      if (printBranch =="C") 
+        {
+            for (i=0;i<result[1].length;i++)
+             {
+                if (result[1][i].LabelType=="config label")    //"Config Label"
+                { 
+                    setPrintItemListParam(result[1][i]);
+                 }
+             } 
+            printLabels(result[1], false);                
+        }
+        else if(printBranch=="P")
+        {
+             PDFPrint();
+        }
+        else if (printBranch =="CP")
+        {
+                  
+             for (i=0;i<result[1].length;i++)
+             {
+                 if (result[1][i].LabelType=="config label")  
+                { 
+                    setPrintItemListParam(result[1][i]);
+      
+                }
+                printLabels(result[1], false);     
+
+        
+             }    
+          PDFPrint();
+                           
+        }
+       
+
+////==================================Print=======================================         
+        var SuccessItem ="[" + custSN + "]";
+        
+        
+        ResetPage();
+       var msgShow = msgSuccess;
+        switch(printBranch)
+        {
+            case "C":
+                    msgShow = msgSuccess +" " + msgPrintLabelName + " " + "config label";
+                    break;
+            case "P":
+                    if(pdfFlag)
+                    {
+                         msgShow = msgSuccess +" " + msgPrintLabelName + " " + "POD Label";
+                    }
+                    break;
+            case "CP":
+                    if(pdfFlag)
+                    {
+                        msgShow = msgSuccess +" " + msgPrintLabelName + " " +"config label" + ", " + "POD Label";
+                    }
+                    else  msgShow = msgSuccess +" " + msgPrintLabelName + " " + "config label";
+                    break;    
+            default:break;    
+        }
+        var _msg="";
+        if (displayPQAC)
+        {
+            displayPQAC =false;
+			_msg=SuccessItem + " " + msgShow + "\r\n" + paqcDisplyMsg;
+           // ShowSuccessfulInfo(true, SuccessItem + " " + msgShow + "\r\n" + paqcDisplyMsg, true);
+        }
+        else 
+        {
+		   _msg=SuccessItem + " " + msgShow;
+         //  ShowSuccessfulInfo(true, SuccessItem + " " + msgShow);
+        }
+		if(_FAI!="")
+		{
+		_msg=_msg+"," +_FAI;
+		}
+		ShowSuccessfulInfo(true, _msg);
+     }
+     else {
+        ShowInfo("");
+        var content = result[0];
+        alert(content);
+        ShowInfo(content);
+        ResetPage();
+    }
+}
+
+function onSaveFailed(result) {
+     endWaitingCoverDiv();
+     ResetPage();
+     ShowMessage(result.get_message());
+     ShowInfo(result.get_message());
+     
+ }
+ 
+function PDFPrint(){
+
+       var pdfFileName = model+".Pdf";
+       var FsFile ="";
+       var Fs = new ActiveXObject("Scripting.FileSystemObject");
+
+       if (pdfClinetPath.slice(-1)=="\\") //ITC-1360-1521
+       {
+         FsFile=pdfClinetPath + "unitweightprintlist.txt";
+       }
+       else 
+       {
+          pdfClinetPath = pdfClinetPath + "\\";
+          FsFile = pdfClinetPath + "unitweightprintlist.txt";
+       }
+       
+       if (!Fs.FolderExists(pdfClinetPath)) 
+       {
+          Fs.CreateFolder(pdfClinetPath);
+       }
+
+        if (Fs.FileExists(FsFile))
+        {
+            Fs.DeleteFile(FsFile);
+        }
+        
+        File= Fs.CreateTextFile(FsFile,true);
+        var pdfPath ;
+        pdfPath= podLabelPath + pdfFileName;
+        File.WriteLine(pdfPath);
+        File.Close();
+        
+       var wsh = new ActiveXObject("wscript.shell");
+       var cmdpdfprint;
+           if (color != "") {
+                if (color == "White") {
+                 cmdpdfprint = "PrintPDF.bat " + FsFile +' "' + whitePrinter +'"' ;
+                 }
+                else {
+              cmdpdfprint = "PrintPDF.bat " + FsFile + ' "'  + blackPrinter + '"';
+                
+                }
+            }
+            else {
+                 cmdpdfprint = "PrintPDF.bat " + FsFile + " 4000";
+            }
+       
+   //    wsh.run("cmd /k " + getHomeDisk(pdfClinetPath) + "&copy /Y " + webserverPath +" " + pdfClinetPath + "&exit");
+       
+       if (!Fs.FileExists(FsFile)) {
+           alert(msgPDFFileNull1 +" "+ pdfFileName +" "+ msgPDFFileNull2);          
+       }
+       else 
+       {       
+            pdfFlag=true;
+            wsh.run("cmd /k " + getHomeDisk(printerpath) + "&cd " + printerpath +"&" + cmdpdfprint + "&exit", 2, false);
+       }
+       wsh = null;
+    
+}
+ function ExitPage()
+ {
+    if(custSN!="")
+    {
+        WebServiceUnitWeightNew.Cancel(custSN);
+        sleep(waitTimeForClear);   
+    }  
+ }
+ 
+ function ResetPage()
+ {
+     ExitPage();
+     clearInfo();
+     callNextInput();
+     ClearGvExtTable(tbl, DEFAULT_ROW_NUM);
+       //setRowSelectedOrNotSelectedByIndex(iSelect, false, tbl);  
+//     if(iSelect<DEFAULT_ROW_NUM)
+//     {
+//     setRowSelectedOrNotSelectedByIndex(iSelect, false, tbl);  
+//     }
+ }
+ 
+ window.onbeforeunload= function() 
+{
+   ExitPage();
+     
+};
+
+ function showPrintSettingDialog()
+{
+    showPrintSetting(station,pcode);
+}
+
+ function rePrint() {
+     var url = "ReprintUnitWeight.aspx?Station=" + station + "&PCode=" + pcode + "&UserId=" + editor + "&Customer=" + customer +"&AccountId=" + accountId +  "&Login=" + login + "&PDFClinetPath =" + pdfClinetPath;
+     window.showModalDialog(url, "", 'dialogWidth:950px;dialogHeight:600px;status:no;help:no;menubar:no;toolbar:no;resize:no;scrollbars:vertical');
+}
+     
+function ShowErrorMessage(msg)
+{
+    ShowMessage(msg);
+    ShowInfo(msg);    
+}
+
+function clearInfo()
+{
+     ShowInfo("");
+     model="";
+     productID = "";
+     custSN = "";
+     InputType = ""; 
+     partType =""; 
+     printlabeltype1 ="";
+     printlabeltype2 ="";
+     EditsFISAddr = "";
+     custInput = false;
+     saveFlag = false;
+     actWeight ="";
+     paqcDisplyMsg="";
+     ConfigLabelValueCollection = new Array();
+     
+    document.getElementById("<%=lblCustSN_Display.ClientID %>").innerText ="";
+    document.getElementById("<%=lblProdId_Display.ClientID %>").innerText ="";
+    document.getElementById("<%=lblModel_Display.ClientID %>").innerText = "";
+    document.getElementById("<%=lblStdWeight_Display.ClientID %>").innerText ="";
+ 
+    document.getElementById("<%=lblUnitWeightValue.ClientID%>").innerText = "";
+    document.getElementById("<%=lblPAQC.ClientID %>").innerText ="";
+    document.getElementById("<%=lblAdaptor.ClientID %>").innerText="";
+}
+
+function setPrintItemListParam(backPrintItemList)
+{
+   //Batch File: config.bat,调用config.bat列印Config Label 
+    var lstPrtItem =new Array();
+    var keyCollection = new Array();
+    var valueCollection = new Array();
+    lstPrtItem[0]= backPrintItemList;
+    keyCollection[0] = "@sn";
+    valueCollection[0] = generateArray(custSN);
+    setPrintParam(lstPrtItem, "config label", keyCollection, valueCollection);
+}
+  function GetPrinterName(printItem) {
+           
+            for (i = 0; i < printItem.length; i++) {
+                if (printItem[i].LabelType.toUpperCase().indexOf("WHITE") >= 0) {
+                    whitePrinter = printItem[i].PrinterPort;
+                    continue;
+                }
+                if (printItem[i].LabelType.toUpperCase().indexOf("BLACK") >= 0) {
+                    blackPrinter = printItem[i].PrinterPort;
+                    continue;
+                }
+            }
+          
+        }
+        function GetPodColor() {
+            WebServiceUnitWeightNew.GetCqPodLabelColor(model, onGetColorSucceed, onGetColorFailed);
+        }
+        function onGetColorSucceed(result) {
+            color = result;
+            PDFPrint();
+        }
+        function onGetColorFailed(result) {
+            ResetPage();
+            ShowErrorMessage(result.get_message());
+        }
+
+
+function callNextInput() 
+{
+    getCommonInputObject().value = "";
+    getCommonInputObject().focus();
+    getAvailableData("processDataEntry", true);
+}
+
+    </script>
+
+</asp:Content>

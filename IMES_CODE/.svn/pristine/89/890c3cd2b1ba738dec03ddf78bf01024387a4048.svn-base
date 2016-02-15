@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageMaintain.master.cs" Inherits="MasterPageMaintain" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1" runat="server">
+    <title>MasterPage</title>
+	<link REL="CONFIGURATION" href="DataMaintain/RouteControl/WorkflowDesignerControl.dll.config" />
+    <link href="DataMaintain/CSS/dataMaintain.css" type="text/css" rel="stylesheet" />    
+    <script type="text/javascript" src=" ../CommonControl/JS/Browser.js"></script>
+    <script type="text/javascript" src=" ../CommonControl/JS/iMESCommonUse.js"></script>
+</head>
+<body style=" position: relative;">
+
+    <form id="form1" runat="server">
+
+    <div id="div_center" class="iMes_div_center">
+        <asp:ContentPlaceHolder ID="iMESContent" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+
+    <div align="center" >
+        
+        <script language="javascript" type="text/javascript">
+            function ShowInfo(message)
+            {
+               
+            }      
+            function ShowSuccessfulInfo(message)
+            {
+            }
+      
+        </script>
+    </div>
+    <div align="center">
+    <table>
+        <tr>
+            <td style="width: 70%;">
+            </td>
+            <td style="width: 30%;" align="right">
+
+            </td>
+        </tr>
+    </table>
+    </div>
+    <iMES:WaitingCoverDiv ID="divCover" runat="server"  KeyDownFun="KeyDownEvent()"  />
+
+    </form>
+</body>
+</html>
+<script language="javascript" type="text/javascript">
+    if (browser.msie && browser.version == "6.0") {
+        document.body.style.width = "98%";
+    }
+    else {
+        document.body.style.width = "100%";
+    }
+</script>

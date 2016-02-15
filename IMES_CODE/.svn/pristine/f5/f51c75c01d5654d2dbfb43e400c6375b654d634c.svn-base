@@ -1,0 +1,54 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="_026OQCOutput" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetCustSN Customer="{ActivityBind _026OQCOutput,Path=Customer}" x:Name="GetCusSN" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" Station="{ActivityBind _026OQCOutput,Path=Station}" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+	<ns0:GetProduct Customer="{ActivityBind _026OQCOutput,Path=Customer}" x:Name="getProduct1" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" Enabled="False" Station="{ActivityBind _026OQCOutput,Path=Station}" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+	<ns0:BlockStation Customer="{ActivityBind _026OQCOutput,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" ProcessType="Product" Station="{ActivityBind _026OQCOutput,Path=Station}" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+	<ns0:WaitInput Customer="{ActivityBind _026OQCOutput,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" Station="{ActivityBind _026OQCOutput,Path=Station}" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+	<ns0:DBScope Station="{ActivityBind _026OQCOutput,Path=Station}" x:Name="dbScope1" Key="{ActivityBind _026OQCOutput,Path=Key}" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}">
+		<IfElseActivity x:Name="ifElseActivity1">
+			<IfElseBranchActivity x:Name="NoDefectBranch">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="hasDefect" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UpdateQCStatus Customer="{ActivityBind _026OQCOutput,Path=Customer}" x:Name="updateQCStatus2" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" Station="{ActivityBind _026OQCOutput,Path=Station}" Status="3" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity2" Enabled="False">
+					<IfElseBranchActivity x:Name="ifElseOQCSkip">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="OQCOrSkipNoDefect" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateQCStatus Customer="{ActivityBind _026OQCOutput,Path=Customer}" x:Name="updateQCStatus1" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" Station="{ActivityBind _026OQCOutput,Path=Station}" Status="6" Line="{ActivityBind _026OQCOutput,Path=Customer}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="ifElseEOQC" />
+				</IfElseActivity>
+				<ns0:UpdateProductStatus Customer="{ActivityBind _026OQCOutput,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" Status="Pass" Station="{ActivityBind _026OQCOutput,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+				<ns0:WriteProductTestLog Customer="{ActivityBind _026OQCOutput,Path=Customer}" Station="{ActivityBind _026OQCOutput,Path=Station}" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" IsPass="True" x:Name="writeProductTestLog2" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind _026OQCOutput,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" Station="{ActivityBind _026OQCOutput,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="DefectBranch">
+				<ns0:UpdateQCStatus Customer="{ActivityBind _026OQCOutput,Path=Customer}" x:Name="updateQCStatus4" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" Station="{ActivityBind _026OQCOutput,Path=Station}" Status="4" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity3" Enabled="False">
+					<IfElseBranchActivity x:Name="ifElseOQCSkip2">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="OQCOrSkipHasDefect" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateQCStatus Customer="{ActivityBind _026OQCOutput,Path=Customer}" x:Name="updateQCStatus3" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" Station="{ActivityBind _026OQCOutput,Path=Station}" Status="7" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="ifElseEOQC2" />
+				</IfElseActivity>
+				<IfElseActivity x:Name="ifElseActivity4">
+					<IfElseBranchActivity x:Name="ifElseFru">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="IsFru" />
+						</IfElseBranchActivity.Condition>
+						<ns0:GetMB Customer="{ActivityBind _026OQCOutput,Path=Customer}" x:Name="getMB1" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" Station="{ActivityBind _026OQCOutput,Path=Station}" MBSnSessionKey="ProductIDOrCustSN" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+						<ns0:WritePCBTestLog Customer="{ActivityBind _026OQCOutput,Path=Customer}" x:Name="writePCBTestLog1" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" Station="34" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+						<ns0:UpdateMBStatus Customer="{ActivityBind _026OQCOutput,Path=Customer}" Station="{ActivityBind _026OQCOutput,Path=Station}" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" ManualStation="34" Editor="{ActivityBind _026OQCOutput,Path=Editor}" IsPass="Fail" x:Name="updateMBStatus1" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+						<ns0:WriteMBLog Customer="{ActivityBind _026OQCOutput,Path=Customer}" Station="34" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" IsPass="True" x:Name="writeMBLog1" IsSingle="True" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+				<ns0:UpdateProductStatus Customer="{ActivityBind _026OQCOutput,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" Status="Fail" Station="{ActivityBind _026OQCOutput,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+				<ns0:WriteProductTestLog Customer="{ActivityBind _026OQCOutput,Path=Customer}" Station="{ActivityBind _026OQCOutput,Path=Station}" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" x:Name="writeProductTestLog1" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind _026OQCOutput,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind _026OQCOutput,Path=SessionType}" Editor="{ActivityBind _026OQCOutput,Path=Editor}" Station="{ActivityBind _026OQCOutput,Path=Station}" Status="Fail" IsSingle="True" Line="{ActivityBind _026OQCOutput,Path=PdLine}" Key="{ActivityBind _026OQCOutput,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+</ns0:BaseFlow>

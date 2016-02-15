@@ -1,0 +1,71 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="PakUnitWeightNew" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:BlockStation Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" ProcessType="Product" Station="{ActivityBind PakUnitWeightNew,Path=Station}" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+	<ns0:CheckModelWeight Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="checkModelWeight1" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Station="{ActivityBind PakUnitWeightNew,Path=Station}" WeightErrorForceNwc="True" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" NoExistModelWeightThrowError="False" />
+	<ns0:GetModelWeight Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="getModelWeight1" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Station="{ActivityBind PakUnitWeightNew,Path=Station}" WeightType="Unit" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+	<ns0:CheckWeight Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="checkWeight1" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Station="{ActivityBind PakUnitWeightNew,Path=Station}" WeightErrorForceNwc="True" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+	<ns0:GetBOM Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" MainObjFrom="Product" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" x:Name="getBOM1" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Station="{ActivityBind PakUnitWeightNew,Path=Station}" ModelFrom="Product" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+	<IfElseActivity x:Name="ifElseActivity3">
+		<IfElseBranchActivity x:Name="ifElseBranchActivity5">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="PalletConf" />
+			</IfElseBranchActivity.Condition>
+			<ns0:GetPallet Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="getPallet1" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Station="{ActivityBind PakUnitWeightNew,Path=Station}" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<WhileActivity x:Name="whileNotComplete">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplete" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Station="{ActivityBind PakUnitWeightNew,Path=Station}" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+			<IfElseActivity x:Name="ifNotComplete">
+				<IfElseBranchActivity x:Name="NotComplete">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplete" />
+					</IfElseBranchActivity.Condition>
+					<ns0:PartMatch Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" SkipPartCheck="True" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Station="{ActivityBind PakUnitWeightNew,Path=Station}" x:Name="partMatch1" BindTo="Pizza" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:CheckCOA Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="checkCOA1" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Station="{ActivityBind PakUnitWeightNew,Path=Station}" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+	<ns0:DBScope Station="{ActivityBind PakUnitWeightNew,Path=Station}" x:Name="dbScope1" Key="{ActivityBind PakUnitWeightNew,Path=Key}" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}">
+		<ns0:WritePQCLog Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="writePQCLog1" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Station="{ActivityBind PakUnitWeightNew,Path=Station}" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+		<ns0:InsertAndUpdateModelWeight Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="insertAndUpdateModelWeight1" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Station="{ActivityBind PakUnitWeightNew,Path=Station}" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+		<ns0:UpdateHP_EDI Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="updateHP_EDI1" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Station="{ActivityBind PakUnitWeightNew,Path=Station}" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+		<ns0:WriteUnitWeightLog Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="writeUnitWeightLog1" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Station="{ActivityBind PakUnitWeightNew,Path=Station}" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+		<ns0:UpdateUnitWeight Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="updateUnitWeight1" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Station="{ActivityBind PakUnitWeightNew,Path=Station}" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+		<ns0:UpdateProductStatus Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Status="Pass" Station="{ActivityBind PakUnitWeightNew,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+		<ns0:WriteProductLog Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Station="{ActivityBind PakUnitWeightNew,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+		<IfElseActivity x:Name="ifElseActivity4" Enabled="False">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity6">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="PalletConf" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UpdatePalletWeightToSAP Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="updatePalletWeightToSAP1" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Station="{ActivityBind PakUnitWeightNew,Path=Station}" Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<IfElseActivity x:Name="ifElseActivity2">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity3">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="ifPODLabel" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteProductLog Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Station="PD" Status="Pass" IsSingle="True" Line="POD Label Print" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="IFConfigLabel" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteProductLog Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" x:Name="writeProductLog3" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" Station="PD" Status="Pass" IsSingle="True" Line="ConfigLabelPrint" Key="{ActivityBind PakUnitWeightNew,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+	<IfElseActivity x:Name="ifElseActivity5">
+		<IfElseBranchActivity x:Name="ifElseBranchActivity4">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="HavePrintItem" />
+			</IfElseBranchActivity.Condition>
+			<ns0:Print Line="{ActivityBind PakUnitWeightNew,Path=PdLine}" Key="{ActivityBind PakUnitWeightNew,Path=Key}" Station="{ActivityBind PakUnitWeightNew,Path=Station}" PrintLogBegNo="ID" SessionBegNoName="" Editor="{ActivityBind PakUnitWeightNew,Path=Editor}" IsWritePrintLog="False" x:Name="print1" IsReprint="False" Customer="{ActivityBind PakUnitWeightNew,Path=Customer}" NotExistException="True" SessionType="{ActivityBind PakUnitWeightNew,Path=SessionType}" MOFrom="No" SessionEndNoName="" />
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

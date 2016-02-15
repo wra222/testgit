@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.CheckItemModule.RomeoBattery.Filter.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.CheckItemModule.RomeoBattery.Filter.pdb
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.RomeoBattery.Filter\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.RomeoBattery.Filter\obj\Debug\IMES.CheckItemModule.RomeoBattery.Filter.dll
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.RomeoBattery.Filter\obj\Debug\IMES.CheckItemModule.RomeoBattery.Filter.pdb

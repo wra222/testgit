@@ -1,0 +1,6 @@
+E:\IMES_CODE\Code\RCTO\bin\IMES.Infrastructure.WorkflowRuntime.XML
+E:\IMES_CODE\Code\RCTO\bin\IMES.Infrastructure.WorkflowRuntime.dll
+E:\IMES_CODE\Code\RCTO\bin\IMES.Infrastructure.WorkflowRuntime.pdb
+E:\IMES_CODE\Code\RCTO\kernel\IMES.Infrastructure.WorkflowRuntime\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\kernel\IMES.Infrastructure.WorkflowRuntime\obj\Debug\IMES.Infrastructure.WorkflowRuntime.dll
+E:\IMES_CODE\Code\RCTO\kernel\IMES.Infrastructure.WorkflowRuntime\obj\Debug\IMES.Infrastructure.WorkflowRuntime.pdb

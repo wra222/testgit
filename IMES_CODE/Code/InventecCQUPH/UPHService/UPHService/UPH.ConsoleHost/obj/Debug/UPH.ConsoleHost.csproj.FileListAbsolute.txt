@@ -1,0 +1,9 @@
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\UPH.ConsoleHost\bin\Debug\UPH.ConsoleHost.exe.config
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\UPH.ConsoleHost\bin\Debug\UPH.ConsoleHost.exe
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\UPH.ConsoleHost\bin\Debug\UPH.ConsoleHost.pdb
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\UPH.ConsoleHost\obj\Debug\ResolveAssemblyReference.cache
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\UPH.ConsoleHost\obj\Debug\UPH.ConsoleHost.exe
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\UPH.ConsoleHost\obj\Debug\UPH.ConsoleHost.pdb
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPH.ConsoleHost.exe.config
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPH.ConsoleHost.exe
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPH.ConsoleHost.pdb

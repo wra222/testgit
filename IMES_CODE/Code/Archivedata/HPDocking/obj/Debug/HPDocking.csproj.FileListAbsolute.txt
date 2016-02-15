@@ -1,0 +1,17 @@
+D:\Project\HP\SourceCode\Archivedata\HPDocking\bin\Debug\HPDocking.dll
+D:\Project\HP\SourceCode\Archivedata\HPDocking\bin\Debug\HPDocking.pdb
+D:\Project\HP\SourceCode\Archivedata\HPDocking\obj\Debug\ResolveAssemblyReference.cache
+D:\Project\HP\SourceCode\Archivedata\HPDocking\obj\Debug\HPDocking.dll
+D:\Project\HP\SourceCode\Archivedata\HPDocking\obj\Debug\HPDocking.pdb
+D:\Project\HP\SourceCode\Archivedata\ArchiveDB\bin\Debug\HPDocking.dll
+D:\Project\HP\SourceCode\Archivedata\ArchiveDB\bin\Debug\HPDocking.pdb
+D:\SH\trunk\Code\Archivedata\ArchiveDB\bin\Debug\HPDocking.dll
+D:\SH\trunk\Code\Archivedata\ArchiveDB\bin\Debug\HPDocking.pdb
+D:\SH\trunk\Code\Archivedata\HPDocking\obj\Debug\ResolveAssemblyReference.cache
+D:\SH\trunk\Code\Archivedata\HPDocking\obj\Debug\HPDocking.dll
+D:\SH\trunk\Code\Archivedata\HPDocking\obj\Debug\HPDocking.pdb
+D:\SH___bck\trunk_bck\Code\Archivedata\ArchiveDB\bin\Debug\HPDocking.dll
+D:\SH___bck\trunk_bck\Code\Archivedata\ArchiveDB\bin\Debug\HPDocking.pdb
+D:\SH___bck\trunk_bck\Code\Archivedata\HPDocking\obj\Debug\ResolveAssemblyReference.cache
+D:\SH___bck\trunk_bck\Code\Archivedata\HPDocking\obj\Debug\HPDocking.dll
+D:\SH___bck\trunk_bck\Code\Archivedata\HPDocking\obj\Debug\HPDocking.pdb

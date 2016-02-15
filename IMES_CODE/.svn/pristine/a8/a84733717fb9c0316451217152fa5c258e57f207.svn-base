@@ -1,0 +1,25 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="CombineOfflinePizzaForRCTO" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:BlockStationByCarton Customer="{ActivityBind CombineOfflinePizzaForRCTO,Path=Customer}" x:Name="blockStationByCarton1" SessionType="{ActivityBind CombineOfflinePizzaForRCTO,Path=SessionType}" Editor="{ActivityBind CombineOfflinePizzaForRCTO,Path=Editor}" Station="{ActivityBind CombineOfflinePizzaForRCTO,Path=Station}" Line="{ActivityBind CombineOfflinePizzaForRCTO,Path=PdLine}" Key="{ActivityBind CombineOfflinePizzaForRCTO,Path=Key}" />
+	<ns0:Print Customer="{ActivityBind CombineOfflinePizzaForRCTO,Path=Customer}" NotExistException="True" SessionType="{ActivityBind CombineOfflinePizzaForRCTO,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind CombineOfflinePizzaForRCTO,Path=Editor}" x:Name="print1" Station="{ActivityBind CombineOfflinePizzaForRCTO,Path=Station}" MOFrom="Product" ModelFrom="Product_Model" Line="{ActivityBind CombineOfflinePizzaForRCTO,Path=PdLine}" Key="{ActivityBind CombineOfflinePizzaForRCTO,Path=Key}" DnFrom="Product" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplet" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind CombineOfflinePizzaForRCTO,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind CombineOfflinePizzaForRCTO,Path=SessionType}" Editor="{ActivityBind CombineOfflinePizzaForRCTO,Path=Editor}" Station="{ActivityBind CombineOfflinePizzaForRCTO,Path=Station}" Line="{ActivityBind CombineOfflinePizzaForRCTO,Path=PdLine}" Key="{ActivityBind CombineOfflinePizzaForRCTO,Path=Key}" />
+			<IfElseActivity x:Name="IfComplete">
+				<IfElseBranchActivity x:Name="NotComplete">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplet" />
+					</IfElseBranchActivity.Condition>
+					<ns0:CheckCombineOfflinePizzaForRCTO Customer="{ActivityBind CombineOfflinePizzaForRCTO,Path=Customer}" x:Name="checkCombineOfflinePizzaForRCTO1" SessionType="{ActivityBind CombineOfflinePizzaForRCTO,Path=SessionType}" Editor="{ActivityBind CombineOfflinePizzaForRCTO,Path=Editor}" Station="{ActivityBind CombineOfflinePizzaForRCTO,Path=Station}" Line="{ActivityBind CombineOfflinePizzaForRCTO,Path=PdLine}" Key="{ActivityBind CombineOfflinePizzaForRCTO,Path=Key}" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:DBScope Station="{ActivityBind CombineOfflinePizzaForRCTO,Path=Station}" x:Name="dbScope1" Key="{ActivityBind CombineOfflinePizzaForRCTO,Path=Key}" SessionType="{ActivityBind CombineOfflinePizzaForRCTO,Path=SessionType}">
+		<ns0:UpdateMultiProductStatusAndLog Customer="{ActivityBind CombineOfflinePizzaForRCTO,Path=Customer}" x:Name="updateMultiProductStatusAndLog1" SessionType="{ActivityBind CombineOfflinePizzaForRCTO,Path=SessionType}" Editor="{ActivityBind CombineOfflinePizzaForRCTO,Path=Editor}" IsUpdateStation="True" Station="{ActivityBind CombineOfflinePizzaForRCTO,Path=Station}" Status="Pass" Line="{ActivityBind CombineOfflinePizzaForRCTO,Path=PdLine}" Key="{ActivityBind CombineOfflinePizzaForRCTO,Path=Key}" IsWriteLog="True" />
+		<ns0:UpdateMultiPizzaStatusAndLog Customer="{ActivityBind CombineOfflinePizzaForRCTO,Path=Customer}" x:Name="updateMultiPizzaStatusAndLog1" SessionType="{ActivityBind CombineOfflinePizzaForRCTO,Path=SessionType}" Editor="{ActivityBind CombineOfflinePizzaForRCTO,Path=Editor}" Station="{ActivityBind CombineOfflinePizzaForRCTO,Path=Station}" Line="{ActivityBind CombineOfflinePizzaForRCTO,Path=PdLine}" CartonSNName="CartonSN" Key="{ActivityBind CombineOfflinePizzaForRCTO,Path=Key}" />
+		<ns0:WritePrintLog Customer="{ActivityBind CombineOfflinePizzaForRCTO,Path=Customer}" x:Name="writePrintLog1" SessionType="{ActivityBind CombineOfflinePizzaForRCTO,Path=SessionType}" Editor="{ActivityBind CombineOfflinePizzaForRCTO,Path=Editor}" Station="{ActivityBind CombineOfflinePizzaForRCTO,Path=Station}" Line="{ActivityBind CombineOfflinePizzaForRCTO,Path=PdLine}" Key="{ActivityBind CombineOfflinePizzaForRCTO,Path=Key}" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

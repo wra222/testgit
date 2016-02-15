@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\Query\bin\IMES.Entity.Repository.Meta.dll
+E:\IMES_CODE\Code\Query\bin\IMES.Entity.Repository.Meta.pdb
+E:\IMES_CODE\Code\Query\IMESService\IMES.Entity.Repository.Meta\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\Query\IMESService\IMES.Entity.Repository.Meta\obj\Debug\IMES.Entity.Repository.Meta.dll
+E:\IMES_CODE\Code\Query\IMESService\IMES.Entity.Repository.Meta\obj\Debug\IMES.Entity.Repository.Meta.pdb

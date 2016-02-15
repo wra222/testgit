@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cn_btnQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="cn_btnUpload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="cn_fsQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="cn_fsUpload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="cn_lblDN" xml:space="preserve">
+    <value>Delivery No.:</value>
+  </data>
+  <data name="cn_lblDNInfo" xml:space="preserve">
+    <value>DN Info:</value>
+  </data>
+  <data name="cn_lblDNInfoList" xml:space="preserve">
+    <value>DN Info:</value>
+  </data>
+  <data name="cn_lblDNList" xml:space="preserve">
+    <value>DN List:</value>
+  </data>
+  <data name="cn_lblFile" xml:space="preserve">
+    <value>DN File:</value>
+  </data>
+  <data name="cn_lblFrom" xml:space="preserve">
+    <value>Ship Date From:</value>
+  </data>
+  <data name="cn_lblModel" xml:space="preserve">
+    <value>Model:</value>
+  </data>
+  <data name="cn_lblPalletList" xml:space="preserve">
+    <value>Pallet List:</value>
+  </data>
+  <data name="cn_lblPO" xml:space="preserve">
+    <value>PO No.:</value>
+  </data>
+  <data name="cn_lblTo" xml:space="preserve">
+    <value>To:</value>
+  </data>
+  <data name="cn_titleAttrName" xml:space="preserve">
+    <value>Attribute Name</value>
+  </data>
+  <data name="cn_titleAttrValue" xml:space="preserve">
+    <value>Attribute Value</value>
+  </data>
+  <data name="cn_titleCDate" xml:space="preserve">
+    <value>CreateDate</value>
+  </data>
+  <data name="cn_titleDN" xml:space="preserve">
+    <value>DeliveryNo.</value>
+  </data>
+  <data name="cn_titleModel" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="cn_titlePNo" xml:space="preserve">
+    <value>Pallet No.</value>
+  </data>
+  <data name="cn_titlePoNo" xml:space="preserve">
+    <value>PO No.</value>
+  </data>
+  <data name="cn_titleQty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="cn_titleSDate" xml:space="preserve">
+    <value>ShipDate</value>
+  </data>
+  <data name="cn_titleShipNo" xml:space="preserve">
+    <value>ShipmentNo.</value>
+  </data>
+  <data name="cn_titleStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="cn_titleUCC" xml:space="preserve">
+    <value>UCC</value>
+  </data>
+  <data name="eng_btnQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="eng_btnUpload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="eng_fsQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="eng_fsUpload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="eng_lblDN" xml:space="preserve">
+    <value>Delivery No.:</value>
+  </data>
+  <data name="eng_lblDNInfo" xml:space="preserve">
+    <value>DN Info:</value>
+  </data>
+  <data name="eng_lblDNInfoList" xml:space="preserve">
+    <value>DN Info:</value>
+  </data>
+  <data name="eng_lblDNList" xml:space="preserve">
+    <value>DN List:</value>
+  </data>
+  <data name="eng_lblFile" xml:space="preserve">
+    <value>DN File:</value>
+  </data>
+  <data name="eng_lblFrom" xml:space="preserve">
+    <value>Ship Date From:</value>
+  </data>
+  <data name="eng_lblModel" xml:space="preserve">
+    <value>Model:</value>
+  </data>
+  <data name="eng_lblPalletList" xml:space="preserve">
+    <value>Pallet List:</value>
+  </data>
+  <data name="eng_lblPO" xml:space="preserve">
+    <value>PO No.:</value>
+  </data>
+  <data name="eng_lblTo" xml:space="preserve">
+    <value>To:</value>
+  </data>
+  <data name="eng_titleAttrName" xml:space="preserve">
+    <value>Attribute Name</value>
+  </data>
+  <data name="eng_titleAttrValue" xml:space="preserve">
+    <value>Attribute Value</value>
+  </data>
+  <data name="eng_titleCDate" xml:space="preserve">
+    <value>CreateDate</value>
+  </data>
+  <data name="eng_titleDN" xml:space="preserve">
+    <value>DeliveryNo.</value>
+  </data>
+  <data name="eng_titleModel" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="eng_titlePNo" xml:space="preserve">
+    <value>Pallet No.</value>
+  </data>
+  <data name="eng_titlePoNo" xml:space="preserve">
+    <value>PO No.</value>
+  </data>
+  <data name="eng_titleQty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="eng_titleSDate" xml:space="preserve">
+    <value>ShipDate</value>
+  </data>
+  <data name="eng_titleShipNo" xml:space="preserve">
+    <value>ShipmentNo.</value>
+  </data>
+  <data name="eng_titleStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="eng_titleUCC" xml:space="preserve">
+    <value>UCC</value>
+  </data>
+  <data name="cn_msgBadFileName" xml:space="preserve">
+    <value>DN文件名错误！</value>
+  </data>
+  <data name="cn_msgConfirmUpload" xml:space="preserve">
+    <value>根据上传文件的不同，上传过程可能需要花费很长时间。\n您确认上传选中的船务资料吗？</value>
+  </data>
+  <data name="cn_msgDNFileNotExist" xml:space="preserve">
+    <value>DN文件不存在！</value>
+  </data>
+  <data name="cn_msgNoFile" xml:space="preserve">
+    <value>请选择DN文件！</value>
+  </data>
+  <data name="cn_msgPNFileNotExist" xml:space="preserve">
+    <value>Pallet No文件不存在！</value>
+  </data>
+  <data name="cn_msgUploadSuccess" xml:space="preserve">
+    <value>上传成功！</value>
+  </data>
+  <data name="eng_msgBadFileName" xml:space="preserve">
+    <value>The file name is wrong!</value>
+  </data>
+  <data name="eng_msgConfirmUpload" xml:space="preserve">
+    <value>Depends on the files to upload, it may cost a very long time.\nConfirm to upload the shipment data?</value>
+  </data>
+  <data name="eng_msgDNFileNotExist" xml:space="preserve">
+    <value>DN file not found!</value>
+  </data>
+  <data name="eng_msgNoFile" xml:space="preserve">
+    <value>Please select a DN file!</value>
+  </data>
+  <data name="eng_msgPNFileNotExist" xml:space="preserve">
+    <value>Pallet No file not found!</value>
+  </data>
+  <data name="eng_msgUploadSuccess" xml:space="preserve">
+    <value>Upload successfully!</value>
+  </data>
+  <data name="cn_msgNoRecord" xml:space="preserve">
+    <value>查询不到符合条件的记录！</value>
+  </data>
+  <data name="eng_msgNoRecord" xml:space="preserve">
+    <value>No record!</value>
+  </data>
+  <data name="cn_msgTooManyRecords" xml:space="preserve">
+    <value>仅显示前1000条查询结果！</value>
+  </data>
+  <data name="eng_msgTooManyRecords" xml:space="preserve">
+    <value>Only 1000 records are displayed!</value>
+  </data>
+  <data name="cn_msgBadDate" xml:space="preserve">
+    <value>开始日期不应晚于结束日期！</value>
+  </data>
+  <data name="cn_msgNoInput" xml:space="preserve">
+    <value>请输入至少一个查询条件！</value>
+  </data>
+  <data name="cn_msgNoRecordUpload" xml:space="preserve">
+    <value>没有成功上传的记录！</value>
+  </data>
+  <data name="eng_msgBadDate" xml:space="preserve">
+    <value>Ship from-date should not be later than to-date!</value>
+  </data>
+  <data name="eng_msgNoInput" xml:space="preserve">
+    <value>Please input at least one query condition!</value>
+  </data>
+  <data name="eng_msgNoRecordUpload" xml:space="preserve">
+    <value>No data uploaded!</value>
+  </data>
+  <data name="cn_msgBadDN" xml:space="preserve">
+    <value>请正确输入DN（10位或16位数字或字母）！</value>
+  </data>
+  <data name="cn_msgBadDNInfo" xml:space="preserve">
+    <value>请正确输入DN Info（只能包含数字、字母、“-”、“/”和空格）！</value>
+  </data>
+  <data name="eng_msgBadDN" xml:space="preserve">
+    <value>Please input a correct DN, which should be 10 or 16 characters, only digits and letters are allowed!</value>
+  </data>
+  <data name="eng_msgBadDNInfo" xml:space="preserve">
+    <value>Please input a correct DN Info, only digits, letters and character "-", "/" and space are allowed!</value>
+  </data>
+  <data name="cn_msgCheckFTP" xml:space="preserve">
+    <value>未能在服务器上找到所需的文件，请检查FTP设置！</value>
+  </data>
+  <data name="eng_msgCheckFTP" xml:space="preserve">
+    <value>Cannot find needed files on server, please check FTP settings!</value>
+  </data>
+  <data name="cn_btnPrint" xml:space="preserve">
+    <value>打印</value>
+  </data>
+  <data name="cn_btnPrintSetting" xml:space="preserve">
+    <value>打印设置</value>
+  </data>
+  <data name="cn_msgNoSelectedDN" xml:space="preserve">
+    <value>请选择Delivery！</value>
+  </data>
+  <data name="cn_msgPrintDone" xml:space="preserve">
+    <value>打印成功！</value>
+  </data>
+  <data name="eng_btnPrint" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="eng_btnPrintSetting" xml:space="preserve">
+    <value>Print Setting</value>
+  </data>
+  <data name="eng_msgNoSelectedDN" xml:space="preserve">
+    <value>Please select a Delivery!</value>
+  </data>
+  <data name="eng_msgPrintDone" xml:space="preserve">
+    <value>Print success!</value>
+  </data>
+  <data name="cn_lblTotal" xml:space="preserve">
+    <value>累计数量：</value>
+  </data>
+  <data name="eng_lblTotal" xml:space="preserve">
+    <value>Total Qty:</value>
+  </data>
+  <data name="cn_lblPallet" xml:space="preserve">
+    <value>Pallet No.：</value>
+  </data>
+  <data name="cn_lblPQty" xml:space="preserve">
+    <value>Qty：</value>
+  </data>
+  <data name="eng_lblPallet" xml:space="preserve">
+    <value>Pallet No.:</value>
+  </data>
+  <data name="eng_lblPQty" xml:space="preserve">
+    <value>Qty:</value>
+  </data>
+  <data name="cn_msgBadPQty" xml:space="preserve">
+    <value>请输入正确的Qty！（大于0的数字）</value>
+  </data>
+  <data name="cn_msgNoSelectedPlt" xml:space="preserve">
+    <value>请选择栈板！</value>
+  </data>
+  <data name="eng_msgBadPQty" xml:space="preserve">
+    <value>Please input a correct Qty which should be a number larger than 0!</value>
+  </data>
+  <data name="eng_msgNoSelectedPlt" xml:space="preserve">
+    <value>Please select a pallet!</value>
+  </data>
+  <data name="cn_btnClear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="eng_btnClear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+</root>

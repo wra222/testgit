@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\Query\bin\IMES.Query.Interface.dll
+E:\IMES_CODE\Code\Query\bin\IMES.Query.Interface.pdb
+E:\IMES_CODE\Code\Query\IMESService\IMES.Query.Interface\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\Query\IMESService\IMES.Query.Interface\obj\Debug\IMES.Query.Interface.dll
+E:\IMES_CODE\Code\Query\IMESService\IMES.Query.Interface\obj\Debug\IMES.Query.Interface.pdb

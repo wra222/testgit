@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--此文件由 XML 架构设计器自动生成。它包含设计器图面组件的布局信息。-->
+<XSDDesignerLayout Style="LeftRight" layoutVersion="2" viewPortLeft="0" viewPortTop="4080" zoom="100">
+    <PALLETS_XmlElement left="317" top="254" width="5292" height="2990" selected="0" zOrder="1" index="0" expanded="1">
+        <PALLET_XmlElement left="6243" top="254" width="5292" height="2990" selected="0" zOrder="2" index="0" expanded="0" />
+    </PALLETS_XmlElement>
+    <PALLETType_XmlComplexType left="635" top="5582" width="11324" height="7488" selected="0" zOrder="5" index="1" expanded="1">
+        <UDF_PALLET_XmlElement left="12593" top="2709" width="5292" height="2990" selected="0" zOrder="7" index="11" expanded="0" />
+        <PACK_ID_LINE_ITEM_XmlElement left="12593" top="6207" width="6244" height="9736" selected="0" zOrder="10" index="12" expanded="1">
+            <UDF_HEADER_XmlElement left="19471" top="6082" width="5292" height="2990" selected="0" zOrder="13" index="14" expanded="0" />
+            <UDF_DETAIL_XmlElement left="19471" top="9580" width="5292" height="2990" selected="0" zOrder="16" index="15" expanded="0" />
+            <BOX_XmlElement left="19471" top="13078" width="5292" height="2990" selected="0" zOrder="19" index="16" expanded="1">
+                <UDF_BOX_XmlElement left="25397" top="13078" width="5292" height="2990" selected="0" zOrder="22" index="6" expanded="0" />
+            </BOX_XmlElement>
+        </PACK_ID_LINE_ITEM_XmlElement>
+    </PALLETType_XmlComplexType>
+    <UDFType_XmlComplexType left="634" top="14774" width="5292" height="2990" selected="0" zOrder="25" index="2" expanded="1" />
+</XSDDesignerLayout>

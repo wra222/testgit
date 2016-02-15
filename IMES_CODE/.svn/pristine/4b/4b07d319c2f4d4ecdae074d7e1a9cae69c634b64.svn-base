@@ -1,0 +1,5 @@
+﻿<ns0:BaseFlow x:Class="IMES.Station.Workflow._101ReworkOutput" x:Name="_101ReworkOutput" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<ns0:CheckReworkSettings Station="{x:Null}" x:Name="checkReworkSettings1" Customer="{x:Null}" Editor="{x:Null}" Line="{x:Null}" />
+	<ns0:GetProduct Station="{x:Null}" x:Name="getProduct1" Customer="{x:Null}" Editor="{x:Null}" Line="{x:Null}" />
+	<ns0:CheckImplicitCheckItem Station="{x:Null}" x:Name="checkImplicitCheckItem1" Customer="{x:Null}" Editor="{x:Null}" Line="{x:Null}" />
+</ns0:BaseFlow>

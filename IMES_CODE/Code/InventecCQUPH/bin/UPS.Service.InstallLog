@@ -1,0 +1,55 @@
+﻿正在安裝組件 'D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.exe'。
+受影響的參數為:
+   logtoconsole = 
+   assemblypath = D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.exe
+   logfile = D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.InstallLog
+正在安裝服務 UPHService...
+已經成功安裝服務 UPHService。
+正在記錄檔 Application 中建立 EventLog 來源 UPHService...
+正在認可組件 'D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.exe'。
+受影響的參數為:
+   logtoconsole = 
+   assemblypath = D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.exe
+   logfile = D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.InstallLog
+正在解除安裝組件 'D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.exe'。
+受影響的參數為:
+   logtoconsole = 
+   assemblypath = D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.exe
+   logfile = D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.InstallLog
+正在移除 EventLog 來源 UPHService。
+已從系統中移除服務 UPHService...
+已經成功從系統移除服務 UPHService。
+正在安裝組件 'D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.exe'。
+受影響的參數為:
+   logtoconsole = 
+   assemblypath = D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.exe
+   logfile = D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.InstallLog
+正在安裝服務 UPHService...
+已經成功安裝服務 UPHService。
+正在記錄檔 Application 中建立 EventLog 來源 UPHService...
+正在認可組件 'D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.exe'。
+受影響的參數為:
+   logtoconsole = 
+   assemblypath = D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.exe
+   logfile = D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.InstallLog
+正在解除安裝組件 'D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.exe'。
+受影響的參數為:
+   logtoconsole = 
+   assemblypath = D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.exe
+   logfile = D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.InstallLog
+正在移除 EventLog 來源 UPHService。
+已從系統中移除服務 UPHService...
+已經成功從系統移除服務 UPHService。
+正在安裝組件 'D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.exe'。
+受影響的參數為:
+   logtoconsole = 
+   assemblypath = D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.exe
+   logfile = D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.InstallLog
+正在安裝服務 UPHService...
+已經成功安裝服務 UPHService。
+正在記錄檔 Application 中建立 EventLog 來源 UPHService...
+正在認可組件 'D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.exe'。
+受影響的參數為:
+   logtoconsole = 
+   assemblypath = D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.exe
+   logfile = D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPS.Service.InstallLog

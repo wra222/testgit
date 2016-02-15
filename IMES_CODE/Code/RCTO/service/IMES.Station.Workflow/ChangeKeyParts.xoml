@@ -1,0 +1,45 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="ChangeKeyParts" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:DBScope Station="{ActivityBind ChangeKeyParts,Path=Station}" x:Name="dbScope1" Key="{ActivityBind ChangeKeyParts,Path=Key}" SessionType="{ActivityBind ChangeKeyParts,Path=SessionType}">
+		<ns0:GetProduct Customer="{ActivityBind ChangeKeyParts,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind ChangeKeyParts,Path=SessionType}" Editor="{ActivityBind ChangeKeyParts,Path=Editor}" Station="{ActivityBind ChangeKeyParts,Path=Station}" x:Name="getProduct1" Line="{ActivityBind ChangeKeyParts,Path=PdLine}" Key="{ActivityBind ChangeKeyParts,Path=Key}" InputType="ProductIDOrCustSN" />
+		<ns0:GetReturnWC Customer="{ActivityBind ChangeKeyParts,Path=Customer}" x:Name="getReturnWC1" SessionType="{ActivityBind ChangeKeyParts,Path=SessionType}" Editor="{ActivityBind ChangeKeyParts,Path=Editor}" Station="{ActivityBind ChangeKeyParts,Path=Station}" Line="{ActivityBind ChangeKeyParts,Path=PdLine}" Key="{ActivityBind ChangeKeyParts,Path=Key}" />
+		<ns0:BlockStation Customer="{ActivityBind ChangeKeyParts,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind ChangeKeyParts,Path=SessionType}" Editor="{ActivityBind ChangeKeyParts,Path=Editor}" ProcessType="Product" Station="{ActivityBind ChangeKeyParts,Path=Station}" Line="{ActivityBind ChangeKeyParts,Path=PdLine}" Key="{ActivityBind ChangeKeyParts,Path=Key}" />
+		<ns0:CheckCanChangeKP Customer="{ActivityBind ChangeKeyParts,Path=Customer}" x:Name="checkCanChangeKP1" SessionType="{ActivityBind ChangeKeyParts,Path=SessionType}" Editor="{ActivityBind ChangeKeyParts,Path=Editor}" Station="{ActivityBind ChangeKeyParts,Path=Station}" Line="{ActivityBind ChangeKeyParts,Path=PdLine}" Key="{ActivityBind ChangeKeyParts,Path=Key}" />
+		<ns0:GetBOMByPartTypeAndModel Customer="{ActivityBind ChangeKeyParts,Path=Customer}" x:Name="getBOMByPartTypeAndModel1" SessionType="{ActivityBind ChangeKeyParts,Path=SessionType}" Editor="{ActivityBind ChangeKeyParts,Path=Editor}" Station="{ActivityBind ChangeKeyParts,Path=Station}" Line="{ActivityBind ChangeKeyParts,Path=PdLine}" Key="{ActivityBind ChangeKeyParts,Path=Key}" />
+		<WhileActivity x:Name="whileActivity1">
+			<WhileActivity.Condition>
+				<RuleConditionReference ConditionName="notComplete" />
+			</WhileActivity.Condition>
+			<SequenceActivity x:Name="processInputVCT">
+				<ns0:WaitInput Customer="{ActivityBind ChangeKeyParts,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind ChangeKeyParts,Path=SessionType}" Editor="{ActivityBind ChangeKeyParts,Path=Editor}" Station="{ActivityBind ChangeKeyParts,Path=Station}" Line="{ActivityBind ChangeKeyParts,Path=PdLine}" Key="{ActivityBind ChangeKeyParts,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity2">
+					<IfElseBranchActivity x:Name="notComplete">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="notComplete" />
+						</IfElseBranchActivity.Condition>
+						<ns0:PartMatch Customer="{ActivityBind ChangeKeyParts,Path=Customer}" SessionType="{ActivityBind ChangeKeyParts,Path=SessionType}" Editor="{ActivityBind ChangeKeyParts,Path=Editor}" Station="{ActivityBind ChangeKeyParts,Path=Station}" x:Name="partMatch1" BindTo="Product" Line="{ActivityBind ChangeKeyParts,Path=PdLine}" Key="{ActivityBind ChangeKeyParts,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</SequenceActivity>
+		</WhileActivity>
+		<ns0:UnBindParts Customer="{ActivityBind ChangeKeyParts,Path=Customer}" x:Name="unBindParts1" SessionType="{ActivityBind ChangeKeyParts,Path=SessionType}" Editor="{ActivityBind ChangeKeyParts,Path=Editor}" Station="{ActivityBind ChangeKeyParts,Path=Station}" Line="{ActivityBind ChangeKeyParts,Path=PdLine}" Key="{ActivityBind ChangeKeyParts,Path=Key}" />
+		<ns0:BindParts Customer="{ActivityBind ChangeKeyParts,Path=Customer}" x:Name="bindParts1" SessionType="{ActivityBind ChangeKeyParts,Path=SessionType}" Editor="{ActivityBind ChangeKeyParts,Path=Editor}" Station="{ActivityBind ChangeKeyParts,Path=Station}" BindTo="Product" Line="{ActivityBind ChangeKeyParts,Path=PdLine}" Key="{ActivityBind ChangeKeyParts,Path=Key}" />
+		<IfElseActivity x:Name="ifElseActivity1">
+			<IfElseBranchActivity x:Name="ifKPTypeIsCPU">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="KP-CPU" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UpdateProductProperty Customer="{ActivityBind ChangeKeyParts,Path=Customer}" x:Name="updateProductProperty1" SessionType="{ActivityBind ChangeKeyParts,Path=SessionType}" Editor="{ActivityBind ChangeKeyParts,Path=Editor}" Station="{ActivityBind ChangeKeyParts,Path=Station}" PropertyName="CVSN" PropertyValueKey="PartID" Line="{ActivityBind ChangeKeyParts,Path=PdLine}" Key="{ActivityBind ChangeKeyParts,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<ns0:WriteProductLog Customer="{ActivityBind ChangeKeyParts,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind ChangeKeyParts,Path=SessionType}" Editor="{ActivityBind ChangeKeyParts,Path=Editor}" Station="RK" Status="Pass" IsSingle="True" Line="{ActivityBind ChangeKeyParts,Path=PdLine}" Key="{ActivityBind ChangeKeyParts,Path=Key}" />
+		<IfElseActivity x:Name="ifElseActivity3">
+			<IfElseBranchActivity x:Name="needUpdateForceNWCAndProductStatus" Description="ProductStatus.Station&lt;&gt;ReturnWC#  or ProductStatus.Station=50 ">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="needUpdateForceNWCAndProductStatus" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteForceNWC Customer="{ActivityBind ChangeKeyParts,Path=Customer}" x:Name="writeForceNWC1" SessionType="{ActivityBind ChangeKeyParts,Path=SessionType}" Editor="{ActivityBind ChangeKeyParts,Path=Editor}" Station="{ActivityBind ChangeKeyParts,Path=Station}" Line="{ActivityBind ChangeKeyParts,Path=PdLine}" Key="{ActivityBind ChangeKeyParts,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind ChangeKeyParts,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind ChangeKeyParts,Path=SessionType}" Editor="{ActivityBind ChangeKeyParts,Path=Editor}" Status="Pass" Station="RK" IsReturnStatoin="False" Line="{ActivityBind ChangeKeyParts,Path=PdLine}" Key="{ActivityBind ChangeKeyParts,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+</ns0:BaseFlow>

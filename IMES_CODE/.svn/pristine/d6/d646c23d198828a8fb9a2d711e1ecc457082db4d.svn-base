@@ -1,0 +1,245 @@
+﻿using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Data.OleDb;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+using System.IO;
+using UPH.Interface;
+using com.inventec.iMESWEB;
+using System.Collections.Generic;
+
+public partial class webroot_DinnerTimeMaintian_DinnerTimeMaintian : System.Web.UI.Page
+{
+    private IDinner DinnerTime = ServiceAgent.getInstance().GetObjectByName<IDinner>(WebConstant.DINNER);
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            txtprocess.Items.Clear();
+            List<string> process = DinnerTime.GetAllProcess();
+            foreach (string PP in process)
+            {
+                ListItem pp = new ListItem(PP, PP);
+                txtprocess.Items.Add(pp);
+            }
+        }
+    }
+
+    protected void txtquery_Click(object sender, EventArgs e)
+    {
+        DataTable dinnertime = DinnerTime.GetAllDinnerTimeInfo();
+        BindTable(dinnertime);
+    }
+
+    protected void txtsave_Click(object sender, EventArgs e)
+    {
+        DinnerTimeInfo dinnerinfo = new DinnerTimeInfo()
+        {
+            Process = txtprocess.SelectedValue,
+            Type = txttype.SelectedValue,
+            Class = txtclass.SelectedValue,
+            PdLine = txtpdline.SelectedValue,
+            BeginTime = txtfromdate.Value,
+            EndTime = txttodate.Value,
+            Remark = txtremark.Text,
+            Editor = Master.userInfo.UserId,
+            Cdt = DateTime.Now,
+            Udt = DateTime.Now
+        };
+
+        DinnerLogInfo dinnerLoginfo = new DinnerLogInfo()
+        {
+            Process = txtprocess.SelectedValue,
+            Type = txttype.SelectedValue,
+            Class = txtclass.SelectedValue,
+            PdLine = txtpdline.SelectedValue,
+            BeginTime = txtfromdate.Value,
+            EndTime = txttodate.Value,
+            Remark = "Insert",
+            Editor = Master.userInfo.UserId,
+            Cdt = DateTime.Now,
+        };
+
+        if (txtfromdate.Value.Trim() == "" || txttodate.Value.Trim() == "")
+        {
+            Response.Write("<script>alert('请选择时间段!')</script>");
+        }
+        else
+        {
+            DinnerTime.AddDinnerLogInfo(dinnerLoginfo);
+            DinnerTime.AddDinnerTimeInfo(dinnerinfo);
+            txtremark.Text = "";
+            txtquery_Click(null, null);
+        }
+    }
+
+    protected void txtdelete_Click(object sender, EventArgs e)
+    {
+        foreach (GridViewRow r in dinnertime.Rows)
+        {
+            int id;
+            if (((CheckBox)r.FindControl("CheckBox1")).Checked == true)
+            {
+                id = Convert.ToInt32(r.Cells[1].Text);
+                DinnerTime.AddDinnerLog(id);
+                DinnerTime.DelDinnerTimeInfo(id);
+                txtquery_Click(null, null);
+            }
+        }
+    }
+
+    private void BindTable(DataTable dt)
+    {
+        dinnertime.DataSource = dt;
+        dinnertime.DataBind();
+        if (dt.Rows.Count > 0)
+        {
+            InitGridView();
+        }
+        else
+        {
+            Response.Write("<script>alert('沒有數據!')</script>");
+            Response.Flush();
+        }
+    }
+
+    private void InitGridView()
+    {
+        dinnertime.HeaderRow.Cells[0].Width = Unit.Percentage(12);
+        dinnertime.HeaderRow.Cells[1].Width = Unit.Percentage(12);
+        dinnertime.HeaderRow.Cells[2].Width = Unit.Percentage(15);
+        dinnertime.HeaderRow.Cells[3].Width = Unit.Percentage(15);
+        dinnertime.HeaderRow.Cells[4].Width = Unit.Percentage(5);
+        dinnertime.HeaderRow.Cells[5].Width = Unit.Percentage(10);
+        dinnertime.HeaderRow.Cells[6].Width = Unit.Percentage(10);
+        dinnertime.HeaderRow.Cells[7].Width = Unit.Percentage(5);
+        dinnertime.HeaderRow.Cells[8].Width = Unit.Percentage(5);
+        dinnertime.HeaderRow.Cells[8].Width = Unit.Percentage(5);
+        dinnertime.HeaderRow.Cells[9].Width = Unit.Percentage(5);
+    }
+
+    protected void txtprocess_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+        txtpdline.Items.Clear();
+        string process = txtprocess.SelectedValue;
+        List<string> line = DinnerTime.GetAllLine(process);
+        foreach (string LL in line)
+        {
+            ListItem ll = new ListItem(LL, LL);
+            txtpdline.Items.Add(ll);
+        }
+        DataTable dinnertime = DinnerTime.GetAllDinnerProcess(process);
+        BindTable(dinnertime);
+    }
+
+    protected void txtclass_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string process = txtprocess.SelectedValue;
+        string Class = txtclass.SelectedValue;
+        DataTable dinnertime = DinnerTime.GetAllDinnerProcessClass(process, Class);
+        BindTable(dinnertime);
+    }
+
+    protected void txtpdline_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string line = txtpdline.SelectedValue;
+        DataTable dinnertime = DinnerTime.GetAllDinnerLine(line);
+        BindTable(dinnertime);
+    }
+
+    protected void txtImport_Click(object sender, EventArgs e)
+    {  
+        //获取文件路径   
+        string filePath = this.FileUpload1.PostedFile.FileName;
+        if (filePath != "")  
+        {  
+            if (filePath.Contains("xls"))//判断文件是否存在   
+            {  
+                InputExcel(filePath);  
+            }  
+            else  
+            {  
+                Response.Write("<script>alert('請選擇Excel文件')</script>");
+            }  
+        }
+        else  
+        {  
+            Response.Write("<script>alert('請選擇文件路徑!')</script>");
+        }  
+    }  
+  
+    private void InputExcel(string pPath)  
+    {  
+        string conn = "Provider = Microsoft.Jet.OLEDB.4.0 ; Data Source =" + pPath + ";Extended Properties='Excel 8.0;HDR=False;IMEX=1'";  
+        OleDbConnection oleCon = new OleDbConnection(conn);  
+        oleCon.Open();  
+        string Sql = "select * from [Sheet1$]";  
+        OleDbDataAdapter mycommand = new OleDbDataAdapter(Sql, oleCon);  
+        DataSet ds = new DataSet();  
+        mycommand.Fill(ds, "[Sheet1$]");  
+        oleCon.Close();  
+        int count = ds.Tables["[Sheet1$]"].Rows.Count;  
+        for (int i = 0; i < count; i++)  
+        {  
+              DinnerTimeInfo dinnerinfo = new DinnerTimeInfo()
+                {
+                    Process =  ds.Tables["[Sheet1$]"].Rows[i]["Process"].ToString().Trim(),
+                    Type = ds.Tables["[Sheet1$]"].Rows[i]["Type"].ToString().Trim(),  
+                    Class = ds.Tables["[Sheet1$]"].Rows[i]["Class"].ToString().Trim(), 
+                    PdLine = ds.Tables["[Sheet1$]"].Rows[i]["PdLine"].ToString().Trim(),
+                    BeginTime = Convert.ToDateTime(ds.Tables["[Sheet1$]"].Rows[i]["BeginTime"]).ToString("HH:mm").Trim(),
+                    EndTime = Convert.ToDateTime(ds.Tables["[Sheet1$]"].Rows[i]["EndTime"]).ToString("HH:mm").Trim(),
+                    Remark = ds.Tables["[Sheet1$]"].Rows[i]["Remark"].ToString().Trim() + "Insert",
+                    Editor = Master.userInfo.UserId,
+                    Cdt = DateTime.Now,
+                    Udt = DateTime.Now
+                };
+
+              DinnerLogInfo dinnerLoginfo = new DinnerLogInfo()
+              {
+                  Process = ds.Tables["[Sheet1$]"].Rows[i]["Process"].ToString().Trim(),
+                  Type = ds.Tables["[Sheet1$]"].Rows[i]["Type"].ToString().Trim(),
+                  Class = ds.Tables["[Sheet1$]"].Rows[i]["Class"].ToString().Trim(),
+                  PdLine = ds.Tables["[Sheet1$]"].Rows[i]["PdLine"].ToString().Trim(),
+                  BeginTime = Convert.ToDateTime(ds.Tables["[Sheet1$]"].Rows[i]["BeginTime"]).ToString("HH:mm").Trim(),
+                  EndTime = Convert.ToDateTime(ds.Tables["[Sheet1$]"].Rows[i]["EndTime"]).ToString("HH:mm").Trim(),
+                  Remark = ds.Tables["[Sheet1$]"].Rows[i]["Remark"].ToString().Trim() + "Insert",
+                  Editor = Master.userInfo.UserId,
+                  Cdt = DateTime.Now
+              };
+          DinnerTime.AddDinnerLogInfo(dinnerLoginfo);
+          DinnerTime.AddDinnerTimeInfo(dinnerinfo);
+         }
+        txtremark.Text = "";
+        txtquery_Click(null, null);
+    }
+
+    protected void txtExport_Click(object sender, EventArgs e)
+    {
+        ExcelOut(this.dinnertime);
+    }
+
+    public void ExcelOut(GridView gv)
+    {
+        if (gv.Rows.Count > 0)
+        {
+            ToolUtility tu = new ToolUtility();
+            tu.ExportExcel(dinnertime, "Sheet1", this.Page);
+        }
+        else
+        {
+            Response.Write("<script>alert('沒有數據!')</script>");
+        }
+    }    
+}

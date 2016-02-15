@@ -1,0 +1,26 @@
+*** 打印模板程序Revision ***
+
+本次更新功能：
+修改Leo反馈问题：Docking 中的打印模板 ，旋转90度后的反白效果没有呈现。
+
+FTP：
+程序包：iMES_HP-1.0.0-LabelTemplateEditor-07131-20120716.zip
+模板程序版本：iMES_HP-1.0.0-LabelTemplateEditor-07131
+打印控件版本：1.0.0.12
+
+更新的参考步骤：
+1、  备份模板，或者备份模板数据库
+2、  备份原程序文件（Service、WEB UI）
+3、  停止IIS服务
+4、  执行Service\ UnInstall.bat，卸载PrintEngineHost服务
+5、  删除IIS映射的原程序文件
+6、  拷贝新程序文件（Service、WEB UI）
+7、  配置文件没有变化，拷贝原程序文件中的配置文件到新程序文件中：
+Service\ PrinterConfig.properties
+Service\ BaseWidthConfig.properties
+Service\ PrintEngine.exe.config
+WEB UI\Web.config
+8、  执行Service\ Install.bat，重建PrintEngineHost服务
+9、  映射虚拟路径到新程序文件的WEB UI下，启动IIS服务
+
+

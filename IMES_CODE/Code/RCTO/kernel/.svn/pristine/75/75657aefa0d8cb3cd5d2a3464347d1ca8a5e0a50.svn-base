@@ -1,0 +1,217 @@
+﻿using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using IMES.CheckItemModule.Interface;
+using IMES.CheckItemModule.Utility;
+using IMES.DataModel;
+using IMES.FisObject.Common.FisBOM;
+using IMES.FisObject.Common.Part;
+using IMES.Infrastructure;
+using System.Text.RegularExpressions;
+using IMES.FisObject.FA.Product;
+using IMES.FisObject.PAK.DN;
+using IMES.Infrastructure.Util;
+using IMES.Resolve.Common;
+
+namespace IMES.CheckItemModule.CommonRules.Filter
+{
+    [Export(typeof(IMatchModule))]
+    [ExportMetadata("ProgramName", "IMES.CheckItemModule.CommonRules.Filter.dll")]
+    public class MatchModule : IMatchModule
+    {
+        public object Match(string subject, object bomItem, string station)
+        {
+            if (subject == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (bomItem == null)
+            {
+                throw new ArgumentNullException();
+            }
+            PartUnit ret = null;
+            FlatBOMItem  flatBomitem=(FlatBOMItem)bomItem;
+
+            IList<CheckItemTypeRuleDef> lstChkItemRule =flatBomitem.CheckItemTypeRuleList;
+            if (null == lstChkItemRule || lstChkItemRule.Count == 0)
+            {
+                throw new FisException("No ChkItemTypeRule!!");
+            }
+
+            TagData tagData= (TagData)flatBomitem.Tag;
+            if (tagData == null)
+            {
+                throw new FisException("No tagData!!");
+            }
+
+            IList<IPart> partList = flatBomitem.AlterParts;
+            IPart matchPart = null;
+            CheckItemTypeRuleDef chkItemRule = lstChkItemRule[0];
+            string customPN = null;
+            string iecPN = null;
+            string preMatchPartNo = null;
+            
+            if (flatBomitem.RelationBomItem != null )
+            {
+                int relationQty = flatBomitem.RelationBomItem.CheckedPart.Count;
+                int checkedQty = flatBomitem.CheckedPart.Count;
+                if (relationQty == 0 ||
+                  checkedQty >= relationQty)
+                {
+                    preMatchPartNo = null;
+                }
+                else
+                {                  
+                    preMatchPartNo = flatBomitem.RelationBomItem.CheckedPart[checkedQty].Pn;
+                }
+            }
+
+            if (chkItemRule.MatchRuleGroupNames==null || chkItemRule.MatchRuleGroupNames.Count == 0)  //No Regular Expression Group Name
+            {
+                if (Regex.IsMatch(subject, chkItemRule.MatchRule))
+                {
+                    if (preMatchPartNo != null)
+                    {
+                        matchPart = partList.Where(x => x.PN == preMatchPartNo).FirstOrDefault();
+                        if (matchPart == null)
+                        {
+                            return ret;
+                        }
+                        customPN = getCustomPN(chkItemRule, tagData, (Part)matchPart, subject, out iecPN);
+                    }
+                    else
+                    {
+                        matchPart = partList.Where(x => {
+                                            customPN=getCustomPN(chkItemRule, tagData, (Part)x, subject, out iecPN);
+                                            return !string.IsNullOrEmpty(customPN);
+                                   }).FirstOrDefault();
+                    } 
+                    if (matchPart == null)
+                    {
+                        matchPart = partList[0];
+                    }
+                    ret = new PartUnit(matchPart.PN, 
+                                                subject, 
+                                                matchPart.BOMNodeType, 
+                                                matchPart.Type, 
+                                                iecPN??string.Empty, 
+                                                customPN ?? string.Empty, 
+                                                flatBomitem.CheckItemType);
+                }
+            }
+            else  // has Group Name case
+            {
+                string partSN = null;  
+                foreach (IPart part in partList)
+                { 
+                    if (preMatchPartNo != null && preMatchPartNo != part.PN)
+                    {
+                        continue;
+                    }
+                    if (matchREGroupValue(chkItemRule, subject, tagData, (Part)part, out partSN))
+                    {
+                        customPN = getCustomPN(chkItemRule, tagData, (Part)part, subject, out iecPN);
+                        ret = new PartUnit(part.PN, 
+                                                    partSN ?? subject, 
+                                                    part.BOMNodeType, 
+                                                    part.Type, 
+                                                    iecPN??string.Empty, 
+                                                    customPN ?? string.Empty, 
+                                                    flatBomitem.CheckItemType);                        
+                        break;
+                    }
+                }
+            }
+            return ret;
+        }
+
+        string getCustomPN(CheckItemTypeRuleDef chkItemRule,
+                                        TagData tagData,
+                                         Part     part,
+                                        string    inputStr,
+                                        out string iecPN)
+        {
+            string customPN = null;
+            iecPN = null;
+            UtilityCommonImpl utl = UtilityCommonImpl.GetInstance();
+            if (!string.IsNullOrEmpty(chkItemRule.SaveRule))
+            {
+                string[] nameList = chkItemRule.SaveRule.Split(GlobalConstName.CommaChar);
+                if (nameList[0].IndexOf(GlobalConstName.DotChar) > 0)  //CustomPn case
+                {
+                    customPN = ResolveValue.GetValueWithoutError(tagData.Product, tagData.PCB, tagData.DN, part, nameList[0], GlobalConstName.DotChar);
+                }
+                else if (!utl.GetSubjectByReGroup(chkItemRule, inputStr, nameList[0], out customPN))
+                {
+                    customPN = null;
+                }
+
+                if (nameList.Length > 1)   // for IecPN
+                {
+                    if (nameList[1].IndexOf(GlobalConstName.DotChar) > 0)
+                    {
+                        iecPN = ResolveValue.GetValueWithoutError(tagData.Product, tagData.PCB, tagData.DN, part, nameList[1], GlobalConstName.DotChar);
+                    }
+                    else if (!utl.GetSubjectByReGroup(chkItemRule, inputStr, nameList[1], out iecPN))
+                    {
+                        iecPN = null;
+                    }
+                }
+            }
+            else
+            {
+                customPN = part.Attributes.Where(x => x.InfoType == GlobalConstName.PartInfo.VCODE || x.InfoType == GlobalConstName.PartInfo.VC)
+                                               .Select(x => x.InfoValue).FirstOrDefault();
+                iecPN = part.Attributes.Where(x => x.InfoType == GlobalConstName.PartInfo.RDESC)
+                                               .Select(x => x.InfoValue).FirstOrDefault();
+            }
+
+            return customPN;
+        }
+
+        bool matchREGroupValue(CheckItemTypeRuleDef chkItemRule,
+                                                string subject,
+                                               TagData  tagData,
+                                                Part part,
+                                                out string value)
+        {
+            value = null;
+            //string[] nameList = chkItemRule.Descr.Split(',');
+            UtilityCommonImpl utl = UtilityCommonImpl.GetInstance();
+            foreach (KeyValuePair<string, bool> keyValue in chkItemRule.MatchRuleGroupNames)
+            {
+                string name = keyValue.Key;
+                string input = null;
+                if (keyValue.Value) //object type format
+                {
+                    if (tagData.GroupValueList.ContainsKey(name))
+                    {
+                        input = (string)tagData.GroupValueList[name];
+                    }
+
+                    if (string.IsNullOrEmpty(input))
+                    {
+                        input = ResolveValue.GetValueWithoutError(tagData.Product, tagData.PCB, tagData.DN, part, name, GlobalConstName.UnderScoreChar);
+                    }
+
+                    if (!utl.CheckSubjectByReGroup(chkItemRule, subject, input, name))
+                    {
+                        return false;
+                    }
+                }
+                else // none object type
+                {
+                    if (!utl.GetSubjectByReGroup(chkItemRule, subject, name, out value))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+                                                
+
+    }
+}

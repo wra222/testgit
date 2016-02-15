@@ -1,0 +1,40 @@
+﻿<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+<asp:TextBox  runat="server"  CssClass="iMes_textbox_input_Yellow"/>
+<asp:Button  runat="server"  CssClass="iMes_button"  />
+<iMES:GridViewExt runat="server" CssClass="iMes_grid_TableGvExt" CssClassMouseOver="iMes_grid_OverRowGvExt" ChangeRowCSSByClick="iMes_grid_SelectedRowGvExt" CellPadding="3" CellSpacing="1">
+<RowStyle CssClass="iMes_grid_RowGvExt" />
+<AlternatingRowStyle CssClass="iMes_grid_AlternatingRowGvExt" />
+<EditRowStyle CssClass="iMes_grid_AlternatingRowGvExt" />
+<HeaderStyle CssClass="iMes_grid_HeaderRowGvExt" />
+<SelectedRowStyle CssClass="iMes_grid_SelectedRowGvExt" />
+<PagerStyle  CssClass="iMes_grid_PagerRowGvExt"/>
+</iMES:GridViewExt>
+<asp:CheckBox runat="server" CssClass="iMes_CheckBox" />
+<asp:RadioButton runat="server" CssClass="iMes_Radio" />
+<asp:CheckBoxList runat="server" CssClass="iMes_CheckBox" />
+<asp:RadioButtonList runat="server" CssClass="iMes_Radio" />
+<asp:TextBox  runat="server"  CssClass="iMes_textbox_input_Normal" SkinId="textBoxSkin" />
+<asp:TextBox  runat="server"  CssClass="iMes_textbox_input_Disabled" SkinId="textBoxSkinDisabled" />
+
+<iMES:GridViewExt  SkinID="clearStyle" runat="server" CssClass="iMes_grid_TableGvExt_Clear" CssClassMouseOver="iMes_grid_OverRowGvExt" ChangeRowCSSByClick="iMes_grid_SelectedRowGvExt" CellPadding="3" CellSpacing="1"  >
+<RowStyle CssClass="iMes_grid_RowGvExt" />
+<AlternatingRowStyle CssClass="iMes_grid_AlternatingRowGvExt" />
+<EditRowStyle CssClass="iMes_grid_AlternatingRowGvExt" />
+<HeaderStyle CssClass="iMes_grid_HeaderRowGvExt" />
+<SelectedRowStyle CssClass="iMes_grid_SelectedRowGvExt" />
+<PagerStyle  CssClass="iMes_grid_PagerRowGvExt"/>
+</iMES:GridViewExt>

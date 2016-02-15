@@ -1,0 +1,35 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="CombinePCBinLot" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetMB Customer="{ActivityBind CombinePCBinLot,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind CombinePCBinLot,Path=SessionType}" Editor="{ActivityBind CombinePCBinLot,Path=Editor}" Station="{ActivityBind CombinePCBinLot,Path=Station}" MBSnSessionKey="" x:Name="getMB1" Line="{ActivityBind CombinePCBinLot,Path=PdLine}" Key="{ActivityBind CombinePCBinLot,Path=Key}" />
+	<ns0:BlockStation Customer="{ActivityBind CombinePCBinLot,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind CombinePCBinLot,Path=SessionType}" Editor="{ActivityBind CombinePCBinLot,Path=Editor}" ProcessType="MB" Station="{ActivityBind CombinePCBinLot,Path=Station}" Line="{ActivityBind CombinePCBinLot,Path=PdLine}" Key="{ActivityBind CombinePCBinLot,Path=Key}" />
+	<ns0:CheckforCombinePcb Customer="{ActivityBind CombinePCBinLot,Path=Customer}" x:Name="checkforCombinePcb1" SessionType="{ActivityBind CombinePCBinLot,Path=SessionType}" Editor="{ActivityBind CombinePCBinLot,Path=Editor}" Station="{ActivityBind CombinePCBinLot,Path=Station}" Line="{ActivityBind CombinePCBinLot,Path=PdLine}" Key="{ActivityBind CombinePCBinLot,Path=Key}" />
+	<ns0:GetLotSetting Customer="{ActivityBind CombinePCBinLot,Path=Customer}" x:Name="getLotSetting1" SessionType="{ActivityBind CombinePCBinLot,Path=SessionType}" Editor="{ActivityBind CombinePCBinLot,Path=Editor}" Station="15" Line="{ActivityBind CombinePCBinLot,Path=PdLine}" Key="{ActivityBind CombinePCBinLot,Path=Key}" />
+	<ns0:CheckMBType Customer="{ActivityBind CombinePCBinLot,Path=Customer}" x:Name="checkMBType1" SessionType="{ActivityBind CombinePCBinLot,Path=SessionType}" Editor="{ActivityBind CombinePCBinLot,Path=Editor}" Station="{ActivityBind CombinePCBinLot,Path=Station}" Line="{ActivityBind CombinePCBinLot,Path=PdLine}" Key="{ActivityBind CombinePCBinLot,Path=Key}" />
+	<ns0:GetLotListForCombinPCB Customer="{ActivityBind CombinePCBinLot,Path=Customer}" x:Name="getLotListForCombinPCB1" SessionType="{ActivityBind CombinePCBinLot,Path=SessionType}" Editor="{ActivityBind CombinePCBinLot,Path=Editor}" Station="{ActivityBind CombinePCBinLot,Path=Station}" Line="{ActivityBind CombinePCBinLot,Path=PdLine}" Key="{ActivityBind CombinePCBinLot,Path=Key}" />
+	<ns0:WaitInput Customer="{ActivityBind CombinePCBinLot,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind CombinePCBinLot,Path=SessionType}" Editor="{ActivityBind CombinePCBinLot,Path=Editor}" Station="{ActivityBind CombinePCBinLot,Path=Station}" Line="{ActivityBind CombinePCBinLot,Path=PdLine}" Key="{ActivityBind CombinePCBinLot,Path=Key}" />
+	<ns0:DBScope Station="{ActivityBind CombinePCBinLot,Path=Station}" x:Name="dbScope1" Key="{ActivityBind CombinePCBinLot,Path=Key}" SessionType="{ActivityBind CombinePCBinLot,Path=SessionType}">
+		<ns0:UpdateLotForCombinePCB Customer="{ActivityBind CombinePCBinLot,Path=Customer}" x:Name="updateLotForCombinePCB1" SessionType="{ActivityBind CombinePCBinLot,Path=SessionType}" Editor="{ActivityBind CombinePCBinLot,Path=Editor}" Station="{ActivityBind CombinePCBinLot,Path=Station}" Line="{ActivityBind CombinePCBinLot,Path=PdLine}" Key="{ActivityBind CombinePCBinLot,Path=Key}" />
+		<ns0:WriteMBLog Customer="{ActivityBind CombinePCBinLot,Path=Customer}" LineSuffix="{x:Null}" ManualStation="{x:Null}" SessionType="{ActivityBind CombinePCBinLot,Path=SessionType}" x:Name="writeMBLog1" Editor="{ActivityBind CombinePCBinLot,Path=Editor}" IsPass="True" Station="15" IsSingle="True" Line="{ActivityBind CombinePCBinLot,Path=PdLine}" Key="{ActivityBind CombinePCBinLot,Path=Key}" />
+		<IfElseActivity x:Name="ifElseActivity1">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="CheckLotStatus1" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteMBLog Customer="{ActivityBind CombinePCBinLot,Path=Customer}" LineSuffix="{x:Null}" ManualStation="{x:Null}" SessionType="{ActivityBind CombinePCBinLot,Path=SessionType}" x:Name="writeMBLog2" Editor="{ActivityBind CombinePCBinLot,Path=Editor}" IsPass="True" Station="31A" IsSingle="True" Line="{ActivityBind CombinePCBinLot,Path=PdLine}" Key="{ActivityBind CombinePCBinLot,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<IfElseActivity x:Name="ifElseActivity2">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="CheckLotStatus3" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UpdateMBStatus Customer="{ActivityBind CombinePCBinLot,Path=Customer}" ManualStation="{ActivityBind CombinePCBinLot,Path=Station}" SessionType="{ActivityBind CombinePCBinLot,Path=SessionType}" x:Name="updateMBStatus1" Editor="{ActivityBind CombinePCBinLot,Path=Editor}" IsPass="Pass" Station="31A" Line="{ActivityBind CombinePCBinLot,Path=PdLine}" Key="{ActivityBind CombinePCBinLot,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ifElseBranchActivity3">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="CheckLotStatus2" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UpdateMBStatus Customer="{ActivityBind CombinePCBinLot,Path=Customer}" ManualStation="{ActivityBind CombinePCBinLot,Path=Station}" SessionType="{ActivityBind CombinePCBinLot,Path=SessionType}" x:Name="updateMBStatus2" IsPass="Pass" Station="15" Editor="{ActivityBind CombinePCBinLot,Path=Editor}" Line="{ActivityBind CombinePCBinLot,Path=PdLine}" Key="{ActivityBind CombinePCBinLot,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+</ns0:BaseFlow>

@@ -1,0 +1,11 @@
+﻿200DpiPrinterBaseWidth=0.125
+300DpiPrinterBaseWidth=0.083
+600DpiPrinterBaseWidth=0.042
+
+200DpiPrinterPixelPerM=8
+300DpiPrinterPixelPerM=12
+600DpiPrinterPixelPerM=24
+
+200Dpi=203
+300Dpi=300
+600Dpi=600

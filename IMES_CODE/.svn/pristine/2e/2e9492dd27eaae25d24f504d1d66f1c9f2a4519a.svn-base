@@ -1,0 +1,145 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PAKUPH.aspx.cs" Inherits="webroot_aspx_PAKUPH" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>PAK生产效率（部门汇总）</title>
+    <style>
+    HTML,BODY,FORM
+    {
+        height:100%;
+    }
+   </style>
+</head>
+<body leftMargin="0" topMargin="0" rightMargin="1">
+    <form id="form1" runat="server">
+      <div id="mainsmt"  style="height:100%;width:100%; " onmousemove="zoom("main",2)"></div>
+      
+       
+        
+     
+    
+     <!-- ECharts单文件引入 -->
+     <script type="text/javascript" src="../../echarts-2.2.7/build/source/echarts.js"></script>
+       <%--  <script type="text/javascript" src="../../echarts-2.2.7/build/dist/chart/line.js"></script>
+            <script type="text/javascript" src="../../echarts-2.2.7/build/dist/chart/bar.js"></script>--%>
+    <script type="text/javascript">
+        require.config({
+            paths: {
+                echarts: '../../echarts-2.2.7/build/dist'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/line',
+                'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+            ], DrawEChartAll
+            )
+        function DrawEChartAll(ec) {
+            DrawEChartSMT(ec); //画SMT
+//            DrawEChartSA(ec); //画SA
+//            DrawEChartFA(ec); //画FA
+//            DrawEChartPAK(ec); //画PAK
+            
+        }
+        var SMTChart;
+        var SAChart;
+        var FAChart;
+        var PAKChart;
+        //======================================================
+        function DrawEChartSMT(ec) {
+            SMTChart = ec.init(document.getElementById('mainsmt'));
+            option = {
+                            tooltip: {
+                                trigger: 'axis'
+                            },
+                            title: {
+
+                                text: '英业达（重庆）生产效率--PAK',
+                                subtext: '数据来自IMES系统（每5分钟整理一次）',
+                                x: 'left',   //這個指示位置,單位px
+
+                                textStyle: {
+                                    //color: '#FFF',
+                                    fontSize: 18,
+                                    fontWeight: 'bolder'
+                                }, //主标题
+                                subtextStyle: { color: '#DDD', fontSize: 10, fontWeight: 'bolder'}//副标题
+
+                            },
+                            legend: {
+                            x: 'center',
+                            y: 'bottom',
+                                    data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+                                            },
+                            toolbox: {
+                                show: true,
+                                feature: {
+                                    mark: { show: true },
+                                    dataView: { show: true, readOnly: false },
+                                    magicType: { show: true, type: ['line', 'bar', 'stack', 'tiled'] },
+                                    restore: { show: true },
+                                    saveAsImage: { show: true }
+                                }
+                            },
+                            calculable: true,
+                            xAxis: [
+                                        {
+                                            type: 'category',
+                                            boundaryGap: false,
+                                            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                                        }
+                                    ],
+                             yAxis: [
+                                        {
+                                            type: 'value'
+                                        }
+                                    ],
+                            series: [
+                                        {
+                                            name: '邮件营销',
+                                            type: 'line',
+                                            stack: '总量',
+                                            data: [120, 132, 101, 134, 90, 230, 210]
+                                        },
+                                        {
+                                            name: '联盟广告',
+                                            type: 'line',
+                                            stack: '总量',
+                                            data: [220, 182, 191, 234, 290, 330, 310]
+                                        },
+                                        {
+                                            name: '视频广告',
+                                            type: 'line',
+                                            stack: '总量',
+                                            data: [150, 232, 201, 154, 190, 330, 410]
+                                        },
+                                        {
+                                            name: '直接访问',
+                                            type: 'line',
+                                            stack: '总量',
+                                            data: [320, 332, 301, 334, 390, 330, 320]
+                                        },
+                                        {
+                                            name: '搜索引擎',
+                                            type: 'line',
+                                            stack: '总量',
+                                            data: [820, 932, 901, 934, 1290, 1330, 1320]
+                                        }
+                                   ]
+                                    };
+           SMTChart.setOption(option);
+
+        }
+       
+        //======================================================
+        
+        
+    </script>
+    </form>
+</body>
+</html>

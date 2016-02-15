@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.CheckItemModule.ServiceDoor.Filter.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.CheckItemModule.ServiceDoor.Filter.pdb
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.ServiceDoor.Filter\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.ServiceDoor.Filter\obj\Debug\IMES.CheckItemModule.ServiceDoor.Filter.dll
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.ServiceDoor.Filter\obj\Debug\IMES.CheckItemModule.ServiceDoor.Filter.pdb

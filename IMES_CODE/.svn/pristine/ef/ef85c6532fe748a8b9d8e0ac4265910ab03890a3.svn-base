@@ -1,0 +1,513 @@
+﻿<%@ MasterType VirtualPath="~/MasterPageMaintain.master" %>
+<%@ Page Language="C#" MasterPageFile="~/MasterPageMaintain.master" ContentType="text/html;Charset=UTF-8" AutoEventWireup="true" CodeFile="CheckItemTypeRule.aspx.cs" Inherits="DataMaintain_CheckItemTypeRule" ValidateRequest="false" %>
+<%@ Import Namespace="com.inventec.iMESWEB" %>
+<%--
+ ITC-1361-0016
+--%>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="iMESContent" Runat="Server">
+<script type="text/javascript" src="../UserManager/commoncontrol/function/commonFunction.js"></script>
+    <script type="text/javascript" src="../CommonControl/JS/iMESCommonUse.js"></script>
+    
+    <asp:ScriptManager ID="ScriptManager1" runat="server" >
+    </asp:ScriptManager>
+    <div id="container" class="iMes_div_MainTainContainer">
+        <div id="div1" class="iMes_div_MainTainDiv1">
+             <table width="100%" class="iMes_div_MainTainEdit" >            
+                <tr >
+                    <td style="width: 200px;">
+                        <asp:Label ID="lblCustomer" runat="server" CssClass="iMes_label_13pt"></asp:Label>
+                    </td>
+                    <td width="42%">
+                        <iMESMaintain:CmbCheckItemTypeList ID="cmbCheckItemTypeList" Width="66%" runat="server" />
+                    </td>                                    
+                   <td style="width: 80px;">
+                    </td>
+                    <td width="42%">
+                    </td>
+                </tr>
+             </table>  
+                                                    
+             <table width="100%" border="0" >
+                <tr>
+                    <td class="iMes_div_MainTainListLable">
+                        <asp:Label ID="lblList" runat="server" CssClass="iMes_label_13pt" Width="100%"></asp:Label>
+                    </td>
+                    <td width="40%"></td> 
+                    <td align="right">
+                       <input type="button" id="btnDelete" runat="server" onclick="if(clkButton())" class="iMes_button" onmouseover="this.className='iMes_button_onmouseover'" onmouseout="this.className='iMes_button_onmouseout'" onserverclick="btnDelete_ServerClick"></input>
+                    </td>            
+                </tr>
+             </table>  
+        </div>
+
+
+        <asp:UpdatePanel ID="updatePanel" runat="server" UpdateMode="Conditional"  RenderMode="Inline" Visible="true" ChildrenAsTriggers="false">
+        <ContentTemplate>
+        <div id="div2" style="height:400px">
+                    <input id="hidRecordCount" type="hidden" runat="server" />
+                    <iMES:GridViewExt ID="gd" runat="server" AutoGenerateColumns="true" Width="240%" RowStyle-Height="20"
+                        GvExtWidth="100%" GvExtHeight="390px" Height="382px" AutoHighlightScrollByValue ="true" HighLightRowPosition="3" 
+                        OnGvExtRowClick='if(typeof(clickTable)=="function") clickTable(this)' onrowdatabound="gd_RowDataBound" EnableViewState= "false">
+                    </iMES:GridViewExt>
+        </div>
+        </ContentTemplate>
+        </asp:UpdatePanel> 
+        <div id="div3">
+            <table width="100%" class="iMes_div_MainTainEdit" >
+                    <tr>
+                        <td width="5%">
+                            <asp:Label ID="lblLine" runat="server" CssClass="iMes_label_13pt></asp:Label>
+                        </td>
+                        <td width="10%">
+                            <iMESMaintain:CmbMaintainPdLineforCheckItemType ID="cmbLine" runat="server" Customer="HP"></iMESMaintain:CmbMaintainPdLineforCheckItemType >
+                        </td>       
+                        <td width="5%">
+                            <asp:Label ID="lblStation" runat="server" CssClass="iMes_label_13pt></asp:Label>
+                        </td>
+                        <td width="25%">
+                            <iMESMaintain:CmbMaintainStationForCheckItemType ID="cmbStation" runat="server" />
+                        </td>       
+                        <td width="5%">
+                            <asp:Label ID="lblFamily" runat="server" CssClass="iMes_label_13pt></asp:Label>
+                        </td>
+                        <td width="10%">
+                            <iMESMaintain:CmbMaintainFamilyForCheckItemType ID="cmbFamily" runat="server" Customer="HP" />
+                        </td>    
+                        <td width="10%"></td>   
+                        <td width="10%"></td>     
+                        <td width="10%"></td>   
+                        <td width="10%"></td>   
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <asp:Label ID="lblBomNodeType" runat="server" CssClass="iMes_label_13pt" Width ="98%"></asp:Label>
+                        </td>
+                        <td colspan="2">
+                            <%--<asp:TextBox ID="txtBomNodeType" runat="server" MaxLength="255" Width="98%"></asp:TextBox>--%>
+                            <input type="text" id="txtBomNodeType" runat="server" maxlength="255" style="width:98%" />
+                        </td>
+                        <td colspan="2">
+                            <asp:Label ID="lblNeedUniqueCheck" runat="server" CssClass="iMes_label_13pt" Width ="98%" Text="NeedUniqueCheck"></asp:Label>
+                        </td>
+                        <td colspan="2">
+                            <asp:DropDownList ID="cmbNeedUniqueCheck" runat="server" Width="98%">
+                                <asp:ListItem Text="" Value=""></asp:ListItem>
+                                <asp:ListItem Text="Y" Value="Y"></asp:ListItem>
+                                <asp:ListItem Text="N" Value="N"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <asp:Label ID="lblPartDescr" runat="server" CssClass="iMes_label_13pt" Width ="98%"></asp:Label>
+                        </td>
+                        <td colspan="2">
+                            <%--<asp:TextBox ID="txtPartDescr" runat="server" MaxLength="255" Width="98%"></asp:TextBox>--%>
+                            <input type="text" id="txtPartDescr" runat="server" maxlength="255" style="width:98%" />
+                        </td>
+                        <td colspan="2">
+                            <asp:Label ID="lblNeedCommonSave" runat="server" CssClass="iMes_label_13pt" Width ="98%" Text="NeedUniqueCheck"></asp:Label>
+                        </td>
+                        <td colspan="2">
+                            <asp:DropDownList ID="cmbNeedCommonSave" runat="server" Width="98%">
+                                <asp:ListItem Text="" Value=""></asp:ListItem>
+                                <asp:ListItem Text="Y" Value="Y"></asp:ListItem>
+                                <asp:ListItem Text="N" Value="N"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <asp:Label ID="lblPartType" runat="server" CssClass="iMes_label_13pt" Width ="98%"></asp:Label>
+                        </td>
+                        <td colspan="2">
+                            <%--<asp:TextBox ID="txtPartType" runat="server" MaxLength="255" Width="98%"></asp:TextBox>--%>
+                            <input type="text" id="txtPartType" runat="server" maxlength="255" style="width:98%" />
+                        </td>
+                        <td colspan="2">
+                            <asp:Label ID="lblNeedSave" runat="server" CssClass="iMes_label_13pt" Width ="98%" Text="NeedSave"></asp:Label>
+                        </td>
+                        <td colspan="2">
+                            <asp:DropDownList ID="cmbNeedSave" runat="server" Width="98%">
+                                <asp:ListItem Text="Y" Value="Y"></asp:ListItem>
+                                <asp:ListItem Text="N" Value="N"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <asp:Label ID="lblFilterExpression" runat="server" CssClass="iMes_label_13pt" Width ="98%"></asp:Label>
+                        </td>
+                        <td colspan="2">
+                            <%--<asp:TextBox ID="txtMatchRule" runat="server" MaxLength="255" Width="98%"></asp:TextBox>--%>
+                            <input type="text" id="txtFilterExpression" runat="server" maxlength="255" style="width:98%" />
+                        </td>
+                        <td colspan="2">
+                            <asp:Label ID="lblCheckTestKPCount" runat="server" CssClass="iMes_label_13pt" Width ="98%" Text="CheckTestKPCount"></asp:Label>
+                        </td>
+                        <td colspan="2">
+                            <asp:DropDownList ID="cmbCheckTestKPCount" runat="server" Width="98%">
+                                <asp:ListItem Text="Y" Value="Y"></asp:ListItem>
+                                <asp:ListItem Text="N" Value="N"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                       <td colspan="2">
+                            <asp:Label ID="lblMatchRule" runat="server" CssClass="iMes_label_13pt" Width ="98%"></asp:Label>
+                        </td>
+                        <td colspan="2">
+                            <input type="text" id="txtMatchRule" runat="server" maxlength="255" style="width:98%" />
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <asp:Label ID="lblCheckRule" runat="server" CssClass="iMes_label_13pt" Width ="98%"></asp:Label>
+                        </td>
+                        <td colspan="2">
+                            <input type="text" id="txtCheckRule" runat="server" maxlength="255" style="width:98%" />
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <asp:Label ID="lblSaveRule" runat="server" CssClass="iMes_label_13pt" Width ="98%"></asp:Label>
+                        </td>
+                        <td colspan="2">
+                            <%--<asp:TextBox ID="txtSaveRule" runat="server" MaxLength="255" Width="98%"></asp:TextBox>--%>
+                            <input type="text" id="txtSaveRule" runat="server" maxlength="255" style="width:98%" />
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <asp:Label ID="lblDescr" runat="server" CssClass="iMes_label_13pt" Width ="98%"></asp:Label>
+                        </td>
+                        <td colspan="5">
+                            <%--<asp:TextBox ID="txtDescr" runat="server" MaxLength="255" Width="98%"></asp:TextBox>--%>
+                            <input type="text" id="txtDescr" runat="server" maxlength="255" style="width:98%" />
+                        </td>
+                        <td>
+                            <input type="button" id="btnSave" runat="server" onclick="if(clkButton())" class="iMes_button" onmouseover="this.className='iMes_button_onmouseover'" onmouseout="this.className='iMes_button_onmouseout'" onserverclick="btnSave_ServerClick"></input>
+                        </td>
+                        <td>
+                            <input type="button" id="btntestRE" runat="server" onclick="ShowDialog()" class="iMes_button" onmouseover="this.className='iMes_button_onmouseover'" onmouseout="this.className='iMes_button_onmouseout'" ></input>
+                            
+                        </td>
+                        <td>
+                            <input type="button" id="btntestExpression" runat="server" onclick="ShowDialog2()" class="iMes_button" onmouseover="this.className='iMes_button_onmouseover'" onmouseout="this.className='iMes_button_onmouseout'" ></input>
+                        </td>
+                    </tr>
+            </table>
+        </div>  
+        <input id="hidID" type="hidden" runat="server" />
+        <asp:UpdatePanel ID="updatePanelAll" runat="server" RenderMode="Inline" Visible="false"> 
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="btnDelete" EventName="ServerClick" />
+            <asp:AsyncPostBackTrigger ControlID="btnSave" EventName="ServerClick" /> 
+            <asp:AsyncPostBackTrigger ControlID="btnCheckTypeChange" EventName="ServerClick" />
+        </Triggers>                      
+        </asp:UpdatePanel>
+         
+            <input type="hidden" id="HiddenUserName" runat="server" />
+            <input type="hidden" id="dTableHeight" runat="server" />   
+            <input type="button" id="btnCheckTypeChange" runat="server" style="display:none" onserverclick ="btnCheckTypeChange_ServerClick" />
+    </div>
+    <div id="divWait"  oSelectID="" align="center" style="cursor:wait;filter:Chroma(Color=skyblue); background-color: skyblue; display: none; top: 0; width: 100%; height: 100%; z-index: 10000; position: absolute">
+        <table style="cursor:wait;background-color:#FFFFFF; border: 1px solid #0054B9; font-size: 9pt; top: 30%; width: 190px; height: 25px; position: relative;">
+            <tr><td align="center"><img alt="Please wait..." src="<%=Request.ApplicationPath%>/images/wait_animated.gif"/></td><td align="center" style="color:#0054B9;font-size:10pt;font-weight: bold;">Please wait.....</td></tr>
+        </table>
+    </div>  
+    <script language="javascript" type="text/javascript">
+    
+    var msg1="";
+    var msg2="";
+    var msg3="";
+    var msg4="";
+    var msg5="";
+    var msg6="";
+    var msg7="";
+    var msg8="";
+    var msg9="";
+    var msg10="";
+    
+    function clkButton()
+    {
+       switch(event.srcElement.id)
+       {
+           case "<%=btnSave.ClientID %>":
+                
+                if(!clkSave())
+                {                
+                    return false;
+                }
+ 	            break;
+ 	            
+           case "<%=btnDelete.ClientID %>":
+           
+                if(!clkDelete())
+                {                
+                    return false;
+                }
+ 	            break;
+    	}
+    	ShowWait();          
+        return true;
+    }
+  
+    var iSelectedRowIndex=null; 
+    function setGdHighLight(con)
+    {
+        if((iSelectedRowIndex!=null) && (iSelectedRowIndex!=parseInt(con.index, 10)))
+        {
+            setRowSelectedOrNotSelectedByIndex(iSelectedRowIndex,false, "<%=gd.ClientID %>");                
+        }        
+        setRowSelectedOrNotSelectedByIndex(con.index,true, "<%=gd.ClientID %>");
+        iSelectedRowIndex=parseInt(con.index, 10);    
+    }
+    
+    
+    function initControls()
+    {
+        getCheckItemTypeListCmbObj().onchange = CheckItemTypeListSelectOnChange;
+    }
+    
+    function CheckItemTypeListSelectOnChange()
+    {
+        document.getElementById("<%=btnCheckTypeChange.ClientID%>").click();
+        ShowWait();   
+    }
+    
+       
+    window.onload = function()
+    {
+        msg1 ="<%=pmtMessage1%>";
+        msg2 ="<%=pmtMessage2%>";
+        msg3 ="<%=pmtMessage3%>";
+        msg4 ="<%=pmtMessage4%>";
+        msg5  ="<%=pmtMessage5%>";
+        msg10 ="<%=pmtMessage10%>";   
+            
+        document.getElementById("<%=HiddenUserName.ClientID %>").value="<%=userName%>";
+        initControls();  
+        ShowRowEditInfo(null);
+        //设置表格的高度  
+        resetTableHeight();
+
+    };
+
+    //设置表格的高度  
+    function resetTableHeight() {
+        //动态调整表格的高度
+        var adjustValue = 55;
+        var marginValue = 12;
+        var tableHeigth = 300;
+        //var tableHeigth=document.body.parentElement.offsetHeight-div1.offsetHeight-div3.offsetHeight-adjustValue;
+        try {
+            tableHeigth = document.body.parentElement.offsetHeight - div1.offsetHeight - div3.offsetHeight - adjustValue;
+        }
+        catch (e) {
+
+            //ignore
+        }
+        //为了使表格下面有写空隙
+        var extDivHeight = tableHeigth + marginValue;
+        div2.style.height = extDivHeight + "px";
+        document.getElementById("div_<%=gd.ClientID %>").style.height = tableHeigth + "px";
+        document.getElementById("<%=dTableHeight.ClientID %>").value = tableHeigth + "px";
+    }
+    
+    function clkDelete()
+    {
+        var gdObj=document.getElementById("<%=gd.ClientID %>")
+        var curIndex = gdObj.index;
+        var recordCount = document.getElementById("<%=hidRecordCount.ClientID %>").value;            
+        if(curIndex>=recordCount)
+        {
+            alert(msg1);
+            return false;
+        }          
+        
+        var ret = confirm(msg2);
+        if (!ret) {
+            return false;
+        }
+         
+        return true;
+        
+    }
+   
+   function DeleteComplete()
+   {   
+       ShowRowEditInfo(null);
+   }
+   
+   function clkSave()
+   {
+       return check();
+        
+   }
+   
+    function check() {
+        var station = getStationCmbText();
+        if (station == "") {
+            alert("Station is not Null");
+            return false;
+        }
+        if (document.getElementById("<%=txtBomNodeType.ClientID %>").value != "") {
+            if (document.getElementById("<%=txtBomNodeType.ClientID %>").value != "MB") {
+                if (document.getElementById("<%=txtPartDescr.ClientID %>").value == "") {
+                    alert("PartDescr不可為空值!");
+                    return false;
+                }
+            }
+            return true;
+        }
+        if (document.getElementById("<%=txtPartDescr.ClientID %>").value != "") {
+            return true;
+        }
+        if (document.getElementById("<%=txtPartType.ClientID %>").value != "") {
+            return true;
+        }
+        if (document.getElementById("<%=txtMatchRule.ClientID %>").value != "") {
+            return true;
+        }
+        if (document.getElementById("<%=txtCheckRule.ClientID %>").value != "") {
+            return true;
+        }
+        if (document.getElementById("<%=txtSaveRule.ClientID %>").value != "") {
+            return true;
+        }
+        alert("4~9項欄位至少輸入一項...");        
+        return false;
+    }
+   
+   
+     function clickTable(con)
+    {
+         setGdHighLight(con);         
+         ShowRowEditInfo(con);
+    }
+    
+    function setNewItemValue()
+    {
+        document.getElementById("<%=btnDelete.ClientID %>").disabled = true;
+        ChengeDrp(getPdLineCmbObj(), "");
+        ChengeDrp(getStationCmbObj(), "");
+        ChengeDrp(getMaintainFamilyCmbObj(), ""); 
+        document.getElementById("<%=txtBomNodeType.ClientID %>").value = "";
+        document.getElementById("<%=txtPartDescr.ClientID %>").value = "";
+        document.getElementById("<%=txtPartType.ClientID %>").value = "";
+        document.getElementById("<%=txtFilterExpression.ClientID %>").value = "";
+        document.getElementById("<%=txtMatchRule.ClientID %>").value = "";
+        document.getElementById("<%=txtCheckRule.ClientID %>").value = "";
+        document.getElementById("<%=txtSaveRule.ClientID %>").value = "";
+        document.getElementById("<%=cmbNeedUniqueCheck.ClientID %>").selectedIndex = 0;
+        document.getElementById("<%=cmbNeedCommonSave.ClientID %>").selectedIndex = 0;
+        document.getElementById("<%=cmbNeedSave.ClientID %>").selectedIndex = 0;
+        document.getElementById("<%=cmbCheckTestKPCount.ClientID %>").selectedIndex = 0;
+        
+        document.getElementById("<%=txtDescr.ClientID %>").value = "";
+        document.getElementById("<%=hidID.ClientID %>").value = "";
+    }
+    
+    function ShowRowEditInfo(con)
+    {
+        if(con==null)
+        {
+            setNewItemValue();
+            return;
+        }
+        ChengeDrp(getPdLineCmbObj(), con.cells[0].innerText.trim());
+        ChengeDrp(getStationCmbObj(), con.cells[1].innerText.trim());
+        ChengeDrp(getMaintainFamilyCmbObj(), con.cells[2].innerText.trim());
+        document.getElementById("<%=txtBomNodeType.ClientID %>").value = con.cells[3].innerText.trim();
+        document.getElementById("<%=txtPartDescr.ClientID %>").value = con.cells[4].innerText.trim();
+        document.getElementById("<%=txtPartType.ClientID %>").value = con.cells[5].innerText.trim();
+        document.getElementById("<%=txtFilterExpression.ClientID %>").value = con.cells[6].innerText.trim();
+
+        document.getElementById("<%=txtMatchRule.ClientID %>").value = con.cells[7].innerText.trim();
+        document.getElementById("<%=txtCheckRule.ClientID %>").value = con.cells[8].innerText.trim();
+        document.getElementById("<%=txtSaveRule.ClientID %>").value = con.cells[9].innerText.trim();
+        document.getElementById("<%=cmbNeedUniqueCheck.ClientID %>").value = con.cells[10].innerText.trim();
+        document.getElementById("<%=cmbNeedCommonSave.ClientID %>").value = con.cells[11].innerText.trim();
+
+        document.getElementById("<%=cmbNeedSave.ClientID %>").value = con.cells[12].innerText.trim();
+        document.getElementById("<%=cmbCheckTestKPCount.ClientID %>").value = con.cells[13].innerText.trim();
+
+        document.getElementById("<%=txtDescr.ClientID %>").value = con.cells[14].innerText.trim();
+        var currentID = con.cells[18].innerText.trim();
+        if (currentID == "") {
+            setNewItemValue();
+        }
+        else {
+            document.getElementById("<%=hidID.ClientID %>").value = currentID;
+            document.getElementById("<%=btnDelete.ClientID %>").disabled = false;
+        }
+    }
+
+    function ChengeDrp(obj,value) {
+        var ddl = obj;
+        var opts = ddl.options.length;
+        for (var i = 0; i < opts; i++) {
+            if (ddl.options[i].value == value) {
+                ddl.options[i].selected = true;
+                break;
+            }
+        }
+    }
+   
+    function AddUpdateComplete(id)
+    {
+  
+        var gdObj=document.getElementById("<%=gd.ClientID %>");
+        var selectedRowIndex=-1;
+        for (var i = 1; i < gdObj.rows.length; i++) {
+            if (gdObj.rows[i].cells[18].innerText == id) {
+                selectedRowIndex = i;
+                break;
+            }
+        }
+
+        if (selectedRowIndex < 0) {
+            ShowRowEditInfo(null);
+            return;
+        }
+        else {
+            var con = gdObj.rows[selectedRowIndex];
+            setGdHighLight(con);
+            setSrollByIndex(iSelectedRowIndex, true, "<%=gd.ClientID%>");
+            ShowRowEditInfo(con);
+        }  
+    }
+        
+    function DealHideWait()
+    {
+        HideWait();   
+        getCheckItemTypeListCmbObj().disabled = false;
+
+    }
+
+    function ShowDialog() {
+        var ret = window.showModalDialog("CheckItemTypeRuleforTestREDialog.aspx?AccountId=111", 0, "dialogwidth:1000px; dialogheight:200px;status:no;help:no; ");
+    }
+    function ShowDialog2() {
+        var ret = window.showModalDialog("CheckItemTypeRuleforTestExpressionDialog.aspx?AccountId=111&", 0, "dialogwidth:1000px; dialogheight:200px;status:no;help:no; ");
+    }
+
+    </script>
+</asp:Content>
+

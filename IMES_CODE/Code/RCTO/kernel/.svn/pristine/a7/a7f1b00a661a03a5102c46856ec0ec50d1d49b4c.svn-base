@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{470AB98E-D4F7-48EE-B8EE-AB025892D618}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IMES.Infrastructure.Repository</RootNamespace>
+    <AssemblyName>IMES.Infrastructure.Repository</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\IMES.Infrastructure.Repository.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51206.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\AssemblyCodeRepository.cs" />
+    <Compile Include="Common\BOMRepository.cs" />
+    <Compile Include="Common\UPSRepository.cs" />
+    <Compile Include="Common\HoldRepository.cs" />
+    <Compile Include="Common\LocationRepository.cs" />
+    <Compile Include="Common\MaterialRepository.cs" />
+    <Compile Include="Common\DefectInfoRepository.cs" />
+    <Compile Include="Common\DefectRepository.cs" />
+    <Compile Include="Common\FamilyRepository.cs" />
+    <Compile Include="Common\HDDCopyInfoRepository.cs" />
+    <Compile Include="Common\LabelTypeRepository.cs" />
+    <Compile Include="Common\LineRepository.cs" />
+    <Compile Include="Common\MaterialBoxRepository.cs" />
+    <Compile Include="Common\MiscRepository.cs" />
+    <Compile Include="Common\ModelRepository.cs" />
+    <Compile Include="Common\OSWINRepository.cs" />
+    <Compile Include="Common\PartPolicyRepository.cs" />
+    <Compile Include="Common\QTimeRepository.cs" />
+    <Compile Include="Common\TPCBInfoRepository.cs" />
+    <Compile Include="Common\TPCBRepository.cs" />
+    <Compile Include="FA\LCMRepository.cs" />
+    <Compile Include="PAK\BSamRepository.cs" />
+    <Compile Include="PAK\CartonRepository.cs" />
+    <Compile Include="PAK\CartonSSCCRepository.cs" />
+    <Compile Include="PAK\FRUCartonRepository.cs" />
+    <Compile Include="PAK\GiftRepository.cs" />
+    <Compile Include="PAK\ModelToleranceRepository.cs" />
+    <Compile Include="PAK\ModelWeightRepository.cs" />
+    <Compile Include="PAK\PalletTypeRepository.cs" />
+    <Compile Include="PAK\PalletWeightRepository.cs" />
+    <Compile Include="PCA\EcrVersionRepository.cs" />
+    <Compile Include="PCA\MBChangeLogRepository.cs" />
+    <Compile Include="PCA\MODismantleLogRepository.cs" />
+    <Compile Include="Common\MORepository.cs" />
+    <Compile Include="Common\NumControlRepository.cs" />
+    <Compile Include="Common\PartRepository.cs" />
+    <Compile Include="Common\PartSnRepository.cs" />
+    <Compile Include="Common\PrintLogRepository.cs" />
+    <Compile Include="Common\ProcessRepository.cs" />
+    <Compile Include="Common\WarrantyRepository.cs" />
+    <Compile Include="FA\ProductRepository.cs" />
+    <Compile Include="Common\ReprintLogRepository.cs" />
+    <Compile Include="Common\StationRepository.cs" />
+    <Compile Include="PAK\DeliveryRepository.cs" />
+    <Compile Include="PAK\WeightLogRepository.cs" />
+    <Compile Include="PAK\COARepository.cs" />
+    <Compile Include="PAK\PalletRepository.cs" />
+    <Compile Include="PAK\PizzaRepository.cs" />
+    <Compile Include="PCA\MBModelRepository.cs" />
+    <Compile Include="PCA\MBMORepository.cs" />
+    <Compile Include="PCA\MBRepository.cs" />
+    <Compile Include="PCA\PCBVersionRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_Schema\DB.cs" />
+    <Compile Include="_Schema\Meta.cs" />
+    <Compile Include="_Schema\SqlHelper.cs" />
+    <Compile Include="TableLockManager.cs" />
+    <Compile Include="_Schema\SQLReader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IMES.Infrastructure.DataModel\IMES.Infrastructure.DataModel.csproj">
+      <Project>{11CDE432-CA3F-4D23-A47F-0FCC66EED40B}</Project>
+      <Name>IMES.Infrastructure.DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.FisObject\IMES.FisObject.csproj">
+      <Project>{846E29D1-953C-4084-9CCC-779AE966403A}</Project>
+      <Name>IMES.FisObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.Infrastructure.FisException\IMES.Infrastructure.FisException.csproj">
+      <Project>{1D699CAC-1844-4480-BACA-FC41984D17EC}</Project>
+      <Name>IMES.Infrastructure.FisException</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.Infrastructure.Repository.Metas\IMES.Infrastructure.Repository.Metas.csproj">
+      <Project>{83A40B2C-8597-4D60-A7AD-CFEDC3942ECE}</Project>
+      <Name>IMES.Infrastructure.Repository.Metas</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.Infrastructure.Utility\IMES.Infrastructure.Utility.csproj">
+      <Project>{BA3DBA2B-DEE2-4E26-8AEB-3F805C542711}</Project>
+      <Name>IMES.Infrastructure.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.Infrastructure\IMES.Infrastructure.csproj">
+      <Project>{7514032C-D9C3-4BA9-AAEE-D44923A6BA98}</Project>
+      <Name>IMES.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

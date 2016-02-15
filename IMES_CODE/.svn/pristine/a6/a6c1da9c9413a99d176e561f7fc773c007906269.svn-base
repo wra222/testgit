@@ -1,0 +1,12 @@
+<publishData>
+  <publishTarget publishUrl="ftp://10.96.183.29/EOLQWebservice/">
+    <file relUrl="Global.asax" publishTime="08/26/2014 13:44:08" />
+    <file relUrl="bin/IMES.Common.WS.pdb" publishTime="08/26/2014 13:55:03" />
+    <file relUrl="IMES.LC.GetLocationandCoordinate/GetLocationandCoordinate.asmx" publishTime="08/26/2014 13:44:08" />
+    <file relUrl="Web.config" publishTime="08/26/2014 14:00:17" />
+    <file relUrl="IMES.LD.GetPrintContent/GetPrintContent.asmx" publishTime="08/26/2014 13:44:06" />
+    <file relUrl="IMES.EoLA.GetModel/GetModel.asmx" publishTime="08/26/2014 13:44:08" />
+    <file relUrl="bin/IMES.Common.WS.dll" publishTime="08/26/2014 13:55:03" />
+    <file relUrl="bin/log4net.dll" publishTime="08/26/2014 13:44:08" />
+  </publishTarget>
+</publishData>

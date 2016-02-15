@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.CheckItemModule.AIO.HDD.Filter.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.CheckItemModule.AIO.HDD.Filter.pdb
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.AIO.HDD.Filter\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.AIO.HDD.Filter\obj\Debug\IMES.CheckItemModule.AIO.HDD.Filter.dll
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.AIO.HDD.Filter\obj\Debug\IMES.CheckItemModule.AIO.HDD.Filter.pdb

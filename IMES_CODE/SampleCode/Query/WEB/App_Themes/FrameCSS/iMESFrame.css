@@ -1,0 +1,154 @@
+﻿/*
+ INVENTEC corporation (c)2009 all rights reserved. 
+ Description: iMES Frame Page
+             
+ Update: 
+ Date         Name                Reason 
+ ==========   ==================  =====================================    
+ 2009-10-29   Li.Ming-Jun(eB1)    Create
+ 2010-02-04   Li.Ming-Jun(eB1)    Modify: ITC-1103-0142
+ Known issues: 
+ */
+body
+{
+	background-color:#F4F4F4;
+}
+
+A:hover
+{
+    color:#FFFFFF;
+    font-family:Arial;
+    font-size:10pt;
+    font-weight:600;
+    background-color:#6D9B41;
+    /*padding-right:5px;  Modify: ITC-1103-0142 */
+    padding-top:5px;
+    padding-bottom:2px;
+}
+
+A:active
+{
+    color:#FFFFFF;
+    font-family:Arial;
+    font-size:10pt;
+    font-weight:600;
+    background-color:#6D9B41;
+    /*padding-right:5px;  Modify: ITC-1103-0142 */
+    padding-top:5px;
+    padding-bottom:2px;
+}
+
+.PCode_ImgLeft
+{
+	background-image:url("../../Images/Corner-1.jpg");
+	background-repeat:no-repeat;
+	width:14px;
+	height:35px;
+}
+
+.PCode_ImgRight
+{
+	background-image:url("../../Images/Corner-1-right.jpg");
+	background-repeat:no-repeat;
+	width:10px;
+	height:35px;
+}
+
+.Tab_Img
+{
+	background-image:url("../../Images/Corner-4.jpg");
+	background-repeat:no-repeat;
+	width:12px;
+	height:12px;
+}
+
+.PCode_backgroud
+{
+	background-color:#3C4043;
+}
+
+.PCode
+{
+	color:#FFFFFF;
+	font-family:Arial Narrow;
+	font-size:10pt;
+	font-weight:bold;
+}
+
+.Tree_backgroud
+{
+	background-color:#C9CEB8;
+}
+
+.TreeLeft_ImgBottom
+{
+	background-image:url("../../Images/Corner-3.jpg");
+	background-repeat:no-repeat;
+	width:7px;
+	height:7px;
+}
+
+.divTreeContainer
+{
+	position:absolute;
+	z-index:1;
+	width:310px;
+	top:35px;
+	left:14px;
+}
+
+.divTreeControl
+{
+    background-color:#6D9B41;
+	position:absolute;
+	z-index:1;
+	width:3px;
+	top:35px;
+	left:324px;
+}
+
+.divTreeControlClose
+{
+    background-color:#6D9B41;
+	position:absolute;
+	z-index:1;
+	width:3px;
+	top:35px;
+	left:14px;
+}
+
+.TreeNode
+{
+	color:#000000;
+	font-family:Arial;
+	font-size:10pt;
+	font-weight:600;
+}
+
+.TreeNodeSelected
+{
+	color:#FFFFFF;
+	font-family:Arial;
+	font-size:10pt;
+	font-weight:600;
+	background-color:#6D9B41;
+}
+
+.frameHide
+{
+	position:absolute;
+	visibility:visible;
+	top:0px;
+	left:0px;
+	width:240px;
+	z-index:-1;
+	border:0px solid red;
+}
+
+.Tab
+{
+	color:#000000;
+	font-family:Arial;
+	font-size:10pt;
+	font-weight:600;
+}

@@ -1,0 +1,161 @@
+﻿/*
+ * INVENTEC corporation (c)2010 all rights reserved. 
+ * Description:  ICT input interface implement
+ *             
+ * Update: 
+ * Date       Name                  Reason 
+ * ========== ===================== =====================================
+ * 2010-1-20  liu xiaoling          Create 
+ * Known issues:
+ */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IMES.DataModel;
+using IMES.FisObject.Common.Model;
+using IMES.Infrastructure;
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+using IMES.Infrastructure.UnitOfWork;
+using IMES.Maintain.Interface.MaintainIntf;
+using log4net;
+using IMES.FisObject.Common.Part;
+namespace IMES.Maintain.Implementation
+{
+
+    class PartTypeManagerEx :MarshalByRefObject, IPartTypeManagerEx
+    {
+        private ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+   //     public IPartRepository partRepository = RepositoryFactory.GetInstance().GetRepository<IPartRepository, IPart>();
+        public IPartRepositoryEx partRepositoryEx = RepositoryFactory.GetInstance().GetRepository<IPartRepositoryEx, IPart>();
+  
+
+        #region PartRepositoryEx Function 
+        public IList<string> GetBomNodeTypeList()
+        { 
+            IList<string> bomList=new List<string>();
+            bomList=partRepositoryEx.GetBomNodeTypeList();
+            return bomList;
+        
+        }
+        public IList<string> GetPartTypeList(string bomNodeType)
+        {
+            IList<string> partTypeList = new List<string>();
+            partTypeList = partRepositoryEx.GetPartTypeList(bomNodeType);
+            return partTypeList;
+       //     partRepositoryEx.DeletePartType(
+        }
+        public  void DeletePartType(string strOldPartType)
+        {
+            try
+            {
+                partRepositoryEx.DeletePartTypeByPartType(strOldPartType);
+            }
+            catch (FisException e)
+            {
+                logger.Error(e.mErrmsg);
+                throw e;
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+                throw;
+            }
+          
+        }
+        private PartType convertToObjFromMaintainInfo(PartTypeMaintainInfo temp)
+        {
+            PartType part = new PartType(temp.PartType, temp.PartTypeGroup, temp.Editor, temp.Cdt, temp.Udt);
+
+            return part;
+        }
+        private PartTypeMaintainInfo convertToMaintainInfoFromObj(PartType temp)
+        {
+            PartTypeMaintainInfo part = new PartTypeMaintainInfo();
+
+            part.PartType = temp.PartTypeName;
+            part.PartTypeGroup = temp.PartTypeGroup;
+            part.Editor = temp.Editor;
+            part.Cdt = temp.Cdt;
+            part.Udt = temp.Udt;
+
+            return part;
+        }
+        public  void SavePartType(PartTypeMaintainInfo Object, string strOldPartType)
+        {
+            try
+            {
+                PartType partTypeObj = convertToObjFromMaintainInfo(Object);
+                partRepositoryEx.SavePartType(partTypeObj, strOldPartType);
+
+            }
+            catch (FisException e)
+            {
+                logger.Error(e.mErrmsg);
+                throw e;
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+                throw;
+            }
+        }
+        public void AddPartType(string partTypeName,string partTypeGroup,string editor)
+        {
+            try
+            {
+                PartType partTypeObj = new PartType(partTypeName, partTypeGroup, editor, DateTime.Now, DateTime.Now);
+             ////   PartType partTypeObj = convertToObjFromMaintainInfo(Object);
+             //   PartType p=new PartType(Object.
+                partRepositoryEx.AddPartType(partTypeObj);
+            }
+            catch (FisException e)
+            {
+                logger.Error(e.mErrmsg);
+                throw e;
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+                throw;//new SystemException(e.Message);
+            }
+        }
+     
+        public  IList<PartTypeMaintainInfo> GetPartTypeList()
+        {
+            IList<PartTypeMaintainInfo> partTypeList = new List<PartTypeMaintainInfo>();
+            try
+            {
+                IList<PartType> tmpPartTypeList = partRepositoryEx.GetPartTypeObjList();
+
+                foreach (PartType temp in tmpPartTypeList)
+                {
+                    PartTypeMaintainInfo partType = new PartTypeMaintainInfo();
+
+                    partType = convertToMaintainInfoFromObj(temp);
+
+                    partTypeList.Add(partType);
+                }
+
+            }
+            catch (FisException e)
+            {
+                logger.Error(e.mErrmsg);
+                throw e;
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+                throw;
+            }
+
+            return partTypeList;
+        }
+
+    
+
+        #endregion
+       
+    }
+}

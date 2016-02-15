@@ -1,0 +1,626 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{604F1C86-42CF-4507-813A-B91CB9D025B9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>IMES.Station.Workflow</RootNamespace>
+    <AssemblyName>IMES.Station.Workflow</AssemblyName>
+    <ProjectTypeGuids>{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IMES.FisObject, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.FisException, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Workflow.Activities">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Workflow.ComponentModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Workflow.Runtime">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.WorkflowServices">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IMES.Activity\IMES.Activity.csproj">
+      <Project>{D69A3126-A2F0-4EF8-8A3E-59AD9AA3A646}</Project>
+      <Name>IMES.Activity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.Infrastructure.Extend\IMES.Infrastructure.Extend.csproj">
+      <Project>{35D26952-01C0-4616-9340-9C49A9B2205E}</Project>
+      <Name>IMES.Infrastructure.Extend</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="002MBLabelPrint.xoml" />
+    <Content Include="002MBLabelReprint.xoml" />
+    <Content Include="021BoardInput.xoml" />
+    <Content Include="022GenerateCustomerSN.xoml" />
+    <Content Include="022ReprintServiceTag.xoml" />
+    <Content Include="044PalletWeightReprint.xoml" />
+    <Content Include="070UnpackAllBySN.xoml" />
+    <Content Include="070UnpackDNBySN.xoml" />
+    <Content Include="123PACosmetic.xoml" />
+    <Content Include="AOICallBack.xoml" />
+    <Content Include="AoiOfflineKbCheck.xoml" />
+    <Content Include="BIRCH\AssignModel.xoml" />
+    <Content Include="BIRCH\AssignModelReprint.xoml" />
+    <Content Include="ChangeSamplePO.xoml" />
+    <Content Include="CheckAST.xoml" />
+    <Content Include="CPU\SMTCollectCPU.xoml" />
+    <Content Include="OfflineProductIDHold.xoml" />
+    <Content Include="DefectComponent\DefectComponentPrint.xoml" />
+    <Content Include="DefectComponent\DefectComponentRejudge.xoml" />
+    <Content Include="DefectComponent\DefectComponentRePrint.xoml" />
+    <Content Include="FAI\FAIInput.xoml" />
+    <Content Include="FAI\FAIOutput.xoml" />
+    <Content Include="FARepairAddEdit_Print.xoml" />
+    <Content Include="FARepairAddEdit_SaveFaultPartSno.xoml" />
+    <Content Include="ReprintCombineoffpizza.xoml" />
+    <Content Include="PrintPilotMo.xoml" />
+    <Content Include="ICTTestCheckWC.xoml" />
+    <Content Include="ICTTestCompleted.xoml" />
+    <Content Include="MBAssignTestType.xoml" />
+    <Content Include="GetAstNumberWithCNRS.xoml" />
+    <Content Include="BGAInput.xoml" />
+    <Content Include="BGAOutput.xoml" />
+    <Content Include="BIRCH\AssignModel_bck.xoml" />
+    <Content Include="BIRCH\CollectTabletFaPart.xoml" />
+    <Content Include="BIRCH\CombineCartonInDN_BIRCH.xoml" />
+    <Content Include="BIRCH\RePrintEx.xoml" />
+    <Content Include="BIRCH\TravelCardWithCollectKP.xoml" />
+    <Content Include="BSam\CartonWeight.xoml" />
+    <Content Include="BSam\CombineCartonInDN.xoml" />
+    <Content Include="BSam\UnpackDNByCarton.xoml" />
+    <Content Include="ChangeAST_Change.xoml" />
+    <Content Include="ChangeAST_Input.xoml" />
+    <Content Include="ChangeModel.xoml" />
+    <Content Include="ChangeToEPIAPIA.xoml" />
+    <Content Include="CNCardReceive.xoml" />
+    <Content Include="CombineASTandPart.xoml" />
+    <Content Include="CombineCOAandDNAndPrint.xoml" />
+    <Content Include="CombineCOAandDNPizza.xoml" />
+    <Content Include="CombineCOAandDNPrint1.xoml" />
+    <Content Include="CombineCOAandDNBlock.xoml" />
+    <Content Include="CombineDNPalletforBTBlock.xoml" />
+    <Content Include="CombinePCBinLot.xoml" />
+    <Content Include="CombineCOAandDNNew.xoml" />
+    <Content Include="ConbimeOfflinePizza.xoml" />
+    <Content Include="CheckDoorSn.xoml" />
+    <Content Include="CheckCombineCT.xoml" />
+    <Content Include="CreatePilotMO.xoml" />
+    <Content Include="DismantlePilotRun.xoml" />
+    <Content Include="PakUnitWeightNew.xoml" />
+    <Content Include="TRIS\EEPLabelRePrintl.xoml" />
+    <Content Include="UploadShipmentData.xoml" />
+    <Content Include="WHInspection.xoml" />
+    <Content Include="MaterialReturn.xoml" />
+    <Content Include="ReleaseProductIDHold.xoml" />
+    <Content Include="PCAReceiveReturnMB.xoml" />
+    <Content Include="PCATest.xoml" />
+    <Content Include="PCATest_CQ.xoml" />
+    <Content Include="ESOPandAoiKbTest.xoml" />
+    <Content Include="PAKReviewSorting.xoml" />
+    <Content Include="RePrint.xoml" />
+    <Content Include="RePrintOfflinePizzaKitting.xoml" />
+    <Content Include="CombinePizzaHoldStation.xoml" />
+    <Content Include="OfflinePizzaKitting.xoml" />
+    <Content Include="TRIS\EEPLabelPrint.xoml" />
+    <Content Include="PDPALabel01_CQ.xoml" />
+    <Content Include="PDPALabel02_CQ.xoml" />
+    <Content Include="EnergyLabelReprint.xoml" />
+    <Content Include="FAProductReinput.xoml" />
+    <Content Include="KBCTCheckOffline.xoml" />
+    <Content Include="KBEsop.xoml" />
+    <Content Include="Loc2PP.xoml" />
+    <Content Include="PizzaKitting_CQ.xoml" />
+    <Content Include="ReprintPDPALabel01.xoml" />
+    <Content Include="KPRepair.xoml" />
+    <Content Include="KBCTCheck.xoml" />
+    <Content Include="KPDefectInput.xoml" />
+    <Content Include="PCAOQCCosmetic.xoml" />
+    <Content Include="PCATestforlot.xoml" />
+    <Content Include="PCATestTrans.xoml" />
+    <Content Include="ROMEOBattery.xoml" />
+    <Content Include="SMTDefectInput.xoml" />
+    <Content Include="PDPALabel02Query.xoml" />
+    <Content Include="PDPALabel01Query.xoml" />
+    <Content Include="PizzaKittingCheck.xoml" />
+    <Content Include="SNCheckPrint.xoml" />
+    <Content Include="TravelCardPrint_excel.xoml" />
+    <Content Include="TRIS\KittingInputForTRIS.xoml" />
+    <Content Include="UnpackAllByDN.xoml" />
+    <Content Include="UnpackDummyPalletNo.xoml" />
+    <Content Include="DTDummyPalletControl.xoml" />
+    <Content Include="PAQCRepair.xoml" />
+    <Content Include="WHPalletControl.xoml" />
+    <Content Include="MasterLabelrePrint.xoml" />
+    <Content Include="CombineCOAandDNRePrint.xoml" />
+    <Content Include="CombineKeyPartsReprint.xoml" />
+    <Content Include="DTPalletControl.xoml" />
+    <Content Include="ITCNDCheckRePrint.xoml" />
+    <Content Include="LabelLightGuide.xoml" />
+    <Content Include="ReprintPizzaKitting.xoml" />
+    <Content Include="ReprintWarrantyLabel.xoml" />
+    <Content Include="PCAShippingLabelReprint.xoml" />
+    <Content Include="ECRReprint.xoml" />
+    <Content Include="MBReinput.xoml" />
+    <Content Include="MBSplitReprint.xoml" />
+    <Content Include="PCAOQCOutput.xoml" />
+    <Content Include="MBSplit.xoml" />
+    <Content Include="CTBorrowControl.xoml" />
+    <Content Include="FAMBReturn.xoml" />
+    <Content Include="GenSMTMO.xoml" />
+    <Content Include="GenSMTMODel.xoml" />
+    <Content Include="CombineAST.xoml" />
+    <Content Include="CombineCOAandDN.xoml" />
+    <Content Include="CombineDNPalletforBT.xoml" />
+    <Content Include="CombineKeyParts.xoml" />
+    <Content Include="CombinePizza.xoml" />
+    <Content Include="CombineTPM.xoml" />
+    <Content Include="FADismantle.xoml" />
+    <Content Include="FARepair.xoml" />
+    <Content Include="ICTInput.xoml" />
+    <Content Include="IECLabelPrint.xoml" />
+    <Content Include="IECLabelReprint.xoml" />
+    <Content Include="ITCNDCheck.xoml" />
+    <Content Include="MasterLabelPrint.xoml" />
+    <Content Include="MBBorrowControl.xoml" />
+    <Content Include="MBCombineCPU.xoml" />
+    <Content Include="OnlineGenerateASTPrint.xoml" />
+    <Content Include="OnlineGenerateASTReprint.xoml" />
+    <Content Include="OQCRepair.xoml" />
+    <Content Include="PackingList.xoml" />
+    <Content Include="PackingListForPL.xoml" />
+    <Content Include="PackingPizza.xoml" />
+    <Content Include="PackingPizzaLabelReprint.xoml" />
+    <Content Include="PackingPizzaUnpack.xoml" />
+    <Content Include="PalletVerifyFDEOnlyReprint.xoml" />
+    <Content Include="PalletVerifyReprint.xoml" />
+    <Content Include="PakUnitWeightReprint.xoml" />
+    <Content Include="043PAQCOutput.xoml" />
+    <Content Include="044PalletWeight.xoml" />
+    <Content Include="AssetTagLabelPrint.xoml" />
+    <Content Include="AssetTagLabelReprint.xoml" />
+    <Content Include="AssignWHLocation.xoml">
+    </Content>
+    <Content Include="COARemoval.xoml" />
+    <Content Include="COARemoval_Save.xoml" />
+    <Content Include="OfflineLabelPrint.xoml">
+      <SubType>Component</SubType>
+    </Content>
+    <Content Include="KittingInput.xoml">
+    </Content>
+    <Content Include="BTChange.xoml" />
+    <Content Include="ChangeKeyParts.xoml" />
+    <Content Include="CloseLocation.xoml">
+    </Content>
+    <Content Include="102VirtualMo.xoml" />
+    <Content Include="PakUnitWeight.xoml" />
+    <Content Include="PalletVerifyFDEOnly.xoml" />
+    <Content Include="PCARepair.xoml" />
+    <Content Include="PCARepairInput.xoml" />
+    <Content Include="PCARepairTest.xoml" />
+    <Content Include="PCAShippingLabelPrint.xoml" />
+    <Content Include="PIAOutput.xoml" />
+    <Content Include="PickCard.xoml" />
+    <Content Include="PizzaKitting.xoml" />
+    <Content Include="FATestStation.xoml" />
+    <Content Include="FinalScan.xoml" />
+    <Content Include="ImageDownload.xoml" />
+    <Content Include="PalletVerify.xoml">
+    </Content>
+    <Content Include="PDPALabel01.xoml" />
+    <Content Include="PDPALabel02.xoml" />
+    <Content Include="PoDataDeleteOBDN.xoml" />
+    <Content Include="PoDataDeletePLDN.xoml" />
+    <Content Include="PodLabelCheck.xoml">
+    </Content>
+    <Content Include="NonEPIAToEPIA.xoml" />
+    <Content Include="PrDelete.xoml" />
+    <Content Include="PrintContentWarranty.xoml" />
+    <Content Include="PrintInatelICASA.xoml" />
+    <Content Include="ProductBorrowControl.xoml" />
+    <Content Include="ReprintConfigurationLabel.xoml" />
+    <Content Include="ReprintShipToCartonLabel.xoml" />
+    <Content Include="SaveProductQC.xoml" />
+    <Content Include="ScanningList.xoml" />
+    <Content Include="ShipToCartonLabel.xoml" />
+    <Content Include="SNCheck.xoml" />
+    <Content Include="TravelCardPrint.xoml" />
+    <Content Include="TravelCardRePrint.xoml" />
+    <Content Include="UnpackDNByDN.xoml" />
+    <Content Include="UnpackPizza.xoml" />
+    <Content Include="UploadPoData.xoml" />
+    <Content Include="VGALabelPrint.xoml" />
+    <Content Include="VGALabelReprint.xoml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="021BoardInput.rules">
+      <DependentUpon>021BoardInput.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="022GenerateCustomerSN.rules">
+      <DependentUpon>022GenerateCustomerSN.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="043PAQCOutput.rules">
+      <DependentUpon>043PAQCOutput.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="044palletweight.rules">
+      <DependentUpon>044PalletWeight.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="070unpackallbysn.rules">
+      <DependentUpon>070UnpackAllBySN.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="123PACosmetic.rules">
+      <DependentUpon>123PACosmetic.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AOICallBack.rules">
+      <DependentUpon>AOICallBack.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AoiOfflineKbCheck.rules">
+      <DependentUpon>AoiOfflineKbCheck.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BIRCH\AssignModel.rules" />
+    <EmbeddedResource Include="BIRCH\AssignModelReprint.rules" />
+    <EmbeddedResource Include="BIRCH\CollectTabletFaPart.rules">
+      <DependentUpon>CollectTabletFaPart.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BIRCH\CombineCartonInDN_BIRCH.rules">
+      <DependentUpon>CombineCartonInDN_BIRCH.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BIRCH\TravelCardWithCollectKP.rules">
+      <DependentUpon>TravelCardWithCollectKP.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BSam\CartonWeight.rules">
+      <DependentUpon>CartonWeight.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BSam\CombineCartonInDN.rules">
+      <DependentUpon>CombineCartonInDN.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BSam\UnpackDNByCarton.rules">
+      <DependentUpon>UnpackDNByCarton.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BTChange.rules">
+      <DependentUpon>BTChange.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeAST_Change.rules">
+      <DependentUpon>ChangeAST_Change.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeKeyParts.rules">
+      <DependentUpon>ChangeKeyParts.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeSamplePO.rules">
+      <DependentUpon>ChangeSamplePO.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeToEPIAPIA.rules">
+      <DependentUpon>ChangeToEPIAPIA.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckAST.rules">
+      <DependentUpon>CheckAST.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckCombineCT.rules">
+      <DependentUpon>CheckCombineCT.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="COARemoval.rules">
+      <DependentUpon>COARemoval.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CombineAST.rules">
+      <DependentUpon>CombineAST.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CombineASTandPart.rules" />
+    <EmbeddedResource Include="combinecoaanddn.rules">
+      <DependentUpon>CombineCOAandDN.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="combinecoaanddnandprint.rules">
+      <DependentUpon>combinecoaanddnandprint.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CombineCOAandDNPizza.rules">
+      <DependentUpon>CombineCOAandDNPizza.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CombineCOAandDNRePrint.rules">
+      <DependentUpon>CombineCOAandDNRePrint.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CombineDNPalletforBT.rules">
+      <DependentUpon>CombineDNPalletforBT.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CombineKeyParts.rules">
+      <DependentUpon>CombineKeyParts.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CombinePizza.rules">
+      <DependentUpon>CombinePizza.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CombineTPM.rules">
+      <DependentUpon>CombineTPM.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="conbimeofflinepizza.rules">
+      <DependentUpon>ConbimeOfflinePizza.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Copy of ProductBorrowControl.rules">
+      <DependentUpon>KBEsop.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ESOPandAoiKbTest.rules">
+      <DependentUpon>ESOPandAoiKbTest.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FAI\FAIOutput.rules" />
+    <EmbeddedResource Include="faproductreinput.rules">
+      <DependentUpon>FAProductReinput.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ICTTestCompleted.rules" />
+    <EmbeddedResource Include="KBCTCheckOffline.rules">
+      <DependentUpon>KBCTCheckOffline.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPRepair.rules">
+      <DependentUpon>KPRepair.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CTBorrowControl.rules">
+      <DependentUpon>CTBorrowControl.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DTDummyPalletControl.rules">
+      <DependentUpon>DTDummyPalletControl.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DTPalletControl.rules">
+      <DependentUpon>DTPalletControl.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fadismantle.rules">
+      <DependentUpon>FADismantle.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fambreturn.rules">
+      <DependentUpon>FAMBReturn.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FARepair.rules">
+      <DependentUpon>FARepair.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FATestStation.rules">
+      <DependentUpon>FATestStation.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinalScan.rules">
+      <DependentUpon>FinalScan.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ICTInput.rules">
+      <DependentUpon>ICTInput.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ITCNDCheck.rules">
+      <DependentUpon>ITCNDCheck.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPDefectInput.rules">
+      <DependentUpon>KPDefectInput.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabelLightGuide.rules">
+      <DependentUpon>LabelLightGuide.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="loc2pp.rules">
+      <DependentUpon>Loc2PP.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="masterlabelprint.rules">
+      <DependentUpon>MasterLabelPrint.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ITCNDCheckRePrint.rules">
+      <DependentUpon>ITCNDCheckRePrint.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialReturn.rules">
+      <DependentUpon>MaterialReturn.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MBBorrowControl.rules">
+      <DependentUpon>MBBorrowControl.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MBSplit.rules">
+      <DependentUpon>MBSplit.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="onlinegenerateastprint.rules">
+      <DependentUpon>OnlineGenerateASTPrint.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OQCRepair.rules">
+      <DependentUpon>OQCRepair.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackingList.rules">
+      <DependentUpon>PackingList.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackingPizza.rules">
+      <DependentUpon>PackingPizza.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAKReviewSorting.rules">
+      <DependentUpon>PAKReviewSorting.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PakUnitWeight.rules">
+      <DependentUpon>PakUnitWeight.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PakUnitWeightNew.rules">
+      <DependentUpon>PakUnitWeightNew.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PakUnitWeightReprint.rules">
+      <DependentUpon>PakUnitWeightReprint.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PalletVerify.rules">
+      <DependentUpon>PalletVerify.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PalletVerifyFDEOnly.rules">
+      <DependentUpon>PalletVerifyFDEOnly.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAQCRepair.rules">
+      <DependentUpon>PAQCRepair.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PCAOQCOutput.rules">
+      <DependentUpon>PCAOQCOutput.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PCARepair.rules">
+      <DependentUpon>PCARepair.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PCARepairInput.rules">
+      <DependentUpon>PCARepairInput.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PCARepairTest.rules">
+      <DependentUpon>PCARepairTest.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PCAShippingLabelPrint.rules">
+      <DependentUpon>PCAShippingLabelPrint.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PCATest.rules">
+      <DependentUpon>PCATest.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PCATestforLot.rules">
+      <DependentUpon>PCATestforLot.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PCATestTrans.rules">
+      <DependentUpon>PCATestTrans.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PCATest_CQ.rules">
+      <DependentUpon>PCATest_CQ.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PIAOutput.rules">
+      <DependentUpon>PIAOutput.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PickCard.rules">
+      <DependentUpon>PickCard.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PizzaKitting.rules">
+      <DependentUpon>PizzaKitting.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PizzaKittingCheck.rules">
+      <DependentUpon>PizzaKittingCheck.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PizzaKitting_CQ.rules">
+      <DependentUpon>PizzaKitting_CQ.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PodLabelCheck.rules">
+      <DependentUpon>PodLabelCheck.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintContentWarranty.rules">
+      <DependentUpon>PrintContentWarranty.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductBorrowControl.rules">
+      <DependentUpon>ProductBorrowControl.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReleaseProductIDHold.rules">
+      <DependentUpon>ReleaseProductIDHold.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReprintShipToCartonLabel.rules">
+      <DependentUpon>ReprintShipToCartonLabel.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ROMEOBattery.rules">
+      <DependentUpon>ROMEOBattery.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveProductQC.rules">
+      <DependentUpon>SaveProductQC.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShipToCartonLabel.rules">
+      <DependentUpon>ShipToCartonLabel.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SMTDefectInput.rules">
+      <DependentUpon>SMTDefectInput.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sncheck.rules">
+      <DependentUpon>SNCheck.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TravelCardPrint.rules">
+      <DependentUpon>TravelCardPrint.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfflinePizzaKitting.rules">
+      <DependentUpon>OfflinePizzaKitting.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="travelcardprint_excel.rules">
+      <DependentUpon>TravelCardPrint_excel.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TRIS\EEPLabelPrint.rules">
+      <DependentUpon>EEPLabelPrint.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnpackAllByDN.rules">
+      <DependentUpon>UnpackAllByDN.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="unpackdnbydn.rules">
+      <DependentUpon>UnpackDNByDN.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UploadPoData.rules">
+      <DependentUpon>UploadPoData.xoml</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UploadShipmentData.rules" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="021BoardInput.xoml.cs">
+      <DependentUpon>021BoardInput.xoml</DependentUpon>
+    </Compile>
+    <Compile Include="070UnpackAllBySN.xoml.cs">
+      <DependentUpon>070UnpackAllBySN.xoml</DependentUpon>
+    </Compile>
+    <Compile Include="123PACosmetic.xoml.cs">
+      <DependentUpon>123PACosmetic.xoml</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aoiofflinekbcheck.xoml.cs">
+      <DependentUpon>AoiOfflineKbCheck.xoml</DependentUpon>
+    </Compile>
+    <Compile Include="BGAInput.xoml.cs">
+      <DependentUpon>BGAInput.xoml</DependentUpon>
+    </Compile>
+    <Compile Include="CombinePizza.xoml.cs">
+      <DependentUpon>CombinePizza.xoml</DependentUpon>
+    </Compile>
+    <Compile Include="PCARepairTest.xoml.cs">
+      <DependentUpon>PCARepairTest.xoml</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PCATest_CQ.xoml.cs">
+      <DependentUpon>PCATest_CQ.xoml</DependentUpon>
+    </Compile>
+    <Compile Include="PizzaKitting.xoml.cs">
+      <DependentUpon>PizzaKitting.xoml</DependentUpon>
+    </Compile>
+    <Compile Include="UnpackPizza.xoml.cs">
+      <DependentUpon>UnpackPizza.xoml</DependentUpon>
+    </Compile>
+    <Compile Include="VGALabelReprint.xoml.cs">
+      <DependentUpon>VGALabelReprint.xoml</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Old\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Windows Workflow Foundation\v3.5\Workflow.Targets" />
+</Project>

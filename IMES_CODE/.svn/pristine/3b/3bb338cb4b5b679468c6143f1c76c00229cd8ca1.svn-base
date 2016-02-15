@@ -1,0 +1,653 @@
+﻿/*--------------------------------------------------------------------
+ INVENTEC corporation (c)2009 all rights reserved. 
+ Description: Default CSS Themes. 
+ Update: 
+ Date        Name                 Reason 
+ ==========  ==================   ==============================
+ 2009-11-22  Chen Xu(EB1-4)       Create 
+ Known issues:
+--------------------------------------------------------------------*/
+
+html
+{
+  overflow:auto;
+}
+
+body
+{
+	overflow:visible;
+	background-color:RGB(244,244,244);
+	height:99%;
+    width:100%;
+    margin:1px 1px 1px 1px;
+}
+
+table
+{
+	padding:0px;
+	border:none;
+    
+}
+
+hr
+{ 
+	width:100%;
+    height:1px;
+	align:center;
+    color:RGB(192,192,192);
+    filter:alpha(opacity=0,finishopacity=100,style=3);
+}
+
+tr
+{
+	width:100%;
+	text-align:left;
+	vertical-align:middle;
+}
+
+textarea
+{
+	border-style:ridge;
+	border-width:1px;
+	border-left-color:Black;
+	border-right-color:Gray;
+	border-bottom-color:Black;
+	border-top-color:Gray;
+	font-family:Verdana;
+	font-size: 9pt;
+	padding-left:2px;
+	padding-right:2px;
+	text-align: left;
+	vertical-align:middle;
+    background-color:White;
+    margin-left:1px;
+    margin-right:1px;
+    white-space: pre-line;		/* ITC-1103-0065 */
+    word-wrap: break-word;
+    overflow:hidden;
+}
+
+select
+{
+	color:Black;
+	font-family:Verdana;
+	font-size: 9pt;
+	background-color:RGB(242,254,230);
+    border-style:none;
+    text-align: left;
+    vertical-align:middle;
+    height: 20px;
+    line-height: 20px;
+	padding:1px;
+	margin-top:1px;
+	margin-bottom:1px;
+	margin-right:1px;
+	margin-left:1px;
+	/*text-transform:uppercase;*/
+}
+
+.iMes_DropDownList
+{
+	color:Black;
+	font-family:Verdana;
+	font-size: 9pt;
+	background-color:RGB(242,254,230);
+    border-style:none;
+    text-align: left;
+    vertical-align:middle;
+    height: 20px;
+    line-height: 20px;
+	padding:1px;
+	margin-top:1px;
+	margin-bottom:1px;
+	margin-right:1px;
+	margin-left:1px;
+	text-transform:uppercase;
+}
+
+
+.iMes_div_center
+{
+	background-color:RGB(210,210,210);
+	overflow:visible;
+	/*margin:10px 20px 10px 20px;*/
+    clear:both;
+    vertical-align:top;
+    
+}
+
+.iMes_div_bar
+{
+	background-color:RGB(210,210,210);
+    margin:0px 20px 10px 20px;
+    
+}
+
+.iMes_Master_msgbox
+{
+	font-family:Verdana;
+	font-size: 13pt;
+	color: Red;
+	font-weight: bold;
+	border: solid 1px black;
+	background: white; 
+	overflow:auto;
+	height:45px;
+	width:95%;
+}
+
+.iMes_DataEntryLabel
+{
+   border-style:none;
+   font-family:Verdana;
+   font-size:large;
+   font-style:inherit;
+   color:Red;
+   text-align:left;
+   vertical-align:middle;
+   padding-left:2px;
+   background-color:Transparent;
+   height: 25px;
+   line-height: 25px;
+   margin-left:1px;
+   margin-right:1px;
+}
+
+
+.iMes_label_13pt
+{
+   border-style:none;
+   font-family:Verdana;
+   font-size: 9pt;
+   text-align:left;
+   vertical-align:middle;
+   padding-left:2px;
+   background-color:Transparent;
+   height: 20px;
+   line-height: 20px;
+   margin-left:1px;
+   margin-right:1px;
+}
+
+.iMes_label_14pt
+{
+   border-style:none;
+   font-family:Verdana;
+   font-size: 14pt;
+   text-align:left;
+   vertical-align:middle;
+   padding-left:2px;
+   background-color:Transparent;
+   height: 20px;
+   line-height: 20px;
+   margin-left:1px;
+   margin-right:1px;
+}
+.iMes_label_Result
+{
+   border-style:none;
+   font-family:Verdana;
+   font-size: 13pt;
+   text-align:left;
+   vertical-align:middle;
+   padding-left:2px;
+   background-color:Transparent;
+   height: 20px;
+   line-height: 20px;
+   margin-left:1px;
+   margin-right:1px;
+   color:Blue;
+}
+
+.iMes_label_11pt
+{
+	border-style:none;
+	font-family:Verdana;
+	font-size: 9pt;
+	text-align: left;
+	vertical-align:middle;
+	padding-left:2px;
+	background-color:Transparent;
+	height: 20px;
+    line-height: 20px;
+    margin-left:1px;
+    margin-right:1px;
+    word-break: break-all;
+	word-wrap: break-word;
+	
+}
+
+
+.iMes_label_11pt_Pink
+{
+	border-style:none;
+	font-family:Verdana;
+	font-size: 9pt;
+	text-align: left;
+	color:RGB(255,0,255);
+	vertical-align:middle;
+	padding-left:2px;
+	background-color:Transparent;
+	height: 20px;
+    line-height: 20px;
+    margin-left:1px;
+    margin-right:1px;
+    word-break: break-all;
+	word-wrap: break-word;
+	text-transform:uppercase;
+}
+
+.iMes_label_15pt_Red
+{
+   border-style:none;
+   font-family:Verdana;
+   font-weight:bold;
+   font-size: 15pt;
+   text-align:left;
+   vertical-align:middle;
+   padding-left:2px;
+   background-color:Transparent;
+   height: 20px;
+   line-height: 20px;
+   margin-left:1px;
+   margin-right:1px;
+  	color:RGB(255,0,0);
+}
+
+.iMes_label_30pt_Red
+{
+   border-style:none;
+   font-family:Verdana;
+   font-weight:bold;
+   font-size: 30pt;
+  
+  
+   background-color:Transparent;
+   height: 20px;
+   
+   color:RGB(255,0,0);
+}
+
+.iMes_label_30pt_Red_Underline
+{
+   border-bottom-color:RGB(255,0,0);
+   border-bottom-width:1px;
+   border-bottom-style: solid;
+    border-bottom-width: thick;
+   font-family:Verdana;
+   font-weight:bold;
+   font-size: 30pt;
+   background-color:Transparent;
+   height: 20px;
+   
+   color:RGB(255,0,0);
+}
+
+.iMes_label_30pt_Black
+{
+   border-style:none;
+   font-family:Verdana;
+   font-weight:bold;
+   font-size: 30pt;
+  
+  
+   background-color:Transparent;
+   height: 20px;
+   
+   color:black;
+}
+.iMes_label_72pt_Red_Underline
+{
+   border-bottom-color:RGB(255,0,0);
+   border-bottom-width:1px;
+   border-bottom-style: solid;
+   border-bottom-width: thick;
+   font-family:Verdana;
+   font-weight:bold;
+   font-size: 72pt;
+   background-color:Transparent;
+   height: 50px;
+   
+   color:RGB(255,0,0);
+}
+
+.iMes_textbox_input_Yellow
+{
+	border-width:1px;
+	border-style:ridge;
+	border-left-color:Black;
+	border-right-color:Gray;
+	border-bottom-color:Black;
+	border-top-color:Gray;
+	height: 20px;
+    line-height: 20px;
+	font-family:Verdana;
+	font-size: 9pt;
+    text-align:left;
+    vertical-align:middle;
+    text-transform:uppercase;
+    padding-left:2px;
+    padding-right:2px;
+    /*background-color:RGB(226,221,130);*/
+    background-color:RGB(224,252,201);
+    margin-left:1px;
+    margin-right:1px;
+    word-break: break-all;
+	word-wrap: break-word;
+
+}
+
+.iMes_textbox_input_Normal
+{
+	border-width:1px;
+	border-style:ridge;
+	border-left-color:Black;
+	border-right-color:Gray;
+	border-bottom-color:Black;
+	border-top-color:Gray;
+	height: 20px;
+    line-height: 20px;
+	font-family:Verdana;
+	font-size: 9pt;
+    text-align:left;
+    vertical-align:middle;
+    padding-left:2px;
+    padding-right:2px;
+    margin-left:1px;
+    margin-right:1px;
+    word-break: break-all;
+	word-wrap: break-word;
+}
+
+.iMes_textbox_input_Disabled
+{
+	border-width:1px;
+	border-style:ridge;
+	border-left-color:ButtonFace;
+	border-right-color:ButtonFace;
+	border-bottom-color:ButtonFace;
+	border-top-color:ButtonFace;
+	height: 20px;
+    line-height: 20px;
+	font-family:Verdana;
+	font-size: 9pt;
+    text-align:left;
+    vertical-align:middle;
+    padding-left:2px;
+    padding-right:2px;
+    margin-left:1px;
+    margin-right:1px;
+    word-break: break-all;
+	word-wrap: break-word;
+	background-color:ButtonFace;
+}
+
+.iMes_textbox_input_Transparent
+{
+	border-style:none;
+	font-size: 9pt;
+	padding-left:2px;
+    padding-right:2px;
+	text-align: left;
+	font-family:Verdana;
+	vertical-align:middle;
+	background-color:Transparent;
+	height: 20px;
+	line-height: 20px;
+	margin-left:1px;
+    margin-right:1px;
+	word-break: break-all;
+	word-wrap: break-word;
+	text-transform:uppercase;
+}
+
+.iMes_input_White
+{
+	border-style:none;
+	font-size: 9pt;
+	padding-left:2px;
+    padding-right:2px;
+	text-align: left;
+	font-family:Verdana;
+	vertical-align:middle;
+	background-color:White;
+	height: 20px;
+	line-height: 20px;
+	margin-left:1px;
+    margin-right:1px;
+	word-break: break-all;
+	word-wrap: break-word;
+	text-transform:uppercase;
+}
+
+.iMes_input_losercase	/* ITC-1103-0068 */
+{
+	border-style:none;
+	font-size: 9pt;
+	padding-left:2px;
+    padding-right:2px;
+	text-align: left;
+	font-family:Verdana;
+	vertical-align:middle;
+	background-color:White;
+	height: 20px;
+	line-height: 20px;
+	margin-left:1px;
+    margin-right:1px;
+	word-break: break-all;
+	word-wrap: break-word;
+	
+}
+.iMes_button
+{
+	border:Gray 1px ridge;
+	padding:2px;
+	margin-left:2px;
+	margin-right:2px;
+	cursor:hand; 
+	height: 20px;
+	width:100px;
+	font-size: 9pt;
+	text-align:center;
+	font-family:Verdana;
+    font-weight:lighter;
+	vertical-align:middle;
+    color: black;
+	FILTER:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#CCCCCC, EndColorStr=#FFFFFF);   
+}
+.iMes_button_onmouseout
+{
+	border:Gray 1px ridge;
+	padding:2px;
+	margin-left:2px;
+	margin-right:2px;
+	cursor:hand; 
+	height: 20px;
+	width:100px;
+	font-size: 9pt;
+	text-align:center;
+	font-family:Verdana;
+    font-weight:lighter;
+	vertical-align:middle;
+    color: black;
+	FILTER:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#CCCCCC, EndColorStr=#FFFFFF);
+
+}
+
+.iMes_button_onmouseover
+{
+	border:Gray 1px ridge;
+	padding:2px;
+	margin-left:2px;
+	margin-right:2px;
+	cursor:hand; 
+	height: 20px;
+	width:100px;
+	font-size: 9pt;
+	text-align:center;
+	font-family:Verdana;
+    font-weight:lighter;
+	vertical-align:middle;
+    color:ButtonHighlight;
+    FILTER:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#999999, EndColorStr=#FFFFFF);
+}
+
+.iMes_grid_OverRowGvExt
+{
+	background-color:ActiveBorder;
+	color: black;
+	border-color:RGB(166,166,166);
+	border-style:solid;
+	border-width:1px;
+	font-family:Verdana;
+	text-align: left;
+	font-size: 9pt;
+	width:100%;
+	height:100%;
+}
+
+.iMes_grid_SelectedRowGvExt
+{
+	background-color:RGB(169,217,86);
+	color: black;
+	border-color:RGB(166,166,166);
+	border-style:solid;
+	border-width:1px;
+	font-family:Verdana;
+	text-align: left;
+	font-size: 9pt;
+	width:100%;
+}
+
+.iMes_grid_TableGvExt
+{
+	background-color:RGB(166,166,166);	
+	color: black;
+	border-color:RGB(166,166,166);
+	border-style:solid;
+	border-width:1px;
+	font-family:Verdana;
+	text-align: left;
+	font-size: 9pt;
+	width:100%;
+	height:100%;
+	
+}
+
+.iMes_grid_TableGvExt_Clear
+{
+	background-color:RGB(166,166,166);	
+	color: black;
+	border-color:RGB(166,166,166);
+	border-style:solid;
+	border-width:1px;
+	font-family:Verdana;
+	text-align: left;
+	font-size: 9pt;
+}
+
+
+
+.iMes_grid_RowGvExt
+{
+	background-color: RGB(212,218,195);
+	text-align: left;
+	font-family:Verdana;
+	font-size: 9pt;
+	padding-left:2px;
+	height: 20px;
+	line-height: 20px;
+	border:solid 1px RGB(166,166,166);
+  
+}
+
+
+
+.iMes_grid_AlternatingRowGvExt
+{
+	background-color: RGB(226,235,204);
+	text-align:left;
+	font-family:Verdana;
+	font-size: 9pt;
+	padding-left:2px;
+	height: 20px;
+    line-height: 20px;
+    border:solid 1px RGB(166,166,166);
+   
+}
+
+
+.iMes_grid_HeaderRowGvExt
+{
+	background-color: RGB(133,133,133);
+	font-family:Verdana;
+	font-weight:bold;
+	color:White;
+    text-align:left;
+	font-size: 9pt;
+	padding-left:2px;
+	margin:1px 1px 1px 1px;
+	height: 20px;
+    line-height: 20px;
+	border:solid 1px RGB(166,166,166);
+     
+    
+}
+
+.iMes_grid_gvTextBox
+{
+	font-size: 9pt;
+	font-family:Verdana;
+	background-color:Transparent ;
+	border:0; 
+	text-align: left ; 
+	padding-left:2px;
+	width:100%; 
+}
+.iMes_grid_PagerRowGvExt
+{
+    background-color: white;
+    font-family:Verdana;
+	text-align: right;
+	font-size: 9pt; 
+}
+
+
+.iMes_CheckBox
+{
+	border: solid 1px RGB(244,244,244);
+	background: RGB(242,254,230);
+    background-color:RGB(242,254,230);
+	font-size: 9pt;
+	font-family:Verdana;
+}
+
+.iMes_Radio
+{
+	border: solid 1px RGB(244,244,244);
+	background: RGB(242,254,230);
+	background-color:RGB(242,254,230);
+	font-size: 9pt;
+	font-family:Verdana;
+}
+
+.Maintain_Radio
+{
+	background-color: #99CDFF;  
+   
+}
+
+.iMes_DropDownList
+{
+   border-style:none;
+   font-family:Verdana;
+   font-size:large;
+   font-style:inherit;
+   text-align:left;
+   vertical-align:middle;
+   padding-left:2px;
+   height: 25px;
+   line-height: 25px;
+   margin-left:1px;
+   margin-right:1px;
+}

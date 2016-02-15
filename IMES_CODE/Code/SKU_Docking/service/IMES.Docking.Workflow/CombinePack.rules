@@ -1,0 +1,339 @@
+﻿<RuleDefinitions xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<RuleDefinitions.Conditions>
+		<RuleExpressionCondition Name="IsTrue">
+			<RuleExpressionCondition.Expression>
+				<ns0:CodeCastExpression TargetType="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+					<ns0:CodeCastExpression.Expression>
+						<ns0:CodeMethodInvokeExpression>
+							<ns0:CodeMethodInvokeExpression.Parameters>
+								<ns0:CodeFieldReferenceExpression FieldName="ifElseBranch">
+									<ns0:CodeFieldReferenceExpression.TargetObject>
+										<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+									</ns0:CodeFieldReferenceExpression.TargetObject>
+								</ns0:CodeFieldReferenceExpression>
+							</ns0:CodeMethodInvokeExpression.Parameters>
+							<ns0:CodeMethodInvokeExpression.Method>
+								<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+									<ns0:CodeMethodReferenceExpression.TargetObject>
+										<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+											<ns0:CodePropertyReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodePropertyReferenceExpression.TargetObject>
+										</ns0:CodePropertyReferenceExpression>
+									</ns0:CodeMethodReferenceExpression.TargetObject>
+								</ns0:CodeMethodReferenceExpression>
+							</ns0:CodeMethodInvokeExpression.Method>
+						</ns0:CodeMethodInvokeExpression>
+					</ns0:CodeCastExpression.Expression>
+				</ns0:CodeCastExpression>
+			</RuleExpressionCondition.Expression>
+		</RuleExpressionCondition>
+		<RuleExpressionCondition Name="ifComplete">
+			<RuleExpressionCondition.Expression>
+				<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+					<ns0:CodeBinaryOperatorExpression.Left>
+						<ns0:CodeCastExpression TargetType="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeCastExpression.Expression>
+								<ns0:CodeMethodInvokeExpression>
+									<ns0:CodeMethodInvokeExpression.Parameters>
+										<ns0:CodeFieldReferenceExpression FieldName="IsComplete">
+											<ns0:CodeFieldReferenceExpression.TargetObject>
+												<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+											</ns0:CodeFieldReferenceExpression.TargetObject>
+										</ns0:CodeFieldReferenceExpression>
+									</ns0:CodeMethodInvokeExpression.Parameters>
+									<ns0:CodeMethodInvokeExpression.Method>
+										<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+											<ns0:CodeMethodReferenceExpression.TargetObject>
+												<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+													<ns0:CodePropertyReferenceExpression.TargetObject>
+														<ns0:CodeThisReferenceExpression />
+													</ns0:CodePropertyReferenceExpression.TargetObject>
+												</ns0:CodePropertyReferenceExpression>
+											</ns0:CodeMethodReferenceExpression.TargetObject>
+										</ns0:CodeMethodReferenceExpression>
+									</ns0:CodeMethodInvokeExpression.Method>
+								</ns0:CodeMethodInvokeExpression>
+							</ns0:CodeCastExpression.Expression>
+						</ns0:CodeCastExpression>
+					</ns0:CodeBinaryOperatorExpression.Left>
+					<ns0:CodeBinaryOperatorExpression.Right>
+						<ns0:CodePrimitiveExpression>
+							<ns0:CodePrimitiveExpression.Value>
+								<ns1:Boolean xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">false</ns1:Boolean>
+							</ns0:CodePrimitiveExpression.Value>
+						</ns0:CodePrimitiveExpression>
+					</ns0:CodeBinaryOperatorExpression.Right>
+				</ns0:CodeBinaryOperatorExpression>
+			</RuleExpressionCondition.Expression>
+		</RuleExpressionCondition>
+		<RuleExpressionCondition Name="noPartMatch">
+			<RuleExpressionCondition.Expression>
+				<ns0:CodeBinaryOperatorExpression Operator="BooleanOr" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+					<ns0:CodeBinaryOperatorExpression.Left>
+						<ns0:CodeBinaryOperatorExpression Operator="ValueEquality">
+							<ns0:CodeBinaryOperatorExpression.Left>
+								<ns0:CodeMethodInvokeExpression>
+									<ns0:CodeMethodInvokeExpression.Parameters>
+										<ns0:CodeFieldReferenceExpression FieldName="MatchedParts">
+											<ns0:CodeFieldReferenceExpression.TargetObject>
+												<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+											</ns0:CodeFieldReferenceExpression.TargetObject>
+										</ns0:CodeFieldReferenceExpression>
+									</ns0:CodeMethodInvokeExpression.Parameters>
+									<ns0:CodeMethodInvokeExpression.Method>
+										<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+											<ns0:CodeMethodReferenceExpression.TargetObject>
+												<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+													<ns0:CodePropertyReferenceExpression.TargetObject>
+														<ns0:CodeThisReferenceExpression />
+													</ns0:CodePropertyReferenceExpression.TargetObject>
+												</ns0:CodePropertyReferenceExpression>
+											</ns0:CodeMethodReferenceExpression.TargetObject>
+										</ns0:CodeMethodReferenceExpression>
+									</ns0:CodeMethodInvokeExpression.Method>
+								</ns0:CodeMethodInvokeExpression>
+							</ns0:CodeBinaryOperatorExpression.Left>
+							<ns0:CodeBinaryOperatorExpression.Right>
+								<ns0:CodePrimitiveExpression />
+							</ns0:CodeBinaryOperatorExpression.Right>
+						</ns0:CodeBinaryOperatorExpression>
+					</ns0:CodeBinaryOperatorExpression.Left>
+					<ns0:CodeBinaryOperatorExpression.Right>
+						<ns0:CodeBinaryOperatorExpression Operator="ValueEquality">
+							<ns0:CodeBinaryOperatorExpression.Left>
+								<ns0:CodePropertyReferenceExpression PropertyName="Count">
+									<ns0:CodePropertyReferenceExpression.TargetObject>
+										<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[IMES.FisObject.Common.BOM.IBOMPart, IMES.FisObject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+											<ns0:CodeCastExpression.Expression>
+												<ns0:CodeMethodInvokeExpression>
+													<ns0:CodeMethodInvokeExpression.Parameters>
+														<ns0:CodeFieldReferenceExpression FieldName="MatchedParts">
+															<ns0:CodeFieldReferenceExpression.TargetObject>
+																<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+															</ns0:CodeFieldReferenceExpression.TargetObject>
+														</ns0:CodeFieldReferenceExpression>
+													</ns0:CodeMethodInvokeExpression.Parameters>
+													<ns0:CodeMethodInvokeExpression.Method>
+														<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+															<ns0:CodeMethodReferenceExpression.TargetObject>
+																<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																	<ns0:CodePropertyReferenceExpression.TargetObject>
+																		<ns0:CodeThisReferenceExpression />
+																	</ns0:CodePropertyReferenceExpression.TargetObject>
+																</ns0:CodePropertyReferenceExpression>
+															</ns0:CodeMethodReferenceExpression.TargetObject>
+														</ns0:CodeMethodReferenceExpression>
+													</ns0:CodeMethodInvokeExpression.Method>
+												</ns0:CodeMethodInvokeExpression>
+											</ns0:CodeCastExpression.Expression>
+										</ns0:CodeCastExpression>
+									</ns0:CodePropertyReferenceExpression.TargetObject>
+								</ns0:CodePropertyReferenceExpression>
+							</ns0:CodeBinaryOperatorExpression.Left>
+							<ns0:CodeBinaryOperatorExpression.Right>
+								<ns0:CodePrimitiveExpression>
+									<ns0:CodePrimitiveExpression.Value>
+										<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Int32>
+									</ns0:CodePrimitiveExpression.Value>
+								</ns0:CodePrimitiveExpression>
+							</ns0:CodeBinaryOperatorExpression.Right>
+						</ns0:CodeBinaryOperatorExpression>
+					</ns0:CodeBinaryOperatorExpression.Right>
+				</ns0:CodeBinaryOperatorExpression>
+			</RuleExpressionCondition.Expression>
+		</RuleExpressionCondition>
+		<RuleExpressionCondition Name="CheckCUSTSNisNull">
+			<RuleExpressionCondition.Expression>
+				<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+					<ns0:CodeBinaryOperatorExpression.Left>
+						<ns0:CodeMethodInvokeExpression>
+							<ns0:CodeMethodInvokeExpression.Parameters>
+								<ns0:CodeFieldReferenceExpression FieldName="CustSN">
+									<ns0:CodeFieldReferenceExpression.TargetObject>
+										<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+									</ns0:CodeFieldReferenceExpression.TargetObject>
+								</ns0:CodeFieldReferenceExpression>
+							</ns0:CodeMethodInvokeExpression.Parameters>
+							<ns0:CodeMethodInvokeExpression.Method>
+								<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+									<ns0:CodeMethodReferenceExpression.TargetObject>
+										<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+											<ns0:CodePropertyReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodePropertyReferenceExpression.TargetObject>
+										</ns0:CodePropertyReferenceExpression>
+									</ns0:CodeMethodReferenceExpression.TargetObject>
+								</ns0:CodeMethodReferenceExpression>
+							</ns0:CodeMethodInvokeExpression.Method>
+						</ns0:CodeMethodInvokeExpression>
+					</ns0:CodeBinaryOperatorExpression.Left>
+					<ns0:CodeBinaryOperatorExpression.Right>
+						<ns0:CodePrimitiveExpression />
+					</ns0:CodeBinaryOperatorExpression.Right>
+				</ns0:CodeBinaryOperatorExpression>
+			</RuleExpressionCondition.Expression>
+		</RuleExpressionCondition>
+		<RuleExpressionCondition Name="IsGenNewCustSN">
+			<RuleExpressionCondition.Expression>
+				<ns0:CodeCastExpression TargetType="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+					<ns0:CodeCastExpression.Expression>
+						<ns0:CodeMethodInvokeExpression>
+							<ns0:CodeMethodInvokeExpression.Parameters>
+								<ns0:CodePrimitiveExpression>
+									<ns0:CodePrimitiveExpression.Value>
+										<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">IsGenNewCustSN</ns1:String>
+									</ns0:CodePrimitiveExpression.Value>
+								</ns0:CodePrimitiveExpression>
+							</ns0:CodeMethodInvokeExpression.Parameters>
+							<ns0:CodeMethodInvokeExpression.Method>
+								<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+									<ns0:CodeMethodReferenceExpression.TargetObject>
+										<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+											<ns0:CodePropertyReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodePropertyReferenceExpression.TargetObject>
+										</ns0:CodePropertyReferenceExpression>
+									</ns0:CodeMethodReferenceExpression.TargetObject>
+								</ns0:CodeMethodReferenceExpression>
+							</ns0:CodeMethodInvokeExpression.Method>
+						</ns0:CodeMethodInvokeExpression>
+					</ns0:CodeCastExpression.Expression>
+				</ns0:CodeCastExpression>
+			</RuleExpressionCondition.Expression>
+		</RuleExpressionCondition>
+		<RuleExpressionCondition Name="sessionmb">
+			<RuleExpressionCondition.Expression>
+				<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+					<ns0:CodeBinaryOperatorExpression.Left>
+						<ns0:CodeFieldReferenceExpression FieldName="MB">
+							<ns0:CodeFieldReferenceExpression.TargetObject>
+								<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+							</ns0:CodeFieldReferenceExpression.TargetObject>
+						</ns0:CodeFieldReferenceExpression>
+					</ns0:CodeBinaryOperatorExpression.Left>
+					<ns0:CodeBinaryOperatorExpression.Right>
+						<ns0:CodePrimitiveExpression />
+					</ns0:CodeBinaryOperatorExpression.Right>
+				</ns0:CodeBinaryOperatorExpression>
+			</RuleExpressionCondition.Expression>
+		</RuleExpressionCondition>
+		<RuleExpressionCondition Name="isMB">
+			<RuleExpressionCondition.Expression>
+				<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+					<ns0:CodeBinaryOperatorExpression.Left>
+						<ns0:CodeCastExpression TargetType="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeCastExpression.Expression>
+								<ns0:CodeMethodInvokeExpression>
+									<ns0:CodeMethodInvokeExpression.Parameters>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">isMB</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeMethodInvokeExpression.Parameters>
+									<ns0:CodeMethodInvokeExpression.Method>
+										<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+											<ns0:CodeMethodReferenceExpression.TargetObject>
+												<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+													<ns0:CodePropertyReferenceExpression.TargetObject>
+														<ns0:CodeThisReferenceExpression />
+													</ns0:CodePropertyReferenceExpression.TargetObject>
+												</ns0:CodePropertyReferenceExpression>
+											</ns0:CodeMethodReferenceExpression.TargetObject>
+										</ns0:CodeMethodReferenceExpression>
+									</ns0:CodeMethodInvokeExpression.Method>
+								</ns0:CodeMethodInvokeExpression>
+							</ns0:CodeCastExpression.Expression>
+						</ns0:CodeCastExpression>
+					</ns0:CodeBinaryOperatorExpression.Left>
+					<ns0:CodeBinaryOperatorExpression.Right>
+						<ns0:CodePrimitiveExpression>
+							<ns0:CodePrimitiveExpression.Value>
+								<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">1</ns1:String>
+							</ns0:CodePrimitiveExpression.Value>
+						</ns0:CodePrimitiveExpression>
+					</ns0:CodeBinaryOperatorExpression.Right>
+				</ns0:CodeBinaryOperatorExpression>
+			</RuleExpressionCondition.Expression>
+		</RuleExpressionCondition>
+		<RuleExpressionCondition Name="needprintflag">
+			<RuleExpressionCondition.Expression>
+				<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+					<ns0:CodeBinaryOperatorExpression.Left>
+						<ns0:CodeCastExpression TargetType="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeCastExpression.Expression>
+								<ns0:CodeMethodInvokeExpression>
+									<ns0:CodeMethodInvokeExpression.Parameters>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">needprintflag</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeMethodInvokeExpression.Parameters>
+									<ns0:CodeMethodInvokeExpression.Method>
+										<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+											<ns0:CodeMethodReferenceExpression.TargetObject>
+												<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+													<ns0:CodePropertyReferenceExpression.TargetObject>
+														<ns0:CodeThisReferenceExpression />
+													</ns0:CodePropertyReferenceExpression.TargetObject>
+												</ns0:CodePropertyReferenceExpression>
+											</ns0:CodeMethodReferenceExpression.TargetObject>
+										</ns0:CodeMethodReferenceExpression>
+									</ns0:CodeMethodInvokeExpression.Method>
+								</ns0:CodeMethodInvokeExpression>
+							</ns0:CodeCastExpression.Expression>
+						</ns0:CodeCastExpression>
+					</ns0:CodeBinaryOperatorExpression.Left>
+					<ns0:CodeBinaryOperatorExpression.Right>
+						<ns0:CodePrimitiveExpression>
+							<ns0:CodePrimitiveExpression.Value>
+								<ns1:Boolean xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">true</ns1:Boolean>
+							</ns0:CodePrimitiveExpression.Value>
+						</ns0:CodePrimitiveExpression>
+					</ns0:CodeBinaryOperatorExpression.Right>
+				</ns0:CodeBinaryOperatorExpression>
+			</RuleExpressionCondition.Expression>
+		</RuleExpressionCondition>
+		<RuleExpressionCondition Name="mbormac">
+			<RuleExpressionCondition.Expression>
+				<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+					<ns0:CodeBinaryOperatorExpression.Left>
+						<ns0:CodeCastExpression TargetType="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeCastExpression.Expression>
+								<ns0:CodeMethodInvokeExpression>
+									<ns0:CodeMethodInvokeExpression.Parameters>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">mbormac</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeMethodInvokeExpression.Parameters>
+									<ns0:CodeMethodInvokeExpression.Method>
+										<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+											<ns0:CodeMethodReferenceExpression.TargetObject>
+												<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+													<ns0:CodePropertyReferenceExpression.TargetObject>
+														<ns0:CodeThisReferenceExpression />
+													</ns0:CodePropertyReferenceExpression.TargetObject>
+												</ns0:CodePropertyReferenceExpression>
+											</ns0:CodeMethodReferenceExpression.TargetObject>
+										</ns0:CodeMethodReferenceExpression>
+									</ns0:CodeMethodInvokeExpression.Method>
+								</ns0:CodeMethodInvokeExpression>
+							</ns0:CodeCastExpression.Expression>
+						</ns0:CodeCastExpression>
+					</ns0:CodeBinaryOperatorExpression.Left>
+					<ns0:CodeBinaryOperatorExpression.Right>
+						<ns0:CodePrimitiveExpression>
+							<ns0:CodePrimitiveExpression.Value>
+								<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">MB</ns1:String>
+							</ns0:CodePrimitiveExpression.Value>
+						</ns0:CodePrimitiveExpression>
+					</ns0:CodeBinaryOperatorExpression.Right>
+				</ns0:CodeBinaryOperatorExpression>
+			</RuleExpressionCondition.Expression>
+		</RuleExpressionCondition>
+	</RuleDefinitions.Conditions>
+</RuleDefinitions>

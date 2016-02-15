@@ -1,0 +1,466 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>英业达效率监控平台</title>
+
+<link rel="stylesheet" type="text/css" href="css/slide.css"/>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/slide.js"></script>
+ <script type="text/javascript">
+     var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+     if (isChrome) { 
+     } else {
+         alert("使用Chrome浏览器浏览效果会更好哟！！！！");
+         //document.execCommand("Stop")
+     }
+    </script>
+
+<!--
+<script src="js/jquery.min.js"></script>-->
+<style type="text/css">
+*{ margin:0; padding:0; list-style:none;}
+img{ border:0;}
+body{font-size:12px;color:#555555;background:url()  center top;}
+
+.navbox{height:40px;position:relative;z-index:9; margin:auto;background:#554b4a;-moz-opacity:0.90;font-size:20px;font-family:'微软雅黑';}
+.nav{width:100%;margin:0 auto;height:40px; list-style:none;}
+.nav li{float:left;height:40px;position:relative; list-style:none;}
+.nav li.last{background:none;}
+.nav li a{text-decoration:none;}
+.nav li a span{float:left;display:block;line-height:40px;font-size:14px;color:#ffffff;cursor:pointer;width:143px;text-align:center; }
+.mj_hover_menu{text-decoration:none; width:143px; background:url(webroot/images/menu_hover.jpg); height:40px;}
+.nav li.selected .submenu{display:block;}
+.nav li .submenu{display:none;position:absolute;top:40px;left:-9px;}
+.nav li .submenu li{float:none;padding:0;background:none;height:auto;border-bottom:dotted 0px #BEBEBE;}
+.mj_menu_pro_bg{width:580px; height:185px; background:url(webroot/images/menu_pro_bg.png) no-repeat;}
+.mj_menu_pro_main{width:540px; margin:auto; padding-top:12px;}
+.mj_menu_pro_li{ float:left;padding:0px 0px 0px 15px;}
+.mj_menu_li_txt{line-height:22px; font-size:12px; color:#696969;}
+.mj_menu_li_txt font{font-size:14px; color:#bb1721;}
+.mj_menu_li_txt a{color:#696969; text-decoration:none;}
+.mj_menu_li_txt a:hover{color:#696969; text-decoration:underline;}
+
+.mj_menu_news_bg{width:580px; height:185px; background:url(webroot/images/menu_news_bg.png) no-repeat;}
+.mj_menu_news_main{width:540px; margin:left; padding-top:12px;}
+.mj_menu_news_li{padding:0px 0px 0px 15px;width: 160px; margin-right:0px; height:150px; float:left; border-right:solid 1px #cccccc; }
+.mj_menu_news_img{padding:0px 0px;float:left; margin-right:0px;text-align:left; color:#bb1721; line-height:30px; font-size:14px;}
+
+.mj_menu_news_li2{padding:0px 30px; height:150px; float:right; border-left:solid 1px #cccccc; }
+.mj_menu_news_img2{float:left; margin-left:30px; text-align:left; color:#bb1721; line-height:30px; font-size:14px;}
+
+.mj_menu_news_li3{padding:0px 0px 15px 0px;height:150px;margin-right:100px; float:right; border-left:solid 1px #cccccc; }
+.mj_menu_news_img3{float:left; margin-left:15px;text-align:left; color:#bb1721; line-height:30px; font-size:14px;}
+.iframestyle{ height:80%;width:100%;z-index:-1;background: #FFFFF0 no-repeat;}
+.alinkstyle{width:100%;height:700px;background: rgb(178, 44, 44) no-repeat; }
+</style>
+</head>
+<body>
+
+<!-- 代码部分begin -->
+<div class="navbox">
+  <div class="nav">
+    
+      <li class="drop-menu-effect"><a href="index.html"><span>网站首页</span></a></li>
+      
+   <!--<li class="drop-menu-effect"> <a href="Inventec_MainPage.aspx" target="_blank"><span>SMT</span></a>
+        <div class="submenu">
+          <div class="mj_menu_pro_bg">
+            <div class="mj_menu_pro_main">
+              <div class="mj_menu_pro_li">
+                <div class="mj_menu_li_txt">
+                  <a href="#"><font>SMT生产效率（汇总）</font></a><br />
+                   <a href="#"><font>SMT分线显示</font></a><br />
+                 
+                </div>
+              </div>
+             <div class="mj_menu_pro_li" style="padding-left:48px;">
+                <div class="mj_menu_li_txt">
+                  <a href="#"><font>SA生产效率（汇总）</font></a><br />
+                  <a href="#">SA1</a><br />
+                  <a href="#">SA2</a><br />
+                  <a href="#">SA3</a><br />
+                  <a href="#">SA4</a><br />
+                  <a href="#">SA5</a>
+                  <p><a href="#"><font>SA6</font></a></p>
+                </div>
+              </div>
+            <div class="mj_menu_pro_li" style="padding:0px 0px 0px 48px;">
+                <div class="mj_menu_li_txt">
+                <a href="#"><font>FA生产效率（汇总）</font></a><br />
+                  <a href="#">FA1</a><br />
+                  <a href="#">FA2</a><br />
+                  <a href="#">FA3</a><br />
+                  <a href="#">FA4</a>
+                  <p style="padding-top:24px;"><a href="#"><font>FA5</font></a></p>
+                </div>
+              </div>
+            <div class="mj_menu_pro_li" style="padding-left:48px;">
+                <div class="mj_menu_li_txt">
+                  <a href="#"><font>PAK生产效率（汇总）</font></a><br />
+                  <a href="#">PAK1</a><br />
+                  <a href="#">PAK2</a><br />
+                  <a href="#">PAK3</a><br />
+                  <a href="#">PAK4</a><br />
+                <p style="padding-top:66px;"><a href="#"><font>PAK3</font></a></p>
+                </div>
+             </div>
+             <div class="mj_menu_pro_li" style="padding-left:48px;">
+                <div class="mj_menu_li_txt">
+                  <a href="#"><font>PAK4</font></a><br />
+                  <a href="#">PAK5</a><br />
+                  <a href="#">PAK6</a><br />
+                     <a href="#">PAK7</a>
+                <p style="padding-top:66px;"><a href="#"><font>PAK7</font></a></p>
+                </div>
+              </div>
+              <div style="clear:both; height:0px; overflow:hidden;"></div>
+            </div>
+          </div>
+        </div>
+      </li>-->
+ 
+      
+      <li class="drop-menu-effect"><a href="#"><span>SMT</span></a>
+        <div class="submenu">
+              <div class="mj_menu_news_bg">
+                <div class="mj_menu_news_main">
+                  <div class="mj_menu_news_li">
+                    <div class="mj_menu_li_txt">
+                         <a href="webroot/aspx/UPH_Detail_Efficiency_Hour.htm" target="_blank"><font>SMT生产效率）</font></a><br />
+                         <a href="webroot/aspx/UPH_SMT_Month.aspx" target="_blank"><font>SMT产出（及时）</font></a><br />
+                     
+                  </div>
+                  
+                </div>
+                
+              
+              <div class="mj_menu_news_img"><img src="webroot/images/SA.jpg" /><br />
+                    <font>SMT</font></div>
+                  <div style="clear:both; height:0px; overflow:hidden;"></div>
+              </div>
+              
+           </div>
+         </div>
+      </li>
+      
+      
+      <li class="drop-menu-effect"><a href="#"><span>SA</span></a>
+        <div class="submenu">
+              <div class="mj_menu_news_bg">
+                <div class="mj_menu_news_main">
+                  <div class="mj_menu_news_li">
+                    <div class="mj_menu_li_txt">
+                         <a href="webroot/aspx/UPH_Detail_Efficiency_Hour.htm?Process=SA" target="_blank"><font>日报By线体</font></a><br />
+                           <a href="webroot/aspx/UPH_Detail_Efficiency_Day.htm?Process=SA" target="_blank"><font>月报By线体</font></a><br />
+                             <a href="webroot/aspx/UPH_Detail_Efficiency_Process_Hour.htm?Process=SA" target="_blank"><font>日报By制程</font></a><br />
+                               <a href="webroot/aspx/UPH_Detail_Efficiency_Process_Day.htm?Process=SA" target="_blank"><font>月报By制程</font></a><br />
+                                  <a href="webroot/aspx/UPH_SA_Daily.aspx" target="_blank"><font>SA日产出</font></a><br />
+                                  <a href="webroot/aspx/SA_OUT_Boss.aspx" target="_blank"><font>SA日产出比例</font></a><br />
+                  </div>
+                </div>
+               
+            
+                <div class="mj_menu_news_img"><img src="webroot/images/SMT.jpg" /><br />
+                    <font>SA</font></div>
+                  <div style="clear:both; height:0px; overflow:hidden;"></div>
+              </div>
+           </div>
+         </div>
+      </li>
+     
+      
+      <li class="drop-menu-effect"><a href="#"><span>FA</span></a>
+        <div class="submenu">
+              <div class="mj_menu_news_bg">
+                <div class="mj_menu_news_main">
+                  <div class="mj_menu_news_li">
+                    <div class="mj_menu_li_txt">
+                        <a href="webroot/aspx/UPH_Detail_Efficiency_Hour.htm?Process=FA" target="_blank"><font>日报By线体</font></a><br />
+                           <a href="webroot/aspx/UPH_Detail_Efficiency_Day.htm?Process=FA" target="_blank"><font>月报By线体</font></a><br />
+                             <a href="webroot/aspx/UPH_Detail_Efficiency_Process_Hour.htm?Process=FA" target="_blank"><font>日报By制程</font></a><br />
+                               <a href="webroot/aspx/UPH_Detail_Efficiency_Process_Day.htm?Process=FA" target="_blank"><font>月报By制程</font></a><br />
+                    
+                                  <a href="webroot/aspx/UPH_FA_Daily.aspx" target="_blank"><font>FA日产出</font></a><br />                  
+                                  <a href="webroot/aspx/FA_OUT_Boss.aspx" target="_blank"><font>FA日产出比例</font></a><br />
+                  </div>
+                </div>
+                <div class="mj_menu_news_img"><img src="webroot/images/down_menu_pic.jpg" /><br />
+                    <font>FA</font></div>
+                  <div style="clear:both; height:0px; overflow:hidden;"></div>
+              </div>
+           </div>
+         </div>
+      </li>
+       
+      <!-- <li class="drop-menu-effect"><a href="#"><span>PAK</span></a>
+        <div class="submenu">
+              <div class="mj_menu_news_bg">
+                <div class="mj_menu_news_main">
+                  <div class="mj_menu_news_li">
+                    <div class="mj_menu_li_txt">
+                          <a href="webroot/aspx/UPH_Detail_Efficiency_Hour.htm" target="_blank"><font>日报By线体</font></a><br />
+                           <a href="webroot/aspx/UPH_Detail_Efficiency_Day.htm" target="_blank"><font>月报By线体</font></a><br />
+                             <a href="webroot/aspx/UPH_Detail_Efficiency_Process_Hour.htm?Process=PAK" target="_blank"><font>日报By制程</font></a><br />
+                               <a href="webroot/aspx/UPH_Detail_Efficiency_Process_Day.htm?Process=PAK" target="_blank"><font>月报By制程</font></a><br />
+                                  <a href="webroot/aspx/UPH_PAK_Daily.aspx" target="_blank"><font>PAK日产出</font></a><br />
+                                    <a href="webroot/aspx/UPH_PAK_Month.aspx" target="_blank"><font>PAK月产出</font></a><br />
+                                      <a href="webroot/aspx/PAK_OUT_Boss.aspx" target="_blank"><font>PAK日产出比例</font></a><br />
+                                      
+                  </div>
+                </div>
+                
+                <div class="mj_menu_pro_li" style="padding-left:48px;">
+                <div class="mj_menu_li_txt">
+                  <a href="#"><font>出货报表</font></a><br />
+                  <p><a href="http://10.96.183.16/Reports/Pages/Report.aspx?ItemPath=%2fHPIMES+Report%2fProduct_Report"><font>未来3天</font></a></p>
+                </div>
+              </div>
+            
+              
+             
+                <div class="mj_menu_news_img"><img src="webroot/images/news_menu_pic.jpg" /><br />
+                    <font>PAK</font></div>
+                  <div style="clear:both; height:0px; overflow:hidden;"></div>
+              </div>
+           </div>
+         </div>
+      </li>-->
+      
+      
+       <li class="drop-menu-effect"> <a href="Inventec_MainPage.aspx" target="_blank"><span>PAK</span></a>
+        <div class="submenu">
+          <div class="mj_menu_pro_bg">
+            <div class="mj_menu_pro_main">
+              <div class="mj_menu_pro_li">
+                <div class="mj_menu_li_txt">
+                 <a href="webroot/aspx/UPH_Detail_Efficiency_Hour.htm?Process=PA" target="_blank"><font>日报By线体</font></a><br />
+                           <a href="webroot/aspx/UPH_Detail_Efficiency_Day.htm?Process=PA" target="_blank"><font>月报By线体</font></a><br />
+                             <a href="webroot/aspx/UPH_Detail_Efficiency_Process_Hour.htm?Process=PA" target="_blank"><font>日报By制程</font></a><br />
+                               <a href="webroot/aspx/UPH_Detail_Efficiency_Process_Day.htm?Process=PA" target="_blank"><font>月报By制程</font></a><br />
+                                  <a href="webroot/aspx/UPH_PAK_Daily.aspx" target="_blank"><font>PAK日产出</font></a><br />
+                                 
+                                      <a href="webroot/aspx/PAK_OUT_Boss.aspx" target="_blank"><font>PAK日产出比例</font></a><br />
+                 
+                </div>
+              </div>
+             <div class="mj_menu_pro_li" style="padding-left:48px;">
+                <div class="mj_menu_li_txt">
+                 <a href="#"><font>出货报表</font></a><br />
+                  <p><a href="webroot/aspx/ProductQty.htm " target="_blank"><font>未来3天出货状况</font></a></p>
+      
+                 
+                </div>
+              </div>
+            <div class="mj_menu_pro_li" style="padding:0px 0px 0px 48px;">
+                <div class="mj_menu_li_txt">
+            
+                </div>
+              </div>
+              <div style="clear:both; height:0px; overflow:hidden;"></div>
+            </div>
+          </div>
+        </div>
+      </li>
+ 
+ 
+      
+      
+      <li class="drop-menu-effect"> <a href="#"><span>效率月报</span></a>
+        <div class="submenu" style="left:-347px;">
+          <div class="mj_menu_news_bg">
+            <div class="mj_menu_news_main">
+              <div class="mj_menu_news_li3">
+                <div class="mj_menu_li_txt">
+                  <a href="webroot/aspx/UPH_Detail_Efficiency_Process_Day.htm" target="_blank"><font>月报By制程</font></a><br />
+                    <a href="webroot/aspx/UPH_Detail_Efficiency_Day.htm" target="_blank"><font>月报By线体</font></a><br />
+              </div>
+              
+            </div>
+            <div class="mj_menu_news_img3"><img src="webroot/images/case_menu_pic.jpg" /><br />
+                <font>数据中心</font></div>
+              <div style="clear:both; height:0px; overflow:hidden;"></div>
+          </div>
+        </div>
+         </div>
+      </li>
+      
+      
+       <li class="drop-menu-effect"> <a href="#"><span>系统维护</span></a>
+       <div class="submenu" style="left:-347px;">
+          <div class="mj_menu_news_bg">
+            <div class="mj_menu_news_main">
+              <div class="mj_menu_news_li3">
+                <div class="mj_menu_li_txt">
+                    <a href="http://10.96.183.209/hp_portal/webroot/aspx/logon/Login.aspx" target="_blank">IMES系统登陆</a>
+                  </div>
+              </div>
+              <div class="mj_menu_news_img3"><img src="webroot/images/maintain.jpg" /><br />
+                <font>效率系统维护</font></div>
+              <div style="clear:both; height:0px; overflow:hidden;"></div>
+            </div>
+          </div>
+        </div>
+      </li>
+       
+        
+        </div>
+      
+    </div>
+</div>
+
+
+
+<script>
+$(function(){
+	lanrenzhijia(".drop-menu-effect");
+});
+function lanrenzhijia(_this){
+	$(_this).each(function(){
+		var $this = $(this);
+		var theMenu = $this.find(".submenu");
+		var tarHeight = theMenu.height();
+		theMenu.css({height:0});
+		$this.hover(
+			function(){
+				$(this).addClass("mj_hover_menu");
+				theMenu.stop().show().animate({height:tarHeight},400);
+			},
+			function(){
+				$(this).removeClass("mj_hover_menu");
+				theMenu.stop().animate({height:0},400,function(){
+					$(this).css({display:"none"});
+				});
+			}
+		);
+	});
+}
+</script>
+<!-- 代码部分end -->
+
+<!-- 代码部分begin -->
+<div class="slides">
+	<div class="slideInner">
+	
+	
+		<a href="#" style="background: rgb(178, 44, 44) no-repeat;">
+		    
+			        <img src="webroot/images/Inventec1.png"  style=" width:80%;height:700px;"/> 
+			       <div class="txt">
+			          <h3>英业达理念</h3>
+			          <p>创新.品质.虚心.力行</p>
+			       </div>
+   
+       </a>
+       
+
+     	  <a  class="alinkstyle" href="#">
+			<!-- <img src="webroot/images/bigdata.jpg"  style=" width:80%;height:700px;"> -->
+		 <iframe  class="iframestyle" id="Iframe3" src="webroot/aspx/UPH_Efficiency_Process_Day_boss.htm?Process=SA"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" ></iframe>
+
+			  <div class="txt">
+			          <h3>SA效率月报</h3>
+			          
+			       </div>
+		</a>
+		
+	    <a  class="alinkstyle" href="#">
+			<!-- <img src="webroot/images/xiaolv.jpg"style=" width:80%;height:700px;" /> -->
+			 <iframe class="iframestyle" id="Iframe2" src="webroot/aspx/UPH_Efficiency_Process_Day_boss.htm?Process=FA"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" ></iframe>
+
+			 <div class="txt">
+			          <h3>FA效率月报</h3>
+			        
+			       </div>
+		</a>
+		  <a  class="alinkstyle" href="#">
+			<!--<img src="webroot/images/tubiao.jpg"style=" width:80%;height:700px;" /> -->
+			<iframe class="iframestyle" id="Iframe4" src="webroot/aspx/UPH_Efficiency_Process_Day_boss.htm?Process=PA"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" ></iframe>
+
+			<div class="txt">
+			          <h3>PAK效率月报</h3>
+			         
+			       </div>
+		</a>
+		
+		<!--
+		  <a  class="alinkstyle" href="#">
+
+              <iframe  class="iframestyle" id="all_Daily" src="Inventec_all_Daily.aspx"frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" ></iframe>
+             <div class="txt">
+			          <h3>生产效率排行榜（Daily）</h3>
+			         
+			       </div>
+       </a>
+       
+          <a  class="alinkstyle" href="#">
+
+              <iframe  class="iframestyle" id="all_Month" src="Inventec_all_Month.aspx"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" ></iframe>
+             <div class="txt">
+			          <h3>生产效率排行榜(Month)</h3>
+			          
+			       </div>
+       </a>-->
+       
+
+
+
+	
+
+		<!--<a href="Inventec_MainPage.aspx" style="background: url(webroot/images/slide3.jpg) no-repeat;">
+		
+			<div class="moveElem img1" rel="0,easeInOutExpo"> 
+			  <img src="webroot/images/Inventec1.png" /> 
+			</div>
+			<div class="moveElem img2" rel="150,easeInOutExpo"> <img src="webroot/images/slide1p2.png" /> </div>
+
+       </a>
+
+		<a href="#" style="background: url(webroot/images/slide2.jpg) no-repeat">
+			<div class="moveElem img1" rel="0,easeInOutExpo"> <img src="webroot/images/2014111613174159.jpg" /> </div>
+		</a>
+		
+		<a href="#" class="slide3" style="background: url(webroot/images/slide3.jpg) no-repeat;">
+			<div class="moveElem img1" rel="0,easeInOutExpo"> <img src="webroot/images/bigdata.jpg" /> </div>
+		<div class="moveElem img2" rel="150,easeInOutExpo"> <img src="webroot/images/slide3p2.png" /> </div>
+			<div class="moveElem img3" rel="300,easeInOutExpo"> <img src="webroot/images/slide3p3.png" /> </div>
+		</a>
+		
+		<a href="#" style="background: rgb(113, 209, 231);">
+			<div class="moveElem img1" rel="0,easeInOutExpo"> <img src="webroot/images/xiaolv.jpg" /> </div>
+-			<div class="moveElem img2" rel="150,easeInOutExpo"> <img src="webroot/images/slide1p2.png" /> </div>
+		</a>
+		<a href="#" style="background: rgb(178, 44, 44);">
+			<div class="moveElem img1" rel="0,easeInOutExpo"> <img src="webroot/images/tubiao.jpg" /> </div>
+			<div class="moveElem img2" rel="150,easeInOutExpo"> <img src="webroot/images/slide1p2.png" /> </div>
+	</a>-->
+
+	</div>
+	<div class="nav_">
+		<a class="prev" href="javascript:;"></a>
+		<a class="next" href="javascript:;"></a>
+	</div>
+</div>
+
+<script >
+    $(document).ready(function() {
+        $(".slideInner").slide({
+            slideContainer: $('.slideInner a'),
+            effect: 'easeOutCirc',
+            autoRunTime: 10000,
+            slideSpeed: 1000,
+            nav: true,
+            autoRun: true,
+            prevBtn: $('a.prev'),
+            nextBtn: $('a.next')
+        })
+    })
+
+    function openWindow(url) {
+        alert(1);
+        window.open(url);
+    }
+</script>
+<!-- 代码部分end -->
+</body>
+</html>

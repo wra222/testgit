@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--此文件由 XML 架构设计器自动生成。它包含设计器图面组件的布局信息。-->
+<XSDDesignerLayout Style="LeftRight" layoutVersion="2" viewPortLeft="8331" viewPortTop="-6003" zoom="100">
+    <MASTER_WAYBILLS_XmlElement left="397" top="397" width="7646" height="3148" selected="0" zOrder="1" index="0" expanded="1">
+        <MASTER_WAYBILL_XmlElement left="8677" top="-4842" width="13097" height="13626" selected="0" zOrder="2" index="0" expanded="1">
+            <HOUSE_WAYBILL_XmlElement left="22408" top="-794" width="9736" height="5530" selected="0" zOrder="4" index="25" expanded="1">
+                <PALLET_XmlElement left="32778" top="397" width="8969" height="3148" selected="0" zOrder="8" index="7" expanded="1">
+                    <UDF_PALLET_XmlElement left="42381" top="-1431" width="5292" height="3149" selected="0" zOrder="10" index="3" expanded="0" />
+                    <BOX_XmlElement left="42381" top="2226" width="8467" height="3148" selected="0" zOrder="12" index="4" expanded="1">
+                        <UDF_HEADER_XmlElement left="51482" top="-1431" width="5292" height="3149" selected="0" zOrder="14" index="23" expanded="0" />
+                        <UDF_DETAIL_XmlElement left="51482" top="2226" width="5292" height="3149" selected="0" zOrder="16" index="24" expanded="0" />
+                        <UDF_BOX_XmlElement left="51482" top="5883" width="5292" height="3149" selected="0" zOrder="18" index="25" expanded="0" />
+                    </BOX_XmlElement>
+                </PALLET_XmlElement>
+            </HOUSE_WAYBILL_XmlElement>
+        </MASTER_WAYBILL_XmlElement>
+    </MASTER_WAYBILLS_XmlElement>
+    <UDFType_XmlComplexType left="634" top="9727" width="5292" height="3149" selected="0" zOrder="6" index="1" expanded="1" />
+</XSDDesignerLayout>

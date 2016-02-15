@@ -1,0 +1,230 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IMES.FisObject.Common.Model;
+using System.Data.SqlClient;
+using System.Data;
+using System.Reflection;
+using IMES.Infrastructure.UnitOfWork;
+using IMES.DataModel;
+
+namespace IMES.Infrastructure.Repository.Common
+{
+    public class ModelRepositoryEx : ModelRepository, IModelRepositoryEx
+    {
+        #region IModelRepositoryEx method
+        private string ObjToString(Object obj)
+        {
+          if(obj==null)
+          {return "";}
+          else
+          {return obj.ToString().Trim();}
+        }
+
+        public IList<ModelMaintainInfo> GetModelListByPartialModelNo(string modelNo, int rowCount)
+        { 
+            try
+            {
+                IList<ModelMaintainInfo> ret = new List<ModelMaintainInfo>();
+                string SQLStatement = @"select top {1} Model, Family, CustPN, Region, ShipType, Status, OSCode, OSDesc, Price, BOMApproveDate, Editor, Cdt, Udt
+                                        from Model NOLOCK where Model like '%{0}%' order by Model";
+
+                SQLStatement = string.Format(SQLStatement, modelNo, rowCount.ToString());
+
+                using (DataTable dt = _Schema.SqlHelper.ExecuteDataFill(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text, SQLStatement))
+                {
+                    if(dt.Rows.Count>0)
+                    {
+                        foreach(DataRow dr in dt.Rows)
+                        {
+                            ModelMaintainInfo m = new ModelMaintainInfo();
+                            m.Model = ObjToString(dr["Model"]);
+                            m.Family = ObjToString(dr["Family"]);
+                            m.CustPN = ObjToString(dr["CustPN"]);
+                            m.Region = ObjToString(dr["Region"]);
+                            m.ShipType = ObjToString(dr["ShipType"]);
+                            m.Status = ObjToString(dr["Status"]);
+                            m.OsCode = ObjToString(dr["OSCode"]);
+                            m.OSDesc = ObjToString(dr["OSDesc"]);
+                            m.Price = ObjToString(dr["Price"]);
+                            
+                            if (!"".Equals(ObjToString(dr["BOMApproveDate"])))
+                                m.BomApproveDate = (DateTime)dr["BOMApproveDate"];
+                            m.Editor = ObjToString(dr["Editor"]);
+                            if (!"".Equals(ObjToString(dr["Cdt"])))
+                                m.Cdt = (DateTime) dr["Cdt"];
+                            if (!"".Equals(ObjToString(dr["Udt"])))
+                                m.Udt = (DateTime) dr["Udt"]; 
+                            ret.Add(m);
+                        }
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<ModelInfoNameAndModelInfoValueMaintainInfo> GetModelInfoNameAndModelInfoValueListByModels(IList<string> models)
+        {
+            try
+            {
+                IList<ModelInfoNameAndModelInfoValueMaintainInfo> ret = new List<ModelInfoNameAndModelInfoValueMaintainInfo>();
+                string SQLStatement = @"SELECT B.Name AS Name, B.Description AS Description, ISNULL(A.Value,'') AS Value,A.Editor AS Editor, A.Cdt AS Cdt, A.Udt AS Udt, A.ID AS ID 
+FROM (SELECT Model, Name, Value, Editor, Cdt, Udt, ID FROM ModelInfo NOLOCK WHERE Model in ('{0}') ) AS A 
+RIGHT OUTER JOIN ModelInfoName AS B with(NOLOCK) ON A.Name=B.Name ORDER BY Region,Name";
+
+                SQLStatement = string.Format(SQLStatement, string.Join("','", models.ToArray()));
+
+                using (DataTable dt = _Schema.SqlHelper.ExecuteDataFill(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text, SQLStatement))
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            ModelInfoNameAndModelInfoValueMaintainInfo item = new ModelInfoNameAndModelInfoValueMaintainInfo();
+                            item.Name = ObjToString(dr["Name"]);
+                            item.Description = ObjToString(dr["Description"]);
+                            item.Value = ObjToString(dr["Value"]);
+                            item.Editor = ObjToString(dr["Editor"]);
+                            if (!"".Equals( ObjToString(dr["Cdt"])))
+                                item.Cdt = DateTime.Parse(dr["Cdt"].ToString());
+                            if (!"".Equals(ObjToString(dr["Udt"])))
+                                item.Udt = DateTime.Parse(dr["Udt"].ToString());
+                            if (!"".Equals(ObjToString(dr["ID"])))
+                                item.Id = (long)dr["ID"];
+                            ret.Add(item);
+                        }
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void DeleteModelsInfo(string infoName, IList<string> models)
+        {
+            try
+            {
+                string SQLStatement = @"delete from ModelInfo where Name='{1}' and Model in ('{0}') ";
+                SQLStatement = string.Format(SQLStatement, string.Join("','", models.ToArray()), infoName);
+
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData,
+                    CommandType.Text,
+                    SQLStatement);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void UpdateModelsInfo(string infoName, string infoValue, IList<string> models)
+        {
+            try
+            {
+                string SQLStatement = @"update ModelInfo set Value='{2}' where Name='{1}' and Model in ('{0}') ";
+                SQLStatement = string.Format(SQLStatement, string.Join("','", models.ToArray()), infoName, infoValue);
+
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData,
+                    CommandType.Text,
+                    SQLStatement);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<string> GetExistedModelsFromModelInfoByModels(string infoName, IList<string> models)
+        {
+            try
+            {
+                IList<string> ret = new List<string>();
+                string SQLStatement = @"select distinct Model from ModelInfo NOLOCK where Name='{1}' and Model in ('{0}') ";
+
+                SQLStatement = string.Format(SQLStatement, string.Join("','", models.ToArray()), infoName);
+
+                using (DataTable dt = _Schema.SqlHelper.ExecuteDataFill(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text, SQLStatement))
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            string item = ObjToString(dr["Model"]);
+                            ret.Add(item);
+                        }
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void DeleteModelEx(string model)
+        {
+            try
+            {
+                string SQLStatement = @"begin tran; delete from ModelWeight where Model ='{0}'; delete from Model_Process where Model ='{0}'; delete from ModelInfo where Model ='{0}'; delete from Model where Model ='{0}'; commit; ";
+                SQLStatement = string.Format(SQLStatement, model);
+
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData,
+                    CommandType.Text,
+                    SQLStatement);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<string> GetModelsFromProduct(string modelNo, int rowCount)
+        {
+            try
+            {
+                IList<string> ret = new List<string>();
+                string SQLStatement = @"select top {1} ProductID from Product NOLOCK where Model ='{0}' ";
+
+                SQLStatement = string.Format(SQLStatement, modelNo, rowCount.ToString());
+
+                using (DataTable dt = _Schema.SqlHelper.ExecuteDataFill(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text, SQLStatement))
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            string ProductID = ObjToString(dr["ProductID"]);
+
+                            ret.Add(ProductID);
+                        }
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        #endregion
+
+        #region override Model method
+        
+        #endregion
+
+    }
+}

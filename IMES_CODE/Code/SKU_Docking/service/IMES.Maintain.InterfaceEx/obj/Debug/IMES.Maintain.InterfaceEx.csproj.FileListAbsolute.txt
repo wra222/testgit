@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Maintain.InterfaceEx.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Maintain.InterfaceEx.pdb
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Maintain.InterfaceEx\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Maintain.InterfaceEx\obj\Debug\IMES.Maintain.InterfaceEx.dll
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Maintain.InterfaceEx\obj\Debug\IMES.Maintain.InterfaceEx.pdb

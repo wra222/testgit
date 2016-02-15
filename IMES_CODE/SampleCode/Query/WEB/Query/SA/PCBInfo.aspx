@@ -1,0 +1,194 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPageMaintain.master" AutoEventWireup="true" CodeFile="PCBInfo.aspx.cs" Inherits="Query_SA_BoardHistoryQuery" %>
+<%@ MasterType VirtualPath="~/MasterPage.master" %>
+
+<%@ Import Namespace="com.inventec.iMESWEB" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="iMESContent" runat="Server">
+    <script type="text/javascript" src=" ../../CommonControl/JS/Browser.js"></script>
+    <script type="text/javascript" src="../../CommonControl/JS/iMESCommonUse.js"></script>
+    <div>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+                    
+        </asp:ScriptManager> 
+         <center>
+            <fieldset>
+                <legend>Board Query</legend>
+                <table border="1" width="100%" style="border-width:thin;">
+                    <tr>                    
+                        <td style=" text-align:center; width: 60%;" >
+                            <asp:Label ID="Label4" runat="server" Text="MB SN / MAC :" ></asp:Label>  
+                            <iMES:Input ID="txt" runat="server" ProcessQuickInput="true" CanUseKeyboard="true"
+                                    ReplaceRegularExpression="" Width="70%" IsClear="true" IsPaste="true" />
+                                <input type="hidden" id="hidMBSN" runat="server" />
+                            <button id="btnQuery" style="width: 0; display: none;" runat="server" onserverclick="queryClick"></button>
+                        </td>                    
+                        <td style="width: 40%">
+                             <asp:Label ID="Label3" runat="server" Text="DBName:"></asp:Label>
+                             <iMESQuery:CmbDBType id="CmbDBType" runat="server" />
+                        </td>
+                </tr>
+                </table>
+            </fieldset>
+            
+                
+            <fieldset id="grpCarton" style="border: thin solid #000000; width: 98%; height: 95px">
+                <legend align="left" style="height: 20px">
+                    <asp:Label ID="lblUnprintTitle" runat="server" Text="PCB Status" CssClass="iMes_label_13pt"></asp:Label></legend>
+                        <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional" RenderMode="Inline">
+                            <ContentTemplate>   
+                                <iMES:GridViewExt ID="gvPCAStatus" runat="server" AutoGenerateColumns="true" GvExtHeight="65px"
+                                    Width="100%" GvExtWidth="98%" Height="1px">
+                                </iMES:GridViewExt>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnQuery" EventName="ServerClick" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+            </fieldset>  
+                      
+            <fieldset id="Fieldset2" style="border: thin solid #000000; width: 98%; height: 180px;">
+            <legend align="left" style="height: 20px">
+                <asp:Label ID="Label2" runat="server" CssClass="iMes_label_13pt" Text="PCB History"></asp:Label></legend>
+            <asp:UpdatePanel ID="UpdatePanel4" runat="server" UpdateMode="Conditional" RenderMode="Inline">
+                <ContentTemplate>
+                    <iMES:GridViewExt ID="gvPCAHistory" runat="server" AutoGenerateColumns="true" Width="98%"
+                        GvExtWidth="100%" GvExtHeight="150px" Height="1px">
+                    </iMES:GridViewExt>
+                </ContentTemplate>
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="btnQuery" EventName="ServerClick" />
+                </Triggers>
+            </asp:UpdatePanel>
+        </fieldset> 
+        
+            
+            <fieldset id="Fieldset4" style="border: thin solid #000000; width: 98%;">
+            <legend align="left" style="height: 20px">
+                <asp:Label ID="Label6" runat="server" CssClass="iMes_label_13pt" Text="PCB Repair"></asp:Label></legend>
+            <asp:UpdatePanel ID="UpdatePanel6" runat="server" UpdateMode="Conditional" RenderMode="Inline">
+                <ContentTemplate>
+                    <iMES:GridViewExt ID="gvPCARepair" runat="server" AutoGenerateColumns="true" Width="98%"
+                        GvExtWidth="100%" GvExtHeight="150px" Height="1px" >                            
+                    </iMES:GridViewExt>
+                </ContentTemplate>
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="btnQuery" EventName="ServerClick" />
+                </Triggers>
+            </asp:UpdatePanel>
+        </fieldset>                                    
+                    
+                                       
+            <table style="width : 98%">
+                    <tr>
+                        <td width="40%">
+                            <fieldset id="Fieldset1" style="border: thin solid #000000;">
+                                <legend align="left" style="height: 20px">
+                                    <asp:Label ID="Label1" runat="server" CssClass="iMes_label_13pt" Text="PCB Next Station"></asp:Label>
+                                </legend>
+                                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" RenderMode="Inline">
+                                    <ContentTemplate>
+                                        <iMES:GridViewExt ID="gvPCANextStation" runat="server" AutoGenerateColumns="true"
+                                            Width="98%" GvExtWidth="100%" GvExtHeight="120px" Height="1px">
+                                        </iMES:GridViewExt>                            
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="btnQuery" EventName="ServerClick" />
+                                    </Triggers>
+                                </asp:UpdatePanel>                    
+                            </fieldset>                                            
+                        </td>
+                        <td>
+                            <fieldset id="Fieldset3" style="border: thin solid #000000;" height="150px">
+                                <legend align="left" style="height: 20px">
+                                    <asp:Label ID="Label5" runat="server" CssClass="iMes_label_13pt" Text="ChangePCBLog"></asp:Label></legend>
+                                <asp:UpdatePanel ID="UpdatePanel5" runat="server" UpdateMode="Conditional" RenderMode="Inline">
+                                    <ContentTemplate>
+                                        <iMES:GridViewExt ID="gvChangePCBLog" runat="server" AutoGenerateColumns="true"
+                                            Width="98%" GvExtWidth="100%" GvExtHeight="120px" Height="1px" 
+                                            style="top: 21px; left: 2px">
+                                        </iMES:GridViewExt>                            
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="btnQuery" EventName="ServerClick" />
+                                    </Triggers>
+                                </asp:UpdatePanel>                    
+                            </fieldset>                                            
+                        
+                        </td>
+                    </tr>
+                </table>      
+        <fieldset id="Fieldset5" style="border: thin solid #000000; width: 98%;">
+            <legend align="left" style="height: 20px">
+            <asp:Label ID="Label7" runat="server" CssClass="iMes_label_13pt" Text="PCB TestLog"></asp:Label></legend>
+            <asp:UpdatePanel ID="UpdatePanel7" runat="server" UpdateMode="Conditional" RenderMode="Inline">
+                <ContentTemplate>
+                    <iMES:GridViewExt ID="gvPCATestlog" runat="server" AutoGenerateColumns="true" Width="98%"
+                        GvExtWidth="100%" GvExtHeight="150px" Height="1px" 
+                        style="top: 21px; left: 2px">                            
+                    </iMES:GridViewExt>
+                </ContentTemplate>
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="btnQuery" EventName="ServerClick" />
+                </Triggers>
+            </asp:UpdatePanel>
+        </fieldset>
+        </center>
+
+       <asp:HiddenField ID="hidUser" runat="server" />       
+       <asp:HiddenField ID="hidprocess" runat="server" />              
+       <asp:HiddenField ID="hidsource" runat="server" />  
+       
+        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+            <ContentTemplate>
+                <asp:LinkButton ID="lbtFreshPage" runat="server" 
+                    OnClientClick="return ReloadImesPage();" onclick="lbtFreshPage_Click"></asp:LinkButton>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+                   
+    </div>
+
+
+    <script language="javascript" type="text/javascript">
+        var inputObj;
+        
+        window.onload = function() {
+            inputObj = getCommonInputObject();
+            getAvailableData("processFun");
+        };
+    
+        function bind() 
+        {
+            //beginWaitingCoverDiv();
+            //
+        }
+
+        function processFun(backData) {
+            ShowInfo("");
+            beginWaitingCoverDiv();
+            //document.getElementById("<%=hidMBSN.ClientID %>").value = SubStringSN(backData, "MB"); //前10碼
+            //Update by Dean 20110916 Remark 原因，因加入MAC 的查詢條件
+			if(null!=backData && 11==backData.length)
+				backData=backData.substr(0,10);
+            document.getElementById("<%=hidMBSN.ClientID %>").value = backData;
+            document.getElementById("<%=btnQuery.ClientID%>").click();
+        }
+
+        function initPage() {
+            clearData();
+            inputObj.value = "";
+            getAvailableData("processFun");
+            inputObj.focus();
+        }
+
+        function setCommonFocus() {
+            endWaitingCoverDiv();
+            inputObj.focus();
+            inputObj.select();
+            window.onload();
+        }
+
+
+        
+    </script>
+                
+
+</asp:Content>

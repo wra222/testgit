@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="urn:sap-com:document:sap:soap:functions:mc-style" xmlns:n0="urn:sap-com:document:sap:rfc:functions" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns:tns="urn:sap-com:document:sap:rfc:functions" attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+      <xsd:simpleType name="char17">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="17" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char18">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="18" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char2">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char4">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char40">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style">
+      <xsd:import namespace="urn:sap-com:document:sap:rfc:functions" />
+      <xsd:simpleType name="char18">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="18" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char9">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="9" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ZmatInfo">
+        <xsd:sequence>
+          <xsd:element name="Material" type="tns:char18" />
+          <xsd:element name="Serilnumber" type="n0:char17" />
+          <xsd:element name="Materialgroup" type="tns:char9" />
+          <xsd:element name="Materialtype" type="n0:char4" />
+          <xsd:element name="Plant" type="n0:char4" />
+          <xsd:element name="Oldmaterialnumber" type="n0:char18" />
+          <xsd:element name="Externalmaterialgroup" type="n0:char18" />
+          <xsd:element name="Materialstatus" type="n0:char2" />
+          <xsd:element name="Materialdescription" type="n0:char40" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ZRfcGetMatmas">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Material" type="n0:char18" />
+            <xsd:element name="Plant" type="n0:char4" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZRfcGetMatmasResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Zmaterial" type="tns:ZmatInfo" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ZRfcGetMatmas">
+    <wsdl:part name="parameters" element="tns:ZRfcGetMatmas" />
+  </wsdl:message>
+  <wsdl:message name="ZRfcGetMatmasResponse">
+    <wsdl:part name="parameters" element="tns:ZRfcGetMatmasResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Z_RFC_GET_MATMAS">
+    <wsdl:operation name="ZRfcGetMatmas">
+      <wsdl:input message="tns:ZRfcGetMatmas" />
+      <wsdl:output message="tns:ZRfcGetMatmasResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Z_RFC_GET_MATMASSoapBinding" type="tns:Z_RFC_GET_MATMAS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ZRfcGetMatmas">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Z_RFC_GET_MATMASService">
+    <wsdl:port name="Z_RFC_GET_MATMASSoapBinding" binding="tns:Z_RFC_GET_MATMASSoapBinding">
+      <soap:address location="http://xidqdb.iec.inventec.com:8000/sap/bc/srt/rfc/sap/Z_RFC_GET_MATMAS?sap-client=001" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

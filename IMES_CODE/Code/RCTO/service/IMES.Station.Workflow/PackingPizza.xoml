@@ -1,0 +1,29 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="PackingPizza" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetModel Customer="{ActivityBind PackingPizza,Path=Customer}" x:Name="getModel1" SessionType="{ActivityBind PackingPizza,Path=SessionType}" Editor="{ActivityBind PackingPizza,Path=Editor}" Station="{ActivityBind PackingPizza,Path=Station}" Line="{ActivityBind PackingPizza,Path=PdLine}" Key="{ActivityBind PackingPizza,Path=Key}" />
+	<ns0:GetBOM Customer="{ActivityBind PackingPizza,Path=Customer}" x:Name="getBOM1" SessionType="{ActivityBind PackingPizza,Path=SessionType}" Editor="{ActivityBind PackingPizza,Path=Editor}" Station="{ActivityBind PackingPizza,Path=Station}" ModelFrom="ModelName" Line="{ActivityBind PackingPizza,Path=PdLine}" Key="{ActivityBind PackingPizza,Path=Key}" />
+	<ns0:CheckBomNULL Customer="{ActivityBind PackingPizza,Path=Customer}" x:Name="checkBomNULL1" SessionType="{ActivityBind PackingPizza,Path=SessionType}" Editor="{ActivityBind PackingPizza,Path=Editor}" Station="{ActivityBind PackingPizza,Path=Station}" Line="{ActivityBind PackingPizza,Path=PdLine}" Key="{ActivityBind PackingPizza,Path=Key}" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="IsComplete" />
+		</WhileActivity.Condition>
+		<ns0:DBScope Station="{ActivityBind PackingPizza,Path=Station}" x:Name="dbScope2" Key="{ActivityBind PackingPizza,Path=Key}" SessionType="{ActivityBind PackingPizza,Path=SessionType}">
+			<ns0:WaitInput Customer="{ActivityBind PackingPizza,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind PackingPizza,Path=SessionType}" Editor="{ActivityBind PackingPizza,Path=Editor}" Station="{ActivityBind PackingPizza,Path=Station}" Line="{ActivityBind PackingPizza,Path=PdLine}" Key="{ActivityBind PackingPizza,Path=Key}" />
+			<IfElseActivity x:Name="ifElseActivity1">
+				<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="IsComplete" />
+					</IfElseBranchActivity.Condition>
+					<ns0:PartMatch Customer="{ActivityBind PackingPizza,Path=Customer}" x:Name="partMatch1" SessionType="{ActivityBind PackingPizza,Path=SessionType}" Editor="{ActivityBind PackingPizza,Path=Editor}" Station="{ActivityBind PackingPizza,Path=Station}" BindTo="Pizza" Line="{ActivityBind PackingPizza,Path=PdLine}" Key="{ActivityBind PackingPizza,Path=Key}" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</ns0:DBScope>
+	</WhileActivity>
+	<ns0:DBScope Station="{ActivityBind PackingPizza,Path=Station}" x:Name="dbScope1" Key="{ActivityBind PackingPizza,Path=Key}" SessionType="{ActivityBind PackingPizza,Path=SessionType}">
+		<ns0:GetKitID Customer="{ActivityBind PackingPizza,Path=Customer}" x:Name="getKitID1" SessionType="{ActivityBind PackingPizza,Path=SessionType}" Editor="{ActivityBind PackingPizza,Path=Editor}" Station="{ActivityBind PackingPizza,Path=Station}" Line="{ActivityBind PackingPizza,Path=PdLine}" Key="{ActivityBind PackingPizza,Path=Key}" />
+		<ns0:CreateNewPizza Customer="{ActivityBind PackingPizza,Path=Customer}" x:Name="createNewPizza1" SessionType="{ActivityBind PackingPizza,Path=SessionType}" Editor="{ActivityBind PackingPizza,Path=Editor}" Station="{ActivityBind PackingPizza,Path=Station}" Line="{ActivityBind PackingPizza,Path=PdLine}" Key="{ActivityBind PackingPizza,Path=Key}" />
+		<ns0:GeneratePizzaID Customer="{ActivityBind PackingPizza,Path=Customer}" x:Name="generatePizzaID1" SessionType="{ActivityBind PackingPizza,Path=SessionType}" Editor="{ActivityBind PackingPizza,Path=Editor}" Station="{ActivityBind PackingPizza,Path=Station}" Line="{ActivityBind PackingPizza,Path=PdLine}" Key="{ActivityBind PackingPizza,Path=Key}" />
+		<ns0:BindParts Customer="{ActivityBind PackingPizza,Path=Customer}" x:Name="bindParts1" SessionType="{ActivityBind PackingPizza,Path=SessionType}" Editor="{ActivityBind PackingPizza,Path=Editor}" Station="{ActivityBind PackingPizza,Path=Station}" BindTo="Pizza" Line="{ActivityBind PackingPizza,Path=PdLine}" Key="{ActivityBind PackingPizza,Path=Key}" />
+		<ns0:WritePrintLog Customer="{ActivityBind PackingPizza,Path=Customer}" x:Name="writePrintLog1" SessionType="{ActivityBind PackingPizza,Path=SessionType}" Editor="{ActivityBind PackingPizza,Path=Editor}" Station="{ActivityBind PackingPizza,Path=Station}" Line="{ActivityBind PackingPizza,Path=PdLine}" Key="{ActivityBind PackingPizza,Path=Key}" />
+	</ns0:DBScope>
+	<ns0:Print Customer="{ActivityBind PackingPizza,Path=Customer}" x:Name="print1" SessionType="{ActivityBind PackingPizza,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind PackingPizza,Path=Editor}" Station="{ActivityBind PackingPizza,Path=Station}" MOFrom="No" ModelFrom="No" Line="{ActivityBind PackingPizza,Path=Key}" Key="{ActivityBind PackingPizza,Path=Key}" DnFrom="No" />
+</ns0:BaseFlow>

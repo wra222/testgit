@@ -1,0 +1,9 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Service.PizzaKitting.exe.config
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Service.PizzaKitting.exe
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Service.PizzaKitting.pdb
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.PizzaKitting\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.PizzaKitting\obj\Debug\IMES.Service.IMESService.resources
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.PizzaKitting\obj\Debug\IMES.Service.ProjectInstaller.resources
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.PizzaKitting\obj\Debug\IMES.Service.PizzaKitting.csproj.GenerateResource.Cache
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.PizzaKitting\obj\Debug\IMES.Service.PizzaKitting.exe
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.PizzaKitting\obj\Debug\IMES.Service.PizzaKitting.pdb

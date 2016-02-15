@@ -1,0 +1,206 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPageMaintain.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="webroot_UPHMaintain_Default" Title="Untitled Page" %>
+
+
+
+<%@ MasterType VirtualPath="~/MasterPageMaintain.master" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="iMESContent" Runat="Server">
+
+    <%--<script type="text/javascript" src="../../js/Settime.js"></script>    
+--%><script type="text/javascript" src="../../js/jquery-1.7.1.js "></script>    
+
+ <script type="text/javascript" src="../../js/iMESCommonUse.js"></script>
+    <script type="text/javascript" src="../../js/jquery-ui-1.8.13.custom.min.js "></script>     
+    <script src="../../js/jscal2.js "></script>
+     <script src="../../js/cn.js "></script>    
+
+    <script type="text/javascript" src="../../js/jquery.multiselect.js "></script>     
+    <script type="text/javascript"  src="../../js/jquery.multiselect.filter.js "></script>     
+    <script type="text/javascript" src="../../js/wz_tooltip.js "></script>
+        
+
+    <link rel="stylesheet" type="text/css" href="../../css/jquery-ui-1.8.13.custom.css">
+    <link rel="stylesheet" type="text/css" href="../../css/jscal2.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/jquery.multiselect.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/jquery.multiselect.filter.css" />
+    
+<style type="text/css">
+  .iMes_div_MainTainContainer
+{
+	 width: 95%; 
+	 border: solid 0px red; 
+	 margin: 0 auto;
+
+} 
+  .iMes_div_MainTainEdit
+        {
+            border: thin solid Black;
+            background-color: #99CDFF;
+            margin: 0 0 20 0;
+        }
+        .iMes_textbox_input_Yellow
+        {
+        }
+        #btnDel
+        {
+            width: 14px;
+        }
+</style>
+<div class="iMes_div_MainTainContainer">
+<table border=2  cellpadding=2 cellspacing=0 class="iMes_div_MainTainEdit"">
+<tr>
+<td style="width: 390px; height: 56px;">
+<div>
+                   <asp:Label ID="lblFrom" runat="server" Text="From" CssClass="iMes_label_13pt"></asp:Label>                   
+                     <asp:TextBox id="txtFromDate" runat="server" Width="140px" Height="20px"></asp:TextBox>                            
+                     <button id="btnFromDate" type="button" style="width: 20px">...</button>
+                    <asp:Label ID="lblTo" runat="server" Text="To" CssClass="iMes_label_13pt"></asp:Label>
+                    <asp:TextBox ID="txtToDate" runat="server" Width="140px" Height="20px"></asp:TextBox>
+                    <button id="btnToDate" type="button" style="width: 20px">...</button>
+                   <asp:DropDownList   ID="DropDownList1" runat="server" Height="16px" Width="200px" CssClass="CheckBoxList">
+                       <asp:ListItem>A</asp:ListItem>
+                       <asp:ListItem>B</asp:ListItem>
+                   </asp:DropDownList>
+                  
+              
+                  
+      </div> 
+</td>
+<td style="height: 56px"></td>
+</tr>
+
+<tr>
+<td style="width: 190px">
+<input name="time" type="text"   onclick="_SetTime(this)"/>
+
+</td>
+<td>
+<input name="time" type="text"   onclick="_SetTime(this)"/>
+
+</td>
+</tr>
+<tr>
+  <td>
+      <iMES:GridViewExt ID="gd" runat="server" AutoGenerateColumns="true" Width="100%"
+                        RowStyle-Height="20" GvExtWidth="99%" AutoHighlightScrollByValue="true" HighLightRowPosition="3"
+                          OnGvExtRowClick='if(typeof(clickTable)=="function") clickTable(this)'
+                        EnableViewState="false" Style="top: 0px; left: 30px">
+                    </iMES:GridViewExt>
+  </td>
+</tr>
+
+</table>
+ </div>
+<script language="javascript" type="text/javascript">
+
+
+        $('.CheckBoxList').multiselect({ selectedList: 1, position: { my: 'left bottom', at: 'left top' }, noneSelectedText: 'Please Select ' }).multiselectfilter();
+        Calendar.setup({
+            trigger: "btnFromDate",
+            inputField: "<%=txtFromDate.ClientID%>",
+            onSelect: updateCalendarFields,
+            onTimeChange: updateCalendarFields,
+            showTime: 24,
+            dateFormat: "%Y-%m-%d %H:%M",
+            minuteStep: 1
+        });
+        Calendar.setup({
+            inputField: "<%=txtToDate.ClientID%>",
+            trigger: "btnToDate",
+            onSelect: updateCalendarFields,
+            onTimeChange: updateCalendarFields,
+            showTime: 24,
+            dateFormat: "%Y-%m-%d %H:%M",
+            minuteStep: 1
+        });
+        function updateCalendarFields(cal) {
+            var date = cal.selection.get();
+            if (date) {
+                date = Calendar.intToDate(date);
+                cal.inputField.value = Calendar.printDate(date, "%Y-%m-%d") +
+             " " + ("0" + cal.getHours()).right(2) + ":" + ("0" + cal.getMinutes()).right(2);
+            }
+        }
+
+        function updateCalendarFieldswithSeconds(cal) {
+            var date = cal.selection.get();
+            if (date) {
+                date = Calendar.intToDate(date);
+                cal.inputField.value = Calendar.printDate(date, "%Y-%m-%d") +
+             " " + ("0" + cal.getHours()).right(2) + ":" + ("0" + cal.getMinutes()).right(2) + ":00";
+            }
+        }
+        function clickTable(con) {
+
+         
+            setGdHighLight(con);
+           // ShowRowEditInfo(con);
+
+        }
+        var iSelectedRowIndex = null;
+        function setGdHighLight(con) {
+            var idx = con.sectionRowIndex - 1;
+            //   if ((iSelectedRowIndex != null) && (iSelectedRowIndex != parseInt(con.index, 10))) {
+            if ((iSelectedRowIndex != null) && (iSelectedRowIndex != parseInt(idx, 10))) {
+                //去掉过去高亮行
+                setRowSelectedOrNotSelectedByIndex(iSelectedRowIndex, false, "<%=gd.ClientID %>");
+            }
+            //设置当前高亮行   
+            // setRowSelectedOrNotSelectedByIndex(con.index, true, "<%=gd.ClientID %>");
+            setRowSelectedOrNotSelectedByIndex(idx, true, "<%=gd.ClientID %>");
+            //记住当前高亮行
+            //            iSelectedRowIndex = parseInt(con.index, 10);
+            iSelectedRowIndex = parseInt(idx, 10);
+        }
+
+  </script >
+ <script language="javascript">
+    var str = "";
+    document.writeln("<div id=\"_contents\" style=\"padding:6px; background-color:#E3E3E3; font-size: 12px; border: 1px solid #777777; position:absolute; left:?px; top:?px; width:?px; height:?px; z-index:1; visibility:hidden\">");
+    str += "\u65f6<select id=\"_hour\">";
+    for (h = 0; h <= 9; h++) {
+        str += "<option value=\"0" + h + "\">0" + h + "</option>";
+    }
+    for (h = 10; h <= 23; h++) {
+        str += "<option value=\"" + h + "\">" + h + "</option>";
+    }
+    str += "</select> \u5206<select id=\"_minute\">";
+    for (m = 0; m <= 9; m++) {
+        str += "<option value=\"0" + m + "\">0" + m + "</option>";
+    }
+    for (m = 10; m <= 59; m++) {
+        str += "<option value=\"" + m + "\">" + m + "</option>";
+    }
+    str += "</select> \u79d2<select id=\"_second\">";
+    for (s = 0; s <= 9; s++) {
+        str += "<option value=\"0" + s + "\">0" + s + "</option>";
+    }
+    for (s = 10; s <= 59; s++) {
+        str += "<option value=\"" + s + "\">" + s + "</option>";
+    }
+    str += "</select> <input name=\"queding\" type=\"button\" onclick=\"_select()\" value=\"\u786e\u5b9a\" style=\"font-size:12px\" /></div>";
+    document.writeln(str);
+    var _fieldname;
+    function _SetTime(tt) {
+        _fieldname = tt;
+        var ttop = tt.offsetTop;    //TT控件的定位点高
+        var thei = tt.clientHeight;    //TT控件本身的高
+        var tleft = tt.offsetLeft;    //TT控件的定位点宽
+       
+          while (tt = tt.offsetParent) {
+               ttop += tt.offsetTop;
+               tleft += tt.offsetLeft;
+           }
+           document.getElementById("_contents").style.top = ttop + thei-10;
+        document.getElementById("_contents").style.left = tleft-10;
+        document.getElementById("_contents").style.visibility = "visible";
+    }
+    function _select() {
+        _fieldname.value = document.getElementById("_hour").value + ":" + document.getElementById("_minute").value + ":" + document.getElementById("_second").value;
+        document.getElementById("_contents").style.visibility = "hidden";
+    }  
+  
+</script>
+</asp:Content>
+

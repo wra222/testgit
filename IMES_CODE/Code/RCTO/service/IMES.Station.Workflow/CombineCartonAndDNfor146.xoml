@@ -1,0 +1,44 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="CombineCartonAndDNfor146" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetDeliveryList Status="" x:Name="getDeliveryList1" BeginDay="0" Editor="{x:Null}" SessionType="0" Enabled="False" Station="{x:Null}" EndDay="0" Customer="{x:Null}" Line="{x:Null}" Key="{x:Null}" />
+	<WhileActivity Enabled="False" x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplete" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind CombineCartonAndDNfor146,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind CombineCartonAndDNfor146,Path=SessionType}" Editor="{ActivityBind CombineCartonAndDNfor146,Path=Editor}" Station="{ActivityBind CombineCartonAndDNfor146,Path=Station}" Line="{ActivityBind CombineCartonAndDNfor146,Path=PdLine}" Key="{ActivityBind CombineCartonAndDNfor146,Path=Key}" />
+			<IfElseActivity x:Name="IfComplete" Enabled="False">
+				<IfElseBranchActivity x:Name="NotComplete">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplete" />
+					</IfElseBranchActivity.Condition>
+					<ns0:BlockStation Customer="{ActivityBind CombineCartonAndDNfor146,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind CombineCartonAndDNfor146,Path=SessionType}" Editor="{ActivityBind CombineCartonAndDNfor146,Path=Editor}" ProcessType="Product" Station="CR32" Line="{ActivityBind CombineCartonAndDNfor146,Path=PdLine}" Key="{ActivityBind CombineCartonAndDNfor146,Path=Key}" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:DBScope Station="{ActivityBind CombineCartonAndDNfor146,Path=Station}" x:Name="dbScope1" Key="{ActivityBind CombineCartonAndDNfor146,Path=Key}" SessionType="{ActivityBind CombineCartonAndDNfor146,Path=SessionType}">
+		<IfElseActivity x:Name="ifElseActivity2">
+			<IfElseBranchActivity x:Name="NOTRMAMB">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="ifnotRMANB" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UpdateDn87Status Customer="{ActivityBind CombineCartonAndDNfor146,Path=Customer}" x:Name="updateDn87Status1" SessionType="{ActivityBind CombineCartonAndDNfor146,Path=SessionType}" Editor="{ActivityBind CombineCartonAndDNfor146,Path=Editor}" Station="{ActivityBind CombineCartonAndDNfor146,Path=Station}" RCTO146Category="MaterialCT" Line="{ActivityBind CombineCartonAndDNfor146,Path=PdLine}" Key="{ActivityBind CombineCartonAndDNfor146,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<ns0:GenerateCartonNoForRCTO146 Customer="{ActivityBind CombineCartonAndDNfor146,Path=Customer}" x:Name="generateCartonNoForRCTO1461" SessionType="{ActivityBind CombineCartonAndDNfor146,Path=SessionType}" Editor="{ActivityBind CombineCartonAndDNfor146,Path=Editor}" Station="{ActivityBind CombineCartonAndDNfor146,Path=Station}" Line="{ActivityBind CombineCartonAndDNfor146,Path=PdLine}" Key="{ActivityBind CombineCartonAndDNfor146,Path=Key}" />
+		<ns0:CreateMaterial Customer="{ActivityBind CombineCartonAndDNfor146,Path=Customer}" Station="{ActivityBind CombineCartonAndDNfor146,Path=Station}" SessionType="{ActivityBind CombineCartonAndDNfor146,Path=SessionType}" Editor="{ActivityBind CombineCartonAndDNfor146,Path=Editor}" IsSingleCT="False" x:Name="createMaterial1" Line="{ActivityBind CombineCartonAndDNfor146,Path=PdLine}" Key="{ActivityBind CombineCartonAndDNfor146,Path=Key}" />
+		<ns0:WriteMaterialLog Customer="{ActivityBind CombineCartonAndDNfor146,Path=Customer}" Station="{ActivityBind CombineCartonAndDNfor146,Path=Station}" SessionType="{ActivityBind CombineCartonAndDNfor146,Path=SessionType}" Editor="{ActivityBind CombineCartonAndDNfor146,Path=Editor}" IsSingleCT="False" x:Name="writeMaterialLog1" Line="{ActivityBind CombineCartonAndDNfor146,Path=PdLine}" Key="{ActivityBind CombineCartonAndDNfor146,Path=Key}" LogActionName="CombineCartonAndDN" />
+		<IfElseActivity x:Name="ifElseActivity1">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="IsCRFirstSn" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UpdateProductListStatus Customer="{ActivityBind CombineCartonAndDNfor146,Path=Customer}" x:Name="updateProductListStatus1" SessionType="{ActivityBind CombineCartonAndDNfor146,Path=SessionType}" Editor="{ActivityBind CombineCartonAndDNfor146,Path=Editor}" Station="{ActivityBind CombineCartonAndDNfor146,Path=Station}" Line="{ActivityBind CombineCartonAndDNfor146,Path=PdLine}" Key="{ActivityBind CombineCartonAndDNfor146,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind CombineCartonAndDNfor146,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind CombineCartonAndDNfor146,Path=SessionType}" Editor="{ActivityBind CombineCartonAndDNfor146,Path=Editor}" Station="{ActivityBind CombineCartonAndDNfor146,Path=Station}" Status="Pass" IsSingle="False" Line="{ActivityBind CombineCartonAndDNfor146,Path=PdLine}" Key="{ActivityBind CombineCartonAndDNfor146,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ifElseBranchActivity2" />
+		</IfElseActivity>
+		<ns0:WritePrintLog Customer="{ActivityBind CombineCartonAndDNfor146,Path=Customer}" x:Name="writePrintLog1" SessionType="{ActivityBind CombineCartonAndDNfor146,Path=SessionType}" Editor="{ActivityBind CombineCartonAndDNfor146,Path=Editor}" Station="{ActivityBind CombineCartonAndDNfor146,Path=Station}" Line="{ActivityBind CombineCartonAndDNfor146,Path=PdLine}" Key="{ActivityBind CombineCartonAndDNfor146,Path=Key}" />
+		<ns0:Print Line="{x:Null}" Key="{ActivityBind CombineCartonAndDNfor146,Path=Key}" Station="{ActivityBind CombineCartonAndDNfor146,Path=Station}" PrintLogBegNo="ID" SessionBegNoName="" Editor="{ActivityBind CombineCartonAndDNfor146,Path=Editor}" IsWritePrintLog="False" x:Name="print1" IsReprint="False" Customer="{ActivityBind CombineCartonAndDNfor146,Path=Customer}" NotExistException="True" SessionType="{ActivityBind CombineCartonAndDNfor146,Path=SessionType}" SessionEndNoName="" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

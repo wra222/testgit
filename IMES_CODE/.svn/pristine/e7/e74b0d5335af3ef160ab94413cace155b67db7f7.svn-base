@@ -1,0 +1,34 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="CombineAST" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind CombineAST,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind CombineAST,Path=SessionType}" Editor="{ActivityBind CombineAST,Path=Editor}" Station="{ActivityBind CombineAST,Path=Station}" x:Name="getProduct1" Line="{ActivityBind CombineAST,Path=PdLine}" Key="{ActivityBind CombineAST,Path=Key}" InputType="ProductIDOrCustSN" />
+	<ns0:CombineASTBlockStation Customer="{ActivityBind CombineAST,Path=Customer}" x:Name="combineASTBlockStation1" SessionType="{ActivityBind CombineAST,Path=SessionType}" Editor="{ActivityBind CombineAST,Path=Editor}" Station="{ActivityBind CombineAST,Path=Station}" Line="{ActivityBind CombineAST,Path=PdLine}" Key="{ActivityBind CombineAST,Path=Key}" />
+	<ns0:WaitInput Customer="{ActivityBind CombineAST,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind CombineAST,Path=SessionType}" Editor="{ActivityBind CombineAST,Path=Editor}" Station="{ActivityBind CombineAST,Path=Station}" Line="{ActivityBind CombineAST,Path=PdLine}" Key="{ActivityBind CombineAST,Path=Key}" />
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="IfNotDeleteAST" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind CombineAST,Path=Station}" x:Name="dbScope2" Key="{ActivityBind CombineAST,Path=Key}" SessionType="{ActivityBind CombineAST,Path=SessionType}">
+				<ns0:DeleteAST Customer="{ActivityBind CombineAST,Path=Customer}" x:Name="deleteAST1" SessionType="{ActivityBind CombineAST,Path=SessionType}" Editor="{ActivityBind CombineAST,Path=Editor}" Station="{ActivityBind CombineAST,Path=Station}" Line="{ActivityBind CombineAST,Path=PdLine}" Key="{ActivityBind CombineAST,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<IfElseActivity x:Name="ifElseActivity2">
+		<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="IsCDSI" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind CombineAST,Path=Station}" x:Name="dbScope3" Key="{ActivityBind CombineAST,Path=Key}" SessionType="{ActivityBind CombineAST,Path=SessionType}">
+				<ns0:CombineAndPrintAST Customer="{ActivityBind CombineAST,Path=Customer}" x:Name="combineAndPrintAST1" SessionType="{ActivityBind CombineAST,Path=SessionType}" Editor="{ActivityBind CombineAST,Path=Editor}" Station="{ActivityBind CombineAST,Path=Station}" Line="{ActivityBind CombineAST,Path=PdLine}" Key="{ActivityBind CombineAST,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind CombineAST,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind CombineAST,Path=SessionType}" Editor="{ActivityBind CombineAST,Path=Editor}" Station="CA" Status="Pass" IsSingle="True" Line="{ActivityBind CombineAST,Path=PdLine}" Key="{ActivityBind CombineAST,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseBranchActivity3">
+			<ns0:WaitInput Customer="{ActivityBind CombineAST,Path=Customer}" x:Name="waitInput2" SessionType="{ActivityBind CombineAST,Path=SessionType}" Editor="{ActivityBind CombineAST,Path=Editor}" Station="{ActivityBind CombineAST,Path=Station}" Line="{ActivityBind CombineAST,Path=PdLine}" Key="{ActivityBind CombineAST,Path=Key}" />
+			<ns0:DBScope Station="{ActivityBind CombineAST,Path=Station}" x:Name="dbScope1" Key="{ActivityBind CombineAST,Path=Key}" SessionType="{ActivityBind CombineAST,Path=SessionType}">
+				<ns0:CheckASTForCombineAST Customer="{ActivityBind CombineAST,Path=Customer}" x:Name="checkASTForCombineAST1" SessionType="{ActivityBind CombineAST,Path=SessionType}" Editor="{ActivityBind CombineAST,Path=Editor}" Station="{ActivityBind CombineAST,Path=Station}" Line="{ActivityBind CombineAST,Path=PdLine}" Key="{ActivityBind CombineAST,Path=Key}" />
+				<ns0:SaveAST Customer="{ActivityBind CombineAST,Path=Customer}" x:Name="saveAST1" SessionType="{ActivityBind CombineAST,Path=SessionType}" Editor="{ActivityBind CombineAST,Path=Editor}" Station="{ActivityBind CombineAST,Path=Station}" Line="{ActivityBind CombineAST,Path=PdLine}" Key="{ActivityBind CombineAST,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind CombineAST,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind CombineAST,Path=SessionType}" Editor="{ActivityBind CombineAST,Path=Editor}" Station="CA" Status="Pass" IsSingle="True" Line="{ActivityBind CombineAST,Path=PdLine}" Key="{ActivityBind CombineAST,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

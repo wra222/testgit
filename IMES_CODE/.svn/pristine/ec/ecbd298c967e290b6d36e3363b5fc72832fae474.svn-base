@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"?>
+<configuration>
+  <configSections>
+    <section name="MsgMapping"    type="TAP.MsgMappingSection, TAPService"/>
+  </configSections>
+  <appSettings>
+    <add key="ArchiveList" value="Product,PCB,DN"/>
+
+  </appSettings>
+  <!--<Mapping MsgName="Check_WC" ClassName="BizRule.Activity.CheckWC" IsNeedTxn="N">
+    <Parameter TestFailLimitCount="5"/>
+  </Mapping>-->
+  <mySection>
+    <tag id="0" />
+  </mySection>
+
+
+
+
+</configuration>

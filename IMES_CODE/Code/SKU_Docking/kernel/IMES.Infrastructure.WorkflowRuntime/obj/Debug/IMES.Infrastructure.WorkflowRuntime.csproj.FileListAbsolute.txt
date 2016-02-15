@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Infrastructure.WorkflowRuntime.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Infrastructure.WorkflowRuntime.pdb
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Infrastructure.WorkflowRuntime\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Infrastructure.WorkflowRuntime\obj\Debug\IMES.Infrastructure.WorkflowRuntime.dll
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Infrastructure.WorkflowRuntime\obj\Debug\IMES.Infrastructure.WorkflowRuntime.pdb

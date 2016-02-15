@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "src", "..\src", "{0B23D9B8-707E-43C9-B95B-9524F8FE1F2E}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFramework = "3.5"
+		Debug.AspNetCompiler.VirtualPath = "/src"
+		Debug.AspNetCompiler.PhysicalPath = "D:\PrintTemplateEditor\CODE\src\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\src\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/src"
+		Release.AspNetCompiler.PhysicalPath = "D:\PrintTemplateEditor\CODE\src\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\src\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "1184"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B23D9B8-707E-43C9-B95B-9524F8FE1F2E}.Debug|.NET.ActiveCfg = Debug|.NET
+		{0B23D9B8-707E-43C9-B95B-9524F8FE1F2E}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

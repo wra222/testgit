@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{846E29D1-953C-4084-9CCC-779AE966403A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IMES.FisObject</RootNamespace>
+    <AssemblyName>IMES.FisObject</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\IMES.FisObject.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition, Version=2010.2.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\CheckItem\ICheckObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\FisBOM\BOMPart.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\FisBOM\FlatBOMItem.cs" />
+    <Compile Include="Common\FisBOM\BOMNode.cs" />
+    <Compile Include="Common\FisBOM\FlatBOM.cs" />
+    <Compile Include="Common\FisBOM\HierarchicalBOM.cs" />
+    <Compile Include="Common\FisBOM\IBOMNode.cs" />
+    <Compile Include="Common\FisBOM\IBOMPart.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\FisBOM\IFlatBOM.cs" />
+    <Compile Include="Common\FisBOM\IFlatBOMItem.cs" />
+    <Compile Include="Common\FisBOM\ModelBOM.cs" />
+    <Compile Include="Common\FisBOM\ModelBomMatch.cs" />
+    <Compile Include="Common\FisBOM\PartUnit.cs" />
+    <Compile Include="Common\Defect\Defect.cs" />
+    <Compile Include="Common\Defect\DefectInfo.cs" />
+    <Compile Include="Common\Defect\IDefectInfoRepository.cs" />
+    <Compile Include="Common\Defect\IDefectRepository.cs" />
+    <Compile Include="Common\FisBOM\IBOMRepository.cs" />
+    <Compile Include="Common\FisBOM\IHierarchicalBOM.cs" />
+    <Compile Include="Common\HDDCopyInfo\HDDCopyInfo.cs" />
+    <Compile Include="Common\HDDCopyInfo\IHDDCopyInfoRepository.cs" />
+    <Compile Include="Common\Hold\Hold.cs" />
+    <Compile Include="Common\Hold\IHoldRepository.cs" />
+    <Compile Include="Common\Line\ILineRepository.cs" />
+    <Compile Include="Common\Line\Line.cs" />
+    <Compile Include="Common\Line\LineEx.cs" />
+    <Compile Include="Common\Line\LineSpeed.cs" />
+    <Compile Include="Common\Location\FloorAreaLoc.cs" />
+    <Compile Include="Common\Location\ILocationRepository.cs" />
+    <Compile Include="Common\Material\MaterialBoxAttr.cs" />
+    <Compile Include="Common\Material\MaterialBoxAttrLog.cs" />
+    <Compile Include="Common\Material\MaterialAttrLog.cs" />
+    <Compile Include="Common\Material\MaterialAttr.cs" />
+    <Compile Include="Common\Material\IMaterialBoxRepository.cs" />
+    <Compile Include="Common\Material\MaterialBox.cs" />
+    <Compile Include="Common\Material\IMaterialRepository.cs" />
+    <Compile Include="Common\Material\MaterialLog.cs" />
+    <Compile Include="Common\Material\MaterialLot.cs" />
+    <Compile Include="Common\Material\Material.cs" />
+    <Compile Include="Common\Misc\IMiscRepository.cs" />
+    <Compile Include="Common\Model\IFamilyRepository.cs" />
+    <Compile Include="Common\Model\Family.cs" />
+    <Compile Include="Common\Model\IModelObjectRepository.cs" />
+    <Compile Include="Common\Model\IModelRepository.cs" />
+    <Compile Include="Common\Model\IOSWINRepository.cs" />
+    <Compile Include="Common\Model\ModelInfoName.cs" />
+    <Compile Include="Common\Model\OSWIN.cs" />
+    <Compile Include="Common\Model\QCRatio.cs" />
+    <Compile Include="Common\Model\ShipType.cs" />
+    <Compile Include="Common\MO\IMORepository.cs" />
+    <Compile Include="Common\NumControl\INumControlRepository.cs" />
+    <Compile Include="Common\NumControl\MACRange.cs" />
+    <Compile Include="Common\NumControl\NumControl.cs" />
+    <Compile Include="Common\PartSn\IPartSnRepository.cs" />
+    <Compile Include="Common\PartSn\PartSn.cs" />
+    <Compile Include="Common\Part\AssemblyCode.cs" />
+    <Compile Include="Common\Part\AssemblyCodeInfo.cs" />
+    <Compile Include="Common\Part\BSParts.cs" />
+    <Compile Include="Common\Part\IAssemblyCodeRepository.cs" />
+    <Compile Include="Common\Part\IPart.cs" />
+    <Compile Include="Common\Part\IPartOwner.cs" />
+    <Compile Include="Common\Part\IPartRepository.cs" />
+    <Compile Include="Common\Part\IPartStrategy.cs" />
+    <Compile Include="Common\Part\PartCheck.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\Part\PartPolicy\IPartPolicyRepository.cs" />
+    <Compile Include="Common\Part\PartPolicy\IPartPolicy.cs" />
+    <Compile Include="Common\Part\IProductPart.cs" />
+    <Compile Include="Common\Part\Part.cs" />
+    <Compile Include="Common\Part\PartCheckMatchRule.cs" />
+    <Compile Include="Common\Part\PartForbidden.cs" />
+    <Compile Include="Common\Part\PartInfo.cs" />
+    <Compile Include="Common\Part\PartPolicy\PartPolicy.cs" />
+    <Compile Include="Common\Part\PartPolicy\PartSpecialCodeContainer.cs" />
+    <Compile Include="Common\Part\PartStrategyConfig\PartStrategyMappingCollection.cs" />
+    <Compile Include="Common\Part\PartStrategyConfig\PartStrategyMappingElement.cs" />
+    <Compile Include="Common\Part\PartStrategyConfig\PartStrategySection.cs" />
+    <Compile Include="Common\Part\PartStrategyConfig\PartStrategySettingConstant.cs" />
+    <Compile Include="Common\Part\PartStrategyFactory.cs" />
+    <Compile Include="Common\Part\PartType.cs" />
+    <Compile Include="Common\Part\PartTypeAttribute.cs" />
+    <Compile Include="Common\Part\PartTypeDescription.cs" />
+    <Compile Include="Common\Part\PartTypeMapping.cs" />
+    <Compile Include="Common\Part\ProductPart.cs" />
+    <Compile Include="Common\Part\Region.cs" />
+    <Compile Include="Common\PrintItem\ILabelTypeRepository.cs" />
+    <Compile Include="Common\PrintItem\LabelType.cs" />
+    <Compile Include="Common\PrintItem\PrintTemplate.cs" />
+    <Compile Include="Common\PrintLog\IPrintLogRepository.cs" />
+    <Compile Include="Common\PrintLog\PrintLog.cs" />
+    <Compile Include="Common\Process\IProcessRepository.cs" />
+    <Compile Include="Common\Process\ModelProcess.cs" />
+    <Compile Include="Common\Process\PalletProcess.cs" />
+    <Compile Include="Common\Process\PartProcess.cs" />
+    <Compile Include="Common\Process\Process.cs" />
+    <Compile Include="Common\Process\ProcessRuleSet.cs" />
+    <Compile Include="Common\Process\ProcessStation.cs" />
+    <Compile Include="Common\Process\ReworkProcess.cs" />
+    <Compile Include="Common\QTime\IQTimeRepository.cs" />
+    <Compile Include="Common\QTime\LineStationLastProcessTime.cs" />
+    <Compile Include="Common\QTime\LineStationStopPeriodLog.cs" />
+    <Compile Include="Common\QTime\QTime.cs" />
+    <Compile Include="Common\Repair\ReturnRepair.cs" />
+    <Compile Include="Common\Station\StationType.cs" />
+    <Compile Include="Common\TPCB\ITPCBInfoRepository.cs" />
+    <Compile Include="Common\TPCB\TPCB_Info.cs" />
+    <Compile Include="Common\TPCB\ITPCBRepository.cs" />
+    <Compile Include="Common\TPCB\TPCB.cs" />
+    <Compile Include="Common\UPS\UPSCombinePO.cs" />
+    <Compile Include="Common\UPS\IUPSRepository.cs" />
+    <Compile Include="Common\Warranty\IWarrantyRepository.cs" />
+    <Compile Include="Common\Warranty\Warranty.cs" />
+    <Compile Include="FA\LCM\ILCMRepository.cs" />
+    <Compile Include="FA\LCM\LCM.cs" />
+    <Compile Include="FA\LCM\LCMME.cs" />
+    <Compile Include="FA\Product\IProductRepository.cs" />
+    <Compile Include="FA\Product\ProductAttribute.cs" />
+    <Compile Include="FA\Product\ProductAttributeLog.cs" />
+    <Compile Include="FA\Product\ProductChangeLog.cs" />
+    <Compile Include="FA\Product\ProductInfo.cs" />
+    <Compile Include="FA\Product\ProductQCStatus.cs" />
+    <Compile Include="Common\ReprintLog\IReprintLogRepository.cs" />
+    <Compile Include="Common\ReprintLog\ReprintLog.cs" />
+    <Compile Include="Common\Station\IStation.cs" />
+    <Compile Include="Common\Station\IStationRepository.cs" />
+    <Compile Include="Common\Station\Station.cs" />
+    <Compile Include="Common\TestLog\TestLog.cs" />
+    <Compile Include="Common\TestLog\TestLogDefect.cs" />
+    <Compile Include="FA\Product\RunInTimeControl.cs" />
+    <Compile Include="PAK\BoxerBookData\BoxerBookData.cs" />
+    <Compile Include="PAK\BSam\BSamLocation.cs" />
+    <Compile Include="PAK\BSam\BSamModel.cs" />
+    <Compile Include="PAK\BSam\IBSamRepository.cs" />
+    <Compile Include="PAK\CartonSSCC\CartonSSCC.cs" />
+    <Compile Include="PAK\CartonSSCC\ICartonSSCCRepository.cs" />
+    <Compile Include="PAK\Carton\Carton.cs" />
+    <Compile Include="PAK\Carton\CartonInfo.cs" />
+    <Compile Include="PAK\Carton\CartonLog.cs" />
+    <Compile Include="PAK\Carton\CartonProduct.cs" />
+    <Compile Include="PAK\Carton\CartonQCLog.cs" />
+    <Compile Include="PAK\Carton\CartonStatus.cs" />
+    <Compile Include="PAK\Carton\DeliveryCarton.cs" />
+    <Compile Include="PAK\Carton\ICartonRepository.cs" />
+    <Compile Include="PAK\DN\DeliveryEx.cs" />
+    <Compile Include="PAK\DN\DeliveryInfo.cs" />
+    <Compile Include="PAK\DN\DeliveryLog.cs" />
+    <Compile Include="PAK\FRU\FRUCarton.cs" />
+    <Compile Include="PAK\FRU\FRUGift.cs" />
+    <Compile Include="PAK\FRU\FRUPart.cs" />
+    <Compile Include="PAK\FRU\FRUWeight.cs" />
+    <Compile Include="PAK\FRU\IFRUCartonRepository.cs" />
+    <Compile Include="PAK\FRU\IFRUPart.cs" />
+    <Compile Include="PAK\FRU\IGiftRepository.cs" />
+    <Compile Include="PAK\Paking\PAK_PAKComn.cs" />
+    <Compile Include="PAK\Paking\IPakingRepository.cs" />
+    <Compile Include="PAK\Pallet\IPalletWeightRepository.cs" />
+    <Compile Include="PAK\Pallet\PalletAttr.cs" />
+    <Compile Include="PAK\Pizza\PizzaLog.cs" />
+    <Compile Include="PAK\StandardWeight\IModelToleranceRepository.cs" />
+    <Compile Include="PAK\StandardWeight\IPalletTypeRepository.cs" />
+    <Compile Include="PAK\StandardWeight\ModelTolerance.cs" />
+    <Compile Include="PAK\StandardWeight\IModelWeightRepository.cs" />
+    <Compile Include="PAK\StandardWeight\PalletType.cs" />
+    <Compile Include="PAK\WeightLog\IWeightLogRepository.cs" />
+    <Compile Include="PAK\WeightLog\WeightLog.cs" />
+    <Compile Include="FA\Product\IProduct.cs" />
+    <Compile Include="Common\MO\MO.cs" />
+    <Compile Include="Common\Model\Model.cs" />
+    <Compile Include="Common\Model\ModelInfo.cs" />
+    <Compile Include="FA\Product\Product.cs" />
+    <Compile Include="FA\Product\ProductLog.cs" />
+    <Compile Include="FA\Product\ProductStatus.cs" />
+    <Compile Include="Common\Station\StationStatus.cs" />
+    <Compile Include="PAK\COA\COAReceive.cs" />
+    <Compile Include="PAK\COA\ICOAStatusRepository.cs" />
+    <Compile Include="PAK\COA\COAStatus.cs" />
+    <Compile Include="PAK\COA\COALog.cs" />
+    <Compile Include="PAK\DN\Delivery.cs" />
+    <Compile Include="PAK\DN\DeliveryPallet.cs" />
+    <Compile Include="PAK\DN\IDeliveryRepository.cs" />
+    <Compile Include="PAK\Pallet\FISToSAPPLTWeight.cs" />
+    <Compile Include="PAK\Pallet\FISToSAPWeight.cs" />
+    <Compile Include="PAK\Pallet\IPalletRepository.cs" />
+    <Compile Include="PAK\Pallet\PalletLog.cs" />
+    <Compile Include="PAK\Pallet\PalletWeight.cs" />
+    <Compile Include="PAK\Pizza\IPizzaRepository.cs" />
+    <Compile Include="PAK\Pizza\PizzaStatus.cs" />
+    <Compile Include="PAK\StandardWeight\ModelWeight.cs" />
+    <Compile Include="PAK\Pallet\Pallet.cs" />
+    <Compile Include="PAK\Pizza\Pizza.cs" />
+    <Compile Include="PAK\Pizza\PizzaPart.cs" />
+    <Compile Include="PCA\EcrVersion\EcrVersion.cs" />
+    <Compile Include="PCA\EcrVersion\IEcrVersionRepository.cs" />
+    <Compile Include="PCA\MBChangeLog\IMBChangeLogRepository.cs" />
+    <Compile Include="PCA\MBChangeLog\MBChangeLog.cs" />
+    <Compile Include="PCA\MBModel\IMBModel.cs" />
+    <Compile Include="PCA\MBModel\IMBModelRepository.cs" />
+    <Compile Include="PCA\MBModel\MBCode.cs" />
+    <Compile Include="PCA\MBMO\IMBMO.cs" />
+    <Compile Include="PCA\MBMO\IMBMORepository.cs" />
+    <Compile Include="PCA\MB\IMB.cs" />
+    <Compile Include="PCA\MB\IMBRepository.cs" />
+    <Compile Include="Common\Repair\IRepairTarget.cs" />
+    <Compile Include="PCA\MB\IMODismantleLogRepository.cs" />
+    <Compile Include="PCA\MB\MB.cs" />
+    <Compile Include="PCA\MB\MBInfo.cs" />
+    <Compile Include="PCA\MB\MBLog.cs" />
+    <Compile Include="PCA\MBMO\MBMO.cs" />
+    <Compile Include="PCA\MBModel\MBModel.cs" />
+    <Compile Include="Common\Repair\Repair.cs" />
+    <Compile Include="Common\Repair\RepairDefect.cs" />
+    <Compile Include="PCA\MB\MBRptRepair.cs" />
+    <Compile Include="PCA\MB\MBStatus.cs" />
+    <Compile Include="PCA\MB\MODismantleLog.cs" />
+    <Compile Include="PCA\PCBVersion\IPCBVersionRepository.cs" />
+    <Compile Include="PCA\PCBVersion\PCBVersion.cs" />
+    <Compile Include="PCA\TestBoxDataLog\TestBoxDataLog.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\ProductService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IMES.CheckItemModule\IMES.CheckItemModule.Interface\IMES.CheckItemModule.Interface.csproj">
+      <Project>{086F5981-D5CA-4E71-9F86-EC2CF079DE1D}</Project>
+      <Name>IMES.CheckItemModule.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.Infrastructure.DataModel\IMES.Infrastructure.DataModel.csproj">
+      <Project>{11CDE432-CA3F-4D23-A47F-0FCC66EED40B}</Project>
+      <Name>IMES.Infrastructure.DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.Infrastructure.FisException\IMES.Infrastructure.FisException.csproj">
+      <Project>{1D699CAC-1844-4480-BACA-FC41984D17EC}</Project>
+      <Name>IMES.Infrastructure.FisException</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.Infrastructure.Repository.Metas\IMES.Infrastructure.Repository.Metas.csproj">
+      <Project>{83A40B2C-8597-4D60-A7AD-CFEDC3942ECE}</Project>
+      <Name>IMES.Infrastructure.Repository.Metas</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.Infrastructure.Utility\IMES.Infrastructure.Utility.csproj">
+      <Project>{BA3DBA2B-DEE2-4E26-8AEB-3F805C542711}</Project>
+      <Name>IMES.Infrastructure.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.Infrastructure\IMES.Infrastructure.csproj">
+      <Project>{7514032C-D9C3-4BA9-AAEE-D44923A6BA98}</Project>
+      <Name>IMES.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

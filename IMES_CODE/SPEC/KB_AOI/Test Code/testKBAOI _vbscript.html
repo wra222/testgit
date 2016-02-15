@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<body class="body">
+<script type="text/vbscript">
+	dim queue
+	dim xmlhttp	
+	dim sn
+	Set queue = CreateObject("Scripting.Dictionary")
+	
+	Sub bt_onclick
+		dim url,kb,lb
+		url = "http://127.0.0.1:8686/AOI?SN=%sn%&KBPartNo=%kb%&LabelPartNo=%lb%"
+		sn = "1234567890"
+		kb = "kb123"
+		lb = "lb1234"
+		
+		url=Replace(url,"%sn%",trim(sn))
+		url=Replace(url,"%kb%",trim(kb))
+		url=Replace(url,"%lb%",trim(lb))
+		
+		if queue.Count=0 then
+			call SendAOICmd( url, sn)
+		end if	
+		queue.Add sn,url
+		
+		sn = "123456789"
+		kb = "kb123"
+		lb = "lb1234"
+		
+		url=Replace(url,"%sn%",trim(sn))
+		url=Replace(url,"%kb%",trim(kb))
+		url=Replace(url,"%lb%",trim(lb))
+		
+		if queue.Count=0 then
+			call SendAOICmd( url, sn)
+		end if	
+		queue.Add sn,url
+		
+		//alert(result.Result);
+		//SendAOICmd(url, sn, kb, lb, 5, callbackfun);
+	End Sub
+
+	Sub SendAOICmd(url, sn)
+        Set xmlhttp = CreateObject("MSXML2.XMLHTTP.3.0")
+		xmlhttp.onreadystatechange = getRef("HandleReceiveData")
+		xmlhttp.open "GET", url, true 'async mode
+		xmlhttp.setRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+		xmlhttp.send ""  
+		
+	End Sub
+
+	Sub HandleReceiveData
+		dim xmlDoc
+		dim url
+		dim dataSN,arrayItems, arrayKeys
+		
+		if xmlhttp.readyState = 4 then
+		   if xmlhttp.status =200 then
+				MsgBox  "Success!!"
+				set xmlDoc = CreateObject("Msxml2.DOMDocument")
+				xmlDoc.async = false
+				xmlDoc.loadXML(xmlHTTP.responseText)
+				
+				dataSN=xmlDoc.selectSingleNode("//Device/SN").text 
+				result=xmlDoc.selectSingleNode("//Device/Result").text 
+				errorCode=xmlDoc.selectSingleNode("//Device/ErrorCode").text
+				errorDescr=xmlDoc.selectSingleNode("//Device/ErrorDescr").text
+				dim ret(3)
+				 MsgBox "SN=" & dataSN& " result=" & result & " errorCode=" & errorCode & " errorDescr=" & errorDescr
+				 ret(1) =result 
+				 ret(2) =errorCode 
+				 ret(3) =errorDescr 
+				 'AOI_Test = ret
+				'AOI_Test="result=" & result & " errorCode=" & errorCode & " errorDescr=" & errorDescr
+				 
+				'MsgBox "sn=" & sn  & " result=" & result & " errorCode=" & errorCode & " errorDescr=" & errorDescr
+			else
+				MsgBox xmlhttp.readyState & " " & xmlhttp.status & " " & xmlhttp.statusText
+			end if
+			
+			queue.Remove(sn)
+			
+			'Check Queue has data
+			sn=""
+			if queue.Count >0 then
+			   arrayItems = queue.Items
+			   arrayKeys = queue.Keys
+			   sn=arrayKeys(0) 
+			   url=arrayItems(0)
+			   call SendAOICmd(url, sn)
+			end if	
+		else
+		  
+			MsgBox xmlhttp.readyState '& " " & xmlhttp.status & " " & xmlhttp.statusText
+			'queue.Remove(sn)
+		end if
+		
+		
+
+	End Sub
+
+</script>
+
+
+<div id="div_1">
+	
+</div>
+
+<form id="form1" action="" onsubmit="">	
+	<input id=bt type="button" value="testAOI"/>	
+  
+</form>
+</body>
+</html>

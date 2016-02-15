@@ -1,0 +1,26 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="CombineCOAandDN" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:DBScope Station="{ActivityBind CombineCOAandDN,Path=Station}" x:Name="dbScope1" Key="{ActivityBind CombineCOAandDN,Path=Key}" SessionType="{ActivityBind CombineCOAandDN,Path=SessionType}">
+		<IfElseActivity x:Name="ifNonBT">
+			<IfElseBranchActivity x:Name="NonBT">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="NonBT" />
+				</IfElseBranchActivity.Condition>
+				<ns0:AssignDeliveryForNonBT Customer="{ActivityBind CombineCOAandDN,Path=Customer}" x:Name="assignDeliveryForNonBT1" SessionType="{ActivityBind CombineCOAandDN,Path=SessionType}" Editor="{ActivityBind CombineCOAandDN,Path=Editor}" Station="{ActivityBind CombineCOAandDN,Path=Station}" Line="{ActivityBind CombineCOAandDN,Path=PdLine}" Key="{ActivityBind CombineCOAandDN,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<IfElseActivity x:Name="IfNonBT2">
+			<IfElseBranchActivity x:Name="NonBT2">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="NonBT2" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UpdateDeliveryStatus Customer="{ActivityBind CombineCOAandDN,Path=Customer}" x:Name="updateDeliveryStatus1" SessionType="{ActivityBind CombineCOAandDN,Path=SessionType}" Editor="{ActivityBind CombineCOAandDN,Path=Editor}" Station="{ActivityBind CombineCOAandDN,Path=Station}" Status="87" Line="{ActivityBind CombineCOAandDN,Path=PdLine}" Key="{ActivityBind CombineCOAandDN,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<ns0:GetProduct Customer="{ActivityBind CombineCOAandDN,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind CombineCOAandDN,Path=SessionType}" Editor="{ActivityBind CombineCOAandDN,Path=Editor}" Station="{ActivityBind CombineCOAandDN,Path=Station}" x:Name="getProduct1" Line="{ActivityBind CombineCOAandDN,Path=PdLine}" Key="{ActivityBind CombineCOAandDN,Path=Key}" InputType="CustSN" />
+		<ns0:BindCoaToProduct Customer="{ActivityBind CombineCOAandDN,Path=Customer}" x:Name="bindCoaToProduct1" SessionType="{ActivityBind CombineCOAandDN,Path=SessionType}" Editor="{ActivityBind CombineCOAandDN,Path=Editor}" Station="{ActivityBind CombineCOAandDN,Path=Station}" Line="{ActivityBind CombineCOAandDN,Path=PdLine}" Key="{ActivityBind CombineCOAandDN,Path=Key}" />
+		<ns0:GetProduct Customer="{ActivityBind CombineCOAandDN,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind CombineCOAandDN,Path=SessionType}" Editor="{ActivityBind CombineCOAandDN,Path=Editor}" Station="{ActivityBind CombineCOAandDN,Path=Station}" x:Name="getProduct2" Line="{ActivityBind CombineCOAandDN,Path=PdLine}" Key="{ActivityBind CombineCOAandDN,Path=Key}" InputType="CustSN" />
+		<ns0:GetPizzaID Customer="{ActivityBind CombineCOAandDN,Path=Customer}" x:Name="getPizzaID1" SessionType="{ActivityBind CombineCOAandDN,Path=SessionType}" Editor="{ActivityBind CombineCOAandDN,Path=Editor}" Station="{ActivityBind CombineCOAandDN,Path=Station}" Line="{ActivityBind CombineCOAandDN,Path=PdLine}" Key="{ActivityBind CombineCOAandDN,Path=Key}" />
+		<ns0:UpdateProductStatus Customer="{ActivityBind CombineCOAandDN,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind CombineCOAandDN,Path=SessionType}" Editor="{ActivityBind CombineCOAandDN,Path=Editor}" Status="Pass" Station="{ActivityBind CombineCOAandDN,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind CombineCOAandDN,Path=PdLine}" Key="{ActivityBind CombineCOAandDN,Path=Key}" />
+		<ns0:WriteProductLog Customer="{ActivityBind CombineCOAandDN,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind CombineCOAandDN,Path=SessionType}" Editor="{ActivityBind CombineCOAandDN,Path=Editor}" Station="{ActivityBind CombineCOAandDN,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind CombineCOAandDN,Path=PdLine}" Key="{ActivityBind CombineCOAandDN,Path=Key}" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+using com.inventec.system;
+using System.Collections.Generic;
+
+public partial class webroot_aspx_Echart : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    [System.Web.Services.WebMethod]
+    public ChartItem GetData()
+    {
+        ChartItem chart = new ChartItem();
+
+        chart.Title="HJT 自定义控件";
+
+        chart.XValue = new List<string> { "2010", "2011", "2012" };//X轴
+
+
+        List<SeriesType> SeriesAll = new List<SeriesType>();
+        SeriesType aeriestype1 = new SeriesType();
+        List<string> Series1 = new List<string> { "100", "200", "300" };//线条1
+        aeriestype1.Name = "线条1";
+        aeriestype1.SeriesValues = Series1;
+        SeriesAll.Add(aeriestype1);
+
+
+        SeriesType aeriestype2 = new SeriesType();
+        List<string> Series2 = new List<string> { "200", "500", "400" };//线条2
+        aeriestype2.Name = "线条2";
+        aeriestype2.SeriesValues = Series2;
+        SeriesAll.Add(aeriestype2);
+
+
+      
+        chart.Series = SeriesAll;
+
+        return chart;
+
+
+    }
+}

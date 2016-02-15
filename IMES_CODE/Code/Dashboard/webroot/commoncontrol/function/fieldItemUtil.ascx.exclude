@@ -1,0 +1,228 @@
+<%@ Control Language="C#" AutoEventWireup="true" CodeFile="fieldItemUtil.ascx.cs" Inherits="webroot_commoncontrol_function_fieldItemUtil" %>
+<%@ Import Namespace="com.inventec.system" %>
+<script type="text/javascript">
+   //create string by fieldInfo
+   function createExpressionStr(fieldInfo) 
+   {
+        var expressionStr = "";
+        
+        if (fieldInfo.ExpressionType == "<%=Constants.EDIT_FIELD_EXPRESSION_TYPE_EXTEND%>" )
+        {
+            for (var i=0; i< fieldInfo.ExtendExpression.length; i++)
+                expressionStr += createInitValue(fieldInfo.ExtendExpression[i]);    
+            
+        
+        } 
+        else if (fieldInfo.ExpressionType == "<%=Constants.EDIT_FIELD_EXPRESSION_TYPE_CUSTOM%>" )
+        {
+            //for (var i=0; i< fieldInfo.StandardExpression.length; i++)
+                expressionStr = fieldInfo.StandardExpression[0].NormalFieldItemString + 
+                    "(" + fieldInfo.StandardExpression[1].NormalFieldItemString + ")";    
+            
+        
+        }else { 
+             expressionStr += createInitValue(fieldInfo.StandardExpression);    
+        
+        }
+   
+        return expressionStr;
+   }   
+
+    // //create string by fielditem list
+    //get the initial value of each input.
+    function createInitValue(fieldItemList)
+    {
+        var reValue = "";
+        
+        for (var i=0; i<fieldItemList.length; i++)
+        {            
+            reValue += unpackFieldItem(fieldItemList[i]);  
+         }  
+            
+        return reValue;
+    }
+    
+    // //create string by fielditem
+    //get the string by unpack fieldItem to show the new data.
+    function unpackFieldItem(fieldItem)
+    {        
+        var data = null;
+        
+        switch (fieldItem.Type)
+        {
+            case "<%=Constants.EDIT_FIELD_ITEMUINT_TYPE_NORMAL%>":
+                data = fieldItem.NormalFieldItemString;
+                
+                break;
+            case "<%=Constants.EDIT_FIELD_ITEMUNIT_TYPE_WITH_CUSTOMID%>":               
+                data = fieldItem.WithCustomIdInfo.ItemString;
+                               
+                break;
+            case "<%=Constants.EDIT_FIELD_ITEMUNIT_TYPE_LIKE_FIELDITEM%>":                
+//                if (fieldItem.LikeFieldItem.Type == "%*%")                
+//                    data = " LIKE '%" + fieldItem.LikeFieldItem.ItemString + "%' ";
+//                else if (fieldItem.LikeFieldItem.Type == "%*")                
+//                    data = " LIKE '%" + fieldItem.LikeFieldItem.ItemString + "' ";
+//                else
+//                    data = " LIKE '" + fieldItem.LikeFieldItem.ItemString + "%' ";
+                data =  " LIKE '" + fieldItem.LikeFieldItem.ItemString + "' "; 
+                     
+                break;
+            case "<%=Constants.EDIT_FIELD_ITEMUNIT_TYPE_IN_FIELDITEM%>":
+                data = " IN (";
+                if (fieldItem.InFieldItem.Type == "String")
+                {
+                    for (var i=0; i< fieldItem.InFieldItem.ItemString.length; i++)
+                    {
+                        if (i < fieldItem.InFieldItem.ItemString.length-1)
+                            data += "'" + fieldItem.InFieldItem.ItemString[i] + "', ";              
+                        else
+                            data += "'" + fieldItem.InFieldItem.ItemString[i] + "'";              
+                    }                    
+                }
+                else {
+                    for (var i=0; i< fieldItem.InFieldItem.ItemString.length; i++)
+                    {
+                        if (i < fieldItem.InFieldItem.ItemString.length-1)
+                            data += fieldItem.InFieldItem.ItemString[i] + ", ";              
+                        else
+                            data += fieldItem.InFieldItem.ItemString[i]; 
+                    }
+                }                
+                data += ") ";
+                
+                break;
+            case "<%=Constants.EDIT_FIELD_ITEMUNIT_TYPE_STATISTICITEM%>":
+                data = fieldItem.StatisticItem.StatisticFunctionName + "(" + fieldItem.StatisticItem.StatisticField + ")"
+                
+                break;
+            case "<%=Constants.EDIT_FIELD_ITEMUNIT_TYPE_SWITCH_OPATETOR%>"://IIF
+                data = fieldItem.NormalFieldItemString;
+                
+                break;
+            default:
+                alert("Wrong fieldInfo type, unpackFieldItem()");
+        
+        }        
+        
+        return data;
+        
+    }
+    
+    
+    function packFieldItem(data, type, otherInfo)
+    {
+        var fieldItem = com.inventec.fisreport.system.util.FieldInfoUtil.getFieldItem().value;
+        fieldItem.Type = type;
+           
+        switch (type)
+        {
+            case "<%=Constants.EDIT_FIELD_ITEMUINT_TYPE_NORMAL%>":
+                fieldItem.NormalFieldItemString = data;
+                break;
+            case "<%=Constants.EDIT_FIELD_ITEMUNIT_TYPE_WITH_CUSTOMID%>":               
+                fieldItem.WithCustomIdInfo.ItemString = data;    
+                //below property is set temporary value. 
+                fieldItem.WithCustomIdInfo.PublishFileInfo.Type = otherInfo.type; 
+                fieldItem.WithCustomIdInfo.PublishFileInfo.TemplateName = otherInfo.templateName;
+                  
+                //get detail info from db.
+//                var response = clsFormulaEdit.GetTemplateDetailInfo(otherInfo.type, otherInfo.templateName);       
+//                
+//                if (response.value == null)
+//                {
+//                    alert("Can't find this template, you must undo this operation manually.")
+//                    break;
+//                }
+//                
+//                var level = response.value.splite(", ")[1];
+//                var publishId = response.value.splite(", ")[0];
+                                 
+                fieldItem.WithCustomIdInfo.PublishFileInfo.TemplatePublishId = otherInfo.publishId;              
+                fieldItem.WithCustomIdInfo.PublishFileInfo.Level = otherInfo.level;
+                break;
+            case "<%=Constants.EDIT_FIELD_ITEMUNIT_TYPE_LIKE_FIELDITEM%>":                
+                //fieldItem.LikeFieldItem.Type = otherInfo;
+                fieldItem.LikeFieldItem.ItemString = data;
+                break;
+            case "<%=Constants.EDIT_FIELD_ITEMUNIT_TYPE_IN_FIELDITEM%>":
+                fieldItem.InFieldItem.Type = otherInfo;
+                fieldItem.InFieldItem.ItemString = data;            
+                break;
+            case "<%=Constants.EDIT_FIELD_ITEMUNIT_TYPE_STATISTICITEM%>":              
+                fieldItem.StatisticItem.StatisticFunctionName = otherInfo.functionName;
+                fieldItem.StatisticItem.StatisticField = data;
+                 
+                if (otherInfo.IsWidthCustomId)
+                {
+                    fieldItem.StatisticItem.IsWidthCustomId = true; 
+                    
+                    fieldItem.StatisticItem.PublishFileInfo.Type = otherInfo.type; 
+                    fieldItem.StatisticItem.PublishFileInfo.TemplateName = otherInfo.templateName;  
+                    fieldItem.StatisticItem.PublishFileInfo.TemplatePublishId = otherInfo.publishId;              
+                    fieldItem.StatisticItem.PublishFileInfo.Level = otherInfo.level;
+                    
+                } 
+                
+                break;
+            case "<%=Constants.EDIT_FIELD_ITEMUNIT_TYPE_SWITCH_OPATETOR%>"://IIF
+                //The job has been done in "ENDIF" event.do nothing here.
+                
+                break;
+            default:
+                alert("Wrong fieldInfo type, packFieldItem()");
+        
+        }
+    
+        return fieldItem;
+    
+    }
+    
+    function replaceReferedAlias(fieldItem, newData)
+    {      
+        switch (fieldItem.Type)
+        {
+            case "<%=Constants.EDIT_FIELD_ITEMUINT_TYPE_NORMAL%>":
+                fieldItem.NormalFieldItemString = newData;
+                break;
+            case "<%=Constants.EDIT_FIELD_ITEMUNIT_TYPE_WITH_CUSTOMID%>":               
+                fieldItem.WithCustomIdInfo.ItemString = newData;               
+                break;
+            case "<%=Constants.EDIT_FIELD_ITEMUNIT_TYPE_LIKE_FIELDITEM%>":                
+                //fieldItem.LikeFieldItem.Type = otherInfo;
+                fieldItem.LikeFieldItem.ItemString = newData;
+                break;
+            case "<%=Constants.EDIT_FIELD_ITEMUNIT_TYPE_IN_FIELDITEM%>":
+                //fieldItem.InFieldItem.Type = otherInfo;
+                fieldItem.InFieldItem.ItemString = newData;            
+                break;
+            case "<%=Constants.EDIT_FIELD_ITEMUNIT_TYPE_STATISTICITEM%>":              
+                //fieldItem.StatisticItem.StatisticFunctionName = otherInfo;
+                fieldItem.StatisticItem.StatisticField = newData;
+                break;
+            case "<%=Constants.EDIT_FIELD_ITEMUNIT_TYPE_SWITCH_OPATETOR%>"://IIF
+                alert("doing ...");
+                
+                break;
+            default:
+                alert("Wrong fieldInfo type, in replaceReferedAlias()");
+        
+        }
+    
+        return fieldItem;
+    }
+    
+    
+    function substrExpression(fieldInfo)
+    {
+        var expr = "";
+
+        expr = createExpressionStr(fieldInfo);
+
+        if (expr.Length > 20)
+            expr = expr.Substring(0, 20);
+
+        return expr;
+    }
+ 
+</script>

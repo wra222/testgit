@@ -1,0 +1,25 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="PACosmeticForDocking" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind PACosmeticForDocking,Path=Customer}" NotExistException="" SessionType="{ActivityBind PACosmeticForDocking,Path=SessionType}" Editor="{ActivityBind PACosmeticForDocking,Path=Editor}" Station="{ActivityBind PACosmeticForDocking,Path=Station}" x:Name="getProduct1" Line="{ActivityBind PACosmeticForDocking,Path=PdLine}" Key="{ActivityBind PACosmeticForDocking,Path=Key}" InputType="ProductID" />
+	<ns0:BlockStation Customer="{ActivityBind PACosmeticForDocking,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind PACosmeticForDocking,Path=SessionType}" Editor="{ActivityBind PACosmeticForDocking,Path=Editor}" ProcessType="Product" Station="{ActivityBind PACosmeticForDocking,Path=Station}" Line="{ActivityBind PACosmeticForDocking,Path=PdLine}" Key="{ActivityBind PACosmeticForDocking,Path=Key}" />
+	<ns0:WaitInput Customer="{ActivityBind PACosmeticForDocking,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind PACosmeticForDocking,Path=SessionType}" Editor="{ActivityBind PACosmeticForDocking,Path=Editor}" Station="{ActivityBind PACosmeticForDocking,Path=Station}" Line="{ActivityBind PACosmeticForDocking,Path=PdLine}" Key="{ActivityBind PACosmeticForDocking,Path=Key}" />
+	<ns0:DBScope Station="{ActivityBind PACosmeticForDocking,Path=Station}" x:Name="dbScope1" Key="{ActivityBind PACosmeticForDocking,Path=Key}" SessionType="{ActivityBind PACosmeticForDocking,Path=SessionType}">
+		<IfElseActivity x:Name="ifElseActivity1">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="IsNull" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteProductTestLog Customer="{ActivityBind PACosmeticForDocking,Path=Customer}" Station="{ActivityBind PACosmeticForDocking,Path=Station}" SessionType="{ActivityBind PACosmeticForDocking,Path=SessionType}" Editor="{ActivityBind PACosmeticForDocking,Path=Editor}" IsPass="True" x:Name="writeProductTestLog1" Line="{ActivityBind PACosmeticForDocking,Path=PdLine}" Key="{ActivityBind PACosmeticForDocking,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind PACosmeticForDocking,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind PACosmeticForDocking,Path=SessionType}" Editor="{ActivityBind PACosmeticForDocking,Path=Editor}" Status="Pass" Station="{ActivityBind PACosmeticForDocking,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind PACosmeticForDocking,Path=PdLine}" Key="{ActivityBind PACosmeticForDocking,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind PACosmeticForDocking,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind PACosmeticForDocking,Path=SessionType}" Editor="{ActivityBind PACosmeticForDocking,Path=Editor}" Station="{ActivityBind PACosmeticForDocking,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind PACosmeticForDocking,Path=PdLine}" Key="{ActivityBind PACosmeticForDocking,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="IsNotNull" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteProductTestLog Customer="{ActivityBind PACosmeticForDocking,Path=Customer}" Station="{ActivityBind PACosmeticForDocking,Path=Station}" SessionType="{ActivityBind PACosmeticForDocking,Path=SessionType}" Editor="{ActivityBind PACosmeticForDocking,Path=Editor}" x:Name="writeProductTestLog2" Line="{ActivityBind PACosmeticForDocking,Path=PdLine}" Key="{ActivityBind PACosmeticForDocking,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind PACosmeticForDocking,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind PACosmeticForDocking,Path=SessionType}" Editor="{ActivityBind PACosmeticForDocking,Path=Editor}" Status="Fail" Station="{ActivityBind PACosmeticForDocking,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind PACosmeticForDocking,Path=PdLine}" Key="{ActivityBind PACosmeticForDocking,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind PACosmeticForDocking,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind PACosmeticForDocking,Path=SessionType}" Editor="{ActivityBind PACosmeticForDocking,Path=Editor}" Station="{ActivityBind PACosmeticForDocking,Path=Station}" Status="Fail" IsSingle="True" Line="{ActivityBind PACosmeticForDocking,Path=PdLine}" Key="{ActivityBind PACosmeticForDocking,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+</ns0:BaseFlow>

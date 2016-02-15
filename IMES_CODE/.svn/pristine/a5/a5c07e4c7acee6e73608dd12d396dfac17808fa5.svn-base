@@ -1,0 +1,407 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using UTL.MetaData;
+using UPS.UTL.SQL;
+using UTL.Config;
+using System.Data.SqlClient;
+using System.Data.Common;
+using UPS.UTL.LINQhelper;
+using log4net;
+using UTL.SQL;
+
+namespace UPS
+{
+    public class MESData
+    {
+        private static ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+			
+        public static List<HPPO> AddUPSHPPO(AppConfig config, 
+                                                                        UPSDatabase db,    
+                                                                        IList<SAPPO> sapPoList, 
+                                                                        List<ModelBom> modelBomList, 
+                                                                        string editor)
+        {
+            string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+            logger.DebugFormat("BEGIN: {0}()", methodName);
+            try
+            {
+                List<HPPO> upspoList = new List<HPPO>();
+                DateTime now = DateTime.Now;
+                List<String> poNumList = sapPoList.Select(x => x.HPPO).Distinct().ToList();
+                //UPSDatabase db = new UPSDatabase(config.DBConnectStr);
+
+                var mesPoList = (from x in db.UPSHPPOEntity
+                                 where poNumList.Contains(x.HPPO)
+                                 select x).ToList();
+
+                var mesIecPoList = (from x in db.UPSIECPOEntity
+                                    where poNumList.Contains(x.HPPO)
+                                    select x).ToList();
+
+                var mesPoPartList = (from x in db.UPSPOAVPartEntity
+                                     where poNumList.Contains(x.HPPO)
+                                     select x).ToList();
+
+                foreach (var poId in poNumList)
+                {
+                    var poList = sapPoList.Where(x => x.HPPO == poId).ToList();
+                    var first = poList[0];
+                    var po = mesPoList.Where(x => x.HPPO == poId).FirstOrDefault();
+
+                    if (po == null) //新增
+                    {
+                        #region 新增
+                        HPPO hppo = new HPPO();
+                        hppo.PO = new UPSHPPO
+                        {
+                            HPPO = poId,
+                            Plant = first.Plant,
+                            POType = first.POType,
+                            HPSKU = first.HPSku,
+                            EndCustomerPO = first.CustPO,
+                            Status = SendBOMState.CreatedPoBOM.ToString(),
+                            Qty = poList.Sum(x => x.Qty),
+                            Editor = editor,
+                            ErrorText = string.Empty,
+                            ReceiveDate = new DateTime(now.Year, now.Month, now.Day),
+                            Cdt = now,
+                            Udt = now
+                        };
+
+
+
+                        hppo.IECPOList = new List<UPSIECPO>();
+                        foreach (var sappo in poList)
+                        {
+                            UPSIECPO iecpo = new UPSIECPO
+                            {
+                                HPPO = poId,
+                                IECPO = sappo.IECPO,
+                                IECPOItem = sappo.IECPOItem,
+                                Model = sappo.IECSku,
+                                Qty = sappo.Qty,
+                                //Status = SendBOMState.Waiting.ToString(),
+                                Cdt = now,
+                                Udt = now,
+                                Editor = editor
+                            };
+                            hppo.IECPOList.Add(iecpo);
+                        }
+
+                        hppo.PartNoList = new List<UPSPOAVPart>();
+                        foreach (var partNo in first.UPSMatchAVPart)
+                        {
+                            var modelBom = modelBomList.Where(x => x.AVPartNo == partNo).FirstOrDefault();
+                            UPSPOAVPart part = new UPSPOAVPart
+                            {
+                                HPPO = poId,
+                                AVPartNo = partNo,
+                                IECPartNo = modelBom == null ? string.Empty : modelBom.IECPartNo,
+                                IECPartType = modelBom == null ? string.Empty : modelBom.IECPartType,
+                                Editor = editor,
+                                Remark = string.Empty,
+                                Udt = now,
+                                Cdt = now
+                            };
+
+                            hppo.PartNoList.Add(part);
+                        }
+                        hppo.Insert = true;
+                        upspoList.Add(hppo);
+                        #endregion
+                    }
+                    else //查詢
+                    {
+                        HPPO hppo = new HPPO();
+                        hppo.PO = po;
+                        hppo.IECPOList = mesIecPoList.Where(x => x.HPPO == poId).ToList();
+                        hppo.PartNoList = mesPoPartList.Where(x => x.HPPO == poId).ToList();
+                        hppo.Insert = false;
+                        upspoList.Add(hppo);
+                    }
+                }
+
+                var insertDataList = upspoList.Where(x => x.Insert).ToList();
+                if (insertDataList.Count > 0)
+                {
+                    #region insert MES db data case
+                    if (db.Connection.State == System.Data.ConnectionState.Closed)
+                    {
+                        db.Connection.Open();
+                    }
+
+
+                    db.Transaction = db.Connection.BeginTransaction();
+                    var hppoList = insertDataList.Select(x => x.PO).ToList();
+                    DataTableHelper.BulkCopyToDatabase(hppoList, "UPSHPPO", (SqlConnection)db.Connection, (SqlTransaction)db.Transaction);
+                    //db.UPSHPPOEntity.InsertAllOnSubmit(hppoList);
+
+                    var iecpoList = new List<UPSIECPO>();
+
+                    insertDataList.ForEach(x => iecpoList = iecpoList.Union(x.IECPOList).ToList());
+                    DataTableHelper.BulkCopyToDatabase(iecpoList, "UPSIECPO", (SqlConnection)db.Connection, (SqlTransaction)db.Transaction);
+                    //db.UPSIECPOEntity.InsertAllOnSubmit(iecpoList);
+
+                    var avPartList = new List<UPSPOAVPart>();
+                    insertDataList.ForEach(x => avPartList = avPartList.Concat(x.PartNoList).ToList());
+                    //db.UPSPOAVPartEntity.InsertAllOnSubmit(avPartList);
+                    DataTableHelper.BulkCopyToDatabase(avPartList, "UPSPOAVPart", (SqlConnection)db.Connection, (SqlTransaction)db.Transaction);
+                    //db.SubmitChanges();
+                    db.Transaction.Commit();
+                    db.Connection.Close();
+
+                    //重新get data
+                    var mesPoList1 = (from x in db.UPSHPPOEntity
+                                      where poNumList.Contains(x.HPPO)
+                                      select x).ToList();
+
+                    var mesIecPoList1 = (from x in db.UPSIECPOEntity
+                                         where poNumList.Contains(x.HPPO)
+                                         select x).ToList();
+
+                    var mesPoPartList1 = (from x in db.UPSPOAVPartEntity
+                                          where poNumList.Contains(x.HPPO)
+                                          select x).ToList();
+                    upspoList = new List<HPPO>();
+                    foreach (var poId in poNumList)
+                    {
+                        HPPO hppo = new HPPO();
+                        hppo.PO = mesPoList1.Where(x => x.HPPO == poId).First();
+                        hppo.IECPOList = mesIecPoList1.Where(x => x.HPPO == poId).ToList();
+                        hppo.PartNoList = mesPoPartList1.Where(x => x.HPPO == poId).ToList();
+                        hppo.Insert = false;
+                        upspoList.Add(hppo);
+                    }
+                    #endregion
+                }
+                return upspoList;
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message, e);
+                throw;
+            }
+            finally
+            {
+                logger.DebugFormat("END: {0}()", methodName);
+            }
+            
+        }
+
+        public static List<HPPO> GetUPSHPPO(AppConfig config, 
+                                                                    UPSDatabase db,  
+                                                                    DateTime receiveDate)
+        {
+            string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+            logger.DebugFormat("BEGIN: {0}()", methodName);
+            try
+            {
+                List<HPPO> upspoList = new List<HPPO>();
+
+                //UPSDatabase db = new UPSDatabase(config.DBConnectStr);
+
+                var mesPoList = (from x in db.UPSHPPOEntity
+                                 where x.ReceiveDate == receiveDate
+                                 select x).ToList();
+                var poNumList = mesPoList.Select(x => x.HPPO).ToList();
+                var mesIecPoList = (from x in db.UPSIECPOEntity
+                                    where poNumList.Contains(x.HPPO)
+                                    select x).ToList();
+
+                var mesPoPartList = (from x in db.UPSPOAVPartEntity
+                                     where poNumList.Contains(x.HPPO)
+                                     select x).ToList();
+
+                foreach (var po in mesPoList)
+                {
+                    HPPO hppo = new HPPO();
+                    hppo.PO = po;
+                    hppo.IECPOList = mesIecPoList.Where(x => x.HPPO == po.HPPO).ToList();
+                    hppo.PartNoList = mesPoPartList.Where(x => x.HPPO == po.HPPO).ToList();
+                    hppo.Insert = false;
+                    upspoList.Add(hppo);
+                }
+
+                return upspoList;
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message, e);
+                throw;
+            }
+            finally
+            {
+                logger.DebugFormat("END: {0}()", methodName);
+            }
+          
+        }
+
+        public static void UpdateUPSHPPO(AppConfig config, 
+                                                                UPSDatabase db, 
+                                                                HPPO dbPo, 
+                                                                 UPSPOBOM poBom, 
+                                                                 string editor)
+        {
+            DateTime now = DateTime.Now;
+            string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+            logger.DebugFormat("BEGIN: {0}()", methodName);
+            try
+            {
+                //UPSDatabase db = new UPSDatabase(config.DBConnectStr);
+
+                if (db.Connection.State == System.Data.ConnectionState.Closed)
+                {
+                    db.Connection.Open();
+                }
+                
+                db.Transaction = db.Connection.BeginTransaction();
+
+                if (dbPo.PO.Status != poBom.State.ToString())
+                {
+                    dbPo.PO.Status = poBom.State.ToString();
+                    dbPo.PO.ErrorText = poBom.ErrorText;
+                    dbPo.PO.Udt = now;
+                    //db.UPSHPPOEntity.Attach(dbPo.PO, true);
+                }
+
+                if (poBom.State == SendBOMState.VerifyOK)
+                {
+                    //產生UPSCombinePO
+                    List<UPSCombinePO> UPSCombinePOList = new List<UPSCombinePO>();
+                    dbPo.IECPOList.ForEach(n=> { 
+                        //n.Status = SendBOMState.VerifyOK.ToString();
+                        n.Udt = now;
+                        var upsModel = db.UPSModelEntity.Where(x => x.Model == n.Model).FirstOrDefault();
+                        if (upsModel == null)
+                        {
+                            upsModel = new UPSModel
+                            {
+                                Model = n.Model,
+                                FirstReceiveDate = dbPo.PO.ReceiveDate,
+                                LastReceiveDate = dbPo.PO.ReceiveDate,
+                                Remark = string.Empty,
+                                Status = EnumUPSModelStatus.Enable.ToString(),
+                                Editor = dbPo.PO.Editor,
+                                Cdt = now,
+                                Udt = now
+                            };
+                            db.UPSModelEntity.InsertOnSubmit(upsModel);
+                        }
+                        else
+                        {
+                            upsModel.LastReceiveDate = dbPo.PO.ReceiveDate;
+                            upsModel.Udt = now;
+                        }
+
+                        int qty = dbPo.PO.Qty;
+                        for(int i=0; i<qty; i++)
+                        {
+                            UPSCombinePO combinePO = new UPSCombinePO{
+                                 HPPO =dbPo.PO.HPPO,
+                                  IECPO = n.IECPO,
+                                  IECPOItem =n.IECPOItem,
+                                  Model = n.Model,
+                                  ReceiveDate = dbPo.PO.ReceiveDate,
+                                  ProductID=string.Empty,
+                                  CUSTSN=string.Empty,                                   
+                                  Station=string.Empty,
+                                   IsShipPO ="N",
+                                  Status=EnumCombinePoState.Free.ToString(),
+                                  Remark=string.Empty,
+                                  Editor=editor,
+                                  Cdt =now,
+                                  Udt=now};
+                               UPSCombinePOList.Add(combinePO);  
+                        }
+                    });
+
+                    DataTableHelper.BulkCopyToDatabase(UPSCombinePOList, 
+                                                                                "UPSCombinePO", 
+                                                                                (SqlConnection)db.Connection, 
+                                                                                (SqlTransaction)db.Transaction);
+                }
+               
+                db.SubmitChanges(System.Data.Linq.ConflictMode.ContinueOnConflict);
+                
+                db.Transaction.Commit();
+                db.Connection.Close();
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message, e);
+                throw;
+            }
+            finally
+            {
+                logger.DebugFormat("END: {0}()", methodName);
+            }
+        }
+        public static void UpdateUPSModel(AppConfig config,
+                                                                UPSDatabase db,
+                                                                HPPO dbPo,
+                                                                 UPSPOBOM poBom,
+                                                                 string editor)
+        {
+
+            DateTime now = DateTime.Now;
+            string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+            logger.DebugFormat("BEGIN: {0}()", methodName);
+            try
+            {
+                if (db.Connection.State == System.Data.ConnectionState.Closed)
+                {
+                    db.Connection.Open();
+                }
+               db.Transaction = db.Connection.BeginTransaction();
+               dbPo.IECPOList.ForEach(n =>
+                    {
+                        n.Udt = now;
+                        var upsModel = db.UPSModelEntity.Where(x => x.Model == n.Model).FirstOrDefault();
+                        if (upsModel == null)
+                        {
+                            upsModel = new UPSModel
+                            {
+                                Model = n.Model,
+                                FirstReceiveDate = dbPo.PO.ReceiveDate,
+                                LastReceiveDate = dbPo.PO.ReceiveDate,
+                                Remark = "NEW",
+                                Status = EnumUPSModelStatus.Enable.ToString(),
+                                Editor = dbPo.PO.Editor,
+                                Cdt = now,
+                                Udt = now
+                            };
+                            db.UPSModelEntity.InsertOnSubmit(upsModel);
+                        }
+                        //else
+                        //{
+                        //    upsModel.LastReceiveDate = dbPo.PO.ReceiveDate;
+                        //    upsModel.Udt = now;
+                        //}
+                    });
+                db.SubmitChanges(System.Data.Linq.ConflictMode.ContinueOnConflict);
+
+                db.Transaction.Commit();
+                db.Connection.Close();
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message, e);
+                throw;
+            }
+            finally
+            {
+                logger.DebugFormat("END: {0}()", methodName);
+            }
+        }
+    }
+
+    public class HPPO
+    {
+        public UPSHPPO PO;
+        public List<UPSIECPO> IECPOList;
+        public List<UPSPOAVPart> PartNoList;
+        public bool Insert=false;
+    }
+}

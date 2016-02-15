@@ -1,0 +1,6 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Resolve.Common.XML
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Resolve.Common.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Resolve.Common.pdb
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Resolve.Common\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Resolve.Common\obj\Debug\IMES.Resolve.Common.dll
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Resolve.Common\obj\Debug\IMES.Resolve.Common.pdb

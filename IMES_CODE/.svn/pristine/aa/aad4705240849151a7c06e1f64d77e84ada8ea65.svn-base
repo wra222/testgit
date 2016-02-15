@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="urn:sap-com:document:sap:rfc:functions" xmlns:n0="http://www.sap.com/webas/630/soap/features/authentication/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:sap="http://www.sap.com/webas/630/wsdl/features" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="urn:sap-com:document:sap:rfc:functions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <sap:Feature name="design_0 " uri="http://www.sap.com/webas/630/soap/features/authentication/">
+    <sap:Property qname="n0:AuthenticationLevel">
+      <sap:Option value="n0:Basic" />
+    </sap:Property>
+  </sap:Feature>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+      <xsd:simpleType name="char1">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char17">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="17" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char255">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="255" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ZMO_MES_CF_R1">
+        <xsd:sequence>
+          <xsd:element name="SERIALNUMBER" type="tns:char17" />
+          <xsd:element name="RESULTCNF" type="tns:char1" />
+          <xsd:element name="ERRMSG" type="tns:char255" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Z_PRODORDCONF_IMES_SUBMIT">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="SERIALNUMBER" type="tns:char17" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Z_PRODORDCONF_IMES_SUBMITResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RESPONSE" type="tns:ZMO_MES_CF_R1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="Z_PRODORDCONF_IMES_SUBMIT">
+    <wsdl:part name="parameters" element="tns:Z_PRODORDCONF_IMES_SUBMIT" />
+  </wsdl:message>
+  <wsdl:message name="Z_PRODORDCONF_IMES_SUBMITResponse">
+    <wsdl:part name="parameters" element="tns:Z_PRODORDCONF_IMES_SUBMITResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Z_PRODORDCONF_IMES_SUBMIT_WS">
+    <sap:useFeature feature="tns:design_0 " />
+    <wsdl:operation name="Z_PRODORDCONF_IMES_SUBMIT">
+      <wsdl:input message="tns:Z_PRODORDCONF_IMES_SUBMIT" />
+      <wsdl:output message="tns:Z_PRODORDCONF_IMES_SUBMITResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Z_PRODORDCONF_IMES_SUBMIT_WSSoapBinding" type="tns:Z_PRODORDCONF_IMES_SUBMIT_WS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Z_PRODORDCONF_IMES_SUBMIT">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Z_PRODORDCONF_IMES_SUBMIT_WSService">
+    <wsdl:port name="Z_PRODORDCONF_IMES_SUBMIT_WSSoapBinding" binding="tns:Z_PRODORDCONF_IMES_SUBMIT_WSSoapBinding">
+      <soap:address location="http://xidqdb.iec.inventec.com:8000/sap/bc/srt/rfc/sap/Z_PRODORDCONF_IMES_SUBMIT_WS?sap-client=001" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

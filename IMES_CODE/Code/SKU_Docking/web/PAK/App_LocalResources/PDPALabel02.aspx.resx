@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cn_colQty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="cn_colTp" xml:space="preserve">
+    <value>Tp</value>
+  </data>
+  <data name="cn_lblCode" xml:space="preserve">
+    <value>Code:</value>
+  </data>
+  <data name="cn_lblCustSN" xml:space="preserve">
+    <value>Cust SN:</value>
+  </data>
+  <data name="cn_lblFloor" xml:space="preserve">
+    <value>Floor:</value>
+  </data>
+  <data name="cn_lblLabelList" xml:space="preserve">
+    <value>Label List:</value>
+  </data>
+  <data name="cn_lblModel" xml:space="preserve">
+    <value>Model:</value>
+  </data>
+  <data name="cn_lblPAQC" xml:space="preserve">
+    <value>PAQC</value>
+  </data>
+  <data name="cn_lblPDLine" xml:space="preserve">
+    <value>线别:</value>
+  </data>
+  <data name="cn_lblProductID" xml:space="preserve">
+    <value>ProdId:</value>
+  </data>
+  <data name="cn_lblStation" xml:space="preserve">
+    <value>Station:</value>
+  </data>
+  <data name="cn_msgDuplicateData" xml:space="preserve">
+    <value>该Defect已经存在!!</value>
+  </data>
+  <data name="cn_msgInputValidDefect" xml:space="preserve">
+    <value>请输入合法的Defect!!</value>
+  </data>
+  <data name="cn_colPartNo" xml:space="preserve">
+    <value>Part No</value>
+  </data>
+  <data name="eng_colPartNo" xml:space="preserve">
+    <value>Part No</value>
+  </data>
+  <data name="eng_colQty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="eng_colTp" xml:space="preserve">
+    <value>Tp</value>
+  </data>
+  <data name="eng_lblCode" xml:space="preserve">
+    <value>Code:</value>
+  </data>
+  <data name="eng_lblCustSN" xml:space="preserve">
+    <value>Cust SN:</value>
+  </data>
+  <data name="eng_lblFloor" xml:space="preserve">
+    <value>Floor:</value>
+  </data>
+  <data name="eng_lblLabelList" xml:space="preserve">
+    <value>Label List:</value>
+  </data>
+  <data name="eng_lblModel" xml:space="preserve">
+    <value>Model:</value>
+  </data>
+  <data name="eng_lblPAQC" xml:space="preserve">
+    <value>PAQC</value>
+  </data>
+  <data name="eng_lblPDLine" xml:space="preserve">
+    <value>PdLine:</value>
+  </data>
+  <data name="eng_lblProductID" xml:space="preserve">
+    <value>ProdId:</value>
+  </data>
+  <data name="eng_lblStation" xml:space="preserve">
+    <value>Station:</value>
+  </data>
+  <data name="eng_msgDuplicateData" xml:space="preserve">
+    <value>Duplicate Data!!</value>
+  </data>
+  <data name="eng_msgInputValidDefect" xml:space="preserve">
+    <value>Please input the valid Defect!!</value>
+  </data>
+  <data name="cn_lblDataEntry" xml:space="preserve">
+    <value>Data Entry:</value>
+  </data>
+  <data name="eng_lblDataEntry" xml:space="preserve">
+    <value>Data Entry:</value>
+  </data>
+  <data name="cn_lblProductInfo" xml:space="preserve">
+    <value>Product Information</value>
+  </data>
+  <data name="eng_lblProductInfo" xml:space="preserve">
+    <value>Product Information</value>
+  </data>
+  <data name="cn_lblNeedMenu" xml:space="preserve">
+    <value>Need Jp Warranty menu</value>
+  </data>
+  <data name="cn_msgInputFloor" xml:space="preserve">
+    <value>请先选择[ Floor] !</value>
+  </data>
+  <data name="cn_msgNeedWWAN" xml:space="preserve">
+    <value>此机器需要刷WWAN ID Label No!</value>
+  </data>
+  <data name="eng_lblNeedMenu" xml:space="preserve">
+    <value>Need Jp Warranty menu</value>
+  </data>
+  <data name="eng_msgInputFloor" xml:space="preserve">
+    <value>Please input[Floor] first!</value>
+  </data>
+  <data name="eng_msgNeedWWAN" xml:space="preserve">
+    <value>Please input WWAN ID Label No!</value>
+  </data>
+  <data name="cn_msgNeedCardSN" xml:space="preserve">
+    <value>请刷Warranty Card 上的SN号码!</value>
+  </data>
+  <data name="cn_msgNotSame" xml:space="preserve">
+    <value>Warranty Label 上的Customer S/N 与COO Label 上的Customer S/N 不一致</value>
+  </data>
+  <data name="eng_msgNeedCardSN" xml:space="preserve">
+    <value>Please input Customer S/N on the Warranty Card </value>
+  </data>
+  <data name="eng_msgNotSame" xml:space="preserve">
+    <value>Customer S/N on the Warranty Label   and Customer S/N on the COO Label is inconsistent!</value>
+  </data>
+  <data name="cn_msgInputCustSN" xml:space="preserve">
+    <value>输入错误！</value>
+  </data>
+  <data name="eng_msgInputCustSN" xml:space="preserve">
+    <value>Wrong Code!</value>
+  </data>
+  <data name="cn_msgNoPath" xml:space="preserve">
+    <value>路径不存在！</value>
+  </data>
+  <data name="eng_msgNoPath" xml:space="preserve">
+    <value>Path is not  found！</value>
+  </data>
+  <data name="cn_msgErrCreatePDF" xml:space="preserve">
+    <value>生成PDF文件失败!</value>
+  </data>
+  <data name="cn_msgNoTemp" xml:space="preserve">
+    <value>Edits船务没有上传!</value>
+  </data>
+  <data name="eng_msgErrCreatePDF" xml:space="preserve">
+    <value>Greate PDF file failed!</value>
+  </data>
+  <data name="eng_msgNoTemp" xml:space="preserve">
+    <value>The Edits Shipping not uploaded!</value>
+  </data>
+  <data name="cn_QueryChk" xml:space="preserve">
+    <value>查询</value>
+  </data>
+  <data name="eng_QueryChk" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="cn_msgHitachiError" xml:space="preserve">
+    <value>请输入正确的HITACHI Check No！</value>
+  </data>
+  <data name="cn_msgNeedHitachi" xml:space="preserve">
+    <value>请输入HITACHI Check No!</value>
+  </data>
+  <data name="eng_msgHitachiError" xml:space="preserve">
+    <value>Please enter the correct HITACHI Check No！</value>
+  </data>
+  <data name="eng_msgNeedHitachi" xml:space="preserve">
+    <value>Please input HITACHI Check No!</value>
+  </data>
+  <data name="cn_msgCreatePDF" xml:space="preserve">
+    <value>正在生成PDF，请等待...</value>
+  </data>
+  <data name="eng_msgCreatePDF" xml:space="preserve">
+    <value>Creating PDF，please waitting...</value>
+  </data>
+  <data name="cn_msgAT4show" xml:space="preserve">
+    <value>需要打印资产标签,贴附于外箱</value>
+  </data>
+  <data name="eng_msgAT4show" xml:space="preserve">
+    <value>Need Print ATSN4,Please apply to Carton.</value>
+  </data>
+</root>

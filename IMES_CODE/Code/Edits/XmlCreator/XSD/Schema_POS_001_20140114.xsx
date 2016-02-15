@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--此文件由 XML 架构设计器自动生成。它包含设计器图面组件的布局信息。-->
+<XSDDesignerLayout Style="LeftRight" layoutVersion="2" viewPortLeft="-683" viewPortTop="12836" zoom="100">
+    <TRUCK_XmlElement left="1112" top="16800" width="8440" height="3149" selected="0" zOrder="0" index="0" expanded="1">
+        <FORWARDER_XmlElement left="10186" top="16800" width="5292" height="3149" selected="0" zOrder="1" index="21" expanded="1">
+            <UDF_HEADER_XmlElement left="16112" top="13143" width="5292" height="3149" selected="0" zOrder="11" index="5" expanded="0" />
+            <UDF_DETAIL_XmlElement left="16112" top="16800" width="5292" height="3149" selected="0" zOrder="13" index="6" expanded="0" />
+            <PALLET_XmlElement left="16112" top="20457" width="5292" height="3149" selected="0" zOrder="15" index="7" expanded="1">
+                <UDF_PALLET_XmlElement left="22038" top="18497" width="5292" height="3149" selected="0" zOrder="18" index="7" expanded="0" />
+                <BOXES_XmlElement left="22038" top="22286" width="5292" height="3149" selected="0" zOrder="20" index="8" expanded="1">
+                    <UDF_BOX_XmlElement left="27964" top="22286" width="5292" height="3149" selected="0" zOrder="22" index="2" expanded="0" />
+                </BOXES_XmlElement>
+            </PALLET_XmlElement>
+        </FORWARDER_XmlElement>
+    </TRUCK_XmlElement>
+    <UDFType_XmlComplexType left="10555" top="10812" width="5292" height="3149" selected="0" zOrder="3" index="1" expanded="1" />
+</XSDDesignerLayout>

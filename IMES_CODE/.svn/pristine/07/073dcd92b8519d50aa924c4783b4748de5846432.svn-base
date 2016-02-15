@@ -1,0 +1,36 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="UnitLabelPrint" SessionType="0" Editor="" Station="" CurrentFlowSession="{x:Null}" Key="" PdLine="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind UnitLabelPrint,Path=Customer}" x:Name="getProduct1" SessionType="{ActivityBind UnitLabelPrint,Path=SessionType}" Editor="{ActivityBind UnitLabelPrint,Path=Editor}" Station="{ActivityBind UnitLabelPrint,Path=Station}" Line="{ActivityBind UnitLabelPrint,Path=PdLine}" Key="{ActivityBind UnitLabelPrint,Path=Key}" />
+	<ns0:BlockStation Customer="{ActivityBind UnitLabelPrint,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind UnitLabelPrint,Path=SessionType}" Editor="{ActivityBind UnitLabelPrint,Path=Editor}" ProcessType="Product" Station="{ActivityBind UnitLabelPrint,Path=Station}" Line="{ActivityBind UnitLabelPrint,Path=PdLine}" Key="{ActivityBind UnitLabelPrint,Path=Key}" />
+	<ns0:GetBOM Customer="{ActivityBind UnitLabelPrint,Path=Customer}" x:Name="getBOM1" SessionType="{ActivityBind UnitLabelPrint,Path=SessionType}" Editor="{ActivityBind UnitLabelPrint,Path=Editor}" Station="{ActivityBind UnitLabelPrint,Path=Station}" Line="{ActivityBind UnitLabelPrint,Path=PdLine}" Key="{ActivityBind UnitLabelPrint,Path=Key}" />
+	<ns0:GetExplicitCheckItem Customer="{ActivityBind UnitLabelPrint,Path=Customer}" x:Name="getExplicitCheckItem1" SessionType="{ActivityBind UnitLabelPrint,Path=SessionType}" Editor="{ActivityBind UnitLabelPrint,Path=Editor}" Station="{ActivityBind UnitLabelPrint,Path=Station}" Line="{ActivityBind UnitLabelPrint,Path=PdLine}" Key="{ActivityBind UnitLabelPrint,Path=Key}" />
+	<WhileActivity x:Name="checkPartAndItem">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplete" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity2">
+			<ns0:WaitInput Customer="{ActivityBind UnitLabelPrint,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind UnitLabelPrint,Path=SessionType}" Editor="{ActivityBind UnitLabelPrint,Path=Editor}" Station="{ActivityBind UnitLabelPrint,Path=Station}" Line="{ActivityBind UnitLabelPrint,Path=PdLine}" Key="{ActivityBind UnitLabelPrint,Path=Key}" />
+			<IfElseActivity x:Name="ifElseActivity1">
+				<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplete" />
+					</IfElseBranchActivity.Condition>
+					<ns0:PartMatch Customer="{ActivityBind UnitLabelPrint,Path=Customer}" x:Name="partMatch1" SessionType="{ActivityBind UnitLabelPrint,Path=SessionType}" Editor="{ActivityBind UnitLabelPrint,Path=Editor}" Station="{ActivityBind UnitLabelPrint,Path=Station}" Line="{ActivityBind UnitLabelPrint,Path=PdLine}" Key="{ActivityBind UnitLabelPrint,Path=Key}" />
+					<IfElseActivity x:Name="ifElseActivity2">
+						<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+							<IfElseBranchActivity.Condition>
+								<RuleConditionReference ConditionName="NoPartMatch" />
+							</IfElseBranchActivity.Condition>
+							<ns0:CheckExplicitCheckItem Customer="{ActivityBind UnitLabelPrint,Path=Customer}" x:Name="CheckEachItem" SessionType="{ActivityBind UnitLabelPrint,Path=SessionType}" Editor="{ActivityBind UnitLabelPrint,Path=Editor}" Station="{ActivityBind UnitLabelPrint,Path=Station}" Line="{ActivityBind UnitLabelPrint,Path=PdLine}" Key="{ActivityBind UnitLabelPrint,Path=Key}" />
+						</IfElseBranchActivity>
+					</IfElseActivity>
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:DBScope Station="{ActivityBind UnitLabelPrint,Path=Station}" x:Name="dbScope1" Key="{ActivityBind UnitLabelPrint,Path=Key}" SessionType="{ActivityBind UnitLabelPrint,Path=SessionType}">
+		<ns0:BindProductParts Customer="{ActivityBind UnitLabelPrint,Path=Customer}" x:Name="bindProductParts1" SessionType="{ActivityBind UnitLabelPrint,Path=SessionType}" Editor="{ActivityBind UnitLabelPrint,Path=Editor}" Station="{ActivityBind UnitLabelPrint,Path=Station}" Line="{ActivityBind UnitLabelPrint,Path=PdLine}" Key="{ActivityBind UnitLabelPrint,Path=Key}" />
+		<ns0:UpdateProductStatus Customer="{ActivityBind UnitLabelPrint,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind UnitLabelPrint,Path=SessionType}" Editor="{ActivityBind UnitLabelPrint,Path=Editor}" Status="Pass" Station="{ActivityBind UnitLabelPrint,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind UnitLabelPrint,Path=PdLine}" Key="{ActivityBind UnitLabelPrint,Path=Key}" />
+		<ns0:WriteProductLog Customer="{ActivityBind UnitLabelPrint,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind UnitLabelPrint,Path=SessionType}" Editor="{ActivityBind UnitLabelPrint,Path=Editor}" Station="{ActivityBind UnitLabelPrint,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind UnitLabelPrint,Path=PdLine}" Key="{ActivityBind UnitLabelPrint,Path=Key}" />
+	</ns0:DBScope>
+	<ns0:Print Customer="{ActivityBind UnitLabelPrint,Path=Customer}" x:Name="print1" SessionType="{ActivityBind UnitLabelPrint,Path=SessionType}" Editor="{ActivityBind UnitLabelPrint,Path=Editor}" Station="{ActivityBind UnitLabelPrint,Path=Station}" Line="{ActivityBind UnitLabelPrint,Path=PdLine}" Key="{ActivityBind UnitLabelPrint,Path=Key}" />
+</ns0:BaseFlow>

@@ -1,0 +1,455 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Data.Sql;
+using IMES.Query.DB;
+using System.Data;
+using System.Data.SqlClient;
+using IMES.WS.Common;
+
+namespace IMES.WS.NotifyMAWB
+{
+    public class SQL
+    {
+
+        public static List<SAPMAWBDef> GetSAPMawbDef(string connectionDB, int dbIndex, string dataType)
+        {
+            List<SAPMAWBDef> retList = new List<SAPMAWBDef>();
+
+            string strSQL = @"select ID, PlantCode, ConnectionStr, DBName,  MsgType, Descr, Cdt, Udt, VolumnUnit 
+                                            from SAPWeightDef
+                                            where MsgType=@MsgType
+                                            order by ID";
+
+            DataTable dt = SQLHelper.ExecuteDataFill(SQLHelper.GetDBConnectionString(connectionDB, dbIndex),
+                                                     System.Data.CommandType.Text,
+                                                     strSQL,
+                                                     SQLHelper.CreateSqlParameter("@MsgType", 16, dataType));
+            foreach (DataRow dr in dt.Rows)
+            {
+                SAPMAWBDef item = new SAPMAWBDef();
+                item.ID = (int)dr["ID"];
+                item.PlantCode = dr["PlantCode"].ToString().Trim();
+                item.ConnectionStr = dr["ConnectionStr"].ToString().Trim();
+                item.DBName = dr["DBName"].ToString().Trim();
+                item.MsgType = dr["MsgType"].ToString().Trim();
+                item.Descr = dr["Descr"].ToString().Trim();
+                item.Cdt = (DateTime)dr["Cdt"];
+                item.Udt = (DateTime)dr["Udt"];
+                item.VolumnUnit = dr["VolumnUnit"].ToString().Trim();
+
+                retList.Add(item);
+            }
+
+            return retList;
+        }
+
+        public static void InsertTxnDataLog_DB(string connectionName, int dbIndex,
+                                                                  EnumMsgCategory Category,
+                                                                    string Action,
+                                                                    string KeyValue1,
+                                                                    string KeyValue2,
+                                                                    string TxnId,
+                                                                    string ErrorCode,
+                                                                    string ErrorDescr,
+                                                                    EnumMsgState State,
+                                                                    string Comment)
+        {
+            string strSQL = @"if not Exists (select * from TxnDataLog where [Action]=@Action and [KeyValue1]=@KeyValue1 and [TxnId]=@TxnId and [Category]=@Category)
+                              BEGIN  
+                                    INSERT INTO TxnDataLog ([Category],[Action],[KeyValue1],[KeyValue2],[TxnId],
+                                                            [ErrorCode],[ErrorDescr],[State],[Comment],[Cdt])
+                                    VALUES (@Category,@Action,@KeyValue1,@KeyValue2,@TxnId,
+                                            @ErrorCode,@ErrorDescr,@State,@Comment,GETDATE()) 
+                              END";
+
+            SQLHelper.ExecuteNonQuery(SQLHelper.GetDBConnectionString(connectionName, dbIndex),
+                                                            System.Data.CommandType.Text,
+                                                             strSQL,
+                                                             SQLHelper.CreateSqlParameter("@Category", 16, Category.ToString().Trim()),
+                                                             SQLHelper.CreateSqlParameter("@Action", 32, Action),
+                                                             SQLHelper.CreateSqlParameter("@KeyValue1", 32, KeyValue1),
+                                                             SQLHelper.CreateSqlParameter("@KeyValue2", 32, KeyValue2),
+                                                             SQLHelper.CreateSqlParameter("@TxnId", 40, TxnId),
+                                                             SQLHelper.CreateSqlParameter("@ErrorCode", 32, ErrorCode),
+                                                             SQLHelper.CreateSqlParameter("@ErrorDescr", 255, ErrorDescr),
+                                                             SQLHelper.CreateSqlParameter("@State", 16, State.ToString().Trim()),
+                                                             SQLHelper.CreateSqlParameter("@Comment", 255, Comment));
+
+        }
+
+
+        public static void InsertTempMAWB(string connectionDB, int dbIndex, NotifyMAWB MAWBItems, string State, string ErrorDescr, string BatchId)
+        {
+            string SerialNumber = (MAWBItems.SerialNumber == null ? "" : MAWBItems.SerialNumber); 
+            string MAWB = (MAWBItems.MAWB == null ? "" : MAWBItems.MAWB);
+            string Plant = (MAWBItems.Plant == null ? "" : MAWBItems.Plant);
+            string DN = (MAWBItems.DN == null ? "" : MAWBItems.DN);
+            string Items = (MAWBItems.Items == null ? "" : MAWBItems.Items); 
+            string Remark1 = (MAWBItems.Remark1 == null ? "" : MAWBItems.Remark1);
+            string DeclarationId = (MAWBItems.Declaration == null ? "" : MAWBItems.Declaration);
+            string OceanContainer = (MAWBItems.Containerid == null ? "" : MAWBItems.Containerid); 
+
+
+            string strSQL = @"if not Exists (select * from MAWB_Master where SerialNumber=@SerialNumber and MAWB=@MAWB)
+                              begin
+                                    insert into MAWB_Master(SerialNumber, MAWB, State, ErrorDescr, BatchId, Cdt, Udt)
+                                    values (@SerialNumber, @MAWB, @State, @ErrorDescr, @BatchId, @Now, @Now)
+                              end      
+                              insert into MAWB_Detail(SerialNumber, Plant, DN, Items, DeclarationId, OceanContainer, Remark1, Cdt)
+                              values (@SerialNumber, @Plant, @DN, @Items, @DeclarationId, @OceanContainer, @Remark1, @Now)";                          
+            
+            SQLHelper.ExecuteNonQuery(SQLHelper.GetDBConnectionString(connectionDB, dbIndex),
+                                                System.Data.CommandType.Text,
+                                                strSQL,
+                                                SQLHelper.CreateSqlParameter("@SerialNumber", 40, SerialNumber),
+                                                SQLHelper.CreateSqlParameter("@MAWB", 32, MAWB),
+                                                SQLHelper.CreateSqlParameter("@Plant", 4, Plant),
+                                                SQLHelper.CreateSqlParameter("@DN", 10, DN),
+                                                SQLHelper.CreateSqlParameter("@Items", 6, Items),
+                                                SQLHelper.CreateSqlParameter("@Remark1", 25, Remark1),
+                                                SQLHelper.CreateSqlParameter("@State", 16, State),
+                                                SQLHelper.CreateSqlParameter("@ErrorDescr", 255, ErrorDescr),
+                                                SQLHelper.CreateSqlParameter("@Now", DateTime.Now),
+                                                SQLHelper.CreateSqlParameter("@BatchId", 32, BatchId),
+                                                SQLHelper.CreateSqlParameter("@DeclarationId", 64, DeclarationId),
+                                                SQLHelper.CreateSqlParameter("@OceanContainer", 64, OceanContainer));
+        }
+
+        public static void UpdateTempMAWB(string connectionDB, int dbIndex, string SerialNumber, string MAWB, string State, string ErrorDescr)
+        {
+
+            string strSQL = @"update MAWB_Master set State=@State, ErrorDescr=@ErrorDescr, Udt=@Now
+                              where SerialNumber=@SerialNumber and MAWB=@MAWB"; 
+
+            SQLHelper.ExecuteNonQuery(SQLHelper.GetDBConnectionString(connectionDB, dbIndex),
+                                                System.Data.CommandType.Text,
+                                                strSQL,
+                                                SQLHelper.CreateSqlParameter("@SerialNumber", 40, SerialNumber),
+                                                SQLHelper.CreateSqlParameter("@MAWB", 32, MAWB),
+                                                SQLHelper.CreateSqlParameter("@State", 16, State),
+                                                SQLHelper.CreateSqlParameter("@ErrorDescr", 255, ErrorDescr),
+                                                SQLHelper.CreateSqlParameter("@Now", DateTime.Now));
+        }
+
+        public static string GetMAWBState(string connectionDB, int dbIndex, string SerialNumber, string MAWB)
+        {
+
+            string strSQL = @"if not exists(select SerialNumber from MAWB_Master where MAWB=@MAWB and SerialNumber=@SerialNumber)
+                              begin
+                                  set @ret = 'N'
+                              end
+                              else
+                              begin
+                                  select  @ret= (
+                                     select (case when State in ('Success', 'Receive') then 'T' else 'F' end) as ret
+                                     from MAWB_Master where MAWB=@MAWB and SerialNumber=@SerialNumber
+                                   )
+                              end";
+           SqlParameter ParaRet = SQLHelper.CreateSqlParameter("@ret", 8, "", ParameterDirection.InputOutput);
+
+           SQLHelper.ExecuteNonQuery(SQLHelper.GetDBConnectionString(connectionDB, dbIndex),
+                                                System.Data.CommandType.Text,
+                                                strSQL,
+                                                SQLHelper.CreateSqlParameter("@SerialNumber", 40, SerialNumber),
+                                                SQLHelper.CreateSqlParameter("@MAWB", 32, MAWB),
+                                                ParaRet);
+
+            return ParaRet.Value.ToString().Trim(); 
+        }
+
+        public static void UpdateMAWB(string connectionStr, string DBName, string MAWB, string DN, string Items, int itemcnt, DateTime Cdt)
+        {
+            string connectStr = string.Format(connectionStr, DBName);
+
+            string strSQL = @"if (@itemcnt = 0)
+                              begin
+                                  delete MAWB where MAWB=@MAWB
+
+                                  delete MAWB 
+                                  where substring(@MAWB,1,case when ((charindex('_',@MAWB)-1) <=0) then len(@MAWB) else (charindex('_',@MAWB)-1) end) = MAWB and
+                                        charindex('_' , @MAWB)>0                                      
+                              end
+
+                              delete MAWB where Delivery = @DN+@Items and MAWB <> @MAWB
+
+                              insert into MAWB(MAWB, Delivery, Cdt)
+                              values (@MAWB, @DN+@Items, @Now)";
+
+            SQLHelper.ExecuteDataFill(connectStr,
+                                                System.Data.CommandType.Text,
+                                                strSQL,
+                                                SQLHelper.CreateSqlParameter("@itemcnt", itemcnt),
+                                                SQLHelper.CreateSqlParameter("@MAWB", 32, MAWB),
+                                                SQLHelper.CreateSqlParameter("@DN", 10, DN),
+                                                SQLHelper.CreateSqlParameter("@Items", 6, Items),
+                                                SQLHelper.CreateSqlParameter("@Now", Cdt));
+        }
+
+        public static void UpdateMAWB_Declaration(string connectionStr, string DBName, string MAWB, string DN, string Items, int itemcnt, DateTime Cdt, string DeclarationId, string OceanContainer, string HAWB)
+        {
+            string connectStr = string.Format(connectionStr, DBName);
+
+            string strSQL = @"if (@itemcnt = 0)
+                              begin
+                                  delete MAWB where MAWB=@MAWB
+
+                                  delete MAWB 
+                                  where substring(@MAWB,1,case when ((charindex('_',@MAWB)-1) <=0) then len(@MAWB) else (charindex('_',@MAWB)-1) end) = MAWB and
+                                        charindex('_' , @MAWB)>0                                      
+                              end
+
+                              delete MAWB where Delivery = @DN+@Items and MAWB <> @MAWB
+
+                              insert into MAWB(MAWB, Delivery, DeclarationId, OceanContainer, HAWB, Cdt)
+                              values (@MAWB, @DN+@Items, @DeclarationId, @OceanContainer, @HAWB, @Now)";
+
+            SQLHelper.ExecuteDataFill(connectStr,
+                                                System.Data.CommandType.Text,
+                                                strSQL,
+                                                SQLHelper.CreateSqlParameter("@itemcnt", itemcnt),
+                                                SQLHelper.CreateSqlParameter("@MAWB", 32, MAWB),
+                                                SQLHelper.CreateSqlParameter("@DN", 10, DN),
+                                                SQLHelper.CreateSqlParameter("@Items", 6, Items),
+                                                SQLHelper.CreateSqlParameter("@Now", Cdt),
+                                                SQLHelper.CreateSqlParameter("@DeclarationId", 64, DeclarationId),
+                                                SQLHelper.CreateSqlParameter("@OceanContainer", 64, OceanContainer),
+                                                SQLHelper.CreateSqlParameter("@HAWB", 32, HAWB));
+        }
+
+        public static void UpdateMAWBByDN(string connectionStr, string DBName, string MAWB, string DN, string Items, int itemcnt, DateTime Cdt)
+        {
+            string connectStr = string.Format(connectionStr, DBName);
+
+            string strSQL = @"if (@itemcnt = 0)
+                              begin
+                                  delete MAWB where MAWB=@MAWB
+
+                                  delete MAWB 
+                                  where substring(@MAWB,1,case when ((charindex('_',@MAWB)-1) <=0) then len(@MAWB) else (charindex('_',@MAWB)-1) end) = MAWB and
+                                        charindex('_' , @MAWB)>0                                      
+                              end
+                              if exists (select * from [10.99.183.23].WYSE.dbo.PoData where DeliveryNo = @DN+@Items )
+                              begin
+                                    insert into MAWB(MAWB, Delivery, Cdt)
+                                    values (@MAWB, @DN+@Items, @Now)
+                              end";
+
+            SQLHelper.ExecuteDataFill(connectStr,
+                                                System.Data.CommandType.Text,
+                                                strSQL,
+                                                SQLHelper.CreateSqlParameter("@itemcnt", itemcnt),
+                                                SQLHelper.CreateSqlParameter("@MAWB", 32, MAWB),
+                                                SQLHelper.CreateSqlParameter("@DN", 10, DN),
+                                                SQLHelper.CreateSqlParameter("@Items", 6, Items),
+                                                SQLHelper.CreateSqlParameter("@Now", Cdt));
+        }
+
+        public static void DeleteMAWB(string connectionStr, string DBName, string MAWB, int itemcnt)
+        {
+            string connectStr = string.Format(connectionStr, DBName);
+
+            string strSQL = @"if (@itemcnt = 0)
+                              begin
+                                  delete MAWB where MAWB=@MAWB
+
+                                  delete MAWB  
+                                  where substring(@MAWB,1,case when ((charindex('_',@MAWB)-1) <=0) then 0 else (charindex('_',@MAWB)-1) end) = MAWB
+                              end";
+
+            SQLHelper.ExecuteDataFill(connectStr,
+                                                System.Data.CommandType.Text,
+                                                strSQL,
+                                                SQLHelper.CreateSqlParameter("@itemcnt", itemcnt),
+                                                SQLHelper.CreateSqlParameter("@MAWB", 32, MAWB));
+        }
+//        public static void DeleteMAWBbyDelivery(string connectionStr, string DBName, string MAWB, string DN, string Items, int itemcnt)
+//        {
+//            string connectStr = string.Format(connectionStr, DBName);
+
+//            string strSQL = @"if (@itemcnt = 0)
+//                              begin
+//                                  delete MAWB where MAWB=@MAWB and Delivery=@DN+@Items
+//
+//                                  delete MAWB  
+//                                  where substring(@MAWB,1,case when ((charindex('_',@MAWB)-1) <=0) then 0 else (charindex('_',@MAWB)-1) end) = MAWB and
+//                                        Delivery=@DN+@Items
+//                              end";
+
+//            SQLHelper.ExecuteDataFill(connectStr,
+//                                                System.Data.CommandType.Text,
+//                                                strSQL,
+//                                                SQLHelper.CreateSqlParameter("@itemcnt", itemcnt),
+//                                                SQLHelper.CreateSqlParameter("@MAWB", 32, MAWB),
+//                                                SQLHelper.CreateSqlParameter("@DN", 10, DN),
+//                                                SQLHelper.CreateSqlParameter("@Items", 6, Items));
+//        }
+
+        public static void DeleteMAWBbyDelivery(string connectionStr, string DBName, string MAWB, string DN, string Items, int itemcnt)
+        {
+            string connectStr = string.Format(connectionStr, DBName);
+
+            string strSQL = @"if not exists (select * from MAWB where MAWB = substring(@MAWB,1,case when ((charindex('_',@MAWB)-1) <=0) then len(@MAWB) else (charindex('_',@MAWB)-1) end) and Delivery=@DN+@Items)
+                              begin
+                                Delete from MAWB where Delivery=@DN+@Items
+                              end";
+
+            SQLHelper.ExecuteDataFill(connectStr,
+                                                System.Data.CommandType.Text,
+                                                strSQL,
+                                                SQLHelper.CreateSqlParameter("@itemcnt", itemcnt),
+                                                SQLHelper.CreateSqlParameter("@MAWB", 32, MAWB),
+                                                SQLHelper.CreateSqlParameter("@DN", 10, DN),
+                                                SQLHelper.CreateSqlParameter("@Items", 6, Items));
+        }
+
+
+        public static void UpdateMAWB_UnderLineByDN(string connectionStr, string DBName, string MAWB, string DN, string Items, int itemcnt, DateTime Cdt)
+        {
+            string connectStr = string.Format(connectionStr, DBName);
+
+            string strSQL = @"if not exists (select * from MAWB where MAWB = substring(@MAWB,1,case when ((charindex('_',@MAWB)-1) <=0) then len(@MAWB) else (charindex('_',@MAWB)-1) end) and Delivery=@DN+@Items)
+                              begin
+                                insert into MAWB(MAWB, Delivery, Cdt)
+                                values (substring(@MAWB,1,case when ((charindex('_',@MAWB)-1) <=0) then len(@MAWB) else (charindex('_',@MAWB)-1) end), @DN+@Items, @Now)
+                              end";
+
+            SQLHelper.ExecuteDataFill(connectStr,
+                                                System.Data.CommandType.Text,
+                                                strSQL,
+                                                SQLHelper.CreateSqlParameter("@itemcnt", itemcnt),
+                                                SQLHelper.CreateSqlParameter("@MAWB", 32, MAWB),
+                                                SQLHelper.CreateSqlParameter("@DN", 10, DN),
+                                                SQLHelper.CreateSqlParameter("@Items", 6, Items),
+                                                SQLHelper.CreateSqlParameter("@Now", Cdt));
+        }
+
+        public static void UpdateMAWB_UnderLine(string connectionStr, string DBName, string MAWB, string DN, string Items, int itemcnt, DateTime Cdt)
+        {
+            string connectStr = string.Format(connectionStr, DBName);
+
+            string strSQL = @"if exists (select * from PoData where DeliveryNo=@DN+@Items)
+                              begin
+                                    insert into MAWB(MAWB, Delivery, Cdt)
+                                    values (substring(@MAWB,1,case when ((charindex('_',@MAWB)-1) <=0) then len(@MAWB) else (charindex('_',@MAWB)-1) end), @DN+@Items, @Now)
+                              end";
+
+            SQLHelper.ExecuteDataFill(connectStr,
+                                                System.Data.CommandType.Text,
+                                                strSQL,
+                                                SQLHelper.CreateSqlParameter("@itemcnt", itemcnt),
+                                                SQLHelper.CreateSqlParameter("@MAWB", 32, MAWB),
+                                                SQLHelper.CreateSqlParameter("@DN", 10, DN),
+                                                SQLHelper.CreateSqlParameter("@Items", 6, Items),
+                                                SQLHelper.CreateSqlParameter("@Now", Cdt));
+        }
+
+        public static List<MAWBMaster> GetMawbMaster(string connectionDB, int dbIndex, string BatchId)
+        {
+            List<MAWBMaster> retList = new List<MAWBMaster>();
+
+            string strSQL = @"select SerialNumber, MAWB, Case when State in ('Success', 'Receive') then 'T' else 'F' end as State, 
+                                     ErrorDescr, Cdt, Udt
+                              from MAWB_Master
+                              where BatchId=@BatchId";
+
+            DataTable dt = SQLHelper.ExecuteDataFill(SQLHelper.GetDBConnectionString(connectionDB, dbIndex),
+                                                     System.Data.CommandType.Text,
+                                                     strSQL,
+                                                     SQLHelper.CreateSqlParameter("@BatchId", 32, BatchId));
+            foreach (DataRow dr in dt.Rows)
+            {
+                MAWBMaster item = new MAWBMaster();
+                item.SerialNumber = dr["SerialNumber"].ToString().Trim();
+                item.MAWB = dr["MAWB"].ToString().Trim();
+                item.State = dr["State"].ToString().Trim();
+                item.ErrorDescr = dr["ErrorDescr"].ToString().Trim();
+                item.Cdt = (DateTime)dr["Cdt"];
+                item.Udt = (DateTime)dr["Udt"];
+                retList.Add(item);
+            }
+
+            return retList;
+        }
+        public static List<MAWBDetail> GetMawbDetail(string connectionDB, int dbIndex, string SerialNumber)
+        {
+            List<MAWBDetail> retList = new List<MAWBDetail>();
+
+            string strSQL = @"select SerialNumber, Plant, DN, Items, DeclarationId, OceanContainer, Remark1
+                              from MAWB_Detail
+                              where SerialNumber=@SerialNumber";
+
+            DataTable dt = SQLHelper.ExecuteDataFill(SQLHelper.GetDBConnectionString(connectionDB, dbIndex),
+                                                     System.Data.CommandType.Text,
+                                                     strSQL,
+                                                     SQLHelper.CreateSqlParameter("@SerialNumber", 64, SerialNumber));
+            foreach (DataRow dr in dt.Rows)
+            {
+                MAWBDetail item = new MAWBDetail();
+                item.SerialNumber = dr["SerialNumber"].ToString().Trim();
+                item.Plant = dr["Plant"].ToString().Trim();
+                item.DN = dr["DN"].ToString().Trim();
+                item.Items = dr["Items"].ToString().Trim();
+                item.DeclarationId = dr["DeclarationId"].ToString().Trim();
+                item.OceanContainer = dr["OceanContainer"].ToString().Trim();
+                item.HAWB = dr["Remark1"].ToString().Trim();
+
+                retList.Add(item);
+            }
+
+            return retList;
+        }
+        public static string GetLastMAWB(string connectionDB, int dbIndex, string MAWB, DateTime CurrentUdt)
+        {
+
+            string strSQL = @"select top 1 @ret = SerialNumber from MAWB_Master where MAWB=@MAWB and Udt<@CurrentUdt
+                              order by Udt desc";
+            SqlParameter ParaRet = SQLHelper.CreateSqlParameter("@ret", 32, "", ParameterDirection.InputOutput);
+
+            SQLHelper.ExecuteNonQuery(SQLHelper.GetDBConnectionString(connectionDB, dbIndex),
+                                                 System.Data.CommandType.Text,
+                                                 strSQL,
+                                                 SQLHelper.CreateSqlParameter("@MAWB", 40, MAWB),
+                                                 SQLHelper.CreateSqlParameter("@CurrentUdt", CurrentUdt),
+                                                 ParaRet);
+
+            return ParaRet.Value.ToString().Trim();
+        }
+    }
+
+
+
+    public class SAPMAWBDef
+    {
+        public int ID;
+        public string PlantCode;
+        public string ConnectionStr;
+        public string DBName;
+        public string MsgType;
+        public string Descr;
+        public DateTime Cdt;
+        public DateTime Udt;
+        public string VolumnUnit;
+    }
+    public class MAWBMaster
+    {
+        public string SerialNumber;
+        public string MAWB;
+        public string State;
+        public string ErrorDescr;
+        public DateTime Cdt;
+        public DateTime Udt;
+    }
+
+    public class MAWBDetail
+    {
+        public string SerialNumber;
+        public string Plant;
+        public string DN;
+        public string Items;
+        public string DeclarationId;
+        public string OceanContainer;
+        public string HAWB;
+    }
+}

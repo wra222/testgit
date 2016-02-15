@@ -1,0 +1,65 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="_UnpackCartonForFRU" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="IsCaronSNKey">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="IsCartonSnKey" />
+			</IfElseBranchActivity.Condition>
+			<ns0:GetRCTO146Category Customer="{ActivityBind _UnpackCartonForFRU,Path=Customer}" x:Name="getRCTO146Category1" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}" NeedCheckStation="False" IsCaronSNKey="True" Editor="{ActivityBind _UnpackCartonForFRU,Path=Editor}" IsByPassCheck="True" Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" Line="{ActivityBind _UnpackCartonForFRU,Path=PdLine}" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" NeedPalletNotExist="True" />
+			<ns0:DBScope Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" x:Name="dbScope1" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}">
+				<ns0:UpackCartonOrDn Customer="{ActivityBind _UnpackCartonForFRU,Path=Customer}" x:Name="upackCartonOrDn1" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}" IsCaronSNKey="True" Editor="{ActivityBind _UnpackCartonForFRU,Path=Editor}" Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" Line="{ActivityBind _UnpackCartonForFRU,Path=PdLine}" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" />
+				<ns0:UpdateDeliveryStatus Customer="{ActivityBind _UnpackCartonForFRU,Path=Customer}" x:Name="updateDeliveryStatus1" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}" Editor="{ActivityBind _UnpackCartonForFRU,Path=Editor}" Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" Status="00" Line="{ActivityBind _UnpackCartonForFRU,Path=PdLine}" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity2">
+					<IfElseBranchActivity x:Name="MBCT">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="MBCT" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateMultiMBStatus Customer="{ActivityBind _UnpackCartonForFRU,Path=Customer}" Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}" Editor="{ActivityBind _UnpackCartonForFRU,Path=Editor}" IsPass="Pass" x:Name="updateMultiMBStatus1" Line="{ActivityBind _UnpackCartonForFRU,Path=PdLine}" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" />
+						<ns0:WriteMultiMBLog Customer="{ActivityBind _UnpackCartonForFRU,Path=Customer}" Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}" Editor="{ActivityBind _UnpackCartonForFRU,Path=Editor}" IsPass="True" x:Name="writeMultiMBLog1" Line="{ActivityBind _UnpackCartonForFRU,Path=PdLine}" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="MaterialCT">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="MaterialCT" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateMaterialStatus Customer="{ActivityBind _UnpackCartonForFRU,Path=Customer}" Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}" Editor="{ActivityBind _UnpackCartonForFRU,Path=Editor}" Enabled="False" IsSingleCT="False" x:Name="updateMaterialStatus1" Line="{ActivityBind _UnpackCartonForFRU,Path=PdLine}" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" />
+						<ns0:WriteMaterialLog Customer="{ActivityBind _UnpackCartonForFRU,Path=Customer}" Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}" Editor="{ActivityBind _UnpackCartonForFRU,Path=Editor}" IsSingleCT="False" x:Name="writeMaterialLog1" Line="{ActivityBind _UnpackCartonForFRU,Path=PdLine}" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" LogActionName="UnpackCartonForFRU" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="NoMaterialCT">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="NoMaterialCT" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateMaterialBoxStatus Customer="{ActivityBind _UnpackCartonForFRU,Path=Customer}" x:Name="updateMaterialBoxStatus1" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}" Editor="{ActivityBind _UnpackCartonForFRU,Path=Editor}" Enabled="False" Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" IsSingle="False" Line="{ActivityBind _UnpackCartonForFRU,Path=PdLine}" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+			<ns0:GetRCTO146Category Customer="{ActivityBind _UnpackCartonForFRU,Path=Customer}" x:Name="getRCTO146Category2" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}" NeedCheckStation="False" IsCaronSNKey="False" Editor="{ActivityBind _UnpackCartonForFRU,Path=Editor}" IsByPassCheck="True" Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" Line="{ActivityBind _UnpackCartonForFRU,Path=PdLine}" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" NeedPalletNotExist="True" />
+			<ns0:DBScope Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" x:Name="dbScope2" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}">
+				<ns0:UpackCartonOrDn Customer="{ActivityBind _UnpackCartonForFRU,Path=Customer}" x:Name="upackCartonOrDn2" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}" IsCaronSNKey="False" Editor="{ActivityBind _UnpackCartonForFRU,Path=Editor}" Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" Line="{ActivityBind _UnpackCartonForFRU,Path=PdLine}" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" />
+				<ns0:UpdateDeliveryStatus Customer="{ActivityBind _UnpackCartonForFRU,Path=Customer}" x:Name="updateDeliveryStatus2" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}" Editor="{ActivityBind _UnpackCartonForFRU,Path=Editor}" Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" Status="00" Line="{ActivityBind _UnpackCartonForFRU,Path=PdLine}" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity3">
+					<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="MBCT" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateMultiMBStatus Customer="{ActivityBind _UnpackCartonForFRU,Path=Customer}" Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}" Editor="{ActivityBind _UnpackCartonForFRU,Path=Editor}" IsPass="Pass" x:Name="updateMultiMBStatus2" Line="{ActivityBind _UnpackCartonForFRU,Path=PdLine}" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" />
+						<ns0:WriteMultiMBLog Customer="{ActivityBind _UnpackCartonForFRU,Path=Customer}" Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}" Editor="{ActivityBind _UnpackCartonForFRU,Path=Editor}" IsPass="True" x:Name="writeMultiMBLog2" Line="{ActivityBind _UnpackCartonForFRU,Path=PdLine}" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="ifElseBranchActivity3">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="MaterialCT" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateMaterialStatus Customer="{ActivityBind _UnpackCartonForFRU,Path=Customer}" Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}" Editor="{ActivityBind _UnpackCartonForFRU,Path=Editor}" Enabled="False" IsSingleCT="False" x:Name="updateMaterialStatus2" Line="{ActivityBind _UnpackCartonForFRU,Path=PdLine}" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" />
+						<ns0:WriteMaterialLog Customer="{ActivityBind _UnpackCartonForFRU,Path=Customer}" Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}" Editor="{ActivityBind _UnpackCartonForFRU,Path=Editor}" IsSingleCT="False" x:Name="writeMaterialLog2" Line="{ActivityBind _UnpackCartonForFRU,Path=PdLine}" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" LogActionName="UnpackCartonForFRU" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="ifElseBranchActivity4">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="NoMaterialCT" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateMaterialBoxStatus Customer="{ActivityBind _UnpackCartonForFRU,Path=Customer}" x:Name="updateMaterialBoxStatus2" SessionType="{ActivityBind _UnpackCartonForFRU,Path=SessionType}" Editor="{ActivityBind _UnpackCartonForFRU,Path=Editor}" Enabled="False" Station="{ActivityBind _UnpackCartonForFRU,Path=Station}" IsSingle="False" Line="{ActivityBind _UnpackCartonForFRU,Path=PdLine}" Key="{ActivityBind _UnpackCartonForFRU,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

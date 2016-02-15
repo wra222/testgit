@@ -1,0 +1,8 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.DockingMaintain.Service.exe.config
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.DockingMaintain.Service.exe
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.DockingMaintain.Service.pdb
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.DockingMaintain.Service\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.DockingMaintain.Service\obj\Debug\IMES.Service.ProjectInstaller.resources
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.DockingMaintain.Service\obj\Debug\IMES.DockingMaintain.Service.csproj.GenerateResource.Cache
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.DockingMaintain.Service\obj\Debug\IMES.DockingMaintain.Service.exe
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.DockingMaintain.Service\obj\Debug\IMES.DockingMaintain.Service.pdb

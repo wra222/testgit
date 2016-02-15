@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E8710015-EE0D-4419-A4F1-48BF2D8203EC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IMES.Docking.Interface</RootNamespace>
+    <AssemblyName>IMES.Docking.Interface</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IMES.DataModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DockingIntf\IFPCBoardLabelPrint.cs" />
+    <Compile Include="DockingIntf\CombineTmp.cs" />
+    <Compile Include="DockingIntf\FAMBReturn.cs" />
+    <Compile Include="DockingIntf\FRUCartonLabel.cs" />
+    <Compile Include="DockingIntf\IChangeModel.cs" />
+    <Compile Include="DockingIntf\IPCAReceiveReturnMB.cs" />
+    <Compile Include="DockingIntf\PCAOQCCosmeticForDocking.cs" />
+    <Compile Include="DockingIntf\PACosmeticForDocking.cs" />
+    <Compile Include="DockingIntf\PCARepair.cs" />
+    <Compile Include="DockingIntf\CombinePcbInLot.cs" />
+    <Compile Include="DockingIntf\RegenerateCustSNForDocking.cs" />
+    <Compile Include="DockingIntf\UnpackForDocking.cs" />
+    <Compile Include="DockingIntf\002MBLabelPrint.cs" />
+    <Compile Include="DockingIntf\CombinePack.cs" />
+    <Compile Include="DockingIntf\coolabel.cs" />
+    <Compile Include="DockingIntf\EPIAInput.cs" />
+    <Compile Include="DockingIntf\BoardInputForDocking.cs" />
+    <Compile Include="DockingIntf\CombinePoInCarton.cs" />
+    <Compile Include="DockingIntf\FARepairForDocking.cs" />
+    <Compile Include="DockingIntf\FATestStationforDocking.cs" />
+    <Compile Include="DockingIntf\OfflineLabelPrint.cs" />
+    <Compile Include="DockingIntf\OQCRepairForDocking.cs" />
+    <Compile Include="DockingIntf\PakUnitWeight.cs" />
+    <Compile Include="DockingIntf\GenSMTMO.cs" />
+    <Compile Include="DockingIntf\PalletVerifyDataForDocking.cs" />
+    <Compile Include="DockingIntf\PalletWeight.cs" />
+    <Compile Include="DockingIntf\PAQCOutputForDocking.cs" />
+    <Compile Include="DockingIntf\PAQCRepairForDocking.cs" />
+    <Compile Include="DockingIntf\PCAOQCInput.cs" />
+    <Compile Include="DockingIntf\PCAOQCOutput.cs" />
+    <Compile Include="DockingIntf\GenerateCustomerSNForDocking.cs" />
+    <Compile Include="DockingIntf\IICTInput.cs" />
+    <Compile Include="DockingIntf\EPIAOutput.cs" />
+    <Compile Include="DockingIntf\PCATestStation.cs" />
+    <Compile Include="DockingIntf\PoData.cs" />
+    <Compile Include="DockingIntf\ProdIdDismantleForDocking.cs" />
+    <Compile Include="DockingIntf\ProdIdPrintForDocking.cs" />
+    <Compile Include="DockingIntf\REVLabelPrintForDocking.cs" />
+    <Compile Include="DockingIntf\unpackallbydn.cs" />
+    <Compile Include="DockingIntf\UploadShipmentData.cs" />
+    <Compile Include="DockingIntf\ShipToLabelPrintForDocking.cs" />
+    <Compile Include="DockingIntf\VirtualMoForDocking.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

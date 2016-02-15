@@ -1,0 +1,108 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="_FARepair" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:ns1="clr-namespace:IMES.Activity.Special;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind _FARepair,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" AddObjectWithSessionKey="Y" Station="{ActivityBind _FARepair,Path=Station}" x:Name="getProduct1" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" InputType="ProductIDOrCustSN" />
+	<ns0:BlockStation Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" ProcessType="Product" Station="{ActivityBind _FARepair,Path=Station}" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+	<ns0:CheckAndSetQTime Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="checkAndSetQTime1" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="{ActivityBind _FARepair,Path=Station}" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" RemainLogDay="2" />
+	<IfElseActivity x:Name="ifElseActivity6">
+		<IfElseBranchActivity x:Name="ifFirstRepair">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="ifFirstRepair" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind _FARepair,Path=Station}" x:Name="dbScope3" Key="{ActivityBind _FARepair,Path=Key}" SessionType="{ActivityBind _FARepair,Path=SessionType}">
+				<ns0:GenerateRepairByTestLog Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="generateRepairByTestLog2" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" RepairStationType="FA" Station="{ActivityBind _FARepair,Path=Station}" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="whileCondition" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="{ActivityBind _FARepair,Path=Station}" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+			<IfElseActivity x:Name="ifElseActivity1">
+				<IfElseBranchActivity x:Name="AddorEdit">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="ifComplete" />
+					</IfElseBranchActivity.Condition>
+					<ns0:DBScope Station="{ActivityBind _FARepair,Path=Station}" x:Name="dbScope4" Key="{ActivityBind _FARepair,Path=Key}" SessionType="{ActivityBind _FARepair,Path=SessionType}">
+						<ns0:GetBOM Customer="{ActivityBind _FARepair,Path=Customer}" MainObjFrom="Product" SessionType="{ActivityBind _FARepair,Path=SessionType}" x:Name="getBOM1" Editor="{ActivityBind _FARepair,Path=Editor}" Enabled="False" Station="{ActivityBind _FARepair,Path=Station}" ModelFrom="Product" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+						<IfElseActivity x:Name="ifElseActivity3">
+							<IfElseBranchActivity x:Name="Add">
+								<IfElseBranchActivity.Condition>
+									<RuleConditionReference ConditionName="isAdd" />
+								</IfElseBranchActivity.Condition>
+								<ns0:CheckBindPart Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="checkBindPart1" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="{ActivityBind _FARepair,Path=Station}" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+								<ns0:CheckRepairDefect Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="checkRepairDefect1" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" RepairStationType="FA" Station="{ActivityBind _FARepair,Path=Station}" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+								<ns0:AddRepairDefect Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="addRepairDefect1" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="{ActivityBind _FARepair,Path=Station}" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+							</IfElseBranchActivity>
+							<IfElseBranchActivity x:Name="Edit">
+								<ns0:CheckBindPart Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="checkBindPart2" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="{ActivityBind _FARepair,Path=Station}" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+								<ns0:CheckRepairDefect Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="checkRepairDefect2" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" RepairStationType="FA" Station="{ActivityBind _FARepair,Path=Station}" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+								<ns0:UpdateRepairDefect Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="updateRepairDefect1" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="{ActivityBind _FARepair,Path=Station}" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+							</IfElseBranchActivity>
+						</IfElseActivity>
+						<IfElseActivity x:Name="ifElseActivity2">
+							<IfElseBranchActivity x:Name="ChangePart">
+								<IfElseBranchActivity.Condition>
+									<RuleConditionReference ConditionName="ChangePart" />
+								</IfElseBranchActivity.Condition>
+								<ns0:UpdateParts Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="updateParts1" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" RepairStationType="FA" Station="{ActivityBind _FARepair,Path=Station}" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+								<IfElseActivity x:Name="ifMBType">
+									<IfElseBranchActivity x:Name="ifMBPart">
+										<IfElseBranchActivity.Condition>
+											<RuleConditionReference ConditionName="MBType" />
+										</IfElseBranchActivity.Condition>
+										<ns0:GetMB Customer="{ActivityBind _FARepair,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="{ActivityBind _FARepair,Path=Station}" MBSnSessionKey="NewMB" x:Name="getNewMB" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+										<ns0:UpdateMBStatus Customer="{ActivityBind _FARepair,Path=Customer}" ManualStation="32" SessionType="{ActivityBind _FARepair,Path=SessionType}" x:Name="updateNewMBStatus" Editor="{ActivityBind _FARepair,Path=Editor}" IsPass="Pass" Station="32" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+										<ns0:WriteMBLog Customer="{ActivityBind _FARepair,Path=Customer}" LineSuffix="{x:Null}" ManualStation="32" SessionType="{ActivityBind _FARepair,Path=SessionType}" x:Name="writeNewMBLog" Editor="{ActivityBind _FARepair,Path=Editor}" IsPass="True" Station="32" IsSingle="True" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+										<ns0:GetMB Customer="{ActivityBind _FARepair,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="{ActivityBind _FARepair,Path=Station}" MBSnSessionKey="OldMB" x:Name="getOldMB" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+										<ns0:UpdateMBStatus Customer="{ActivityBind _FARepair,Path=Customer}" ManualStation="33" SessionType="{ActivityBind _FARepair,Path=SessionType}" x:Name="updateOldMBStatus" Editor="{ActivityBind _FARepair,Path=Editor}" IsPass="Fail" Station="33" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+										<ns0:WriteMBLog Customer="{ActivityBind _FARepair,Path=Customer}" LineSuffix="{x:Null}" ManualStation="33" SessionType="{ActivityBind _FARepair,Path=SessionType}" x:Name="writeOldMBLog" Editor="{ActivityBind _FARepair,Path=Editor}" IsPass="False" Station="33" IsSingle="True" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+										<ns0:ReturnMB Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="returnMB1" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="{ActivityBind _FARepair,Path=Station}" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+										<ns0:UpdateLotForFARepair Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="updateLotForFARepair1" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="{ActivityBind _FARepair,Path=Station}" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+									</IfElseBranchActivity>
+									<IfElseBranchActivity x:Name="IfCleanRoomLCM">
+										<IfElseBranchActivity.Condition>
+											<RuleConditionReference ConditionName="CRRule" />
+										</IfElseBranchActivity.Condition>
+										<ns1:UpdateProductStatusForCR Customer="{ActivityBind _FARepair,Path=Customer}" IsWriteTestLog="True" SessionType="{ActivityBind _FARepair,Path=SessionType}" TestLogAction="FA return" Editor="{ActivityBind _FARepair,Path=Editor}" Station="CR33" Status="Fail" x:Name="updateOldSN" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" IsStopWF="False" IsNewProID="False" />
+										<ns1:UpdateProductStatusForCR Customer="{ActivityBind _FARepair,Path=Customer}" IsWriteTestLog="False" SessionType="{ActivityBind _FARepair,Path=SessionType}" TestLogAction="" Editor="{ActivityBind _FARepair,Path=Editor}" Station="CR32" Status="Pass" x:Name="updateNewSN" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" IsStopWF="False" IsNewProID="True" />
+									</IfElseBranchActivity>
+								</IfElseActivity>
+							</IfElseBranchActivity>
+							<IfElseBranchActivity x:Name="noChangePart">
+								<IfElseActivity x:Name="ifElseActivity4" Enabled="False">
+									<IfElseBranchActivity Enabled="False" x:Name="RemovePart">
+										<IfElseBranchActivity.Condition>
+											<RuleConditionReference ConditionName="ifRemove" />
+										</IfElseBranchActivity.Condition>
+										<ns0:RemovePart Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="removePart1" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="{ActivityBind _FARepair,Path=Station}" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+										<IfElseActivity x:Name="ifElseActivity5">
+											<IfElseBranchActivity x:Name="ifMB">
+												<IfElseBranchActivity.Condition>
+													<RuleConditionReference ConditionName="ifMB" />
+												</IfElseBranchActivity.Condition>
+												<ns0:GetMB Customer="{ActivityBind _FARepair,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="{ActivityBind _FARepair,Path=Station}" MBSnSessionKey="OldMB" x:Name="getOldMB2" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+												<ns0:UpdateMBStatus Customer="{ActivityBind _FARepair,Path=Customer}" Station="{ActivityBind _FARepair,Path=Station}" SessionType="{ActivityBind _FARepair,Path=SessionType}" ManualStation="33" Editor="{ActivityBind _FARepair,Path=Editor}" IsPass="Fail" x:Name="updateOldMBStatus2" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+												<ns0:WriteMBLog Customer="{ActivityBind _FARepair,Path=Customer}" LineSuffix="{x:Null}" ManualStation="{x:Null}" SessionType="{ActivityBind _FARepair,Path=SessionType}" x:Name="writeOldMBLog2" Editor="{ActivityBind _FARepair,Path=Editor}" IsPass="False" Station="33" IsSingle="True" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+												<ns0:ReturnMB Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="returnMB2" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="{ActivityBind _FARepair,Path=Station}" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+											</IfElseBranchActivity>
+										</IfElseActivity>
+									</IfElseBranchActivity>
+								</IfElseActivity>
+							</IfElseBranchActivity>
+						</IfElseActivity>
+					</ns0:DBScope>
+				</IfElseBranchActivity>
+				<IfElseBranchActivity x:Name="Complete">
+					<ns0:DBScope Station="{ActivityBind _FARepair,Path=Station}" x:Name="dbScope2" Key="{ActivityBind _FARepair,Path=Key}" SessionType="{ActivityBind _FARepair,Path=SessionType}">
+						<ns0:UpdateForceNWC Customer="{ActivityBind _FARepair,Path=Customer}" IsClear="False" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="45" x:Name="updateForceNWC1" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+						<ns0:WriteProductLog Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="45" Status="Pass" IsSingle="True" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+						<ns0:CompleteRepair Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="completeRepair1" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="45" NeedPartSN="Y" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Status="Pass" Station="45" IsReturnStatoin="False" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" />
+					</ns0:DBScope>
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:CheckShipDateAndSetMsg Customer="{ActivityBind _FARepair,Path=Customer}" x:Name="checkShipDateAndSetMsg1" SessionType="{ActivityBind _FARepair,Path=SessionType}" Editor="{ActivityBind _FARepair,Path=Editor}" Station="{ActivityBind _FARepair,Path=Station}" Line="{ActivityBind _FARepair,Path=PdLine}" Key="{ActivityBind _FARepair,Path=Key}" IsThrowException="False" />
+</ns0:BaseFlow>

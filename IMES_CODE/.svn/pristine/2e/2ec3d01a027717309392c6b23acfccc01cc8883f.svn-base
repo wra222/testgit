@@ -1,0 +1,14 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="COARemoval" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="IsCompleｔ" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:CheckCOANo Customer="{ActivityBind COARemoval,Path=Customer}" x:Name="checkCOANo1" SessionType="{ActivityBind COARemoval,Path=SessionType}" Editor="{ActivityBind COARemoval,Path=Editor}" Station="{ActivityBind COARemoval,Path=Station}" Line="{ActivityBind COARemoval,Path=PdLine}" Key="{ActivityBind COARemoval,Path=Key}" />
+			<ns0:WaitInput Customer="{ActivityBind COARemoval,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind COARemoval,Path=SessionType}" Editor="{ActivityBind COARemoval,Path=Editor}" Station="{ActivityBind COARemoval,Path=Station}" Line="{ActivityBind COARemoval,Path=PdLine}" Key="{ActivityBind COARemoval,Path=Key}" />
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:DBScope Station="{ActivityBind COARemoval,Path=Station}" x:Name="dbScope1" Key="{ActivityBind COARemoval,Path=Key}" SessionType="{ActivityBind COARemoval,Path=SessionType}">
+		<ns0:CheckCOANoInputStandard Customer="{ActivityBind COARemoval,Path=Customer}" x:Name="checkCOANoInputStandard1" SessionType="{ActivityBind COARemoval,Path=SessionType}" Editor="{ActivityBind COARemoval,Path=Editor}" Station="{ActivityBind COARemoval,Path=Station}" Line="{ActivityBind COARemoval,Path=PdLine}" Key="{ActivityBind COARemoval,Path=Key}" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

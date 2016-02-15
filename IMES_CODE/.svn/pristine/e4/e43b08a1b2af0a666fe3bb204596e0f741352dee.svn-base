@@ -1,0 +1,2966 @@
+<!DOCTYPE html>
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+    <head><link rel="canonical" href="http://msdn.microsoft.com/en-us/library/az24scfc.aspx" />
+        <title>Regular Expression Language - Quick Reference</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/az24scfc(d=default,l=en-us,v=vs.110).aspx" />
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/az24scfc(d=default,l=en-us,v=vs.110).aspx" />
+
+<meta name="DCSext.ProductFamily" content="LIB_DG" />
+
+<meta name="DCSext.Product" content="NDP_CLR" />
+
+<meta name="DCSext.Title" content="Regular Expression Language - Quick Reference" />
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/az24scfc(d=default,l=en-us,v=vs.110).aspx" />
+
+<meta name="MN" content="EE4293BE-8:50:38 PM" />
+
+<meta name="Search.ShortId" content="az24scfc" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+
+
+
+
+
+
+        
+    <link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Combined.css?resources=0:Topic,0:CodeSnippet,0:ExpandableCollapsibleArea,0:CommunityContent,0:TopicNotInScope,0:FeedViewerBasic,0:ImageSprite,1:Header,1:ImageSprite,2:LinkList,3:Toc,3:NavigationResize,4:FeedbackCounter,0:VersionSelector,4:Feedback,3:LibraryMemberFilter,1:Footer,2:Base,5:Msdn;/Areas/Epx/Content/Css:0,/Areas/Centers/Themes/Msdn/Content:1,/Areas/Epx/Themes/Base/Content:2,/Areas/Epx/Library/Content:3,/Areas/Epx/Shared/Content:4,/Areas/Epx/Themes/Msdn/Content:5&amp;amp;hashKey=90CD3FF63B49B9C08F6E1C09AB50B1C9" /></head>
+    <body class="library">
+        <div id="page">
+            
+            
+  
+            
+    
+
+<div id="ux-header">
+    <header>
+        <div class="row">
+            <div class="left">
+                <div data-fragmentName="SiteLogo" id="Fragment_SiteLogo" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://msdn.microsoft.com/en-us" id="27762_1" xmlns="http://www.w3.org/1999/xhtml">Developer Network</a>
+</div>     
+            </div>
+            <div id="grip"></div>  
+            <div class="right desktop">
+                <div class="auxNav">
+                    <div data-fragmentName="Subscriptions" id="Fragment_Subscriptions" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://msdn.microsoft.com/dn369243" id="27762_5" xmlns="http://www.w3.org/1999/xhtml">MSDN subscriptions</a>
+</div>   
+                    <div data-fragmentName="GetTools" id="Fragment_GetTools" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://msdn.microsoft.com/dn369242" id="27762_3" xmlns="http://www.w3.org/1999/xhtml">Get tools</a>
+</div>   
+                    
+
+    <div class="signIn"><a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=11&amp;ct=1378698638&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2faz24scfc.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+                </div>
+                
+
+    
+
+<div class="SearchBox">
+              <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" action="http://social.msdn.microsoft.com/Search" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this, this.title);">
+            <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(this, this.title, 'SearchBoxOnFocus')" onblur="Epx.Controls.SearchBox.watermarkBlur(this, this.title, 'SearchBoxOnFocus')" />
+            <input id="RefinementId" name="refinement" type="hidden" value="" />
+            <button id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+        </form>
+        
+    
+</div>
+
+            </div>
+        </div>
+       
+        <div class="row" id="droor">
+            <div class="left">
+                        <nav>
+            <ul>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn271881" title="Opportunity">Opportunity</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn271880" title="Platform">Platform</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav">
+                                     <ul>
+                                                 <li><a href="http://msdn.microsoft.com/dn308583" title="Tablet &amp; PC">Tablet &amp; PC</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338268" title="Phone">Phone</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338159" title="Cloud">Cloud</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn338064" title="Connect">Connect</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav">
+                                     <ul>
+                                                 <li><a href="http://msdn.microsoft.com/dn338452" title="Perspectives">Perspectives</a></li>
+                                                 <li><a href="http://events.msdn.microsoft.com/en-us" title="Events">Events</a></li>
+                                                 <li><a href="http://social.msdn.microsoft.com/forums/" title="Forums">Forums</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn292944" title="Downloads">Downloads</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav">
+                                     <ul>
+                                                 <li><a href="http://msdn.microsoft.com/dn369242" title="Developer tools">Developer tools</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn369240" title="SDKs">SDKs</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn369243" title="MSDN subscriptions">MSDN subscriptions</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="active current">
+
+                         <a href="http://msdn.microsoft.com/dn338067" title="Develop">Develop</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav">
+                                     <ul>
+                                                 <li class="current"><a href="http://msdn.microsoft.com/library" title="Library">Library</a></li>
+                                                 <li><a href="http://code.msdn.microsoft.com/" title="Code samples">Code samples</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+            </ul>
+          
+        </nav>        
+       
+            </div>
+            <div class="right mobile"></div>
+            <div class="right">
+                <div data-fragmentName="SocialLinks" id="Fragment_SocialLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Join us</div>
+    <div class="Links">
+      <ul class="LinkColumn horizontal">
+        <li>
+          <a href="http://www.facebook.com/microsoftdeveloper" target="_blank" id="SocialLinks_430_7" class="facebook" xmlns="http://www.w3.org/1999/xhtml">http://www.facebook.com/microsoftdeveloper</a>
+        </li>
+        <li>
+          <a href="https://twitter.com/msdev" target="_blank" id="SocialLinks_430_8" class="twitter" xmlns="http://www.w3.org/1999/xhtml">https://twitter.com/msdev</a>
+        </li>
+        <li>
+          <a href="http://plus.google.com/111221966647232053570/" target="_blank" id="SocialLinks_430_9" class="googlePlus" xmlns="http://www.w3.org/1999/xhtml">http://plus.google.com/111221966647232053570/</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div> 
+            </div>
+			<span id="singleCol"></span>
+			<span id="doubleCol"></span>
+        </div>
+    </header>
+</div>
+
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="/en-us/library/ms123401.aspx" id="ms310241_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="5DDC0A78-6B2C-43E3-9C56-55F45C0DFFA5_MSDN.10_en-us" mtpsshortid="ms123401_MSDN.10_en-us" title="MSDN Library">MSDN Library</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="/en-us/library/ff361664.aspx" id="aa139615_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="43e22490-fb00-409c-8301-585a03034ae2_MSDN.10_en-us" mtpsshortid="ff361664_VS.110_en-us" title=".NET Development">.NET Development</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="/en-us/library/w0x726c2.aspx" id="aa139616_MSDN.10_en-us" mtpsaliasid="" mtpsassetid="f61f02f2-2f20-483d-8f56-a9c8f3a54986_MSDN.10_en-us" mtpsshortid="w0x726c2_VS.110_en-us" title=".NET Framework 4.5">.NET Framework 4.5</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="/en-us/library/hh156542.aspx" id="hh781599_VS.110_en-us" mtpsaliasid="" mtpsassetid="26e3d285-24c3-435c-a797-9fe5affb8525_VS.110_en-us" mtpsshortid="hh156542_VS.110_en-us" title="Development Guide">Development Guide</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="/en-us/library/ms172157.aspx" id="hh569857_VS.110_en-us" mtpsaliasid="" mtpsassetid="653da4ba-3752-4d1f-a08a-de017dc86ecc_VS.110_en-us" mtpsshortid="ms172157_VS.110_en-us" title="Application Essentials">Application Essentials</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="/en-us/library/7wchwf6k.aspx" id="hh569856_VS.110_en-us" mtpsaliasid="" mtpsassetid="028d0ce8-ebc2-4a88-a16f-17508f6d0bd6_VS.110_en-us" mtpsshortid="7wchwf6k_VS.110_en-us" title="Base Types">Base Types</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="/en-us/library/st9zk29t.aspx" id="hh569875_VS.110_en-us" mtpsaliasid="" mtpsassetid="d4568ff3-9f83-4549-acd8-47aec2194ac0_VS.110_en-us" mtpsshortid="st9zk29t_VS.110_en-us" title="Manipulating Strings">Manipulating Strings</a>            </div>
+            <div class="toclevel0" data-toclevel="0">
+<a data-tochassubtree="true" href="/en-us/library/hs600312.aspx" id="hh569881_VS.110_en-us" mtpsaliasid="" mtpsassetid="521b3f6d-f869-42e1-93e5-158c54a6895d_VS.110_en-us" mtpsshortid="hs600312_VS.110_en-us" title=".NET Framework Regular Expressions">.NET Framework Regular Expressions</a>            </div>
+            <div class="toclevel1 current" data-toclevel="1">
+<a data-tochassubtree="true" href="/en-us/library/az24scfc.aspx" id="hh569869_VS.110_en-us" mtpsaliasid="" mtpsassetid="930653a6-95d2-4697-9d5a-52d11bb6fd4c_VS.110_en-us" mtpsshortid="az24scfc_VS.110_en-us" title="Regular Expression Language - Quick Reference">Regular Expression Language - Quick Reference</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="/en-us/library/4edbef7e.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Character Escapes">Character Escapes</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="/en-us/library/20bw873z.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Character Classes">Character Classes</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="/en-us/library/h5181w5w.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Anchors">Anchors</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="/en-us/library/bs2twtah.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Grouping Constructs">Grouping Constructs</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="/en-us/library/3206d374.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Quantifiers">Quantifiers</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="/en-us/library/thwdfzxy.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Backreference Constructs">Backreference Constructs</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="/en-us/library/36xybswe.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Alternation Constructs">Alternation Constructs</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="/en-us/library/ewy2t5e0.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Substitutions">Substitutions</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="/en-us/library/yd1hzczs.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Regular Expression Options">Regular Expression Options</a>            </div>
+            <div class="toclevel2" data-toclevel="2">
+<a href="/en-us/library/x044wc7s.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Miscellaneous Constructs">Miscellaneous Constructs</a>            </div>
+</div>
+        
+
+        
+
+        
+
+        
+
+<a id="NavigationResize" href="javascript:void(0)">
+    <img class="cl_nav_resize_open" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Expand" alt="Expand" />
+    <img class="cl_nav_resize_close" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" title="Minimize" alt="Minimize" />
+</a>
+
+
+
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+    
+    
+
+    <div id="ratingCounterSeperator" class="cl_lw_vs_seperator" style="display: none;"></div>
+
+    <div id="ratingCounter">
+        <span id="rcA" class="ratingText">
+            53 out of 63 rated this helpful <span id="rateThisPrefix">- </span><a id="rateThisTopic" href="#feedback" title="Rate this topic">Rate this topic</a>
+            
+        </span>
+    </div>
+
+        
+<div xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:cs="http://msdn.microsoft.com/en-us/">
+    <h1 class="title">Regular Expression Language - Quick Reference</h1>
+    
+    <div class="lw_vs">
+      <div id="curversion">
+        <strong>
+            .NET Framework 4.5
+        </strong>
+      </div>
+      <div id="versionclick">
+        <div id="vsseperator" class="cl_lw_vs_seperator"></div>
+        <div>
+          <div>
+            <a id="vsLink" href="javascript:;">
+                        Other Versions
+                    </a>
+          </div>
+          <div class="cl_vs_arrow clip10x10">
+            <img class="cl_lw_vs_arrow" id="vsArrow" alt="" src="http://i3.msdn.microsoft.com/Areas/Epx/Content/Images/ImageSprite.png" />
+          </div>
+        </div>
+        <ul id="vsPanel">
+          <li>
+            <a href="/en-us/library/az24scfc(v=vs.100).aspx" title="">.NET Framework 4</a>
+          </li>
+          <li>
+            <a href="/en-us/library/az24scfc(v=vs.85).aspx" title="">.NET Framework 3.0</a>
+          </li>
+          <li>
+            <a href="/en-us/library/az24scfc(v=vs.71).aspx" title="">.NET Framework 1.1</a>
+          </li>
+          <li>
+            <a href="/en-us/library/az24scfc(v=vs.90).aspx" title="">.NET Framework 3.5</a>
+          </li>
+          <li>
+            <a href="/en-us/library/az24scfc(v=vs.80).aspx" title="">.NET Framework 2.0</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div style="clear:both;"></div>
+    
+    <div id="mainSection">
+      <div id="mainBody">
+        <p>
+          
+        </p>
+        <a id="top">
+          
+        </a>
+        <div class="introduction">
+          <p>A regular expression is a pattern that the regular expression engine attempts to match in input text. A pattern consists of one or more character literals, operators, or constructs.  For a brief introduction, see <span><a href="http://msdn.microsoft.com/en-us/library/hs600312.aspx">.NET Framework Regular Expressions</a></span>. </p>
+          <p>Each section in this quick reference lists a particular category of characters, operators, and constructs that you can use to define regular expressions: </p>
+          <ul>
+            <li>
+              <p>
+                <a href="#character_escapes">Character escapes</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#character_classes">Character classes</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#atomic_zerowidth_assertions">Anchors</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#grouping_constructs">Grouping constructs</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#quantifiers">Quantifiers</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#backreference_constructs">Backreference constructs</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#alternation_constructs">Alternation constructs</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#substitutions">Substitutions</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#options">Regular expression options</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#miscellaneous_constructs">Miscellaneous constructs</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <a id="character_escapes">
+          
+        </a>
+        <div>
+          
+          <div class="LW_CollapsibleArea_TitleDiv">
+            <div>
+              <a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse">
+                <span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span>
+                <span class="LW_CollapsibleArea_Title">Character Escapes</span>
+              </a>
+              <div class="LW_CollapsibleArea_HrDiv">
+                <hr class="LW_CollapsibleArea_Hr" />
+              </div>
+            </div>
+          </div>
+          <div class="sectionblock">
+            <a id="sectionToggle0">
+              
+            </a>
+            <p>The backslash character (\) in a regular expression indicates that the character that follows it either is a special character (as shown in the following table), or should be interpreted literally. For more information, see <span><a href="http://msdn.microsoft.com/en-us/library/4edbef7e.aspx">Character Escapes in Regular Expressions</a></span>. </p>
+            <div class="caption">
+              
+            </div>
+            <div class="tableSection">
+              <table>
+                <tr>
+                  <th>
+                    <p>Escaped character</p>
+                  </th>
+                  <th>
+                    <p>Description</p>
+                  </th>
+                  <th>
+                    <p>Pattern</p>
+                  </th>
+                  <th>
+                    <p>Matches</p>
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\a</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches a bell character, \u0007.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\a</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"\u0007" in "Error!" + '\u0007'</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\b</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>In a character class, matches a backspace, \u0008.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">[\b]{3,}</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"\b\b\b\b" in "\b\b\b\b"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\t</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches a tab, \u0009.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">(\w+)\t</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"item1\t", "item2\t" in "item1\titem2\t"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\r</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches a carriage return, \u000D. (<span><span class="input">\r</span></span> is not equivalent to the newline character, <span><span class="input">\n</span></span>.)</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\r\n(\w+)</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"\r\nThese" in "\r\nThese are\ntwo lines."</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\v</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches a vertical tab, \u000B.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">[\v]{2,}</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"\v\v\v" in "\v\v\v"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\f</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches a form feed, \u000C.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">[\f]{2,}</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"\f\f\f" in "\f\f\f" </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\n</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches a new line, \u000A.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\r\n(\w+)</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"\r\nThese" in "\r\nThese are\ntwo lines."</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\e</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches an escape, \u001B.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\e</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"\x001B" in "\x001B"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\</span>
+                      </span>
+                      <span class="parameter">nnn</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Uses octal representation to specify a character (<span class="parameter">nnn</span> consists of two or three digits).</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\w\040\w</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"a b", "c d" in </p>
+                    <p>"a bc d"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\x</span>
+                      </span>
+                      <span class="parameter">nn</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Uses hexadecimal representation to specify a character (<span class="parameter">nn</span> consists of exactly two digits).</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\w\x20\w</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"a b", "c d" in </p>
+                    <p>"a bc d"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\c</span>
+                      </span>
+                      <span class="parameter">X</span>
+                    </p>
+                    <p>
+                      <span>
+                        <span class="input">\c</span>
+                      </span>
+                      <span class="parameter">x</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches the ASCII control character that is specified by <span class="parameter">X</span> or <span class="parameter">x</span>, where <span class="parameter">X</span> or <span class="parameter">x</span> is the letter of the control character. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\cC</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"\x0003" in "\x0003" (Ctrl-C) </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\u</span>
+                      </span>
+                      <span class="parameter">nnnn</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches a Unicode character by using hexadecimal representation (exactly four digits, as represented by <span class="parameter">nnnn</span>).</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\w\u0020\w</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"a b", "c d" in </p>
+                    <p>"a bc d"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>When followed by a character that is not recognized as an escaped character in this and other tables in this topic, matches that character. For example, <span><span class="input">\*</span></span> is the same as <span><span class="input">\x2A</span></span>, and <span><span class="input">\.</span></span> is the same as <span><span class="input">\x2E</span></span>. This allows the regular expression engine to disambiguate language elements (such as * or ?) and character literals (represented by <span class="code">\*</span> or <span class="code">\?</span>).</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\d+[\+-x\*]\d+\d+[\+-x\*\d+    </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"2+2" and "3*9" in "(2+2) * 3*9"</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <p>
+              <a href="#top">Back to top</a>
+            </p>
+          </div>
+        </div>
+        <a id="character_classes">
+          
+        </a>
+        <div>
+          <div class="LW_CollapsibleArea_TitleDiv">
+            <div>
+              <a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse">
+                <span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span>
+                <span class="LW_CollapsibleArea_Title">Character Classes</span>
+              </a>
+              <div class="LW_CollapsibleArea_HrDiv">
+                <hr class="LW_CollapsibleArea_Hr" />
+              </div>
+            </div>
+          </div>
+          <div class="sectionblock">
+            <a id="sectionToggle1">
+              
+            </a>
+            <p>A character class matches any one of a set of characters. Character classes include the language elements listed in the following table. For more information, see <span><a href="http://msdn.microsoft.com/en-us/library/20bw873z.aspx">Character Classes in Regular Expressions</a></span>.</p>
+            <div class="caption">
+              
+            </div>
+            <div class="tableSection">
+              <table>
+                <tr>
+                  <th>
+                    <p>Character class</p>
+                  </th>
+                  <th>
+                    <p>Description</p>
+                  </th>
+                  <th>
+                    <p>Pattern</p>
+                  </th>
+                  <th>
+                    <p>Matches</p>
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">[</span>
+                      </span>
+                      <span class="parameter">character_group</span>
+                      <span>
+                        <span class="input">]</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches any single character in <span class="parameter">character_group</span>. By default, the match is case-sensitive.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">[ae] </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"a" in "gray"</p>
+                    <p>"a", "e" in "lane"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">[^</span>
+                      </span>
+                      <span class="parameter">character_group</span>
+                      <span>
+                        <span class="input">]</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Negation: Matches any single character that is not in <span class="parameter">character_group</span>. By default, characters in <span class="parameter">character_group</span> are case-sensitive.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">[^aei]</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"r", "g", "n" in "reign"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">[</span>
+                      </span>
+                      <span class="parameter">first</span>
+                      <span>
+                        <span class="input">-</span>
+                      </span>
+                      <span class="parameter">last</span>
+                      <span>
+                        <span class="input">]</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Character range: Matches any single character in the range from <span class="parameter">first</span> to <span class="parameter">last</span>. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">[A-Z]</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"A", "B" in "AB123"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">.</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Wildcard: Matches any single character except \n.</p>
+                    <p>To match a literal period character (. or <span><span class="input">\u002E</span></span>), you must precede it with the escape character (<span><span class="input">\.</span></span>).</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">a.e</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"ave" in "nave"</p>
+                    <p>"ate" in "water"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\p{</span>
+                      </span>
+                      <span class="parameter">name</span>
+                      <span>
+                        <span class="input">}</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches any single character in the Unicode general category or named block specified by <span class="parameter">name</span>.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\p{Lu}</span>
+                    </p>
+                    <p>
+                      <span class="code">\p{IsCyrillic}</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"C", "L" in "City Lights"</p>
+                    <p>"Д", "Ж" in "ДЖem"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\P{</span>
+                      </span>
+                      <span class="parameter">name</span>
+                      <span>
+                        <span class="input">}</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches any single character that is not in the Unicode general category or named block specified by <span class="parameter">name</span>.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\P{Lu}</span>
+                    </p>
+                    <p>
+                      <span class="code">\P{IsCyrillic}</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"i", "t", "y" in "City"</p>
+                    <p>"e", "m" in "ДЖem"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\w</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches any word character. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\w</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"I", "D", "A", "1", "3" in "ID A1.3" </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\W</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches any non-word character.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\W</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>" ", "." in "ID A1.3"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\s</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches any white-space character.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\w\s</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"D " in "ID A1.3"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\S</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches any non-white-space character.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\s\S</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>" _" in "int __ctr" </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\d</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches any decimal digit.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\d</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"4" in "4 = IV" </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\D </span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches any character other than a decimal digit.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\D</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>" ", "=", " ", "I", "V" in "4 = IV"  </p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <p>
+              <a href="#top">Back to top</a>
+            </p>
+          </div>
+        </div>
+        <a id="atomic_zerowidth_assertions">
+          
+        </a>
+        <div>
+          <div class="LW_CollapsibleArea_TitleDiv">
+            <div>
+              <a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse">
+                <span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span>
+                <span class="LW_CollapsibleArea_Title">Anchors</span>
+              </a>
+              <div class="LW_CollapsibleArea_HrDiv">
+                <hr class="LW_CollapsibleArea_Hr" />
+              </div>
+            </div>
+          </div>
+          <div class="sectionblock">
+            <a id="sectionToggle2">
+              
+            </a>
+            <p>Anchors, or atomic zero-width assertions, cause a match to succeed or fail depending on the current position in the string, but they do not cause the engine to advance through the string or consume characters. The metacharacters listed in the following table are anchors. For more information, see <span><a href="http://msdn.microsoft.com/en-us/library/h5181w5w.aspx">Anchors in Regular Expressions</a></span>.</p>
+            <div class="caption">
+              
+            </div>
+            <div class="tableSection">
+              <table>
+                <tr>
+                  <th>
+                    <p>Assertion</p>
+                  </th>
+                  <th>
+                    <p>Description</p>
+                  </th>
+                  <th>
+                    <p>Pattern</p>
+                  </th>
+                  <th>
+                    <p>Matches</p>
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">^</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>The match must start at the beginning of the string or line. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">^\d{3}</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"901" in </p>
+                    <p>"901-333-"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">$</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>The match must occur at the end of the string or before <span><span class="input">\n</span></span> at the end of the line or string.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">-\d{3}$</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"-333" in </p>
+                    <p>"-901-333"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\A</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>The match must occur at the start of the string.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\A\d{3}</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"901" in </p>
+                    <p>"901-333-"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\Z</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>The match must occur at the end of the string or before <span><span class="input">\n</span></span> at the end of the string.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">-\d{3}\Z</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"-333" in </p>
+                    <p>"-901-333"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\z</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>The match must occur at the end of the string.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">-\d{3}\z</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"-333" in </p>
+                    <p>"-901-333"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\G</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>The match must occur at the point where the previous match ended.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\G\(\d\)</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"(1)", "(3)", "(5)" in "(1)(3)(5)[7](9)"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\b</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>The match must occur on a boundary between a <span><span class="input">\w</span></span> (alphanumeric) and a <span><span class="input">\W</span></span> (nonalphanumeric) character.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\b\w+\s\w+\b   </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"them theme", "them them" in "them theme them them" </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\B</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>The match must not occur on a <span><span class="input">\b</span></span> boundary.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\Bend\w*\b</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"ends", "ender" in "end sends endure lender"</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <p>
+              <a href="#top">Back to top</a>
+            </p>
+          </div>
+        </div>
+        <a id="grouping_constructs">
+          
+        </a>
+        <div>
+          <div class="LW_CollapsibleArea_TitleDiv">
+            <div>
+              <a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse">
+                <span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span>
+                <span class="LW_CollapsibleArea_Title">Grouping Constructs</span>
+              </a>
+              <div class="LW_CollapsibleArea_HrDiv">
+                <hr class="LW_CollapsibleArea_Hr" />
+              </div>
+            </div>
+          </div>
+          <div class="sectionblock">
+            <a id="sectionToggle3">
+              
+            </a>
+            <p>Grouping constructs delineate subexpressions of a regular expression and typically capture substrings of an input string. Grouping constructs include the language elements listed in the following table. For more information, see <span><a href="http://msdn.microsoft.com/en-us/library/bs2twtah.aspx">Grouping Constructs in Regular Expressions</a></span>.</p>
+            <div class="caption">
+              
+            </div>
+            <div class="tableSection">
+              <table>
+                <tr>
+                  <th>
+                    <p>Grouping construct</p>
+                  </th>
+                  <th>
+                    <p>Description</p>
+                  </th>
+                  <th>
+                    <p>Pattern</p>
+                  </th>
+                  <th>
+                    <p>Matches</p>
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">(</span>
+                      </span>
+                      <span class="parameter">subexpression</span>
+                      <span>
+                        <span class="input">)</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Captures the matched subexpression and assigns it a zero-based ordinal number.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">(\w)\1</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"ee" in "deep"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">(?&lt;</span>
+                      </span>
+                      <span class="parameter">name</span>
+                      <span>
+                        <span class="input">&gt;</span>
+                      </span> <span class="parameter">subexpression</span><span><span class="input">)</span></span></p>
+                  </td>
+                  <td>
+                    <p>Captures the matched subexpression into a named group.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">(?&lt;double&gt;\w)\k&lt;double&gt;  </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"ee" in "deep"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">(?&lt;</span>
+                      </span>
+                      <span class="parameter">name1</span>
+                      <span>
+                        <span class="input">-</span>
+                      </span>
+                      <span class="parameter">name2</span>
+                      <span>
+                        <span class="input">&gt;</span>
+                      </span> <span class="parameter">subexpression</span><span><span class="input">)</span></span></p>
+                  </td>
+                  <td>
+                    <p>Defines a balancing group definition. For more information, see the "Balancing Group Definition" section in <span><a href="http://msdn.microsoft.com/en-us/library/bs2twtah.aspx">Grouping Constructs in Regular Expressions</a></span>. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">(((?'Open'\()[^\(\)]*)+((?'Close-Open'\))[^\(\)]*)+)*(?(Open)(?!))$</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"((1-3)*(3-1))" in "3+2^((1-3)*(3-1))"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">(?:</span>
+                      </span> <span class="parameter">subexpression</span><span><span class="input">)</span></span></p>
+                  </td>
+                  <td>
+                    <p>Defines a noncapturing group. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">Write(?:Line)?</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"WriteLine" in "Console.WriteLine()"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">(?imnsx-imnsx:</span>
+                      </span> <span class="parameter">subexpression</span><span><span class="input">)</span></span></p>
+                  </td>
+                  <td>
+                    <p>Applies or disables the specified options within <span class="parameter">subexpression</span>. For more information, see <span><a href="http://msdn.microsoft.com/en-us/library/yd1hzczs.aspx">Regular Expression Options</a></span>.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">A\d{2}(?i:\w+)\b</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"A12xl", "A12XL" in "A12xl A12XL a12xl"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">(?=</span>
+                      </span> <span class="parameter">subexpression</span><span><span class="input">)</span></span></p>
+                  </td>
+                  <td>
+                    <p>Zero-width positive lookahead assertion. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\w+(?=\.)</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"is", "ran", and "out" in "He is. The dog ran. The sun is out."</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">(?!</span>
+                      </span> <span class="parameter">subexpression</span><span><span class="input">)</span></span></p>
+                  </td>
+                  <td>
+                    <p>Zero-width negative lookahead assertion.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\b(?!un)\w+\b</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"sure", "used" in "unsure sure unity used"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">(?&lt;=</span>
+                      </span> <span class="parameter">subexpression</span><span><span class="input">)</span></span></p>
+                  </td>
+                  <td>
+                    <p>Zero-width positive lookbehind assertion. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">(?&lt;=19)\d{2}\b</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"99", "50", "05" in "1851 1999 1950 1905 2003"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">(?&lt;!</span>
+                      </span> <span class="parameter">subexpression</span><span><span class="input">)</span></span></p>
+                  </td>
+                  <td>
+                    <p>Zero-width negative lookbehind assertion. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">(?&lt;!19)\d{2}\b</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"51", "03" in "1851 1999 1950 1905 2003"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">(?&gt;</span>
+                      </span> <span class="parameter">subexpression</span><span><span class="input">)</span></span></p>
+                  </td>
+                  <td>
+                    <p>Nonbacktracking (or "greedy") subexpression. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">[13579](?&gt;A+B+)</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"1ABB", "3ABB", and "5AB" in "1ABB 3ABBC 5AB 5AC"</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <p>
+              <a href="#top">Back to top</a>
+            </p>
+          </div>
+        </div>
+        <a id="quantifiers">
+          
+        </a>
+        <div>
+          <div class="LW_CollapsibleArea_TitleDiv">
+            <div>
+              <a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse">
+                <span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span>
+                <span class="LW_CollapsibleArea_Title">Quantifiers</span>
+              </a>
+              <div class="LW_CollapsibleArea_HrDiv">
+                <hr class="LW_CollapsibleArea_Hr" />
+              </div>
+            </div>
+          </div>
+          <div class="sectionblock">
+            <a id="sectionToggle4">
+              
+            </a>
+            <p>A quantifier specifies how many instances of the previous element (which can be a character, a group, or a character class) must be present in the input string for a match to occur. Quantifiers include the language elements listed in the following table. For more information, see <span><a href="http://msdn.microsoft.com/en-us/library/3206d374.aspx">Quantifiers in Regular Expressions</a></span>.</p>
+            <div class="caption">
+              
+            </div>
+            <div class="tableSection">
+              <table>
+                <tr>
+                  <th>
+                    <p>Quantifier</p>
+                  </th>
+                  <th>
+                    <p>Description</p>
+                  </th>
+                  <th>
+                    <p>Pattern</p>
+                  </th>
+                  <th>
+                    <p>Matches</p>
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">*</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches the previous element zero or more times. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\d*\.\d</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>".0", "19.9", "219.9"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">+</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches the previous element one or more times.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">"be+"</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"bee" in "been", "be" in "bent"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">?</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches the previous element zero or one time.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">"rai?n"</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"ran", "rain"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">{</span>
+                      </span>
+                      <span class="parameter">n</span>
+                      <span>
+                        <span class="input">}</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches the previous element exactly <span class="parameter">n</span> times.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">",\d{3}"</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>",043" in "1,043.6", ",876", ",543", and ",210" in "9,876,543,210"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">{</span>
+                      </span>
+                      <span class="parameter">n</span>
+                      <span>
+                        <span class="input">,}</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches the previous element at least <span class="parameter">n</span> times.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">"\d{2,}"</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"166", "29", "1930"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">{</span>
+                      </span>
+                      <span class="parameter">n</span>
+                      <span>
+                        <span class="input">,</span>
+                      </span>
+                      <span class="parameter">m</span>
+                      <span>
+                        <span class="input">}</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches the previous element at least <span class="parameter">n</span> times, but no more than <span class="parameter">m</span> times. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">"\d{3,5}"</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"166", "17668"</p>
+                    <p>"19302" in "193024"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">*?</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches the previous element zero or more times, but as few times as possible. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\d*?\.\d</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>".0", "19.9", "219.9"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">+?</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches the previous element one or more times, but as few times as possible. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">"be+?"</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"be" in "been", "be" in "bent"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">??</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches the previous element zero or one time, but as few times as possible.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">"rai??n"</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"ran", "rain"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">{</span>
+                      </span>
+                      <span class="parameter">n</span>
+                      <span>
+                        <span class="input">}?</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches the preceding element exactly <span class="parameter">n</span> times.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">",\d{3}?"</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>",043" in "1,043.6", ",876", ",543", and ",210" in "9,876,543,210"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">{</span>
+                      </span>
+                      <span class="parameter">n</span>
+                      <span>
+                        <span class="input">,}?</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches the previous element at least <span class="parameter">n</span> times, but as few times as possible.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">"\d{2,}?"</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"166", "29", "1930"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">{</span>
+                      </span>
+                      <span class="parameter">n</span>
+                      <span>
+                        <span class="input">,</span>
+                      </span>
+                      <span class="parameter">m</span>
+                      <span>
+                        <span class="input">}?</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches the previous element between <span class="parameter">n</span> and <span class="parameter">m</span> times, but as few times as possible.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">"\d{3,5}?"</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"166", "17668"</p>
+                    <p>"193", "024" in "193024"</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <p>
+              <a href="#top">Back to top</a>
+            </p>
+          </div>
+        </div>
+        <a id="backreference_constructs">
+          
+        </a>
+        <div>
+          <div class="LW_CollapsibleArea_TitleDiv">
+            <div>
+              <a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse">
+                <span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span>
+                <span class="LW_CollapsibleArea_Title">Backreference Constructs</span>
+              </a>
+              <div class="LW_CollapsibleArea_HrDiv">
+                <hr class="LW_CollapsibleArea_Hr" />
+              </div>
+            </div>
+          </div>
+          <div class="sectionblock">
+            <a id="sectionToggle5">
+              
+            </a>
+            <p>A backreference allows a previously matched subexpression to be identified subsequently in the same regular expression. The following table lists the backreference constructs supported by regular expressions in the .NET Framework. For more information, see <span><a href="http://msdn.microsoft.com/en-us/library/thwdfzxy.aspx">Backreference Constructs in Regular Expressions</a></span>.</p>
+            <div class="caption">
+              
+            </div>
+            <div class="tableSection">
+              <table>
+                <tr>
+                  <th>
+                    <p>Backreference construct</p>
+                  </th>
+                  <th>
+                    <p>Description</p>
+                  </th>
+                  <th>
+                    <p>Pattern</p>
+                  </th>
+                  <th>
+                    <p>Matches</p>
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\</span>
+                      </span>
+                      <span class="parameter">number</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Backreference. Matches the value of a numbered subexpression.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">(\w)\1</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"ee" in "seek"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\k&lt;</span>
+                      </span>
+                      <span class="parameter">name</span>
+                      <span>
+                        <span class="input">&gt;</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Named backreference. Matches the value of a named expression.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">(?&lt;char&gt;\w)\k&lt;char&gt;</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"ee" in "seek"</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <p>
+              <a href="#top">Back to top</a>
+            </p>
+          </div>
+        </div>
+        <a id="alternation_constructs">
+          
+        </a>
+        <div>
+          <div class="LW_CollapsibleArea_TitleDiv">
+            <div>
+              <a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse">
+                <span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span>
+                <span class="LW_CollapsibleArea_Title">Alternation Constructs</span>
+              </a>
+              <div class="LW_CollapsibleArea_HrDiv">
+                <hr class="LW_CollapsibleArea_Hr" />
+              </div>
+            </div>
+          </div>
+          <div class="sectionblock">
+            <a id="sectionToggle6">
+              
+            </a>
+            <p>Alternation constructs modify a regular expression to enable either/or matching. These constructs include the language elements listed in the following table. For more information, see <span><a href="http://msdn.microsoft.com/en-us/library/36xybswe.aspx">Alternation Constructs in Regular Expressions</a></span>.</p>
+            <div class="caption">
+              
+            </div>
+            <div class="tableSection">
+              <table>
+                <tr>
+                  <th>
+                    <p>Alternation construct</p>
+                  </th>
+                  <th>
+                    <p>Description</p>
+                  </th>
+                  <th>
+                    <p>Pattern</p>
+                  </th>
+                  <th>
+                    <p>Matches</p>
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">|</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches any one element separated by the vertical bar (|) character.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">th(e|is|at)</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"the", "this" in "this is the day. "</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">(?(</span>
+                      </span>
+                      <span class="parameter">expression</span>
+                      <span>
+                        <span class="input">)</span>
+                      </span>
+                      <span class="parameter">yes</span>
+                      <span>
+                        <span class="input">|</span>
+                      </span>
+                      <span class="parameter">no</span>
+                      <span>
+                        <span class="input">)</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches <span class="parameter">yes</span> if the regular expression pattern designated by <span class="parameter">expression</span> matches; otherwise, matches the optional <span class="parameter">no</span> part. <span class="parameter">expression</span> is interpreted as a zero-width assertion. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">(?(A)A\d{2}\b|\b\d{3}\b)</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"A10", "910" in "A10 C103 910"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">(?(</span>
+                      </span>
+                      <span class="parameter">name</span>
+                      <span>
+                        <span class="input">)</span>
+                      </span>
+                      <span class="parameter">yes</span>
+                      <span>
+                        <span class="input">|</span>
+                      </span>
+                      <span class="parameter">no</span>
+                      <span>
+                        <span class="input">)</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Matches <span class="parameter">yes</span> if <span class="parameter">name</span>, a named or numbered capturing group, has a match; otherwise, matches the optional <span class="parameter">no</span>. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">(?&lt;quoted&gt;")?(?(quoted).+?"|\S+\s)</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Dogs.jpg, "Yiska playing.jpg" in "Dogs.jpg "Yiska playing.jpg""</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <p>
+              <a href="#top">Back to top</a>
+            </p>
+          </div>
+        </div>
+        <a id="substitutions">
+          
+        </a>
+        <div>
+          <div class="LW_CollapsibleArea_TitleDiv">
+            <div>
+              <a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse">
+                <span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span>
+                <span class="LW_CollapsibleArea_Title">Substitutions</span>
+              </a>
+              <div class="LW_CollapsibleArea_HrDiv">
+                <hr class="LW_CollapsibleArea_Hr" />
+              </div>
+            </div>
+          </div>
+          <div class="sectionblock">
+            <a id="sectionToggle7">
+              
+            </a>
+            <p>Substitutions are regular expression language elements that are supported in replacement patterns. For more information, see <span><a href="http://msdn.microsoft.com/en-us/library/ewy2t5e0.aspx">Substitutions in Regular Expressions</a></span>. The metacharacters listed in the following table are atomic zero-width assertions.</p>
+            <div class="caption">
+              
+            </div>
+            <div class="tableSection">
+              <table>
+                <tr>
+                  <th>
+                    <p>Character</p>
+                  </th>
+                  <th>
+                    <p>Description</p>
+                  </th>
+                  <th>
+                    <p>Pattern</p>
+                  </th>
+                  <th>
+                    <p>Replacement pattern</p>
+                  </th>
+                  <th>
+                    <p>Input string</p>
+                  </th>
+                  <th>
+                    <p>Result string</p>
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">$</span>
+                      </span>
+                      <span class="parameter">number</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Substitutes the substring matched by group <span class="parameter">number</span>.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\b(\w+)(\s)(\w+)\b</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">$3$2$1</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"one two" </p>
+                  </td>
+                  <td>
+                    <p>"two one"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">${</span>
+                      </span>
+                      <span class="parameter">name</span>
+                      <span>
+                        <span class="input">}</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Substitutes the substring matched by the named group <span class="parameter">name</span>.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\b(?&lt;word1&gt;\w+)(\s)(?&lt;word2&gt;\w+)\b</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">${word2} ${word1}</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"one two" </p>
+                  </td>
+                  <td>
+                    <p>"two one"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">$$</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Substitutes a literal "$".</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\b(\d+)\s?USD</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">$$$1</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"103 USD"</p>
+                  </td>
+                  <td>
+                    <p>"$103"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">$&amp;</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Substitutes a copy of the whole match.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">(\$*(\d*(\.+\d+)?){1})</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">**$&amp;</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"$1.30"</p>
+                  </td>
+                  <td>
+                    <p>"**$1.30**"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">$`</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Substitutes all the text of the input string before the match.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">B+</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">$`</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"AABBCC"</p>
+                  </td>
+                  <td>
+                    <p>"AAAACC"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">$'</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Substitutes all the text of the input string after the match.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">B+</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">$'</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"AABBCC"</p>
+                  </td>
+                  <td>
+                    <p>"AACCCC"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">$+</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Substitutes the last group that was captured.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">B+(C+)</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">$+</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"AABBCCDD"</p>
+                  </td>
+                  <td>
+                    <p>AACCDD</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">$_</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Substitutes the entire input string.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">B+</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">$_</span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"AABBCC"</p>
+                  </td>
+                  <td>
+                    <p>"AAAABBCCCC"</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <p>
+              <a href="#top">Back to top</a>
+            </p>
+          </div>
+        </div>
+        <a id="options">
+          
+        </a>
+        <div>
+          <div class="LW_CollapsibleArea_TitleDiv">
+            <div>
+              <a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse">
+                <span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span>
+                <span class="LW_CollapsibleArea_Title">Regular Expression Options</span>
+              </a>
+              <div class="LW_CollapsibleArea_HrDiv">
+                <hr class="LW_CollapsibleArea_Hr" />
+              </div>
+            </div>
+          </div>
+          <div class="sectionblock">
+            <a id="sectionToggle8">
+              
+            </a>
+            <p>You can specify options that control how the regular expression engine interprets a regular expression pattern. Many of these options can be specified either inline (in the regular expression pattern) or as one or more <span><a href="http://msdn.microsoft.com/en-us/library/system.text.regularexpressions.regexoptions.aspx">RegexOptions</a></span> constants. This quick reference lists only inline options. For more information about inline and <span><a href="http://msdn.microsoft.com/en-us/library/system.text.regularexpressions.regexoptions.aspx">RegexOptions</a></span> options, see the article <span><a href="http://msdn.microsoft.com/en-us/library/yd1hzczs.aspx">Regular Expression Options</a></span>. </p>
+            <p>You can specify an inline option in two ways:</p>
+            <ul>
+              <li>
+                <p>By using the <a href="http://msdn.microsoft.com/en-us/library/x044wc7s.aspx">miscellaneous construct</a> <span><span class="input">(?imnsx-imnsx)</span></span>, where a minus sign (-) before an option or set of options turns those options off. For example, <span><span class="input">(?i-mn)</span></span> turns case-insensitive matching (<span><span class="input">i</span></span>) on, turns multiline mode (<span><span class="input">m</span></span>) off, and turns unnamed group captures (<span><span class="input">n</span></span>) off. The option applies to the regular expression pattern from the point at which the option is defined, and is effective either to the end of the pattern or to the point where another construct reverses the option.</p>
+              </li>
+              <li>
+                <p>By using the <a href="http://msdn.microsoft.com/en-us/library/bs2twtah.aspx">grouping construct</a> <span><span class="input">(?imnsx-imnsx:</span></span><span class="parameter">subexpression</span><span><span class="input">)</span></span>, which defines options for the specified group only.</p>
+              </li>
+            </ul>
+            <p>The .NET Framework regular expression engine supports the following inline options.</p>
+            <div class="caption">
+              
+            </div>
+            <div class="tableSection">
+              <table>
+                <tr>
+                  <th>
+                    <p>Option</p>
+                  </th>
+                  <th>
+                    <p>Description</p>
+                  </th>
+                  <th>
+                    <p>Pattern</p>
+                  </th>
+                  <th>
+                    <p>Matches</p>
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">i</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Use case-insensitive matching. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\b(?i)a(?-i)a\w+\b</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>"aardvark", "aaaAuto" in "aardvark AAAuto aaaAuto Adam breakfast" </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">m</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Use multiline mode. <span><span class="input">^</span></span> and <span><span class="input">$</span></span> match the beginning and end of a line, instead of the beginning and end of a string. </p>
+                  </td>
+                  <td>
+                    <p>For an example, see the "Multiline Mode" section in <span><a href="http://msdn.microsoft.com/en-us/library/yd1hzczs.aspx">Regular Expression Options</a></span>.</p>
+                  </td>
+                  <td>
+                    <p>
+                      
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">n</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Do not capture unnamed groups. </p>
+                  </td>
+                  <td>
+                    <p>For an example, see the "Explicit Captures Only" section in <span><a href="http://msdn.microsoft.com/en-us/library/yd1hzczs.aspx">Regular Expression Options</a></span>.</p>
+                  </td>
+                  <td>
+                    <p>
+                      
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">s</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Use single-line mode.</p>
+                  </td>
+                  <td>
+                    <p>For an example, see the "Single-line Mode" section in <span><a href="http://msdn.microsoft.com/en-us/library/yd1hzczs.aspx">Regular Expression Options</a></span>.</p>
+                  </td>
+                  <td>
+                    <p>
+                      
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">x</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Ignore unescaped white space in the regular expression pattern. </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">\b(?x) \d+ \s \w+</span>
+                      </span> </p>
+                  </td>
+                  <td>
+                    <p>"1 aardvark", "2 cats" in "1 aardvark 2 cats IV centurions" </p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <p>
+              <a href="#top">Back to top</a>
+            </p>
+          </div>
+        </div>
+        <a id="miscellaneous_constructs">
+          
+        </a>
+        <div>
+          <div class="LW_CollapsibleArea_TitleDiv">
+            <div>
+              <a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse">
+                <span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span>
+                <span class="LW_CollapsibleArea_Title">Miscellaneous Constructs</span>
+              </a>
+              <div class="LW_CollapsibleArea_HrDiv">
+                <hr class="LW_CollapsibleArea_Hr" />
+              </div>
+            </div>
+          </div>
+          <div class="sectionblock">
+            <a id="sectionToggle9">
+              
+            </a>
+            <p>Miscellaneous constructs either modify a regular expression pattern or provide information about it. The following table lists the miscellaneous constructs supported by the .NET Framework. For more information, see <span><a href="http://msdn.microsoft.com/en-us/library/x044wc7s.aspx">Miscellaneous Constructs in Regular Expressions</a></span>.</p>
+            <div class="caption">
+              
+            </div>
+            <div class="tableSection">
+              <table>
+                <tr>
+                  <th>
+                    <p>Construct</p>
+                  </th>
+                  <th>
+                    <p>Definition</p>
+                  </th>
+                  <th>
+                    <p>Example</p>
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">(?imnsx-imnsx)</span>
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>Sets or disables options such as case insensitivity in the middle of a pattern. For more information, see <span><a href="http://msdn.microsoft.com/en-us/library/yd1hzczs.aspx">Regular Expression Options</a></span>.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\bA(?i)b\w+\b</span> matches "ABA", "Able" in "ABA Able Act"</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">(?#</span>
+                      </span> <span class="parameter">comment</span><span><span class="input">)</span></span></p>
+                  </td>
+                  <td>
+                    <p>Inline comment. The comment ends at the first closing parenthesis.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">\bA(?#Matches words starting with A)\w+\b</span>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>
+                      <span>
+                        <span class="input">#</span>
+                      </span> [to end of line]</p>
+                  </td>
+                  <td>
+                    <p>X-mode comment. The comment starts at an unescaped <span><span class="input">#</span></span> and continues to the end of the line.</p>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="code">(?x)\bA\w+\b#Matches words starting with A</span>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <p>
+              <a href="#top">Back to top</a>
+            </p>
+          </div>
+        </div>
+        <div>
+          <div class="LW_CollapsibleArea_TitleDiv">
+            <div>
+              <a href="javascript:void(0)" class="LW_CollapsibleArea_TitleAhref" title="Collapse">
+                <span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span>
+                <span class="LW_CollapsibleArea_Title">See Also</span>
+              </a>
+              <div class="LW_CollapsibleArea_HrDiv">
+                <hr class="LW_CollapsibleArea_Hr" />
+              </div>
+            </div>
+          </div>
+          <div class="sectionblock">
+            <a id="seeAlsoToggle">
+              
+            </a>
+            <h4 class="subHeading">Reference</h4>
+            <div class="seeAlsoStyle">
+              <span>
+                <a href="http://msdn.microsoft.com/en-us/library/system.text.regularexpressions.aspx">System.Text.RegularExpressions</a>
+              </span>
+            </div>
+            <div class="seeAlsoStyle">
+              <span>
+                <a href="http://msdn.microsoft.com/en-us/library/system.text.regularexpressions.regex.aspx">Regex</a>
+              </span>
+            </div>
+            <h4 class="subHeading">Concepts</h4>
+            <div class="seeAlsoStyle">
+              <a href="http://msdn.microsoft.com/en-us/library/30wbz966.aspx">Regular Expression Classes</a>
+            </div>
+            <h4 class="subHeading">Other Resources</h4>
+            <div class="seeAlsoStyle">
+              <span>
+                <a href="http://msdn.microsoft.com/en-us/library/hs600312.aspx">.NET Framework Regular Expressions</a>
+              </span>
+            </div>
+            <div class="seeAlsoStyle">
+              <a href="http://msdn.microsoft.com/en-us/library/kweb790z.aspx">Regular Expression Examples</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div id="contentFeedback">
+    <form method="post" action="/en-us/library/feedback/add/az24scfc.aspx">
+        <input name="__RequestVerificationToken" type="hidden" value="Cvu7kKAsmqrVHjmBc6JbAvW2Pfl0SJbJUHzUOyGUZRNjqwinoCuEHskYiAyTucqB0aZ_4VVGhnaIMq2o61gP3-SEHfacWKkDjm9jgEWPba4EfL01l67MHl-dZxpOyIf-90A7FQ2" />
+    <div id="contentFeedbackContainer">
+        <div class="FeedbackTitleContainer">
+            <a name="feedback"></a>
+        Did you find this helpful?
+            <input id="rdIsUsefulYes" name="rdIsUseful" type="radio" value="1" onclick="toggleContentFeedback('Yes');" /><label for="rdIsUsefulYes">Yes</label>
+            <input id="rdIsUsefulNo" name="rdIsUseful" type="radio" value="0" onclick="toggleContentFeedback('No');" /><label for="rdIsUsefulNo">No</label>
+        
+        </div>
+        
+            <div id="contentFeedbackQAContainer">
+                
+                    <div id="feedbackListNoContainer" class="FeedbackListContainer">
+                        
+                            <div>
+                                <input id="chkbxNo201" name="chkbxNo" type="checkbox" value="201" />
+                                <label for="chkbxNo201">Not accurate</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo202" name="chkbxNo" type="checkbox" value="202" />
+                                <label for="chkbxNo202">Not enough depth</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo203" name="chkbxNo" type="checkbox" value="203" />
+                                <label for="chkbxNo203">Need more code examples</label>
+                            </div>
+                        
+                    </div>
+                
+                <div class="FeedbackTellUsMoreContainer">
+                    <textarea id="feedbackText" name="feedbackText" class="TellUsMoreTextBoxSearchLoaded" onfocus="WatermarkFocus(this, 'Tell us more...', 'TellUsMoreTextBoxSearch')" onblur="WatermarkBlur(this, 'Tell us more...', 'TellUsMoreTextBoxSearchLoaded')" onmouseover="TextBoxCharactersCounter(this, document.getElementById('feedbackTextCounter'), 1500)" onkeydown="TextBoxCharactersCounter(this, document.getElementById('feedbackTextCounter'), 1500)" onkeyup="TextBoxCharactersCounter(this, document.getElementById('feedbackTextCounter'), 1500)">Tell us more...</textarea>
+                </div>
+                <span class="counter">(<span id="feedbackTextCounter">1500</span> characters remaining)</span>
+                <input type="hidden" id="returnUrl" name="returnUrl" value="http://msdn.microsoft.com/en-us/library/az24scfc.aspx" />
+                <input type="submit" id="submit" value="Submit" title="Click to Submit Feedback" onclick="WatermarkOnSubmit(document.getElementById('feedbackText'), 'Tell us more...', 'TellUsMoreTextBoxSearch')" />
+                <div style="clear: both;"></div>
+            </div>  
+        
+    </div>
+    </form>
+</div>
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+ 
+</div>
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="96pWMtT8z7j_i3YqXk_jiE6H7podD-MgGm9qsLAiVmCiKFC-EceAoL81W_LmsY0wFWAz5GH6XaKhFoVA81igZleH3K_uDLh6UDjh7BCgWXKmOQTKT1PSVCbaAOixQPyyquH_XA2" />
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/en-us/library/feedback/add/az24scfc.aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+
+    
+
+<div id="ux-footer" class="" style="">
+    <footer class="top">
+        <div data-fragmentName="LeftLinks" id="Fragment_LeftLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Dev centers</div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://msdn.microsoft.com/windows" id="27861_1" class="windowsBlue" xmlns="http://www.w3.org/1999/xhtml">Windows</a>
+        </li>
+        <li>
+          <a href="http://dev.windowsphone.com/" id="27861_2" class="windowsPurple" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/office" id="27861_3" class="office" xmlns="http://www.w3.org/1999/xhtml">Office</a>
+        </li>
+        <li>
+          <a href="http://www.windowsazure.com/en-us/documentation/" id="27861_4" class="windowsBlue" xmlns="http://www.w3.org/1999/xhtml">Windows Azure</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/vstudio" id="27861_5" class="visualStudio" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/aa937802" id="27861_6" xmlns="http://www.w3.org/1999/xhtml">More...</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>    
+        <div id="rightLinks">
+            <div data-fragmentName="CenterLinks1" id="Fragment_CenterLinks1" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Learning resources</div>
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://www.microsoftvirtualacademy.com/" id="27861_14" xmlns="http://www.w3.org/1999/xhtml">Microsoft Virtual Academy</a>
+        </li>
+        <li>
+          <a href="http://channel9.msdn.com/" id="27861_16" xmlns="http://www.w3.org/1999/xhtml">Channel 9</a>
+        </li>
+        <li>
+          <a href="http://www.interoperabilitybridges.com/" id="27861_17" xmlns="http://www.w3.org/1999/xhtml">Interoperability Bridges</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/magazine/" id="CenterLinks1_427_33" xmlns="http://www.w3.org/1999/xhtml">MSDN Magazine</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+            <div data-fragmentName="CenterLinks2" id="Fragment_CenterLinks2" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Community</div>
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://social.msdn.microsoft.com/forums/en-us/home" id="27861_19" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+        </li>
+        <li>
+          <a href="http://blogs.msdn.com/b/developer-tools/" id="27861_20" xmlns="http://www.w3.org/1999/xhtml">Blogs</a>
+        </li>
+        <li>
+          <a href="http://www.codeplex.com" id="27861_22" xmlns="http://www.w3.org/1999/xhtml">Codeplex</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+            <div data-fragmentName="CenterLinks3" id="Fragment_CenterLinks3" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Support</div>
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://msdn.microsoft.com/hh361695" id="CenterLinks3_427_34" xmlns="http://www.w3.org/1999/xhtml">Self support</a>
+        </li>
+        <li>
+          <a href="http://support.microsoft.com/" id="27861_24" xmlns="http://www.w3.org/1999/xhtml">Other support options</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+            <div data-fragmentName="CenterLinks4" id="Fragment_CenterLinks4" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Programs</div>
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://www.microsoft.com/bizspark/" id="27861_27" xmlns="http://www.w3.org/1999/xhtml">BizSpark (for startups)</a>
+        </li>
+        <li>
+          <a href="https://www.dreamspark.com/" id="27861_28" xmlns="http://www.w3.org/1999/xhtml">DreamSpark</a>
+        </li>
+        <li>
+          <a href="https://www.microsoft.com/faculty" id="27861_29" xmlns="http://www.w3.org/1999/xhtml">Faculty Connection</a>
+        </li>
+        <li>
+          <a href="http://www.microsoft.com/student/" id="CenterLinks4_427_32" xmlns="http://www.w3.org/1999/xhtml">Microsoft Student</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    <div class="feedbackContainer">
+        <div id="feedbackSection1" class="clear">
+            <div class="left">Did you find this helpful?</div>
+            <div class="left">
+                <div class="left">
+                    <input type="radio" name="feedback" id="feedbackYes" value="1" class="feedbackYesClick" data-enhance="false" /><label class="feedbackYesClick" for="feedbackYes"> Yes</label>
+                </div>
+                <div class="left">
+                    <input type="radio" name="feedback" id="feedbackNo" value="0" class="feedbackNoClick" data-enhance="false" /><label class="feedbackNoClick" for="feedbackNo"> No</label>
+                </div>
+            </div>
+            <a class="rateThisAnchor" name="feedback"></a>
+        </div>
+        <div id="feedbackSection2" class="clear">
+        </div>
+        <div id="feedbackSection3" class="clear">
+                    <div>
+                        <input id="checkboxNo201" name="chkbxNo" type="checkbox" value="201" data-enhance="false" />
+                        <label for="checkboxNo201">Not accurate</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo202" name="chkbxNo" type="checkbox" value="202" data-enhance="false" />
+                        <label for="checkboxNo202">Not enough depth</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo203" name="chkbxNo" type="checkbox" value="203" data-enhance="false" />
+                        <label for="checkboxNo203">Need more code examples</label>
+                    </div>
+        </div>
+        <div id="feedbackSection4" class="clear">
+            <div>
+                <textarea id="feedbackTextArea" name="feedbackText" class="TellUsMoreTextBoxSearchLoaded" data-enhance="false">Tell us more...</textarea>
+            </div>
+            <div class="left"><span class="counter">(<span id="feedbackTextCounter">1500</span> characters remaining)</span></div>
+            <div class="right">
+                <input type="submit" id="feedbackSubmit" value="Submit" title="Click to Submit Feedback" data-enhance="false" />
+            </div>
+        </div>
+        <div id="feedbackSection5">Thank you for your feedback</div>
+        <input id="feedbackValue" type="hidden" value="" />
+        <input id="tellUsMoreText" type="hidden" value="Tell us more..." />
+        <input id="maxTextBoxCharacters" type="hidden" value="1500" />
+    </div>
+        </div>
+    </footer>
+    
+    <footer class="bottom">
+        <span class="localeContainer">
+            
+    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/en-us/SelectLocale">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2faz24scfc.aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>    
+
+
+        </span>
+        
+        <div data-fragmentName="BottomLinks" id="Fragment_BottomLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn horizontal">
+        <li>
+          <a href="http://msdn.microsoft.com/newsletter.aspx" id="27861_8" xmlns="http://www.w3.org/1999/xhtml">Newsletter</a>
+        </li>
+        <li>
+          <a href="http://privacy.microsoft.com/default.mspx" id="27861_10" xmlns="http://www.w3.org/1999/xhtml">Privacy &amp; cookies</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/cc300389.aspx" id="27861_11" xmlns="http://www.w3.org/1999/xhtml">Terms of Use</a>
+        </li>
+        <li>
+          <a href="http://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" id="27861_12" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>    
+        <span class="logoLegal">
+            <span class="logo"></span>
+            <span class="copyright">© 2013 Microsoft</span>
+        </span>
+    </footer>
+</div>
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2013 Microsoft. All rights reserved.</div>
+            </div>
+
+            
+            
+    
+    
+    <input id="tocPaddingPerLevel" type="hidden" value="17" />
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Lightweight" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com" title="Web Analytics">
+    <img src="//msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="7meaR2-A9NRsUa8CU3rs8OU9DJGcj2g6Fh1DzH44BuJQoJZZE0cMuf0I9d4qdc8IBfBAsP1HTnvTUBtTWjUDM6LC2da8LrTyYgsU0WXq1ObUA_qEodFcQDeL-exub8LkCJQmTQ2" />
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/az24scfc(d=default,l=en-us,v=vs.110).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027msdnlib_dotnet\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"f295226b-3b93-4146-b8d5-d71bd00396aa\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,0:Topic,1:webtrendsscript,2:omni_rsid_MSDN,3:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Global/Content/Webtrends/resources:1,/Areas/Global/Content/Omniture/resources/MSDN:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=61F0FB52A7A36B61DFB9AFD9270F0B57" },
+	{ url: "http://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=en-us\u0026focusOnInit=false\u0026emptyWatermark=true" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:layout,1:Header,2:Toc,2:NavigationResize,3:FeedbackCounter;/Areas/Centers/Themes/Base/Content:0,/Areas/Centers/Themes/Msdn/Content:1,/Areas/Epx/Library/Content:2,/Areas/Epx/Shared/Content:3\u0026amp;hashKey=F2352A55EA50DF5EA597EAD4B7E1BD9B" },
+	{ txt: "MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = \u0027Expand\u0027; MTPS.LocalizedStrings.CollapseButtonTooltip = \u0027Collapse\u0027;" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Feedback,1:LibraryMemberFilter,2:Rating,3:CodeSnippet,3:TopicNotInScope,3:CollapsibleArea,3:VersionSelector,3:SurveyBroker;/Areas/Epx/Shared/Content:0,/Areas/Epx/Library/Content:1,/Areas/Centers/Themes/Msdn/Content:2,/Areas/Epx/Content/Scripts:3\u0026amp;hashKey=D6018B75B223F9B5371A774E01992606" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+</html>

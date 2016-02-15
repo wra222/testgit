@@ -1,0 +1,111 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IMES.Query.Interface.QueryIntf;
+using IMES.Query.DB;
+using IMES.Infrastructure;
+using log4net;
+using System.Reflection;
+using System.Data;
+
+namespace IMES.Query.Implementation
+{
+    public class SA_PCBTestReport : MarshalByRefObject, ISA_PCBTestReport
+    {
+        private static ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        public DataTable GetPCBTestReportResult(string Connection, DateTime FromDate, DateTime ToDate, IList<string> lstFamily, IList<string> lstTestItem, IList<string> lstFixtureID, IList<string> lstStation, IList<string> lstOP)
+        {
+            string methodName = MethodBase.GetCurrentMethod().Name;
+            BaseLog.LoggingBegin(logger, methodName);
+            
+            try
+            {
+                    StringBuilder sb = new StringBuilder();
+                sb.AppendLine("SELECT a.ActionName, a.PCBNo,a1.MAC,a.[Type], ");
+                sb.AppendLine("case a.Status when '1' then 'Pass' when '0' then 'Fail' end as Status, ");
+                //sb.AppendLine("a.FixtureID,a.Station,a.Line as PdLine , a1.PCBModelID, c.Descr, a.Editor, ");
+                sb.AppendLine("a.FixtureID,a.Station,a.Line as PdLine , a1.PCBModelID, a.ErrorCode,isnull(c.Descr,a.Descr) as Descr, a.Editor, ");
+                sb.AppendLine("a.Remark, a.Cdt,LEFT(a1.PCBNo,2) as Family ");
+                sb.AppendLine("FROM PCB a1 ");
+                sb.AppendLine("inner join PCBTestLog a on (a1.PCBNo = a.PCBNo) ");
+                sb.AppendLine("LEFT JOIN PCBTestLog_DefectInfo b on a.ID=b.PCBTestLogID ");
+                sb.AppendLine("LEFT JOIN DefectCode c on c.Defect = b.DefectCodeID ");
+                sb.AppendLine("WHERE a.Cdt BETWEEN @FromDate AND @ToDate ");
+                if (lstFamily.Count > 0)
+                {
+                    sb.AppendLine(string.Format("AND LEFT(a1.PCBNo,2) in ('{0}') ", string.Join("','", lstFamily.ToArray())));
+                }
+                if (lstTestItem.Count > 0)
+                {
+                    sb.AppendLine(string.Format("AND a.[Type] in ('{0}') ", string.Join("','", lstTestItem.ToArray())));
+                }
+                if (lstFixtureID.Count > 0)
+                {
+                    sb.AppendLine(string.Format("AND a.FixtureID in ('{0}') ", string.Join("','", lstFixtureID.ToArray())));
+                }
+                if (lstStation.Count > 0)
+                {
+                    sb.AppendLine(string.Format("AND a.Station in ('{0}') ", string.Join("','", lstStation.ToArray())));
+                }
+                if (lstOP.Count > 0)
+                {
+                    sb.AppendLine(string.Format("AND a.Editor in ('{0}') ", string.Join("','", lstOP.ToArray())));
+                }
+                sb.AppendLine("ORDER BY PCBNo ,Cdt ");
+                string SQLText = sb.ToString();
+                return SQLHelper.ExecuteDataFill(Connection,
+                                                 System.Data.CommandType.Text,
+                                                 SQLText,
+                                                 SQLHelper.CreateSqlParameter("@FromDate", FromDate),
+                                                 SQLHelper.CreateSqlParameter("@ToDate", ToDate));
+            }
+            catch (Exception e)
+            {
+                BaseLog.LoggingError(logger, MethodBase.GetCurrentMethod(), e);
+                throw;
+            }
+            finally
+            {
+                BaseLog.LoggingEnd(logger, methodName);
+            }
+        }
+        public DataTable GetRepairDetailResult(string Connection, DateTime FromDate, DateTime ToDate, string PCBNo)
+        {
+            string methodName = MethodBase.GetCurrentMethod().Name;
+            BaseLog.LoggingBegin(logger, methodName);
+            
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("SELECT a.PCBNo,a.Line as PdLine,a.Station,c.Defect, ");
+                sb.AppendLine("b.Cause,b.Location,b.Remark,b.Obligation,a.Status,b.Editor, ");
+                sb.AppendLine("a.Cdt as TestedDate,a.Udt as RepairedDate ");
+                sb.AppendLine("FROM PCBRepair a ");
+                sb.AppendLine("LEFT JOIN PCBRepair_DefectInfo b on a.ID= b.PCARepairID ");
+                sb.AppendLine("LEFT JOIN DefectCode c on c.Defect = b.DefectCode ");
+                sb.AppendLine("WHERE a.PCBNo = @PCBNo ");
+                sb.AppendLine("AND a.Cdt BETWEEN @FromDate AND @ToDate ");
+
+                sb.AppendLine("ORDER BY PCBNo ,TestedDate ");
+                string SQLText = sb.ToString();
+                return SQLHelper.ExecuteDataFill(Connection,
+                                                 System.Data.CommandType.Text,
+                                                 SQLText,
+                                                 SQLHelper.CreateSqlParameter("@FromDate", FromDate),
+                                                 SQLHelper.CreateSqlParameter("@ToDate", ToDate),
+                                                 SQLHelper.CreateSqlParameter("@PCBNo",32,PCBNo));
+            }
+            catch (Exception e)
+            {
+                BaseLog.LoggingError(logger, MethodBase.GetCurrentMethod(), e);
+                throw;
+            }
+            finally
+            {
+                BaseLog.LoggingEnd(logger, methodName);
+            }
+        }
+    }
+}

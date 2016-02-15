@@ -1,0 +1,35 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="UploadPoData" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:DBScope Station="{ActivityBind UploadPoData,Path=Station}" x:Name="dbScope1" Key="{ActivityBind UploadPoData,Path=Key}" SessionType="{ActivityBind UploadPoData,Path=SessionType}">
+		<IfElseActivity x:Name="ifElseActivity1">
+			<IfElseBranchActivity x:Name="For173AndPLUser">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="is173OrPL" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UploadPoData Customer="{ActivityBind UploadPoData,Path=Customer}" x:Name="uploadPoData1" SessionType="{ActivityBind UploadPoData,Path=SessionType}" Editor="{ActivityBind UploadPoData,Path=Editor}" Station="{ActivityBind UploadPoData,Path=Station}" Line="{ActivityBind UploadPoData,Path=PdLine}" Key="{ActivityBind UploadPoData,Path=Key}" />
+				<ns0:UpdateUDTofDN Customer="{ActivityBind UploadPoData,Path=Customer}" x:Name="updateUDTofDN1" SessionType="{ActivityBind UploadPoData,Path=SessionType}" Editor="{ActivityBind UploadPoData,Path=Editor}" Station="{ActivityBind UploadPoData,Path=Station}" Line="{ActivityBind UploadPoData,Path=PdLine}" Key="{ActivityBind UploadPoData,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity2">
+					<IfElseBranchActivity x:Name="forPLUser">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="isPL" />
+						</IfElseBranchActivity.Condition>
+						<ns0:AllocateBoxId Customer="{ActivityBind UploadPoData,Path=Customer}" x:Name="allocateBoxId1" SessionType="{ActivityBind UploadPoData,Path=SessionType}" Editor="{ActivityBind UploadPoData,Path=Editor}" Station="{ActivityBind UploadPoData,Path=Station}" Line="{ActivityBind UploadPoData,Path=PdLine}" Key="{ActivityBind UploadPoData,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ForOBUser">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="isOB" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UploadOBPoData Customer="{ActivityBind UploadPoData,Path=Customer}" x:Name="uploadOBPoData1" SessionType="{ActivityBind UploadPoData,Path=SessionType}" Editor="{ActivityBind UploadPoData,Path=Editor}" Station="{ActivityBind UploadPoData,Path=Station}" Line="{ActivityBind UploadPoData,Path=PdLine}" Key="{ActivityBind UploadPoData,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity3">
+					<IfElseBranchActivity x:Name="forOBNormal">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="isOBNormal" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UploadPoDataEDI Customer="{ActivityBind UploadPoData,Path=Customer}" x:Name="uploadPoDataEDI1" SessionType="{ActivityBind UploadPoData,Path=SessionType}" Editor="{ActivityBind UploadPoData,Path=Editor}" Station="{ActivityBind UploadPoData,Path=Station}" Line="{ActivityBind UploadPoData,Path=PdLine}" Key="{ActivityBind UploadPoData,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+</ns0:BaseFlow>

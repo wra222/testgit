@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cn_btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="cn_MsgInvalidFileType" xml:space="preserve">
+    <value>请选择excel文件!</value>
+  </data>
+  <data name="eng_btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="eng_MsgInvalidFileType" xml:space="preserve">
+    <value>Please choose excel  file!</value>
+  </data>
+  <data name="cn_msgEmptyFile" xml:space="preserve">
+    <value>需要选择上传的文件!</value>
+  </data>
+  <data name="eng_msgEmptyFile" xml:space="preserve">
+    <value>Please choose a excel  file!</value>
+  </data>
+  <data name="cn_lbCOA" xml:space="preserve">
+    <value>COA File:</value>
+  </data>
+  <data name="cn_lbV" xml:space="preserve">
+    <value>Valid product List:</value>
+  </data>
+  <data name="cn_lbE" xml:space="preserve">
+    <value>Invalid product List:</value>
+  </data>
+  <data name="eng_lbCOA" xml:space="preserve">
+    <value>COA File:</value>
+  </data>
+  <data name="eng_lbV" xml:space="preserve">
+    <value>Valid product List:</value>
+  </data>
+  <data name="eng_lbE" xml:space="preserve">
+    <value>Invalid product List:</value>
+  </data>
+  <data name="cn_titleCOA" xml:space="preserve">
+    <value>COA No</value>
+  </data>
+  <data name="cn_titleERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="cn_titleSN" xml:space="preserve">
+    <value>Customer S/N</value>
+  </data>
+  <data name="eng_titleCOA" xml:space="preserve">
+    <value>COA No</value>
+  </data>
+  <data name="eng_titleERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="eng_titleSN" xml:space="preserve">
+    <value>Customer S/N</value>
+  </data>
+  <data name="cn_msgSaveWrong" xml:space="preserve">
+    <value>文件中的Product 信息有误，请检查后重试!</value>
+  </data>
+  <data name="eng_msgSaveWrong" xml:space="preserve">
+    <value>The information of Product is wrong，please check and then try again!</value>
+  </data>
+  <data name="cn_msgFileEmpty" xml:space="preserve">
+    <value>空文件！</value>
+  </data>
+  <data name="eng_msgFileEmpty" xml:space="preserve">
+    <value>File is empty！</value>
+  </data>
+</root>

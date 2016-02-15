@@ -1,0 +1,7 @@
+E:\IMES_CODE\Code\Edits\bin\NLog.config
+E:\IMES_CODE\Code\Edits\bin\Inventec.HPEDITS.XmlCreator.XML
+E:\IMES_CODE\Code\Edits\bin\Inventec.HPEDITS.XmlCreator.dll
+E:\IMES_CODE\Code\Edits\bin\Inventec.HPEDITS.XmlCreator.pdb
+E:\IMES_CODE\Code\Edits\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\Edits\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+E:\IMES_CODE\Code\Edits\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb

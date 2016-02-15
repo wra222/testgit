@@ -1,0 +1,25 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="OfflinePizzaKittingForRCTO" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetBOM Customer="{ActivityBind OfflinePizzaKittingForRCTO,Path=Customer}" MainObjFrom="Product" SessionType="{ActivityBind OfflinePizzaKittingForRCTO,Path=SessionType}" x:Name="getBOM1" Editor="{ActivityBind OfflinePizzaKittingForRCTO,Path=Editor}" Station="{ActivityBind OfflinePizzaKittingForRCTO,Path=Station}" ModelFrom="ModelName" Line="{ActivityBind OfflinePizzaKittingForRCTO,Path=PdLine}" Key="{ActivityBind OfflinePizzaKittingForRCTO,Path=Key}" />
+	<ns0:GerneratePizza Customer="{ActivityBind OfflinePizzaKittingForRCTO,Path=Customer}" x:Name="gerneratePizza1" SessionType="{ActivityBind OfflinePizzaKittingForRCTO,Path=SessionType}" Editor="{ActivityBind OfflinePizzaKittingForRCTO,Path=Editor}" Station="{ActivityBind OfflinePizzaKittingForRCTO,Path=Station}" Line="{ActivityBind OfflinePizzaKittingForRCTO,Path=PdLine}" Key="{ActivityBind OfflinePizzaKittingForRCTO,Path=Key}" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplet" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind OfflinePizzaKittingForRCTO,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind OfflinePizzaKittingForRCTO,Path=SessionType}" Editor="{ActivityBind OfflinePizzaKittingForRCTO,Path=Editor}" Station="{ActivityBind OfflinePizzaKittingForRCTO,Path=Station}" Line="{ActivityBind OfflinePizzaKittingForRCTO,Path=PdLine}" Key="{ActivityBind OfflinePizzaKittingForRCTO,Path=Key}" />
+			<IfElseActivity x:Name="IfComplete">
+				<IfElseBranchActivity x:Name="NotComplete">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplet" />
+					</IfElseBranchActivity.Condition>
+					<ns0:PartMatch Customer="{ActivityBind OfflinePizzaKittingForRCTO,Path=Customer}" SessionType="{ActivityBind OfflinePizzaKittingForRCTO,Path=SessionType}" Editor="{ActivityBind OfflinePizzaKittingForRCTO,Path=Editor}" Station="{ActivityBind OfflinePizzaKittingForRCTO,Path=Station}" x:Name="partMatch1" BindTo="Pizza" Line="{ActivityBind OfflinePizzaKittingForRCTO,Path=PdLine}" Key="{ActivityBind OfflinePizzaKittingForRCTO,Path=Key}" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:DBScope Station="{ActivityBind OfflinePizzaKittingForRCTO,Path=Station}" x:Name="dbScope1" Key="{ActivityBind OfflinePizzaKittingForRCTO,Path=Key}" SessionType="{ActivityBind OfflinePizzaKittingForRCTO,Path=SessionType}">
+		<ns0:BindParts Customer="{ActivityBind OfflinePizzaKittingForRCTO,Path=Customer}" x:Name="bindParts1" SessionType="{ActivityBind OfflinePizzaKittingForRCTO,Path=SessionType}" Editor="{ActivityBind OfflinePizzaKittingForRCTO,Path=Editor}" Station="{ActivityBind OfflinePizzaKittingForRCTO,Path=Station}" BindTo="Pizza" Line="{ActivityBind OfflinePizzaKittingForRCTO,Path=PdLine}" Key="{ActivityBind OfflinePizzaKittingForRCTO,Path=Key}" />
+		<ns0:Print Customer="{ActivityBind OfflinePizzaKittingForRCTO,Path=Customer}" NotExistException="True" SessionType="{ActivityBind OfflinePizzaKittingForRCTO,Path=SessionType}" Editor="{ActivityBind OfflinePizzaKittingForRCTO,Path=Editor}" Station="{x:Null}" DnFrom="No" Line="{ActivityBind OfflinePizzaKittingForRCTO,Path=PdLine}" Key="{ActivityBind OfflinePizzaKittingForRCTO,Path=Key}" x:Name="print1" />
+		<ns0:WritePrintLogList Customer="{ActivityBind OfflinePizzaKittingForRCTO,Path=Customer}" x:Name="writePrintLogList1" SessionType="{ActivityBind OfflinePizzaKittingForRCTO,Path=SessionType}" Editor="{ActivityBind OfflinePizzaKittingForRCTO,Path=Editor}" Key="{ActivityBind OfflinePizzaKittingForRCTO,Path=Key}" Station="{ActivityBind OfflinePizzaKittingForRCTO,Path=Station}" Line="{ActivityBind OfflinePizzaKittingForRCTO,Path=PdLine}" BeginAndEndNoFrom="PizzaID" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

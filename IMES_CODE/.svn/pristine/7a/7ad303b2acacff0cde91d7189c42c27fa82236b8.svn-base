@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="urn:sap-com:document:sap:rfc:functions" xmlns:n0="http://www.sap.com/webas/630/soap/features/authentication/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:sap="http://www.sap.com/webas/630/wsdl/features" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="urn:sap-com:document:sap:rfc:functions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <sap:Feature name="design_0 " uri="http://www.sap.com/webas/630/soap/features/authentication/">
+    <sap:Property qname="n0:AuthenticationLevel">
+      <sap:Option value="n0:Basic" />
+    </sap:Property>
+  </sap:Feature>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+      <xsd:simpleType name="char1">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char12">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char16">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="16" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char17">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="17" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char18">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="18" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char255">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="255" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char4">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ZMO_MES_261_R">
+        <xsd:sequence>
+          <xsd:element name="MONUMBER" type="tns:char12" />
+          <xsd:element name="SERIALNUMBER" type="tns:char17" />
+          <xsd:element name="RESULT261" type="tns:char1" />
+          <xsd:element name="ITEMNUMBER" type="tns:char4" />
+          <xsd:element name="ERRMSG" type="tns:char255" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZMO_MES_261_H">
+        <xsd:sequence>
+          <xsd:element name="MONUMBER" type="tns:char12" />
+          <xsd:element name="SERIALNUMBER" type="tns:char17" />
+          <xsd:element name="PLANT" type="tns:char4" />
+          <xsd:element name="PRDVER" type="tns:char4" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZMO_MES_261_I">
+        <xsd:sequence>
+          <xsd:element name="MONUMBER" type="tns:char12" />
+          <xsd:element name="SERIALNUMBER" type="tns:char17" />
+          <xsd:element name="COMPONENT" type="tns:char18" />
+          <xsd:element name="WITHDRAWQTY" type="tns:char16" />
+          <xsd:element name="UNIT" type="tns:char3" />
+          <xsd:element name="MVT" type="tns:char3" />
+          <xsd:element name="REMARK1" type="tns:char10" />
+          <xsd:element name="REMARK2" type="tns:char10" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_ZMO_MES_261_R">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZMO_MES_261_R" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_ZMO_MES_261_I">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZMO_MES_261_I" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Z_PRODORD261_IMES_BAPI">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MO_261_HEADER" type="tns:ZMO_MES_261_H" />
+            <xsd:element minOccurs="0" name="MO_261_ITEM" type="tns:TABLE_OF_ZMO_MES_261_I" />
+            <xsd:element minOccurs="0" name="MO_261_RET" type="tns:TABLE_OF_ZMO_MES_261_R" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Z_PRODORD261_IMES_BAPIResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MO_261_ITEM" type="tns:TABLE_OF_ZMO_MES_261_I" />
+            <xsd:element name="MO_261_RET" type="tns:TABLE_OF_ZMO_MES_261_R" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="Z_PRODORD261_IMES_BAPI">
+    <wsdl:part name="parameters" element="tns:Z_PRODORD261_IMES_BAPI" />
+  </wsdl:message>
+  <wsdl:message name="Z_PRODORD261_IMES_BAPIResponse">
+    <wsdl:part name="parameters" element="tns:Z_PRODORD261_IMES_BAPIResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Z_PRODORD261_IMES_BAPI_WS">
+    <sap:useFeature feature="tns:design_0 " />
+    <wsdl:operation name="Z_PRODORD261_IMES_BAPI">
+      <wsdl:input message="tns:Z_PRODORD261_IMES_BAPI" />
+      <wsdl:output message="tns:Z_PRODORD261_IMES_BAPIResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Z_PRODORD261_IMES_BAPI_WSSoapBinding" type="tns:Z_PRODORD261_IMES_BAPI_WS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Z_PRODORD261_IMES_BAPI">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Z_PRODORD261_IMES_BAPI_WSService">
+    <wsdl:port name="Z_PRODORD261_IMES_BAPI_WSSoapBinding" binding="tns:Z_PRODORD261_IMES_BAPI_WSSoapBinding">
+      <soap:address location="http://xidqdb.iec.inventec.com:8000/sap/bc/srt/rfc/sap/Z_PRODORD261_IMES_BAPI_WS?sap-client=001" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,444 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using IMES.Infrastructure.FisObjectBase;
+using System.Collections.ObjectModel;
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+
+namespace IMES.FisObject.Common.Part
+{
+    /// <summary>
+    /// Part实现类
+    /// </summary>
+    public class Part : FisObjectBase, IPart
+    {
+        private static IPartRepository _prtRepository = null;
+        private static IPartRepository PrtRepository
+        {
+            get
+            {
+                if (_prtRepository == null)
+                    _prtRepository = RepositoryFactory.GetInstance().GetRepository<IPartRepository, IPart>();
+                return _prtRepository;
+            }
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public Part()
+        {
+            this._tracker.MarkAsAdded(this);
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public Part(string pn, string bomNodeType, string type, string custpn, string descr, string remark, string autodl, string editor, DateTime cdt, DateTime udt, string descr2)
+        {
+            _pn = pn;
+            _bomNodeType = bomNodeType;
+            _type = type;
+            _custpn = custpn;
+            _descr = descr;
+            _remark = remark;
+            _autodl = autodl;
+            _editor = editor;
+            _cdt = cdt;
+            _udt = udt;
+            _descr2 = descr2;
+            _sn = string.Empty;
+            this._tracker.MarkAsAdded(this);
+        }
+
+        #region . Essential Fields .
+        private string _pn = null;
+        private string _key = null;
+        private readonly string _bomNodeType = null;
+        private string _type = null;
+        private string _custpn = null;
+        private string _descr = null;
+        private string _remark = null;
+        private string _autodl = null;
+        private string _editor = null;
+        private DateTime _cdt = default(DateTime);
+        private DateTime _udt = default(DateTime);
+        private string _sn;
+        private string _partTypeGroup = null;
+        private string _descr2 = null;
+
+        /// <summary>
+        /// PartNumber, Part的唯一性标识
+        /// </summary>
+        public string PN
+        {
+            get { return this._pn; }
+            set
+            {
+                this._tracker.MarkAsModified(this);
+                this._pn = value;
+            }
+        }
+
+        public string BOMNodeType
+        {
+            get { return _bomNodeType; }
+        }
+
+        /// <summary>
+        /// Part具体类型: CPU, DIMM
+        /// </summary>
+        public string Type
+        {
+            get { return this._type; }
+            set
+            {
+                this._tracker.MarkAsModified(this);
+                this._type = value;
+            }
+        }
+
+        /// <summary>
+        /// 类型分组
+        /// </summary>
+        public string TypeGroup
+        {
+            get
+            {
+                if (_partTypeGroup == null)
+                {
+                    PartType type = PrtRepository.GetPartType(_type);
+                    if (type != null)
+                    {
+                        _partTypeGroup = type.PartTypeGroup;
+                    }
+                }
+                return _partTypeGroup;
+            }
+        }
+
+        /// <summary>
+        /// Part的CustomerPn
+        /// </summary>
+        public string CustPn
+        {
+            get { return this._custpn; }
+            set
+            {
+                this._tracker.MarkAsModified(this);
+                this._custpn = value;
+            }
+        }
+
+        /// <summary>
+        /// Part描述信息
+        /// </summary>
+        public string Descr
+        {
+            get { return this._descr; }
+            set
+            {
+                this._tracker.MarkAsModified(this);
+                this._descr = value;
+            }
+        }
+
+        /// <summary>
+        /// Remark
+        /// </summary>
+        public string Remark
+        {
+            get { return this._remark; }
+            set
+            {
+                this._tracker.MarkAsModified(this);
+                this._remark = value;
+            }
+        }
+
+        /// <summary>
+        /// AutoDL
+        /// </summary>
+        public string AutoDL
+        {
+            get { return this._autodl; }
+            set
+            {
+                this._tracker.MarkAsModified(this);
+                this._autodl = value;
+            }
+        }
+
+        /// <summary>
+        /// 维护人员工号
+        /// </summary>
+        public string Editor
+        {
+            get { return this._editor; }
+            set
+            {
+                this._tracker.MarkAsModified(this);
+                this._editor = value;
+            }
+        }
+
+        /// <summary>
+        /// 更新时间
+        /// </summary>
+        public DateTime Udt
+        {
+            get { return this._udt; }
+            set
+            {
+                this._tracker.MarkAsModified(this);
+                this._udt = value;
+            }
+        }
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime Cdt
+        {
+            get { return this._cdt; }
+            set
+            {
+                this._tracker.MarkAsModified(this);
+                this._cdt = value;
+            }
+        }
+
+        /// <summary>
+        /// Part描述信息 2
+        /// </summary>
+        public string Descr2
+        {
+            get { return this._descr2; }
+            set
+            {
+                this._tracker.MarkAsModified(this);
+                this._descr2 = value;
+            }
+        }
+
+        #endregion
+
+        #region Implementation of IPart
+
+        #region . Sub-Instances .
+
+        private IList<PartInfo> _attributes = null;//new List<PartInfo>();
+        private object _syncObj_attributes = new object();
+
+        /// <summary>
+        /// Part属性
+        /// </summary>
+        public IList<PartInfo> Attributes
+        {
+            get 
+            {
+                lock (_syncObj_attributes)
+                {
+                    if (_attributes == null)
+                    {
+                        PrtRepository.FillPartInfos(this);
+                    }
+                    if (_attributes != null)
+                    {
+                        return new ReadOnlyCollection<PartInfo>(_attributes);
+                    }
+                    else
+                        return null;
+                }
+            }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// 获取Part扩展属性
+        /// </summary>
+        /// <param name="name">属性名</param>
+        /// <returns>属性值</returns>
+        public string GetAttribute(string name)
+        {
+            lock (_syncObj_attributes)
+            {
+                object naught = this.Attributes;
+                if (_attributes != null)
+                {
+                    foreach (PartInfo pi in _attributes)
+                    {
+                        if (pi.InfoType == name)
+                            return pi.InfoValue;
+                    }
+                }
+                return string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// 增加Part属性
+        /// </summary>
+        /// <param name="attr">Part属性</param>
+        public void AddAttribute(PartInfo attr)
+        {
+            if (attr == null)
+                return;
+
+            lock (_syncObj_attributes)
+            {
+                object naught = this.Attributes;
+                if (this._attributes.Contains(attr))
+                    return;
+
+                attr.Tracker = this._tracker.Merge(attr.Tracker);
+                this._attributes.Add(attr);
+                this._tracker.MarkAsAdded(attr);
+                this._tracker.MarkAsModified(this);
+            }
+        }
+
+        /// <summary>
+        /// 更新Part属性
+        /// </summary>
+        /// <param name="attr"></param>
+        public void ChangeAttribute(PartInfo attr)
+        {
+            if (attr == null)
+                return;
+
+            lock (_syncObj_attributes)
+            {
+                object naught = this.Attributes;
+                if (this._attributes == null)
+                    return;
+                int idx = 0;
+                bool find = false;
+                foreach (PartInfo entry in this._attributes)
+                {
+                    if (entry.Key.Equals(attr.Key))
+                    {
+                        find = true;
+                        break;
+                    }
+                    idx++;
+                }
+                if (find)
+                {
+                    this._attributes[idx] = attr;
+                    this._tracker.MarkAsModified(this._attributes[idx]);
+                    this._tracker.MarkAsModified(this);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 删除Part属性
+        /// </summary>
+        /// <param name="attr"></param>
+        public void DeleteAttribute(PartInfo attr)
+        {
+            if (attr == null)
+                return;
+
+            lock (_syncObj_attributes)
+            {
+                object naught = this.Attributes;
+                if (this._attributes == null)
+                    return;
+                int idx = 0;
+                bool find = false;
+                foreach (PartInfo entry in this._attributes)
+                {
+                    if (entry.Key.Equals(attr.Key))
+                    {
+                        find = true;
+                        break;
+                    }
+                    idx++;
+                }
+                if (find)
+                {
+                    attr = this._attributes[idx];
+                    attr.Tracker = null;
+                    this._tracker.MarkAsDeleted(attr);
+                    this._tracker.MarkAsModified(this);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取属性值
+        /// </summary>
+        /// <param name="propertyName">属性名</param>
+        /// <returns>属性值</returns>
+        public string GetProperty(string propertyName)
+        {
+            var value = (string)GetBasicProperty(propertyName) ?? this.GetAttribute(propertyName);
+            return value;
+        }
+
+        /// <summary>
+        /// 根据属性名获取属性值， 属性包括基础属性和扩展属性，仅用于KP类型
+        /// </summary>
+        /// <param name="propertyName">属性名</param>
+        /// <param name="assemblyCode">属性值</param>
+        /// <returns></returns>
+        public string GetProperty(string propertyName, string assemblyCode)
+        {
+            var value = (string)GetBasicProperty(propertyName) ?? this.GetAttribute(propertyName, assemblyCode);
+            return value;
+        }
+
+        /// <summary>
+        /// 获取Part扩展属性，仅用于KP类型
+        /// </summary>
+        /// <param name="name">属性名</param>
+        /// <param name="assemblyCode">assCode</param>
+        /// <returns>属性值</returns>
+        public string GetAttribute(string name, string assemblyCode)
+        {
+            return PrtRepository.GetAssemblyCodeInfo(assemblyCode, name);
+        }
+
+        public void SetKey(string key)
+        {
+            _key = key;
+        }
+
+        private object GetBasicProperty(string name)
+        {
+            object value = null;
+            PropertyInfo prop = this.GetType().GetProperty(name);
+            if (prop != null)
+            {
+                value = prop.GetValue(this, null);
+            }
+            return value;
+        }
+
+        
+        #endregion
+
+        #region Overrides of FisObjectBase
+
+        /// <summary>
+        /// 对象标示key, 在同类型FisObject范围内唯一
+        /// </summary>
+        public override object Key
+        {
+            get
+            {
+                if (_key == null)
+                    return _pn;
+                else
+                    return _key;
+            }
+        }
+
+        #endregion
+    }
+}

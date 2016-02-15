@@ -1,0 +1,116 @@
+﻿using System;
+using System.Data;
+using System.Configuration;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+using System.Collections;
+using System.Collections.Generic;
+
+/// <summary>
+/// Summary description for ProductUPH
+/// </summary>
+namespace com.inventec.system
+{
+    public class ProductUPHForUI
+    {
+        //public ProductUPH()
+        //{
+        //    //
+        //    // TODO: Add constructor logic here
+        //    //
+        //}
+       
+            private string line = "";
+
+            public string Line
+            {
+                get { return line; }
+                set { line = value; }
+            }
+            private string timerange = "";
+
+            public string TimeRange
+            {
+                get { return timerange; }
+                set { timerange = value; }
+            }
+            private string productratio = "";
+
+            public string ProductRatio
+            {
+                get { return productratio; }
+                set { productratio = value; }
+            }
+            private string xvalue = "";
+
+            public string XValue
+            {
+                get { return xvalue; }
+                set { xvalue = value; }
+            }
+            private string yvalue = "";
+
+            public string YValue
+            {
+                get { return yvalue; }
+                set { yvalue = value; }
+            }
+
+           
+
+
+        
+    }
+
+    public class Echarts
+    {
+
+        public string[] XValue;
+
+        public string[] YValue;
+        
+        private string title;
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
+       
+    }
+
+  
+    public struct ChartItem
+    {
+        /// <summary>
+        /// 表头
+        /// </summary>
+        public string Title;
+
+        /// <summary>
+        /// X周【0,1,2,3,4,】
+        /// </summary>
+        public  List<string> XValue;
+
+        /// <summary>
+        /// 存放多个Series
+        /// </summary>
+        public List<SeriesType> Series;
+
+        
+        
+
+        
+    }
+    public struct SeriesType
+    {
+        public List<string> SeriesValues;
+        public string Name;
+        public List<string> XValue;
+    }
+}

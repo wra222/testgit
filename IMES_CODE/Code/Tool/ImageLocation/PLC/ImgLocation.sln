@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetLocation", "GetLocation\GetLocation.csproj", "{53D70A4C-DEEB-4A33-B564-9DCC9E8D0D31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutLocation", "OutLocation\OutLocation.csproj", "{AA84B4FF-0828-4CD6-8381-8CC7147BA699}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53D70A4C-DEEB-4A33-B564-9DCC9E8D0D31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53D70A4C-DEEB-4A33-B564-9DCC9E8D0D31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53D70A4C-DEEB-4A33-B564-9DCC9E8D0D31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53D70A4C-DEEB-4A33-B564-9DCC9E8D0D31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA84B4FF-0828-4CD6-8381-8CC7147BA699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA84B4FF-0828-4CD6-8381-8CC7147BA699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA84B4FF-0828-4CD6-8381-8CC7147BA699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA84B4FF-0828-4CD6-8381-8CC7147BA699}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

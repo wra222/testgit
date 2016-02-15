@@ -1,0 +1,63 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="CollectTabletFaPart" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" AddObjectWithSessionKey="{x:Null}" Station="{ActivityBind CollectTabletFaPart,Path=Station}" x:Name="getProduct1" Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" Key="{ActivityBind CollectTabletFaPart,Path=Key}" InputType="ProductID" />
+	<ns0:BlockStation Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" ProcessType="Product" Station="{ActivityBind CollectTabletFaPart,Path=Station}" Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" Key="{ActivityBind CollectTabletFaPart,Path=Key}" />
+	<IfElseActivity x:Name="ifT1Station">
+		<IfElseBranchActivity x:Name="T1Station">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="CheckSecure" />
+			</IfElseBranchActivity.Condition>
+			<ns0:CheckTabletSecureOn Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" x:Name="checkTabletSecureOn1" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" CmdTimeOut="15" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" Station="{ActivityBind CollectTabletFaPart,Path=Station}" MySQLConnectStr="SERVER={0};DATABASE={1};UID={2};PASSWORD={3};Compress=false;Pooling=true;" IsMBCPUID="False" Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" Key="{ActivityBind CollectTabletFaPart,Path=Key}" IsThrowException="True" />
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<ns0:CheckBaseTime Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" x:Name="checkBaseTime1" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" Station="{ActivityBind CollectTabletFaPart,Path=Station}" Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" Key="{ActivityBind CollectTabletFaPart,Path=Key}" Description="check log time" />
+	<ns0:GetBOM Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" MainObjFrom="Product" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" x:Name="getBOM1" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" Station="{ActivityBind CollectTabletFaPart,Path=Station}" ModelFrom="Product" Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" Key="{ActivityBind CollectTabletFaPart,Path=Key}" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplete" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" Station="{ActivityBind CollectTabletFaPart,Path=Station}" Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" Key="{ActivityBind CollectTabletFaPart,Path=Key}" />
+			<IfElseActivity x:Name="IfComplete">
+				<IfElseBranchActivity x:Name="NotComplete">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplete" />
+					</IfElseBranchActivity.Condition>
+					<ns0:PartMatch Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" Station="{ActivityBind CollectTabletFaPart,Path=Station}" x:Name="partMatch1" BindTo="Product" Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" Key="{ActivityBind CollectTabletFaPart,Path=Key}" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:DBScope Station="{ActivityBind CollectTabletFaPart,Path=Station}" x:Name="dbScope1" Key="{ActivityBind CollectTabletFaPart,Path=Key}" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}">
+		<ns0:BindParts Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" x:Name="bindParts1" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" Station="{ActivityBind CollectTabletFaPart,Path=Station}" BindTo="Product" Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" Key="{ActivityBind CollectTabletFaPart,Path=Key}" />
+		<ns0:UpdateProductStatus Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" Status="Pass" Station="{ActivityBind CollectTabletFaPart,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" Key="{ActivityBind CollectTabletFaPart,Path=Key}" />
+		<IfElseActivity x:Name="ifElseActivity2">
+			<IfElseBranchActivity x:Name="T4Station">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="IsT4Station" />
+				</IfElseBranchActivity.Condition>
+				<ns0:PAQC Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" IsWriteProductLog="True" QCHpStatus="C" QCSpecialStatus="B" Key="{ActivityBind CollectTabletFaPart,Path=Key}" Station="PQ" x:Name="paqc1" Type="PAQC" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" Remark="P" QCStatus="8" NotQCStatus="1" Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" ProductAttrName="" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" IsStopWF="True" />
+				<ns0:CheckOfflinePizzaFamily Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" x:Name="checkOfflinePizzaFamily1" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" Station="{ActivityBind CollectTabletFaPart,Path=Station}" Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" Key="{ActivityBind CollectTabletFaPart,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity3">
+					<IfElseBranchActivity x:Name="ifNotOfflinePizzaFamily2">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="NotOfflinePizzaFamily" />
+						</IfElseBranchActivity.Condition>
+						<ns0:GetPizzaID Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" x:Name="getPizzaID1" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" Station="{ActivityBind CollectTabletFaPart,Path=Station}" Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" Key="{ActivityBind CollectTabletFaPart,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<ns0:WriteProductLog Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" Station="{ActivityBind CollectTabletFaPart,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" Key="{ActivityBind CollectTabletFaPart,Path=Key}" />
+		<ns0:FilterLabelTypeRule Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" x:Name="filterLabelTypeRule1" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" Station="{ActivityBind CollectTabletFaPart,Path=Station}" ModelFrom="Product" Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" Key="{ActivityBind CollectTabletFaPart,Path=Key}" />
+		<IfElseActivity x:Name="ifElseActivity1">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="HavePrintItem" />
+				</IfElseBranchActivity.Condition>
+				<ns0:Print Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" ModelFrom="Product_Model" Key="{ActivityBind CollectTabletFaPart,Path=Key}" Station="{ActivityBind CollectTabletFaPart,Path=Station}" PrintLogBegNo="ID" SessionBegNoName="" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" DnFrom="Product" IsWritePrintLog="False" x:Name="print1" IsReprint="False" Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" NotExistException="True" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" MOFrom="Product" SessionEndNoName="" />
+				<ns0:WritePrintLogList Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" x:Name="writePrintLogList1" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" Key="{ActivityBind CollectTabletFaPart,Path=Key}" Station="{ActivityBind CollectTabletFaPart,Path=Station}" Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" BeginAndEndNoFrom="ProId" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<ns0:WritePrintLog Customer="{ActivityBind CollectTabletFaPart,Path=Customer}" x:Name="writePrintLog1" SessionType="{ActivityBind CollectTabletFaPart,Path=SessionType}" Editor="{ActivityBind CollectTabletFaPart,Path=Editor}" Enabled="False" Station="{ActivityBind CollectTabletFaPart,Path=Station}" Line="{ActivityBind CollectTabletFaPart,Path=PdLine}" Key="{ActivityBind CollectTabletFaPart,Path=Key}" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

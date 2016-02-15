@@ -1,0 +1,363 @@
+﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.Design;
+using System.Collections;
+using System.Drawing;
+using System.Linq;
+using System.Workflow.ComponentModel;
+using System.Workflow.ComponentModel.Design;
+using System.Workflow.ComponentModel.Compiler;
+using System.Workflow.ComponentModel.Serialization;
+using System.Workflow.Runtime;
+using System.Workflow.Activities;
+using System.Workflow.Activities.Rules;
+
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+using IMES.Infrastructure;
+using IMES.FisObject.FA.Product;
+using IMES.FisObject.Common.QTime;
+using IMES.FisObject.Common.Line;
+using System.Collections.Generic;
+using IMES.Infrastructure.UnitOfWork;
+using IMES.FisObject.Common.TestLog;
+using IMES.Infrastructure.Extend;
+using System.Data.SqlClient;
+using IMES.FisObject.Common.Station;
+using IMES.Infrastructure.Repository._Schema;
+using IMES.DataModel;
+using IMES.Common;
+
+
+
+namespace IMES.Activity
+{
+    /// <summary>
+    /// 檢查QTime及設定QTime Action
+    /// </summary>
+    public partial class CheckAndSetQTime : BaseActivity
+	{
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+		public CheckAndSetQTime()
+		{
+			InitializeComponent();
+		}
+
+        /// <summary>
+        /// 保留LineStationStopPeriodLog 資料天數
+        /// </summary>
+        public static DependencyProperty RemainLogDayProperty = DependencyProperty.Register("RemainLogDay", typeof(int), typeof(CheckAndSetQTime), new PropertyMetadata((int)2));
+
+        /// <summary>
+        /// Status of Product
+        /// </summary>
+        [DescriptionAttribute("RemainLogDay")]
+        [CategoryAttribute("Remain Log Day Category")]
+        [BrowsableAttribute(true)]
+        [DesignerSerializationVisibilityAttribute(DesignerSerializationVisibility.Visible)]
+        public int RemainLogDay
+        {
+            get
+            {
+                return ((int)(base.GetValue(CheckAndSetQTime.RemainLogDayProperty)));
+            }
+            set
+            {
+                base.SetValue(CheckAndSetQTime.RemainLogDayProperty, value);
+            }
+        }
+
+        /// <summary>
+        /// 檢查QTime 及設定QTime Action
+        /// </summary>        
+        protected internal override ActivityExecutionStatus DoExecute(ActivityExecutionContext executionContext)
+        {
+            IProductRepository prodRep = RepositoryFactory.GetInstance().GetRepository<IProductRepository, IProduct>();
+            IQTimeRepository qTimeRep = RepositoryFactory.GetInstance().GetRepository<IQTimeRepository, QTime>();
+            ILineRepository lineRep = RepositoryFactory.GetInstance().GetRepository<ILineRepository, Line>();
+            DateTime now=DateTime.MinValue;
+
+            #region 檢查 Product ,QTime及LineEx 設置資料，若無，則不做
+            string pdline = this.Line;
+            var prod = (Product)CurrentSession.GetValue(Session.SessionKeys.Product);
+
+            if (string.IsNullOrEmpty(pdline))
+            {
+                pdline = prod.Status.Line;
+                if (string.IsNullOrEmpty(pdline))
+                {
+                    IList<ProductStatusExInfo> preStatusList = prodRep.GetProductPreStation(new List<string> { prod.ProId });
+                    if (preStatusList.Count > 0)
+                    {
+                        pdline = preStatusList[0].PreLine;
+                    }
+                }
+            }
+
+            Line line = lineRep.Find(pdline);
+            if (prod==null  || 
+                line == null || 
+                line.LineEx == null || 
+                string.IsNullOrEmpty(line.LineEx.AliasLine))
+            {
+                //throw new FisException();
+                return base.DoExecute(executionContext);
+            }
+
+            string aliasLine = line.LineEx.AliasLine;
+            //QTime qTime = qTimeRep.Find(new string[] { aliasLine, this.Station, prod.ProId });
+
+            QTime qTime = qTimeRep.GetPriorityQTime(aliasLine, this.Station, prod.ProId, prod.Model, prod.Family);
+            if (qTime == null )
+            {
+                return base.DoExecute(executionContext);
+            }
+  
+            #endregion
+                      
+
+            #region 檢查QTime.StopTime,計算是否紀錄停線,不做DB事務
+            if (qTime != null && qTime.StopTime > 0)
+            {
+                 LineStationLastProcessTime processTime= qTimeRep.GetLastProcessTime(aliasLine, this.Station);
+                 if (processTime != null)
+                 {
+                     now = processTime.Now;
+                     if (processTime.SpeedTime >= qTime.StopTime)
+                     {
+                         LineStationStopPeriodLog periodLog = new LineStationStopPeriodLog
+                         {
+                             Line = aliasLine,
+                             Station = this.Station,
+                             StartTime = processTime.ProcessTime,
+                             EndTime = now,
+                             Editor = this.Editor
+                         };
+                         qTimeRep.AddLineStationStopPeriodLog(periodLog);
+                     }
+                 }
+                 // 沒有最後一次Process Time 不考慮Check TimeOut
+                 else
+                 {
+                     now = SqlHelper.GetDateTime();
+                 }
+
+                processTime = new LineStationLastProcessTime
+                 {
+                     Line = aliasLine,
+                     Station = this.Station,
+                     ProductID = prod.ProId,
+                     ProcessTime = now,
+                     Editor = this.Editor
+                 };
+                 qTimeRep.UpdateLineStationLastProcessTime(processTime);
+
+                //刪除過時的停線紀錄
+                 qTimeRep.RemoveStationStopPeriodLog(aliasLine, this.Station, this.RemainLogDay);
+            }
+           #endregion
+
+           #region 檢查TimeOut ,計算是否QTime逾時並執行QTime Action
+            IUnitOfWork uow = new UnitOfWork();
+            bool isDoDefect = false;
+            bool isDoHoldStation = false;
+            string defectStation = this.Station;
+            int timeOut = 0;
+            //int stopTime = 0;
+            bool isCheckTimeOutStation = true;
+            bool isTimeOut = false;
+            string preStation = prod.Status.StationId.Trim();
+            TestLog.TestLogStatus defectStatus = TestLog.TestLogStatus.Fail;
+            //檢查TimeOut例外站點
+            if (!string.IsNullOrEmpty(qTime.ExceptStation))
+            {
+                string[] exceptStations = qTime.ExceptStation.Split(new char[] { ',', ';', '~' });
+                isCheckTimeOutStation = !exceptStations.Contains(preStation);
+            }
+
+            if (qTime != null && qTime.TimeOut > 0 &&
+                isCheckTimeOutStation)
+            {
+                if (now == DateTime.MinValue)
+                {
+                    now = SqlHelper.GetDateTime();
+                }
+                    //計算TimeOut
+                    //IList<int> timeOutList = qTimeRep.CalLineStopTime(aliasLine, "69", prod.Status.Udt, now);
+                    //stopTime = timeOutList[0];
+                    //timeOut = (timeOutList[1] - timeOutList[0]) ;
+
+                    IList<LineStopLogInfo> logs = qTimeRep.CalLineStopMillionSecond(aliasLine, this.Station, prod.Status.Udt, now);
+                    double stopMillionSecond = 0;
+                    foreach( LineStopLogInfo item in logs)
+                    {
+                        stopMillionSecond = stopMillionSecond + (item.EndTime - item.StartTime).TotalMilliseconds;
+                    }
+
+                    timeOut = (int)(((now - prod.Status.Udt).TotalMilliseconds - stopMillionSecond) / 1000); 
+
+                    // 判別有沒有TimeOut 
+                    if ((qTime.Category == QTimeCategoryEnum.Max && timeOut >= qTime.TimeOut) ||
+                        (qTime.Category == QTimeCategoryEnum.Min && timeOut <= qTime.TimeOut))
+                    {
+                        isTimeOut = true;
+                        if (!string.IsNullOrEmpty(qTime.DefectCode))
+                        {
+                            isDoDefect = true;
+                        }
+                        if (!string.IsNullOrEmpty(qTime.HoldStation))
+                        {
+                            defectStation = qTime.HoldStation;
+                            defectStatus = (qTime.HoldStatus == QTimeStationStatusEnum.Fail ?
+                                                     TestLog.TestLogStatus.Fail : TestLog.TestLogStatus.Pass);
+                            isDoHoldStation = true;
+                        }
+                    }
+                    
+                    //執行QTime Action
+                    if (isDoDefect || isDoHoldStation)
+                    {
+                        #region record previous product Status
+                        //System.Data.DataTable preStatus = CreateDataTable.CreateProductStatusTb();
+                        //preStatus.Rows.Add(prod.ProId,
+                        //                                   prod.Status.StationId,
+                        //                                   prod.Status.Status == StationStatus.Pass ? 1 : 0,
+                        //                                   prod.Status.ReworkCode,
+                        //                                   prod.Status.Line,
+                        //                                   prod.Status.TestFailCount,
+                        //                                   prod.Status.Editor,                            
+                        //                                   prod.Status.Udt
+                        //                                   );
+
+
+
+                        //System.Data.DataTable curStatus = CreateDataTable.CreateProductStatusTb();
+                        prod.UpdateStatus(new IMES.FisObject.FA.Product.ProductStatus()
+                        {
+                            Line = pdline,
+                            ProId = prod.ProId,
+                             TestFailCount=0,
+                             ReworkCode="",
+                            StationId = defectStation,
+                            Status = (defectStatus == TestLog.TestLogStatus.Fail ?
+                                                           StationStatus.Fail : StationStatus.Pass),
+                            Editor =this.Editor,
+                            Udt = now
+                        });
+
+                        //prod.Status.Line = pdline;
+                        //prod.Status.StationId = defectStation;
+                        //prod.Status.Status = (defectStatus == TestLog.TestLogStatus.Fail ?
+                        //                                   StationStatus.Fail : StationStatus.Pass);
+                        //prod.Status.Editor = this.Editor;
+                        //prod.Status.Udt = now;
+
+                        //curStatus.Rows.Add(prod.ProId,
+                        //                                   defectStation,
+                        //                                  (defectStatus == TestLog.TestLogStatus.Fail ?
+                        //                                   0 : 1),
+                        //                                   prod.Status.ReworkCode,
+                        //                                   this.Line,
+                        //                                   prod.Status.TestFailCount,
+                        //                                   this.Editor,
+                        //                                   prod.Status.Udt
+                        //                                   );
+
+                        //SqlParameter para1 = new SqlParameter("PreStatus", System.Data.SqlDbType.Structured);
+                        //para1.Direction = System.Data.ParameterDirection.Input;
+                        //para1.Value = preStatus;
+
+                        //SqlParameter para2 = new SqlParameter("Status", System.Data.SqlDbType.Structured);
+                        //para2.Direction = System.Data.ParameterDirection.Input;
+                        //para2.Value = curStatus;
+
+                        //prodRep.ExecSpForNonQueryDefered(uow,
+                        //                                                                 IMES.Infrastructure.Repository._Schema.SqlHelper.ConnectionString_FA,
+                        //                                                                 "IMES_UpdateProductStatus",
+                        //                                                                 para1,
+                        //                                                                 para2);
+
+                        IList<IMES.DataModel.TbProductStatus> stationList = prodRep.GetProductStatus(new List<string> { prod.ProId });
+                        prodRep.UpdateProductPreStationDefered(uow, stationList);
+
+                        #endregion
+
+                        #region write Productlog
+
+                        ProductLog productLog = new ProductLog
+                        {
+                            Model = prod.Model,
+                            Status = (defectStatus == TestLog.TestLogStatus.Fail ?
+                                                           StationStatus.Fail : StationStatus.Pass),
+                            Editor = this.Editor,
+                            Line = pdline,
+                            Station = defectStation,
+                            Cdt = now
+                        };
+
+                        prod.AddLog(productLog);
+
+                        #endregion
+                    }
+
+                    //unpack Pizza part
+                    if (isDoHoldStation && defectStation == "UnPizza")
+                    {
+                        ActivityCommonImpl utl = ActivityCommonImpl.Instance;
+                        utl.UnPack.unPackPizzaPart(CurrentSession, uow, this.Editor);
+                        utl.UnPack.unPackPAKProductPart(CurrentSession, uow, this.Editor);
+
+                        prodRep.DeleteProductPartByProductIDAndStationDefered(uow, 
+                                                                                                                 new List<string>() { prod.ProId }, 
+                                                                                                                 new List<string>(){"68","8C","PK01","PK02","PK03","PK04","PK05","PKOK"}, 
+                                                                                                                 this.Editor);
+                    }
+
+                    if (isDoDefect)
+                    {
+                        #region add test log
+                        string actionName = qTime.Category.ToString() + "QTime";
+                        string errorCode = "";
+                        string descr =  "PreStation:"+preStation+ "~CurStation:"+this.Station +"~TimeOut:"+ timeOut.ToString();
+                         
+                        //TestLog testLog = new TestLog(0, prod.ProId, this.Line, "", defectStation, defectStatus, "", this.Editor, "PRD", DateTime.Now);
+                        TestLog testLog = new TestLog(0, prod.ProId, pdline, "", defectStation, defectStatus, "",
+                                                                            actionName,errorCode, descr, this.Editor, "PRD", now);
+                        
+                        prod.AddTestLog(testLog);
+                        //add defect
+                        TestLogDefect defectItem = new TestLogDefect(0, 0, qTime.DefectCode, this.Editor, now);
+                        testLog.AddTestLogDefect(defectItem);
+                        #endregion
+                    } 
+                
+                     if (isDoDefect || isDoHoldStation)
+                     {
+                        prodRep.Update(prod, uow);
+                        uow.Commit();
+                        if (qTime.Category == QTimeCategoryEnum.Min)
+                        {
+                            int diffTime = (timeOut - qTime.TimeOut) / 60;
+                            throw new FisException("CHK093", new string[] { diffTime.ToString() });
+                        }
+                        else
+                        {
+                            throw new FisException("QTM001", new string[] { prod.ProId, qTime.Category.ToString() + "QTime", timeOut.ToString() });
+                        }
+                     }
+                    
+                     
+                     //Min QTime Warning message nothing to do
+                     if (isTimeOut && qTime.Category == QTimeCategoryEnum.Min)
+                     {
+                         int diffTime = (timeOut - qTime.TimeOut) / 60;
+                         throw new FisException("CHK093", new string[]{diffTime.ToString()});
+                     }
+                }  
+            #endregion
+
+            return base.DoExecute(executionContext);
+        }
+	}
+}

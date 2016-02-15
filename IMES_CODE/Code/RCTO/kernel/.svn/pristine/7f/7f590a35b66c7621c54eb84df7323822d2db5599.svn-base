@@ -1,0 +1,521 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IMES.Infrastructure.FisObjectBase;
+using System.Collections.ObjectModel;
+using IMES.FisObject.PCA.MB;
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+using IMES.Infrastructure.Repository._Metas;
+
+namespace IMES.FisObject.Common.TestLog
+{
+    public delegate void FillTestLog(TestLog tstlg);
+
+    /// <summary>
+    /// 测试Log类
+    /// </summary>
+    [ORMapping(typeof(Pcbtestlog))]
+    public class TestLog : FisObjectBase
+    {
+        /// <summary>
+        /// 测试结果
+        /// </summary>
+        public enum TestLogStatus
+        {
+            Fail = 0,
+            Pass
+        }
+        //private static IMBRepository _mbRepository = null;
+        //private static IMBRepository MbRepository
+        //{
+        //    get
+        //    {
+        //        if (_mbRepository == null)
+        //            _mbRepository = RepositoryFactory.GetInstance().GetRepository<IMBRepository, IMB>();
+        //        return _mbRepository;
+        //    }
+        //}
+        public event FillTestLog FillingTestLogDefects;
+
+        private IList<TestLogDefect> _defects = null;
+        private object _syncObj_defects = new object();
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public TestLog()
+        {
+            this._tracker.MarkAsAdded(this);
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public TestLog(int id, string sn, string line, string fixtureid, string station, TestLogStatus status, string joinId, string editor, string type, DateTime cdt)
+        {
+            this._id = id;
+            this._sn = sn;
+            this._line = line;
+            this._fixtureid = fixtureid;
+            this._station = station;
+            this._status = status;
+            this._joinId = joinId;
+            this._editor = editor;
+            this._type = type;
+            this._cdt = cdt;
+
+            this._tracker.MarkAsAdded(this);
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public TestLog(int id, string sn, string line, string fixtureid, string station, TestLogStatus status, string joinId, string actionName, string errorCode, string descr, string editor, string type, DateTime cdt)
+        {
+            this._id = id;
+            this._sn = sn;
+            this._line = line;
+            this._fixtureid = fixtureid;
+            this._station = station;
+            this._status = status;
+            this._joinId = joinId;
+            this._actionName = actionName;
+            this._errorCode = errorCode;
+            this._descr = descr;
+            this._editor = editor;
+            this._type = type;
+            this._cdt = cdt;
+
+            this._tracker.MarkAsAdded(this);
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public TestLog(int id, string sn, string line, string fixtureid, string station, IEnumerable<TestLogDefect> defects, TestLogStatus status, string joinId, string editor, string type, DateTime cdt)
+        {
+            this._id = id;
+            this._sn = sn;
+            this._line = line;
+            this._fixtureid = fixtureid;
+            this._station = station;
+            this._status = status;
+            this._joinId = joinId;
+            this._editor = editor;
+            this._type = type;
+            this._cdt = cdt;
+
+            this._tracker.MarkAsAdded(this);
+
+            _defects = new List<TestLogDefect>();
+            foreach (var defect in defects)
+            {
+                defect.Tracker = this._tracker.Merge(defect.Tracker);
+                this._defects.Add(defect);
+                this._tracker.MarkAsAdded(defect);
+                this._tracker.MarkAsModified(this);
+            }
+
+        }
+
+        public TestLog(int id, string sn, string line, string fixtureid, string station, IEnumerable<TestLogDefect> defects, TestLogStatus status, string joinId, string actionName, string errorCode, string descr, string editor, string type, DateTime cdt)
+        {
+            this._id = id;
+            this._sn = sn;
+            this._line = line;
+            this._fixtureid = fixtureid;
+            this._station = station;
+            this._status = status;
+            this._joinId = joinId;
+            this._actionName = actionName;
+            this._errorCode = errorCode;
+            this._descr = descr;
+            this._editor = editor;
+            this._type = type;
+            this._cdt = cdt;
+
+            this._tracker.MarkAsAdded(this);
+
+            _defects = new List<TestLogDefect>();
+            foreach (var defect in defects)
+            {
+                defect.Tracker = this._tracker.Merge(defect.Tracker);
+                this._defects.Add(defect);
+                this._tracker.MarkAsAdded(defect);
+                this._tracker.MarkAsModified(this);
+            }
+
+        }
+
+        #region . Essential Fields .
+
+        [ORMapping(Pcbtestlog.fn_id)]
+        private int _id = int.MinValue;
+        [ORMapping(Pcbtestlog.fn_pcbno)]
+        private string _sn = null;
+        [ORMapping(Pcbtestlog.fn_line)]
+        private string _line = null;
+        [ORMapping(Pcbtestlog.fn_fixtureID)]
+        private string _fixtureid = null;
+        [ORMapping(Pcbtestlog.fn_station)]
+        private string _station = null;
+        private TestLogStatus _status;
+        [ORMapping(Pcbtestlog.fn_joinID)]
+        private string _joinId = null;
+        [ORMapping(Pcbtestlog.fn_actionName)]
+        private string _actionName = null;
+        [ORMapping(Pcbtestlog.fn_errorCode)]
+        private string _errorCode = null;
+        [ORMapping(Pcbtestlog.fn_descr)]
+        private string _descr = null;
+        [ORMapping(Pcbtestlog.fn_editor)]
+        private string _editor = null;
+        [ORMapping(Pcbtestlog.fn_type)]
+        private string _type = null;
+        [ORMapping(Pcbtestlog.fn_cdt)]
+        private DateTime _cdt = DateTime.MinValue;
+        [ORMapping(Pcbtestlog.fn_remark)]
+        private string _remark = null;
+
+        /// <summary>
+        /// ID
+        /// </summary>
+        public int ID 
+        {
+            get
+            {
+                return this._id;
+            }
+            set
+            {
+                this._tracker.MarkAsModified(this);
+                this._id = value;
+            }
+        }
+
+        /// <summary>
+        /// product/Mb标识 
+        /// </summary>
+        public string Sn 
+        {
+            get
+            {
+                return this._sn;
+            }
+            set
+            {
+                this._tracker.MarkAsModified(this);
+                this._sn = value;
+            }
+        }
+
+        /// <summary>
+        /// Line
+        /// </summary>
+        public string Line 
+        {
+            get
+            {
+                return this._line;
+            }
+            private set
+            {
+                this._tracker.MarkAsModified(this);
+                this._line = value;
+            }
+        }
+
+        /// <summary>
+        /// 测试使用的Fixture
+        /// </summary>
+        public string FixtureId 
+        {
+            get
+            {
+                return this._fixtureid;
+            }
+            private set
+            {
+                this._tracker.MarkAsModified(this);
+                this._fixtureid = value;
+            }
+        }
+
+        /// <summary>
+        /// 测试Station
+        /// </summary>
+        public string Station 
+        {
+            get
+            {
+                return this._station;
+            }
+            //for RCTO remark private
+            set
+            {
+                this._tracker.MarkAsModified(this);
+                this._station = value;
+            } 
+        }
+
+        /// <summary>
+        /// 测试结果
+        /// </summary>
+        public TestLogStatus Status 
+        {
+            get
+            {
+                return this._status;
+            }
+            set
+            {
+                this._tracker.MarkAsModified(this);
+                this._status = value;
+            }
+        }
+
+        /// <summary>
+        /// JoinID
+        /// </summary>
+        public string JoinID
+        {
+            get
+            {
+                return this._joinId;
+            }
+            private set
+            {
+                this._tracker.MarkAsModified(this);
+                this._joinId = value;
+            }
+        }
+
+        /// <summary>
+        /// ActionName
+        /// </summary>
+        public string ActionName
+        {
+            get
+            {
+                return this._actionName;
+            }
+            private set
+            {
+                this._tracker.MarkAsModified(this);
+                this._actionName = value;
+            }
+        }
+
+        /// <summary>
+        /// ErrorCode
+        /// </summary>
+        public string ErrorCode
+        {
+            get
+            {
+                return this._errorCode;
+            }
+            private set
+            {
+                this._tracker.MarkAsModified(this);
+                this._errorCode = value;
+            }
+        }
+
+        /// <summary>
+        /// Descr
+        /// </summary>
+        public string Descr
+        {
+            get
+            {
+                return this._descr;
+            }
+            private set
+            {
+                this._tracker.MarkAsModified(this);
+                this._descr = value;
+            }
+        }
+
+        /// <summary>
+        /// Editor
+        /// </summary>
+        public string Editor 
+        {
+            get
+            {
+                return this._editor;
+            }
+            private set
+            {
+                this._tracker.MarkAsModified(this);
+                this._editor = value;
+            }
+        }
+
+        /// <summary>
+        /// Type
+        /// </summary>
+        public string Type 
+        {
+            get
+            {
+                return this._type;
+            }
+            private set
+            {
+                this._tracker.MarkAsModified(this);
+                this._type = value;
+            }
+        }
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime Cdt 
+        {
+            get
+            {
+                return this._cdt;
+            }
+            private set
+            {
+                this._tracker.MarkAsModified(this);
+                this._cdt = value;
+            }
+        }
+
+        /// <summary>
+        /// Remark
+        /// </summary>
+        public string Remark
+        {
+            get
+            {
+                return this._remark;
+            }
+            set
+            {
+                this._tracker.MarkAsModified(this);
+                this._remark = value;
+            }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// TestLogDefect
+        /// </summary>
+        public IList<TestLogDefect> Defects
+        {
+            get 
+            {
+                lock (_syncObj_defects)
+                {
+                    if (_defects == null && this.FillingTestLogDefects != null)
+                    {
+                        this.FillingTestLogDefects(this);
+                    }
+                    if (_defects != null)
+                    {
+                        return new ReadOnlyCollection<TestLogDefect>(_defects);
+                    }
+                    else
+                        return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 为测试log增加defect
+        /// </summary>
+        /// <param name="tldfct">defect</param>
+        public void AddTestLogDefect(TestLogDefect tldfct)
+        {
+            if (tldfct == null)
+                return;
+
+            lock (_syncObj_defects)
+            {
+                //if (this._defects == null)
+                //    this._defects = new List<TestLogDefect>();
+                object naught = this.Defects;
+                if (this._defects.Contains(tldfct))
+                    return;
+
+                tldfct.Tracker = this._tracker.Merge(tldfct.Tracker);
+                this._defects.Add(tldfct);
+                this._tracker.MarkAsAdded(tldfct);
+                this._tracker.MarkAsModified(this);
+            }
+        }
+
+        internal void RemoveTestLogDefect(int testLogDefectId)
+        {
+            lock (_syncObj_defects)
+            {
+                object naught = this.Defects;
+                if (this._defects == null)
+                    return;
+                TestLogDefect dfctFound = null;
+                foreach (TestLogDefect dfct in this._defects)
+                {
+                    if (dfct.Key.Equals(testLogDefectId))
+                    {
+                        dfctFound = dfct;
+                        break;
+                    }
+                }
+                if (dfctFound != null)
+                {
+                    //this._defects.Remove(dfctFound);
+                    dfctFound.Tracker = null;
+                    this._tracker.MarkAsDeleted(dfctFound);
+                }
+            }
+        }
+
+        internal void UpdateTestLogDefect(TestLogDefect tldfct)
+        {
+            if (tldfct == null)
+                return;
+
+            lock (_syncObj_defects)
+            {
+                object naught = this.Defects;
+                if (this._defects == null)
+                    return;
+                int idx = 0;
+                bool find = false;
+                foreach (TestLogDefect dfct in this._defects)
+                {
+                    if (dfct.Key.Equals(tldfct.Key))
+                    {
+                        find = true;
+                        break;
+                    }
+                    idx++;
+                }
+                if (find)
+                {
+                    this._defects[idx] = tldfct;
+                    this._tracker.MarkAsModified(this._defects[idx]);
+                }
+            }
+        }
+
+        #region Overrides of FisObjectBase
+
+        /// <summary>
+        /// 对象标示key, 在同类型FisObject范围内唯一
+        /// </summary>
+        public override object Key
+        {
+            get { return this._id; }
+        }
+
+        #endregion
+    }
+}

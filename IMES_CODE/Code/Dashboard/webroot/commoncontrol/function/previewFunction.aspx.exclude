@@ -1,0 +1,710 @@
+﻿<%@ Import Namespace="com.inventec.system" %>
+<script type="text/javascript">
+// JScript File
+    function clsPreviewConditionCtrl(ObjectName,ParamList,ContentId)
+    {
+        //public
+        //控件名称
+        this.Name=ObjectName;
+        //控件的参数List
+        this.ParamList=ParamList;
+        //控件的容器id,字符串
+        this.DivId=ContentId;
+        //显示条件控件，生成的条件控件名称由 控件名称+特殊符+参数名称组成
+        this.Display=Display;
+        //取得用当前的控件设置数据，并把它们放置到ParamList返回
+        this.GetDataFromControl=GetDataFromControl;
+        //缺省条件块每行显示2列条件，可以根据需要改变设定
+        this.Column=2;
+        //条件块的高度限制，数值，如果需要限制，超出将出滚动条，如果不限制，不必设置此值
+        this.HeightLimit=null;
+        //条件块的宽度限制，如果需要限制，超出将出滚动条，如果不限制，不必设置此值
+        //this.WidthLimit=null;    
+        //是剩余条件的显示时，需设置为true
+        //此条件不同，ParamList的类型不同    
+        this.isLeftOverDisplay=false;
+        
+        //private
+        this.PreConditionChange=PreConditionChange;
+        this.DealPreConditionChange=DealPreConditionChange;
+        this.DealUpdateControl=DealUpdateControl;
+        this.GetSelectCtrlValue=GetSelectCtrlValue;
+        this.FillConditions=FillConditions;
+        this.GetControlType=GetControlType;
+        this.LimitConditionWindowHeight=LimitConditionWindowHeight;
+        //通过id名称取得控件的对象，因为要区分父窗口的id
+        this.GetObjectById=GetObjectById;
+        //不要改此值，生成的条件控件名称由 控件名称+特殊符+参数名称组成
+        this.InsertDisMark="111";
+        
+        this.IsDisPlayCondition=false;
+        
+    }
+    
+    //应该是物件在界面上已经存在,才能取得
+    function GetObjectById(id)
+    {
+        if(document.getElementById(this.DivId)==null)
+        {
+             return null;
+        }
+        return document.getElementById(id);
+    }
+    
+    //显示条件控件,及初始值
+    function Display()
+    {
+
+        if(document.getElementById(this.DivId)==null)
+        {
+            return;
+        }
+        var strCondition;
+        //物件的前缀，具体的内部控件名称由整体控件名称+特殊符+参数名称组成
+        var prefixName=this.Name+this.InsertDisMark;
+        
+        if(this.isLeftOverDisplay==false)
+        {   
+//            var paramObj = com.inventec.fisreport.manager.PreviewManager.getParamObj();
+//            paramObj.value.CommonParameters=this.ParamList;
+//            paramObj.value.ColumnNum=this.Column;
+//            paramObj.value.PrefixName=prefixName;
+//            paramObj.toJSON = function(){return toJSON(this);};	           
+//            strCondition = com.inventec.fisreport.manager.PreviewManager.getConditionTable(paramObj);
+//           this.ParamList.toJSON = function(){return toJSON(this);};	 
+            var noRuntimeParams=com.inventec.fisreport.manager.PreviewManager.CommonParamDimStringRunTimeChange(this.ParamList); 
+            if(noRuntimeParams.error != null) 
+            {
+                alert(noRuntimeParams.error.Message);
+                return;
+            }    
+            else
+            {
+                this.ParamList=noRuntimeParams.value;
+            }   
+            strCondition = com.inventec.fisreport.manager.PreviewManager.getConditionTable(this.ParamList,this.Column, prefixName);
+        }
+        else
+        {
+//            var paramObj = com.inventec.fisreport.manager.PreviewManager.getParamRemainObj();
+//            paramObj.value.TemplateParameters=this.ParamList;
+//            paramObj.value.ColumnNum=this.Column;
+//            paramObj.value.PrefixName=prefixName;
+//            paramObj.toJSON = function(){return toJSON(this);};	            
+//            strCondition = com.inventec.fisreport.manager.PreviewManager.getRemainConditionTable(paramObj);
+            var noRuntimeParams=com.inventec.fisreport.manager.PreviewManager.TemplateParamDimStringRunTimeChange(this.ParamList); 
+            if(noRuntimeParams.error != null) 
+            {
+                alert(noRuntimeParams.error.Message);
+                return;
+            }
+            else
+            {
+                this.ParamList=noRuntimeParams.value;
+            }    
+            strCondition = com.inventec.fisreport.manager.PreviewManager.getRemainConditionTable(this.ParamList,this.Column, prefixName);
+        }
+         
+        if (strCondition.error != null) 
+        { 
+            alert(strCondition.error.Message);
+            return;
+        }
+        else
+        {   
+            if(null == strCondition.value || strCondition.value == "")
+            {
+                document.getElementById(this.DivId).style.display = "none";
+            }
+            else
+            {
+                document.getElementById(this.DivId).innerHTML = strCondition.value;                
+            }
+            this.LimitConditionWindowHeight();
+        } 
+        this.IsDisPlayCondition=true;
+    }
+
+    function LimitConditionWindowHeight()
+    {
+        if(this.HeightLimit==null) return;
+        var current=document.getElementById(this.DivId);
+        if(current==null)
+        {
+            return;
+        }
+        var child=current.firstChild;
+        if(child==null)
+        {
+            return;
+        }
+        if(child.clientHeight > this.HeightLimit)
+        {
+           current.style.height = String(this.HeightLimit); 
+        }      
+    }
+    
+    function GetDataFromControl()
+    {
+        return this.FillConditions();
+    }
+    
+    function PreConditionChange(ctrlId)
+    { 
+    
+        ShowWait();
+        this.DealPreConditionChange(ctrlId);
+        HideWait();
+    }
+    
+    function DealPreConditionChange(ctrlId)
+    {
+         if(document.all(ctrlId)==null)
+        {
+            return;
+        }
+        if(document.all(ctrlId).effectConditionName==null)
+        {
+            return;
+        }  
+        
+        var ctrlObj=this.GetObjectById(ctrlId);
+        
+        if(ctrlObj==null)
+        {
+            return;
+        }
+                  
+        eval("var effectNameArray="+ctrlObj.effectConditionName);
+    
+        for(var i=0;i<effectNameArray.length;i++)
+        {
+            var needUpdateCtrlName=effectNameArray[i].name;
+            var preChangeCtrlName=ctrlId;
+            this.DealUpdateControl(needUpdateCtrlName, preChangeCtrlName);        
+        }
+    
+    }
+    
+
+    function DealUpdateControl(ctrlId, parentCtrlId)
+    {
+        var paramCtrlId=ctrlId;
+        var preConditionParamCtrlId=parentCtrlId;
+        
+        var prefixName=this.Name+this.InsertDisMark;
+        var prefixLength=prefixName.length;
+        
+        var paramName=paramCtrlId.substring(prefixLength,paramCtrlId.length);
+        var preConditionParamName=preConditionParamCtrlId.substring(prefixLength,preConditionParamCtrlId.length);
+       
+        //如果被影响的控件不在一起显示的块中，忽略
+        if(document.getElementById(paramCtrlId)==null)
+        {
+            return;
+        }
+        if(document.getElementById(preConditionParamCtrlId)==null)
+        {
+            return;
+        }
+        
+        var vList = this.GetSelectCtrlValue(paramCtrlId);
+        var preList=this.GetSelectCtrlValue(preConditionParamCtrlId);      
+              
+        var strControlCondition = com.inventec.fisreport.manager.PreviewManager.GetSelectControl(paramName,preConditionParamName,prefixName,vList,preList,this.ParamList);
+        if (strControlCondition.error != null) 
+        { 
+            alert(strControlCondition.error.Message);
+        }
+        else
+        {
+            var ctrlObj=this.GetObjectById(ctrlId);
+            if(strControlCondition.value!="" && ctrlObj!=null)
+            {
+                ctrlObj.outerHTML=strControlCondition.value;            
+            }
+        }   
+        this.DealPreConditionChange(ctrlId);
+    }
+    
+    String.prototype.Trim = function() 
+    { 
+        return this.replace(/(^\s*)|(\s*$)/g, ""); 
+    } 
+    
+
+    function GetSelectCtrlValue(ctrlId)
+    {
+         var valueArray = new Array();
+         var selObj=document.getElementById(ctrlId);
+         if(selObj==null)
+         {
+            return valueArray;
+         }
+         for(var i = 0; i < selObj.options.length; i++)
+         {
+ 	        if(selObj.options[i].selected && selObj.options[i].index>0)
+ 	        {
+                valueArray[valueArray.length] =selObj.options[i].value;
+ 	        }
+         }
+         return valueArray;
+    }
+
+    //生成的条件控件名称由 控件名称+特殊符+参数名称组成
+    function FillConditions()
+    {
+        //没有显示，却要取控件数据
+        if(this.IsDisPlayCondition==false)
+        {
+            return this.ParamList;
+        }
+        var textBox="textBox";
+        var inTextBox="inTextBox";
+        var singleSelect="singleSelect";
+        var multiSelect="multiSelect";
+        var calendar="calendar";
+        var doubleCalendar="doubleCalendar";
+        var boolControl="boolControl";
+        var hour="hour";
+        var doubleHour="doubleHour";
+        
+        var textNumBox="textNumBox";
+        var doubleTextNumBox="doubleTextNumBox";
+        
+        //内部物件的后缀名
+        var suffix1="_11111cal1";
+        var suffix2="_11111cal2";
+        var suffixHour1="11111twoHour1";
+        var suffixHour2="11111twoHour2";
+        var suffixHour="11111oneHour";
+        
+        //alert("conditionList=="+conditionList.length);
+        //===collect the conditions changed by user=============
+        if(this.ParamList.length > 0)
+        {
+            for(var i = 0; i < this.ParamList.length; i++)
+            {
+                var isDisplay = this.ParamList[i].IsHide;
+                //鑻ヤ负鍐呴儴鏉′欢鍒欎笉澶勭悊
+                if(!isDisplay)
+                {
+                
+                    if(this.isLeftOverDisplay && this.ParamList[i].IsSetToCommonCondition)
+                    {
+                        continue;
+                    } 
+                    var vList = new Array(); //save condition's values
+                    var IsEmpty = false;
+                    var idObj = this.ParamList[i].ParameterName;    
+                    //生成的条件控件名称由 控件名称+特殊符+参数名称组成         
+                    idObj=this.Name+this.InsertDisMark+idObj;  
+                                                    
+                    var operatorDataType = this.ParamList[i].OperatorDataType;
+                    var operatorValueType = this.ParamList[i].OperatorValueType;
+                    var usableValueType = this.ParamList[i].UsableValueType;
+                    
+                    var ctrlType=this.GetControlType(operatorDataType,operatorValueType,usableValueType)
+                    
+                    if(ctrlType==doubleHour)
+                    {
+                        vList[0] = document.getElementById(idObj + suffix1).value + ":" + document.getElementById(idObj+suffixHour1).value; 
+                        vList[1] = document.getElementById(idObj + suffix2).value + ":" + document.getElementById(idObj+suffixHour2).value;
+                        if(vList[0].indexOf(":") == 0 || vList[1].indexOf(":") == 0 )
+                        {
+                            IsEmpty = true;
+                        }                
+                    }
+                    else if(ctrlType==hour)
+                    {
+                        vList[0] = document.getElementById(idObj).value + ":" + document.getElementById(idObj+suffixHour).value;    
+                        if(vList[0].indexOf(":") == 0)
+                        {
+                            IsEmpty = true;
+                        }                          
+                    }
+                    else if(ctrlType==doubleCalendar)
+                    {
+                        vList[0] = document.getElementById(idObj + suffix1).value; 
+                        vList[1] = document.getElementById(idObj + suffix2).value;
+                        if(vList[0] == "" || vList[1] == "" )
+                        {
+                            IsEmpty = true;
+                        }                
+                    }
+                    else if(ctrlType==calendar)
+                    {
+                        vList[0] = document.getElementById(idObj).value; 
+                        if(vList[0] == "")
+                        {
+                            IsEmpty = true;
+                        }                    
+                    }
+                    else if(ctrlType==multiSelect)
+                    {
+                        vList=this.GetSelectCtrlValue(idObj);
+                        if(vList.length==0)
+                        {
+                            IsEmpty = true;
+                        }
+                    }
+                    else if(ctrlType==singleSelect)
+                    {
+                        vList=this.GetSelectCtrlValue(idObj);
+                        if(vList.length==0)
+                        {
+                            IsEmpty = true;
+                        }                   
+                    }
+                    else if(ctrlType==doubleTextNumBox)
+                    {
+                        vList[0] = document.getElementById(idObj + suffix1).value; 
+                        vList[1] = document.getElementById(idObj + suffix2).value;
+                        if(vList[0].Trim() == "" || vList[1].Trim() == "" )
+                        {
+                            IsEmpty = true;
+                        }
+                    }
+                    else if(ctrlType==inTextBox)
+                    {
+                        //IN鐨勮緭鍏ユ儏鍐典笅锛屽鏋滀粎鏈夌┖鏍硷紝涓嶇畻鏈夎緭鍏ワ紝寮€濮嬬粨灏剧殑鏁版嵁濡傛灉鏄┖鏍兼垨娌℃湁鍐呭锛屼笉绠楁槸in鐨勫唴瀹?
+                        //最头、最尾的空字串不算
+                        var tmpString = document.getElementById(idObj).value; 
+                        var tmpArray=tmpString.split("<%=Constants.COMMON_PARAMETER_IN_VALUE_SEPARATE%>");                         
+                        for(var k=0;k<tmpArray.length;k++)
+                        {
+                            //if((tmpArray[k].Trim()!=""||k!=0) && (tmpArray[k].Trim()!=""||k!=tmpArray.length-1))
+                            //{
+                                vList[vList.length]=tmpArray[k].Trim();
+                            //}
+                        }
+                        if(vList.length==0||(vList.length==1 && vList[0].Trim()==""))
+                        {
+                            IsEmpty = true;
+                        }
+                    }
+                    else if(ctrlType==textBox)
+                    {
+                        vList[0] = document.getElementById(idObj).value;   
+                        if(vList[0].Trim() == "")
+                        {
+                            IsEmpty = true;
+                        } 
+                    }
+                    else if(ctrlType==textNumBox)
+                    {
+                        vList[0] = document.getElementById(idObj).value;   
+                        if(vList[0].Trim() == "")
+                        {
+                            IsEmpty = true;
+                        } 
+                    }
+                    else if(ctrlType==boolControl)
+                    {
+                        vList[0] = document.getElementById(idObj).value;   
+                        if(vList[0].Trim() == "")
+                        {
+                            IsEmpty = true;
+                        } 
+                    }
+                    
+                    this.ParamList[i].Values = vList;
+                    this.ParamList[i].IsEmpty = IsEmpty;
+                }
+            }
+        }
+        //===end========================================= 
+        return this.ParamList;
+         
+    }
+       
+           
+    function GetControlType(operatorDataType,operatorValueType,usableValueType)
+    {
+    
+        var textBox="textBox";
+        var inTextBox="inTextBox";
+        var singleSelect="singleSelect";
+        var multiSelect="multiSelect";
+        var calendar="calendar";
+        var doubleCalendar="doubleCalendar";
+        var boolControl="boolControl";
+        var hour="hour";
+        var doubleHour="doubleHour";
+        var textNumBox="textNumBox";
+        var doubleTextNumBox="doubleTextNumBox";
+    
+        if(operatorDataType=="<%=Constants.COMMON_PARAMETER_OPERATOR_DATA_TYPE_STRING%>")
+        {
+        
+            if(operatorValueType=="<%=Constants.COMMON_PARAMETER_OPERATOR_VALUE_TYPE_SINGLE%>")
+            {
+                if(usableValueType=="<%=Constants.COMMON_PARAMETER_USABLE_VALUE_TYPE_QUERY%>")
+                {
+                    return singleSelect;
+                }
+                else
+                {
+                    return textBox;
+                }
+            }
+            else if(operatorValueType=="<%=Constants.COMMON_PARAMETER_OPERATOR_VALUE_TYPE_MULTIPLE%>")
+            {
+                if(usableValueType=="<%=Constants.COMMON_PARAMETER_USABLE_VALUE_TYPE_QUERY%>")
+                {
+                    return multiSelect;
+                }
+                else
+                {
+                    return inTextBox;
+                }
+            }
+            else if(operatorValueType=="<%=Constants.COMMON_PARAMETER_OPERATOR_VALUE_TYPE_LIKE%>")
+            {
+                return textBox;
+            }   
+        
+        }
+        else if(operatorDataType=="<%=Constants.COMMON_PARAMETER_OPERATOR_DATA_TYPE_NUMBERIC%>")
+        {
+            if(operatorValueType=="<%=Constants.COMMON_PARAMETER_OPERATOR_VALUE_TYPE_SINGLE%>")
+            {
+                return textNumBox;
+            }
+            else if(operatorValueType=="<%=Constants.COMMON_PARAMETER_OPERATOR_VALUE_TYPE_BETWEEN%>")
+            {
+                return doubleTextNumBox;
+            }
+        }
+        else if(operatorDataType=="<%=Constants.COMMON_PARAMETER_OPERATOR_DATA_TYPE_String%>")
+        {
+            if(operatorValueType=="<%=Constants.COMMON_PARAMETER_OPERATOR_VALUE_TYPE_SINGLE%>")
+            {
+                return calendar;
+            }
+            else if(operatorValueType=="<%=Constants.COMMON_PARAMETER_OPERATOR_VALUE_TYPE_BETWEEN%>")
+            {
+                return doubleCalendar;
+            }
+        }
+        else if(operatorDataType=="<%=Constants.COMMON_PARAMETER_OPERATOR_DATA_TYPE_BOOLEAN%>")
+        {
+            return boolControl;
+        }
+        else if(operatorDataType=="<%=Constants.COMMON_PARAMETER_OPERATOR_DATA_TYPE_RTDATE%>"
+               ||operatorDataType=="<%=Constants.COMMON_PARAMETER_OPERATOR_DATA_TYPE_RTWEEKOFMONTH%>"
+               ||operatorDataType=="<%=Constants.COMMON_PARAMETER_OPERATOR_DATA_TYPE_RTWEEKOFYEAR%>"
+               ||operatorDataType=="<%=Constants.COMMON_PARAMETER_OPERATOR_DATA_TYPE_RTMONTH%>"
+               ||operatorDataType=="<%=Constants.COMMON_PARAMETER_OPERATOR_DATA_TYPE_RTQUARTER%>"
+               ||operatorDataType=="<%=Constants.COMMON_PARAMETER_OPERATOR_DATA_TYPE_RTYEAR%>")
+        {
+
+            if(operatorValueType=="<%=Constants.COMMON_PARAMETER_OPERATOR_VALUE_TYPE_SINGLE%>")
+            {
+                return calendar;
+            }
+            else if(operatorValueType=="<%=Constants.COMMON_PARAMETER_OPERATOR_VALUE_TYPE_BETWEEN%>")
+            {
+                return doubleCalendar;
+            } 
+            
+        }
+        else if(operatorDataType=="<%=Constants.COMMON_PARAMETER_OPERATOR_DATA_TYPE_DATEHOUR%>")
+        {
+            if(operatorValueType=="<%=Constants.COMMON_PARAMETER_OPERATOR_VALUE_TYPE_SINGLE%>")
+            {
+                return hour;
+            }
+            else if(operatorValueType=="<%=Constants.COMMON_PARAMETER_OPERATOR_VALUE_TYPE_BETWEEN%>")
+            {
+                return doubleHour;
+            }
+            
+        }       
+        //alert("Invalid parameter type");       
+        
+    }   
+    
+
+//////////////////////////////////////////////////////////////////////
+    
+
+
+    function KeyPress(obj)
+    { 
+       var txtval=obj.value;  
+      
+       var key = event.keyCode;
+
+       if((key < 48||key > 57) && key != 46 && key != 45)
+       {  
+        event.keyCode = 0;
+       }
+       else
+       {
+        if(key == 46)
+        {
+         if(txtval.indexOf(".") != -1 || txtval.length == 0)
+          event.keyCode = 0;
+        }
+        if(key == 45)
+        { 
+         if(txtval.indexOf("-") != -1)
+          event.keyCode = 0;
+        }    
+       }
+    }
+    
+    //date input check keydown        
+    function onDateKeyDown() {
+
+        if (event.keyCode == 9) {
+
+        } else if (event.keyCode == 8 || event.keyCode == 32 || event.keyCode == 46) {
+            event.returnValue = false;
+            event.srcElement.value = "";
+            //鏃ユ湡琚垹闄ゆ椂瑙﹀彂鐨勪簨浠?
+            //delete by xmzh
+            //preChange(event.srcElement);
+        } else {
+            event.returnValue = false;
+        }
+    }
+
+//    function getMultiSelectValue(selObj)
+//    {
+//     var valueArray = new Array();
+//     var strValue = "";
+//     
+//     for(var i = 0; i < selObj.options.length; i++){
+// 	    if(selObj.options[i].selected){
+// 	        if(strValue == ""){
+// 	            strValue = selObj.options[i].value;
+// 	        }else{
+// 	            strValue += "," + selObj.options[i].value;
+// 	        }
+//     		
+// 		    valueArray[valueArray.length] =selObj.options[i].value.replace(/<%=Constants.WT_DELIM%>/ig, "\'");
+// 	    }
+//     	 
+//     }
+//     return valueArray;
+//    }
+//  
+// 
+//    function preChange(strAlias)
+//    { 
+//        if(conditionList.length > 0)
+//        {
+//            ShowWait();
+//            
+//            if(refactConditionStruct(strAlias))
+//            { 
+//               var strCondition = webroot_aspx_reportedit_reportPreview.getConditionTable(databaseId, conditionList);
+
+//               if (strCondition.error != null) 
+//               { 
+//                    alert(strCondition.error.Message);
+//               }else{
+//                    document.getElementById("idcondition").innerHTML = strCondition.value;
+//                    //鏉′欢鏄剧ず瓒呰繃涓夎鐨勯珮搴?5锛宒iv闄愬畾鏈€澶ч珮搴︼紝鏄剧ず婊氬姩鏉?
+//                    if(document.getElementById("conditiontable").clientHeight > 95)
+//                    {
+//                       document.getElementById("idcondition").style.height = "95"; 
+//                    }                
+//                   
+//                }
+//            }
+//            
+//             HideWait();
+//        } 
+//    }
+//    
+//    
+//    function refactConditionStruct(strAlias)
+//    {
+//        var refresh = false; 
+//        if (conditionList.length > 0)
+//            oldConditionList = webroot_aspx_preview_chartPreview.cloneCoditionList(conditionList).value;
+//            
+//        for(var i = 0; i < conditionList.length; i++)
+//        {
+//            var isDisplay = conditionList[i].IsConditionHide;
+//            //鑻ヤ负鍐呴儴鏉′欢鍒欎笉澶勭悊
+//            if(!isDisplay)
+//            {
+//                var strPreCondition = conditionList[i].PreConditionAlias;
+//                var vList = new Array(); //save condition's values
+//                var IsEmpty = false;
+//                //濡傛灉鏈夊墠缃潯浠讹紝涓斿墠缃潯浠舵敼鍙橈紝鍒欐妸璇ュ€兼竻绌?
+//                if(null != strPreCondition && strPreCondition != "" && strPreCondition == strAlias)
+//                {
+//                    refresh = true;
+//                    IsEmpty = true; 
+//                    
+//                    refactConditionStruct(conditionList[i].FieldAlias);
+//                     
+//                }else
+//                {                
+//                    var idObj = conditionList[i].FieldAlias;
+//                    var conditionOperateType = conditionList[i].Operate;
+//               
+//                    //this check is added by lzy for dealing with the time.
+//                    if (conditionList[i].DimStringData.InputControlType == "1")//DimHour
+//                    {
+//                        if(conditionOperateType == "<%=Constants.EDIT_CONDITION_OPERATE_BETWEEN%>")
+//                        {
+//                            vList[0] = document.getElementById(idObj + "_cal1").value + ":" + document.getElementById("twoHour1").value; 
+//                            vList[1] = document.getElementById(idObj + "_cal2").value + ":" + document.getElementById("twoHour2").value;
+//                            if(vList[0].indexOf(":") == 0 || vList[1].indexOf(":") == 0 )
+//                            {
+//                                IsEmpty = true;
+//                            }
+//                        }else{                    
+//                            vList[0] = document.getElementById(idObj).value + ":" + document.getElementById("oneHour").value;    
+//                            if(vList[0].indexOf(":") == 0)
+//                            {
+//                                IsEmpty = true;
+//                            }        
+//                        }
+//                        
+//                    } else{                    
+//                        //get valuelist according to operatetype
+//                        if(conditionOperateType == "<%=Constants.EDIT_CONDITION_OPERATE_IN%>")
+//                        {
+//                            vList = getMultiSelectValue(document.getElementById(idObj));
+//                            if(vList.length == 0)
+//                            {
+//                                IsEmpty = true;
+//                            }
+//                        }else if(conditionOperateType == "<%=Constants.EDIT_CONDITION_OPERATE_BETWEEN%>")
+//                        {
+//                            vList[0] = document.getElementById(idObj + "_cal1").value; 
+//                            vList[1] = document.getElementById(idObj + "_cal2").value;
+//                            if(vList[0] == "" || vList[1] == "" )
+//                            {
+//                                IsEmpty = true;
+//                            }
+//                        }else{
+//                            vList[0] = document.getElementById(idObj).value;    
+//                            if(vList[0] == "")
+//                            {
+//                                IsEmpty = true;
+//                            }        
+//                        }                
+//                    
+//                    }
+//                }
+//                
+//                conditionList[i].Values = vList;
+//                conditionList[i].IsEmpty = IsEmpty;
+//            } 
+//        }
+//        
+//        return refresh;
+//    }
+    
+</script>
+
+
+   

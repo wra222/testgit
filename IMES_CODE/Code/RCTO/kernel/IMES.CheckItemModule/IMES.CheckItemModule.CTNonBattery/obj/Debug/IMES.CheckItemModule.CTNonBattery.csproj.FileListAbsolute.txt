@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.CTNonBattery.Filter.dll
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.CTNonBattery.Filter.pdb
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.CTNonBattery\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.CTNonBattery\obj\Debug\IMES.CheckItemModule.CTNonBattery.Filter.dll
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.CTNonBattery\obj\Debug\IMES.CheckItemModule.CTNonBattery.Filter.pdb

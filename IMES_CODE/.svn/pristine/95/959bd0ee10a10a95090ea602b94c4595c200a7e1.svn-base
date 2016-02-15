@@ -1,0 +1,15 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="102VirtualMo" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<IfElseActivity x:Name="CheckIsClearRoom">
+		<IfElseBranchActivity x:Name="IsClearRoom">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="IsClearRoom" />
+			</IfElseBranchActivity.Condition>
+			<ns0:CheckClearRoomModel Customer="{ActivityBind 102VirtualMo,Path=Customer}" x:Name="checkClearRoomModel1" SessionType="{ActivityBind 102VirtualMo,Path=SessionType}" Editor="{ActivityBind 102VirtualMo,Path=Editor}" Station="{ActivityBind 102VirtualMo,Path=Station}" Line="{ActivityBind 102VirtualMo,Path=PdLine}" Key="{ActivityBind 102VirtualMo,Path=Key}" />
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<ns0:AcquireVirtualMOSection Customer="{ActivityBind 102VirtualMo,Path=Customer}" x:Name="acquireVirtualMOSection1" SessionType="{ActivityBind 102VirtualMo,Path=SessionType}" Editor="{ActivityBind 102VirtualMo,Path=Editor}" SessionId="00000000-0000-0000-0000-000000000000" Station="{ActivityBind 102VirtualMo,Path=Station}" Line="{ActivityBind 102VirtualMo,Path=PdLine}" Key="{ActivityBind 102VirtualMo,Path=Key}" />
+	<ns0:DBScope Station="{ActivityBind 102VirtualMo,Path=Station}" x:Name="dbScope1" Key="{ActivityBind 102VirtualMo,Path=Key}" SessionType="{ActivityBind 102VirtualMo,Path=SessionType}">
+		<ns0:SaveVirtualMo Customer="{ActivityBind 102VirtualMo,Path=Customer}" x:Name="saveVirtualMo1" SessionType="{ActivityBind 102VirtualMo,Path=SessionType}" Editor="{ActivityBind 102VirtualMo,Path=Editor}" Station="{ActivityBind 102VirtualMo,Path=Station}" Line="{ActivityBind 102VirtualMo,Path=PdLine}" Key="{ActivityBind 102VirtualMo,Path=Key}" />
+	</ns0:DBScope>
+	<ns0:GenerateVirtualMoBOM Customer="{ActivityBind 102VirtualMo,Path=Customer}" x:Name="generateVirtualMoBOM1" SessionType="{ActivityBind 102VirtualMo,Path=SessionType}" Editor="{ActivityBind 102VirtualMo,Path=Editor}" Enabled="False" Station="{ActivityBind 102VirtualMo,Path=Station}" Line="{ActivityBind 102VirtualMo,Path=PdLine}" Key="{ActivityBind 102VirtualMo,Path=Key}" />
+</ns0:BaseFlow>

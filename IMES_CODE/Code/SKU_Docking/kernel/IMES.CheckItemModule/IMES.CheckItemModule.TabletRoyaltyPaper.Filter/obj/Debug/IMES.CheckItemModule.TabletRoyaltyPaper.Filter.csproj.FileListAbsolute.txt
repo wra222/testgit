@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.CheckItemModule.TabletRoyaltyPaper.Filter.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.CheckItemModule.TabletRoyaltyPaper.Filter.pdb
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.TabletRoyaltyPaper.Filter\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.TabletRoyaltyPaper.Filter\obj\Debug\IMES.CheckItemModule.TabletRoyaltyPaper.Filter.dll
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.TabletRoyaltyPaper.Filter\obj\Debug\IMES.CheckItemModule.TabletRoyaltyPaper.Filter.pdb

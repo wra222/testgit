@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Common.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Common.pdb
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Common\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Common\obj\Debug\IMES.Common.dll
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Common\obj\Debug\IMES.Common.pdb

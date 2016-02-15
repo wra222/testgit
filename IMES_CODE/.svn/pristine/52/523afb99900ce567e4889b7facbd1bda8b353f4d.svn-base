@@ -1,0 +1,108 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+
+namespace UPH.Interface
+{
+    public interface IDinner
+    {
+        /// <summary>
+        /// 获取所有记录
+        /// </summary>
+        /// <returns></returns>
+        DataTable GetAllDinnerTimeInfo();
+
+        /// <summary>
+        /// 获取所有记录
+        /// </summary>
+        /// <returns></returns>
+        List<string> GetAllProcess();
+
+        /// <summary>
+        /// 获取所有记录
+        /// </summary>
+        /// <returns></returns>
+        DataTable GetAllDinnerProcess(string process);
+
+        /// <summary>
+        /// 获取所有记录
+        /// </summary>
+        /// <returns></returns>
+        DataTable GetAllDinnerProcessClass(string process,string Class,string line);
+
+        /// <summary>
+        /// 获取所有记录
+        /// </summary>
+        /// <returns></returns>
+        List<string> GetAllLine(string process);
+
+        /// <summary>
+        /// 获取所有记录
+        /// </summary>
+        /// <returns></returns>
+        DataTable GetAllDinnerLine(string process,string line);
+
+        /// <summary>
+        /// 增加1笔
+        /// </summary>
+        /// <param name="item"></param>
+        void AddDinnerTimeInfo(DinnerTimeInfo item);
+
+        /// <summary>
+        /// 删掉 
+        /// </summary>
+        /// <param name="astType"></param>
+        /// <param name="astCode"></param>
+        DataTable DelDinnerTimeInfo(int id);
+
+        /// <summary>
+        /// 增加1笔
+        /// </summary>
+        /// <param name="item"></param>
+        void AddDinnerLogInfo(DinnerLogInfo item);
+
+        /// <summary>
+        /// 增加1笔
+        /// </summary>
+        /// <param name="item"></param>
+        DataTable AddDinnerLog(int id);
+
+    }
+
+    /// <summary>
+    /// 前台使用
+    /// </summary>
+    [Serializable]
+    public class DinnerTimeInfo
+    {
+        public int ID;
+        public string Process;
+        public string Type;
+        public string Class;
+        public string PdLine;
+        public string BeginTime;
+        public string EndTime;
+        public string Remark;
+        public string Editor;
+        public DateTime Cdt;
+        public DateTime Udt;
+    }
+
+    [Serializable]
+    public class DinnerLogInfo
+    {
+        public int ID;
+        public string Process;
+        public string Type;
+        public string Class;
+        public string PdLine;
+        public string BeginTime;
+        public string EndTime;
+        public string Remark;
+        public string Editor;
+        public DateTime Cdt;
+        public DateTime Udt;
+    }
+}

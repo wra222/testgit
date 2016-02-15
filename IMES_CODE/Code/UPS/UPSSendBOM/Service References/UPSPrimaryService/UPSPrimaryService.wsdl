@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://hp.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://hp.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://hp.com/">
+      <s:element name="UPSSendBOMAndPOLine">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HP_PO_Num" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="POLine" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustPO" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Qty" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="BOM" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FinalBOM" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="FinalQty" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSSendBOMAndPOLineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSSendBOMAndPOLineResult" type="tns:BomStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BomStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="retcode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="datastring" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UPSSendBOMWithCTO5AndPOLine">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HP_PO_Num" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="POLine" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustPO" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Qty" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CTO5" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BOM" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FinalBOM" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="FinalQty" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSSendBOMWithCTO5AndPOLineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSSendBOMWithCTO5AndPOLineResult" type="tns:BomStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSSendAllAndPOLine">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HP_PO_Num" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="POLine" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustPO" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Qty" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CT05" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BOM" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OSI" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FinalBOM" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="FinalQty" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSSendAllAndPOLineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSSendAllAndPOLineResult" type="tns:BomStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetCISServices">
+        <s:complexType />
+      </s:element>
+      <s:element name="UPSGetCISServicesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UPSGetCISServicesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetUPSServices">
+        <s:complexType />
+      </s:element>
+      <s:element name="UPSGetUPSServicesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UPSGetUPSServicesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetSupportedAV">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cutoffdate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetSupportedAVResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UPSGetSupportedAVResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSCancelPO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HP_PO_Num" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustPO" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSCancelPOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSCancelPOResult" type="tns:BomStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSVerifyPOReady">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HP_PO_Num" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSVerifyPOReadyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSVerifyPOReadyResult" type="tns:BomStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetOSI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HP_PO_Num" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetOSIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSGetOSIResult" type="tns:BomStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSSendOSI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HP_PO_Num" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="orderinfo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSSendOSIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSSendOSIResult" type="tns:BomStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSSendAll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HP_PO_Num" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustPO" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Qty" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CT05" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BOM" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OSI" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSSendAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSSendAllResult" type="tns:BomStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSSendBOM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HP_PO_Num" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustPO" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Qty" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="BOM" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSSendBOMResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSSendBOMResult" type="tns:BomStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSSendBOMWithCTO5">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HP_PO_Num" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustPO" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Qty" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CT05" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BOM" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSSendBOMWithCTO5Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSSendBOMWithCTO5Result" type="tns:BomStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetPrintRouting">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PartNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetPrintRoutingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSGetPrintRoutingResult" type="tns:BomStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetPrintRoutingAll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HPPO" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetPrintRoutingAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSGetPrintRoutingAllResult" type="tns:BomStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UPSSendBOMAndPOLineSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSSendBOMAndPOLine" />
+  </wsdl:message>
+  <wsdl:message name="UPSSendBOMAndPOLineSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSSendBOMAndPOLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSSendBOMWithCTO5AndPOLineSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSSendBOMWithCTO5AndPOLine" />
+  </wsdl:message>
+  <wsdl:message name="UPSSendBOMWithCTO5AndPOLineSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSSendBOMWithCTO5AndPOLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSSendAllAndPOLineSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSSendAllAndPOLine" />
+  </wsdl:message>
+  <wsdl:message name="UPSSendAllAndPOLineSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSSendAllAndPOLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetCISServicesSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetCISServices" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetCISServicesSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetCISServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetUPSServicesSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetUPSServices" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetUPSServicesSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetUPSServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetSupportedAVSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetSupportedAV" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetSupportedAVSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetSupportedAVResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSCancelPOSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSCancelPO" />
+  </wsdl:message>
+  <wsdl:message name="UPSCancelPOSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSCancelPOResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSVerifyPOReadySoapIn">
+    <wsdl:part name="parameters" element="tns:UPSVerifyPOReady" />
+  </wsdl:message>
+  <wsdl:message name="UPSVerifyPOReadySoapOut">
+    <wsdl:part name="parameters" element="tns:UPSVerifyPOReadyResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetOSISoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetOSI" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetOSISoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetOSIResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSSendOSISoapIn">
+    <wsdl:part name="parameters" element="tns:UPSSendOSI" />
+  </wsdl:message>
+  <wsdl:message name="UPSSendOSISoapOut">
+    <wsdl:part name="parameters" element="tns:UPSSendOSIResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSSendAllSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSSendAll" />
+  </wsdl:message>
+  <wsdl:message name="UPSSendAllSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSSendAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSSendBOMSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSSendBOM" />
+  </wsdl:message>
+  <wsdl:message name="UPSSendBOMSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSSendBOMResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSSendBOMWithCTO5SoapIn">
+    <wsdl:part name="parameters" element="tns:UPSSendBOMWithCTO5" />
+  </wsdl:message>
+  <wsdl:message name="UPSSendBOMWithCTO5SoapOut">
+    <wsdl:part name="parameters" element="tns:UPSSendBOMWithCTO5Response" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetPrintRoutingSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetPrintRouting" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetPrintRoutingSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetPrintRoutingResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetPrintRoutingAllSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetPrintRoutingAll" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetPrintRoutingAllSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetPrintRoutingAllResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UPSPrimaryServiceSoap">
+    <wsdl:operation name="UPSSendBOMAndPOLine">
+      <wsdl:input message="tns:UPSSendBOMAndPOLineSoapIn" />
+      <wsdl:output message="tns:UPSSendBOMAndPOLineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendBOMWithCTO5AndPOLine">
+      <wsdl:input message="tns:UPSSendBOMWithCTO5AndPOLineSoapIn" />
+      <wsdl:output message="tns:UPSSendBOMWithCTO5AndPOLineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendAllAndPOLine">
+      <wsdl:input message="tns:UPSSendAllAndPOLineSoapIn" />
+      <wsdl:output message="tns:UPSSendAllAndPOLineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetCISServices">
+      <wsdl:input message="tns:UPSGetCISServicesSoapIn" />
+      <wsdl:output message="tns:UPSGetCISServicesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetUPSServices">
+      <wsdl:input message="tns:UPSGetUPSServicesSoapIn" />
+      <wsdl:output message="tns:UPSGetUPSServicesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetSupportedAV">
+      <wsdl:input message="tns:UPSGetSupportedAVSoapIn" />
+      <wsdl:output message="tns:UPSGetSupportedAVSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSCancelPO">
+      <wsdl:input message="tns:UPSCancelPOSoapIn" />
+      <wsdl:output message="tns:UPSCancelPOSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSVerifyPOReady">
+      <wsdl:input message="tns:UPSVerifyPOReadySoapIn" />
+      <wsdl:output message="tns:UPSVerifyPOReadySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetOSI">
+      <wsdl:input message="tns:UPSGetOSISoapIn" />
+      <wsdl:output message="tns:UPSGetOSISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendOSI">
+      <wsdl:input message="tns:UPSSendOSISoapIn" />
+      <wsdl:output message="tns:UPSSendOSISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendAll">
+      <wsdl:input message="tns:UPSSendAllSoapIn" />
+      <wsdl:output message="tns:UPSSendAllSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendBOM">
+      <wsdl:input message="tns:UPSSendBOMSoapIn" />
+      <wsdl:output message="tns:UPSSendBOMSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendBOMWithCTO5">
+      <wsdl:input message="tns:UPSSendBOMWithCTO5SoapIn" />
+      <wsdl:output message="tns:UPSSendBOMWithCTO5SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetPrintRouting">
+      <wsdl:input message="tns:UPSGetPrintRoutingSoapIn" />
+      <wsdl:output message="tns:UPSGetPrintRoutingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetPrintRoutingAll">
+      <wsdl:input message="tns:UPSGetPrintRoutingAllSoapIn" />
+      <wsdl:output message="tns:UPSGetPrintRoutingAllSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UPSPrimaryServiceSoap" type="tns:UPSPrimaryServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UPSSendBOMAndPOLine">
+      <soap:operation soapAction="http://hp.com/UPSSendBOMAndPOLine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendBOMWithCTO5AndPOLine">
+      <soap:operation soapAction="http://hp.com/UPSSendBOMWithCTO5AndPOLine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendAllAndPOLine">
+      <soap:operation soapAction="http://hp.com/UPSSendAllAndPOLine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetCISServices">
+      <soap:operation soapAction="http://hp.com/UPSGetCISServices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetUPSServices">
+      <soap:operation soapAction="http://hp.com/UPSGetUPSServices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetSupportedAV">
+      <soap:operation soapAction="http://hp.com/UPSGetSupportedAV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSCancelPO">
+      <soap:operation soapAction="http://hp.com/UPSCancelPO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSVerifyPOReady">
+      <soap:operation soapAction="http://hp.com/UPSVerifyPOReady" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetOSI">
+      <soap:operation soapAction="http://hp.com/UPSGetOSI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendOSI">
+      <soap:operation soapAction="http://hp.com/UPSSendOSI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendAll">
+      <soap:operation soapAction="http://hp.com/UPSSendAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendBOM">
+      <soap:operation soapAction="http://hp.com/UPSSendBOM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendBOMWithCTO5">
+      <soap:operation soapAction="http://hp.com/UPSSendBOMWithCTO5" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetPrintRouting">
+      <soap:operation soapAction="http://hp.com/UPSGetPrintRouting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetPrintRoutingAll">
+      <soap:operation soapAction="http://hp.com/UPSGetPrintRoutingAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UPSPrimaryServiceSoap12" type="tns:UPSPrimaryServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UPSSendBOMAndPOLine">
+      <soap12:operation soapAction="http://hp.com/UPSSendBOMAndPOLine" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendBOMWithCTO5AndPOLine">
+      <soap12:operation soapAction="http://hp.com/UPSSendBOMWithCTO5AndPOLine" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendAllAndPOLine">
+      <soap12:operation soapAction="http://hp.com/UPSSendAllAndPOLine" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetCISServices">
+      <soap12:operation soapAction="http://hp.com/UPSGetCISServices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetUPSServices">
+      <soap12:operation soapAction="http://hp.com/UPSGetUPSServices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetSupportedAV">
+      <soap12:operation soapAction="http://hp.com/UPSGetSupportedAV" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSCancelPO">
+      <soap12:operation soapAction="http://hp.com/UPSCancelPO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSVerifyPOReady">
+      <soap12:operation soapAction="http://hp.com/UPSVerifyPOReady" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetOSI">
+      <soap12:operation soapAction="http://hp.com/UPSGetOSI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendOSI">
+      <soap12:operation soapAction="http://hp.com/UPSSendOSI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendAll">
+      <soap12:operation soapAction="http://hp.com/UPSSendAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendBOM">
+      <soap12:operation soapAction="http://hp.com/UPSSendBOM" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSSendBOMWithCTO5">
+      <soap12:operation soapAction="http://hp.com/UPSSendBOMWithCTO5" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetPrintRouting">
+      <soap12:operation soapAction="http://hp.com/UPSGetPrintRouting" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetPrintRoutingAll">
+      <soap12:operation soapAction="http://hp.com/UPSGetPrintRoutingAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UPSPrimaryService">
+    <wsdl:port name="UPSPrimaryServiceSoap" binding="tns:UPSPrimaryServiceSoap">
+      <soap:address location="http://10.99.82.252:81/UPSPrimary/UPSPrimaryService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UPSPrimaryServiceSoap12" binding="tns:UPSPrimaryServiceSoap12">
+      <soap12:address location="http://10.99.82.252:81/UPSPrimary/UPSPrimaryService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

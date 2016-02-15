@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.TRIS.Wireless.Filter.dll
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.TRIS.Wireless.Filter.pdb
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.TRIS.Wireless.Filter\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.TRIS.Wireless.Filter\obj\Debug\IMES.CheckItemModule.TRIS.Wireless.Filter.dll
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.TRIS.Wireless.Filter\obj\Debug\IMES.CheckItemModule.TRIS.Wireless.Filter.pdb

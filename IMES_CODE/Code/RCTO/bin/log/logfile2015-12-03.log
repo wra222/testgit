@@ -1,0 +1,808 @@
+2015-12-03 13:25:44,268 [10] ERROR IMES.Infrastructure.Utility.Cache.DataChangeMediator [(null)] - IMES.ConsoleHost.vshost
+2015-12-03 13:25:45,550 [10] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteNonQuery SQL Statement:
+DELETE FROM CacheUpdate WHERE CacheServerIP=@CacheServerIP AND AppName=@AppName 
+SQL Parameter:
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:32:11,550 [9] ERROR IMES.Infrastructure.Utility.Cache.DataChangeMediator [(null)] - IMES.ConsoleHost.vshost
+2015-12-03 13:32:11,676 [9] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteNonQuery SQL Statement:
+DELETE FROM CacheUpdate WHERE CacheServerIP=@CacheServerIP AND AppName=@AppName 
+SQL Parameter:
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:33:58,233 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:33:58,345 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:34:58,373 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:34:58,386 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:35:58,400 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:35:58,419 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:36:58,506 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:36:58,529 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:37:58,544 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:37:58,559 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:38:58,586 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:38:58,611 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:39:58,651 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:39:58,681 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:40:58,703 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:40:58,726 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:41:58,753 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:41:58,770 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:42:58,797 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:42:58,825 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:43:58,848 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:43:58,862 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:45:13,701 [9] ERROR IMES.Infrastructure.Utility.Cache.DataChangeMediator [(null)] - IMES.ConsoleHost.vshost
+2015-12-03 13:45:13,828 [9] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteNonQuery SQL Statement:
+DELETE FROM CacheUpdate WHERE CacheServerIP=@CacheServerIP AND AppName=@AppName 
+SQL Parameter:
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:47:01,173 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:47:01,186 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:48:01,202 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:48:01,227 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:49:01,249 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:49:01,277 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:49:47,276 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteDataFill SQL Statement:
+SELECT Line,Descr FROM Line WHERE CustomerID=@CustomerID AND Stage=@Stage  ORDER BY Line 
+SQL Parameter:
+ [Name]:@CustomerID [Value]:HP [DBType]:Char [Direction]:Input
+ [Name]:@Stage [Value]:FA [DBType]:Char [Direction]:Input
+2015-12-03 13:50:01,301 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:50:01,330 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:50:12,435 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteDataFill SQL Statement:
+SELECT Line,Descr FROM Line WHERE CustomerID=@CustomerID AND Stage=@Stage  ORDER BY Line 
+SQL Parameter:
+ [Name]:@CustomerID [Value]:HP [DBType]:Char [Direction]:Input
+ [Name]:@Stage [Value]:FA [DBType]:Char [Direction]:Input
+2015-12-03 13:50:13,422 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT PCode,LabelType FROM PCode_LabelType WHERE PCode=@PCode 
+SQL Parameter:
+ [Name]:@PCode [Value]:OPAIO055 [DBType]:Char [Direction]:Input
+2015-12-03 13:50:13,488 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT Value FROM SysSetting WHERE Name=@Name  ORDER BY Value
+SQL Parameter:
+ [Name]:@Name [Value]:RemoteBatPath [DBType]:VarChar [Direction]:Input
+2015-12-03 13:50:13,545 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+select  ID, [Type], Value, Description, Editor, Cdt, Udt
+                                                            from ConstValueType
+                                                            where [Type]=@type and Value=@Value
+                                                             order by ID
+SQL Parameter:
+ [Name]:@type [Value]:RemoteBatPCode [DBType]:VarChar [Direction]:Input
+ [Name]:@Value [Value]:OPAIO055 [DBType]:VarChar [Direction]:Input
+2015-12-03 13:51:01,357 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:51:01,386 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:52:01,414 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:52:01,440 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:53:01,463 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:53:01,485 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:53:08,215 [13] DEBUG IMES.Station.Implementation.RemoveKPCT [(null)] - (RemoveKPCT)CheckProduct start, prodid:A5B500003 , pdLine: B1N , editor: dyh , stationId: RC , customerId: HP
+2015-12-03 13:53:08,279 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ProductID,Model,PCBID,PCBModel,MAC,UUID,MBECR,CVSN,CUSTSN,ECR,PizzaID,MO,UnitWeight,CartonSN,CartonWeight,DeliveryNo,PalletNo,OOAID,PRSN,Cdt,Udt,State FROM Product WHERE ProductID=@ProductID OR CUSTSN=@CUSTSN 
+SQL Parameter:
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+ [Name]:@CUSTSN [Value]:A5B500003 [DBType]:VarChar [Direction]:Input
+2015-12-03 13:53:08,307 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ProductID,Station,Status,ReworkCode,Line,TestFailCount,Editor,Cdt,Udt FROM ProductStatus WHERE ProductID=@ProductID 
+SQL Parameter:
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+2015-12-03 13:53:08,322 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Model,Process,Editor,Cdt,Udt,Line FROM Model_Process WHERE Model=@Model AND Line=@Line 
+SQL Parameter:
+ [Name]:@Model [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+ [Name]:@Line [Value]:B [DBType]:VarChar [Direction]:Input
+2015-12-03 13:53:08,363 [13] DEBUG BaseRepository [(null)] - BEGIN: ModelRepository::ClearCalledMethods()
+2015-12-03 13:53:08,369 [13] DEBUG BaseRepository [(null)] - END: ModelRepository::ClearCalledMethods()
+2015-12-03 13:53:08,377 [13] DEBUG BaseRepository [(null)] - BEGIN: ModelRepository::Find_DB()
+2015-12-03 13:53:08,383 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT Model,Family,CustPN,Region,ShipType,Status,OSCode,OSDesc,Price,BOMApproveDate,Editor,Cdt,Udt FROM Model WHERE Model=@Model 
+SQL Parameter:
+ [Name]:@Model [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+2015-12-03 13:53:08,393 [13] DEBUG BaseRepository [(null)] - END: ModelRepository::Find_DB()
+2015-12-03 13:53:08,401 [18] DEBUG BaseRepository [(null)] - BEGIN: ModelRepository::UnregistIndexesForOneModel()
+2015-12-03 13:53:08,407 [18] DEBUG BaseRepository [(null)] - UnregistIndexesForOneModel%1->Indexes:
+2015-12-03 13:53:08,413 [18] DEBUG BaseRepository [(null)] - UnregistIndexesForOneModel%2->Indexes:
+2015-12-03 13:53:08,418 [18] DEBUG BaseRepository [(null)] - END: ModelRepository::UnregistIndexesForOneModel()
+2015-12-03 13:53:08,424 [18] DEBUG BaseRepository [(null)] - BEGIN: ModelRepository::AddAndRegistOneModel()
+2015-12-03 13:53:08,430 [18] DEBUG BaseRepository [(null)] - AddAndRegistOneMode->Key:1460B0279501
+2015-12-03 13:53:08,442 [18] DEBUG BaseRepository [(null)] - AddAndRegistOneModel%1->Indexes:
+2015-12-03 13:53:08,449 [18] DEBUG BaseRepository [(null)] - BEGIN: ModelRepository::Regist()
+2015-12-03 13:53:08,450 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Priority,Condition1,Condition2,Condition3,Condition4,Condition5,Condition6,Editor,Cdt,Udt FROM ProcessRuleset ORDER BY Priority DESC 
+SQL Parameter:
+2015-12-03 13:53:08,454 [18] DEBUG BaseRepository [(null)] - Model::Regist->PK:1460B0279501, Key:Status:1;.
+2015-12-03 13:53:08,547 [18] DEBUG BaseRepository [(null)] - END: ModelRepository::Regist()
+2015-12-03 13:53:08,555 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT DISTINCT RuleSetID  FROM ProcessRule WHERE  1=1  
+SQL Parameter:
+2015-12-03 13:53:08,560 [18] DEBUG BaseRepository [(null)] - AddAndRegistOneModel%2->Indexes:Index[Key:Status:1;;Value:1460B0279501];
+2015-12-03 13:53:08,571 [18] DEBUG BaseRepository [(null)] - END: ModelRepository::AddAndRegistOneModel()
+2015-12-03 13:53:08,627 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Model,Name,Value,Descr,Editor,Cdt,Udt FROM ModelInfo WHERE Model=@Model 
+SQL Parameter:
+ [Name]:@Model [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+2015-12-03 13:53:09,851 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,RuleSetID,Process,Value1,Value2,Value3,Value4,Value5,Value6,Editor,Cdt,Udt FROM ProcessRule WHERE RuleSetID=@RuleSetID  ORDER BY Process 
+SQL Parameter:
+ [Name]:@RuleSetID [Value]:18 [DBType]:Int [Direction]:Input
+2015-12-03 13:53:09,866 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,RuleSetID,Process,Value1,Value2,Value3,Value4,Value5,Value6,Editor,Cdt,Udt FROM ProcessRule WHERE RuleSetID=@RuleSetID  ORDER BY Process 
+SQL Parameter:
+ [Name]:@RuleSetID [Value]:11 [DBType]:Int [Direction]:Input
+2015-12-03 13:53:09,879 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,RuleSetID,Process,Value1,Value2,Value3,Value4,Value5,Value6,Editor,Cdt,Udt FROM ProcessRule WHERE RuleSetID=@RuleSetID  ORDER BY Process 
+SQL Parameter:
+ [Name]:@RuleSetID [Value]:9 [DBType]:Int [Direction]:Input
+2015-12-03 13:53:09,888 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,RuleSetID,Process,Value1,Value2,Value3,Value4,Value5,Value6,Editor,Cdt,Udt FROM ProcessRule WHERE RuleSetID=@RuleSetID  ORDER BY Process 
+SQL Parameter:
+ [Name]:@RuleSetID [Value]:6 [DBType]:Int [Direction]:Input
+2015-12-03 13:53:09,906 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Model,Process,Editor,Cdt,Udt,Line FROM Model_Process WHERE Model=@Model AND Line=@Line 
+SQL Parameter:
+ [Name]:@Model [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+ [Name]:@Line [Value]:B [DBType]:VarChar [Direction]:Input
+2015-12-03 13:53:09,918 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteNonQuery SQL Statement:
+INSERT INTO Model_Process (Model,Process,Editor,Cdt,Udt,Line) VALUES (@Model,@Process,@Editor,@Cdt,@Udt,@Line) ;SELECT @@IDENTITY;
+SQL Parameter:
+ [Name]:@Model [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+ [Name]:@Process [Value]:AIO_L6 [DBType]:VarChar [Direction]:Input
+ [Name]:@Editor [Value]:dyh [DBType]:VarChar [Direction]:Input
+ [Name]:@Cdt [Value]:2015/12/3 下午 01:53:09 [DBType]:DateTime [Direction]:Input
+ [Name]:@Udt [Value]:2015/12/3 下午 01:53:09 [DBType]:DateTime [Direction]:Input
+ [Name]:@Line [Value]:B [DBType]:VarChar [Direction]:Input
+2015-12-03 13:53:10,008 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+IMES_SFC_Product
+SQL Parameter:
+ [Name]:@Key [Value]:A5B500003 [DBType]:VarChar [Direction]:Input
+ [Name]:@Customer [Value]:HP [DBType]:VarChar [Direction]:Input
+ [Name]:@Line [Value]:B1N [DBType]:VarChar [Direction]:Input
+ [Name]:@CurrentStation [Value]:RC [DBType]:VarChar [Direction]:Input
+2015-12-03 13:53:10,042 [13] DEBUG IMES.Station.Implementation.RemoveKPCT [(null)] - (RemoveKPCT)CheckProduct end, prodid:A5B500003 , pdLine: B1N , editor: dyh , stationId: RC , customerId: HP
+2015-12-03 13:53:17,134 [13] DEBUG IMES.Station.Implementation.RemoveKPCT [(null)] - (RemoveKPCT)GetParts start, prodid:A5B500003 mbct2: LEEQU0CVE9P000, pdLine: B1N , editor: dyh , stationId: RC , customerId: HP
+2015-12-03 13:53:17,141 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ProductID,Model,PCBID,PCBModel,MAC,UUID,MBECR,CVSN,CUSTSN,ECR,PizzaID,MO,UnitWeight,CartonSN,CartonWeight,DeliveryNo,PalletNo,OOAID,PRSN,Cdt,Udt,State FROM Product WHERE ProductID=@ProductID OR CUSTSN=@CUSTSN 
+SQL Parameter:
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+ [Name]:@CUSTSN [Value]:A5B500003 [DBType]:VarChar [Direction]:Input
+2015-12-03 13:53:17,149 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ProductID,Station,Status,ReworkCode,Line,TestFailCount,Editor,Cdt,Udt FROM ProductStatus WHERE ProductID=@ProductID 
+SQL Parameter:
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+2015-12-03 13:53:17,156 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Model,Process,Editor,Cdt,Udt,Line FROM Model_Process WHERE Model=@Model AND Line=@Line 
+SQL Parameter:
+ [Name]:@Model [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+ [Name]:@Line [Value]:B [DBType]:VarChar [Direction]:Input
+2015-12-03 13:53:17,174 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+IMES_SFC_Product
+SQL Parameter:
+ [Name]:@Key [Value]:A5B500003 [DBType]:VarChar [Direction]:Input
+ [Name]:@Customer [Value]:HP [DBType]:VarChar [Direction]:Input
+ [Name]:@Line [Value]:B1N [DBType]:VarChar [Direction]:Input
+ [Name]:@CurrentStation [Value]:RC [DBType]:VarChar [Direction]:Input
+2015-12-03 13:53:17,219 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,ProductID,InfoType,InfoValue,Editor,Cdt,Udt FROM ProductInfo WHERE ProductID=@ProductID 
+SQL Parameter:
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+2015-12-03 13:53:17,269 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT Cdt,Description,Editor,ID,Name,Type,Udt,Value FROM ConstValue WHERE Name=@Name AND Type=@Type  ORDER BY Type,Name
+SQL Parameter:
+ [Name]:@Name [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+ [Name]:@Type [Value]:JSRemoveKP [DBType]:VarChar [Direction]:Input
+2015-12-03 13:53:17,307 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT Cdt,Description,Editor,ID,Name,Type,Udt,Value FROM ConstValue WHERE Name=@Name AND Type=@Type  ORDER BY Type,Name
+SQL Parameter:
+ [Name]:@Name [Value]:ARCHADIA L6 [DBType]:VarChar [Direction]:Input
+ [Name]:@Type [Value]:JSRemoveKP [DBType]:VarChar [Direction]:Input
+2015-12-03 13:53:17,357 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT BomNodeType,Cdt,CheckItemType,CustmerPn,Editor,ID,IECPn,PartNo,PartSn,PartType,ProductID,Station,Udt FROM Product_Part WHERE CheckItemType=@CheckItemType AND ProductID=@ProductID  ORDER BY Udt DESC
+SQL Parameter:
+ [Name]:@CheckItemType [Value]:CommnZJVC [DBType]:VarChar [Direction]:Input
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+2015-12-03 13:53:17,413 [13] DEBUG IMES.Station.Implementation.RemoveKPCT [(null)] - (RemoveKPCT)GetParts end, prodid:A5B500003 mbct2: LEEQU0CVE9P000, pdLine: B1N , editor: dyh , stationId: RC , customerId: HP
+2015-12-03 13:53:17,703 [13] DEBUG IMES.Station.Implementation.RemoveKPCT [(null)] - (RemoveKPCT)RemoveParts start, prodid:A5B500003 , pdLine: B1N , editor: dyh , stationId: RC , customerId: HP
+2015-12-03 13:53:17,714 [13] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:53:17,723 [13] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:53:17,757 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteScalar SQL Statement:
+SELECT Name FROM Station WHERE Station = @StationId
+SQL Parameter:
+ [Name]:@StationId [Value]:RC [DBType]:NVarChar [Direction]:Input
+2015-12-03 13:53:17,767 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteScalar SQL Statement:
+SELECT Station AS 'StationId' FROM Station WHERE Name = @Name
+SQL Parameter:
+ [Name]:@Name [Value]:Remove Key parts CT [DBType]:NVarChar [Direction]:Input
+2015-12-03 13:53:17,779 [13] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteScalar SQL Statement:
+SELECT AttrValue FROM StationAttr WHERE Station = @StationId AND AttrName = @AttrName
+SQL Parameter:
+ [Name]:@StationId [Value]:RC         [DBType]:NVarChar [Direction]:Input
+ [Name]:@AttrName [Value]:Workflow [DBType]:NVarChar [Direction]:Input
+2015-12-03 13:53:17,960 [13] DEBUG IMES.Infrastructure.WorkflowRuntime.WorkflowRuntimeManager [(null)] - WorkflowRuntimeManager::CreateXomlFisWorkflow BEGIN: {'RemoveKPCT_JS.xoml', <NULL>, {[Key, A5B500003], [Station, RC], [CurrentFlowSession, A5B500003Product], [Editor, dyh], [PdLine, B1N], [Customer, HP], [SessionType, Product]}}
+2015-12-03 13:53:18,242 [13] ERROR IMES.Infrastructure.WorkflowRuntime.WorkflowRuntimeManager [(null)] - WorkflowRuntimeManager::CreateXomlFisWorkflow ERROR: {'RemoveKPCT_JS.xoml', <NULL>, {[Key, A5B500003], [Station, RC], [CurrentFlowSession, A5B500003Product], [Editor, dyh], [PdLine, B1N], [Customer, HP], [SessionType, Product]}}
+System.IO.FileNotFoundException: 找不到檔案 'E:\IMES_CODE\Code\RCTO\bin\RemoveKPCT_JS.xoml'。
+檔案名稱: 'E:\IMES_CODE\Code\RCTO\bin\RemoveKPCT_JS.xoml'
+   於 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   於 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy)
+   於 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   於 System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials)
+   於 System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   於 System.Xml.XmlReader.Create(String inputUri, XmlReaderSettings settings, XmlParserContext inputContext)
+   於 System.Xml.XmlReader.Create(String inputUri)
+   於 IMES.Infrastructure.WorkflowRuntime.WorkflowRuntimeManager.CreateXomlFisWorkflow(String markupFileName, String rulesMarkupFileName, Dictionary`2 parameters) 於 E:\IMES_CODE\Code\RCTO\kernel\IMES.Infrastructure.WorkflowRuntime\WorkflowRuntimeManager.cs: 行 140
+2015-12-03 13:53:18,302 [13] DEBUG IMES.Infrastructure.WorkflowRuntime.WorkflowRuntimeManager [(null)] - WorkflowRuntimeManager::CreateXomlFisWorkflow END: {'RemoveKPCT_JS.xoml', <NULL>, {[Key, A5B500003], [Station, RC], [CurrentFlowSession, A5B500003Product], [Editor, dyh], [PdLine, B1N], [Customer, HP], [SessionType, Product]}}
+2015-12-03 13:53:18,312 [13] ERROR IMES.Station.Implementation.RemoveKPCT [(null)] - 找不到檔案 'E:\IMES_CODE\Code\RCTO\bin\RemoveKPCT_JS.xoml'。
+2015-12-03 13:54:42,248 [10] ERROR IMES.Infrastructure.Utility.Cache.DataChangeMediator [(null)] - IMES.ConsoleHost.vshost
+2015-12-03 13:54:42,383 [10] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteNonQuery SQL Statement:
+DELETE FROM CacheUpdate WHERE CacheServerIP=@CacheServerIP AND AppName=@AppName 
+SQL Parameter:
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:55:55,691 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteDataFill SQL Statement:
+SELECT Line,Descr FROM Line WHERE CustomerID=@CustomerID AND Stage=@Stage  ORDER BY Line 
+SQL Parameter:
+ [Name]:@CustomerID [Value]:HP [DBType]:Char [Direction]:Input
+ [Name]:@Stage [Value]:FA [DBType]:Char [Direction]:Input
+2015-12-03 13:55:56,214 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT PCode,LabelType FROM PCode_LabelType WHERE PCode=@PCode 
+SQL Parameter:
+ [Name]:@PCode [Value]:OPAIO055 [DBType]:Char [Direction]:Input
+2015-12-03 13:55:56,252 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT Value FROM SysSetting WHERE Name=@Name  ORDER BY Value
+SQL Parameter:
+ [Name]:@Name [Value]:RemoteBatPath [DBType]:VarChar [Direction]:Input
+2015-12-03 13:55:56,262 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+select  ID, [Type], Value, Description, Editor, Cdt, Udt
+                                                            from ConstValueType
+                                                            where [Type]=@type and Value=@Value
+                                                             order by ID
+SQL Parameter:
+ [Name]:@type [Value]:RemoteBatPCode [DBType]:VarChar [Direction]:Input
+ [Name]:@Value [Value]:OPAIO055 [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:06,258 [14] DEBUG IMES.Station.Implementation.RemoveKPCT [(null)] - (RemoveKPCT)CheckProduct start, prodid:A5B500003 , pdLine: A5N , editor: dyh , stationId: RC , customerId: HP
+2015-12-03 13:56:06,269 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ProductID,Model,PCBID,PCBModel,MAC,UUID,MBECR,CVSN,CUSTSN,ECR,PizzaID,MO,UnitWeight,CartonSN,CartonWeight,DeliveryNo,PalletNo,OOAID,PRSN,Cdt,Udt,State FROM Product WHERE ProductID=@ProductID OR CUSTSN=@CUSTSN 
+SQL Parameter:
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+ [Name]:@CUSTSN [Value]:A5B500003 [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:06,297 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ProductID,Station,Status,ReworkCode,Line,TestFailCount,Editor,Cdt,Udt FROM ProductStatus WHERE ProductID=@ProductID 
+SQL Parameter:
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+2015-12-03 13:56:06,311 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Model,Process,Editor,Cdt,Udt,Line FROM Model_Process WHERE Model=@Model AND Line=@Line 
+SQL Parameter:
+ [Name]:@Model [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+ [Name]:@Line [Value]:A [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:06,324 [14] DEBUG BaseRepository [(null)] - BEGIN: ModelRepository::ClearCalledMethods()
+2015-12-03 13:56:06,329 [14] DEBUG BaseRepository [(null)] - END: ModelRepository::ClearCalledMethods()
+2015-12-03 13:56:06,338 [14] DEBUG BaseRepository [(null)] - BEGIN: ModelRepository::Find_DB()
+2015-12-03 13:56:06,346 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT Model,Family,CustPN,Region,ShipType,Status,OSCode,OSDesc,Price,BOMApproveDate,Editor,Cdt,Udt FROM Model WHERE Model=@Model 
+SQL Parameter:
+ [Name]:@Model [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:06,356 [14] DEBUG BaseRepository [(null)] - END: ModelRepository::Find_DB()
+2015-12-03 13:56:06,364 [17] DEBUG BaseRepository [(null)] - BEGIN: ModelRepository::UnregistIndexesForOneModel()
+2015-12-03 13:56:06,369 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Priority,Condition1,Condition2,Condition3,Condition4,Condition5,Condition6,Editor,Cdt,Udt FROM ProcessRuleset ORDER BY Priority DESC 
+SQL Parameter:
+2015-12-03 13:56:06,376 [17] DEBUG BaseRepository [(null)] - UnregistIndexesForOneModel%1->Indexes:
+2015-12-03 13:56:06,387 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT DISTINCT RuleSetID  FROM ProcessRule WHERE  1=1  
+SQL Parameter:
+2015-12-03 13:56:06,388 [17] DEBUG BaseRepository [(null)] - UnregistIndexesForOneModel%2->Indexes:
+2015-12-03 13:56:06,401 [17] DEBUG BaseRepository [(null)] - END: ModelRepository::UnregistIndexesForOneModel()
+2015-12-03 13:56:06,402 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Model,Name,Value,Descr,Editor,Cdt,Udt FROM ModelInfo WHERE Model=@Model 
+SQL Parameter:
+ [Name]:@Model [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:06,411 [17] DEBUG BaseRepository [(null)] - BEGIN: ModelRepository::AddAndRegistOneModel()
+2015-12-03 13:56:06,429 [17] DEBUG BaseRepository [(null)] - AddAndRegistOneMode->Key:1460B0279501
+2015-12-03 13:56:06,433 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,RuleSetID,Process,Value1,Value2,Value3,Value4,Value5,Value6,Editor,Cdt,Udt FROM ProcessRule WHERE RuleSetID=@RuleSetID  ORDER BY Process 
+SQL Parameter:
+ [Name]:@RuleSetID [Value]:18 [DBType]:Int [Direction]:Input
+2015-12-03 13:56:06,437 [17] DEBUG BaseRepository [(null)] - AddAndRegistOneModel%1->Indexes:
+2015-12-03 13:56:06,450 [17] DEBUG BaseRepository [(null)] - BEGIN: ModelRepository::Regist()
+2015-12-03 13:56:06,451 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,RuleSetID,Process,Value1,Value2,Value3,Value4,Value5,Value6,Editor,Cdt,Udt FROM ProcessRule WHERE RuleSetID=@RuleSetID  ORDER BY Process 
+SQL Parameter:
+ [Name]:@RuleSetID [Value]:11 [DBType]:Int [Direction]:Input
+2015-12-03 13:56:06,455 [17] DEBUG BaseRepository [(null)] - Model::Regist->PK:1460B0279501, Key:Status:1;.
+2015-12-03 13:56:06,472 [17] DEBUG BaseRepository [(null)] - END: ModelRepository::Regist()
+2015-12-03 13:56:06,472 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,RuleSetID,Process,Value1,Value2,Value3,Value4,Value5,Value6,Editor,Cdt,Udt FROM ProcessRule WHERE RuleSetID=@RuleSetID  ORDER BY Process 
+SQL Parameter:
+ [Name]:@RuleSetID [Value]:9 [DBType]:Int [Direction]:Input
+2015-12-03 13:56:06,511 [17] DEBUG BaseRepository [(null)] - AddAndRegistOneModel%2->Indexes:Index[Key:Status:1;;Value:1460B0279501];
+2015-12-03 13:56:06,519 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,RuleSetID,Process,Value1,Value2,Value3,Value4,Value5,Value6,Editor,Cdt,Udt FROM ProcessRule WHERE RuleSetID=@RuleSetID  ORDER BY Process 
+SQL Parameter:
+ [Name]:@RuleSetID [Value]:6 [DBType]:Int [Direction]:Input
+2015-12-03 13:56:06,524 [17] DEBUG BaseRepository [(null)] - END: ModelRepository::AddAndRegistOneModel()
+2015-12-03 13:56:06,535 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Model,Process,Editor,Cdt,Udt,Line FROM Model_Process WHERE Model=@Model AND Line=@Line 
+SQL Parameter:
+ [Name]:@Model [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+ [Name]:@Line [Value]:A [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:06,546 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteNonQuery SQL Statement:
+INSERT INTO Model_Process (Model,Process,Editor,Cdt,Udt,Line) VALUES (@Model,@Process,@Editor,@Cdt,@Udt,@Line) ;SELECT @@IDENTITY;
+SQL Parameter:
+ [Name]:@Model [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+ [Name]:@Process [Value]:AIO_L6 [DBType]:VarChar [Direction]:Input
+ [Name]:@Editor [Value]:dyh [DBType]:VarChar [Direction]:Input
+ [Name]:@Cdt [Value]:2015/12/3 下午 01:56:06 [DBType]:DateTime [Direction]:Input
+ [Name]:@Udt [Value]:2015/12/3 下午 01:56:06 [DBType]:DateTime [Direction]:Input
+ [Name]:@Line [Value]:A [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:06,559 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+IMES_SFC_Product
+SQL Parameter:
+ [Name]:@Key [Value]:A5B500003 [DBType]:VarChar [Direction]:Input
+ [Name]:@Customer [Value]:HP [DBType]:VarChar [Direction]:Input
+ [Name]:@Line [Value]:A5N [DBType]:VarChar [Direction]:Input
+ [Name]:@CurrentStation [Value]:RC [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:06,570 [14] DEBUG IMES.Station.Implementation.RemoveKPCT [(null)] - (RemoveKPCT)CheckProduct end, prodid:A5B500003 , pdLine: A5N , editor: dyh , stationId: RC , customerId: HP
+2015-12-03 13:56:13,446 [14] DEBUG IMES.Station.Implementation.RemoveKPCT [(null)] - (RemoveKPCT)GetParts start, prodid:A5B500003 mbct2: LEEQU0CVE9P000, pdLine: A5N , editor: dyh , stationId: RC , customerId: HP
+2015-12-03 13:56:13,454 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ProductID,Model,PCBID,PCBModel,MAC,UUID,MBECR,CVSN,CUSTSN,ECR,PizzaID,MO,UnitWeight,CartonSN,CartonWeight,DeliveryNo,PalletNo,OOAID,PRSN,Cdt,Udt,State FROM Product WHERE ProductID=@ProductID OR CUSTSN=@CUSTSN 
+SQL Parameter:
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+ [Name]:@CUSTSN [Value]:A5B500003 [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:13,463 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ProductID,Station,Status,ReworkCode,Line,TestFailCount,Editor,Cdt,Udt FROM ProductStatus WHERE ProductID=@ProductID 
+SQL Parameter:
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+2015-12-03 13:56:13,474 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Model,Process,Editor,Cdt,Udt,Line FROM Model_Process WHERE Model=@Model AND Line=@Line 
+SQL Parameter:
+ [Name]:@Model [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+ [Name]:@Line [Value]:A [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:13,483 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+IMES_SFC_Product
+SQL Parameter:
+ [Name]:@Key [Value]:A5B500003 [DBType]:VarChar [Direction]:Input
+ [Name]:@Customer [Value]:HP [DBType]:VarChar [Direction]:Input
+ [Name]:@Line [Value]:A5N [DBType]:VarChar [Direction]:Input
+ [Name]:@CurrentStation [Value]:RC [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:13,501 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,ProductID,InfoType,InfoValue,Editor,Cdt,Udt FROM ProductInfo WHERE ProductID=@ProductID 
+SQL Parameter:
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+2015-12-03 13:56:13,531 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT Cdt,Description,Editor,ID,Name,Type,Udt,Value FROM ConstValue WHERE Name=@Name AND Type=@Type  ORDER BY Type,Name
+SQL Parameter:
+ [Name]:@Name [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+ [Name]:@Type [Value]:JSRemoveKP [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:13,550 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT Cdt,Description,Editor,ID,Name,Type,Udt,Value FROM ConstValue WHERE Name=@Name AND Type=@Type  ORDER BY Type,Name
+SQL Parameter:
+ [Name]:@Name [Value]:ARCHADIA L6 [DBType]:VarChar [Direction]:Input
+ [Name]:@Type [Value]:JSRemoveKP [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:13,565 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT BomNodeType,Cdt,CheckItemType,CustmerPn,Editor,ID,IECPn,PartNo,PartSn,PartType,ProductID,Station,Udt FROM Product_Part WHERE CheckItemType=@CheckItemType AND ProductID=@ProductID  ORDER BY Udt DESC
+SQL Parameter:
+ [Name]:@CheckItemType [Value]:CommnZJVC [DBType]:VarChar [Direction]:Input
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+2015-12-03 13:56:13,574 [14] DEBUG IMES.Station.Implementation.RemoveKPCT [(null)] - (RemoveKPCT)GetParts end, prodid:A5B500003 mbct2: LEEQU0CVE9P000, pdLine: A5N , editor: dyh , stationId: RC , customerId: HP
+2015-12-03 13:56:13,678 [14] DEBUG IMES.Station.Implementation.RemoveKPCT [(null)] - (RemoveKPCT)RemoveParts start, prodid:A5B500003 , pdLine: A5N , editor: dyh , stationId: RC , customerId: HP
+2015-12-03 13:56:13,715 [14] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:13,725 [14] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:13,743 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteScalar SQL Statement:
+SELECT Name FROM Station WHERE Station = @StationId
+SQL Parameter:
+ [Name]:@StationId [Value]:RC [DBType]:NVarChar [Direction]:Input
+2015-12-03 13:56:13,753 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteScalar SQL Statement:
+SELECT Station AS 'StationId' FROM Station WHERE Name = @Name
+SQL Parameter:
+ [Name]:@Name [Value]:Remove Key parts CT [DBType]:NVarChar [Direction]:Input
+2015-12-03 13:56:13,761 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteScalar SQL Statement:
+SELECT AttrValue FROM StationAttr WHERE Station = @StationId AND AttrName = @AttrName
+SQL Parameter:
+ [Name]:@StationId [Value]:RC         [DBType]:NVarChar [Direction]:Input
+ [Name]:@AttrName [Value]:Workflow [DBType]:NVarChar [Direction]:Input
+2015-12-03 13:56:13,793 [14] DEBUG IMES.Infrastructure.WorkflowRuntime.WorkflowRuntimeManager [(null)] - WorkflowRuntimeManager::CreateXomlFisWorkflow BEGIN: {'RemoveKPCT_JS.xoml', <NULL>, {[Key, A5B500003], [Station, RC], [CurrentFlowSession, A5B500003Product], [Editor, dyh], [PdLine, A5N], [Customer, HP], [SessionType, Product]}}
+2015-12-03 13:56:14,819 [14] DEBUG IMES.Infrastructure.WorkflowRuntime.WorkflowRuntimeManager [(null)] - WorkflowRuntimeManager::CreateXomlFisWorkflow END: {'RemoveKPCT_JS.xoml', <NULL>, {[Key, A5B500003], [Station, RC], [CurrentFlowSession, A5B500003Product], [Editor, dyh], [PdLine, A5N], [Customer, HP], [SessionType, Product]}}
+2015-12-03 13:56:14,827 [14] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::AddSession BEGIN: {A5B500003Product}
+2015-12-03 13:56:14,833 [14] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::AddSession END: {A5B500003Product}
+2015-12-03 13:56:14,877 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  getProduct1 Activity.PreExecute()
+2015-12-03 13:56:14,899 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:14,912 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:14,920 [7] DEBUG BaseRepository [(null)] - BEGIN: ProductRepository::Find()
+2015-12-03 13:56:14,927 [7] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ProductID,Model,PCBID,PCBModel,MAC,UUID,MBECR,CVSN,CUSTSN,ECR,PizzaID,MO,UnitWeight,CartonSN,CartonWeight,DeliveryNo,PalletNo,OOAID,PRSN,Cdt,Udt,State FROM Product WHERE ProductID=@ProductID 
+SQL Parameter:
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+2015-12-03 13:56:14,937 [7] DEBUG BaseRepository [(null)] - END: ProductRepository::Find()
+2015-12-03 13:56:14,943 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:14,948 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:14,955 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  getProduct1 Activity.DoExecute()
+2015-12-03 13:56:14,961 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  getProduct1 Activity.PostExecute()
+2015-12-03 13:56:14,967 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  getProduct1 Activity.FinallyExecute()
+2015-12-03 13:56:14,973 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  blockStation1 Activity.PreExecute()
+2015-12-03 13:56:14,980 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:14,987 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:15,002 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:15,008 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:15,014 [7] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ProductID,Station,Status,ReworkCode,Line,TestFailCount,Editor,Cdt,Udt FROM ProductStatus WHERE ProductID=@ProductID 
+SQL Parameter:
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+2015-12-03 13:56:15,023 [7] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Model,Process,Editor,Cdt,Udt,Line FROM Model_Process WHERE Model=@Model AND Line=@Line 
+SQL Parameter:
+ [Name]:@Model [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+ [Name]:@Line [Value]:A [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:15,031 [7] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+IMES_SFC_Product
+SQL Parameter:
+ [Name]:@Key [Value]:A5B500003 [DBType]:VarChar [Direction]:Input
+ [Name]:@Customer [Value]:HP [DBType]:VarChar [Direction]:Input
+ [Name]:@Line [Value]:A5N [DBType]:VarChar [Direction]:Input
+ [Name]:@CurrentStation [Value]:RC [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:15,044 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  blockStation1 Activity.DoExecute()
+2015-12-03 13:56:15,052 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  blockStation1 Activity.PostExecute()
+2015-12-03 13:56:15,058 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  blockStation1 Activity.FinallyExecute()
+2015-12-03 13:56:15,064 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  removeKPCT_JS1 Activity.PreExecute()
+2015-12-03 13:56:15,070 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:15,077 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:15,083 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:15,090 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:15,103 [7] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT Cdt,Description,Editor,ID,Name,Type,Udt,Value FROM ConstValue WHERE Name=@Name AND Type=@Type  ORDER BY Type,Name
+SQL Parameter:
+ [Name]:@Name [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+ [Name]:@Type [Value]:JSRemoveKP [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:15,112 [7] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT Cdt,Description,Editor,ID,Name,Type,Udt,Value FROM ConstValue WHERE Name=@Name AND Type=@Type  ORDER BY Type,Name
+SQL Parameter:
+ [Name]:@Name [Value]:ARCHADIA L6 [DBType]:VarChar [Direction]:Input
+ [Name]:@Type [Value]:JSRemoveKP [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:15,122 [7] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT BomNodeType,Cdt,CheckItemType,CustmerPn,Editor,ID,IECPn,PartNo,PartSn,PartType,ProductID,Station,Udt FROM Product_Part WHERE CheckItemType=@CheckItemType AND ProductID=@ProductID  ORDER BY Udt DESC
+SQL Parameter:
+ [Name]:@CheckItemType [Value]:CommnZJVC [DBType]:VarChar [Direction]:Input
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+2015-12-03 13:56:15,133 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  removeKPCT_JS1 Activity.DoExecute()
+2015-12-03 13:56:15,140 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  removeKPCT_JS1 Activity.PostExecute()
+2015-12-03 13:56:15,147 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  removeKPCT_JS1 Activity.FinallyExecute()
+2015-12-03 13:56:15,154 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  updateProductStatus1 Activity.PreExecute()
+2015-12-03 13:56:15,159 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:15,165 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:15,173 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:15,179 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:15,185 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:15,192 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:15,289 [7] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+select ProductID, Station, Status, Line, TestFailCount, 
+                                                                       ReworkCode,Editor, Udt
+                                                                from ProductStatus a
+                                                                inner join @ProductIdList b on a.ProductID=b.data 
+SQL Parameter:
+ [Name]:@ProductIdList [Value]: [DBType]:Structured [Direction]:Input
+2015-12-03 13:56:15,558 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:15,569 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:15,582 [7] DEBUG BaseRepository [(null)] - BEGIN: BaseRepository::AddOneInvokeBody()
+2015-12-03 13:56:15,644 [7] DEBUG IMES.Infrastructure.UnitOfWork.UnitOfWork [(null)] - UnitOfWork.RegisterDeferMethods: UpdateProductPreStation
+2015-12-03 13:56:15,651 [7] DEBUG BaseRepository [(null)] - END: BaseRepository::AddOneInvokeBody()
+2015-12-03 13:56:15,659 [7] DEBUG IMES.Infrastructure.FisObjectBase.FisObjectBase [(null)] - Status Setter: Key:41622463, Type:Product, Value:A5B500003, State:Modified;  
+2015-12-03 13:56:15,665 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:15,671 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:15,678 [7] DEBUG BaseRepository [(null)] - BEGIN: BaseRepository::AddOneInvokeBody()
+2015-12-03 13:56:15,684 [7] DEBUG IMES.Infrastructure.UnitOfWork.UnitOfWork [(null)] - UnitOfWork.RegisterDeferMethods: CheckTheBoxId
+2015-12-03 13:56:15,694 [7] DEBUG BaseRepository [(null)] - END: BaseRepository::AddOneInvokeBody()
+2015-12-03 13:56:15,700 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:15,706 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:15,712 [7] DEBUG BaseRepository [(null)] - BEGIN: ProductRepository::Update()
+2015-12-03 13:56:15,718 [7] DEBUG BaseRepository [(null)] - BEGIN: BaseRepository::Update()
+2015-12-03 13:56:15,724 [7] DEBUG IMES.Infrastructure.UnitOfWork.UnitOfWork [(null)] - UnitOfWork.RegisterChanged: IMES.FisObject.FA.Product.Product, A5B500003
+2015-12-03 13:56:15,731 [7] DEBUG BaseRepository [(null)] - END: BaseRepository::Update()
+2015-12-03 13:56:15,736 [7] DEBUG BaseRepository [(null)] - END: ProductRepository::Update()
+2015-12-03 13:56:15,742 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:15,748 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:15,753 [7] DEBUG BaseRepository [(null)] - BEGIN: BaseRepository::AddOneInvokeBody()
+2015-12-03 13:56:15,759 [7] DEBUG IMES.Infrastructure.UnitOfWork.UnitOfWork [(null)] - UnitOfWork.RegisterDeferMethods: CheckTheBoxId
+2015-12-03 13:56:15,764 [7] DEBUG BaseRepository [(null)] - END: BaseRepository::AddOneInvokeBody()
+2015-12-03 13:56:15,770 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  updateProductStatus1 Activity.DoExecute()
+2015-12-03 13:56:15,776 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  updateProductStatus1 Activity.PostExecute()
+2015-12-03 13:56:15,788 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  updateProductStatus1 Activity.FinallyExecute()
+2015-12-03 13:56:15,794 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  writeProductLog1 Activity.PreExecute()
+2015-12-03 13:56:15,800 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:15,806 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:15,813 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:15,819 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:15,827 [7] DEBUG IMES.Infrastructure.FisObjectBase.FisObjectBase [(null)] - Tracker Content: Key:64109423, Type:ProductStatus, Value:A5B500003, State:Modified;  Key:41622463, Type:Product, Value:A5B500003, State:Modified;  Key:35236192, Type:ProductLog, Value:-2147483648, State:Added;  
+2015-12-03 13:56:15,833 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:15,839 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:15,845 [7] DEBUG BaseRepository [(null)] - BEGIN: ProductRepository::Update()
+2015-12-03 13:56:15,850 [7] DEBUG BaseRepository [(null)] - BEGIN: BaseRepository::Update()
+2015-12-03 13:56:15,856 [7] DEBUG BaseRepository [(null)] - END: BaseRepository::Update()
+2015-12-03 13:56:15,861 [7] DEBUG BaseRepository [(null)] - END: ProductRepository::Update()
+2015-12-03 13:56:15,867 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  writeProductLog1 Activity.DoExecute()
+2015-12-03 13:56:15,873 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  writeProductLog1 Activity.PostExecute()
+2015-12-03 13:56:15,879 [7] DEBUG IMES.Activity.BaseActivity [(null)] -  writeProductLog1 Activity.FinallyExecute()
+2015-12-03 13:56:15,886 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession BEGIN: {'A5B500003', Product}
+2015-12-03 13:56:15,896 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSession END: {'A5B500003', Product}
+2015-12-03 13:56:15,904 [7] DEBUG IMES.Infrastructure.UnitOfWork.UnitOfWork [(null)] - UnitOfWork.Commit: defered method UpdateProductPreStation
+2015-12-03 13:56:15,913 [7] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteNonQuery SQL Statement:
+MERGE INTO ProductStatusEx as T
+                                                             Using (
+		                                                                select a.ProductID,  a.Station, a.Status,  a.Line,
+                                                                                   a.TestFailCount, a.Editor, a.Udt
+		                                                                from @TbProductStatus a
+	                                                                ) as S
+	                                                         ON T.ProductID = S.ProductID 
+	                                                         WHEN NOT MATCHED THEN
+		                                                            insert (ProductID, PreStation, PreStatus, PreLine, PreTestFailCount, PreEditor, PreUdt)
+		                                                            values (S.ProductID, S.Station, S.[Status], S.Line, S.TestFailCount, S.Editor, S.Udt)
+	                                                         WHEN MATCHED THEN
+		                                                            update set PreStation=S.Station, PreStatus=S.[Status], PreLine=S.Line, 
+		                                                                             PreTestFailCount=S.TestFailCount, PreEditor=S.Editor, PreUdt=S.Udt;
+SQL Parameter:
+ [Name]:@TbProductStatus [Value]: [DBType]:Structured [Direction]:Input
+2015-12-03 13:56:15,986 [7] DEBUG IMES.Infrastructure.UnitOfWork.UnitOfWork [(null)] - UnitOfWork.Commit: defered method CheckTheBoxId
+2015-12-03 13:56:16,046 [7] INFO  IMES.Infrastructure.Repository.FA.ProductRepository [(null)] - CheckTheBoxId Begin
+2015-12-03 13:56:16,052 [7] INFO  IMES.Infrastructure.Repository.FA.ProductRepository [(null)] - CheckTheUCC Begin
+2015-12-03 13:56:16,058 [7] DEBUG IMES.Infrastructure.UnitOfWork.UnitOfWork [(null)] - UnitOfWork.Commit: changed IMES.FisObject.FA.Product.Product, A5B500003
+2015-12-03 13:56:16,064 [7] DEBUG BaseRepository [(null)] - BEGIN: BaseRepository::PersistUpdatedItem()
+2015-12-03 13:56:16,071 [7] DEBUG BaseRepository [(null)] - BEGIN: ProductRepository::PersistUpdatedItem()
+2015-12-03 13:56:16,079 [7] DEBUG BaseRepository [(null)] - BEGIN: ProductRepository::PersistUpdateProduct()
+2015-12-03 13:56:16,089 [7] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteNonQuery SQL Statement:
+UPDATE Product SET Model=@Model,PCBID=@PCBID,PCBModel=@PCBModel,MAC=@MAC,UUID=@UUID,MBECR=@MBECR,CVSN=@CVSN,CUSTSN=@CUSTSN,ECR=@ECR,PizzaID=@PizzaID,MO=@MO,UnitWeight=@UnitWeight,CartonSN=@CartonSN,CartonWeight=@CartonWeight,DeliveryNo=@DeliveryNo,PalletNo=@PalletNo,OOAID=@OOAID,PRSN=@PRSN,Udt=@Udt,State=@State WHERE ProductID=@ProductID 
+SQL Parameter:
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+ [Name]:@Model [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+ [Name]:@PCBID [Value]:AGK56BC0000 [DBType]:Char [Direction]:Input
+ [Name]:@PCBModel [Value]:1310A2585903 [DBType]:Char [Direction]:Input
+ [Name]:@MAC [Value]: [DBType]:Char [Direction]:Input
+ [Name]:@UUID [Value]: [DBType]:VarChar [Direction]:Input
+ [Name]:@MBECR [Value]: [DBType]:Char [Direction]:Input
+ [Name]:@CVSN [Value]: [DBType]:Char [Direction]:Input
+ [Name]:@CUSTSN [Value]:5CG5460000 [DBType]:VarChar [Direction]:Input
+ [Name]:@ECR [Value]: [DBType]:Char [Direction]:Input
+ [Name]:@PizzaID [Value]: [DBType]:Char [Direction]:Input
+ [Name]:@MO [Value]:V15110400000 [DBType]:VarChar [Direction]:Input
+ [Name]:@UnitWeight [Value]:0.00 [DBType]:Decimal [Direction]:Input
+ [Name]:@CartonSN [Value]: [DBType]:Char [Direction]:Input
+ [Name]:@CartonWeight [Value]:0.00 [DBType]:Decimal [Direction]:Input
+ [Name]:@DeliveryNo [Value]: [DBType]:Char [Direction]:Input
+ [Name]:@PalletNo [Value]: [DBType]:Char [Direction]:Input
+ [Name]:@OOAID [Value]: [DBType]:Char [Direction]:Input
+ [Name]:@PRSN [Value]: [DBType]:Char [Direction]:Input
+ [Name]:@Udt [Value]:2015/12/3 下午 01:56:16 [DBType]:DateTime [Direction]:Input
+ [Name]:@State [Value]: [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:16,113 [7] DEBUG BaseRepository [(null)] - END: ProductRepository::PersistUpdateProduct()
+2015-12-03 13:56:16,133 [7] DEBUG BaseRepository [(null)] - BEGIN: ProductRepository::PersistUpdateProductStatus()
+2015-12-03 13:56:16,140 [7] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteNonQuery SQL Statement:
+UPDATE ProductStatus SET Station=@Station,Status=@Status,ReworkCode=@ReworkCode,Line=@Line,TestFailCount=@TestFailCount,Editor=@Editor,Udt=@Udt WHERE ProductID=@ProductID 
+SQL Parameter:
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+ [Name]:@Station [Value]:RC [DBType]:Char [Direction]:Input
+ [Name]:@Status [Value]:Pass [DBType]:Int [Direction]:Input
+ [Name]:@ReworkCode [Value]: [DBType]:Char [Direction]:Input
+ [Name]:@Line [Value]:A5N [DBType]:Char [Direction]:Input
+ [Name]:@TestFailCount [Value]:0 [DBType]:Int [Direction]:Input
+ [Name]:@Editor [Value]:dyh [DBType]:VarChar [Direction]:Input
+ [Name]:@Udt [Value]:2015/12/3 下午 01:56:16 [DBType]:DateTime [Direction]:Input
+2015-12-03 13:56:16,155 [7] DEBUG BaseRepository [(null)] - END: ProductRepository::PersistUpdateProductStatus()
+2015-12-03 13:56:16,193 [7] DEBUG BaseRepository [(null)] - BEGIN: ProductRepository::CheckAndInsertSubs()
+2015-12-03 13:56:16,201 [7] DEBUG BaseRepository [(null)] - BEGIN: ProductRepository::PersistInsertProductLog()
+2015-12-03 13:56:16,209 [7] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteScalar SQL Statement:
+INSERT INTO ProductLog (ProductID,Model,Station,Status,Line,Editor,Cdt) VALUES (@ProductID,@Model,@Station,@Status,@Line,@Editor,@Cdt) ;SELECT @@IDENTITY;
+SQL Parameter:
+ [Name]:@ProductID [Value]:A5B500003 [DBType]:Char [Direction]:Input
+ [Name]:@Model [Value]:1460B0279501 [DBType]:VarChar [Direction]:Input
+ [Name]:@Station [Value]:RC [DBType]:Char [Direction]:Input
+ [Name]:@Status [Value]:1 [DBType]:Int [Direction]:Input
+ [Name]:@Line [Value]:A5N [DBType]:Char [Direction]:Input
+ [Name]:@Editor [Value]:dyh [DBType]:VarChar [Direction]:Input
+ [Name]:@Cdt [Value]:2015/12/3 下午 01:56:16 [DBType]:DateTime [Direction]:Input
+2015-12-03 13:56:16,309 [7] DEBUG BaseRepository [(null)] - END: ProductRepository::PersistInsertProductLog()
+2015-12-03 13:56:16,317 [7] DEBUG BaseRepository [(null)] - END: ProductRepository::CheckAndInsertSubs()
+2015-12-03 13:56:16,334 [7] DEBUG BaseRepository [(null)] - BEGIN: ProductRepository::CheckAndUpdateSubs()
+2015-12-03 13:56:16,340 [7] DEBUG BaseRepository [(null)] - END: ProductRepository::CheckAndUpdateSubs()
+2015-12-03 13:56:16,346 [7] DEBUG BaseRepository [(null)] - END: ProductRepository::PersistUpdatedItem()
+2015-12-03 13:56:16,352 [7] DEBUG BaseRepository [(null)] - END: BaseRepository::PersistUpdatedItem()
+2015-12-03 13:56:16,358 [7] DEBUG IMES.Infrastructure.UnitOfWork.UnitOfWork [(null)] - UnitOfWork.Commit: defered method CheckTheBoxId
+2015-12-03 13:56:16,369 [7] DEBUG IMES.Infrastructure.WorkflowRuntime.WorkflowRuntimeManager [(null)] - WorkflowRuntimeManager::WorkflowCompleted BEGIN: {9a63e89f-6b49-434c-8f98-9a00a1dabf04}
+2015-12-03 13:56:16,377 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSessionByInstanceId BEGIN: {9a63e89f-6b49-434c-8f98-9a00a1dabf04}
+2015-12-03 13:56:16,385 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::GetSessionByInstanceId END: {9a63e89f-6b49-434c-8f98-9a00a1dabf04}
+2015-12-03 13:56:16,433 [7] DEBUG IMES.Infrastructure.WorkflowRuntime.WorkflowRuntimeManager [(null)] - The workflow:RemoveKPCT_JS of session:A5B500003 station:RC line:A5N editor:dyh HostWaitingCount:1 WFWaitingCount:0 completed. 
+2015-12-03 13:56:16,440 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::RemoveSession BEGIN: {A5B500003Product, True}
+2015-12-03 13:56:16,448 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::RemoveSession END: {A5B500003Product, True}
+2015-12-03 13:56:16,448 [14] DEBUG IMES.Station.Implementation.RemoveKPCT [(null)] - (RemoveKPCT)RemoveParts end, prodid:A5B500003 , pdLine: A5N , editor: dyh , stationId: RC , customerId: HP
+2015-12-03 13:56:16,454 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::TerminateWF BEGIN: {A5B500003Product}
+2015-12-03 13:56:16,543 [7] DEBUG IMES.Infrastructure.SessionManagerLogger [(null)] - SessionManager::TerminateWF END: {A5B500003Product}
+2015-12-03 13:56:16,552 [7] DEBUG IMES.Infrastructure.WorkflowRuntime.WorkflowRuntimeManager [(null)] - WorkflowRuntimeManager::WorkflowCompleted END: {9a63e89f-6b49-434c-8f98-9a00a1dabf04}
+2015-12-03 13:56:28,720 [15] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2015-12-03 13:56:28,740 [15] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.74 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input

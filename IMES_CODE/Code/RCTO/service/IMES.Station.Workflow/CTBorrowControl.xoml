@@ -1,0 +1,19 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="CTBorrowControl" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetPartSN Customer="{ActivityBind CTBorrowControl,Path=Customer}" NotExistException="BOR003" SessionType="{ActivityBind CTBorrowControl,Path=SessionType}" Editor="{ActivityBind CTBorrowControl,Path=Editor}" Station="{ActivityBind CTBorrowControl,Path=Station}" x:Name="getPartSN1" Line="{ActivityBind CTBorrowControl,Path=PdLine}" Key="{ActivityBind CTBorrowControl,Path=Key}" />
+	<ns0:WaitInput Customer="{ActivityBind CTBorrowControl,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind CTBorrowControl,Path=SessionType}" Editor="{ActivityBind CTBorrowControl,Path=Editor}" Station="{ActivityBind CTBorrowControl,Path=Station}" Line="{ActivityBind CTBorrowControl,Path=PdLine}" Key="{ActivityBind CTBorrowControl,Path=Key}" />
+	<IfElseActivity x:Name="BorrowOrReturn">
+		<IfElseBranchActivity x:Name="Borrow">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="IsBorrow" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind CTBorrowControl,Path=Station}" x:Name="dbScope1" Key="{ActivityBind CTBorrowControl,Path=Key}" SessionType="{ActivityBind CTBorrowControl,Path=SessionType}">
+				<ns0:InsertBorrowLog Customer="{ActivityBind CTBorrowControl,Path=Customer}" x:Name="insertBorrowLog1" SessionType="{ActivityBind CTBorrowControl,Path=SessionType}" Editor="{ActivityBind CTBorrowControl,Path=Editor}" Station="{ActivityBind CTBorrowControl,Path=Station}" Status="B" Line="{ActivityBind CTBorrowControl,Path=PdLine}" Key="{ActivityBind CTBorrowControl,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ReturnMB">
+			<ns0:DBScope Station="{ActivityBind CTBorrowControl,Path=Station}" x:Name="dbScope2" Key="{ActivityBind CTBorrowControl,Path=Key}" SessionType="{ActivityBind CTBorrowControl,Path=SessionType}">
+				<ns0:UpdateBorrowLog Customer="{ActivityBind CTBorrowControl,Path=Customer}" x:Name="updateBorrowLog1" SessionType="{ActivityBind CTBorrowControl,Path=SessionType}" Editor="{ActivityBind CTBorrowControl,Path=Editor}" Station="{ActivityBind CTBorrowControl,Path=Station}" Status="R" Line="{ActivityBind CTBorrowControl,Path=PdLine}" Key="{ActivityBind CTBorrowControl,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

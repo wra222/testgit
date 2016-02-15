@@ -1,0 +1,26 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="JPNPVS" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind JPNPVS,Path=Customer}" x:Name="getProduct" SessionType="{ActivityBind JPNPVS,Path=SessionType}" Editor="{ActivityBind JPNPVS,Path=Editor}" Station="{ActivityBind JPNPVS,Path=Station}" Line="{ActivityBind JPNPVS,Path=PdLine}" Key="{ActivityBind JPNPVS,Path=Key}" />
+	<ns0:BlockStation Customer="{ActivityBind JPNPVS,Path=Customer}" x:Name="blockStation" SessionType="{ActivityBind JPNPVS,Path=SessionType}" Editor="{ActivityBind JPNPVS,Path=Editor}" ProcessType="Product" Station="{ActivityBind JPNPVS,Path=Station}" Line="{ActivityBind JPNPVS,Path=PdLine}" Key="{ActivityBind JPNPVS,Path=Key}" />
+	<ns0:CheckImplicitCheckItem Customer="{ActivityBind JPNPVS,Path=Customer}" x:Name="CheckJPN" SessionType="{ActivityBind JPNPVS,Path=SessionType}" Editor="{ActivityBind JPNPVS,Path=Editor}" Station="{ActivityBind JPNPVS,Path=Station}" Line="{ActivityBind JPNPVS,Path=PdLine}" Key="{ActivityBind JPNPVS,Path=Key}" />
+	<ns0:GetExplicitCheckItem Customer="{ActivityBind JPNPVS,Path=Customer}" x:Name="getExplicitCheckItem1" SessionType="{ActivityBind JPNPVS,Path=SessionType}" Editor="{ActivityBind JPNPVS,Path=Editor}" Station="{ActivityBind JPNPVS,Path=Station}" Line="{ActivityBind JPNPVS,Path=PdLine}" Key="{ActivityBind JPNPVS,Path=Key}" />
+	<WhileActivity x:Name="CheckTSBPNUpccode">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplete" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity2">
+			<ns0:WaitInput Customer="{ActivityBind JPNPVS,Path=Customer}" x:Name="waitInput2" SessionType="{ActivityBind JPNPVS,Path=SessionType}" Editor="{ActivityBind JPNPVS,Path=Editor}" Station="{ActivityBind JPNPVS,Path=Station}" Line="{ActivityBind JPNPVS,Path=PdLine}" Key="{ActivityBind JPNPVS,Path=Key}" />
+			<IfElseActivity x:Name="ifNotComplete">
+				<IfElseBranchActivity x:Name="NotComplete">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplete" />
+					</IfElseBranchActivity.Condition>
+					<ns0:CheckExplicitCheckItem Customer="{ActivityBind JPNPVS,Path=Customer}" x:Name="CheckExplictCheckItem1" SessionType="{ActivityBind JPNPVS,Path=SessionType}" Editor="{ActivityBind JPNPVS,Path=Editor}" Station="{ActivityBind JPNPVS,Path=Station}" Line="{ActivityBind JPNPVS,Path=PdLine}" Key="{ActivityBind JPNPVS,Path=Key}" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:DBScope Station="{ActivityBind JPNPVS,Path=Station}" x:Name="dbScope1" Key="{ActivityBind JPNPVS,Path=Key}" SessionType="{ActivityBind JPNPVS,Path=SessionType}">
+		<ns0:UpdateProductStatus Customer="{ActivityBind JPNPVS,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind JPNPVS,Path=SessionType}" Editor="{ActivityBind JPNPVS,Path=Editor}" Status="Pass" Station="{ActivityBind JPNPVS,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind JPNPVS,Path=PdLine}" Key="{ActivityBind JPNPVS,Path=Key}" />
+		<ns0:WriteProductLog Customer="{ActivityBind JPNPVS,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind JPNPVS,Path=SessionType}" Editor="{ActivityBind JPNPVS,Path=Editor}" Station="{ActivityBind JPNPVS,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind JPNPVS,Path=PdLine}" Key="{ActivityBind JPNPVS,Path=Key}" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

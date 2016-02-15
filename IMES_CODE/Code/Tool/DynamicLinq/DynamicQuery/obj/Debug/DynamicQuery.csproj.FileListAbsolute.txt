@@ -1,0 +1,7 @@
+D:\SampleCode\testDynamicQury\DynamicQuery\obj\Debug\ResolveAssemblyReference.cache
+D:\SampleCode\testDynamicQury\DynamicQuery\bin\Debug\DynamicQuery.exe
+D:\SampleCode\testDynamicQury\DynamicQuery\bin\Debug\DynamicQuery.pdb
+D:\SampleCode\testDynamicQury\DynamicQuery\obj\Debug\DynamicQuery.exe
+D:\SampleCode\testDynamicQury\DynamicQuery\obj\Debug\DynamicQuery.pdb
+D:\Inventec\FIS\iMES_ICC\HP\Code\Tool\LinkDynamicQuery\DynamicQuery\obj\Debug\DynamicQuery.exe
+D:\Inventec\FIS\iMES_ICC\HP\Code\Tool\LinkDynamicQuery\DynamicQuery\obj\Debug\DynamicQuery.pdb

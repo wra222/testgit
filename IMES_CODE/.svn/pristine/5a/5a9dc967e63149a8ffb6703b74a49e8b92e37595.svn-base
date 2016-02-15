@@ -1,0 +1,293 @@
+﻿// JScript File
+    function fillConditions()
+    {
+        //alert("conditionList=="+conditionList.length);
+        //===collect the conditions changed by user=============
+        if(conditionList.length > 0)
+        {
+            for(var i = 0; i < conditionList.length; i++)
+            {
+                var isDisplay = conditionList[i].IsConditionHide;
+                //若为内部条件则不处理
+                if(!isDisplay)
+                {
+                    var vList = new Array(); //save condition's values
+                    var IsEmpty = false;
+                    var idObj = conditionList[i].FieldAlias;
+                    var conditionOperateType = conditionList[i].Operate;
+                    
+                    
+                    //this check is added by lzy for dealing with the time.
+                    if (conditionList[i].DimStringData.InputControlType == "1")//DimHour
+                    {
+                        if(conditionOperateType == "<%=Constants.EDIT_CONDITION_OPERATE_BETWEEN%>")
+                        {
+                            vList[0] = document.getElementById(idObj + "_cal1").value + ":" + document.getElementById("twoHour1").value; 
+                            vList[1] = document.getElementById(idObj + "_cal2").value + ":" + document.getElementById("twoHour2").value;
+                            if(vList[0].indexOf(":") == 0 || vList[1].indexOf(":") == 0 )
+                            {
+                                IsEmpty = true;
+                            }
+                        }else{                    
+                            vList[0] = document.getElementById(idObj).value + ":" + document.getElementById("oneHour").value;    
+                            if(vList[0].indexOf(":") == 0)
+                            {
+                                IsEmpty = true;
+                            }        
+                        }
+                        
+                    } else{
+                    
+                        //get valuelist according to operatetype
+                        if(conditionOperateType == "<%=Constants.EDIT_CONDITION_OPERATE_IN%>")
+                        {
+                            vList = getMultiSelectValue(document.getElementById(idObj));
+                            
+                            if(vList.length == 0 || (vList.length == 1 && vList[0]==""))
+                            {
+                                IsEmpty = true;
+                            }
+                            
+                        }else if(conditionOperateType == "<%=Constants.EDIT_CONDITION_OPERATE_BETWEEN%>")
+                        {
+                            vList[0] = document.getElementById(idObj + "_cal1").value; 
+                            vList[1] = document.getElementById(idObj + "_cal2").value;
+                            if(vList[0] == "" || vList[1] == "" )
+                            {
+                                IsEmpty = true;
+                            }
+                        }else{
+                            vList[0] = document.getElementById(idObj).value.replace(/<%=Constants.WT_DELIM%>/ig, "\'");    
+                            if(vList[0] == "")
+                            {
+                                IsEmpty = true;
+                            }        
+                        }
+                    }    
+
+                    conditionList[i].Values = vList;
+                    conditionList[i].IsEmpty = IsEmpty;
+                }
+            }
+        }
+        //===end========================================= 
+        
+        return conditionList;
+          
+    }
+    
+    
+        <%--
+        ' ======== ============ =============================
+        ' Description: int,real input check -2,147,483,648~2,147,483,647
+        '              只允许录入数据字符 0-9 和小数点,负数
+        ' Author: kan
+        ' Side Effects: 
+        ' Date:2008-12-17
+        ' ======== ============ =============================
+    --%>
+
+    function KeyPress(obj)
+    { 
+       var txtval=obj.value;  
+      
+       var key = event.keyCode;
+
+       if((key < 48||key > 57) && key != 46 && key != 45)
+       {  
+        event.keyCode = 0;
+       }
+       else
+       {
+        if(key == 46)
+        {
+         if(txtval.indexOf(".") != -1 || txtval.length == 0)
+          event.keyCode = 0;
+        }
+        if(key == 45)
+        { 
+         if(txtval.indexOf("-") != -1)
+          event.keyCode = 0;
+        }    
+       }
+    }
+    
+    //date input check keydown        
+    function onDateKeyDown() {
+
+        if (event.keyCode == 9) {
+
+        } else if (event.keyCode == 8 || event.keyCode == 32 || event.keyCode == 46) {
+            event.returnValue = false;
+            event.srcElement.value = "";
+            //日期被删除时触发的事件
+            preChange(event.srcElement);
+        } else {
+            event.returnValue = false;
+        }
+    }
+    <%--
+        ' ======== ============ =============================
+        ' Description: get value array of multiselect object
+        ' Author: kan
+        ' Side Effects: 
+        ' Date:2008-12-17
+        ' ======== ============ =============================
+    --%>
+    function getMultiSelectValue(selObj)
+    {
+     var valueArray = new Array();
+     var strValue = "";
+     
+     for(var i = 0; i < selObj.options.length; i++){
+ 	    if(selObj.options[i].selected){
+ 	        if(strValue == ""){
+ 	            strValue = selObj.options[i].value;
+ 	        }else{
+ 	            strValue += "," + selObj.options[i].value;
+ 	        }
+     		
+ 		    valueArray[valueArray.length] =selObj.options[i].value.replace(/<%=Constants.WT_DELIM%>/ig, "\'");
+ 	    }
+     	 
+     }
+     return valueArray;
+    }
+    
+    
+    <%--
+    ' ======== ============ =============================
+    ' Description:前置条件改变时，将后续依赖他的条件值清空
+    '         重新生成idcondition的innerHTML字符串
+    ' Author: kan
+    ' Side Effects: 
+    ' Date:2009-02-03
+    ' ======== ============ =============================
+--%>     
+    function preChange(strAlias)
+    { 
+        if(conditionList.length > 0)
+        {
+            ShowWait();
+            
+            if(refactConditionStruct(strAlias))
+            { 
+               var strCondition = webroot_aspx_reportedit_reportPreview.getConditionTable(databaseId, conditionList);
+
+               if (strCondition.error != null) 
+               { 
+                    alert(strCondition.error.Message);
+               }else{
+                    document.getElementById("idcondition").innerHTML = strCondition.value;
+                    //条件显示超过三行的高度95，div限定最大高度，显示滚动条
+                    if(document.getElementById("conditiontable").clientHeight > 95)
+                    {
+                       document.getElementById("idcondition").style.height = "95"; 
+                    }                
+                   
+                }
+            }
+            
+             HideWait();
+        } 
+    }
+    
+<%--
+    ' ======== ============ =============================
+    ' Description: refact the conditionDefins
+    ' Author: kan,changed by lzy
+    ' Side Effects: 
+    ' Date:2009-02-05
+    ' ======== ============ =============================
+--%>     
+    function refactConditionStruct(strAlias)
+    {
+        var refresh = false; 
+        if (conditionList.length > 0)
+            oldConditionList = webroot_aspx_preview_chartPreview.cloneCoditionList(conditionList).value;
+            
+        for(var i = 0; i < conditionList.length; i++)
+        {
+            var isDisplay = conditionList[i].IsConditionHide;
+            //若为内部条件则不处理
+            if(!isDisplay)
+            {
+                var strPreCondition = conditionList[i].PreConditionAlias;
+                var vList = new Array(); //save condition's values
+                var IsEmpty = false;
+                //如果有前置条件，且前置条件改变，则把该值清空
+                if(null != strPreCondition && strPreCondition != "" && strPreCondition == strAlias)
+                {
+                    refresh = true;
+                    IsEmpty = true; 
+                    
+                    refactConditionStruct(conditionList[i].FieldAlias);
+                     
+                }else
+                {                
+                    var idObj = conditionList[i].FieldAlias;
+                    var conditionOperateType = conditionList[i].Operate;
+               
+                    //this check is added by lzy for dealing with the time.
+                    if (conditionList[i].DimStringData.InputControlType == "1")//DimHour
+                    {
+                        if(conditionOperateType == "<%=Constants.EDIT_CONDITION_OPERATE_BETWEEN%>")
+                        {
+                            vList[0] = document.getElementById(idObj + "_cal1").value + ":" + document.getElementById("twoHour1").value; 
+                            vList[1] = document.getElementById(idObj + "_cal2").value + ":" + document.getElementById("twoHour2").value;
+                            if(vList[0].indexOf(":") == 0 || vList[1].indexOf(":") == 0 )
+                            {
+                                IsEmpty = true;
+                            }
+                        }else{                    
+                            vList[0] = document.getElementById(idObj).value + ":" + document.getElementById("oneHour").value;    
+                            if(vList[0].indexOf(":") == 0)
+                            {
+                                IsEmpty = true;
+                            }        
+                        }
+                        
+                    } else{                    
+                        //get valuelist according to operatetype
+                        if(conditionOperateType == "<%=Constants.EDIT_CONDITION_OPERATE_IN%>")
+                        {
+                            vList = getMultiSelectValue(document.getElementById(idObj));
+                            if(vList.length == 0)
+                            {
+                                IsEmpty = true;
+                            }
+                        }else if(conditionOperateType == "<%=Constants.EDIT_CONDITION_OPERATE_BETWEEN%>")
+                        {
+                            vList[0] = document.getElementById(idObj + "_cal1").value; 
+                            vList[1] = document.getElementById(idObj + "_cal2").value;
+                            if(vList[0] == "" || vList[1] == "" )
+                            {
+                                IsEmpty = true;
+                            }
+                        }else{
+                            vList[0] = document.getElementById(idObj).value;    
+                            if(vList[0] == "")
+                            {
+                                IsEmpty = true;
+                            }        
+                        }                
+                    
+                    }
+                }
+                
+                conditionList[i].Values = vList;
+                conditionList[i].IsEmpty = IsEmpty;
+            } 
+        }
+        
+        return refresh;
+    }
+    
+    //日期选择变化时的处理事件
+    function afterDateChangeCallback(obj)
+    {
+      var strAlias =  obj.aliasName ;
+      
+      preChange(strAlias);
+    }   
+

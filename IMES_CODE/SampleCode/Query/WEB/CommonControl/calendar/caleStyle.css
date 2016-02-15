@@ -1,0 +1,14 @@
+<STYLE>
+@media all 
+{
+  IE\:Calendar 
+  {
+    behavior: url("../../calendar/\ttlmanager\calendar\calendar.htc") ;
+    width : 33%;
+  }
+}
+  A:link { color:#003399; text-decoration:none; }
+  A:visited { color:#6699CC; text-decoration:none; }
+  A:hover { text-decoration:underline; }
+</STYLE>
+

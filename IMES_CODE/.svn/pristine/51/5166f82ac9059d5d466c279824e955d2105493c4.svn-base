@@ -1,0 +1,137 @@
+<RuleDefinitions xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<RuleDefinitions.RuleSets>
+		<RuleSet Name="GEN_VirtualCarton" ChainingBehavior="None" Description="{p3:Null}" xmlns:p3="http://schemas.microsoft.com/winfx/2006/xaml">
+			<RuleSet.Rules>
+				<Rule Name="VirtualCarton" ReevaluationBehavior="Never" Priority="0" Description="{p3:Null}" Active="True">
+					<Rule.ThenActions>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodePrimitiveExpression>
+													<ns0:CodePrimitiveExpression.Value>
+														<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">VirtualCarton</ns1:String>
+													</ns0:CodePrimitiveExpression.Value>
+												</ns0:CodePrimitiveExpression>
+												<ns0:CodeArrayCreateExpression Size="0" CreateType="IMES.Infrastructure.Utility.Generates.IConverter, IMES.Infrastructure.Utility, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" SizeExpression="{p3:Null}">
+													<ns0:CodeArrayCreateExpression.Initializers>
+														<ns0:CodeObjectCreateExpression CreateType="IMES.Infrastructure.Utility.Generates.impl.YearConverterNormal, IMES.Infrastructure.Utility, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+															<ns0:CodeObjectCreateExpression.Parameters>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">2</ns1:Int32>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Char xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Char>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+																<ns0:CodeFieldReferenceExpression FieldName="presentTime">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeObjectCreateExpression.Parameters>
+														</ns0:CodeObjectCreateExpression>
+														<ns0:CodeObjectCreateExpression CreateType="IMES.Infrastructure.Utility.Generates.impl.MonthConverter, IMES.Infrastructure.Utility, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+															<ns0:CodeObjectCreateExpression.Parameters>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">2</ns1:Int32>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Char xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Char>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+																<ns0:CodeFieldReferenceExpression FieldName="presentTime">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeObjectCreateExpression.Parameters>
+														</ns0:CodeObjectCreateExpression>
+														<ns0:CodeObjectCreateExpression CreateType="IMES.Infrastructure.Utility.Generates.impl.DayConverterNormal, IMES.Infrastructure.Utility, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+															<ns0:CodeObjectCreateExpression.Parameters>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">2</ns1:Int32>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Char xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Char>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+																<ns0:CodeFieldReferenceExpression FieldName="presentTime">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeObjectCreateExpression.Parameters>
+														</ns0:CodeObjectCreateExpression>
+														<ns0:CodeObjectCreateExpression CreateType="IMES.Infrastructure.Utility.Generates.impl.SequenceConverterNormal, IMES.Infrastructure.Utility, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+															<ns0:CodeObjectCreateExpression.Parameters>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0123456789</ns1:String>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">4</ns1:Int32>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">9999</ns1:String>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0000</ns1:String>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Char xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Char>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+															</ns0:CodeObjectCreateExpression.Parameters>
+														</ns0:CodeObjectCreateExpression>
+													</ns0:CodeArrayCreateExpression.Initializers>
+												</ns0:CodeArrayCreateExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddTemplatesOfAType">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodeThisReferenceExpression />
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+					</Rule.ThenActions>
+					<Rule.Condition>
+						<RuleExpressionCondition Name="{p3:Null}">
+							<RuleExpressionCondition.Expression>
+								<ns0:CodePrimitiveExpression xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodePrimitiveExpression.Value>
+										<ns1:Boolean xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">true</ns1:Boolean>
+									</ns0:CodePrimitiveExpression.Value>
+								</ns0:CodePrimitiveExpression>
+							</RuleExpressionCondition.Expression>
+						</RuleExpressionCondition>
+					</Rule.Condition>
+				</Rule>
+			</RuleSet.Rules>
+		</RuleSet>
+	</RuleDefinitions.RuleSets>
+</RuleDefinitions>

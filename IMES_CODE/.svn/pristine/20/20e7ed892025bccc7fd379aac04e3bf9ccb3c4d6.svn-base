@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace IMES.DataModel
+{
+    [Serializable]
+    public class RegionInfo
+    {
+        private string region = "";
+
+        public string Region
+        {
+            get { return region; }
+            set { region = value; }
+        }
+        private string description = "";
+
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+        private string editor = "";
+
+        public string Editor
+        {
+            get { return editor; }
+            set { editor = value; }
+        }
+        private DateTime cdt = new DateTime();
+
+        public DateTime Cdt
+        {
+            get { return cdt; }
+            set { cdt = value; }
+        }
+        private DateTime udt = new DateTime();
+
+        public DateTime Udt
+        {
+            get { return udt; }
+            set { udt = value; }
+        } 
+    }
+}

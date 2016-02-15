@@ -1,0 +1,549 @@
+﻿/*
+ * INVENTEC corporation (c)2009 all rights reserved. 
+ * Description: PCARepairImpl
+ * Update: 
+ * Date         Name              Reason 
+ * ==========   ================= =====================================
+ * 2009-11-03   207006            Create 
+ * 2009-11-03   207006            ITC-1122-0064
+ * 
+ * Known issues:Any restrictions about this file 
+ */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Collections;
+using System.Workflow.Runtime;
+using IMES.Station.Interface.StationIntf;
+using IMES.Infrastructure;
+using IMES.Infrastructure.WorkflowRuntime;
+using log4net;
+using IMES.Route;
+
+using IMES.DataModel;
+using IMES.FisObject.FA.Product;
+using IMES.FisObject.PAK.COA;
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+
+namespace IMES.Station.Implementation
+{
+    public class COARemoval : MarshalByRefObject, ICOARemoval
+    {
+        //private const string Station ="";
+        //private bool hasDealWithOneFKU = false;
+        private const Session.SessionType TheType = Session.SessionType.Common; //.Product;
+        private ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private string sessionKey_using_one = "";
+
+        #region ICOARemoval Members
+
+        /// <summary>
+        /// To the input COANumber, check.
+        ///    1. if it exists in the given table.
+        ///    2. COAStatus.Status必须是'A1'
+        ///    3. 此COA不可已经与机器绑定并且该机器当前在“85”或“9A”站。
+        /// </summary>
+        /// <param name="COANumber"></param>
+        /// <param name="pdLine"></param>
+        /// <param name="prodId"></param>
+        /// <param name="editor"></param>
+        /// <param name="stationId"></param>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
+        public ArrayList InputCOANumber(/*string _guid, */string COANumber, string pdLine, string prodId, string editor, string stationId, string customerId, string action, string cause)
+        {
+            logger.Debug("(_COARemoval)InputCOANumber start, COANumber:" + COANumber + " pdLine:" + pdLine + " prodId:" + prodId + " editor:" + editor + " stationId:" + stationId + " customerId:" + customerId);
+            ArrayList this_array_list_return = new ArrayList();
+            FisException ex;
+            List<string> erpara = new List<string>();
+            //string sessionKey = prodId;
+            try
+            {
+                string CurrentCOASN = COANumber;
+                IProductRepository productRep = RepositoryFactory.GetInstance().GetRepository<IProductRepository, IProduct>();
+                ICOAStatusRepository coaStatusRepository = RepositoryFactory.GetInstance().GetRepository<ICOAStatusRepository, COAStatus>();
+                /* 1）所输入COA No在COAStatus数据表中存在。否则提示“无此COA记录!”
+                 */
+                COAStatus status = coaStatusRepository.Find(CurrentCOASN);
+                if (status == null)
+                {
+                    //This COA does not exist!
+                    FisException _ex = new FisException("CHK235", new string[]{});
+                    throw _ex;
+                }
+
+                /* 2）5.	For Remove，COAStatus.Status必须是'A1'； 
+                 * For Scrap，COAStatus.Status必须是'A0' or 'A2' or 'A3'。
+                 * 否则提示 该COA的当前状态是”+COAStatus.Status+“。”
+                 */
+                if (action != "scrap")
+                {
+                    if (!status.Status.Equals("A1"))
+                    {
+                        // Only can remove a COA whose status is 'A1', current COA's status is %1
+                        FisException _ex = new FisException("CHK236", new string[] { status.Status });
+                        throw _ex;
+                    }
+
+                }
+                else
+                {
+                    if (!status.Status.Equals("A0") && !status.Status.Equals("A2") && !status.Status.Equals("A3"))
+                    {
+                        // Only can remove a COA whose status is 'A0''A2''A3', current COA's status is %1
+                        FisException _ex = new FisException("CHK525", new string[] { status.Status });
+                        throw _ex;
+                    }
+                    var cond = new COAReturnInfo();
+                    cond.coasn = "coano";
+                    /*示例
+                    var set = [ICOAStatusRepository Instance].GetCOAReturnInfoList(cond, null);
+                    int cnt = (from item in set where item.status == string.Empty select item).Count();*/
+                    IList<COAReturnInfo> coareturnlist = coaStatusRepository.GetCOAReturnInfoList(cond, null);
+                    if (coareturnlist.Count != 0)
+                    {
+                        //报告错误：“该COA No 已Scarp!” !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!未改全
+                        FisException _ex = new FisException("CHK526", new string[] { });
+                        throw _ex;
+
+                    }
+
+
+                }
+                /* 
+                 *  Attention: now I think status.IECPN 就是 product 的 SN
+                 *             所以，从它来得到 product 对象
+                 *             
+                 * 3）此COA不可已经与机器绑定并且该机器当前在“85”或“99”站。否则提示“机器已上栈板或已经出货 !！”
+                 * 
+                 *   If exists (select a.ProductID from Product a (nolock), 
+                 *   Product_Part b (nolock), ProductStatus c (nolock) 
+                 *   where a.ProductID=b.ProductID and b.PartSn=@coano and 
+                 *   a.ProductID=c.ProductID and (c.Station=’85’ or c.Station=’99’))
+                 * 
+                 * IProductRepository::
+                 *   bool CheckExistProductByPartSnAndStations(string partSn, string[] stations);
+                 * 
+                 */
+                string partSn = CurrentCOASN;
+                string[] stations = { "85", "9A" };
+                if (productRep.CheckExistProductByPartSnAndStations(partSn, stations) || productRep.CheckExistProductByPartSnAndStationsWithPizzaPart(partSn, stations))
+                {
+                    FisException _ex = new FisException("CHK237", new string[]{ }); //"Machine has been in stack or out!"
+                    throw _ex;
+                }
+
+                this_array_list_return.Add("OK!");
+                this_array_list_return.Add(COANumber);
+                this_array_list_return.Add(action);
+                this_array_list_return.Add(cause);
+
+                return this_array_list_return;
+
+                /*
+                string sessionKey = Guid.NewGuid().ToString(); //COANumber;
+                if (_guid != "") sessionKey = _guid;
+
+                Session Session = SessionManager.GetInstance.GetSession(sessionKey, TheType);
+
+                if (Session == null)
+                {
+                    Session = new Session(sessionKey, TheType, editor, stationId, pdLine, customerId);
+
+                    Dictionary<string, object> wfArguments = new Dictionary<string, object>();
+
+                    wfArguments.Add("Key", sessionKey); // key must be COANumber.
+                    wfArguments.Add("Station", stationId);
+                    wfArguments.Add("CurrentFlowSession", Session);
+                    wfArguments.Add("Editor", editor);
+                    wfArguments.Add("PdLine", pdLine);
+                    wfArguments.Add("Customer", customerId);
+                    wfArguments.Add("SessionType", TheType);
+                    string wfName, rlName;
+                    RouteManagementUtils.GetWorkflow(stationId, "COARemoval.xoml", "COARemoval.rules", out wfName, out rlName);
+                    WorkflowInstance instance = WorkflowRuntimeManager.getInstance.CreateXomlFisWorkflow(wfName, rlName, wfArguments);
+
+                    IList<string> COANumberList = new List<string>();
+                    Session.AddValue("_COANumberList", COANumberList);
+                    Session.AddValue(Session.SessionKeys.IsComplete, false);
+                    Session.AddValue(Session.SessionKeys.COASN, COANumber);
+                    Session.SetInstance(instance);
+
+                    if (!SessionManager.GetInstance.AddSession(Session))
+                    {
+                        Session.WorkflowInstance.Terminate("Session:" + sessionKey + " Exists.");
+                        erpara.Add(sessionKey);
+                        ex = new FisException("CHK020", erpara);
+                        throw ex;
+                    }
+                    Session.WorkflowInstance.Start();
+                    Session.SetHostWaitOne();
+                    //if (hasDealWithOneFKU == false) hasDealWithOneFKU = true;
+                    this_array_list_return.Add("OK!");
+                    this_array_list_return.Add(COANumber);
+                    this_array_list_return.Add(sessionKey);
+                }
+                else
+                {
+                    //erpara.Add(sessionKey);
+                    //ex = new FisException("CHK020", erpara);
+                    //throw ex;
+                    Session.AddValue(Session.SessionKeys.COASN, COANumber);
+                    Session.Exception = null;
+                    Session.SwitchToWorkFlow();
+
+                    this_array_list_return.Add("OK!");
+                    this_array_list_return.Add(COANumber);
+                    this_array_list_return.Add(sessionKey);
+                }
+                               
+                //check workflow exception
+                if (Session.Exception != null)
+                {
+                    if (Session.GetValue(Session.SessionKeys.WFTerminated) != null)
+                    {
+                        Session.ResumeWorkFlow();
+                    }
+                    throw Session.Exception;
+                }
+
+                return this_array_list_return;
+                */
+            }
+            catch (FisException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                logger.Debug("(_COARemoval)InputCOANumber end, COANumber:" + COANumber + " pdLine:" + pdLine + " prodId:" + prodId + " editor:" + editor + " stationId:" + stationId + " customerId:" + customerId);
+            }
+        }
+
+        /// <summary>
+        /// To the input COANumber list, check.
+        ///    1. if it exists in the given table.
+        ///    2. COAStatus.Status必须是'A1'
+        ///    3. 此COA不可已经与机器绑定并且该机器当前在“85”或“9A”站。
+        /// </summary>
+        /// <param name="COANumber"></param>
+        /// <param name="pdLine"></param>
+        /// <param name="prodId"></param>
+        /// <param name="editor"></param>
+        /// <param name="stationId"></param>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
+        public ArrayList InputCOANumberList(IList<string> COANumberList, string pdLine, string prodId, string editor, string stationId, string customerId, string action)
+        {
+            logger.Debug("(_COARemoval)InputCOANumber start, COANumber List:" + COANumberList + " pdLine:" + pdLine + " prodId:" + prodId + " editor:" + editor + " stationId:" + stationId + " customerId:" + customerId);
+            ArrayList this_array_list_return = new ArrayList();
+            FisException ex;
+            FisException _ex;
+            string error = "";
+            List<string> erpara = new List<string>();
+
+            List<string> errorList = new List<string>();
+
+            try
+            {
+                foreach (string node in COANumberList)
+                {
+                    if (node != "")
+                    {
+                        //string CurrentCOASN = COANumberList[0]; modify by 2012.8.9
+                        string CurrentCOASN = node;
+
+                        IProductRepository productRep = RepositoryFactory.GetInstance().GetRepository<IProductRepository, IProduct>();
+                        ICOAStatusRepository coaStatusRepository = RepositoryFactory.GetInstance().GetRepository<ICOAStatusRepository, COAStatus>();
+                        /* 1）所输入COA No在COAStatus数据表中存在。否则提示“无此COA记录!”
+                         */
+                        COAStatus status = coaStatusRepository.Find(CurrentCOASN);
+                        if (status == null)
+                        {
+                            //This COA does not exist!
+                            errorList.Add(CurrentCOASN);
+                        }
+                        else
+                        {
+                            /* 2）5.	For Remove，COAStatus.Status必须是'A1'； 
+                             * For Scrap，COAStatus.Status必须是'A0' or 'A2' or 'A3'。
+                             * 否则提示 该COA的当前状态是”+COAStatus.Status+“。”
+                             */
+                            if (action != "scrap")
+                            {
+                                if (!status.Status.Equals("A1"))
+                                {
+                                    errorList.Add(CurrentCOASN);
+                                }
+                            }
+                            else
+                            {
+                                if (!status.Status.Equals("A0") && !status.Status.Equals("A2") && !status.Status.Equals("A3"))
+                                {
+                                    errorList.Add(CurrentCOASN);
+                                }
+                                var cond = new COAReturnInfo();
+                                cond.coasn = "coano";
+                                /*示例
+                                var set = [ICOAStatusRepository Instance].GetCOAReturnInfoList(cond, null);
+                                int cnt = (from item in set where item.status == string.Empty select item).Count();*/
+                                IList<COAReturnInfo> coareturnlist = coaStatusRepository.GetCOAReturnInfoList(cond, null);
+                                if (coareturnlist.Count != 0)
+                                {
+                                    errorList.Add(CurrentCOASN);
+
+                                }
+                            }
+                            /* 
+                             *  Attention: now I think status.IECPN 就是 product 的 SN
+                             *             所以，从它来得到 product 对象
+                             *             
+                             * 3）此COA不可已经与机器绑定并且该机器当前在“85”或“9A”站。否则提示“机器已上栈板或已经出货 !！”
+                             * 
+                             *   If exists (select a.ProductID from Product a (nolock), 
+                             *   Product_Part b (nolock), ProductStatus c (nolock) 
+                             *   where a.ProductID=b.ProductID and b.PartSn=@coano and 
+                             *   a.ProductID=c.ProductID and (c.Station=’85’ or c.Station=’9A’))
+                             * 
+                             * IProductRepository::
+                             *   bool CheckExistProductByPartSnAndStations(string partSn, string[] stations);
+                             * 
+                             */
+                            string partSn = CurrentCOASN;
+                            string[] stations = { "85", "9A" };
+                            if (productRep.CheckExistProductByPartSnAndStations(partSn, stations) || productRep.CheckExistProductByPartSnAndStationsWithPizzaPart(partSn, stations))
+                            {
+                                errorList.Add(CurrentCOASN);
+                            }
+                        }
+                    }
+               }
+                IEnumerable<string> distinctAges = errorList.Distinct();
+                List<string> returnerrorList = distinctAges.ToList();
+                string strerrorlist = "";
+
+                if (returnerrorList != null && returnerrorList.Count > 0)
+                {
+                    foreach (string tmp in returnerrorList)
+                    {
+                        //“文件中存在Invalid COA No，请注意!” – No1 / No2 / … / Non No1 ，No2，Non – 前文解析时发现的Invalid COA No
+                        strerrorlist += tmp + "/";
+
+                    }
+                    strerrorlist = "-" + strerrorlist.Substring(0, strerrorlist.Length - 1);
+                    _ex = new FisException("CHK527", new string[] { strerrorlist });//错误提示：“文件中存在Invalid COA No，请注意! – No1 / No2 / … / Non”
+                    error = _ex.mErrmsg;
+                    //throw _ex;
+
+                }
+
+                bool bExist = false;
+                for (int j = 0; j < COANumberList.Count; j++)
+                {
+                    for (int m = 0; m < returnerrorList.Count; m++)
+                    {
+                        if (returnerrorList[m] == COANumberList[j])
+                        {
+                            //this_array_list_return.Add(error);
+                            bExist = true;
+
+                        }
+
+                    }
+                    if (bExist == false)
+                    {
+                        //this_array_list_return.Add("OK!");
+                        if (COANumberList[j] != "")
+                            this_array_list_return.Add(COANumberList[j]);
+
+                    }
+                    bExist = false;
+                }
+
+                this_array_list_return.Add(error);
+
+                 return this_array_list_return;
+                    
+ 
+
+            }
+            catch (FisException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                //logger.Debug("(_COARemoval)InputCOANumber end, COANumber:" + COANumber + " pdLine:" + pdLine + " prodId:" + prodId + " editor:" + editor + " stationId:" + stationId + " customerId:" + customerId);
+            }
+        }
+
+
+        /// <summary>
+        /// 针对List中的每一COA No, do the following:
+        /// 5．获取与此COA No绑定的Product的ID、CUSTSN,Model对应的HP Pno
+        /// 6．解除Product与COA No的绑定：
+        ///    delete Product_Part where PartSn=@coano and ProductID=@productID
+        ///     
+        ///    设置对应Product的当前状态：
+        ///        Update ProductStatus set Station=’69’, Editor=@user, Udt=GetDate where ProducntID=@productID
+        ///     
+        ///    设置COA状态：
+        ///        Update COAStatus set Line=’REM’，Status=’A2’，Editor=@user, Udt=GetDate where COASN=@coano
+        ///    记录COA Log：
+        ///        insert COALog values (@coano, 'A2',custsn+'/'+hppno, rtrim(@user), GetDate, ‘COA’)
+        ///
+        /// </summary>
+        /// <param name="pdLine"></param>
+        /// <param name="prodId"></param>
+        /// <param name="editor"></param>
+        /// <param name="stationId"></param>
+        /// <param name="customerId"></param>
+        /// <param name="COANoList"></param>
+        public void SaveProc(string pdLine, string prodId, string editor, string stationId, string customerId, string[] COANoList, string[] ActionList, string[] CauseList, string action, string cause)//string sessionKey)
+            //string COANumber, string pdLine, string prodId, string editor, string stationId, string customerId)
+        {
+            List<string> list = new List<string>(COANoList);
+            List<string> action_list = new List<string>(ActionList);
+            List<string> cause_list = new List<string>(CauseList);
+            if (list.Count == 0) return;
+            logger.Debug("(_COARemoval)SaveProc begin");
+            
+            FisException ex;
+            List<string> erpara = new List<string>();
+            try
+            {
+                string sessionKey = "";
+                if (this.sessionKey_using_one == "")
+                {
+                    sessionKey = Guid.NewGuid().ToString();
+                    this.sessionKey_using_one = sessionKey;
+                }
+                else
+                {
+                    sessionKey = this.sessionKey_using_one;
+                }
+
+                Session Session = SessionManager.GetInstance.GetSession(sessionKey, TheType);
+
+                if (Session == null)
+                {
+                    Session = new Session(sessionKey, TheType, editor, stationId, pdLine, customerId);
+
+                    Dictionary<string, object> wfArguments = new Dictionary<string, object>();
+
+                    wfArguments.Add("Key", sessionKey); 
+                    wfArguments.Add("Station", stationId);
+                    wfArguments.Add("CurrentFlowSession", Session);
+                    wfArguments.Add("Editor", editor);
+                    wfArguments.Add("PdLine", pdLine);
+                    wfArguments.Add("Customer", customerId);
+                    wfArguments.Add("SessionType", TheType);
+                    string wfName, rlName;
+                    RouteManagementUtils.GetWorkflow(stationId, "COARemoval_save.xoml", null, out wfName, out rlName);
+                    WorkflowInstance instance = WorkflowRuntimeManager.getInstance.CreateXomlFisWorkflow(wfName, rlName, wfArguments);
+
+                    Session.AddValue(Session.SessionKeys.COASNList, list);
+                    Session.AddValue("scrap", action);
+                    Session.AddValue("cause", cause);
+
+                    Session.AddValue("ActionList", action_list);
+                    Session.AddValue("CauseList", cause_list);
+
+
+                    Session.SetInstance(instance);
+
+                    if (!SessionManager.GetInstance.AddSession(Session))
+                    {
+                        Session.WorkflowInstance.Terminate("Session:" + sessionKey + " Exists.");
+                        erpara.Add(sessionKey);
+                        ex = new FisException("CHK020", erpara);
+                        throw ex;
+                    }
+                    Session.WorkflowInstance.Start();
+                    Session.SetHostWaitOne();
+                    //if (hasDealWithOneFKU == false) hasDealWithOneFKU = true;
+                    //this_array_list_return.Add("OK!"); // ProdId
+                }
+                else
+                {
+                    //erpara.Add(sessionKey);
+                    //ex = new FisException("CHK020", erpara);
+                    //throw ex;
+                    Session.Exception = null;
+                    Session.SwitchToWorkFlow();
+                }
+
+                //check workflow exception
+                if (Session.Exception != null)
+                {
+                    if (Session.GetValue(Session.SessionKeys.WFTerminated) != null)
+                    {
+                        Session.ResumeWorkFlow();
+                    }
+                    throw Session.Exception;
+                }
+
+                //return this_array_list_return;
+            }
+            catch (FisException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                logger.Debug("(_COARemoval)SaveProc end");
+            }
+
+        }
+
+        /// <summary>
+        /// 取消工作流
+        /// </summary>
+        /// <param name="sessionKey"></param>
+        public void Cancel(string sessionKey)
+        {
+            try
+            {
+                logger.Debug("Cancel start, sessionKey:" + sessionKey);
+
+                Session currentSession = SessionManager.GetInstance.GetSession(sessionKey, TheType);
+
+                if (currentSession != null)
+                {
+                    SessionManager.GetInstance.RemoveSession(currentSession);
+                }
+            }
+            catch (FisException e)
+            {
+                logger.Error(e.mErrmsg, e);
+                throw new Exception(e.mErrmsg);
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message, e);
+                throw new SystemException(e.Message);
+            }
+            finally
+            {
+                logger.Debug("Cancel end, sessionKey:" + sessionKey);
+            }
+        }
+
+
+        #endregion
+    }
+}

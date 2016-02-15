@@ -1,0 +1,9 @@
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\bin\UPH.Entity.Infrastructure.dll
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\bin\UPH.Entity.Infrastructure.pdb
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\UPH.Entity.Infrastructure\obj\Debug\ResolveAssemblyReference.cache
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\UPH.Entity.Infrastructure\obj\Debug\UPH.Entity.Infrastructure.dll
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\UPH.Entity.Infrastructure\obj\Debug\UPH.Entity.Infrastructure.pdb
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\bin\UPH.Entity.Infrastructure.dll
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\UPHService\UPHService\bin\UPH.Entity.Infrastructure.pdb
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPH.Entity.Infrastructure.dll
+D:\ICCIMES SVN\TRUNK\Code\InventecCQUPH\bin\UPH.Entity.Infrastructure.pdb

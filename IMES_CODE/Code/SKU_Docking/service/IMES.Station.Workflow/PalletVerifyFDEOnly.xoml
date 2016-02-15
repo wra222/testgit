@@ -1,0 +1,49 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="PalletVerifyFDEOnly" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns:ns1="clr-namespace:IMES.Activity.NewNeedCheck;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:BlockStation Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" ProcessType="Product" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+	<ns0:GetPallet Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="getPallet1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+	<ns0:GetDelivery Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="getDelivery1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+	<ns0:CheckDummyPalletCase Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="checkDummyPalletCase1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+	<ns1:GetDummyPallet Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="getDummyPallet1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+	<ns1:GetFDEScanQty Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="getFDEScanQty1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+	<ns1:GetFDEPalletQty Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="getFDEPalletQty1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+	<ns1:GetFDETotalQty Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="getFDETotalQty1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+	<ns1:GetFDESkuList Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="getFDESkuList1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+	<WhileActivity x:Name="whileNotComplete">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplete" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+			<IfElseActivity x:Name="ifNotComplete">
+				<IfElseBranchActivity x:Name="NotComplete">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplete" />
+					</IfElseBranchActivity.Condition>
+					<ns0:BlockStation Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="blockStation2" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" ProcessType="Product" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" IsStopWF="NotStop" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:DBScope Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" x:Name="dbScope1" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}">
+		<ns0:UpdateProductListStatusByProIDs Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="updateProductListStatusByProIDs1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Status="Pass" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+		<ns0:WritePalletListLog Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="writePalletListLog1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Line="" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+		<ns0:UpdatePalletStatus Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="updatePalletStatus1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+		<ns0:WriteProductLog Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Status="Pass" IsSingle="False" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+		<ns0:GenerateDummyPalletNo Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="generateDummyPalletNo1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+		<IfElseActivity x:Name="ChekDPC">
+			<IfElseBranchActivity x:Name="ifElse_NAorBA">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="NAorBA" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteWHPltLog Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="writeWHPltLog1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" PltFromSessionKey="DummyPalletNo" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ifElse_NANorBAN">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="NANorBAN" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteWHPltLog Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="writeWHPltLog2" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" PltFromSessionKey="GenerateDummyPalletNo" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+	<ns0:Print Customer="{ActivityBind PalletVerifyFDEOnly,Path=Customer}" x:Name="print1" SessionType="{ActivityBind PalletVerifyFDEOnly,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind PalletVerifyFDEOnly,Path=Editor}" Station="{ActivityBind PalletVerifyFDEOnly,Path=Station}" MOFrom="No" ModelFrom="No" Line="{ActivityBind PalletVerifyFDEOnly,Path=PdLine}" Key="{ActivityBind PalletVerifyFDEOnly,Path=Key}" />
+</ns0:BaseFlow>

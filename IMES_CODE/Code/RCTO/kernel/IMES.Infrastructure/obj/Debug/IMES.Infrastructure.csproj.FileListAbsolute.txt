@@ -1,0 +1,6 @@
+E:\IMES_CODE\Code\RCTO\bin\IMES.Infrastructure.dll
+E:\IMES_CODE\Code\RCTO\bin\IMES.Infrastructure.pdb
+E:\IMES_CODE\Code\RCTO\kernel\IMES.Infrastructure\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\kernel\IMES.Infrastructure\obj\Debug\IMES.Infrastructure.dll
+E:\IMES_CODE\Code\RCTO\kernel\IMES.Infrastructure\obj\Debug\IMES.Infrastructure.pdb
+E:\IMES_CODE\Code\RCTO\bin\IMES.Infrastructure.XML

@@ -1,0 +1,732 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+//
+using IMES.DataModel;
+using IMES.Infrastructure.UnitOfWork;
+using IMES.FisObject.Common.Repair;
+using System.Data;
+
+namespace IMES.FisObject.Common.Misc
+{
+    public interface IMiscRepository// : IRepository<Line>
+    {
+        #region . For CommonIntf  .
+
+        ///// <summary>
+        ///// 取得文档类型列表
+        ///// </summary>
+        ///// <returns>文档类型列表</returns>
+        //IList<DocTypeInfo> GetDocTypeList();
+
+        /// <summary>
+        /// 取得Floor信息列表
+        /// </summary>
+        /// <returns>Floor信息列表</returns>
+        IList<FloorInfo> GetFloorList();
+
+        /// <summary>
+        /// Get QC Statistic from database
+        /// </summary>
+        /// <param name="pdLine">PdLine</param>
+        /// <returns>QC Statistic Info List</returns>
+        IList<QCStatisticInfo> GetQCStatisticList(string pdLine, string type);
+
+        ///// <summary>
+        ///// 取得DCode列表
+        ///// </summary>
+        ///// <returns></returns>
+        //IList<DCodeInfo> GetDCodeList();
+
+        /// <summary>
+        /// 取得異常描述信息
+        /// </summary>
+        /// <param name="errCode">錯誤代碼</param>
+        /// <param name="lang">所用語言</param>
+        /// <returns></returns>
+        string GetFisErrorCode(string errCode, string lang);
+
+        #region CACHE_UPDATE
+
+        /// <summary>
+        /// 獲取CACHE_UPDATE表中的所有Update=0的記錄
+        /// </summary>
+        /// <returns></returns>
+        //CacheUpdateInfo[] GetAllCacheUpdate(string IP, string appName); //CACHE_UPDATE
+
+        CacheUpdateInfo[] GetAllCacheUpdate(string IP, string appName, string[] types); //CACHE_UPDATE
+
+        /// <summary>
+        /// 增加一个CACHE_UPDATE信息
+        /// </summary>
+        /// <param name="cacheUpdateInfo"></param>
+        void AddCacheUpdate(CacheUpdateInfo cacheUpdateInfo); //CACHE_UPDATE
+
+        /// <summary>
+        /// 并非真正删除数据，更新CACHE_UPDATE表中指定id对应的一條記錄set Updated = 1, CacheServerIP = [Current IP], Udt = GetDate()
+        ///     涉及表:CACHE_UPDATE
+        ///     主鍵:無
+        /// </summary>
+        /// <returns>
+        ///</returns>
+        int DeleteCacheUpdate(CacheUpdateInfo cacheUpdateInfo); //CACHE_UPDATE
+
+        int DeleteCacheUpdateForSoloTypes(CacheUpdateInfo cacheUpdateInfo, string[] types); //CACHE_UPDATE
+
+        /// <summary>
+        /// //并非真正删除数据，更新CACHE_UPDATE表中指定ip和appName的一條記錄set Updated = 1, Udt = GetDate()
+        /// //2012.05.09 YWH: 真正删除数据
+        /// </summary>
+        /// <param name="IP"></param>
+        /// <param name="appName"></param>
+        void DeleteCacheUpdateByIPAddressAndAppName(string IP, string appName); //CACHE_UPDATE
+
+        #endregion
+
+        /// <summary>
+        /// 根据customerId获得customer信息
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
+        CustomerInfo GetCustomerInfo(string customerId);
+
+        /// <summary>
+        /// 取得所有Customer的列表 
+        /// </summary>
+        /// <returns></returns>
+        IList<CustomerInfo> GetCustomerList();
+
+        #endregion
+
+        /// <summary>
+        /// 获得Alarm信息 (单个)
+        /// ICT Input/SA Test Station/FA Test Station需要处理Alarm数据，调用SP
+        /// </summary>
+        /// <param name="sn"></param>
+        /// <param name="family"></param>
+        /// <param name="model"></param>
+        /// <param name="station"></param>
+        /// <param name="pdline"></param>
+        /// <param name="defect"></param>
+        void GetAlarmInfo(string sn, string family, string model, string station, string pdline, string defect);
+
+        /// <summary>
+        /// 获得Alarm信息 (多个)
+        /// ICT Input/SA Test Station/FA Test Station需要处理Alarm数据，调用SP
+        /// </summary>
+        /// <param name="sn"></param>
+        /// <param name="family"></param>
+        /// <param name="model"></param>
+        /// <param name="station"></param>
+        /// <param name="pdline"></param>
+        /// <param name="defectList"></param>
+        void GetAlarmInfoBatch(string sn, string family, string model, string station, string pdline, string[] defectList);
+
+        /// <summary>
+        /// 生成VirtualMOBOM
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="limitCount"></param>
+        /// <param name="mo"></param>
+        void GenerateVirtualMoBOM(string model, int limitCount, string mo);
+
+        /// <summary>
+        /// ModelBOM另存为
+        /// </summary>
+        /// <param name="oldCode"></param>
+        /// <param name="newCode"></param>
+        /// <param name="editor"></param>
+        void SaveModelBOMAs(string oldCode, string newCode, string editor);
+
+        /// <summary>
+        /// 新增ReturnRepair
+        /// </summary>
+        /// <param name="item"></param>
+        void AddReturnRepair(ReturnRepair item);
+
+        /// <summary>
+        /// 调用SP: TransferIMESPCAToFISOnLine
+        /// </summary>
+        /// <param name="pcbno"></param>
+        /// <param name="wc"></param>
+        void TransferIMESPCAToFISOnLine(string pcbno,string wc);
+
+        /// <summary>
+        /// 调用存储过程[UpdateOldSysStatus] 完成半制资料迁移
+        /// </summary>
+        /// <param name="pcbno">MB号</param>
+        void UpdateOldSysStatus(string pcbno);
+
+        /// <summary>
+        /// 调用SP: op_PrintLabel_TouchPadTPCBLabel
+        /// </summary>
+        /// <param name="tpcb"></param>
+        /// <param name="touchpad"></param>
+        /// <param name="vcode"></param>
+        void PrintLabel_TouchPadTPCBLabel(string tpcb, string touchpad, string vcode);
+
+        /// <summary>
+        /// SELECT a.Family, a.Build, a.SKU, a.Type, a.Descr
+		///	FROM PilotRunPrintInfo a, PilotRunPrintType b
+		///	WHERE Model = @Model AND a.Type = b.Type
+		///	ORDER BY b.ID
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        IList<PilotRunPrintInfo> GetPilotRunPrintInfoListByModel(string model);
+
+        /////<summary>
+        ///// Data migration from imes to old fis
+        /////</summary>
+        /////<param name="keyid">ProductID， CartonID，PalletID</param>
+        /////<param name="pcode">UI PCode</param>
+        /////<param name="no1">reserved parameter</param>
+        /////<param name="no2">reserved parameter</param>
+        //void ImesToFis(string keyid, string pcode, string no1, string no2);
+        
+        /// <summary>
+        /// 根据数据库表名称，取得该表中所有的字段名称
+        /// </summary>
+        /// <param name="catalogName"></param>
+        /// <param name="strTableName"></param>
+        /// <returns></returns>
+        IList<string> getAllFieldNameInTable(string catalogName, string strTableName);
+
+        /// <summary>
+        /// 3. 新增AlarmSetting记录
+        /// </summary>
+        /// <param name="item"></param>
+        void AddAlarmSetting(AlarmSettingInfo item);
+
+        /// <summary>
+        /// 4. 根据stage获取报警标准（返回List<AlarmSetting>,无值返回NULL）。
+        ///    方法：select * from AlarmSetting where Stage=@stage and LifeCycle<>1 order by Family, Type, Station, DefectType
+        /// 5. 确认AlarmSetting表中是否有重复数据（返回IList<AlarmSetting>,无值返回NULL）。
+        ///    方法：以Family、Station、Type、Stage、DefectType和LifeCycle<>1为检索条件，检索AlarmSetting表。这些参数如果为NULL，不作为检索条件。LifeCycle不作为参数传入。
+        /// 6. AlarmSetting的排除自身检索（返回List<AlarmSetting>,无值返回NULL）
+        ///    方法：Family、Station、Type、Stage、LifeCycle<>1和AlarmSetting.Id<>@Id为检索条件，检索AlarmSetting表。Family、Station、Type、Stage、Id为参数。
+        /// </summary>
+        /// <param name="eqCondition"></param>
+        /// <param name="neqCondition"></param>
+        /// <returns></returns>
+        IList<AlarmSettingInfo> GetAlarmSettings(AlarmSettingInfo eqCondition, AlarmSettingInfo neqCondition);
+
+        /// <summary>
+        /// 7. 更新AlarmSetting表数据 void UpdateAlarmSetting(AlarmSetting alarm_setting)
+        /// </summary>
+        /// <param name="setValue"></param>
+        /// <param name="condition"></param>
+        /// <returns></returns>
+        void UpdateAlarmSetting(AlarmSettingInfo setValue, AlarmSettingInfo condition);
+
+        /// <summary>
+        /// 修改报警记录（Alarm）的信息
+        /// </summary>
+        /// <param name="setValue"></param>
+        /// <param name="condition"></param>
+        void UpdateAlarmInfo(AlarmInfo setValue, AlarmInfo condition);
+
+        /// <summary>
+        /// 14.根据条件（AlarmQueryCondition）获取报警记录返回Alarm（返回List<Alarm>,无值返回NULL。）。IList<Alarm> GetAlarm(AlarmQueryCondition con)      
+        ///     方法： Select Alarm from Alarm a 
+        ///             if con.Family != null
+        ///                   where a.Family=@con.Family
+        ///             if con.Station != null
+        ///                   where a.Station=@con.Station
+        ///             if con.Line != null
+        ///                   where a.Line=@con.Line
+        ///             if con.Status != null
+        ///                   where a.Status=@con.Status
+        ///             if con.SkipHoldTimeFrom != null
+        ///                   where a.SkipHoldTime>=@con.SkipHoldTimeFrom and a.SkipHoldTime<=@con.SkipHoldTimeTo
+        ///             if con.ReleaseTimeFrom != null
+        ///                   where a.ReleaseTime>=@con.ReleaseTimeFrom and a.ReleaseTime<=@con.ReleaseTimeTo
+        ///             if con.AlarmTimeFrom != null
+        ///                   where a.Cdt>=@con.AlarmTimeFrom and a.Cdt<=@con.AlarmTimeTo
+        ///             order by a.Cdt
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <returns></returns>
+        IList<AlarmInfo> GetAlarmInfoByConditions(AlarmQueryCondition condition);
+
+        /// <summary>
+        /// Status=@status的记录,按照Alarm发出的时间排序
+        /// </summary>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        IList<AlarmInfo> GetAlarmInfoList(string status);
+
+        /// <summary>
+        /// daysCount天内发生的Status=@status的记录,按照Alarm发出的时间排序
+        /// </summary>
+        /// <param name="status"></param>
+        /// <param name="daysCount"></param>
+        /// <returns></returns>
+        IList<AlarmInfo> GetAlarmInfoList(string status, int daysCount);
+
+        /// <summary>
+        /// Almighty
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <returns></returns>
+        IList<AlarmInfo> GetAlarmInfoList(AlarmInfo condition);
+
+        /// <summary>
+        /// 18.取得一个时间段的Alarm。IList<Alarm> GetAlarms(DateTime start_time,DateTime end_time)
+        /// 方法：select distinct Family,stage,Line,station from Alarm where cdt >= @start_time and cdt <= @end_time
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <param name="startTime"></param>
+        /// <param name="endTime"></param>
+        /// <returns></returns>
+        IList<AlarmInfo> GetAlarmInfoList(AlarmInfo condition, DateTime startTime, DateTime endTime);
+
+        /// <summary>
+        /// Select * from FAI_INFO 
+        /// where FIN_Time>=[FIN_Time] 
+        /// and IECPN like [IECPN]+‘%’ 
+        /// and HPQPN like [HPQPN]+’%’ 
+        /// and SNO like  [SNO] +‘%’
+        /// Order by Cdt
+        /// </summary>
+        /// <param name="finTime"></param>
+        /// <param name="iecpnPrefix"></param>
+        /// <param name="hpqpnPrefix"></param>
+        /// <param name="snoPrefix"></param>
+        /// <returns></returns>
+        IList<FaiInfo> GetFaiInfoByLikes(DateTime finTime, string iecpnPrefix, string hpqpnPrefix, string snoPrefix);
+
+        /// <summary>
+        /// FAI_INFO增
+        /// </summary>
+        /// <param name="item"></param>
+        void AddFaiInfo(FaiInfo item);
+
+        /// <summary>
+        /// FAI_INFO改
+        /// </summary>
+        /// <param name="setValue"></param>
+        /// <param name="condition"></param>
+        void ModifyFaiInfo(FaiInfo setValue, FaiInfo condition);
+
+        /// <summary>
+        /// FAI_INFO查
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <returns></returns>
+        IList<FaiInfo> GetFaiInfoList(FaiInfo condition);
+
+        /// <summary>
+        /// FAI_INFO删
+        /// </summary>
+        /// <param name="condition"></param>
+        void RemoveFaiInfoList(FaiInfo condition);
+
+        /// <summary>
+        /// DOAMBList增
+        /// </summary>
+        /// <param name="item"></param>
+        void AddDOAMBListInfo(DOAMBListInfo item);
+
+        #region . Defered  .
+
+        void GetAlarmInfoDefered(IUnitOfWork uow, string sn, string family, string model, string station, string pdline, string defect);
+
+        void GetAlarmInfoBatchDefered(IUnitOfWork uow, string sn, string family, string model, string station, string pdline, string[] defectList);
+
+        void DeleteCacheUpdateDefered(IUnitOfWork uow, CacheUpdateInfo cacheUpdateInfo);
+
+        void GenerateVirtualMoBOMDefered(IUnitOfWork uow, string model, int limitCount, string mo);
+
+        void SaveModelBOMAsDefered(IUnitOfWork uow, string oldCode, string newCode, string editor);
+
+        void AddReturnRepairDefered(IUnitOfWork uow, ReturnRepair item);
+
+        void TransferIMESPCAToFISOnLineDefered(IUnitOfWork uow, string pcbno, string wc);
+
+        void UpdateOldSysStatusDefered(IUnitOfWork uow, string pcbno);
+
+        void PrintLabel_TouchPadTPCBLabelDefered(IUnitOfWork uow, string tpcb, string touchpad, string vcode);
+
+        void ImesToFisDefered(IUnitOfWork uow, string keyid, string pcode, string no1, string no2);
+
+        void AddAlarmSettingDefered(IUnitOfWork uow, AlarmSettingInfo item);
+
+        void UpdateAlarmSettingDefered(IUnitOfWork uow, AlarmSettingInfo setValue, AlarmSettingInfo condition);
+
+        void UpdateAlarmInfoDefered(IUnitOfWork uow, AlarmInfo setValue, AlarmInfo condition);
+
+        void AddFaiInfoDefered(IUnitOfWork uow, FaiInfo item);
+
+        void ModifyFaiInfoDefered(IUnitOfWork uow, FaiInfo setValue, FaiInfo condition);
+
+        void RemoveFaiInfoListDefered(IUnitOfWork uow, FaiInfo condition);
+
+        void AddDOAMBListInfoDefered(IUnitOfWork uow, DOAMBListInfo item);
+
+        #endregion
+
+        #region For Maintain
+
+        /// <summary>
+        /// 取得database FA的Rework表的所有记录
+        /// </summary>
+        /// <returns></returns>
+        IList<Rework> GetReworkList();
+
+        /// <summary>
+        /// 调用SP: GenerateVirtualMoBOMForMaintain
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="limitCount"></param>
+        /// <param name="mo"></param>
+        void GenerateVirtualMoBOMForMaintain(string model, int limitCount, string mo);
+
+        /// <summary>
+        /// SELECT Build FROM PilotRunPrintBuild ORDER BY Build
+        /// </summary>
+        /// <returns></returns>
+        DataTable GetBuildList();
+ 
+        /// <summary>
+        /// IF NOT EXISTS(SELECT * FROM PilotRunPrintBuild WHERE Build = @Build)
+        ///         INSERT INTO [PilotRunPrintBuild]([Build],[Editor],[Cdt])
+        ///                  VALUES(@Build, @Editor, GETDATE())
+        /// </summary>
+        /// <param name="Build"></param>
+        /// <param name="editor"></param>
+        void AddBuild(string build, string editor);
+
+        /// <summary>
+        /// 判断Build是否正在被使用
+        /// IF EXISTS(SELECT * FROM [PilotRunPrintInfo] where [Build]= 'Build')
+        /// 返回true
+        /// 否则false
+        /// </summary>
+        /// <param name="Build"></param>
+        /// <returns></returns>
+        bool IsBuildInUse(string build);
+
+        /// <summary>
+        /// DELETE FROM PilotRunPrintBuild WHERE Build = @Build
+        /// </summary>
+        /// <param name="build"></param>
+        void DeleteBuild(string build);
+
+        /// <summary>
+        /// SELECT [Type] FROM PilotRunPrintType ORDER BY [Type]
+        /// </summary>
+        /// <returns></returns>
+        DataTable GetPrintTypeList();
+
+        /// <summary>
+        /// IF NOT EXISTS(SELECT * FROM PilotRunPrintType WHERE Type = @Type)
+        ///          INSERT INTO PilotRunPrintType([Type])
+        ///                    VALUES(@Type...
+        /// </summary>
+        /// <param name="type"></param>
+        void AddPrintType(string type);
+
+        /// <summary>
+        /// 判断type是否正在被使用
+        /// IF EXISTS( SELECT *  FROM [PilotRunPrintInfo] WHERE [Type]='type')
+        /// 返回true
+        /// 否则false
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        bool IsPrintTypeInUse(string type);
+
+        /// <summary>
+        /// DELETE FROM PilotRunPrintType WHERE Type = @Type
+        /// </summary>
+        /// <param name="type"></param>
+        void DeletePrintType(string type);
+
+        /// <summary>
+        /// 判断是否存在Build
+        /// IF EXISTS( SELECT *  FROM [PilotRunPrintBuild] WHERE [Build]='Build')
+        /// 返回true
+        /// 否则false
+        /// </summary>
+        /// <param name="Build"></param>
+        /// <returns></returns>
+        bool IsBuildExist(string build);
+
+        /// <summary>
+        /// 判断是否存在PrintType
+        /// IF EXISTS( SELECT * FROM [PilotRunPrintType] WHERE [Type]='Type')
+        /// 返回true
+        /// 否则false
+        /// </summary>
+        /// <param name="Type"></param>
+        /// <returns></returns>
+        bool IsPrintTypeExist(string Type);
+ 
+        /// <summary>
+        /// UPDATE PilotRunPrintInfo SET Family = @Family, Build = @Build, SKU = @SKU, Editor = @Editor, Udt = GETDATE() WHERE Model = @Model
+        /// </summary>
+        /// <param name="family"></param>
+        /// <param name="build"></param>
+        /// <param name="sku"></param>
+        /// <param name="model"></param>
+        /// <param name="editor"></param>
+        void BSUpdate(string family, string build, string sku, string model, string editor);
+
+        /// <summary>
+        /// SELECT a.Family, a.Model, a.Build, a.SKU, a.[Type], a.Descr as [Description], a.Editor, a.Cdt, a.Udt, a.ID 
+        ///          FROM PilotRunPrintInfo a, PilotRunPrintType b
+        ///          WHERE a.Model = @Model AND a.Type = b.Type ORDER BY b.ID
+        /// </summary>
+        /// <returns></returns>
+        DataTable GetPrintInfoList(string model);
+
+        /// <summary>
+        /// 判断是否存在相同Model和Type的记录
+        /// IF EXISTS(SELECT * FROM PilotRunPrintInfo WHERE Model = @Model AND Type = @Type)
+        /// 返回true
+        /// 否则false
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        bool IsExistPrintInfo(string model, string type);
+
+        /// <summary>
+        /// UPDATE PilotRunPrintInfo SET Descr = @Description, Editor = @Editor, Udt = GETDATE() WHERE ID=id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="description"></param>
+        /// <param name="editor"></param>
+        void UpdatePrintInfo(int id, string description, string editor);
+
+        /// <summary>
+        /// INSERT INTO [PilotRunPrintInfo]([Family],[Model],[Build],[SKU],[Type],[Descr],[Editor],[Cdt],[Udt])
+        /// VALUES (@Family, @Model, @Build, @SKU, @Type, @Description, @Editor, GETDATE(), GETDATE())
+        /// 需要在返回的ITEM的ID中填上当前新加入的记录的ID
+        /// </summary>
+        /// <param name="item"></param>
+        void AddPrintInfo(PilotRunPrintInfo item);
+
+        /// <summary>
+        /// DELETE FROM PilotRunPrintInfo WHERE ID=id
+        /// </summary>
+        /// <param name="id"></param>
+        void DeletePrintInfo(int id);
+
+        void AddCustomer(CustomerInfo item);
+
+        #region . Defered  .
+
+        void GenerateVirtualMoBOMForMaintainDefered(IUnitOfWork uow, string model, int limitCount, string mo);
+
+        void AddBuildDefered(IUnitOfWork uow, string build, string editor);
+
+        void DeleteBuildDefered(IUnitOfWork uow, string build);
+
+        void AddPrintTypeDefered(IUnitOfWork uow, string type);
+
+        void DeletePrintTypeDefered(IUnitOfWork uow, string type);
+
+        void BSUpdateDefered(IUnitOfWork uow, string family, string build, string sku, string model, string editor);
+
+        void UpdatePrintInfoDefered(IUnitOfWork uow, int id, string description, string editor);
+
+        void AddPrintInfoDefered(IUnitOfWork uow, PilotRunPrintInfo item);
+
+        void DeletePrintInfoDefered(IUnitOfWork uow, int id);
+
+        void AddCustomerDefered(IUnitOfWork uow, CustomerInfo item);
+
+        #endregion
+
+        #endregion
+
+        /// <summary>
+        /// Get QC Statistic from database
+        /// select distinct(Model),count(*),  
+        /// sum(case Status when '1' then 1 else 0 end ) as notcheck,
+        /// sum(case Status when '5' then 1 else 0 end) as piaIN,
+        /// sum(case Status when '2' then 1 else 0 end) as epiaIN,
+        /// sum(case Status when '6' then 1 else 0 end) as pia,
+        /// sum(case Status when '3' then 1 else 0 end )as epia,
+        /// sum(case Status when '7' then 1 else 0 end ) as piaerror,
+        /// sum(case Status when  '4' then 1 else 0 end )as epiaerror
+        /// from QCStatus (nolock) 
+        /// where  Cdt> convert(char(10),getdate(),121) and PdLine=pdline#
+        /// group by Model
+        /// 
+        /// 參考IList<QCStatisticInfo> GetQCStatisticList(string pdLine, string type);
+        /// </summary>
+        /// <param name="pdLine">PdLine</param>
+        /// <returns>QC Statistic Info List</returns>
+        IList<QCStatisticInfo> GetQCStatisticList(string pdLine);
+
+        #region EnergyLabel and IndonesiaLabel
+        void InsertEnergyLabel(EnergyLabelInfo item);
+        void UpdateEnergyLabel(EnergyLabelInfo item);
+        void DeleteEnergyLabel(int id);
+        IList<EnergyLabelInfo> GetEnergyLabel(EnergyLabelInfo condition);
+
+        void InsertIndonesiaLabel(IndonesiaLabelInfo item);
+        void UpdateIndonesiaLabel(IndonesiaLabelInfo item);
+        void DeleteIndonesiaLabel(int id);
+        IList<IndonesiaLabelInfo> GetIndonesiaLabel(IndonesiaLabelInfo condition);
+        #endregion
+
+        #region common get/insert/update/delete
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="R"></typeparam>
+        /// <param name="condition"></param>
+        /// <param name="isAndCondition"></param>
+        /// <returns></returns>
+        IList<R> GetDataByCondition<T, R>(R condition, bool isAndCondition)
+            where T : class
+            where R : class;
+
+        /// <summary>
+        /// select * from table
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="R"></typeparam>
+        /// <param name="condition"></param>
+        /// <returns></returns>
+        IList<R> GetData<T, R>(R condition)
+            where T : class
+            where R : class;
+        /// <summary>
+        /// Select field1, field2 from table
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="R"></typeparam>
+        /// <param name="condition">條件</param>
+        /// <param name="columnNames">列舉Table column name</param>
+        /// <returns></returns>
+        IList<R> GetData<T, R>(R condition, params string[] columnNames)
+            where T : class
+            where R : class;
+        /// <summary>
+        /// select distinct/count/sum field from table
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="R"></typeparam>
+        /// <param name="condition"></param>
+        /// <param name="sqlFunction">null/distinct/count/sum</param>
+        /// <param name="columnNames"></param>
+        /// <returns></returns>
+        IList<R> GetData<T, R>(R condition, string sqlFunction, params string[] columnNames)
+            where T : class
+            where R : class;
+        /// <summary>
+        /// where cloumnName in (......)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="R"></typeparam>
+        /// <param name="condition">只能有一欄</param>
+        /// <param name="columnName"></param>
+        /// <param name="inputList"></param>
+        /// <returns></returns>
+        IList<R> GetDataByList<T, R>(R inSetCondition, string columnName, IList<string> inputList)
+            where T : class
+            where R : class;
+
+        IList<R> GetDataByList<T, R>(R condition, R inSetCondition, string columnName, IList<string> inputList)
+            where T : class
+            where R : class;
+
+        IList<R> GetDataByBetween<T, R>(R condition, R betweenCondition, string betweenColumnName, string beginValue, string endValue)
+            where T : class
+            where R : class;
+
+        IList<R> GetDataByBetween<T, R>(R condition, R betweenCondition, string betweenColumnName, int beginValue, int endValue)
+            where T : class
+            where R : class;
+
+        IList<R> GetDataByBetween<T, R>(R condition, R betweenCondition, string betweenColumnName, DateTime beginValue, DateTime endValue)
+            where T : class
+            where R : class;
+
+        IList<R> GetDataByBetween<T, R>(R condition, R inSetCondition, string columnName, IList<string> inputList,R betweenCondition, string betweenColumnName, DateTime beginValue, DateTime endValue)
+            where T : class
+            where R : class;
+
+        int GetDataCount<T, R>(R conditionm, string columnName)
+            where T : class
+            where R : class;
+
+        int GetDataSum<T, R>(R condition, string columnName)
+            where T : class
+            where R : class;
+
+        int GetDataCountDistinct<T, R>(R condition, string columnName)
+            where T : class
+            where R : class;
+
+        IList<R1> GetDataDistinct<T, R, R1>(R condition, string columnName)
+            where T : class
+            where R : class;
+
+        void UpdateDataByID<T, R>(R condition, R value)
+            where T : class, new()
+            where R : class;
+        void UpdateData<T, R>(R condition, R value, params string[] excludeColumnNames)
+            where T : class, new()
+            where R : class;
+
+        void UpdatDataByList<T, R>(R condition, R inSetCondition, string columnName, IList<string> inputList, R value)
+            where T : class, new()
+            where R : class;
+
+        void InsertData<T, R>(R item)
+            where T : class, new()
+            where R : class;
+        void InsertDataWithID<T, R>(R item)
+            where T : class, new()
+            where R : class;
+
+        int InsertDataAndGetID<T, R>(R item)
+            where T : class, new()
+            where R : class;
+
+        long InsertDataAndGetLongID<T, R>(R item)
+            where T : class, new()
+            where R : class;
+
+        void DeleteData<T, R>(R condition)
+            where T : class, new()
+            where R : class;
+
+        void UpdateDataByIDDefered<T, R>(IUnitOfWork uow, R condition, R value)
+            where T : class, new()
+            where R : class;
+        void UpdateDataDefered<T, R>(IUnitOfWork uow, R condition, R value, params string[] excludeColumnNames)
+            where T : class, new()
+            where R : class;
+
+        void UpdatDataByListDefered<T, R>(IUnitOfWork uow, R condition, R inSetCondition, string columnName, IList<string> inputList, R value)
+            where T : class, new()
+            where R : class;
+        void InsertDataDefered<T, R>(IUnitOfWork uow, R item)
+            where T : class, new()
+            where R : class;
+        void InsertDataWithIDDefered<T, R>(IUnitOfWork uow, R item)
+            where T : class, new()
+            where R : class;
+        void DeleteDataDefered<T, R>(IUnitOfWork uow, R condition)
+            where T : class, new()
+            where R : class;
+        #endregion
+
+        #region Repair DefectComponent
+        void InsertDefectComponentAndLog(DefectComponentInfo dcInfo, string logActionName, string logRemark);
+
+        void InsertDefectComponentAndLogDefered(IUnitOfWork uow, DefectComponentInfo dcInfo, string logActionName, string logRemark);
+
+        #endregion
+    }
+}

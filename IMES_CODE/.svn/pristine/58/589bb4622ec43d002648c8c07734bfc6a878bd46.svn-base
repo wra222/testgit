@@ -1,0 +1,74 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="SaveProductQC" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind SaveProductQC,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" AddObjectWithSessionKey="{x:Null}" Station="{ActivityBind SaveProductQC,Path=Station}" x:Name="getProduct1" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" InputType="ProductIDOrCustSN" />
+	<ns0:BlockStation Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" ProcessType="Product" Station="{ActivityBind SaveProductQC,Path=Station}" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+	<ns0:CheckImageDownLoadLog Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="checkImageDownLoadLog1" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="{ActivityBind SaveProductQC,Path=Station}" DefaultImageDownLoadStation="6P" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+	<ns0:GetASTList Customer="{ActivityBind SaveProductQC,Path=Customer}" NoAstDefineThrowError="True" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Enabled="False" Station="{ActivityBind SaveProductQC,Path=Station}" x:Name="getASTList1" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+	<ns0:GetGenAstSNDefineInfo Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="getGenAstSNDefineInfo1" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="{ActivityBind SaveProductQC,Path=Station}" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+	<ns0:GetBOM Customer="{ActivityBind SaveProductQC,Path=Customer}" MainObjFrom="Product" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" x:Name="getBOM1" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="{ActivityBind SaveProductQC,Path=Station}" ModelFrom="Product" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="needAST" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="processInputAST">
+			<ns0:WaitInput Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="{ActivityBind SaveProductQC,Path=Station}" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+			<IfElseActivity x:Name="ifElseActivity2">
+				<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="notComplete" />
+					</IfElseBranchActivity.Condition>
+					<ns0:PartMatch Customer="{ActivityBind SaveProductQC,Path=Customer}" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="{ActivityBind SaveProductQC,Path=Station}" x:Name="partMatch1" BindTo="Product" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:GetProductQC Customer="{ActivityBind SaveProductQC,Path=Customer}" IsNeed_SP_Param_Line="True" QC_EPIA_SP="op_MVS_Get_Product_EPIA_ICC" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="{ActivityBind SaveProductQC,Path=Station}" x:Name="getProductQC1" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+	<ns0:TxnScope Station="{ActivityBind SaveProductQC,Path=Station}" x:Name="txnScope1" Key="{ActivityBind SaveProductQC,Path=Key}" SessionType="{ActivityBind SaveProductQC,Path=SessionType}">
+		<ns0:BindParts Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="bindParts1" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Enabled="False" Station="{ActivityBind SaveProductQC,Path=Station}" BindTo="Product" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+		<IfElseActivity x:Name="ifUPS">
+			<IfElseBranchActivity x:Name="IsUPSDevice">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="UPSDevice" />
+				</IfElseBranchActivity.Condition>
+				<ns0:AssignUPSPOAndAst Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="assignUPSPOAndAst1" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" ShipDateOffSetDays="-4" Station="{ActivityBind SaveProductQC,Path=Station}" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+				<ns0:CheckAndGenerateATSN Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="checkAndGenerateATSN2" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="{ActivityBind SaveProductQC,Path=Station}" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="NoneUPSAndCDSI">
+				<ns0:CheckAndGenerateATSN Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="checkAndGenerateATSN1" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="{ActivityBind SaveProductQC,Path=Station}" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<IfElseActivity x:Name="ifElseActivity1">
+			<IfElseBranchActivity x:Name="ifQCPassed">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="QCPassed" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UpdateProductStatus Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Status="Pass" Station="79" IsReturnStatoin="False" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="writeProductLog4" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="65" Status="Pass" IsSingle="True" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="79" Status="Pass" IsSingle="True" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+				<ns0:WriteQCStatus Customer="{ActivityBind SaveProductQC,Path=Customer}" Remark="{x:Null}" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" ProductAttrName="{x:Null}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="{ActivityBind SaveProductQC,Path=Station}" Status="1" x:Name="writeQCStatus1" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" Type="PIA" />
+				<ns0:UpdateForceNWC Customer="{ActivityBind SaveProductQC,Path=Customer}" IsClear="True" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="{ActivityBind SaveProductQC,Path=Station}" x:Name="updateForceNWC2" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity Enabled="False" x:Name="ifEPIA">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="QCEPIA" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UpdateProductStatus Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Status="Pass" Station="6A" IsReturnStatoin="False" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="writeProductLog5" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="65" Status="Pass" IsSingle="True" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="73" Status="Pass" IsSingle="True" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="writeProductLog7" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="66" Status="Pass" IsSingle="True" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="writeProductLog8" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="6A" Status="Pass" IsSingle="True" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+				<ns0:WriteQCStatus Customer="{ActivityBind SaveProductQC,Path=Customer}" Remark="{x:Null}" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" ProductAttrName="{x:Null}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="{ActivityBind SaveProductQC,Path=Station}" Status="2" x:Name="writeQCStatus2" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" Type="PIA" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ifRealEPIA">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="QCRealEPIA" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UpdateProductStatus Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="updateProductStatus3" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Status="Pass" Station="73" IsReturnStatoin="False" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="writeProductLog6" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="65" Status="Pass" IsSingle="True" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="writeProductLog3" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="73" Status="Pass" IsSingle="True" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+				<ns0:WriteQCStatus Customer="{ActivityBind SaveProductQC,Path=Customer}" Remark="1" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" ProductAttrName="{x:Null}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="{ActivityBind SaveProductQC,Path=Station}" Status="2" x:Name="writeQCStatus3" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" Type="PIA" />
+				<ns0:UpdateForceNWC Customer="{ActivityBind SaveProductQC,Path=Customer}" IsClear="True" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="{ActivityBind SaveProductQC,Path=Station}" x:Name="updateForceNWC1" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:TxnScope>
+	<ns0:CheckShipDateAndSetMsg Customer="{ActivityBind SaveProductQC,Path=Customer}" x:Name="checkShipDateAndSetMsg1" SessionType="{ActivityBind SaveProductQC,Path=SessionType}" Editor="{ActivityBind SaveProductQC,Path=Editor}" Station="{ActivityBind SaveProductQC,Path=Station}" Line="{ActivityBind SaveProductQC,Path=PdLine}" Key="{ActivityBind SaveProductQC,Path=Key}" IsThrowException="False" />
+</ns0:BaseFlow>

@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{34B4EA0B-4E56-44A7-84D1-27819C45A5B0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IMES.Maintain.Implementation</RootNamespace>
+    <AssemblyName>IMES.Maintain.Implementation</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IMES.DataModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.FisObject, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.FisException, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.Repository, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.Repository.Metas, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.RepositoryEx, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Interface.RouteManagement, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Maintain.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssignModelMgr.cs" />
+    <Compile Include="BomDescrMaintainImpl.cs" />
+    <Compile Include="BTOceanOrderManager.cs" />
+    <Compile Include="AssetRangeManager.cs" />
+    <Compile Include="CDSIPOManager.cs" />
+    <Compile Include="ActualProductionTimeManager.cs" />
+    <Compile Include="Celdata.cs" />
+    <Compile Include="CheckItemTypeManager.cs" />
+    <Compile Include="ChepPalletManager.cs" />
+    <Compile Include="CollectionMaterialLot.cs" />
+    <Compile Include="CommonFunction.cs" />
+    <Compile Include="ConstValueMaintain.cs" />
+    <Compile Include="ConstValueType.cs" />
+    <Compile Include="BSamLocation.cs" />
+    <Compile Include="CheckItemTypeListMaintainImpl.cs" />
+    <Compile Include="AssemblyVC.cs" />
+    <Compile Include="AstDefine.cs" />
+    <Compile Include="SmallBoardECR.cs" />
+    <Compile Include="DefcetHoldRule.cs" />
+    <Compile Include="FAIModelMaintain.cs" />
+    <Compile Include="FAIModelRule.cs" />
+    <Compile Include="HoldRule.cs" />
+    <Compile Include="IndornesiaLabel.cs" />
+    <Compile Include="EnergyLabel.cs" />
+    <Compile Include="FRUMBVersionManager.cs" />
+    <Compile Include="ModelAssemblyCode.cs" />
+    <Compile Include="ModuleApprovalItem.cs" />
+    <Compile Include="PartForbidRule.cs" />
+    <Compile Include="SysSettingManager.cs" />
+    <Compile Include="SpecialOrder.cs" />
+    <Compile Include="LabelTypeRuleMaintainImpl.cs" />
+    <Compile Include="QTime.cs" />
+    <Compile Include="OSWIN.cs" />
+    <Compile Include="PalletType.cs" />
+    <Compile Include="KeyPartsDefectCollectionManagerManager.cs" />
+    <Compile Include="PCBVersionManager.cs" />
+    <Compile Include="DeptManager.cs" />
+    <Compile Include="FAITCNDefectCheckManager.cs" />
+    <Compile Include="ICombineKPSettingManager.cs" />
+    <Compile Include="IFAIInfoMaintain.cs" />
+    <Compile Include="IIFamilyMBCodeManager.cs" />
+    <Compile Include="LotSettingManager.cs" />
+    <Compile Include="DefectStationManager.cs" />
+    <Compile Include="FaKittingUploadManager.cs" />
+    <Compile Include="FamilyInfoManager.cs" />
+    <Compile Include="ITCNDCheckQCHoldSettingManager.cs" />
+    <Compile Include="ITCNDCheckSettingManager.cs" />
+    <Compile Include="ITCNDDefectCheckManager.cs" />
+    <Compile Include="FAFloatLocationManager.cs" />
+    <Compile Include="GradeManager.cs" />
+    <Compile Include="ACAdaptorManager.cs" />
+    <Compile Include="AllKindsOfTypeManager.cs" />
+    <Compile Include="AssetRuleManager.cs" />
+    <Compile Include="BatteryImpl.cs" />
+    <Compile Include="CommonImpl.cs" />
+    <Compile Include="COAReceivingManager.cs" />
+    <Compile Include="LightStaManager.cs" />
+    <Compile Include="MBAssemblyCodeManager.cs" />
+    <Compile Include="DefectMaintainManager.cs" />
+    <Compile Include="ECRVersionManager.cs" />
+    <Compile Include="ForwarderManager.cs" />
+    <Compile Include="ICASAManager.cs" />
+    <Compile Include="InternalCOAImpl.cs" />
+    <Compile Include="KittingCodeMaintainImpl.cs" />
+    <Compile Include="LabelSettingManager.cs" />
+    <Compile Include="FAStationManager.cs" />
+    <Compile Include="KittingLocationManager.cs" />
+    <Compile Include="LightNoManager.cs" />
+    <Compile Include="LightStationManager.cs" />
+    <Compile Include="LineManager.cs" />
+    <Compile Include="MasterLabelManager.cs" />
+    <Compile Include="MBMaintainManager.cs" />
+    <Compile Include="ModelManager.cs" />
+    <Compile Include="ModelProcessManager.cs" />
+    <Compile Include="ModelWeightManager.cs" />
+    <Compile Include="ModelWeightToleranceManager.cs" />
+    <Compile Include="OfflineLabelSettingManager.cs" />
+    <Compile Include="PAKitLocManager.cs" />
+    <Compile Include="PakKittingUploadManager.cs" />
+    <Compile Include="PAKLabelLightNoManager.cs" />
+    <Compile Include="PalletQtyManager.cs" />
+    <Compile Include="PLTStandardManager.cs" />
+    <Compile Include="PalletWeightManager.cs" />
+    <Compile Include="PartCheckManager.cs" />
+    <Compile Include="PartTypeAttributeManager.cs" />
+    <Compile Include="PdLineStationManager.cs" />
+    <Compile Include="PilotRunPrintInfoManager.cs" />
+    <Compile Include="PODLabelPartManager.cs" />
+    <Compile Include="ProcessManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PartManager.cs" />
+    <Compile Include="QCRatioManager.cs" />
+    <Compile Include="RegionManager.cs" />
+    <Compile Include="PartTypeManager.cs" />
+    <Compile Include="RepairInfoMaintainManager.cs" />
+    <Compile Include="ReworkManager.cs" />
+    <Compile Include="RouteManagement.cs" />
+    <Compile Include="RunInTimeControlManager.cs" />
+    <Compile Include="SATestCheckRuleManager.cs" />
+    <Compile Include="ShipTypeManager.cs" />
+    <Compile Include="SMTLineSpeedManager.cs" />
+    <Compile Include="SMTObjectiveTimeManager.cs" />
+    <Compile Include="SQEDefectReportManager.cs" />
+    <Compile Include="StationManager.cs" />
+    <Compile Include="PartForbiddenManager.cs" />
+    <Compile Include="TestMBManager.cs" />
+    <Compile Include="TPCBMaintainManager.cs" />
+    <Compile Include="UniteMBManager.cs" />
+    <Compile Include="VendorCodeImpl.cs" />
+    <Compile Include="COMSettingManager.cs" />
+    <Compile Include="WLBTDescrManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

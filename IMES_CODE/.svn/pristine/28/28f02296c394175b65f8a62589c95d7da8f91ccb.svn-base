@@ -1,0 +1,568 @@
+div.container
+{
+	width:1284px;
+    height:570px;
+    margin: 0 auto;
+    margin-top:3px;
+    padding:0;
+    /* border:1px solid black; */
+
+}
+#wipDescr{
+	width:810px;
+	height:38px;
+	border-top:1px solid gray;
+	border-left:1px solid gray;
+	border-right:1px solid gray;
+	float:left;
+	position:relative;
+}
+#dynamicMeter{
+	width:466px;
+	height:260px;
+	float:right;
+	border:1px solid gray;
+	border-bottom:none;
+	position:relative;
+}
+#touChanDescr
+{
+    width:50px;
+    height:15px;
+    border:1px solid red;
+    position:relative;
+    top:40px;
+    left:20px;
+    z-index:2000000;
+}
+
+
+#meterDescr
+{
+    height:38px;
+    border-bottom:1px solid gray;
+    position:relative;
+}
+#meterPicture
+{
+    height:222px;
+}
+
+#imggongshi
+{
+    display:block;
+    width:22px;
+    height:22px;
+    position:relative;
+    top:-27px;
+    left:135px;
+}
+#xiangxishuoming
+{
+   
+    position:relative;
+    left:150px;
+    top:-33px;
+    border:1px solid;
+    width:240px;
+    height:54px;
+    font: 12px arial,sans-serif;
+    background:black;
+    border-radius:10px;
+    line-height:1.5;
+    padding-left:8px;
+	color:white;
+	z-index:1000000;
+	display:none;
+}
+
+#touchanlvURL
+{
+    position:absolute;
+    left:50px;
+    top:218px;
+    z-index:2000000;
+    
+}
+#touchanlvURL a
+{
+    color:Black;
+    text-decoration:none;
+    cursor:default;
+}
+#jiedanURL
+{
+    position:absolute;
+    left:210px;
+    top:218px;
+    z-index:2000000;
+    
+}
+#zhitongURL
+{
+    position:absolute;
+    left:370px;
+    top:218px;
+    z-index:2000000;
+
+}
+#zhitongURL a
+{
+    color:Black;
+    text-decoration:none;
+    cursor:default;
+}
+.linkURL a
+{
+    color:Blue;
+    font: 16px arial,sans-serif;
+    font-weight:bold;
+}
+
+#wipStation{
+
+	border:1px gray solid ;
+	width:810px;
+	height:516px;
+	float:left;
+	position:relative;
+}
+#presentShipment{
+	width:466px;
+	height:294px;
+	float:right;
+	border:1px solid gray;
+
+}
+#shipmentDesce
+{
+    height:38px;
+    border-bottom:1px solid gray;
+}
+#shipmentPicture
+{
+    height:256px;
+}
+
+
+.firstRow{
+	margin-top:3px;
+	margin-left:40px;
+	/* border:1px solid blue; */
+	height:68px;
+	width:680px;
+}
+.secondRow{
+	/* border:1px solid blue; */
+	position:relative;
+	height:35px;
+	width:695px;
+}
+.thirdRow{
+	margin-top:45px;
+	margin-left:40px;
+	/* border:1px solid blue; */
+	height:68px;
+	width:680px;
+}
+.fourRow{
+	margin-top:60px;
+	margin-left:40px;
+	/* border:1px solid blue; */
+	height:68px;
+	width:680px;
+}
+/* five===================================== */
+.fiveRow{
+	margin-top:43px;
+	margin-left:40px;
+	/* border:1px solid blue; */
+	height:68px;
+	width:680px;
+}
+.fiveRow .station{
+	position:relative;
+  display:inline;
+	float: right;
+	
+
+}
+.fiveRow  img.dynamicIMG{
+	top:33px;
+	margin-top:0px;
+	left:0px;
+	display:block;
+	position:absolute;
+	z-index:10;
+
+
+}
+
+/* five===================================== */
+
+/* sixive===================================== */
+.sixRow{
+	margin-top:63px;
+	margin-left:40px;
+	/* border:1px solid blue; */
+	height:68px;
+	width:680px;
+}
+.sixRow .station{
+	position:relative;
+  display:inline;
+	float: left;
+	
+
+}
+.sixRow  img.dynamicIMG{
+	top:33px;
+	margin-top:0px;
+	left:0px;
+	display:block;
+	position:absolute;
+	z-index:10;
+
+
+}
+#sixlinkLine
+{
+	position:absolute;
+	width:20px;
+	height:68px;
+	/* border:1px solid red; */
+	top:430px;
+	left:68px;
+	
+
+}
+#sixlinkLine .linkLine
+{
+	position:absolute;
+	width:13px;
+	height:68px;
+}
+#sixlinkLine .downLink
+{
+position:absolute;
+top:20px;
+left:1px;
+}
+
+/* six===================================== */
+
+
+
+
+#linkLine{
+	position:absolute;
+	width:20px;
+	height:118px;
+	/* border:1px solid red; */
+	top:45px;
+	left:728px;
+	
+
+}
+#SecondlinkLine
+{
+	position:absolute;
+	width:20px;
+	height:50px;
+	/* border:1px solid red; */
+	top:200px;
+	left:68px;
+	
+
+}
+#SecondlinkLine .linkLine
+{
+	position:absolute;
+	width:13px;
+	height:60px;
+}
+#SecondlinkLine .downLink
+{
+position:absolute;
+top:20px;
+left:1px;
+}
+
+
+#fivelinkLine
+{
+	position:absolute;
+	width:20px;
+	height:118px;
+	/* border:1px solid red; */
+	top:285px;
+	left:728px;
+	
+
+}
+#fivelinkLine .linkLine
+{
+	position:absolute;
+	width:20px;
+	height:116px;
+}
+#fivelinkLine .downLink
+{
+position:absolute;
+top:20px;
+left:8px;
+}
+
+
+
+
+
+
+
+
+
+img.linkLine{
+height:116px;
+width:16px;
+cursor:auto;
+
+
+}
+
+img.downLink{
+position:absolute;
+top:20px;
+left:6px;
+
+}
+
+#mapLeft1 > img
+{
+    cursor:auto;
+    display:none;
+}
+
+#mapLeft2 > img
+{
+    cursor:auto;
+    display:none;
+}
+
+
+.firstRow .station{
+	position:relative;
+  display:inline;
+	float: left;
+	/* border:1px solid red; */
+/* 	margin:0px; */
+	/* margin-right:50px; */
+
+}
+
+.thirdRow .station{
+	position:relative;
+    display:inline;
+	float: right;
+	/* border:1px solid red; */
+    /* 	margin:0px; */
+	/* margin-right:50px; */
+
+}
+.fourRow .station{
+	position:relative;
+  display:inline;
+	float: left;
+	/* border:1px solid red; */
+/* 	margin:0px; */
+	/* margin-right:50px; */
+
+}
+
+.stationLogo
+{
+    position:relative;
+	width:66px;
+	height:67px;
+	/* background-image: url('../images/39.png'); */
+	z-index:100;
+    
+}
+
+
+img.line{
+
+	width:70px;
+	height:5px;
+	/* border:1px solid red; */
+	margin-top:0px;
+	/*display:none; */
+	cursor:auto;
+}
+
+.firstRow  img.dynamicIMG{
+	top:32px;
+	margin-top:0px;
+	left:0px;
+	display:block;
+	position:absolute;
+	z-index:10;
+	display:none; 
+
+}
+.thirdRow  img.dynamicIMG{
+	top:32px;
+	left:70px;
+	margin-top:0px;
+	display:block;
+	position:absolute;
+	z-index:10;
+	display:none;
+	
+
+}
+.fourRow  img.dynamicIMG{
+	top:33px;
+	margin-top:0px;
+	left:0px;
+	display:block;
+	position:absolute;
+	z-index:10;
+	display:none; 
+
+}
+
+.stationQty
+{
+    margin-top:12px;
+    height: 24px; 
+		/* border: 1px red solid; */
+    font-size: 18px;
+    font-family: Kartika;
+    font-style: italic;
+    color: #000000;
+}
+.stationAbstractName{
+
+	/* border:1px red solid; */
+	margin-top:3px;
+	height:18px;
+}
+
+.stationName
+{
+    /* margin-left:13px; */
+    float: left;
+    font-size: 14px; 
+		/* border:1px red solid; */
+    width: 120px;
+    height: 35px;
+    text-align: center;
+    font-weight: bold;
+    font-family: KaiTi;
+
+}
+.name1{
+	position:absolute;
+	left:10px;
+}
+.name2{
+	position:absolute;
+	left:150px;
+}
+.name3{
+	position:absolute;
+	left:285px;
+}
+.name4{
+	position:absolute;
+	left:420px;
+}
+.name5{
+	position:absolute;
+	left:560px;
+}
+.name6{
+	position:absolute;
+	left:560px;
+}
+.name7{
+	position:absolute;
+	left:420px;
+}
+.name8{
+	position:absolute;
+	left:285px;
+}
+.name9{
+	position:absolute;
+	left:150px;
+}
+.name10{
+	position:absolute;
+	left:10px;
+}
+#shipMap{
+/* border:1px solid red; */
+height:302px;
+position:relative;
+}
+#mapLeft{
+/* border:1px solid red; */
+width:100px;
+height:302px;
+float:left;
+}
+#mapLeft1{
+position:absolute;
+/* border:1px solid blue; */
+width:50px;
+height:50px;
+left:65px;
+top:-20px;
+}
+#mapLeft1 img{
+height:43px; 
+width:13px;
+}
+
+#mapLeft2{
+/* border:1px solid blue; */
+position:absolute;
+width:67px;
+height:67px;
+left:40px;
+top:24px;
+
+}
+
+#mapLeft3{
+    position:absolute;
+    top:83px;
+    left:0px;
+    
+}
+
+#mapLeft3 img{
+
+    height:220px;
+    cursor:auto;
+}
+
+#mapRight{
+/* border:1px solid red; */
+height:302px;
+width:745px;
+float:left;
+position:absolute;
+z-index:1000;
+left:60px;
+}
+
+
+.modelTitle{
+	font:italic bold 20px arial,sans-serif;
+	line-height:38px;
+	color:Red;
+	
+}
+.stationLogo p{font-size:18px;text-align:center;position:absolute;margin-top:0px;margin-left:0px}

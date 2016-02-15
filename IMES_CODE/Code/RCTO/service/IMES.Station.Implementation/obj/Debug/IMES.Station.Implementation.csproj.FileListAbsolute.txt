@@ -1,0 +1,6 @@
+E:\IMES_CODE\Code\RCTO\service\IMES.Station.Implementation\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\bin\IMES.Station.Implementation.XML
+E:\IMES_CODE\Code\RCTO\bin\IMES.Station.Implementation.dll
+E:\IMES_CODE\Code\RCTO\bin\IMES.Station.Implementation.pdb
+E:\IMES_CODE\Code\RCTO\service\IMES.Station.Implementation\obj\Debug\IMES.Station.Implementation.dll
+E:\IMES_CODE\Code\RCTO\service\IMES.Station.Implementation\obj\Debug\IMES.Station.Implementation.pdb

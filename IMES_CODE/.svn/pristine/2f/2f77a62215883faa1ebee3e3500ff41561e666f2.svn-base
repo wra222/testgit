@@ -1,0 +1,101 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="PIAOutput" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind PIAOutput,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="{ActivityBind PIAOutput,Path=Station}" x:Name="getProduct1" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" InputType="ProductID" />
+	<ns0:BlockStation Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" ProcessType="Product" Station="{ActivityBind PIAOutput,Path=Station}" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+	<ns0:GetQcstatusForPiaOutput Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="getQcstatusForPiaOutput1" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="{ActivityBind PIAOutput,Path=Station}" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+	<ns0:BlockForPiaOutput Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="blockForPiaOutput1" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="{ActivityBind PIAOutput,Path=Station}" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+	<ns0:WaitInput Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="{ActivityBind PIAOutput,Path=Station}" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+	<ns0:CheckQcstatusForPiaOutput Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="checkQcstatusForPiaOutput1" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="{ActivityBind PIAOutput,Path=Station}" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+	<ns0:DBScope Station="{ActivityBind PIAOutput,Path=Station}" x:Name="dbScope2" Key="{ActivityBind PIAOutput,Path=Key}" SessionType="{ActivityBind PIAOutput,Path=SessionType}">
+		<IfElseActivity x:Name="ifElseActivity5">
+			<IfElseBranchActivity x:Name="IsEpiaBranchActivity1">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="IsEpia" />
+				</IfElseBranchActivity.Condition>
+				<IfElseActivity x:Name="ifElseActivity6">
+					<IfElseBranchActivity x:Name="EPIApassBranchActivity1" Description="isPass">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="EpiaIsPass" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateQCStatus Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="updateQCStatus5" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="{ActivityBind PIAOutput,Path=Station}" Status="3" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" Type="{x:Null}" />
+						<ns0:WriteProductLog Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="writeProductLog4" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="6A" Status="Pass" IsSingle="True" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="updateProductStatus3" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Status="Pass" Station="6A" IsReturnStatoin="False" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+						<ns0:WriteProductTestLog Customer="{ActivityBind PIAOutput,Path=Customer}" Station="6A" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" IsPass="True" x:Name="writeProductTestLog4" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="EPIAFailBranchActivity2">
+						<ns0:UpdateQCStatus Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="updateQCStatus6" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="{ActivityBind PIAOutput,Path=Station}" Status="4" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" Type="{x:Null}" />
+						<ns0:WriteProductLog Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="writeProductLog3" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="6A" Status="Fail" IsSingle="True" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="updateProductStatus4" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Status="Fail" Station="6A" IsReturnStatoin="False" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+						<ns0:WriteProductTestLog Customer="{ActivityBind PIAOutput,Path=Customer}" Station="6A" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" x:Name="writeProductTestLog3" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="noEPIABranchActivity">
+				<IfElseActivity x:Name="ifElseActivity7">
+					<IfElseBranchActivity x:Name="noEPIApassBranchActivity1">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="PiaIsPass" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateQCStatus Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="updateQCStatus7" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="{ActivityBind PIAOutput,Path=Station}" Status="6" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" Type="{x:Null}" />
+						<ns0:WriteProductLog Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="writeProductLog5" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="79A" Status="Pass" IsSingle="True" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="updateProductStatus5" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Status="Pass" Station="79A" IsReturnStatoin="False" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+						<ns0:WriteProductTestLog Customer="{ActivityBind PIAOutput,Path=Customer}" Station="79A" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" IsPass="True" x:Name="writeProductTestLog5" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="noEPIAFailBranchActivity2">
+						<ns0:UpdateQCStatus Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="updateQCStatus8" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="{ActivityBind PIAOutput,Path=Station}" Status="7" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" Type="{x:Null}" />
+						<ns0:WriteProductLog Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="writeProductLog6" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="79A" Status="Fail" IsSingle="True" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="updateProductStatus6" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Status="Fail" Station="79A" IsReturnStatoin="False" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+						<ns0:WriteProductTestLog Customer="{ActivityBind PIAOutput,Path=Customer}" Station="79A" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" x:Name="writeProductTestLog6" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+	<ns0:DBScope Station="{ActivityBind PIAOutput,Path=Station}" x:Name="dbScope1" Key="{ActivityBind PIAOutput,Path=Key}" Enabled="False" SessionType="{ActivityBind PIAOutput,Path=SessionType}">
+		<IfElseActivity x:Name="ifElseActivity1">
+			<IfElseBranchActivity Enabled="False" x:Name="NoDefectBranch">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="hasDefect" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UpdateQCStatus Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="updateQCStatus2" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="{ActivityBind PIAOutput,Path=Station}" Status="3" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" Type="{x:Null}" />
+				<IfElseActivity x:Name="ifElseActivity2" Enabled="False">
+					<IfElseBranchActivity x:Name="ifElseOQCSkip">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="OQCOrSkipNoDefect" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateQCStatus Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="updateQCStatus1" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="{ActivityBind PIAOutput,Path=Station}" Status="6" Line="{ActivityBind PIAOutput,Path=Customer}" Key="{ActivityBind PIAOutput,Path=Key}" Type="{x:Null}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="ifElseEOQC" />
+				</IfElseActivity>
+				<ns0:UpdateProductStatus Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Status="Pass" Station="{ActivityBind PIAOutput,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+				<ns0:WriteProductTestLog Customer="{ActivityBind PIAOutput,Path=Customer}" Station="{ActivityBind PIAOutput,Path=Station}" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" IsPass="True" x:Name="writeProductTestLog2" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="{ActivityBind PIAOutput,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="DefectBranch">
+				<ns0:UpdateQCStatus Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="updateQCStatus4" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="{ActivityBind PIAOutput,Path=Station}" Status="4" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" Type="{x:Null}" />
+				<IfElseActivity x:Name="ifElseActivity3" Enabled="False">
+					<IfElseBranchActivity x:Name="ifElseOQCSkip2">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="OQCOrSkipHasDefect" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateQCStatus Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="updateQCStatus3" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="{ActivityBind PIAOutput,Path=Station}" Status="7" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" Type="{x:Null}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="ifElseEOQC2" />
+				</IfElseActivity>
+				<IfElseActivity x:Name="ifElseActivity4" Enabled="False">
+					<IfElseBranchActivity x:Name="ifElseFru">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="IsFru" />
+						</IfElseBranchActivity.Condition>
+						<ns0:GetMB Customer="{ActivityBind PIAOutput,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="{ActivityBind PIAOutput,Path=Station}" MBSnSessionKey="ProductIDOrCustSN" x:Name="getMB1" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+						<ns0:WritePCBTestLog Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="writePCBTestLog1" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="34" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+						<ns0:UpdateMBStatus Customer="{ActivityBind PIAOutput,Path=Customer}" Station="{ActivityBind PIAOutput,Path=Station}" SessionType="{ActivityBind PIAOutput,Path=SessionType}" ManualStation="34" Editor="{ActivityBind PIAOutput,Path=Editor}" IsPass="Fail" x:Name="updateMBStatus1" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+						<ns0:WriteMBLog Customer="{ActivityBind PIAOutput,Path=Customer}" LineSuffix="{x:Null}" ManualStation="{x:Null}" SessionType="{ActivityBind PIAOutput,Path=SessionType}" x:Name="writeMBLog1" Editor="{ActivityBind PIAOutput,Path=Editor}" IsPass="True" Station="34" IsSingle="True" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+				<ns0:UpdateProductStatus Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Status="Fail" Station="{ActivityBind PIAOutput,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+				<ns0:WriteProductTestLog Customer="{ActivityBind PIAOutput,Path=Customer}" Station="{ActivityBind PIAOutput,Path=Station}" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" x:Name="writeProductTestLog1" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind PIAOutput,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind PIAOutput,Path=SessionType}" Editor="{ActivityBind PIAOutput,Path=Editor}" Station="{ActivityBind PIAOutput,Path=Station}" Status="Fail" IsSingle="True" Line="{ActivityBind PIAOutput,Path=PdLine}" Key="{ActivityBind PIAOutput,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+</ns0:BaseFlow>

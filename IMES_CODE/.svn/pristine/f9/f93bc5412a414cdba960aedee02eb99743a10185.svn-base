@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cn_btnAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="cn_btnDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="cn_btnExplore" xml:space="preserve">
+    <value>浏览</value>
+  </data>
+  <data name="cn_btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="cn_btnUpload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="cn_lblAutoDownloadText" xml:space="preserve">
+    <value>Auto Download</value>
+  </data>
+  <data name="cn_lblCustPNText" xml:space="preserve">
+    <value>CustPN:</value>
+  </data>
+  <data name="cn_lblDescText" xml:space="preserve">
+    <value>Desc:</value>
+  </data>
+  <data name="cn_lblNodeTypeText" xml:space="preserve">
+    <value>Node Type:</value>
+  </data>
+  <data name="cn_lblPartNodeTypeText" xml:space="preserve">
+    <value>Part Node Type:</value>
+  </data>
+  <data name="cn_lblPartNoText" xml:space="preserve">
+    <value>Part No:</value>
+  </data>
+  <data name="cn_lblPartTypeText" xml:space="preserve">
+    <value>Part Type:</value>
+  </data>
+  <data name="cn_lblRemarkText" xml:space="preserve">
+    <value>Remark:</value>
+  </data>
+  <data name="cn_lbPartListText" xml:space="preserve">
+    <value>Part  List:</value>
+  </data>
+  <data name="cn_lstAutoDL" xml:space="preserve">
+    <value>AutoDL</value>
+  </data>
+  <data name="cn_lstCustPN" xml:space="preserve">
+    <value>CustPN</value>
+  </data>
+  <data name="cn_lstDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="cn_lstItemCdt" xml:space="preserve">
+    <value>Cdt</value>
+  </data>
+  <data name="cn_lstItemEditor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="cn_lstItemUdt" xml:space="preserve">
+    <value>Udt</value>
+  </data>
+  <data name="cn_lstModel" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="cn_lstPartType" xml:space="preserve">
+    <value>PartType</value>
+  </data>
+  <data name="cn_lstPdLine" xml:space="preserve">
+    <value>PdLine</value>
+  </data>
+  <data name="cn_lstRemark" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="cn_msgInputPODLabel" xml:space="preserve">
+    <value>Please input [File Name] first!!</value>
+  </data>
+  <data name="cn_pmtMessage1" xml:space="preserve">
+    <value>需要先选择一条记录!</value>
+  </data>
+  <data name="cn_pmtMessage2" xml:space="preserve">
+    <value>确定要删除这条记录么？</value>
+  </data>
+  <data name="cn_pmtMessage3" xml:space="preserve">
+    <value>需要输入[PartNo]!</value>
+  </data>
+  <data name="cn_pmtMessage4" xml:space="preserve">
+    <value>需要输入[NodeType]!</value>
+  </data>
+  <data name="cn_pmtMessage5" xml:space="preserve">
+    <value>需要输入[Desc]!</value>
+  </data>
+  <data name="cn_pmtMessage6" xml:space="preserve">
+    <value>不存在查询的[PartNo]!</value>
+  </data>
+  <data name="cn_pmtMessage7" xml:space="preserve">
+    <value>已经存在对应的PDLine和Model！</value>
+  </data>
+  <data name="cn_PODLabelText" xml:space="preserve">
+    <value>PODLabel</value>
+  </data>
+  <data name="eng_btnAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="eng_btnDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="eng_btnExplore" xml:space="preserve">
+    <value>浏览</value>
+  </data>
+  <data name="eng_btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="eng_btnUpload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="eng_lblAutoDownloadText" xml:space="preserve">
+    <value>Auto Download</value>
+  </data>
+  <data name="eng_lblBTOceanOrderText" xml:space="preserve">
+    <value>BT Ocean Order List:</value>
+  </data>
+  <data name="eng_lblCustPNText" xml:space="preserve">
+    <value>CustPN:</value>
+  </data>
+  <data name="eng_lblDescText" xml:space="preserve">
+    <value>Desc:</value>
+  </data>
+  <data name="eng_lblInsertFileText" xml:space="preserve">
+    <value>Insert File:</value>
+  </data>
+  <data name="eng_lblModelText" xml:space="preserve">
+    <value>Model:</value>
+  </data>
+  <data name="eng_lblPartTypeText" xml:space="preserve">
+    <value>Part Type:</value>
+  </data>
+  <data name="eng_lblPdLineText" xml:space="preserve">
+    <value>PdLine:</value>
+  </data>
+  <data name="eng_lblRemarkText" xml:space="preserve">
+    <value>Remark:</value>
+  </data>
+  <data name="eng_lstAutoDL" xml:space="preserve">
+    <value>AutoDL</value>
+  </data>
+  <data name="eng_lstCustPN" xml:space="preserve">
+    <value>CustPN</value>
+  </data>
+  <data name="eng_lstDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="eng_lstItemCdt" xml:space="preserve">
+    <value>Cdt</value>
+  </data>
+  <data name="eng_lstItemEditor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="eng_lstItemUdt" xml:space="preserve">
+    <value>Udt</value>
+  </data>
+  <data name="eng_lstNodeType" xml:space="preserve">
+    <value>NodeType</value>
+  </data>
+  <data name="eng_lstPartNo" xml:space="preserve">
+    <value>PartNo</value>
+  </data>
+  <data name="eng_lstPartType" xml:space="preserve">
+    <value>PartType</value>
+  </data>
+  <data name="eng_lstRemark" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="eng_pmtMessage1" xml:space="preserve">
+    <value>Please choose a item!</value>
+  </data>
+  <data name="eng_pmtMessage2" xml:space="preserve">
+    <value>Are you sure to delete this item?</value>
+  </data>
+  <data name="eng_pmtMessage3" xml:space="preserve">
+    <value>Please input [PartNo]!</value>
+  </data>
+  <data name="eng_pmtMessage4" xml:space="preserve">
+    <value>Please input [NodeType]!</value>
+  </data>
+  <data name="eng_pmtMessage5" xml:space="preserve">
+    <value>Please input [Desc]!</value>
+  </data>
+  <data name="eng_pmtMessage6" xml:space="preserve">
+    <value>Couldn't find the the matching [PartNo]!</value>
+  </data>
+  <data name="eng_pmtMessage7" xml:space="preserve">
+    <value>Already exits the sanme PDLine and Model！</value>
+  </data>
+  <data name="cn_lstNodeType" xml:space="preserve">
+    <value>NodeType</value>
+  </data>
+  <data name="cn_lstPartNo" xml:space="preserve">
+    <value>PartNo</value>
+  </data>
+  <data name="cn_btnSetAttribute" xml:space="preserve">
+    <value>Set Attribute</value>
+  </data>
+  <data name="eng_btnSetAttribute" xml:space="preserve">
+    <value>Set Attribute</value>
+  </data>
+  <data name="eng_lblNodeTypeText" xml:space="preserve">
+    <value>Node Type:</value>
+  </data>
+  <data name="eng_lblPartNodeTypeText" xml:space="preserve">
+    <value>Part Node Type:</value>
+  </data>
+  <data name="eng_lblPartNoText" xml:space="preserve">
+    <value>PartNo:</value>
+  </data>
+  <data name="eng_lbPartListText" xml:space="preserve">
+    <value>Part List:</value>
+  </data>
+</root>

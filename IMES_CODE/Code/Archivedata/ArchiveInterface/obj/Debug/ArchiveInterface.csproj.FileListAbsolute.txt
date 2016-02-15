@@ -1,0 +1,15 @@
+D:\Project\HP\SourceCode\Archivedata\ArchiveInterface\obj\Debug\ResolveAssemblyReference.cache
+D:\Project\HP\SourceCode\Archivedata\ArchiveInterface\bin\Debug\ArchiveInterface.dll
+D:\Project\HP\SourceCode\Archivedata\ArchiveInterface\bin\Debug\ArchiveInterface.pdb
+D:\Project\HP\SourceCode\Archivedata\ArchiveInterface\obj\Debug\ArchiveInterface.dll
+D:\Project\HP\SourceCode\Archivedata\ArchiveInterface\obj\Debug\ArchiveInterface.pdb
+D:\SH\trunk\Code\Archivedata\ArchiveInterface\bin\Debug\ArchiveInterface.dll
+D:\SH\trunk\Code\Archivedata\ArchiveInterface\bin\Debug\ArchiveInterface.pdb
+D:\SH\trunk\Code\Archivedata\ArchiveInterface\obj\Debug\ResolveAssemblyReference.cache
+D:\SH\trunk\Code\Archivedata\ArchiveInterface\obj\Debug\ArchiveInterface.dll
+D:\SH\trunk\Code\Archivedata\ArchiveInterface\obj\Debug\ArchiveInterface.pdb
+D:\SH___bck\trunk_bck\Code\Archivedata\ArchiveInterface\bin\Debug\ArchiveInterface.dll
+D:\SH___bck\trunk_bck\Code\Archivedata\ArchiveInterface\bin\Debug\ArchiveInterface.pdb
+D:\SH___bck\trunk_bck\Code\Archivedata\ArchiveInterface\obj\Debug\ResolveAssemblyReference.cache
+D:\SH___bck\trunk_bck\Code\Archivedata\ArchiveInterface\obj\Debug\ArchiveInterface.dll
+D:\SH___bck\trunk_bck\Code\Archivedata\ArchiveInterface\obj\Debug\ArchiveInterface.pdb

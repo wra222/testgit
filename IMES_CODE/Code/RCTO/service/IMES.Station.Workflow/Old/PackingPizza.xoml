@@ -1,0 +1,26 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="NonEPIAToEPIA" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetModel Customer="{x:Null}" x:Name="getModel1" SessionType="0" Editor="{x:Null}" Station="{x:Null}" Line="{x:Null}" Key="{x:Null}" />
+	<ns0:GetBOM Customer="{x:Null}" x:Name="getBOM1" SessionType="0" Editor="{x:Null}" Station="{x:Null}" Line="{x:Null}" Key="{x:Null}" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="Condition1" />
+		</WhileActivity.Condition>
+		<ns0:DBScope Station="{ActivityBind NonEPIAToEPIA,Path=Station}" x:Name="dbScope2" Key="{ActivityBind NonEPIAToEPIA,Path=Key}" SessionType="{ActivityBind NonEPIAToEPIA,Path=SessionType}">
+			<ns0:WaitInput Customer="{x:Null}" x:Name="waitInput1" SessionType="0" Editor="{x:Null}" Station="{x:Null}" Line="{x:Null}" Key="{x:Null}" />
+			<IfElseActivity x:Name="ifElseActivity1">
+				<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="Condition1" />
+					</IfElseBranchActivity.Condition>
+					<ns0:PartMatch Customer="{x:Null}" x:Name="partMatch1" SessionType="0" Editor="{x:Null}" Station="{x:Null}" Line="{x:Null}" Key="{x:Null}" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</ns0:DBScope>
+	</WhileActivity>
+	<ns0:AcquirePizzaSection Customer="{x:Null}" x:Name="acquirePizzaSection1" SessionType="0" Editor="{x:Null}" SessionId="00000000-0000-0000-0000-000000000000" Station="{x:Null}" Line="{x:Null}" Key="{x:Null}" />
+	<ns0:CreateNewPizza Customer="{x:Null}" x:Name="createNewPizza1" SessionType="0" Editor="{x:Null}" Station="{x:Null}" Line="{x:Null}" Key="{x:Null}" />
+	<ns0:GeneratePizzaID Customer="{x:Null}" x:Name="generatePizzaID1" SessionType="0" Editor="{x:Null}" Station="{x:Null}" Line="{x:Null}" Key="{x:Null}" />
+	<ns0:BindPizzaParts Customer="{x:Null}" x:Name="bindPizzaParts1" SessionType="0" Editor="{x:Null}" Station="{x:Null}" Line="{x:Null}" Key="{x:Null}" />
+	<ns0:Print Customer="{x:Null}" Station="{x:Null}" SessionType="0" Editor="{x:Null}" x:Name="print1" Line="{x:Null}" Key="{x:Null}" />
+	<ns0:WritePrintLog Customer="{x:Null}" LogType="MB" SessionType="0" Editor="{x:Null}" Station="{x:Null}" x:Name="writePrintLog1" Line="{x:Null}" Key="{x:Null}" />
+</ns0:BaseFlow>

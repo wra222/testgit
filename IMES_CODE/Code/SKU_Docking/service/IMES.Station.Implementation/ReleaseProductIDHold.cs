@@ -1,0 +1,390 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Workflow.Runtime;
+using IMES.DataModel;
+using IMES.FisObject.Common.Model;
+using IMES.FisObject.Common.Part;
+using IMES.FisObject.FA.Product;
+using IMES.FisObject.PAK.DN;
+using IMES.FisObject.PAK.StandardWeight;
+using IMES.Infrastructure;
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+using IMES.Infrastructure.WorkflowRuntime;
+using IMES.Route;
+using IMES.Station.Interface.StationIntf;
+using log4net;
+using System.Data;
+using IMES.FisObject.PAK.Pizza;
+using IMES.Infrastructure.UnitOfWork;
+using System.Linq;
+using IMES.FisObject.Common.Defect;
+using IMES.FisObject.Common.TestLog;
+using System.Data.SqlClient;
+using IMES.Infrastructure.Repository._Schema;
+using IMES.Infrastructure.Extend;
+using IMES.Station.Interface.CommonIntf;
+
+namespace IMES.Station.Implementation
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public class ReleaseProductIDHold : MarshalByRefObject, IReleaseProductIDHold
+    {
+        private ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly Session.SessionType theType = Session.SessionType.Common;
+        private const string ReleaseProductIDHoldWF = "ReleaseProductIDHold.xoml";
+        private const string ReleaseProductIDHoldRule = "ReleaseProductIDHold.rules";
+
+        public List<string> GetReleaseDefectList(string Type)
+        {
+            try
+            {
+                string strSQL = @"Select rtrim(Defect) + ' - ' + rtrim(Descr) as ReleaseDefect
+                                  from DefectCode 
+                                  where Type = @Type";
+                SqlParameter paraNameType = new SqlParameter("@Type", SqlDbType.VarChar, 20);
+                paraNameType.Direction = ParameterDirection.Input;
+                paraNameType.Value = Type;
+                DataTable dt = SqlHelper.ExecuteDataFill(SqlHelper.ConnectionString_GetData, CommandType.Text, strSQL, paraNameType);
+                List<string> list = new List<string>(dt.Rows.Count);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    string item = dr[0].ToString().Trim();
+                    list.Add(item);
+                }
+                return list;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<ConstValueInfo> GetGotoStationList(string Type)
+        {
+            try
+            {
+                IPartRepository iPartRepository = RepositoryFactory.GetInstance().GetRepository<IPartRepository>();
+                ConstValueInfo condition = new ConstValueInfo();
+                condition.type = Type;
+                IList<ConstValueInfo> list = iPartRepository.GetConstValueInfoList(condition);
+                //List<ConstValueInfo> list = new List<ConstValueInfo>();
+                //foreach (ConstValueInfo items in aa)
+                //{
+
+                //    string[] valuelist = items.value.Split(new char[] { ',', '~', ';' });
+                //    foreach (string str in valuelist)
+                //    {
+                //        ConstValueInfo item = new ConstValueInfo();
+                //        item.value = str;
+                //        list.Add(item);
+                //    }
+                    
+                //}
+                return list;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        //GetGotoStationList
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="inputData">inputData</param>
+        /// <returns></returns>
+        public ArrayList GetReleaseProductIDHoldInfo(IList<string> inputData, string stationId, string editor, string customerId, string IsCUSTSN, IList<string> HoldStationList)
+        {
+            logger.Debug("(ReleaseProductIDHold)GetReleaseProductIDHoldInfo start, [inputData]:" + inputData);
+            ArrayList retValue = new ArrayList();
+
+            FisException ex;
+            List<string> erpara = new List<string>();
+            IProductRepository iproductRepository = RepositoryFactory.GetInstance().GetRepository<IProductRepository, IMES.FisObject.FA.Product.IProduct>();
+            try
+            {
+                string sessionKey = Guid.NewGuid().ToString();
+                Session sessionInfo = SessionManager.GetInstance.GetSession(sessionKey, theType);
+                if (sessionInfo == null)
+                {
+                    sessionInfo = new Session(sessionKey, theType, editor, stationId, "", customerId);
+                    Dictionary<string, object> wfArguments = new Dictionary<string, object>();
+                    wfArguments.Add("Key", sessionKey);
+                    wfArguments.Add("Station", stationId);
+                    wfArguments.Add("CurrentFlowSession", sessionInfo);
+                    wfArguments.Add("Editor", editor);
+                    wfArguments.Add("Customer", customerId);
+                    wfArguments.Add("PdLine", "");
+                    wfArguments.Add("SessionType", theType);
+                    //IList<string> productIDList = new List<string>();
+
+                    inputData = (from p in inputData
+                                 select p).Distinct().ToList();
+
+                    if (IsCUSTSN == "Y")
+                    {
+                        sessionInfo.AddValue(Session.SessionKeys.CustomSnList, inputData);
+                    }
+                    else
+                    {
+                        sessionInfo.AddValue(Session.SessionKeys.ModelName, inputData[0]);
+                    }
+                    //mantis 0001281  支持ordid
+                    IMES.FisObject.FA.Product.IProduct currentProduct = iproductRepository.Find(inputData[0]);
+                    if (currentProduct != null)
+                    {
+                        IsCUSTSN = "P";
+                        sessionInfo.AddValue(Session.SessionKeys.NewScanedProductIDList, inputData);
+                    }
+                    sessionInfo.AddValue("IsCUSTSN", IsCUSTSN);
+                    sessionInfo.AddValue("HoldStationList", HoldStationList);
+                    //Remoting开始,调用workflow
+                    WorkflowInstance instance = WorkflowRuntimeManager.getInstance.CreateXomlFisWorkflow(ReleaseProductIDHoldWF, ReleaseProductIDHoldRule, wfArguments);
+                    sessionInfo.SetInstance(instance);
+                    //for generate MB no
+                    if (!SessionManager.GetInstance.AddSession(sessionInfo))
+                    {
+                        sessionInfo.WorkflowInstance.Terminate("Session:" + sessionKey + " Exists.");
+                        erpara.Add(sessionKey);
+                        ex = new FisException("CHK020", erpara);
+                        throw ex;
+                    }
+                    sessionInfo.WorkflowInstance.Start();
+                    sessionInfo.SetHostWaitOne();
+                }
+                else
+                {
+                    erpara.Add(sessionKey);
+                    ex = new FisException("CHK020", erpara);
+                    throw ex;
+                }
+
+                //check workflow exception
+                if (sessionInfo.Exception != null)
+                {
+                    if (sessionInfo.GetValue(Session.SessionKeys.WFTerminated) != null)
+                    {
+                        sessionInfo.ResumeWorkFlow();
+                    }
+                    throw sessionInfo.Exception;
+                }
+                //NewScanedProductIDList
+                
+                //取session值.返回
+                IList<HoldInfo> retlist = (IList<HoldInfo>)sessionInfo.GetValue(ExtendSession.SessionKeys.ProdHoldInfoList);
+               // IList<string> productNoList = new List<string>();
+                //foreach (HoldInfo item in retlist)
+                //{
+                //    productNoList.Add(item.ProductID);
+                //}
+                //IList<IMES.FisObject.FA.Product.IProduct> prodLst = iproductRepository.GetProductListByIdList(productNoList);
+                //sessionInfo.AddValue(Session.SessionKeys.ProdList, prodLst);
+                retValue.Add(retlist);
+                retValue.Add(sessionKey);
+                return retValue;
+            }
+            catch (FisException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw new SystemException(e.Message);
+            }
+            finally
+            {
+                logger.Debug("(ReleaseProductIDHold)GetReleaseProductIDHoldInfo End, [inputData]:" + inputData);
+            }
+        }
+
+        public ArrayList Save(string key,string releaseCode,string goToStation)
+        {
+            logger.Debug("(ReleaseProductIDHold)save start,"
+                + " [key]: " + key);
+            FisException ex;
+            List<string> erpara = new List<string>();
+            string sessionKey = key;
+
+            try
+            {
+                Session session = SessionManager.GetInstance.GetSession(sessionKey, theType);
+                if (session == null)
+                {
+                    erpara.Add(sessionKey);
+                    ex = new FisException("CHK021", erpara);
+                    throw ex;
+                }
+                
+                session.AddValue(ExtendSession.SessionKeys.ReleaseCode, releaseCode);
+                session.AddValue("GoToStation", goToStation);
+                if (goToStation == "" || goToStation == null)
+                {
+                    session.AddValue("IsReleaseHold", "Y");
+                }
+                else
+                {
+                    session.AddValue("IsReleaseHold", "N");
+                }
+                session.Exception = null;
+                session.SwitchToWorkFlow();
+
+                //check workflow exception
+                if (session.Exception != null)
+                {
+                    if (session.GetValue(Session.SessionKeys.WFTerminated) != null)
+                    {
+                        session.ResumeWorkFlow();
+                    }
+
+                    throw session.Exception;
+                }
+                ArrayList retLst = new ArrayList();
+                
+                return retLst;
+            }
+            catch (FisException e)
+            {
+                logger.Error(e.mErrmsg);
+                throw;
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+                throw;
+            }
+            finally
+            {
+                Session sessionDelete = SessionManager.GetInstance.GetSession(sessionKey, theType);
+                if (sessionDelete != null)
+                {
+                    SessionManager.GetInstance.RemoveSession(sessionDelete);
+                }
+
+                logger.Debug("(ReleaseProductIDHold Kitting)save end,"
+                   + " [key]: " + key);
+            }
+        }
+
+        /// <summary>
+        /// 取消工作流
+        /// </summary>
+        /// <param name="sessionKey"></param>
+        public void Cancel(string sessionKey)
+        {
+            try
+            {
+                logger.Debug("Cancel start, sessionKey:" + sessionKey);
+
+                Session currentSession = SessionManager.GetInstance.GetSession(sessionKey, theType);
+
+                if (currentSession != null)
+                {
+                    SessionManager.GetInstance.RemoveSession(currentSession);
+                }
+            }
+            catch (FisException e)
+            {
+                logger.Error(e.mErrmsg, e);
+                throw new Exception(e.mErrmsg);
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message, e);
+                throw new SystemException(e.Message);
+            }
+            finally
+            {
+                logger.Debug("Cancel end, sessionKey:" + sessionKey);
+            }
+        }
+
+        private static String Null2String(Object _input)
+        {
+            if (_input == null)
+            {
+                return "";
+            }
+            return _input.ToString().Trim();
+        }
+
+        public ArrayList OfflineHoldSave(string key, string stationId, string editor, string customerId, string releaseCode, string goToStation)
+        {
+            logger.Debug("(OfflineHold)OfflineHoldSave start, [inputData]:" + key);
+            ArrayList retValue = new ArrayList();
+
+            FisException ex;
+            List<string> erpara = new List<string>();
+            IProductRepository iproductRepository = RepositoryFactory.GetInstance().GetRepository<IProductRepository, IMES.FisObject.FA.Product.IProduct>();
+            try
+            {
+                string sessionKey = key;
+                Session sessionInfo = SessionManager.GetInstance.GetSession(sessionKey, theType);
+                if (sessionInfo == null)
+                {
+
+                    sessionInfo = new Session(sessionKey, theType, editor, stationId, "", customerId);
+                    Dictionary<string, object> wfArguments = new Dictionary<string, object>();
+                    wfArguments.Add("Key", sessionKey);
+                    wfArguments.Add("Station", stationId);
+                    wfArguments.Add("CurrentFlowSession", sessionInfo);
+                    wfArguments.Add("Editor", editor);
+                    wfArguments.Add("Customer", customerId);
+                    wfArguments.Add("PdLine", "");
+                    wfArguments.Add("SessionType", theType);
+                    //IList<string> productIDList = new List<string>();
+                    //Remoting开始,调用workflow
+                    sessionInfo.AddValue(Session.SessionKeys.DefectList, releaseCode);
+                    sessionInfo.AddValue(Session.SessionKeys.ProductIDOrCustSN, sessionKey);
+                    WorkflowInstance instance = WorkflowRuntimeManager.getInstance.CreateXomlFisWorkflow("OfflineProductIDHold.xoml", "", wfArguments);
+                    sessionInfo.SetInstance(instance);
+                    //for generate MB no
+                    if (!SessionManager.GetInstance.AddSession(sessionInfo))
+                    {
+                        sessionInfo.WorkflowInstance.Terminate("Session:" + sessionKey + " Exists.");
+                        erpara.Add(sessionKey);
+                        ex = new FisException("CHK020", erpara);
+                        throw ex;
+                    }
+                    sessionInfo.WorkflowInstance.Start();
+                    sessionInfo.SetHostWaitOne();
+                }
+                else
+                {
+                    erpara.Add(sessionKey);
+                    ex = new FisException("CHK020", erpara);
+                    throw ex;
+                }
+
+                //check workflow exception
+                if (sessionInfo.Exception != null)
+                {
+                    if (sessionInfo.GetValue(Session.SessionKeys.WFTerminated) != null)
+                    {
+                        sessionInfo.ResumeWorkFlow();
+                    }
+                    throw sessionInfo.Exception;
+                }
+                retValue.Add(sessionKey);
+                return retValue;
+            }
+            catch (FisException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw new SystemException(e.Message);
+            }
+            finally
+            {
+                logger.Debug("(OfflineHold)OfflineHoldSave End, [inputData]:" + key);
+            }
+        }
+
+        
+    }
+}

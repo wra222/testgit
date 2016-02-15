@@ -1,0 +1,44 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="PodLabelCheck" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:BlockStation Customer="{ActivityBind PodLabelCheck,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind PodLabelCheck,Path=SessionType}" Editor="{ActivityBind PodLabelCheck,Path=Editor}" ProcessType="Product" Station="{ActivityBind PodLabelCheck,Path=Station}" Line="{ActivityBind PodLabelCheck,Path=PdLine}" Key="{ActivityBind PodLabelCheck,Path=Key}" />
+	<WhileActivity x:Name="whileNotComplete">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplete" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind PodLabelCheck,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind PodLabelCheck,Path=SessionType}" Editor="{ActivityBind PodLabelCheck,Path=Editor}" Station="{ActivityBind PodLabelCheck,Path=Station}" Line="{ActivityBind PodLabelCheck,Path=PdLine}" Key="{ActivityBind PodLabelCheck,Path=Key}" />
+			<IfElseActivity x:Name="ifNotComplete" Enabled="False">
+				<IfElseBranchActivity x:Name="NotComplete">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplete" />
+					</IfElseBranchActivity.Condition>
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="POD">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="ifPOD" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind PodLabelCheck,Path=Station}" x:Name="dbScope1" Key="{ActivityBind PodLabelCheck,Path=Key}" SessionType="{ActivityBind PodLabelCheck,Path=SessionType}">
+				<ns0:WriteProductLog Customer="{ActivityBind PodLabelCheck,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind PodLabelCheck,Path=SessionType}" Editor="{ActivityBind PodLabelCheck,Path=Editor}" Station="86" Status="Pass" IsSingle="True" Line="POD Check" Key="{ActivityBind PodLabelCheck,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind PodLabelCheck,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind PodLabelCheck,Path=SessionType}" Editor="{ActivityBind PodLabelCheck,Path=Editor}" Status="Pass" Station="86" IsReturnStatoin="False" Line="{ActivityBind PodLabelCheck,Path=PdLine}" Key="{ActivityBind PodLabelCheck,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="Config">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="ifConfig" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind PodLabelCheck,Path=Station}" x:Name="dbScope2" Key="{ActivityBind PodLabelCheck,Path=Key}" SessionType="{ActivityBind PodLabelCheck,Path=SessionType}">
+				<ns0:WriteProductLog Customer="{ActivityBind PodLabelCheck,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind PodLabelCheck,Path=SessionType}" Editor="{ActivityBind PodLabelCheck,Path=Editor}" Station="86" Status="Pass" IsSingle="True" Line="Config Check" Key="{ActivityBind PodLabelCheck,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind PodLabelCheck,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind PodLabelCheck,Path=SessionType}" Editor="{ActivityBind PodLabelCheck,Path=Editor}" Status="Pass" Station="86" IsReturnStatoin="False" Line="{ActivityBind PodLabelCheck,Path=PdLine}" Key="{ActivityBind PodLabelCheck,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+			<ns0:DBScope Station="{ActivityBind PodLabelCheck,Path=Station}" x:Name="dbScope3" Key="{ActivityBind PodLabelCheck,Path=Key}" SessionType="{ActivityBind PodLabelCheck,Path=SessionType}">
+				<ns0:WriteProductLog Customer="{ActivityBind PodLabelCheck,Path=Customer}" x:Name="writeProductLog3" SessionType="{ActivityBind PodLabelCheck,Path=SessionType}" Editor="{ActivityBind PodLabelCheck,Path=Editor}" Station="86" Status="Pass" IsSingle="True" Line="MRP Check" Key="{ActivityBind PodLabelCheck,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind PodLabelCheck,Path=Customer}" x:Name="updateProductStatus3" SessionType="{ActivityBind PodLabelCheck,Path=SessionType}" Editor="{ActivityBind PodLabelCheck,Path=Editor}" Status="Pass" Station="86" IsReturnStatoin="False" Line="{ActivityBind PodLabelCheck,Path=PdLine}" Key="{ActivityBind PodLabelCheck,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

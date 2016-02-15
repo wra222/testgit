@@ -1,0 +1,45 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="CooLabelRun" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:DBScope Station="{ActivityBind CooLabelRun,Path=Station}" x:Name="dbScope1" Key="{ActivityBind CooLabelRun,Path=Key}" SessionType="{ActivityBind CooLabelRun,Path=SessionType}">
+		<ns0:UpdateProductStatus Customer="{ActivityBind CooLabelRun,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind CooLabelRun,Path=SessionType}" Editor="{ActivityBind CooLabelRun,Path=Editor}" Status="Pass" Station="{ActivityBind CooLabelRun,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind CooLabelRun,Path=PdLine}" Key="{ActivityBind CooLabelRun,Path=Key}" />
+		<ns0:WriteProductLog Customer="{ActivityBind CooLabelRun,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind CooLabelRun,Path=SessionType}" Editor="{ActivityBind CooLabelRun,Path=Editor}" Station="{ActivityBind CooLabelRun,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind CooLabelRun,Path=PdLine}" Key="{ActivityBind CooLabelRun,Path=Key}" />
+		<ns0:CombineDNBefore Customer="{ActivityBind CooLabelRun,Path=Customer}" x:Name="combineDNBefore1" SessionType="{ActivityBind CooLabelRun,Path=SessionType}" Editor="{ActivityBind CooLabelRun,Path=Editor}" Station="{ActivityBind CooLabelRun,Path=Station}" Line="{ActivityBind CooLabelRun,Path=PdLine}" Key="{ActivityBind CooLabelRun,Path=Key}" />
+		<IfElseActivity x:Name="IfPAQC">
+			<IfElseBranchActivity x:Name="PAQC">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="PAQC" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteQCStatus Customer="{ActivityBind CooLabelRun,Path=Customer}" Remark="" SessionType="{ActivityBind CooLabelRun,Path=SessionType}" ProductAttrName="{x:Null}" Editor="{ActivityBind CooLabelRun,Path=Editor}" Station="{ActivityBind CooLabelRun,Path=Station}" Status="8" x:Name="writeQCStatus1" Line="{ActivityBind CooLabelRun,Path=PdLine}" Key="{ActivityBind CooLabelRun,Path=Key}" Type="PAQC" />
+				<ns0:WriteProductLog Customer="{ActivityBind CooLabelRun,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind CooLabelRun,Path=SessionType}" Editor="{ActivityBind CooLabelRun,Path=Editor}" Station="PQ" Status="Pass" IsSingle="True" Line="{ActivityBind CooLabelRun,Path=PdLine}" Key="{ActivityBind CooLabelRun,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="NotPAQC">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="NotPAQC" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteQCStatus Customer="{ActivityBind CooLabelRun,Path=Customer}" Remark="" SessionType="{ActivityBind CooLabelRun,Path=SessionType}" ProductAttrName="{x:Null}" Editor="{ActivityBind CooLabelRun,Path=Editor}" Station="{ActivityBind CooLabelRun,Path=Station}" Status="1" x:Name="writeQCStatus2" Line="{ActivityBind CooLabelRun,Path=PdLine}" Key="{ActivityBind CooLabelRun,Path=Key}" Type="PAQC" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="UnDoPAQC">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="UnDo" />
+				</IfElseBranchActivity.Condition>
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<IfElseActivity x:Name="ifNormal">
+			<IfElseBranchActivity x:Name="Normal">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="Normal" />
+				</IfElseBranchActivity.Condition>
+				<ns0:CombineDNNormal Customer="{ActivityBind CooLabelRun,Path=Customer}" x:Name="combineDNNormal1" SessionType="{ActivityBind CooLabelRun,Path=SessionType}" Editor="{ActivityBind CooLabelRun,Path=Editor}" Station="{ActivityBind CooLabelRun,Path=Station}" Line="{ActivityBind CooLabelRun,Path=PdLine}" Key="{ActivityBind CooLabelRun,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<IfElseActivity x:Name="ifBT">
+			<IfElseBranchActivity x:Name="BT">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="isBT" />
+				</IfElseBranchActivity.Condition>
+				<ns0:DBScope Station="{ActivityBind CooLabelRun,Path=Station}" x:Name="dbScope2" Key="{ActivityBind CooLabelRun,Path=Key}" SessionType="{ActivityBind CooLabelRun,Path=SessionType}">
+					<ns0:ChangeProductBTOnly Customer="{ActivityBind CooLabelRun,Path=Customer}" x:Name="changeProductBTOnly1" SessionType="{ActivityBind CooLabelRun,Path=SessionType}" Editor="{ActivityBind CooLabelRun,Path=Editor}" Station="{ActivityBind CooLabelRun,Path=Station}" Line="{ActivityBind CooLabelRun,Path=PdLine}" Key="{ActivityBind CooLabelRun,Path=Key}" />
+				</ns0:DBScope>
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+</ns0:BaseFlow>

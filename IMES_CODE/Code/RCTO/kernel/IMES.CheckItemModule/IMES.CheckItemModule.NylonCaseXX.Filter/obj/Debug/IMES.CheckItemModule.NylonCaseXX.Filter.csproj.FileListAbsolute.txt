@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.NylonCaseXX.Filter.dll
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.NylonCaseXX.Filter.pdb
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.NylonCaseXX.Filter\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.NylonCaseXX.Filter\obj\Debug\IMES.CheckItemModule.NylonCaseXX.Filter.dll
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.NylonCaseXX.Filter\obj\Debug\IMES.CheckItemModule.NylonCaseXX.Filter.pdb

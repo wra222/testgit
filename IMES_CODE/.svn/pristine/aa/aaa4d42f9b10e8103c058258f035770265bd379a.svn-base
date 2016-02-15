@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9317685B-F17D-4195-910D-757A2425FCFA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IMES.Maintain.Interface</RootNamespace>
+    <AssemblyName>IMES.Maintain.Interface</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IMES.DataModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.FisObject, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MaintainIntf\IAstDefine.cs" />
+    <Compile Include="MaintainIntf\ICheckItemType.cs" />
+    <Compile Include="MaintainIntf\IDefectHoldRule.cs" />
+    <Compile Include="MaintainIntf\IFAIModelMaintain.cs" />
+    <Compile Include="MaintainIntf\IFAIModelRule.cs" />
+    <Compile Include="MaintainIntf\IHoldRule.cs" />
+    <Compile Include="MaintainIntf\IIndornesiaLabel.cs" />
+    <Compile Include="MaintainIntf\IEnergyLabel.cs" />
+    <Compile Include="MaintainIntf\IAssemblyVC.cs" />
+    <Compile Include="MaintainIntf\IModelAssemblyCode.cs" />
+    <Compile Include="MaintainIntf\IModuleApprovalItem.cs" />
+    <Compile Include="MaintainIntf\IPartForbidRule.cs" />
+    <Compile Include="MaintainIntf\ISysSetting.cs" />
+    <Compile Include="MaintainIntf\IFRUMBVersion.cs" />
+    <Compile Include="MaintainIntf\ISpecialOrder.cs" />
+    <Compile Include="MaintainIntf\ILabelTypeRuleMaintain.cs" />
+    <Compile Include="MaintainIntf\ICheckItemTypeListMaintain.cs" />
+    <Compile Include="MaintainIntf\IAssignModelMgr.cs" />
+    <Compile Include="MaintainIntf\IQTime.cs" />
+    <Compile Include="MaintainIntf\IOSWIN.cs" />
+    <Compile Include="MaintainIntf\IPalletType.cs" />
+    <Compile Include="MaintainIntf\IKeyPartsDefectCollection.cs" />
+    <Compile Include="MaintainIntf\ICollectionMaterialLot.cs" />
+    <Compile Include="MaintainIntf\IBSamLocation.cs" />
+    <Compile Include="MaintainIntf\IPCBVersion.cs" />
+    <Compile Include="MaintainIntf\ICeldata.cs" />
+    <Compile Include="MaintainIntf\IConstValueType.cs" />
+    <Compile Include="MaintainIntf\ICombineKPSetting.cs" />
+    <Compile Include="MaintainIntf\ICommonFunction.cs" />
+    <Compile Include="MaintainIntf\IFamilyMBCode.cs" />
+    <Compile Include="MaintainIntf\IRCTOMBMaintain.cs" />
+    <Compile Include="MaintainIntf\IConstValueMaintain.cs" />
+    <Compile Include="MaintainIntf\IFAIInfoMaintain.cs" />
+    <Compile Include="MaintainIntf\IPLTStandard.cs" />
+    <Compile Include="MaintainIntf\IDept.cs" />
+    <Compile Include="MaintainIntf\IFAITCNDefectCheck.cs" />
+    <Compile Include="MaintainIntf\ISMTObjectiveTime.cs" />
+    <Compile Include="MaintainIntf\LotSetting.cs" />
+    <Compile Include="MaintainIntf\ICDSIPO.cs" />
+    <Compile Include="MaintainIntf\IActualProductionTime.cs" />
+    <Compile Include="MaintainIntf\IDefectStation.cs" />
+    <Compile Include="MaintainIntf\IFaKittingUpload.cs" />
+    <Compile Include="MaintainIntf\IFamilyInfo.cs" />
+    <Compile Include="MaintainIntf\IITCNDCheckQCHoldSetting.cs" />
+    <Compile Include="MaintainIntf\IITCNDCheckSetting.cs" />
+    <Compile Include="MaintainIntf\IITCNDDefectCheck.cs" />
+    <Compile Include="MaintainIntf\ILightSta.cs" />
+    <Compile Include="MaintainIntf\IMasterLabel.cs" />
+    <Compile Include="MaintainIntf\IAssetRange.cs" />
+    <Compile Include="MaintainIntf\IMBAssemblyCode.cs" />
+    <Compile Include="MaintainIntf\IModelWeight.cs" />
+    <Compile Include="MaintainIntf\IPakKittingUpload.cs" />
+    <Compile Include="MaintainIntf\IPAKLabelLightNo.cs" />
+    <Compile Include="MaintainIntf\IRepairInfoMaintain.cs" />
+    <Compile Include="MaintainIntf\ISATestCheckRule.cs" />
+    <Compile Include="MaintainIntf\ISQEDefectReport.cs" />
+    <Compile Include="MaintainIntf\ITestMB.cs" />
+    <Compile Include="MaintainIntf\IUniteMB.cs" />
+    <Compile Include="MaintainIntf\IICASA.cs" />
+    <Compile Include="MaintainIntf\ICOAReceiving.cs" />
+    <Compile Include="MaintainIntf\IBomDescrMaintain.cs" />
+    <Compile Include="MaintainIntf\IBTOceanOrder.cs" />
+    <Compile Include="MaintainIntf\IChepPallet.cs" />
+    <Compile Include="MaintainIntf\IFAFloatLocation.cs" />
+    <Compile Include="MaintainIntf\IKittingCodeMaintain.cs" />
+    <Compile Include="MaintainIntf\IACAdaptor.cs" />
+    <Compile Include="MaintainIntf\common.cs" />
+    <Compile Include="MaintainIntf\IAllKindsOfType.cs" />
+    <Compile Include="MaintainIntf\IAssetRule.cs" />
+    <Compile Include="MaintainIntf\IBattery.cs" />
+    <Compile Include="MaintainIntf\ICheckItem.cs" />
+    <Compile Include="MaintainIntf\IDefectMaintain.cs" />
+    <Compile Include="MaintainIntf\IECRVersion.cs" />
+    <Compile Include="MaintainIntf\IFAStation.cs" />
+    <Compile Include="MaintainIntf\IForwarder.cs" />
+    <Compile Include="MaintainIntf\IGrade.cs" />
+    <Compile Include="MaintainIntf\IInternalCOA.cs" />
+    <Compile Include="MaintainIntf\IKittingLocation.cs" />
+    <Compile Include="MaintainIntf\ILabelSettingManager.cs" />
+    <Compile Include="MaintainIntf\ILightNo.cs" />
+    <Compile Include="MaintainIntf\ILightStation.cs" />
+    <Compile Include="MaintainIntf\ILine.cs" />
+    <Compile Include="MaintainIntf\IModelBOM.cs" />
+    <Compile Include="MaintainIntf\IModelManager.cs" />
+    <Compile Include="MaintainIntf\IModelProcess.cs" />
+    <Compile Include="MaintainIntf\IModelWeightTolerance.cs" />
+    <Compile Include="MaintainIntf\IOfflineLabelSetting.cs" />
+    <Compile Include="MaintainIntf\IPAKitLoc.cs" />
+    <Compile Include="MaintainIntf\IPalletQty.cs" />
+    <Compile Include="MaintainIntf\IPalletWeight.cs" />
+    <Compile Include="MaintainIntf\IPartCheckSetting.cs" />
+    <Compile Include="MaintainIntf\IPartManager.cs" />
+    <Compile Include="MaintainIntf\IMOBOMManager.cs" />
+    <Compile Include="MaintainIntf\IPartTypeAttribute.cs" />
+    <Compile Include="MaintainIntf\IPdLineStation.cs" />
+    <Compile Include="MaintainIntf\IPilotRunPrintInfo.cs" />
+    <Compile Include="MaintainIntf\IPODLabelPartMaintain.cs" />
+    <Compile Include="MaintainIntf\IProcessManager.cs" />
+    <Compile Include="MaintainIntf\IQCRatio.cs" />
+    <Compile Include="MaintainIntf\IPartCheck.cs" />
+    <Compile Include="MaintainIntf\IRegion.cs" />
+    <Compile Include="MaintainIntf\IPartTypeManager.cs" />
+    <Compile Include="MaintainIntf\IRework.cs" />
+    <Compile Include="MaintainIntf\IRunInTimeControl.cs" />
+    <Compile Include="MaintainIntf\IShipType.cs" />
+    <Compile Include="MaintainIntf\IStation.cs" />
+    <Compile Include="MaintainIntf\IPartForbiddenManager.cs" />
+    <Compile Include="MaintainIntf\ITPCBMaintain.cs" />
+    <Compile Include="MaintainIntf\IVendorCode.cs" />
+    <Compile Include="MaintainIntf\ICOMSetting.cs" />
+    <Compile Include="MaintainIntf\IWLBTDescr.cs" />
+    <Compile Include="MaintainIntf\SMTLineSpeed.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

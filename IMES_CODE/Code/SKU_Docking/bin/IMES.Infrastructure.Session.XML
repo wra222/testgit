@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IMES.Infrastructure.Session</name>
+    </assembly>
+    <members>
+        <member name="T:IMES.Infrastructure.SessionManager">
+            <summary>
+            Session管理器
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.SessionManager.GetSession(System.String,IMES.Infrastructure.Session.SessionType)">
+            <summary>
+            通过sn获取session对象
+            </summary>
+            <param name="key"></param>
+            <param name="type"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:IMES.Infrastructure.SessionManager.GetSessionByType(IMES.Infrastructure.Session.SessionType)">
+            <summary>
+            根据类型获得session
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:IMES.Infrastructure.SessionManager.AddSession(IMES.Infrastructure.Session)">
+            <summary>
+            添加Session对象和sn的对应
+            </summary>
+            <param name="session">session</param>
+        </member>
+        <member name="M:IMES.Infrastructure.SessionManager.RemoveSession(IMES.Infrastructure.Session)">
+            <summary>
+            删除指定的sn对应的session对象
+            </summary>
+            <param name="session">session</param>
+        </member>
+        <member name="M:IMES.Infrastructure.SessionManager.GetSessionByInstanceId(System.Guid)">
+            <summary>
+            通过workflow的InstanceID获取对应的session对象
+            </summary>
+            <param name="instanceID">workflow的InstanceID</param>
+            <returns>session对象</returns>
+        </member>
+        <member name="T:IMES.Infrastructure.BindCacheManager">
+            <summary>
+            用于控制并发争用的工具类
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.BindCacheManager.Add(System.String,System.String)">
+            <summary>
+            返回false表示已包含改key
+            返回true表示add成功
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.BindCacheManager.RemoveByValue(System.String)">
+            <summary>
+            工作流结束时，根据workflowID清空该站缓存的所有Key
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.BindCacheManager.Remove(System.String)">
+            <summary>
+            清除指定Key
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.BindCacheManager.Clear">
+            <summary>
+            清楚所有缓存
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.BindCacheManager.GetValue(System.String)">
+            <summary>
+            根据指定Key获取对应Value
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.BindCacheManager.GetKeysByValue(System.String)">
+            <summary>
+            根据指定Value获取所有对应Key列表
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.Session">
+            <summary>
+            一个站操作交互过程中的共享数据
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.SetInstance(System.Workflow.Runtime.WorkflowInstance)">
+            <summary>
+            将wf实例与Session建立关联
+            </summary>
+            <param name="instance">wf实例</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.GetValue(System.String)">
+            <summary>
+            获取指定Session变量值
+            </summary>
+            <param name="key">变量名</param>
+            <returns>变量值</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.GetValue``1(System.String)">
+            <summary>
+            generic cast type
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.GetValue``1(System.String,``0)">
+            <summary>
+            generic cast type
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.AddValue(System.String,System.Object)">
+            <summary>
+            添加指定变量到Session
+            </summary>
+            <param name="key">变量名</param>
+            <param name="value">变量值</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.RemoveValue(System.String)">
+            <summary>
+            删除指定session变量
+            </summary>
+            <param name="key">变量名</param>
+        </member>
+        <member name="F:IMES.Infrastructure.Session._completed">
+            <summary>
+            indicate session completed
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.SetSessionCompleted">
+            <summary>
+            Set Session Completed
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:IMES.Infrastructure.Session._hostWaitingCount">
+            <summary>
+            counting host thread
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Session._wfWaitingCount">
+            <summary>
+            Counting wf thread
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.WFThreadClose">
+            <summary>
+            Release and Close WF Thread
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.HostThreadClose">
+            <summary>
+            Release and Close Host Thread
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.SwitchToHost">
+            <summary>
+            执行绪从wf转至host
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.SwitchToHost(System.Int32)">
+            <summary>
+            执行绪从wf转至host
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.ResumeHost">
+            <summary>
+            恢复host执行
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.SetWorkFlowWaitOne">
+            <summary>
+            阻塞wf执行
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.SwitchToWorkFlow">
+            <summary>
+            将执行绪转至wf
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.SwitchToWorkFlow(System.Int32)">
+            <summary>
+            将执行绪转至wf
+            </summary>
+            <param name="millisecondsTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.ResumeWorkFlow">
+            <summary>
+            恢复wf执行
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.SetHostWaitOne">
+            <summary>
+            阻塞host执行
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Session.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:IMES.Infrastructure.Session.WorkflowInstance">
+            <summary>
+            与session关联的wf实例
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Session.Id">
+            <summary>
+            Guid of session
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Session.Exception">
+            <summary>
+            wf 执行期间产生的,不应使wf中断的Excepiton
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Session.Key">
+            <summary>
+            session的键值
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Session.Type">
+            <summary>
+            Session的种类
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Session.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Session.Line">
+            <summary>
+            Line
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Session.Station">
+            <summary>
+            Station
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Session.Customer">
+            <summary>
+            Customer
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Session.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Session.UnitOfWork">
+            <summary>
+            完成数据写入功能的UnitOfWork对象实例
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Session.InputParameter">
+            <summary>
+            wf执行过程中的输入参数
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Session.OutputParameter">
+            <summary>
+            wf执行过程中的输入参数
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Session.IsCompleted">
+            <summary>
+            over 0 indicate session complete
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Session.GetHostWaitingCount">
+            <summary>
+            Get counting host thread
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Session.GetWFWaitingCount">
+            <summary>
+            Get wf thread count
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.Session.SessionKeys">
+            <summary>
+            Session中可用的变量名
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Session.SessionKeys.SessionBom">
+            string  由用户输入的用于Explicit ItemCheck的检查值
+        </member>
+        <member name="T:IMES.Infrastructure.Session.SessionType">
+            <summary>
+            Session类型
+            </summary>
+        </member>
+    </members>
+</doc>

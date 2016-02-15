@@ -1,0 +1,2967 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IMES.Infrastructure.Repository</name>
+    </assembly>
+    <members>
+        <member name="T:IMES.Infrastructure.Repository._Schema.SQLDataCache">
+            <summary>
+            Cache PropertyInfo and FiledInfo reflection 
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SQLDataCache.GetPropertyInfos``1">
+            <summary>
+            get propertyInfo in cache
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SQLDataCache.GetFieldInfos``1(System.Reflection.BindingFlags)">
+            <summary>
+            get FielInfo in Cache
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="bindingFlags"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository._Schema.SQLData">
+            <summary>
+            SQLData to object utility
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SQLData.ToObject``1(System.Data.SqlClient.SqlDataReader)">
+            <summary>
+            SqlDataReader to defined class
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="rs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SQLData.ToObjectWithAttribute``1(System.Data.SqlClient.SqlDataReader)">
+            <summary>
+            convert type
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="rs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SQLData.ToReadOnlyObject``1(System.Data.SqlClient.SqlDataReader)">
+            <summary>
+             access private field
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="rs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SQLData.ToReadOnlyObject``1(System.Data.SqlClient.SqlDataReader,``0@)">
+            <summary>
+            access private field
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="rs"></param>
+            <param name="t"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SQLData.ToDataTable``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Defined class to DataTable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SQLData.ToObjectByField``1(System.Data.SqlClient.SqlDataReader)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="rs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SQLData.TrimStringProperties``1(``0)">
+            <summary>
+            Trim all String properties of the given object
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="input"></param>       
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SQLData.TrimStringFields``1(``0)">
+            <summary>
+             Field trim data
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="input"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBMORepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBMORepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBMORepository.Add(IMES.FisObject.PCA.MBMO.IMBMO,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBMORepository.Remove(IMES.FisObject.PCA.MBMO.IMBMO,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBMORepository.Update(IMES.FisObject.PCA.MBMO.IMBMO,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="work"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBMORepository.GetUnfinishedMOByModel(System.String)">
+            <summary>
+            根据主板型号，取得未完成的制造订单列表。
+            </summary>
+            <param name="model">主板型号</param>
+            <returns>未完成制造订单对象集合</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBMORepository.GetUnfinishedMO">
+            <summary>
+            取得所有未完成的制造订单
+            </summary>
+            <returns>未完成制造订单对象集合</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:IMES.Infrastructure.Repository.PCA.MBMORepository.GetMaxMO(System.String)" -->
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBMORepository.SetMaxMO(System.Boolean,IMES.FisObject.PCA.MBMO.IMBMO)">
+            <summary>
+            更新MO最大号(NumControl)
+            </summary>
+            <param name="isExperiment">是否为试产</param>
+            <param name="maxMO">MO最大号</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBMORepository.GetUnfinishedMOToday">
+            <summary>
+            获取当天产生的未生成所有MBSn的MBMO
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBMORepository.UpdateSMTMOPrtQtyForInc(System.String,System.Int32)">
+            <summary>
+            更新指定mo的printedQty, 在其上加指定的值, 直接写db
+            </summary>
+            <param name="mo">mo</param>
+            <param name="prtQtyInc">需要加的數量</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBMORepository.DeleteSMTMO(System.Collections.Generic.IList{System.String})">
+            <summary>
+            根据MoList删除MO,返回其中不符合删除条件的MO列表
+            实现逻辑：
+                    1.delete from SMTMO WHERE Charindex(SMTMO,@SMTMOS,0)>0 and PrintQty = 0
+                    2.select distinct SMTMO from SMTMO WHERE Charindex(SMTMO,@SMTMOS,0)>0 
+            </summary>
+            <param name="moList"></param> 
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.WarrantyRepository">
+            <summary>
+            数据访问与持久化类: Warranty相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.WarrantyRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.WarrantyRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.WarrantyRepository.Add(IMES.FisObject.Common.Warranty.Warranty,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.WarrantyRepository.Remove(IMES.FisObject.Common.Warranty.Warranty,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.WarrantyRepository.Update(IMES.FisObject.Common.Warranty.Warranty,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="work"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.NumControlRepository">
+            <summary>
+            数据访问与持久化类: NumControl相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.NumControlRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.NumControlRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.NumControlRepository.Add(IMES.FisObject.Common.NumControl.NumControl,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.NumControlRepository.Remove(IMES.FisObject.Common.NumControl.NumControl,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.NumControlRepository.Update(IMES.FisObject.Common.NumControl.NumControl,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.PAK.COARepository">
+            <summary>
+            数据访问与持久化类: COA相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.COARepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.COARepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.COARepository.Add(IMES.FisObject.PAK.COA.COAStatus,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.COARepository.Remove(IMES.FisObject.PAK.COA.COAStatus,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.COARepository.Update(IMES.FisObject.PAK.COA.COAStatus,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MODismantleLogRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MODismantleLogRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MODismantleLogRepository.Add(IMES.FisObject.PCA.MB.MODismantleLog,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MODismantleLogRepository.Remove(IMES.FisObject.PCA.MB.MODismantleLog,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MODismantleLogRepository.Update(IMES.FisObject.PCA.MB.MODismantleLog,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.QTimeRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.QTimeRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.QTimeRepository.Add(IMES.FisObject.Common.QTime.QTime,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.QTimeRepository.Remove(IMES.FisObject.Common.QTime.QTime,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.QTimeRepository.Update(IMES.FisObject.Common.QTime.QTime,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.PAK.WeightLogRepository">
+            <summary>
+            数据访问与持久化类: WeightLog相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.WeightLogRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.WeightLogRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.WeightLogRepository.Add(IMES.FisObject.PAK.WeightLog.WeightLog,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.WeightLogRepository.Remove(IMES.FisObject.PAK.WeightLog.WeightLog,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.WeightLogRepository.Update(IMES.FisObject.PAK.WeightLog.WeightLog,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.StationRepository">
+            <summary>
+            数据访问与持久化类: Station相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.StationRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.StationRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.StationRepository.Add(IMES.FisObject.Common.Station.IStation,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.StationRepository.Remove(IMES.FisObject.Common.Station.IStation,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.StationRepository.Update(IMES.FisObject.Common.Station.IStation,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.StationRepository.GetFATestStationList">
+            <summary>
+            取得FA测试站信息列表
+            </summary>
+            <returns>测试站信息列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.StationRepository.GetSATestStationList">
+            <summary>
+            取得SA测试站信息列表
+            </summary>
+            <returns>测试站信息列表</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:IMES.Infrastructure.Repository.Common.StationRepository.GetStationAttr(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:IMES.Infrastructure.Repository.Common.StationRepository.GetStationAttrValue(System.String,System.String)" -->
+        <member name="M:IMES.Infrastructure.Repository.Common.StationRepository.GetStationByAttrNameValue(System.String,System.String)">
+            <summary>
+            select distinct Station from StationAttr where AttrName =@AttrName and AttrValue=@AttrValue order by Station
+            </summary>
+            <param name="attrName"></param>
+            <param name="attrValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.StationRepository.AddStationAttr(IMES.DataModel.StationAttrDef)">
+            <summary>
+            insert StationAttr( AttrName, Station, AttrValue, Descr, 
+                                                                                           Editor, Cdt, Udt)
+                                                               values(@AttrName, @Station, @AttrValue, @Descr, 
+                                                                           @Editor, GETDATE(), GETDATE())
+            </summary>
+            <param name="attr"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.StationRepository.UpdateStationAttr(IMES.DataModel.StationAttrDef)">
+            <summary>
+            update  StationAttr
+                                                                set    AttrValue=@AttrValue, 
+                                                                       Descr=@Descr, 
+                                                                       Editor=@Editor, 
+                                                                       Udt=GETDATE()
+                                                                where Station = @Station and
+                                                                       AttrName = @AttrName
+            </summary>
+            <param name="attr"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.StationRepository.DeleteStationAttr(System.String,System.String)">
+            <summary>
+            delete from StationAttr
+                                                               where Station = @Station and
+                                                                     AttrName = @AttrName
+            </summary>
+            <param name="station"></param>
+            <param name="attrName"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.PAK.PalletWeightRepository">
+            <summary>
+            数据访问与持久化类: PalletWeight相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletWeightRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletWeightRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletWeightRepository.Add(IMES.FisObject.PAK.Pallet.PalletWeight,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletWeightRepository.Remove(IMES.FisObject.PAK.Pallet.PalletWeight,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletWeightRepository.Update(IMES.FisObject.PAK.Pallet.PalletWeight,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MaterialBoxRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MaterialBoxRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MaterialBoxRepository.Add(IMES.FisObject.Common.Material.MaterialBox,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MaterialBoxRepository.Remove(IMES.FisObject.Common.Material.MaterialBox,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MaterialBoxRepository.Update(IMES.FisObject.Common.Material.MaterialBox,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.LabelTypeRepository">
+            <summary>
+            数据访问与持久化类: LabelType相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LabelTypeRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LabelTypeRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LabelTypeRepository.Add(IMES.FisObject.Common.PrintItem.LabelType,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LabelTypeRepository.Remove(IMES.FisObject.Common.PrintItem.LabelType,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LabelTypeRepository.Update(IMES.FisObject.Common.PrintItem.LabelType,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LabelTypeRepository.GetPrintTemplate(System.String)">
+            <summary>
+            For Both Runtime And Maintain
+            </summary>
+            <param name="templateName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LabelTypeRepository.GetBartendarNameValueInfo(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Collections.Generic.List{System.String}})">
+            <summary>
+            Bartendar Label call sp return Name/Value List
+            </summary>
+            <param name="currentSPName">sp name</param>
+            <param name="parameterKeys">sp parameter name</param>
+            <param name="parameterValues">sp parameter value</param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.MORepository">
+            <summary>
+            数据访问与持久化类: MO相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MORepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MORepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MORepository.Add(IMES.FisObject.Common.MO.MO,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MORepository.Remove(IMES.FisObject.Common.MO.MO,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MORepository.Update(IMES.FisObject.Common.MO.MO,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MORepository.GetMOList(System.String)">
+            <summary>
+            根据机器Model号，取得MO信息列表
+            </summary>
+            <param name="modelId">机器Model号码</param>
+            <returns>MO信息列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MORepository.GetMinUsableMO(System.String)">
+            <summary>
+            得到最小可用的Mo
+            select @newmo=Min(ID)from MO where ModelID=@model and Qty-Print_Qty>0 and Print_Qty>=0 and Status='H'
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MORepository.IncreaseMOPrintedQty(IMES.FisObject.Common.MO.MO,System.Int16)">
+            <summary>
+            使Print_Qty增加指定数量
+            </summary>
+            <param name="mo"></param>
+            <param name="count"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MORepository.DecreaseMOPrintedQty(IMES.FisObject.Common.MO.MO,System.Int16)">
+            <summary>
+            使Print_Qty减少指定数量
+            </summary>
+            <param name="mo"></param>
+            <param name="count"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MORepository.GetProductPlanByLineAndShipDate(System.String,System.DateTime)">
+             <summary>
+             select ID, PdLine, ShipDate, Family, Model, PlanQty, AddPrintQty, PrePrintQty, Editor, Cdt, Udt 
+            from ProductPlan
+            where PdLine = @line and
+            ShipDate =@shipdate
+             </summary>
+             <param name="line">Phyical Line</param>
+             <param name="shipDate">ShipDate</param>
+             <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MORepository.UploadProductPlan(System.Collections.Generic.IList{IMES.DataModel.TbProductPlan},System.String)">
+            <summary>
+            declare @ProductPlanUpload TbProductPlan 
+             exec IMES_ProductPlanCheckInsert @ProductPlanUpload 
+            </summary>
+            <param name="ProdPlanList"> TVP parameter structure</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MORepository.UploadProductPlan_Revise(System.Collections.Generic.IList{IMES.DataModel.TbProductPlan},System.String)">
+            <summary>
+            declare @ProductPlanUpload TbProductPlan 
+             exec IMES_ProductPlanCheckInsert @ProductPlanUpload 
+            </summary>
+            <param name="ProdPlanList"> TVP parameter structure</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MORepository.GetProductPlanFamily(System.String,System.DateTime)">
+             <summary>
+             SELECT distinct a.[Family]
+             ,a.[Descr]
+            ,a.[CustomerID]
+            FROM [Family] a, ProductPlan b, MO c
+            Where a.Family = b.Family 
+             and b.PdLine = left(@PdLine,1) 
+             and b.ShipDate=@ShipDate
+             and GetPlanMONo(b.ID, b.PdLine) = c.MO 
+            and c.Qty > c.Print_Qty 
+             and c.[Status] = 'H'
+             </summary>
+             <param name="line"></param>
+             <param name="shipdate"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MORepository.GetProductPlanModel(System.String,System.DateTime,System.String)">
+             <summary>
+             SELECT a.[Model], b.[ID]
+            FROM [Model] a, ProductPlan b, MO c
+            Where a.Family = @Family 
+                  and a.Model = b.Model
+                  and b.PdLine = left(@PdLine,1) 
+                  and b.ShipDate=@ShipDate
+                  and GetPlanMONo(b.ID, b.PdLine) = c.MO 
+                  and c.Qty > c.Print_Qty 
+                  and c.[Status] = 'H' 
+            Order by a.[Model]
+             </summary>
+             <param name="line"></param>
+             <param name="shipdate"></param>
+             <param name="family"></param>
+             <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MORepository.GetPlanMO(System.Int32)">
+             <summary>
+             SELECT a.*, b.PlanQty 
+            FROM  MO a, ProductPlan b
+            Where b.[ID] = @ID and 
+                  a.MO= dbo. GetPlanMONo(b.ID, b.PdLine)
+             </summary>
+             <param name="id"></param>
+             <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MORepository.GetActiveMO(System.String)">
+            <summary>
+            order by CreateDate, (Qty-PrintQty) desc
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.ModelRepository">
+            <summary>
+            数据访问与持久化类: Model相关
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Repository.Common.ModelRepository._calledMethods">
+            <summary>
+            记录方法是否被调用过一次
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ModelRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ModelRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ModelRepository.Add(IMES.FisObject.Common.Model.Model,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ModelRepository.Remove(IMES.FisObject.Common.Model.Model,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ModelRepository.Update(IMES.FisObject.Common.Model.Model,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="work"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ModelRepository.Get1397ListFor008(System.String)">
+            <summary>
+            取得1397阶信息列表
+            </summary>
+            <param name="familyId">Family标识</param>
+            <returns>1397阶信息列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ModelRepository.IsFirstCalled(System.Int32)">
+            <summary>
+            方法是否已经被调用过了第一次
+            </summary>
+            <param name="methodId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ModelRepository.ModelExist(System.String)">
+            <summary>
+            检查model是否在Model表中。
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ModelRepository.GetModelChangeQtyByModelShipDate(System.String,System.DateTime)">
+            <summary>
+            order by line, Cdt
+            </summary>
+            <param name="model"></param>
+            <param name="shipDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ModelRepository.GetActiveModelChangeQty(System.String,System.String)">
+            <summary>
+             Query in transaction order by ShipDate, AssignedQty
+            </summary>
+            <param name="line"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ModelRepository.RemoveCacheByKeyList(System.Collections.Generic.IList{System.String})">
+            <summary>
+            for Remove Family Cache item 
+            </summary>
+            <param name="nameList"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.LineRepository">
+            <summary>
+            数据访问与持久化类: Line相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LineRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LineRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LineRepository.Add(IMES.FisObject.Common.Line.Line,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LineRepository.Remove(IMES.FisObject.Common.Line.Line,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LineRepository.Update(IMES.FisObject.Common.Line.Line,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LineRepository.FillLineSpeed(IMES.FisObject.Common.Line.Line)">
+            <summary>
+            
+            </summary>
+            <param name="line"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.LocaionRepository">
+            <summary>
+            数据访问与持久化类: Line相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LocaionRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LocaionRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LocaionRepository.Add(IMES.FisObject.Common.Location.FloorAreaLoc,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LocaionRepository.Remove(IMES.FisObject.Common.Location.FloorAreaLoc,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.LocaionRepository.Update(IMES.FisObject.Common.Location.FloorAreaLoc,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.Func.DecSV(System.String)">
+            <summary>
+            Set Value For Update SQL
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.PAK.CartonSSCCRepository">
+            <summary>
+            数据访问与持久化类: Gift相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.CartonSSCCRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.CartonSSCCRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.CartonSSCCRepository.Add(IMES.FisObject.PAK.CartonSSCC.CartonSSCC,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.CartonSSCCRepository.Remove(IMES.FisObject.PAK.CartonSSCC.CartonSSCC,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.CartonSSCCRepository.Update(IMES.FisObject.PAK.CartonSSCC.CartonSSCC,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.MiscRepository">
+            <summary>
+            数据访问与持久化类: 杂项
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MiscRepository.GetQCStatisticList(System.String,System.String)">
+            <summary>
+            Get QCStatus Statistics
+            </summary>
+            <param name="pdLine"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MiscRepository.GetDataByCondition``2(``1,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="R"></typeparam>
+            <param name="condition"></param>
+            <param name="isAndCondition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MiscRepository.GetData``2(``1)">
+            <summary>
+            select * from table
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="R"></typeparam>
+            <param name="condition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MiscRepository.GetData``2(``1,System.String[])">
+            <summary>
+            Select field1, field2 from table
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="R"></typeparam>
+            <param name="condition">條件</param>
+            <param name="columnNames">列舉Table column name</param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MiscRepository.GetData``2(``1,System.String,System.String[])">
+            <summary>
+            select distinct/count/sum field from table
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="R"></typeparam>
+            <param name="condition"></param>
+            <param name="sqlFunction">null/distinct/count/sum</param>
+            <param name="columnNames"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MiscRepository.UpdateDataByID``2(``1,``1)">
+            <summary>
+            Update table set filed where ID=@ID
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="R"></typeparam>
+            <param name="condition"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MiscRepository.UpdateData``2(``1,``1,System.String[])">
+            <summary>
+            Update table set field=value where condition
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="R"></typeparam>
+            <param name="condition"></param>
+            <param name="value"></param>
+            <param name="excludeColumnNames"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MiscRepository.InsertData``2(``1)">
+            <summary>
+            insert no ID field with identity type
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="R"></typeparam>
+            <param name="item"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MiscRepository.InsertDataWithID``2(``1)">
+            <summary>
+            insert ID field with identity type
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="R"></typeparam>
+            <param name="item"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MiscRepository.DeleteData``2(``1)">
+            <summary>
+            delete by condition
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="R"></typeparam>
+            <param name="condition"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.FamilyRepository">
+            <summary>
+            数据访问与持久化类: Family相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.FamilyRepository.GetQCRatio(System.String)">
+            <summary>
+            根据Family获取OQCRatio
+            </summary>
+            <param name="family"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.FamilyRepository.GetExistQCRatio(System.String)">
+            <summary>
+            取得存在的QCRatio
+            SELECT [Family]
+            FROM [QCRatio]
+            WHERE [QCRatio].[Family]=@qcRatioFamily
+            </summary>
+            <param name="QCRatioFamily"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.FamilyRepository.GetModelListByFamily(System.String)">
+            <summary>
+            取得family下的Model
+            SELECT [Model] FROM [Model] WHERE [Family]=@family ORDER BY [Model]
+            </summary>
+            <param name="Family"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.FamilyRepository.RemoveCacheByKeyList(System.Collections.Generic.IList{System.String})">
+            <summary>
+            for Remove Cache item 
+            </summary>
+            <param name="nameList"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.DefectInfoRepository">
+            <summary>
+            数据访问与持久化类: DefectInfo相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.DefectInfoRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.DefectInfoRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.DefectInfoRepository.Add(IMES.FisObject.Common.Defect.DefectInfo,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.DefectInfoRepository.Remove(IMES.FisObject.Common.Defect.DefectInfo,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.DefectInfoRepository.Update(IMES.FisObject.Common.Defect.DefectInfo,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.DefectInfoRepository.UpdateRepairInfoItemById(IMES.DataModel.DefectInfoDef,System.Int32)">
+            <summary>
+             update DefectInfo where Id=@Id
+            </summary>
+            <param name="item"></param>
+            <param name="id"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.DefectInfoRepository.RemoveRepairInfoItemById(System.Int32)">
+            <summary>
+            Delete DefectInfo where Id=@Id
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.Add(IMES.FisObject.PCA.MB.IMB,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.Remove(IMES.FisObject.PCA.MB.IMB,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.Update(IMES.FisObject.PCA.MB.IMB,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.FillMBRptRepairs(IMES.FisObject.PCA.MB.IMB)">
+            <summary>
+            晚加载RptRepairs
+            select * from rpt_PCARep where SnoId=@MBSNo order by Cdt
+            </summary>
+            <param name="mb"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.TryToGetMBType(IMES.FisObject.Common.Part.IPart,System.String@)">
+            <summary>
+            MB,VB,SB 都要试一遍,才能知道是什么Type
+            </summary>
+            <param name="part"></param>
+            <param name="Mb_Code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.FillPCBAttributes(IMES.FisObject.PCA.MB.IMB)">
+            <summary>
+            Lazy load of product attributes
+            </summary>
+            <param name="product"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.FillPCBAttributeLogs(IMES.FisObject.PCA.MB.IMB)">
+            <summary>
+            Lazy load of product attribute logs
+            </summary>
+            <param name="product"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:IMES.Infrastructure.Repository.PCA.MBRepository.GetMaxMBNO(System.String)" -->
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.SetMaxMBNO(System.String,System.String,IMES.FisObject.PCA.MB.IMB)">
+            <summary>
+            更新MBNO最大号(NumControl)
+            </summary>
+            <param name="mbCode">MbCode</param>
+            <param name="mbType">MbType</param>
+            <param name="maxMO">MO最大号</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.DeleteMBSection(System.String,System.String)">
+            <summary>
+            删除指定区间内的MB, MBStatus, 直接写db
+            </summary>
+            <param name="startSn">startSn</param>
+            <param name="endSn">endSn</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.GetMBBySection(System.String,System.String)">
+            <summary>
+            获取指定区间中的MB列表
+            </summary>
+            <param name="startSn">startSn</param>
+            <param name="endSn">endSn</param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.GetRepairDefectBySiteComponent(System.String,System.String,System.String)">
+            <summary>
+            获取指定mb的指定site,component的维修完成的RepairDefect列表
+            select * from PCBRepair_DefectInfo inner join PCBRepair on PCBRepair_DefectInfo.PCARepairID = PCBRepair.ID where PCBNo = '' and Component = '' and Site = '' and Cause is not null 
+            </summary>
+            <param name="mbsn">mbsn</param>
+            <param name="site">site</param>
+            <param name="component">component</param>
+            <returns>RepairDefect列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.ReplaceMBSn(System.String,System.String)">
+            <summary>
+            Replace Old MB Data with New MB Sno
+            </summary>
+            <param name="oldSn">oldSn</param>
+            <param name="newSn">newSn</param>
+            <remarks>
+            将下列各表中的Old MB Sno 对应记录的PCBNo 栏位Update 为New MB Sno
+            IMES_PCA..MODismantleLog
+            IMES_PCA..PCB
+            IMES_PCA..PCBInfo
+            IMES_PCA..PCBLog
+            IMES_PCA..PCBRepair
+            IMES_PCA..PCBStatus
+            IMES_PCA..PCBTestLog
+            IMES_PCA..PCB_Part
+            IMES_PCA..SnoLog3D
+            IMES_PCA..TransferToFISList
+            </remarks>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.IsUsedCvsn(System.String)">
+            <summary>
+            检查输入的cpuVendorSn是否已经和MB绑定
+            用于CombineMB CPU之前检查CPU是否已与其他MB绑定;
+            检查PCB表的CVSN栏位如果等于输入的cpuVendorSn存在返回和它绑定的MBSNO
+            不存在返回""
+            select top 1 PCBNo from PCB where CVSN=@CVSN
+            </summary>
+            <param name="cpuVendorSn"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.GetLatestFailLog(System.String)">
+            <summary>
+            PCBLog.ID 
+            Condition：PCBNo=MBSno and Status=0 Order By Cdt Desc
+            </summary>
+            <param name="productId">pcbNo</param>
+            <returns>MBLog</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBRepository.ReplaceMBSnDefered(IMES.Infrastructure.UnitOfWork.IUnitOfWork,System.String,System.String)">
+            <summary>
+            Replace Old MB Data with New MB Sno, defered version
+            </summary>
+            <param name="uow">UnitOfWork</param>
+            <param name="oldSn">oldSn</param>
+            <param name="newSn">newSn</param>
+            <remarks>
+            将下列各表中的Old MB Sno 对应记录的PCBNo 栏位Update 为New MB Sno
+            IMES_PCA..MODismantleLog
+            IMES_PCA..PCB
+            IMES_PCA..PCBInfo
+            IMES_PCA..PCBLog
+            IMES_PCA..PCBRepair
+            IMES_PCA..PCBStatus
+            IMES_PCA..PCBTestLog
+            IMES_PCA..PCB_Part
+            IMES_PCA..SnoLog3D
+            IMES_PCA..TransferToFISList
+            </remarks>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.PAK.DeliveryRepository">
+            <summary>
+            数据访问与持久化类: Delivery相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.DeliveryRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.DeliveryRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.DeliveryRepository.Add(IMES.FisObject.PAK.DN.Delivery,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.DeliveryRepository.Remove(IMES.FisObject.PAK.DN.Delivery,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.DeliveryRepository.Update(IMES.FisObject.PAK.DN.Delivery,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.DeliveryRepository.GetBolNo">
+            <summary>
+            获取符合出货条件的BolNo列表
+            </summary>
+            <returns>符合出货条件的BOL码集合</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.DeliveryRepository.GetDNByBolNo(System.String)">
+            <summary>
+            根据BolNo获取DN
+            </summary>
+            <param name="bolNo">BOL码</param>
+            <returns>DN集合</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.DeliveryRepository.GetQCStatus(System.String,System.String)">
+            <summary>
+            使用ProductID = @ProductId and Tp = 'PAQC' 查询IMES_FA..QCStatus 表取Udt 最新的记录，
+            </summary>
+            <param name="productID"></param>
+            <param name="tp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.DeliveryRepository.RollBackAssignBoxId(System.String)">
+            <summary>
+              Rollback before assign boxid, update 
+              update ShipBoxDet set SnoId='', Editor=replace(Editor,@snoid,''),Udt=getdate()
+              where Editor like @snoid+%
+            </summary>
+            <param name="snoId"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.DeliveryRepository.UpdateAssignBoxIdEditor(System.String,System.String,System.String)">
+            <summary>
+             succeed assign Boxid ,then change editor to original 
+             Update ShipBoxDet set Editor=replace(Editor,@snoid,''),Udt=getdate()
+             where DeliveryNo=@dn and SnoId=@snoid
+            </summary>
+            <param name="dn"></param>
+            <param name="plt"></param>
+            <param name="snoId"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.DeliveryRepository.UpdateMultiDeliveryForStatusChange(System.String[],System.String)">
+            <summary>
+            update Delivery set [Status]=@status where DeliveryNo in (输入列表)
+            </summary>
+            <param name="dns"></param>
+            <param name="status"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.DeliveryRepository.DeletePalletByPalletNo(System.String)">
+            <summary>
+            "删除Pallet表中一条记录数据
+            </summary>
+            <param name="palletNo"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.PCA.MBChangeLogRepository">
+            <summary>
+             Repository for MBChangeLog
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBChangeLogRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBChangeLogRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBChangeLogRepository.Add(IMES.FisObject.PCA.MBChangeLog.MBChangeLog,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBChangeLogRepository.Remove(IMES.FisObject.PCA.MBChangeLog.MBChangeLog,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBChangeLogRepository.Update(IMES.FisObject.PCA.MBChangeLog.MBChangeLog,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.FA.LCMRepository">
+            <summary>
+            数据访问与持久化类: LCM相关
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.TPCBInfoRepository">
+            <summary>
+            数据访问与持久化类: TPCBInfo相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.TPCBInfoRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.TPCBInfoRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.TPCBInfoRepository.Add(IMES.FisObject.Common.TPCB.TPCB_Info,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.TPCBInfoRepository.Remove(IMES.FisObject.Common.TPCB.TPCB_Info,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.TPCBInfoRepository.Update(IMES.FisObject.Common.TPCB.TPCB_Info,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.HDDCopyInfoRepository">
+            <summary>
+            数据访问与持久化类: HDDCopyInfo相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.HDDCopyInfoRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.HDDCopyInfoRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.HDDCopyInfoRepository.Add(IMES.FisObject.Common.HDDCopyInfo.HDDCopyInfo,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.HDDCopyInfoRepository.Remove(IMES.FisObject.Common.HDDCopyInfo.HDDCopyInfo,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.HDDCopyInfoRepository.Update(IMES.FisObject.Common.HDDCopyInfo.HDDCopyInfo,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MaterialRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MaterialRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MaterialRepository.Add(IMES.FisObject.Common.Material.Material,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MaterialRepository.Remove(IMES.FisObject.Common.Material.Material,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.MaterialRepository.Update(IMES.FisObject.Common.Material.Material,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.AssemblyCodeRepository">
+            <summary>
+            数据访问与持久化类: AssemblyCode相关
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Repository.Common.AssemblyCodeRepository._calledMethods">
+            <summary>
+            记录方法是否被调用过一次
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.PCBVersionRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.PCBVersionRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.PCBVersionRepository.Add(IMES.FisObject.PCA.PCBVersion.PCBVersion,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.PCBVersionRepository.Remove(IMES.FisObject.PCA.PCBVersion.PCBVersion,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.PCBVersionRepository.Update(IMES.FisObject.PCA.PCBVersion.PCBVersion,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.PAK.PalletRepository">
+            <summary>
+            数据访问与持久化类: Pallet相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletRepository.Add(IMES.FisObject.PAK.Pallet.Pallet,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletRepository.Remove(IMES.FisObject.PAK.Pallet.Pallet,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletRepository.Update(IMES.FisObject.PAK.Pallet.Pallet,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletRepository.IsScan2DBarCode(System.String)">
+             <summary>
+             使用Pallet No 查询IMES_PAK..Delivery_Pallet 表，得到Shipment，然后按照如下方法确定是否需要提示用户Scan 2D Barcode
+            SELECT @setnum=DOC_SET_NUMBER FROM HP_EDI..[PAK.PAKComn] (NOLOCK) WHERE InternalID=@shipment 
+            IF EXISTS (SELECT * FROM HP_EDI..[PAK.PAKRT] 
+             WHERE DOC_SET_NUMBER=@setnum AND XSL_TEMPLATE_NAME like '%Verizon2D%' 
+             AND DOC_CAT='Pallet Ship Label- Pack ID Single' )
+             BEGIN
+                 SELECT '1'	
+             END
+            ELSE 
+             BEGIN 
+                 SELECT '0'	
+             END
+             </summary>
+             <param name="palletNo"></param>
+             <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletRepository.AddForwarder(IMES.DataModel.ForwarderInfo)">
+            <summary>
+            添加一条Forwarder
+            id被写回在item里面返回
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletRepository.GetForwarderList(System.String,System.String)">
+            <summary>
+            取得查询列表
+            SELECT [Date], [Forwarder],[MAWB],[Driver],[TruckID],[Editor],CONVERT(char(10), [Cdt], 21) as [UploadDate],CONVERT(char(10), [Udt], 21) as Udt, Id  
+                    FROM [Forwarder]
+                    WHERE CONVERT(char(10), Cdt, 21) BETWEEN @StartDate AND @EndDate
+                    ORDER BY [Cdt]
+            </summary>
+            <param name="startDate"></param>
+            <param name="endDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletRepository.UpdateForwarder(IMES.DataModel.ForwarderInfo)">
+            <summary>
+            更新Forwarder
+            UPDATE [Forwarder]
+             SET [Driver] = @NewDriver,
+             [TruckID] = @NewTruckID,
+             [Editor] = @Editor,
+             [Udt] = GETDATE()
+             WHERE [Id] = @Id
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletRepository.DeleteForwarder(IMES.DataModel.ForwarderInfo)">
+            <summary>
+            删除数据
+            DELETE FROM [IMES_PAK].[dbo].[Forwarder] WHERE [Forwarder]=@Id
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletRepository.GetExistForwarder(IMES.DataModel.ForwarderInfo)">
+            <summary>
+            取得存在的Forwarder相关数据
+            SELECT Id FROM [Forwarder]
+            WHERE [Forwarder]=@Forwarder AND [Date]=@Date AND [MAWB]=@MAWB AND [Driver]=@Driver AND [TruckID]=@TruckID
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.BOMRepository">
+            <summary>
+            数据访问与持久化类: BOM相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.BOMRepository.GetValue_Str(System.Data.SqlClient.SqlDataReader,System.Int32)">
+            <summary>
+            判断空值并赋值(string)
+            </summary>
+            <param name="sqlDataReader"></param>
+            <param name="iCol"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.BOMRepository.GetCheckItemTypeRuleWithPriority(System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="itemType"></param>
+            <param name="line"></param>
+            <param name="station"></param>
+            <param name="family"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.BOMRepository.GetCheckItemTypeRuleWithPriorityByRegex(System.String,System.String,System.String,System.String)">
+            <summary>
+            Regex by Family
+            </summary>
+            <param name="itemType"></param>
+            <param name="line"></param>
+            <param name="station"></param>
+            <param name="family"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.BOMRepository.GetCheckItemTypeRuleByItemType(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="itemType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.BOMRepository.GetChechItemTypeList">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.BOMRepository.CheckExistCheckItemTypeRule(System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="itemType"></param>
+            <param name="line"></param>
+            <param name="station"></param>
+            <param name="family"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.BOMRepository.CheckExistCheckItemTypeRule(IMES.DataModel.CheckItemTypeRuleDef)">
+            <summary>
+            
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.BOMRepository.AddCheckItemTypeRule(IMES.DataModel.CheckItemTypeRuleDef)">
+            <summary>
+            
+            </summary>
+            <param name="itemType"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.BOMRepository.DeleteCheckItemTypeRule(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.BOMRepository.UpdateCheckItemTypeRule(IMES.DataModel.CheckItemTypeRuleDef)">
+            <summary>
+            
+            </summary>
+            <param name="itemType"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:IMES.Infrastructure.Repository.Common.BOMRepository.GetModelFlatBOMByStationModelAndPartForbid(System.String,System.String,System.String,System.String,System.String,System.Object,System.String)" -->
+        <member name="M:IMES.Infrastructure.Repository.Common.BOMRepository.RemoveCacheByKeyList(System.Collections.Generic.IList{System.String})">
+            <summary>
+            for Remove Cache item 
+            </summary>
+            <param name="modelNameList"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.ProcessRepository">
+            <summary>
+            数据访问与持久化类: Process相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ProcessRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ProcessRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ProcessRepository.Add(IMES.FisObject.Common.Process.Process,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ProcessRepository.Remove(IMES.FisObject.Common.Process.Process,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ProcessRepository.Update(IMES.FisObject.Common.Process.Process,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.PAK.ModelToleranceRepository">
+            <summary>
+            数据访问与持久化类: ModelTolerance相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.CartonRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.CartonRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.CartonRepository.Add(IMES.FisObject.PAK.Carton.Carton,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.CartonRepository.Remove(IMES.FisObject.PAK.Carton.Carton,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.CartonRepository.Update(IMES.FisObject.PAK.Carton.Carton,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBModelRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBModelRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBModelRepository.Add(IMES.FisObject.PCA.MBModel.IMBModel,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBModelRepository.Remove(IMES.FisObject.PCA.MBModel.IMBModel,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBModelRepository.Update(IMES.FisObject.PCA.MBModel.IMBModel,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="work"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBModelRepository.GetMBCodeList">
+            <summary>
+            取得主板代码集合
+            </summary>
+            <returns>主板代码集合</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBModelRepository.GetMBModelByMBCode(System.String)">
+            <summary>
+            取得同一主板代码的所有主板型号对象
+            </summary>
+            <param name="mbCode">主板代码</param>
+            <returns>主板型号对象集合</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBModelRepository.Get111LevelList(System.String)">
+            <summary>
+            Get 111 Level List from database
+            </summary>
+            <param name="mbCodeId">MB_CODE Identifier</param>
+            <returns>111 Level Info List</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBModelRepository.Get1397LevelList(System.String)">
+            <summary>
+            取得1397阶信息列表
+            </summary>
+            <param name="familyId">Family标识</param>
+            <returns>1397阶信息列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBModelRepository.FillMBCodeObj(IMES.FisObject.PCA.MBModel.MBModel)">
+            <summary>
+            Lazy load of MBCode of MBModel
+            </summary>
+            <param name="mbModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PCA.MBModelRepository.FillFamilyObj(IMES.FisObject.PCA.MBModel.MBModel)">
+            <summary>
+            
+            </summary>
+            <param name="mbModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.PrintLogRepository">
+            <summary>
+            数据访问与持久化类: PrintLog相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PrintLogRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PrintLogRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PrintLogRepository.Add(IMES.FisObject.Common.PrintLog.PrintLog,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PrintLogRepository.Remove(IMES.FisObject.Common.PrintLog.PrintLog,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PrintLogRepository.Update(IMES.FisObject.Common.PrintLog.PrintLog,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.PAK.ModelWeightRepository">
+            <summary>
+            数据访问与持久化类: ModelWeight相关
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.PAK.GiftRepository">
+            <summary>
+            数据访问与持久化类: Gift相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.GiftRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.GiftRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.GiftRepository.Add(IMES.FisObject.PAK.FRU.FRUGift,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.GiftRepository.Remove(IMES.FisObject.PAK.FRU.FRUGift,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.GiftRepository.Update(IMES.FisObject.PAK.FRU.FRUGift,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.TPCBRepository">
+            <summary>
+            数据访问与持久化类: TPCB相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.TPCBRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.TPCBRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.TPCBRepository.Add(IMES.FisObject.Common.TPCB.TPCB,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.TPCBRepository.Remove(IMES.FisObject.Common.TPCB.TPCB,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.TPCBRepository.Update(IMES.FisObject.Common.TPCB.TPCB,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository._Schema.SqlHelper">
+            <summary>
+            ADO.NET使用帮助类
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Repository._Schema.SqlHelper.DB_BOM">
+            <summary>
+            DB Catalog名称 BOM
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Repository._Schema.SqlHelper.DB_GetData">
+            <summary>
+            DB Catalog名称 GetData
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Repository._Schema.SqlHelper.DB_PCA">
+            <summary>
+            DB Catalog名称 PCA
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Repository._Schema.SqlHelper.DB_FA">
+            <summary>
+            DB Catalog名称 FA
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Repository._Schema.SqlHelper.DB_PAK">
+            <summary>
+            DB Catalog名称 PAK
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Repository._Schema.SqlHelper.DB_Dashborad">
+            <summary>
+            DB Catalog名称 Dashboard
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Repository._Schema.SqlHelper.DB_KIT">
+            <summary>
+            DB Catalog名称 KIT
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Repository._Schema.SqlHelper.DB_DOA">
+            <summary>
+            DB Catalog名称 DOA
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Repository._Schema.SqlHelper.DB_HP_EDI">
+            <summary>
+            DB Catalog名称 HP_EDI
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Repository._Schema.SqlHelper.DB_Docking">
+            <summary>
+            DB Catalog名称 Docking
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SqlHelper.ExecuteNonQuery(System.String,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand (that returns no resultset) against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             int result = ExecuteNonQuery(connString, CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="connectionString">a valid connection string for a SqlConnection</param>
+            <param name="cmdType">the CommandType (stored procedure, text, etc.)</param>
+            <param name="cmdText">the stored procedure name or T-SQL command</param>
+            <param name="commandParameters">an array of SqlParamters used to execute the command</param>
+            <returns>an int representing the number of rows affected by the command</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SqlHelper.ExecuteReader(System.String,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand that returns a resultset against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             SqlDataReader r = ExecuteReader(connString, CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="connectionString">a valid connection string for a SqlConnection</param>
+            <param name="cmdType">the CommandType (stored procedure, text, etc.)</param>
+            <param name="cmdText">the stored procedure name or T-SQL command</param>
+            <param name="commandParameters">an array of SqlParamters used to execute the command</param>
+            <returns>A SqlDataReader containing the results</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SqlHelper.ExecuteReader_OnTrans(System.String,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand that returns a resultset against the database specified in the connection string 
+            using the provided parameters.(On transaction)
+            </summary>
+            <remarks>
+            e.g.:  
+             SqlDataReader r = ExecuteReader(connString, CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="connectionString">a valid connection string for a SqlConnection</param>
+            <param name="cmdType">the CommandType (stored procedure, text, etc.)</param>
+            <param name="cmdText">the stored procedure name or T-SQL command</param>
+            <param name="commandParameters">an array of SqlParamters used to execute the command</param>
+            <returns>A SqlDataReader containing the results</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SqlHelper.ExecuteDataFill(System.String,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand that returns a datatable.
+            </summary>
+            <param name="connectionString">a valid connection string for a SqlConnection</param>
+            <param name="cmdType">the CommandType (stored procedure, text, etc.)</param>
+            <param name="cmdText">the stored procedure name or T-SQL command</param>
+            <param name="commandParameters">an array of SqlParamters used to execute the command</param>
+            <returns>A SqlDataReader containing the results</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SqlHelper.ExecuteDataFillConsiderOutParams(System.String,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand that returns a datatable. (Not copy parameters, for output parameters.)
+            </summary>
+            <param name="connectionString">a valid connection string for a SqlConnection</param>
+            <param name="cmdType">the CommandType (stored procedure, text, etc.)</param>
+            <param name="cmdText">the stored procedure name or T-SQL command</param>
+            <param name="commandParameters">an array of SqlParamters used to execute the command</param>
+            <returns>A SqlDataReader containing the results</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SqlHelper.ExecSPorSql(System.String,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand that returns a datatable. (Not copy parameters, for output parameters.)
+            </summary>
+            <param name="connectionString">a valid connection string for a SqlConnection</param>
+            <param name="cmdType">the CommandType (stored procedure, text, etc.)</param>
+            <param name="cmdText">the stored procedure name or T-SQL command</param>
+            <param name="commandParameters">an array of SqlParamters used to execute the command</param>
+            <returns>A SqlDataReader containing the results</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SqlHelper.ExecuteScalar(System.String,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand that returns the first column of the first record against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             Object obj = ExecuteScalar(connString, CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="connectionString">a valid connection string for a SqlConnection</param>
+            <param name="cmdType">the CommandType (stored procedure, text, etc.)</param>
+            <param name="cmdText">the stored procedure name or T-SQL command</param>
+            <param name="commandParameters">an array of SqlParamters used to execute the command</param>
+            <returns>An object that should be converted to the expected type using Convert.To{Type}</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SqlHelper.PrepareCommand(System.Data.SqlClient.SqlCommand,System.Data.SqlClient.SqlConnection,System.Data.SqlClient.SqlTransaction,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Prepare a command for execution
+            </summary>
+            <param name="cmd">SqlCommand object</param>
+            <param name="conn">SqlConnection object</param>
+            <param name="trans">SqlTransaction object</param>
+            <param name="cmdType">Cmd type e.g. stored procedure or text</param>
+            <param name="cmdText">Command text, e.g. Select * from Products</param>
+            <param name="cmdParms">SqlParameters to use in the command</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository._Schema.SqlHelper.GetDateTime">
+            <summary>
+            获得统一时间
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:IMES.Infrastructure.Repository._Schema.SqlHelper.ConnectionString_BOM">
+            <summary>
+            数据库连接字符串 BOM
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Repository._Schema.SqlHelper.ConnectionString_GetData">
+            <summary>
+            数据库连接字符串 GetData
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Repository._Schema.SqlHelper.ConnectionString_PCA">
+            <summary>
+            数据库连接字符串 PCA
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Repository._Schema.SqlHelper.ConnectionString_FA">
+            <summary>
+            数据库连接字符串 FA
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Repository._Schema.SqlHelper.ConnectionString_PAK">
+            <summary>
+            数据库连接字符串 PAK
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Repository._Schema.SqlHelper.ConnectionString_Dashborad">
+            <summary>
+            数据库连接字符串 Dashboard
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Repository._Schema.SqlHelper.ConnectionString_KIT">
+            <summary>
+            数据库连接字符串 KIT
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Repository._Schema.SqlHelper.ConnectionString_DOA">
+            <summary>
+            数据库连接字符串 DOA
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Repository._Schema.SqlHelper.ConnectionString_HP_EDI">
+            <summary>
+            数据库连接字符串 KIT
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Repository._Schema.SqlHelper.ConnectionString_Docking">
+            <summary>
+            数据库连接字符串 Docking
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.Repository._Schema.SqlHelper.SqlCommandTimeout">
+            <summary>
+            DB Catalog名称 GetData for SIE Replicate DB
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.ReprintLogRepository">
+            <summary>
+            数据访问与持久化类: ReprintLog相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ReprintLogRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ReprintLogRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ReprintLogRepository.Add(IMES.FisObject.Common.ReprintLog.ReprintLog,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ReprintLogRepository.Remove(IMES.FisObject.Common.ReprintLog.ReprintLog,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.ReprintLogRepository.Update(IMES.FisObject.Common.ReprintLog.ReprintLog,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.PartSnRepository">
+            <summary>
+            数据访问与持久化类: PartSn相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartSnRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartSnRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartSnRepository.Add(IMES.FisObject.Common.PartSn.PartSn,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartSnRepository.Remove(IMES.FisObject.Common.PartSn.PartSn,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartSnRepository.Update(IMES.FisObject.Common.PartSn.PartSn,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="work"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartSnRepository.FindPartSnByVendorSn(System.String)">
+            <summary>
+            根据Vendor SN取PartSn
+            </summary>
+            <param name="vendorSn">vendorSn</param>
+            <returns>PartSn</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartSnRepository.GetCombineCountByPartType(System.String,System.DateTime,System.DateTime)">
+            <summary>
+            获取不同时间段内KeyParts已结合的数量
+            夜班：前一天晚上20:30到早上7:30
+            白班：早上8:00到晚上20:30
+            线别最后一位D是白班(从早上8:00开始)，N是夜班(从晚上20:30开始)
+            注：
+            A.若当天班次还没有到开班时间，则取前一天的数量
+            B.从PartSN表里按照PartType获取时间段内已结合的数量
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.PartRepository">
+            <summary>
+            数据访问与持久化类: Part相关
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.Repository.Common.PartRepository._calledMethods">
+            <summary>
+            记录方法是否被调用过一次
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.Add(IMES.FisObject.Common.Part.IPart,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.Remove(IMES.FisObject.Common.Part.IPart,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.Update(IMES.FisObject.Common.Part.IPart,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="work"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.GetPPIDTypeList">
+            <summary>
+            取得PPID类型信息列表
+            </summary>
+            <returns>PPID类型信息列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.GetPPIDDescriptionList(System.String)">
+            <summary>
+            取得PPID描述信息列表
+            </summary>
+            <returns>PPID描述信息列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.GetPartNoList(System.String,System.String)">
+            <summary>
+            取得PartNo信息列表
+            </summary>
+            <param name="PPIDTypeId">PPID类型标识</param>
+            <param name="PPIDDescrptionId">PPID描述标识</param>
+            <returns>PartNo信息列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.GetKPTypeList">
+            <summary>
+            取得KP类型列表
+            </summary>
+            <returns>KP类型列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.GetPartCheck(System.String,System.String)">
+            <summary>
+            获取指定PartType的Match,Check,Save设定
+            </summary>
+            <param name="partType">part类型</param>
+            <returns>Match,Check,Save设定</returns>
+            <remark>需要提供缓存，以PartType为Key</remark>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.AddAstRule(IMES.DataModel.AstRuleInfo)">
+            <summary>
+            insert AssetRule
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.UpdateAstRule(IMES.DataModel.AstRuleInfo)">
+            <summary>
+            update AstRue
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.DeletePartType(System.String)">
+            <summary>
+            根据PartType删除PartType记录
+            </summary>
+            <param name="partType"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.GetConstValueTypeList(System.String)">
+            <summary>
+             Vincent add ConstValueType 
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.GetConstValueTypeList(System.String,System.String)">
+            <summary>
+             Vincent add ConstValueType 
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.GetConstValueTypeList">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.PartRepository.RemoveCacheByKeyList(System.Collections.Generic.IList{System.String})">
+            <summary>
+            for Remove Cache item 
+            </summary>
+            <param name="partNoList"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.PartRepository.PartRefreshAction">
+            <summary>
+            方法是否已经被调用过了第一次
+            </summary>
+            <param name="methodId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.OSWINRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.OSWINRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.OSWINRepository.Add(IMES.FisObject.Common.Model.OSWIN,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.OSWINRepository.Remove(IMES.FisObject.Common.Model.OSWIN,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.OSWINRepository.Update(IMES.FisObject.Common.Model.OSWIN,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.OSWINRepository.GetOSWINByModelBOM(System.String)">
+            <summary>
+            select a.*
+                from OSWIN a
+                inner join ModelBOM b on  b.Component like '%' +a.Zmode
+                 where b.Material = @model 
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.UPSRepository">
+            <summary>
+            数据访问与持久化类: Line相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.UPSRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.UPSRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.UPSRepository.Add(IMES.FisObject.Common.UPS.UPSCombinePO,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.UPSRepository.Remove(IMES.FisObject.Common.UPS.UPSCombinePO,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.UPSRepository.Update(IMES.FisObject.Common.UPS.UPSCombinePO,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.UPSRepository.IsUPSProductID(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="productID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.UPSRepository.GetAvailablePOWithTrans(System.String,System.Collections.Generic.IList{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <param name="status"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.PAK.PizzaRepository">
+            <summary>
+            数据访问与持久化类: Pizza相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PizzaRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PizzaRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PizzaRepository.Add(IMES.FisObject.PAK.Pizza.Pizza,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PizzaRepository.Remove(IMES.FisObject.PAK.Pizza.Pizza,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PizzaRepository.Update(IMES.FisObject.PAK.Pizza.Pizza,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PizzaRepository.GetCombinedPartNo(System.String)">
+            <summary>
+            select distinct PartNo from Pizza_Part where PizzaID
+            </summary>
+            <param name="pizzaId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PizzaRepository.GetCombinedPartQty(System.String)">
+            <summary>
+            select count(1)  from Pizza_Part where PizzaID=@PizzaID
+            </summary>
+            <param name="pizzaId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PizzaRepository.GetCombinePartNoQty(System.String)">
+            <summary>
+            select PartNo, count(1) as qty from Pizza_Part where PizzaID group by PartNo
+            </summary>
+            <param name="pizzaId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PizzaRepository.GetCombinePizzaByCartonSN(System.String)">
+            <summary>
+            select * from Pizza where CartonSN=@CartonSN
+            </summary>
+            <param name="cartonSn"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PizzaRepository.GetCombinePizzaQtyByCartonSN(System.String)">
+            <summary>
+             select count(CartonSN)  from Pizza where CartonSN=@CartonSN
+            </summary>
+            <param name="cartonSn"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.Common.DefectRepository">
+            <summary>
+            数据访问与持久化类: Defect相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.DefectRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.DefectRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.DefectRepository.Add(IMES.FisObject.Common.Defect.Defect,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.DefectRepository.Remove(IMES.FisObject.Common.Defect.Defect,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.DefectRepository.Update(IMES.FisObject.Common.Defect.Defect,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.FA.ProductRepository">
+            <summary>
+            数据访问与持久化类: Product相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.Add(IMES.FisObject.FA.Product.IProduct,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.Remove(IMES.FisObject.FA.Product.IProduct,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.Update(IMES.FisObject.FA.Product.IProduct,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.FillProductAttributes(IMES.FisObject.FA.Product.IProduct)">
+            <summary>
+            Lazy load of product attributes
+            </summary>
+            <param name="product"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.FillProductAttributeLogs(IMES.FisObject.FA.Product.IProduct)">
+            <summary>
+            Lazy load of product attribute logs
+            </summary>
+            <param name="product"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.GetTop1SNByCarton(System.String)">
+            <summary>
+            用于Carton称重时，任意取一个SN来创建Product对象，进行卡站
+            </summary>
+            <param name="cartonNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.GetMaxProductId(System.String)">
+            <summary>
+            根据前缀获取最大ProductId
+            </summary>
+            <param name="preSeqStr">前缀</param>
+            <returns>最大ProductId</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.SetMaxProductId(System.String,IMES.FisObject.FA.Product.IProduct)">
+            <summary>
+            更新最大ProductId (Product)
+            </summary>
+            <param name="smtMO">MO</param>
+            <param name="ProductId">最大ProductId</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.GetProductByMBSn(System.String)">
+            <summary>
+            获取与指定mb绑定的Product
+            </summary>
+            <param name="mbSn"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.IsUsedCvsn(System.String)">
+            <summary>
+            检查输入的cpuVendorSn是否已经和product绑定
+            用于CombineproductCPU之前检查CPU是否已与其他product绑定;
+            检查product表的CVSN栏位如果等于输入的cpuVendorSn存在返回和它绑定的productSNO
+            不存在返回""
+            select top 1 ProductID from Product where CVSN=@CVSN
+            </summary>
+            <param name="cpuVendorSn"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.GetAllCartonWeightByPallet(System.String)">
+            <summary>
+            根据PalletNo获取所有属于该Pallet的CartonSN的重量之和
+            </summary>
+            <param name="palletNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.GetProductListByPCBID(System.String)">
+            <summary>
+            根據pcbID獲取與之綁定的Product列表
+            </summary>
+            <param name="pcbID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.GetProductListByDeliveryNo(System.String)">
+            <summary>
+            根據deliveryNo獲取與之綁定的Product列表
+            </summary>
+            <param name="dn"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.GetDeliveryNoListByPalletNo(System.String)">
+            <summary>
+            此DN已結合PalletNo List
+            </summary>
+            <param name="dn">結合 DeliveryNo</param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.ExistQCStatusByLineModelTp(System.String,System.String,System.String)">
+            <summary>
+            QCStatus by SKU, Line, TP
+            </summary>
+            <param name="line"></param>
+            <param name="model"></param>
+            <param name="tp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.ExistQCStatusByLineRegionTp(System.String,System.String,System.String)">
+            <summary>
+            QCStatus by Region, Line , TP
+            </summary>
+            <param name="line"></param>
+            <param name="region"></param>
+            <param name="tp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.FA.ProductRepository.CheckExistCustomSn(System.String)">
+            <summary>
+            EXISTS (SELECT * FROM FA.dbo.Product (nolock) WHERE CUSTSN=@CUSTSN)
+            </summary>
+            <param name="productId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletTypeRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletTypeRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletTypeRepository.Add(IMES.FisObject.PAK.StandardWeight.PalletType,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletTypeRepository.Remove(IMES.FisObject.PAK.StandardWeight.PalletType,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.PalletTypeRepository.Update(IMES.FisObject.PAK.StandardWeight.PalletType,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.BSamRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.BSamRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.BSamRepository.Add(IMES.FisObject.PAK.BSam.BSamLocation,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.BSamRepository.Remove(IMES.FisObject.PAK.BSam.BSamLocation,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.BSamRepository.Update(IMES.FisObject.PAK.BSam.BSamLocation,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="T:IMES.Infrastructure.Repository.PAK.FRUCartonRepository">
+            <summary>
+            数据访问与持久化类: FRUCarton相关
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.FRUCartonRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.FRUCartonRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.FRUCartonRepository.Add(IMES.FisObject.PAK.FRU.FRUCarton,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.FRUCartonRepository.Remove(IMES.FisObject.PAK.FRU.FRUCarton,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.PAK.FRUCartonRepository.Update(IMES.FisObject.PAK.FRU.FRUCarton,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.HoldRepository.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.HoldRepository.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.HoldRepository.Add(IMES.FisObject.Common.Hold.Hold,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.HoldRepository.Remove(IMES.FisObject.Common.Hold.Hold,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.Repository.Common.HoldRepository.Update(IMES.FisObject.Common.Hold.Hold,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+    </members>
+</doc>

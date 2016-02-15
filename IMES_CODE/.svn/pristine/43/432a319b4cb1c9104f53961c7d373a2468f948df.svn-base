@@ -1,0 +1,62 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="FinalPVS" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:BlockStation Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="blockStation" SessionType="{ActivityBind FinalPVS,Path=SessionType}" Editor="{ActivityBind FinalPVS,Path=Editor}" ProcessType="Product" Station="{ActivityBind FinalPVS,Path=Station}" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" />
+	<IfElseActivity x:Name="IfNoPizzaID">
+		<IfElseBranchActivity x:Name="createPizzaID">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="NoPizzaID" />
+			</IfElseBranchActivity.Condition>
+			<SequenceActivity x:Name="sequenceActivity3">
+				<ns0:AcquirePizzaSection Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="acquirePizzaSection1" SessionType="{ActivityBind FinalPVS,Path=SessionType}" Editor="{ActivityBind FinalPVS,Path=Editor}" SessionId="00000000-0000-0000-0000-000000000000" Station="{ActivityBind FinalPVS,Path=Station}" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" />
+				<ns0:CreateNewPizza Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="createNewPizza1" SessionType="{ActivityBind FinalPVS,Path=SessionType}" Editor="{ActivityBind FinalPVS,Path=Editor}" Station="{ActivityBind FinalPVS,Path=Station}" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" />
+			</SequenceActivity>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="GetPizzaBranch">
+			<ns0:GetProductPizza Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="getProductPizza1" SessionType="{ActivityBind FinalPVS,Path=SessionType}" Editor="{ActivityBind FinalPVS,Path=Editor}" Station="{ActivityBind FinalPVS,Path=Station}" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" />
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<ns0:GetBOM Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="getBOM1" SessionType="{ActivityBind FinalPVS,Path=SessionType}" Editor="{ActivityBind FinalPVS,Path=Editor}" Station="{ActivityBind FinalPVS,Path=Station}" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" />
+	<ns0:GetExplicitCheckItem Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="getExplicitCheckItem1" SessionType="{ActivityBind FinalPVS,Path=SessionType}" Editor="{ActivityBind FinalPVS,Path=Editor}" Station="{ActivityBind FinalPVS,Path=Station}" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" />
+	<WhileActivity x:Name="whileNotScanAllParts">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplete" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind FinalPVS,Path=SessionType}" Editor="{ActivityBind FinalPVS,Path=Editor}" Station="{ActivityBind FinalPVS,Path=Station}" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" />
+			<IfElseActivity x:Name="ifElseActivity1">
+				<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplete" />
+					</IfElseBranchActivity.Condition>
+					<ns0:PartMatch Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="partMatch1" SessionType="{ActivityBind FinalPVS,Path=SessionType}" Editor="{ActivityBind FinalPVS,Path=Editor}" Station="{ActivityBind FinalPVS,Path=Station}" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" />
+					<IfElseActivity x:Name="ifNoMatchedPart">
+						<IfElseBranchActivity x:Name="NoMatchedPartBranch">
+							<IfElseBranchActivity.Condition>
+								<RuleConditionReference ConditionName="NoPartMatch" />
+							</IfElseBranchActivity.Condition>
+							<ns0:CheckExplicitCheckItem Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="checkExplicitCheckItem1" SessionType="{ActivityBind FinalPVS,Path=SessionType}" Editor="{ActivityBind FinalPVS,Path=Editor}" Station="{ActivityBind FinalPVS,Path=Station}" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" />
+						</IfElseBranchActivity>
+					</IfElseActivity>
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:DBScope Station="{ActivityBind FinalPVS,Path=Station}" x:Name="dbScope2" Key="{ActivityBind FinalPVS,Path=Key}" SessionType="{ActivityBind FinalPVS,Path=SessionType}">
+		<IfElseActivity x:Name="ifElseActivity3">
+			<IfElseBranchActivity x:Name="NotBindBranch">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="NoPizzaID" />
+				</IfElseBranchActivity.Condition>
+				<ns0:GeneratePizzaID Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="generatePizzaID2" SessionType="{ActivityBind FinalPVS,Path=SessionType}" Editor="{ActivityBind FinalPVS,Path=Editor}" Station="{ActivityBind FinalPVS,Path=Station}" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" />
+				<ns0:BindPizza Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="bindPizza2" SessionType="{ActivityBind FinalPVS,Path=SessionType}" Editor="{ActivityBind FinalPVS,Path=Editor}" Station="{ActivityBind FinalPVS,Path=Station}" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="HasBindBranch">
+				<ns0:UpdatePizzaStatus Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="updatePizzaStatus1" SessionType="{ActivityBind FinalPVS,Path=SessionType}" Editor="{ActivityBind FinalPVS,Path=Editor}" Station="{ActivityBind FinalPVS,Path=Station}" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<ns0:BindProductParts Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="bindPizzaParts1" SessionType="{ActivityBind FinalPVS,Path=SessionType}" Editor="{ActivityBind FinalPVS,Path=Editor}" Station="{ActivityBind FinalPVS,Path=Station}" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" />
+		<ns0:SaveExplictCheckItem Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="SaveExplictCheckItem1" SessionType="{ActivityBind FinalPVS,Path=SessionType}" Editor="{ActivityBind FinalPVS,Path=Editor}" Station="{ActivityBind FinalPVS,Path=Station}" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" />
+		<ns0:UpdateProductStatus Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind FinalPVS,Path=SessionType}" Editor="{ActivityBind FinalPVS,Path=Editor}" Status="Pass" Station="{ActivityBind FinalPVS,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" />
+		<ns0:WriteProductLog Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind FinalPVS,Path=SessionType}" Editor="{ActivityBind FinalPVS,Path=Editor}" Station="{ActivityBind FinalPVS,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" />
+		<ns0:Print Customer="{ActivityBind FinalPVS,Path=Customer}" x:Name="print1" SessionType="{ActivityBind FinalPVS,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind FinalPVS,Path=Editor}" Station="{ActivityBind FinalPVS,Path=Station}" MOFrom="Product" ModelFrom="No" Line="{ActivityBind FinalPVS,Path=PdLine}" Key="{ActivityBind FinalPVS,Path=Key}" DnFrom="No" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

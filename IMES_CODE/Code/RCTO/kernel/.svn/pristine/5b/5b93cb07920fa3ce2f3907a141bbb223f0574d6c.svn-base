@@ -1,0 +1,725 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+using IMES.FisObject.PAK.FRU;
+using IMES.Infrastructure.UnitOfWork;
+using System.Data.SqlClient;
+using System.Reflection;
+using IMES.Infrastructure.Util;
+using System.Data;
+using IMES.FisObject.PAK.CartonSSCC;
+using IMES.Infrastructure.Repository._Metas;
+using IMES.DataModel;
+using fons = IMES.FisObject.PAK.CartonSSCC;
+using mtns = IMES.Infrastructure.Repository._Metas;
+
+namespace IMES.Infrastructure.Repository.PAK
+{
+    /// <summary>
+    /// 数据访问与持久化类: Gift相关
+    /// </summary>
+    public class CartonSSCCRepository : BaseRepository<fons.CartonSSCC>, ICartonSSCCRepository
+    {
+        private static GetValueClass g = new GetValueClass();
+
+        #region Overrides of BaseRepository<CartonSSCC>
+
+        protected override void PersistNewItem(fons.CartonSSCC item)
+        {
+            StateTracker tracker = item.Tracker;
+            try
+            {
+                if (tracker.GetState(item) == DataRowState.Added)
+                {
+                    this.PersistInsertCartonSSCC(item);
+                }
+            }
+            finally
+            {
+                tracker.Clear();
+            }
+        }
+
+        protected override void PersistUpdatedItem(fons.CartonSSCC item)
+        {
+            StateTracker tracker = item.Tracker;
+            try
+            {
+                if (tracker.GetState(item) == DataRowState.Modified)
+                {
+                    this.PersistUpdateCartonSSCC(item);
+                }
+            }
+            finally
+            {
+                tracker.Clear();
+            }
+        }
+
+        protected override void PersistDeletedItem(fons.CartonSSCC item)
+        {
+            StateTracker tracker = item.Tracker;
+            try
+            {
+                if (tracker.GetState(item) == DataRowState.Deleted)
+                {
+                    this.PersistDeleteCartonSSCC(item);
+                }
+            }
+            finally
+            {
+                tracker.Clear();
+            }
+        }
+
+        #endregion
+
+        #region Implementation of IRepository<CartonSSCC>
+
+        /// <summary>
+        /// 根据对象key获取对象
+        /// </summary>
+        /// <param name="key">对象的key</param>
+        /// <returns>对象实例</returns>
+        public override fons.CartonSSCC Find(object key)
+        {
+            try
+            {
+                fons.CartonSSCC ret = null;
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.CartonSSCC cond = new _Schema.CartonSSCC();
+                        cond.CartonSN = (string)key;
+                        sqlCtx = _Schema.Func.GetConditionedSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.CartonSSCC), cond, null, null);
+                    }
+                }
+                sqlCtx.Params[_Schema.CartonSSCC.fn_CartonSN].Value = (string)key;
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_PAK, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()))
+                {
+                    if (sqlR != null && sqlR.Read())
+                    {
+                        ret = new fons.CartonSSCC();
+                        ret.CartonSN = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.CartonSSCC.fn_CartonSN]);
+                        ret.Editor = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.CartonSSCC.fn_Editor]);
+                        ret.SSCC = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.CartonSSCC.fn_SSCC]);
+                        ret.Cdt = GetValue_DateTime(sqlR, sqlCtx.Indexes[_Schema.CartonSSCC.fn_Cdt]);
+                        ret.Tracker.Clear();
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 获取所有对象列表
+        /// </summary>
+        /// <returns>所有对象列表</returns>
+        public override IList<fons.CartonSSCC> FindAll()
+        {
+            try
+            {
+                IList<fons.CartonSSCC> ret = new List<fons.CartonSSCC>();
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = _Schema.Func.GetCommonSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.CartonSSCC));
+                    }
+                }
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_PAK, CommandType.Text, sqlCtx.Sentence, null))
+                {
+                    while (sqlR != null && sqlR.Read())
+                    {
+                        fons.CartonSSCC item = new fons.CartonSSCC();
+                        item.CartonSN = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.CartonSSCC.fn_CartonSN]);
+                        item.Editor = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.CartonSSCC.fn_Editor]);
+                        item.SSCC = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.CartonSSCC.fn_SSCC]);
+                        item.Cdt = GetValue_DateTime(sqlR, sqlCtx.Indexes[_Schema.CartonSSCC.fn_Cdt]);
+                        item.Tracker.Clear();
+                        ret.Add(item);
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 添加一个对象
+        /// </summary>
+        /// <param name="item">新添加的对象</param>
+        /// <param name="uow"></param>
+        public override void Add(fons.CartonSSCC item, IUnitOfWork uow)
+        {
+            base.Add(item, uow);
+        }
+
+        /// <summary>
+        /// 删除指定对象
+        /// </summary>
+        /// <param name="item">需删除的对象</param>
+        /// <param name="uow"></param>
+        public override void Remove(fons.CartonSSCC item, IUnitOfWork uow)
+        {
+            base.Remove(item, uow);
+        }
+
+        /// <summary>
+        /// 更新指定对象
+        /// </summary>
+        /// <param name="item">需更新的对象</param>
+        /// <param name="uow"></param>
+        public override void Update(fons.CartonSSCC item, IUnitOfWork uow)
+        {
+            base.Update(item, uow);
+        }
+
+
+        public void DeleteCartonSCC(IList<string> cartonSNList)
+        {
+            
+            try
+            {
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+
+                        _Schema.CartonSSCC insetCond = new _Schema.CartonSSCC();
+                        insetCond.CartonSN  = "INSET";
+                        sqlCtx = _Schema.Func.GetConditionedDelete(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.CartonSSCC), null, null, insetCond);
+                    }
+                }
+              
+                string Sentence = sqlCtx.Sentence.Replace(_Schema.Func.DecInSet(_Schema.CartonSSCC.fn_CartonSN), _Schema.Func.ConvertInSet(cartonSNList));
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_PAK, CommandType.Text, Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion
+
+        #region ICartonSSCCRepository Members
+
+        public void AddCartonStatusInfo(CartonStatusInfo item)
+        {
+            try
+            {
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                lock (mthObj)
+                {
+                    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    {
+                        sqlCtx = FuncNew.GetAquireIdInsert<CartonStatus>(tk);
+                    }
+                }
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+
+                sqlCtx = FuncNew.SetColumnFromField<CartonStatus, CartonStatusInfo>(sqlCtx, item);
+
+                sqlCtx.Param(CartonStatus.fn_cdt).Value = cmDt;
+                sqlCtx.Param(CartonStatus.fn_udt).Value = cmDt;
+
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_PAK, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void AddCartonLogInfo(CartonLogInfo item)
+        {
+            try
+            {
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                lock (mthObj)
+                {
+                    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    {
+                        sqlCtx = FuncNew.GetAquireIdInsert<CartonLog>(tk);
+                    }
+                }
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+
+                sqlCtx = FuncNew.SetColumnFromField<CartonLog, CartonLogInfo>(sqlCtx, item);
+
+                sqlCtx.Param(CartonLog.fn_cdt).Value = cmDt;
+
+                item.id = _Schema.SqlHelper.ExecuteScalarForAquireIdInsert(_Schema.SqlHelper.ConnectionString_PAK, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<CartonInfoInfo> GetCartonInfoInfo(CartonInfoInfo condition)
+        {
+            try
+            {
+                IList<CartonInfoInfo> ret = null;
+
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                mtns::SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                //    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                //    {
+                mtns::CartonInfo cond = mtns::FuncNew.SetColumnFromField<mtns::CartonInfo, CartonInfoInfo>(condition);
+                sqlCtx = mtns::FuncNew.GetConditionedSelect<mtns::CartonInfo>(null, null, new mtns::ConditionCollection<mtns::CartonInfo>(new mtns::EqualCondition<mtns::CartonInfo>(cond)), mtns::CartonInfo.fn_cdt);
+                //    }
+                //}
+                sqlCtx = mtns::FuncNew.SetColumnFromField<mtns::CartonInfo, CartonInfoInfo>(sqlCtx, condition);
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_PAK, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params))
+                {
+                    ret = mtns::FuncNew.SetFieldFromColumn<mtns::CartonInfo, CartonInfoInfo, CartonInfoInfo>(ret, sqlR, sqlCtx);
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void DeleteCartonInfo(CartonInfoInfo condition)
+        {
+            try
+            {
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                //    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                //    {
+                CartonInfo cond = FuncNew.SetColumnFromField<CartonInfo, CartonInfoInfo>(condition);
+                sqlCtx = FuncNew.GetConditionedDelete<CartonInfo>(new ConditionCollection<CartonInfo>(new EqualCondition<CartonInfo>(cond)));
+                //    }
+                //}
+                sqlCtx = FuncNew.SetColumnFromField<CartonInfo, CartonInfoInfo>(sqlCtx, condition);
+
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_PAK, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void UpdateCartonInfo(CartonInfoInfo setValue, CartonInfoInfo condition)
+        {
+            try
+            {
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                mtns::SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                //    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                //    {
+                mtns::CartonInfo cond = mtns::FuncNew.SetColumnFromField<mtns::CartonInfo, CartonInfoInfo>(condition);
+                mtns::CartonInfo setv = mtns::FuncNew.SetColumnFromField<mtns::CartonInfo, CartonInfoInfo>(setValue);
+                setv.udt = DateTime.Now;
+
+                sqlCtx = mtns::FuncNew.GetConditionedUpdate<mtns::CartonInfo>(new mtns::SetValueCollection<mtns::CartonInfo>(new mtns::CommonSetValue<mtns::CartonInfo>(setv)), new mtns::ConditionCollection<mtns::CartonInfo>(new mtns::EqualCondition<mtns::CartonInfo>(cond)));
+                //    }
+                //}
+                sqlCtx = mtns::FuncNew.SetColumnFromField<mtns::CartonInfo, CartonInfoInfo>(sqlCtx, condition);
+                sqlCtx = mtns::FuncNew.SetColumnFromField<mtns::CartonInfo, CartonInfoInfo>(sqlCtx, setValue, true);
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Param(g.DecSV(mtns::CartonInfo.fn_udt)).Value = cmDt;
+
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_PAK, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void InsertCartonInfo(CartonInfoInfo item)
+        {
+            try
+            {
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                lock (mthObj)
+                {
+                    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    {
+                        sqlCtx = FuncNew.GetAquireIdInsert<CartonInfo>(tk);
+                    }
+                }
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+
+                sqlCtx = FuncNew.SetColumnFromField<CartonInfo, CartonInfoInfo>(sqlCtx, item);
+                sqlCtx.Param(CartonInfo.fn_cdt).Value = cmDt;
+                sqlCtx.Param(CartonInfo.fn_udt).Value = cmDt;
+
+                item.id = _Schema.SqlHelper.ExecuteScalarForAquireIdInsert(_Schema.SqlHelper.ConnectionString_PAK, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void UpdateCartonStatus(CartonStatusInfo setValue, CartonStatusInfo condition)
+        {
+            try
+            {
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                mtns::SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                //    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                //    {
+                mtns::CartonStatus cond = mtns::FuncNew.SetColumnFromField<mtns::CartonStatus, CartonStatusInfo>(condition);
+                mtns::CartonStatus setv = mtns::FuncNew.SetColumnFromField<mtns::CartonStatus, CartonStatusInfo>(setValue);
+                setv.udt = DateTime.Now;
+
+                sqlCtx = mtns::FuncNew.GetConditionedUpdate<mtns::CartonStatus>(new mtns::SetValueCollection<mtns::CartonStatus>(new mtns::CommonSetValue<mtns::CartonStatus>(setv)), new mtns::ConditionCollection<mtns::CartonStatus>(new mtns::EqualCondition<mtns::CartonStatus>(cond)));
+                //    }
+                //}
+                sqlCtx = mtns::FuncNew.SetColumnFromField<mtns::CartonStatus, CartonStatusInfo>(sqlCtx, condition);
+                sqlCtx = mtns::FuncNew.SetColumnFromField<mtns::CartonStatus, CartonStatusInfo>(sqlCtx, setValue, true);
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Param(g.DecSV(mtns::CartonStatus.fn_udt)).Value = cmDt;
+
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_PAK, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public string GetTemplateNameViaCallOpTemplateCheck(string dn, string doctype)
+        {
+            try
+            {
+                string ret = null;
+                DataTable res = null;
+                SqlParameter[] paramsArray = new SqlParameter[2];
+                paramsArray[0] = new SqlParameter("@DN", SqlDbType.NVarChar);
+                paramsArray[0].Value = dn;
+                paramsArray[1] = new SqlParameter("@doctpye", SqlDbType.NVarChar);
+                paramsArray[1].Value = doctype;
+                res = _Schema.SqlHelper.ExecuteDataFill(_Schema.SqlHelper.ConnectionString_HP_EDI, CommandType.StoredProcedure, "op_TemplateCheck", paramsArray);
+                if (res != null && res.Rows != null && res.Rows.Count > 0)
+                {
+                    ret = res.Rows[0][0].ToString();
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<CartonStatusInfo> GetCartonStatusInfo(CartonStatusInfo condition)
+        {
+            try
+            {
+                IList<CartonStatusInfo> ret = null;
+
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                mtns::SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                //    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                //    {
+                mtns::CartonStatus cond = mtns::FuncNew.SetColumnFromField<mtns::CartonStatus, CartonStatusInfo>(condition);
+                sqlCtx = mtns::FuncNew.GetConditionedSelect<mtns::CartonStatus>(null, null, new mtns::ConditionCollection<mtns::CartonStatus>(new mtns::EqualCondition<mtns::CartonStatus>(cond)), mtns::CartonStatus.fn_cdt);
+                //    }
+                //}
+                sqlCtx = mtns::FuncNew.SetColumnFromField<mtns::CartonStatus, CartonStatusInfo>(sqlCtx, condition);
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_PAK, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params))
+                {
+                    ret = mtns::FuncNew.SetFieldFromColumn<mtns::CartonStatus, CartonStatusInfo, CartonStatusInfo>(ret, sqlR, sqlCtx);
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool CheckTheBoxIdAndInsertOrUpdate(CartonInfoInfo value, CartonInfoInfo cond, string key)
+        {
+            logger.Info(string.Format("CheckThe{0} Begin", key));
+            bool ret = false;
+            bool ret2 = false;
+            if (cond != null)
+            {
+                logger.InfoFormat("Found Product Object. CartonId:{0}", cond.cartonNo);
+
+                //string key = "BoxId";
+
+                var objValue = cond.infoValue;
+                if (objValue != null)
+                {
+                    logger.InfoFormat("Found Infovalue. CartonId:{0}", cond.cartonNo);
+
+                    var sValue = objValue.Trim();
+                    if (sValue != string.Empty)
+                    {
+                        logger.InfoFormat("Found Infovalue string. CartonId:{0}", cond.cartonNo);
+
+                        ret = true;
+                        var suspects = GetCartonIdsByInfoValueAndCartonId_OnTrans(key, sValue, !value.isWritenBoxId); //Lock
+                        if (suspects != null && suspects.Count > 0)
+                        {
+                            logger.InfoFormat("Found Suspects. CartonId:{0}", cond.cartonNo);
+
+                            ret = false;
+                            DateTime PriorityOne = DateTime.MinValue;
+                            foreach (var suspect in suspects)
+                            {
+                                if (suspect.cartonNo != cond.cartonNo)
+                                {
+                                    logger.InfoFormat("Different Product. CartonId:{0}", cond.cartonNo);
+
+                                    bool check = true;
+                                    if (PriorityOne != DateTime.MinValue && suspect.udt.Ticks > PriorityOne.Ticks)
+                                    {
+                                        check = false;
+                                    }
+
+                                    if (check)
+                                    {
+                                        logger.InfoFormat("Fis Exception Occurs. CartonId:{0}", cond.cartonNo);
+
+                                        List<string> erpara = new List<string>();
+                                        erpara.Add(sValue);
+                                        erpara.Add(suspect.cartonNo);
+                                        erpara.Add(cond.cartonNo);
+                                        erpara.Add(key);
+                                        var ex = new FisException("SYNC02", erpara);
+                                        throw ex;
+                                    }
+                                }
+                                else
+                                {
+                                    ret2 = true;
+                                    if (PriorityOne == DateTime.MinValue)
+                                        PriorityOne = suspect.udt;
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+            if (!value.isWritenBoxId)
+            {
+                if (ret2)
+                {
+                    this.UpdateCartonInfo(value, cond);
+                }
+                else
+                {
+                    this.InsertCartonInfo(value);
+                }
+                value.isWritenBoxId = true;
+            }
+            return ret;
+        }
+
+        #endregion
+
+        #region . Inners .
+
+        private void PersistInsertCartonSSCC(fons.CartonSSCC item)
+        {
+            try
+            {
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = _Schema.Func.GetCommonInsert(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.CartonSSCC));
+                    }
+                }
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Params[_Schema.CartonSSCC.fn_CartonSN].Value = item.CartonSN;
+                sqlCtx.Params[_Schema.CartonSSCC.fn_Cdt].Value = cmDt;
+                sqlCtx.Params[_Schema.CartonSSCC.fn_Editor].Value = item.Editor;
+                sqlCtx.Params[_Schema.CartonSSCC.fn_SSCC].Value = item.SSCC;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_PAK, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void PersistUpdateCartonSSCC(fons.CartonSSCC item)
+        {
+            try
+            {
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = _Schema.Func.GetCommonUpdate(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.CartonSSCC));
+                    }
+                }
+                sqlCtx.Params[_Schema.CartonSSCC.fn_CartonSN].Value = item.CartonSN;
+                sqlCtx.Params[_Schema.CartonSSCC.fn_Editor].Value = item.Editor;
+                sqlCtx.Params[_Schema.CartonSSCC.fn_SSCC].Value = item.SSCC;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_PAK, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void PersistDeleteCartonSSCC(fons.CartonSSCC item)
+        {
+            try
+            {
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = _Schema.Func.GetCommonDelete(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.CartonSSCC));
+                    }
+                }
+                sqlCtx.Params[_Schema.CartonSSCC.fn_CartonSN].Value = item.CartonSN;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_PAK, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        #endregion
+
+        #region . OnTrans .
+
+        private IList<CartonInfoInfo> GetCartonIdsByInfoValueAndCartonId_OnTrans(string infoType, string infoValue, bool firstOrSecond)
+        {
+            SqlDataReader sqlR = null;
+            try
+            {
+                IList<CartonInfoInfo> ret = null;
+
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                lock (mthObj)
+                {
+                    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    {
+                        _Metas.CartonInfo cond = new _Metas.CartonInfo();
+                        cond.infoType = infoType;
+                        cond.infoValue = infoValue;
+
+                        sqlCtx = FuncNew.GetConditionedSelect<_Metas.CartonInfo>(tk, null, null, new ConditionCollection<_Metas.CartonInfo>(
+                            new EqualCondition<_Metas.CartonInfo>(cond)
+                                ),
+                                _Metas.CartonInfo.fn_udt);
+                    }
+                }
+                sqlCtx.Param(_Metas.CartonInfo.fn_infoType).Value = infoType;
+                sqlCtx.Param(_Metas.CartonInfo.fn_infoValue).Value = infoValue;
+
+                string Sentence = sqlCtx.Sentence.Replace(string.Format("{0} WHERE", ToolsNew.GetTableName(typeof(_Metas.CartonInfo))), string.Format(firstOrSecond ? "{0} WITH (INDEX=IDX_CartonInfo_InfoType_InfoValue,ROWLOCK,UPDLOCK) WHERE" : "{0} WITH (NOLOCK) WHERE", ToolsNew.GetTableName(typeof(_Metas.CartonInfo))));
+
+                sqlR = _Schema.SqlHelper.ExecuteReader_OnTrans(_Schema.SqlHelper.ConnectionString_PAK, CommandType.Text, Sentence, sqlCtx.Params);
+                ret = mtns::FuncNew.SetFieldFromColumn<_Metas.CartonInfo, CartonInfoInfo, CartonInfoInfo>(ret, sqlR, sqlCtx);
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (sqlR != null)
+                {
+                    sqlR.Close();
+                }
+            }
+        }
+
+        #endregion
+
+        #region . Defered .
+
+        public void AddCartonStatusInfoDefered(IUnitOfWork uow, IMES.DataModel.CartonStatusInfo item)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), item);
+        }
+
+        public void AddCartonLogInfoDefered(IUnitOfWork uow, IMES.DataModel.CartonLogInfo item)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), item);
+        }
+
+        public void DeleteCartonInfoDefered(IUnitOfWork uow, CartonInfoInfo condition)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), condition);
+        }
+
+        public void UpdateCartonInfoDefered(IUnitOfWork uow, CartonInfoInfo setValue, CartonInfoInfo condition)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), setValue, condition);
+        }
+
+        public void InsertCartonInfoDefered(IUnitOfWork uow, CartonInfoInfo item)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), item);
+        }
+
+        public void UpdateCartonStatusDefered(IUnitOfWork uow, CartonStatusInfo setValue, CartonStatusInfo condition)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), setValue, condition);
+        }
+
+        public InvokeBody CheckTheBoxIdAndInsertOrUpdateDefered(IUnitOfWork uow, CartonInfoInfo value, CartonInfoInfo cond, string key)
+        {
+            return AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), value, cond, key);
+        }
+
+        #endregion
+    }
+}

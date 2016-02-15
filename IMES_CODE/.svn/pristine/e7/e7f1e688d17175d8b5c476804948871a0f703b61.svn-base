@@ -1,0 +1,23 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="KBCTCheckOffline" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProductByInput Customer="{ActivityBind KBCTCheckOffline,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind KBCTCheckOffline,Path=SessionType}" Editor="{ActivityBind KBCTCheckOffline,Path=Editor}" Station="{ActivityBind KBCTCheckOffline,Path=Station}" x:Name="getProductByInput1" Line="{ActivityBind KBCTCheckOffline,Path=PdLine}" Key="{ActivityBind KBCTCheckOffline,Path=Key}" IsStopWF="Stop" InputType="ProductIDOrCustSN" />
+	<ns0:WaitInput Customer="{ActivityBind KBCTCheckOffline,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind KBCTCheckOffline,Path=SessionType}" Editor="{ActivityBind KBCTCheckOffline,Path=Editor}" Station="{ActivityBind KBCTCheckOffline,Path=Station}" Line="{ActivityBind KBCTCheckOffline,Path=PdLine}" Key="{ActivityBind KBCTCheckOffline,Path=Key}" />
+	<ns0:CheckProdidAndKBCT Customer="{ActivityBind KBCTCheckOffline,Path=Customer}" NotExceptionWhenNotMatch="Y" SessionType="{ActivityBind KBCTCheckOffline,Path=SessionType}" Editor="{ActivityBind KBCTCheckOffline,Path=Editor}" Station="{ActivityBind KBCTCheckOffline,Path=Station}" x:Name="checkProdidAndKBCT1" Line="{ActivityBind KBCTCheckOffline,Path=PdLine}" Key="{ActivityBind KBCTCheckOffline,Path=Key}" />
+	<IfElseActivity x:Name="ifNotMatch">
+		<IfElseBranchActivity x:Name="isNotMatch">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="doNotMatch" />
+			</IfElseBranchActivity.Condition>
+			<ns0:WaitInput Customer="{ActivityBind KBCTCheckOffline,Path=Customer}" x:Name="waitInput2" SessionType="{ActivityBind KBCTCheckOffline,Path=SessionType}" Editor="{ActivityBind KBCTCheckOffline,Path=Editor}" Station="{ActivityBind KBCTCheckOffline,Path=Station}" Line="{ActivityBind KBCTCheckOffline,Path=PdLine}" Key="{ActivityBind KBCTCheckOffline,Path=Key}" />
+			<ns0:DBScope Station="{ActivityBind KBCTCheckOffline,Path=Station}" x:Name="dbScope1" Key="{ActivityBind KBCTCheckOffline,Path=Key}" SessionType="{ActivityBind KBCTCheckOffline,Path=SessionType}">
+				<ns0:WriteProductTestLog Customer="{ActivityBind KBCTCheckOffline,Path=Customer}" Station="{ActivityBind KBCTCheckOffline,Path=Station}" SessionType="{ActivityBind KBCTCheckOffline,Path=SessionType}" Editor="{ActivityBind KBCTCheckOffline,Path=Editor}" x:Name="writeProductTestLog1" Line="{ActivityBind KBCTCheckOffline,Path=PdLine}" Key="{ActivityBind KBCTCheckOffline,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind KBCTCheckOffline,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind KBCTCheckOffline,Path=SessionType}" Editor="{ActivityBind KBCTCheckOffline,Path=Editor}" Status="Fail" Station="{ActivityBind KBCTCheckOffline,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind KBCTCheckOffline,Path=PdLine}" Key="{ActivityBind KBCTCheckOffline,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind KBCTCheckOffline,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind KBCTCheckOffline,Path=SessionType}" Editor="{ActivityBind KBCTCheckOffline,Path=Editor}" Station="{ActivityBind KBCTCheckOffline,Path=Station}" Status="Fail" IsSingle="True" Line="" Key="{ActivityBind KBCTCheckOffline,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+			<ns0:DBScope Station="{ActivityBind KBCTCheckOffline,Path=Station}" x:Name="dbScope2" Key="{ActivityBind KBCTCheckOffline,Path=Key}" SessionType="{ActivityBind KBCTCheckOffline,Path=SessionType}">
+				<ns0:WriteProductLog Customer="{ActivityBind KBCTCheckOffline,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind KBCTCheckOffline,Path=SessionType}" Editor="{ActivityBind KBCTCheckOffline,Path=Editor}" Station="{ActivityBind KBCTCheckOffline,Path=Station}" Status="Pass" IsSingle="True" Line="" Key="{ActivityBind KBCTCheckOffline,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

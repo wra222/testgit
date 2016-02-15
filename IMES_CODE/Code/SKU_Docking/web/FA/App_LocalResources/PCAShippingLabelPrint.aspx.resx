@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="eng_lblModel" xml:space="preserve">
+    <value>PCB Model:</value>
+  </data>
+  <data name="eng_colDefectCode" xml:space="preserve">
+    <value>Defect Code</value>
+  </data>
+  <data name="eng_colDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="eng_mesNoSelDCodeType" xml:space="preserve">
+    <value>Please select DCode Type first!!</value>
+  </data>
+  <data name="cn_mesNoSelDCodeType" xml:space="preserve">
+    <value>请先选择DCode Type!!</value>
+  </data>
+  <data name="cn_colModel" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="cn_colECR" xml:space="preserve">
+    <value>ECR</value>
+  </data>
+  <data name="cn_lblModel" xml:space="preserve">
+    <value>PCB Model:</value>
+  </data>
+  <data name="cn_mesNoSelectPdLine" xml:space="preserve">
+    <value>请先选择PdLine!!</value>
+  </data>
+  <data name="eng_mesNoSelectPdLine" xml:space="preserve">
+    <value>Please select PdLine first!!</value>
+  </data>
+  <data name="cn_pnlCheckItem" xml:space="preserve">
+    <value>Check Items:</value>
+  </data>
+  <data name="cn_lblDCode" xml:space="preserve">
+    <value>DCode:</value>
+  </data>
+  <data name="cn_pnlProductInformation" xml:space="preserve">
+    <value>Product Information:</value>
+  </data>
+  <data name="eng_pnlCheckItem" xml:space="preserve">
+    <value>Check Items:</value>
+  </data>
+  <data name="eng_lblDCode" xml:space="preserve">
+    <value>DCode:</value>
+  </data>
+  <data name="eng_pnlProductInformation" xml:space="preserve">
+    <value>Product Information:</value>
+  </data>
+  <data name="cn_btnPrintSetting" xml:space="preserve">
+    <value>PrintSetting</value>
+  </data>
+  <data name="cn_colQty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="cn_lblECR" xml:space="preserve">
+    <value>ECR:</value>
+  </data>
+  <data name="cn_lblFamily" xml:space="preserve">
+    <value>Family:</value>
+  </data>
+  <data name="cn_lblMAC" xml:space="preserve">
+    <value>MAC:</value>
+  </data>
+  <data name="cn_lblMBSNO" xml:space="preserve">
+    <value>MBSNO:</value>
+  </data>
+  <data name="cn_lblPrintLog" xml:space="preserve">
+    <value>PrintLog:</value>
+  </data>
+  <data name="cn_lblRegion" xml:space="preserve">
+    <value>Region:</value>
+  </data>
+  <data name="cn_lblVersion" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="eng_btnPrintSetting" xml:space="preserve">
+    <value>PrintSetting</value>
+  </data>
+  <data name="eng_colECR" xml:space="preserve">
+    <value>ECR</value>
+  </data>
+  <data name="eng_colModel" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="eng_colQty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="eng_lblECR" xml:space="preserve">
+    <value>ECR:</value>
+  </data>
+  <data name="eng_lblFamily" xml:space="preserve">
+    <value>Family:</value>
+  </data>
+  <data name="eng_lblMAC" xml:space="preserve">
+    <value>MAC:</value>
+  </data>
+  <data name="eng_lblMBSNO" xml:space="preserve">
+    <value>MBSNO:</value>
+  </data>
+  <data name="eng_lblPrintLog" xml:space="preserve">
+    <value>PrintLog:</value>
+  </data>
+  <data name="eng_lblRegion" xml:space="preserve">
+    <value>Region:</value>
+  </data>
+  <data name="eng_lblVersion" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="cn_lblProductModel" xml:space="preserve">
+    <value>Product Model:</value>
+  </data>
+  <data name="eng_lblProductModel" xml:space="preserve">
+    <value>Product Model:</value>
+  </data>
+  <data name="cn_msgDCodeTypeNull" xml:space="preserve">
+    <value>DCode Type不存在！</value>
+  </data>
+  <data name="eng_msgDCodeTypeNull" xml:space="preserve">
+    <value>DCode Type does not exist!</value>
+  </data>
+  <data name="cn_msgMBSnoLength" xml:space="preserve">
+    <value>MBSno的长度是10或11位！</value>
+  </data>
+  <data name="cn_msgMBSnoNull" xml:space="preserve">
+    <value>请刷入MBSno！</value>
+  </data>
+  <data name="eng_msgMBSnoLength" xml:space="preserve">
+    <value>The length of  MBSno is 10 or 11 !</value>
+  </data>
+  <data name="eng_msgMBSnoNull" xml:space="preserve">
+    <value>Please scan MBSno!</value>
+  </data>
+</root>

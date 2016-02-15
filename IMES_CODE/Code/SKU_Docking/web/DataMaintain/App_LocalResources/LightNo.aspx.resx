@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cn_btnAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="cn_btnDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="cn_btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="cn_btnUpload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="cn_lblInsertFile" xml:space="preserve">
+    <value>Insert File</value>
+  </data>
+  <data name="cn_lblKittingType" xml:space="preserve">
+    <value>Kitting Type:</value>
+  </data>
+  <data name="cn_lblLightNo" xml:space="preserve">
+    <value>LightNo:</value>
+  </data>
+  <data name="cn_lblList2" xml:space="preserve">
+    <value>Light No List:</value>
+  </data>
+  <data name="cn_lblMaxStock" xml:space="preserve">
+    <value>Max Stock:</value>
+  </data>
+  <data name="cn_lblPartNo" xml:space="preserve">
+    <value>PartNo:</value>
+  </data>
+  <data name="cn_lblPartType" xml:space="preserve">
+    <value>PartType:</value>
+  </data>
+  <data name="cn_lblPdLine" xml:space="preserve">
+    <value>Line:</value>
+  </data>
+  <data name="cn_lblQty" xml:space="preserve">
+    <value>Qty:</value>
+  </data>
+  <data name="cn_lblRemark" xml:space="preserve">
+    <value>Remark:</value>
+  </data>
+  <data name="cn_lblSafeStock" xml:space="preserve">
+    <value>Safety Stock:</value>
+  </data>
+  <data name="cn_lblStation" xml:space="preserve">
+    <value>Station:</value>
+  </data>
+  <data name="cn_lblSubstitution" xml:space="preserve">
+    <value>Substitution:</value>
+  </data>
+  <data name="cn_lstItem1Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="cn_lstItem1IsLine" xml:space="preserve">
+    <value>IsLine</value>
+  </data>
+  <data name="cn_lstItem1KittingCode" xml:space="preserve">
+    <value>Kitting Code</value>
+  </data>
+  <data name="cn_lstItem2Cdt" xml:space="preserve">
+    <value>Cdt</value>
+  </data>
+  <data name="cn_lstItem2Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="cn_lstItem2Descr" xml:space="preserve">
+    <value>Descr</value>
+  </data>
+  <data name="cn_lstItem2Editor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="cn_lstItem2FaLine" xml:space="preserve">
+    <value>FA Line</value>
+  </data>
+  <data name="cn_lstItem2LightNo" xml:space="preserve">
+    <value>LightNo</value>
+  </data>
+  <data name="cn_lstItem2MaxStock" xml:space="preserve">
+    <value>Max Stock</value>
+  </data>
+  <data name="cn_lstItem2PartNo" xml:space="preserve">
+    <value>PartNo</value>
+  </data>
+  <data name="cn_lstItem2Qty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="cn_lstItem2Remark" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="cn_lstItem2SafeStock" xml:space="preserve">
+    <value>Safety Stock</value>
+  </data>
+  <data name="cn_lstItem2Station" xml:space="preserve">
+    <value>PAK Station</value>
+  </data>
+  <data name="cn_lstItem2Sub" xml:space="preserve">
+    <value>Sub</value>
+  </data>
+  <data name="cn_lstItem2Udt" xml:space="preserve">
+    <value>Udt</value>
+  </data>
+  <data name="cn_pmtMessage" xml:space="preserve">
+    <value>上传的文件过大，超过了限定!</value>
+  </data>
+  <data name="cn_pmtMessage1" xml:space="preserve">
+    <value>请输入PartNo!</value>
+  </data>
+  <data name="cn_pmtMessage10" xml:space="preserve">
+    <value>本操作将覆盖现有库位资料。请问是否继续？</value>
+  </data>
+  <data name="cn_pmtMessage11" xml:space="preserve">
+    <value>没有需要上传的数据!</value>
+  </data>
+  <data name="cn_pmtMessage12" xml:space="preserve">
+    <value>Excel数据中有错误, 所在行号为</value>
+  </data>
+  <data name="cn_pmtMessage2" xml:space="preserve">
+    <value>请输入LightNo!</value>
+  </data>
+  <data name="cn_pmtMessage3" xml:space="preserve">
+    <value>您确实要删除该记录吗？</value>
+  </data>
+  <data name="cn_pmtMessage4" xml:space="preserve">
+    <value>列表中找不到与Code栏位匹配的项!</value>
+  </data>
+  <data name="cn_pmtMessage5" xml:space="preserve">
+    <value>Qty 应该是大于0的值!</value>
+  </data>
+  <data name="cn_pmtMessage6" xml:space="preserve">
+    <value>请选择线别!</value>
+  </data>
+  <data name="cn_pmtMessage7" xml:space="preserve">
+    <value>请选择PartType!</value>
+  </data>
+  <data name="cn_pmtMessage8" xml:space="preserve">
+    <value>请选择上传文件!</value>
+  </data>
+  <data name="cn_pmtMessage9" xml:space="preserve">
+    <value>上传文件格式错误!</value>
+  </data>
+  <data name="cn_title" xml:space="preserve">
+    <value>Light No Maintain</value>
+  </data>
+  <data name="eng_btnAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="eng_btnDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="eng_btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="eng_btnUpload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="eng_lblInsertFile" xml:space="preserve">
+    <value>Insert File</value>
+  </data>
+  <data name="eng_lblKittingType" xml:space="preserve">
+    <value>Kitting Type:</value>
+  </data>
+  <data name="eng_lblLightNo" xml:space="preserve">
+    <value>LightNo:</value>
+  </data>
+  <data name="eng_lblList2" xml:space="preserve">
+    <value>Light No List:</value>
+  </data>
+  <data name="eng_lblMaxStock" xml:space="preserve">
+    <value>Max Stock:</value>
+  </data>
+  <data name="eng_lblPartNo" xml:space="preserve">
+    <value>PartNo:</value>
+  </data>
+  <data name="eng_lblPartType" xml:space="preserve">
+    <value>PartType:</value>
+  </data>
+  <data name="eng_lblPdLine" xml:space="preserve">
+    <value>Line:</value>
+  </data>
+  <data name="eng_lblQty" xml:space="preserve">
+    <value>Qty:</value>
+  </data>
+  <data name="eng_lblRemark" xml:space="preserve">
+    <value>Remark:</value>
+  </data>
+  <data name="eng_lblSafeStock" xml:space="preserve">
+    <value>Safety Stock:</value>
+  </data>
+  <data name="eng_lblStation" xml:space="preserve">
+    <value>Station:</value>
+  </data>
+  <data name="eng_lblSubstitution" xml:space="preserve">
+    <value>Substitution:</value>
+  </data>
+  <data name="eng_lstItem1Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="eng_lstItem1IsLine" xml:space="preserve">
+    <value>IsLine</value>
+  </data>
+  <data name="eng_lstItem1KittingCode" xml:space="preserve">
+    <value>Kitting Code</value>
+  </data>
+  <data name="eng_lstItem2Cdt" xml:space="preserve">
+    <value>Cdt</value>
+  </data>
+  <data name="eng_lstItem2Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="eng_lstItem2Descr" xml:space="preserve">
+    <value>Descr</value>
+  </data>
+  <data name="eng_lstItem2Editor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="eng_lstItem2FaLine" xml:space="preserve">
+    <value>FA Line</value>
+  </data>
+  <data name="eng_lstItem2LightNo" xml:space="preserve">
+    <value>LightNo</value>
+  </data>
+  <data name="eng_lstItem2MaxStock" xml:space="preserve">
+    <value>Max Stock</value>
+  </data>
+  <data name="eng_lstItem2PartNo" xml:space="preserve">
+    <value>PartNo</value>
+  </data>
+  <data name="eng_lstItem2Qty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="eng_lstItem2Remark" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="eng_lstItem2SafeStock" xml:space="preserve">
+    <value>Safety Stock</value>
+  </data>
+  <data name="eng_lstItem2Station" xml:space="preserve">
+    <value>PAK Station</value>
+  </data>
+  <data name="eng_lstItem2Sub" xml:space="preserve">
+    <value>Sub</value>
+  </data>
+  <data name="eng_lstItem2Udt" xml:space="preserve">
+    <value>Udt</value>
+  </data>
+  <data name="eng_pmtMessage" xml:space="preserve">
+    <value>The upload file is large than limit!</value>
+  </data>
+  <data name="eng_pmtMessage1" xml:space="preserve">
+    <value>Please input [PartNo]!</value>
+  </data>
+  <data name="eng_pmtMessage10" xml:space="preserve">
+    <value>This operation will replace existing location information. Will you continue to do it?</value>
+  </data>
+  <data name="eng_pmtMessage11" xml:space="preserve">
+    <value>No data to upload!</value>
+  </data>
+  <data name="eng_pmtMessage12" xml:space="preserve">
+    <value>Excel file have errors, line number is</value>
+  </data>
+  <data name="eng_pmtMessage2" xml:space="preserve">
+    <value>Please input [LightNo]!</value>
+  </data>
+  <data name="eng_pmtMessage3" xml:space="preserve">
+    <value>Do you really want to delete this item?</value>
+  </data>
+  <data name="eng_pmtMessage4" xml:space="preserve">
+    <value>Can't find matching!</value>
+  </data>
+  <data name="eng_pmtMessage5" xml:space="preserve">
+    <value>[Qty] should be greater than 0!</value>
+  </data>
+  <data name="eng_pmtMessage6" xml:space="preserve">
+    <value>Please select [PdLine]!</value>
+  </data>
+  <data name="eng_pmtMessage7" xml:space="preserve">
+    <value>Please select [PartType]!</value>
+  </data>
+  <data name="eng_pmtMessage8" xml:space="preserve">
+    <value>Wrong File!</value>
+  </data>
+  <data name="eng_pmtMessage9" xml:space="preserve">
+    <value>Format Error! It must be excel file.</value>
+  </data>
+  <data name="eng_title" xml:space="preserve">
+    <value>Light No Maintain</value>
+  </data>
+</root>

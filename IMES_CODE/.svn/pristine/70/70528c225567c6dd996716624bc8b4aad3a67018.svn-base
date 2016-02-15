@@ -1,0 +1,232 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IMES.Query.Interface.QueryIntf;
+using System.Data.SqlClient;
+
+using System.Data;
+using log4net;
+using System.Reflection;
+using IMES.Query.DB;
+
+namespace IMES.Query.Implementation
+{
+    public class SA_PCBInputQuery : MarshalByRefObject, ISA_PCBInputQuery
+    {
+        private ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public DataTable GetPCBInputQuery(string DBConnection, DateTime StartTime, DateTime EndTime, IList<string> PdLine, string Family, IList<string> Model, string InputStation, string StationList)
+        {
+
+
+            string SelectText = ""; string FromText = ""; List<string> lstWhereText = new List<string>() ; string WhereText = "";
+            string GroupText = ""; string InnerText = "";
+
+            InnerText = "INNER JOIN PCB pc ON a.PCBNo = pc.PCBNo ";
+            if (InputStation =="")
+            {
+                InnerText += "INNER JOIN  (SELECT DISTINCT PCBNo FROM  PCBLog WHERE Cdt BETWEEN @FromDate AND @ToDate)  pl on pl.PCBNo = a.PCBNo  ";
+            }
+            else
+            {
+                InnerText += string.Format("INNER JOIN   (SELECT DISTINCT PCBNo FROM  PCBLog WHERE Cdt BETWEEN @FromDate AND @ToDate )  pl on pl.PCBNo = a.PCBNo ");
+                
+                lstWhereText.Add(string.Format("a.Station = ('{0}') ", InputStation));
+
+            }
+
+            if (PdLine.Count == 0)
+            {
+                SelectText += " 'All' AS Line, ";             
+            }
+            else {
+                SelectText += " a.Line,  ";
+              
+                lstWhereText.Add(string.Format("a.Line IN ('{0}') ", string.Join("','", PdLine.ToArray())));
+                GroupText += " a.Line, ";
+            }
+
+            if (Family == "")
+            {
+                SelectText += "'All' AS Family, ";
+               
+            }
+            else {
+                SelectText += " Replace(UPPER(InfoValue),'B SIDE','') AS Family, ";
+
+                InnerText += string.Format("INNER JOIN PartInfo pti ON pti.PartNo = pc.PCBModelID AND pti.InfoType = 'MDL' AND Replace(UPPER(InfoValue),'B SIDE','') = '{0}' ", Family);
+                GroupText += "Replace(UPPER(InfoValue),'B SIDE',''), ";
+            }
+
+            if (Model.Count == 0)
+            {
+                SelectText += "'All' AS Model, ";
+            }
+            else
+            {
+                SelectText += " Substring(a.PCBNo,1,2)  AS Model, ";
+             
+                lstWhereText.Add(string.Format("Substring(a.PCBNo,1,2) IN ('{0}') ", string.Join("','", Model.ToArray())));
+                GroupText += "Substring(a.PCBNo,1,2), ";
+            }
+
+            if (lstWhereText.Count != 0) {
+                WhereText = " WHERE " + string.Join(" AND ",lstWhereText.ToArray());
+            }
+
+            SelectText += " a.Station, COUNT('X') AS input ";
+            GroupText += "a.Station ";
+
+
+            string SQLText = "SELECT " + SelectText + " INTO #Temp FROM PCBStatus a " + FromText + InnerText + WhereText + " GROUP BY " + GroupText;
+
+            //string SQLText = colStr + SQLText + whereText + groupStr;
+            //SQLText += " GROUP BY a.Line,c.Family ,b.Model ,d.Descr";
+
+            SQLText += @" DECLARE @PivotColumnHeaders NVARCHAR(MAX)
+                              SET @PivotColumnHeaders = ''
+
+                           SELECT @PivotColumnHeaders = 
+                              COALESCE(
+                                @PivotColumnHeaders + ',[' + RTRIM(value) + ']',
+                                '[' + RTRIM(value)+ ']'
+                              )
+                           FROM fn_split  ('{0}',',')
+                           ORDER BY ID
+
+                            IF LEN(@PivotColumnHeaders) > 1
+                            BEGIN
+                            SELECT @PivotColumnHeaders   = SUBSTRING(@PivotColumnHeaders,2,LEN(@PivotColumnHeaders)-1)
+                            END
+
+                           DECLARE @PivotTableSQL NVARCHAR(MAX)
+                           SET @PivotTableSQL = N'
+                              SELECT *
+                              FROM (
+                                SELECT * FROM #Temp
+                              ) AS X
+                              PIVOT 
+                              (
+                                SUM(input)
+                                FOR Station IN ('+ 
+		                            @PivotColumnHeaders +'
+                                )
+                              ) AS PVT
+                            '      
+                            EXEC(@PivotTableSQL)                      
+                            ";
+            SQLText = string.Format(SQLText, StationList);
+        
+
+            DataTable dt = SQLHelper.ExecuteDataFill(DBConnection,System.Data.CommandType.Text,
+                                                    SQLText, new SqlParameter("@FromDate", StartTime), new SqlParameter("@ToDate", EndTime));
+
+            return dt;
+        }
+
+        public DataTable GetSelectDetail(string Connection, DateTime FromDate, DateTime ToDate,
+                            string Family, string Model, string Line, string Station,  string InputStation)
+        {
+            string methodName = MethodBase.GetCurrentMethod().Name;
+
+            BaseLog.LoggingBegin(logger, methodName);
+
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+
+                List<string> lstWhereText = new List<string>();
+
+                sb.AppendLine("SELECT ROW_NUMBER() OVER (ORDER BY a.Udt DESC)  AS ID, a.PCBNo, a.Station, CASE a.Status WHEN '1' THEN 'PASS' ELSE 'NG' END AS [Status], a.Line, a.Editor, CONVERT(varchar(20), a.Udt, 120) AS Udt ");
+                sb.AppendLine("FROM PCBStatus a ");
+                if (InputStation == "")
+                {
+                    sb.AppendLine("INNER JOIN (SELECT DISTINCT PCBNo FROM  PCBLog WHERE Cdt BETWEEN @FromDate  AND @ToDate ) AS pc ON a.PCBNo = pc.PCBNo ");
+                }
+                else 
+                {
+                    sb.AppendLine(string.Format("INNER JOIN (SELECT DISTINCT PCBNo FROM  PCBLog WHERE Cdt BETWEEN @FromDate  AND @ToDate AND Station IN ('{0}')  ) AS pc ON a.PCBNo = pc.PCBNo ", InputStation));
+                }
+
+                if (!(Family == "" || Family.ToUpper() == "ALL"))
+                {
+                    sb.AppendLine("INNER JOIN PCB pb on a.PCBNo = pb.PCBNo ");
+                    sb.AppendLine(string.Format("INNER JOIN PartInfo pif ON pb.PCBModelID= pif.PartNo AND pif.InfoType='MDL' AND  Replace(UPPER(InfoValue),'B SIDE','')  IN ('{0}') ", Family));
+                }
+
+                if (!(Model == "" || Model.ToUpper() == "ALL"))
+                {
+                    lstWhereText.Add(String.Format("SUBSTRING(a.PCBNo,1,2) IN ('{0}') ", Model));                    
+                }
+                
+                if (!(Line == "" || Line.ToUpper() == "ALL"))
+                {
+                    lstWhereText.Add(string.Format("a.Line IN ('{0}') " ,Line));
+                                      
+                }
+                lstWhereText.Add(string.Format(" a.Station = '{0}' ", Station));
+
+                if (lstWhereText.Count > 0){
+                    sb.AppendLine(string.Format("WHERE {0}",string.Join(" AND ", lstWhereText.ToArray())));
+                }
+                
+                sb.AppendLine("ORDER BY a.Udt DESC ");
+ 
+                string SQLText = sb.ToString();
+
+
+                return SQLHelper.ExecuteDataFill(Connection,
+                                                 System.Data.CommandType.Text,
+                                                 SQLText,
+                                                 SQLHelper.CreateSqlParameter("@FromDate", FromDate),
+                                                 SQLHelper.CreateSqlParameter("@ToDate", ToDate),
+                                                 SQLHelper.CreateSqlParameter("@Station", 32, Station, ParameterDirection.Input),
+                                                 SQLHelper.CreateSqlParameter("@Line", 32, Line, ParameterDirection.Input),
+                                                 SQLHelper.CreateSqlParameter("@Family", 32, Family, ParameterDirection.Input),
+                                                 SQLHelper.CreateSqlParameter("@Model", 32, Model, ParameterDirection.Input));
+            }
+            catch (Exception e)
+            {
+
+                BaseLog.LoggingError(logger, MethodBase.GetCurrentMethod(), e);
+                throw;
+            }
+            finally
+            {
+                BaseLog.LoggingEnd(logger, methodName);
+            }
+        }
+
+        public DataTable GetModel(string DBConnection, IList<String> Family)
+        {
+            string strSQL = @"SELECT DISTINCT InfoValue FROM PartInfo WHERE PartNo in (
+                            	SELECT Distinct PartNo FROM PartInfo 
+	                            WHERE InfoType =  'MDL' 
+	                            AND  Replace(UPPER(InfoValue),'B SIDE','') IN ('{0}')
+	                            AND PartNo like '131%') 
+                            AND InfoType = 'MB' 
+                            ORDER BY InfoValue";            
+            strSQL  = string.Format(strSQL,string.Join("','",Family.ToArray()));
+            
+            DataTable dt = SQLHelper.ExecuteDataFill(DBConnection,
+                                                     System.Data.CommandType.Text,
+                                                     strSQL);
+            return dt;
+        }
+
+        public DataTable GetStation(string DBConnection, IList<String> Family)
+        {
+            string strSQL =
+            @"SELECT * FROM dbo.Station WHERE StationType Like 'SA%'
+                ";
+
+            DataTable dt = SQLHelper.ExecuteDataFill(DBConnection,
+                                                     System.Data.CommandType.Text,
+                                                     strSQL);
+            return dt;
+        }
+
+        
+    }
+}
+

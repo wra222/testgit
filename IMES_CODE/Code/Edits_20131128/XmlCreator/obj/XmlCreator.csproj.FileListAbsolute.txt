@@ -1,0 +1,173 @@
+D:\Jerry\Work\HPEDITS\Source Code\HPEDITS\bin\Inventec.HPEDITS.XmlCreator.dll
+D:\Jerry\Work\HPEDITS\Source Code\HPEDITS\bin\Inventec.HPEDITS.XmlCreator.pdb
+D:\Jerry\Work\HPEDITS\Source Code\HPEDITS\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+D:\Jerry\Work\HPEDITS\Source Code\HPEDITS\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+D:\Jerry\Work\HPEDITS\Source Code\HPEDITS\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+D:\Jerry\Work\HPEDITS\Source Code\HPEDITS\bin\Inventec.HPEDITS.XmlCreator.XML
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\bin\XSD\Schema_Box_Ship_Label_001_20071112.xsd
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\bin\XSD\Schema_Pack_List_001_20071112.xsd
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\bin\XSD\Schema_Pallet_Label_TypeA_001_20071112.xsd
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\bin\XSD\Schema_Pallet_Label_TypeB_001_20071112.xsd
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\bin\NLog.config
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\bin\Inventec.HPEDITS.XmlCreator.dll
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\bin\Inventec.HPEDITS.XmlCreator.pdb
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\bin\Inventec.HPEDITS.XmlCreator.XML
+C:\Documents and Settings\iec950848\桌面\HP-EDITS\HPEDI 20080112\Phase 1\bin\XSD\Schema_Box_Ship_Label_001_20071112.xsd
+C:\Documents and Settings\iec950848\桌面\HP-EDITS\HPEDI 20080112\Phase 1\bin\XSD\Schema_Pack_List_001_20071112.xsd
+C:\Documents and Settings\iec950848\桌面\HP-EDITS\HPEDI 20080112\Phase 1\bin\XSD\Schema_Pallet_Label_TypeA_001_20071112.xsd
+C:\Documents and Settings\iec950848\桌面\HP-EDITS\HPEDI 20080112\Phase 1\bin\XSD\Schema_Pallet_Label_TypeB_001_20071112.xsd
+C:\Documents and Settings\iec950848\桌面\HP-EDITS\HPEDI 20080112\Phase 1\bin\NLog.config
+C:\Documents and Settings\iec950848\桌面\HP-EDITS\HPEDI 20080112\Phase 1\bin\Inventec.HPEDITS.XmlCreator.dll
+C:\Documents and Settings\iec950848\桌面\HP-EDITS\HPEDI 20080112\Phase 1\bin\Inventec.HPEDITS.XmlCreator.pdb
+C:\Documents and Settings\iec950848\桌面\HP-EDITS\HPEDI 20080112\Phase 1\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\iec950848\桌面\HP-EDITS\HPEDI 20080112\Phase 1\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+C:\Documents and Settings\iec950848\桌面\HP-EDITS\HPEDI 20080112\Phase 1\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+E:\ASPNET20\HP EDITS programming\HPEDI 20080112\Phase 1\bin\XSD\Schema_Box_Ship_Label_001_20071112.xsd
+E:\ASPNET20\HP EDITS programming\HPEDI 20080112\Phase 1\bin\XSD\Schema_Pack_List_001_20071112.xsd
+E:\ASPNET20\HP EDITS programming\HPEDI 20080112\Phase 1\bin\XSD\Schema_Pallet_Label_TypeA_001_20071112.xsd
+E:\ASPNET20\HP EDITS programming\HPEDI 20080112\Phase 1\bin\XSD\Schema_Pallet_Label_TypeB_001_20071112.xsd
+E:\ASPNET20\HP EDITS programming\HPEDI 20080112\Phase 1\bin\NLog.config
+E:\ASPNET20\HP EDITS programming\HPEDI 20080112\Phase 1\bin\Inventec.HPEDITS.XmlCreator.dll
+E:\ASPNET20\HP EDITS programming\HPEDI 20080112\Phase 1\bin\Inventec.HPEDITS.XmlCreator.pdb
+E:\ASPNET20\HP EDITS programming\HPEDI 20080112\Phase 1\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+E:\ASPNET20\HP EDITS programming\HPEDI 20080112\Phase 1\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+E:\ASPNET20\HP EDITS programming\HPEDI 20080112\Phase 1\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+E:\ASPNET20\HP EDITS programming\HPEDI 20080112\Phase 1\bin\Inventec.HPEDITS.XmlCreator.XML
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\bin\XSD\Schema_Box_Ship_Label_001_20071112.xsd
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\bin\XSD\Schema_Pack_List_001_20071112.xsd
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\bin\XSD\Schema_Pallet_Label_TypeA_001_20071112.xsd
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\bin\XSD\Schema_Pallet_Label_TypeB_001_20071112.xsd
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\bin\NLog.config
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\bin\Inventec.HPEDITS.XmlCreator.dll
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\bin\Inventec.HPEDITS.XmlCreator.pdb
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\bin\XSD\Schema_Box_Ship_Label_001_20071112.xsd
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\bin\XSD\Schema_Pack_List_001_20071112.xsd
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\bin\XSD\Schema_Pallet_Label_TypeA_001_20071112.xsd
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\bin\XSD\Schema_Pallet_Label_TypeB_001_20071112.xsd
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\bin\NLog.config
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\bin\Inventec.HPEDITS.XmlCreator.dll
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\bin\Inventec.HPEDITS.XmlCreator.pdb
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+E:\EDIS\hvls\bin\XSD\Schema_Box_Ship_Label_001_20071112.xsd
+E:\EDIS\hvls\bin\XSD\Schema_Pack_List_001_20071112.xsd
+E:\EDIS\hvls\bin\XSD\Schema_Pallet_Label_TypeA_001_20071112.xsd
+E:\EDIS\hvls\bin\XSD\Schema_Pallet_Label_TypeB_001_20071112.xsd
+E:\EDIS\hvls\bin\NLog.config
+E:\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.dll
+E:\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.pdb
+E:\EDIS\hvls\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+E:\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+E:\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+E:\備份\EDIS\hvls\bin\XSD\Schema_Box_Ship_Label_001_20071112.xsd
+E:\備份\EDIS\hvls\bin\XSD\Schema_Pack_List_001_20071112.xsd
+E:\備份\EDIS\hvls\bin\XSD\Schema_Pallet_Label_TypeA_001_20071112.xsd
+E:\備份\EDIS\hvls\bin\XSD\Schema_Pallet_Label_TypeB_001_20071112.xsd
+E:\備份\EDIS\hvls\bin\NLog.config
+E:\備份\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.dll
+E:\備份\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.pdb
+E:\備份\EDIS\hvls\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+E:\備份\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+E:\備份\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+E:\PAK_EDI\EDIS\hvls\bin\NLog.config
+E:\PAK_EDI\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.dll
+E:\PAK_EDI\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.pdb
+E:\PAK_EDI\EDIS\hvls\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+E:\PAK_EDI\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+E:\PAK_EDI\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+D:\2DTest\EDIS\hvls\bin\NLog.config
+D:\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.dll
+D:\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.pdb
+D:\2DTest\EDIS\hvls\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+D:\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+D:\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+D:\edits_test\2DTest\EDIS\hvls\bin\NLog.config
+D:\edits_test\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.dll
+D:\edits_test\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.pdb
+D:\edits_test\2DTest\EDIS\hvls\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+D:\edits_test\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+D:\edits_test\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+D:\edits_test\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.XML
+E:\edits_test\2DTest\EDIS\hvls\bin\NLog.config
+E:\edits_test\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.dll
+E:\edits_test\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.pdb
+E:\edits_test\2DTest\EDIS\hvls\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+E:\edits_test\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+E:\edits_test\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+C:\edits_test\2DTest\EDIS\hvls\bin\NLog.config
+C:\edits_test\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.dll
+C:\edits_test\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.pdb
+C:\edits_test\2DTest\EDIS\hvls\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+C:\edits_test\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+C:\edits_test\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\bin\NLog.config
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.XML
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.dll
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.pdb
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+D:\EDITS-20100823\2DTest\EDIS\hvls\bin\NLog.config
+D:\EDITS-20100823\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.dll
+D:\EDITS-20100823\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.pdb
+D:\EDITS-20100823\2DTest\EDIS\hvls\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+D:\EDITS-20100823\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+D:\EDITS-20100823\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\bin\NLog.config
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.dll
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.pdb
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\bin\NLog.config
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.dll
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.pdb
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+D:\EDITSCQ\2DTest\EDIS\hvls\bin\NLog.config
+D:\EDITSCQ\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.dll
+D:\EDITSCQ\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.pdb
+D:\EDITSCQ\2DTest\EDIS\hvls\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+D:\EDITSCQ\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+D:\EDITSCQ\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\bin\NLog.config
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.dll
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.pdb
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\bin\NLog.config
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.dll
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.pdb
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\bin\Inventec.HPEDITS.XmlCreator.XML
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\bin\NLog.config
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\bin\Inventec.HPEDITS.XmlCreator.dll
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\bin\Inventec.HPEDITS.XmlCreator.pdb
+E:\fis\Edits20130710\Edits\bin\NLog.config
+E:\fis\Edits20130710\Edits\bin\Inventec.HPEDITS.XmlCreator.XML
+E:\fis\Edits20130710\Edits\bin\Inventec.HPEDITS.XmlCreator.dll
+E:\fis\Edits20130710\Edits\bin\Inventec.HPEDITS.XmlCreator.pdb
+E:\fis\Edits20130710\Edits\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+E:\fis\Edits20130710\Edits\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+E:\fis\Edits20130710\Edits\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+E:\fis\Edits20131002\Edits\bin\Inventec.HPEDITS.XmlCreator.dll
+E:\fis\Edits20131002\Edits\bin\Inventec.HPEDITS.XmlCreator.pdb
+E:\fis\Edits20131002\Edits\XmlCreator\obj\Debug\ResolveAssemblyReference.cache
+E:\fis\Edits20131002\Edits\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+E:\fis\Edits20131002\Edits\XmlCreator\obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+E:\fis\Edits20131002\Edits\XmlCreator\obj\Release\ResolveAssemblyReference.cache
+E:\fis\Edits20131002\Edits\bin\Inventec.HPEDITS.XmlCreator.XML

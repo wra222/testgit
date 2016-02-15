@@ -1,0 +1,26 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="KPRepair" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GenerateKPRepairList Customer="{ActivityBind KPRepair,Path=Customer}" x:Name="generateKPRepairList1" SessionType="{ActivityBind KPRepair,Path=SessionType}" Editor="{ActivityBind KPRepair,Path=Editor}" Station="{ActivityBind KPRepair,Path=Station}" Line="{ActivityBind KPRepair,Path=PdLine}" Key="{ActivityBind KPRepair,Path=Key}" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplete" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind KPRepair,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind KPRepair,Path=SessionType}" Editor="{ActivityBind KPRepair,Path=Editor}" Station="{ActivityBind KPRepair,Path=Station}" Line="{ActivityBind KPRepair,Path=PdLine}" Key="{ActivityBind KPRepair,Path=Key}" />
+			<IfElseActivity x:Name="ifElseActivity2">
+				<IfElseBranchActivity x:Name="ifNotComplete">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplete" />
+					</IfElseBranchActivity.Condition>
+					<ns0:DBScope Station="{ActivityBind KPRepair,Path=Station}" x:Name="dbScopeForAddEdit" Key="{ActivityBind KPRepair,Path=Key}" SessionType="{ActivityBind KPRepair,Path=SessionType}">
+						<ns0:MaintainKPRepairDefect Customer="{ActivityBind KPRepair,Path=Customer}" x:Name="maintainKPRepairDefect1" SessionType="{ActivityBind KPRepair,Path=SessionType}" Editor="{ActivityBind KPRepair,Path=Editor}" Station="{ActivityBind KPRepair,Path=Station}" Line="{ActivityBind KPRepair,Path=PdLine}" Key="{ActivityBind KPRepair,Path=Key}" />
+					</ns0:DBScope>
+				</IfElseBranchActivity>
+				<IfElseBranchActivity x:Name="elseComplete">
+					<ns0:DBScope Station="{ActivityBind KPRepair,Path=Station}" x:Name="dbScopeForComplete" Key="{ActivityBind KPRepair,Path=Key}" SessionType="{ActivityBind KPRepair,Path=SessionType}">
+						<ns0:CompleteKPRepair Customer="{ActivityBind KPRepair,Path=Customer}" x:Name="completeKPRepair1" SessionType="{ActivityBind KPRepair,Path=SessionType}" Editor="{ActivityBind KPRepair,Path=Editor}" Station="{ActivityBind KPRepair,Path=Station}" Line="{ActivityBind KPRepair,Path=PdLine}" Key="{ActivityBind KPRepair,Path=Key}" />
+					</ns0:DBScope>
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+</ns0:BaseFlow>

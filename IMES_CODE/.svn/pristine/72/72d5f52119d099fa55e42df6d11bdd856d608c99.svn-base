@@ -1,0 +1,1328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="BoxShipLabel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serialNO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="boxID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BoxShipLabelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BoxShipLabelResult" type="tns:EDITSResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EDITSResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DOC_SET_NUMBER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="XML" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PackingLabel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PackingLabelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PackingLabelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PackingShipmentLabel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Tp" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PackingShipmentLabelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PackingShipmentLabelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BoxShipToLabel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SerialNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BoxShipToLabelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BoxShipToLabelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BoxShipToShipmentLabel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SerialNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BoxShipToShipmentLabelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BoxShipToShipmentLabelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PalletALabel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pallet" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PalletALabelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PalletALabelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PalletAShipmentLabel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pallet" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PalletAShipmentLabelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PalletAShipmentLabelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PalletBLabel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pallet" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PalletBLabelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PalletBLabelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PalletBShipmentLabel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pallet" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PalletBShipmentLabelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PalletBShipmentLabelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BsamPalletBShipmentLabel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pallet" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BsamPalletBShipmentLabelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BsamPalletBShipmentLabelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BsamPalletBShipmentClassLabel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pallet" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BsamPalletBShipmentClassLabelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BsamPalletBShipmentClassLabelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WayBillList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WayBillListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WayBillListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WayBillShipmentList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WayBillShipmentListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WayBillShipmentListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HouseWaybills">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HouseWaybillsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HouseWaybillsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenPDF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xslFile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xmlFile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pdfFile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrText" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenPDFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GenPDFResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrText" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenFO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xslFile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xmlFile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="foFile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrText" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenFOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GenFOResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrText" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDITSResponse" nillable="true" type="tns:EDITSResponse" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="BoxShipLabelSoapIn">
+    <wsdl:part name="parameters" element="tns:BoxShipLabel" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipLabelSoapOut">
+    <wsdl:part name="parameters" element="tns:BoxShipLabelResponse" />
+  </wsdl:message>
+  <wsdl:message name="PackingLabelSoapIn">
+    <wsdl:part name="parameters" element="tns:PackingLabel" />
+  </wsdl:message>
+  <wsdl:message name="PackingLabelSoapOut">
+    <wsdl:part name="parameters" element="tns:PackingLabelResponse" />
+  </wsdl:message>
+  <wsdl:message name="PackingShipmentLabelSoapIn">
+    <wsdl:part name="parameters" element="tns:PackingShipmentLabel" />
+  </wsdl:message>
+  <wsdl:message name="PackingShipmentLabelSoapOut">
+    <wsdl:part name="parameters" element="tns:PackingShipmentLabelResponse" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipToLabelSoapIn">
+    <wsdl:part name="parameters" element="tns:BoxShipToLabel" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipToLabelSoapOut">
+    <wsdl:part name="parameters" element="tns:BoxShipToLabelResponse" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipToShipmentLabelSoapIn">
+    <wsdl:part name="parameters" element="tns:BoxShipToShipmentLabel" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipToShipmentLabelSoapOut">
+    <wsdl:part name="parameters" element="tns:BoxShipToShipmentLabelResponse" />
+  </wsdl:message>
+  <wsdl:message name="PalletALabelSoapIn">
+    <wsdl:part name="parameters" element="tns:PalletALabel" />
+  </wsdl:message>
+  <wsdl:message name="PalletALabelSoapOut">
+    <wsdl:part name="parameters" element="tns:PalletALabelResponse" />
+  </wsdl:message>
+  <wsdl:message name="PalletAShipmentLabelSoapIn">
+    <wsdl:part name="parameters" element="tns:PalletAShipmentLabel" />
+  </wsdl:message>
+  <wsdl:message name="PalletAShipmentLabelSoapOut">
+    <wsdl:part name="parameters" element="tns:PalletAShipmentLabelResponse" />
+  </wsdl:message>
+  <wsdl:message name="PalletBLabelSoapIn">
+    <wsdl:part name="parameters" element="tns:PalletBLabel" />
+  </wsdl:message>
+  <wsdl:message name="PalletBLabelSoapOut">
+    <wsdl:part name="parameters" element="tns:PalletBLabelResponse" />
+  </wsdl:message>
+  <wsdl:message name="PalletBShipmentLabelSoapIn">
+    <wsdl:part name="parameters" element="tns:PalletBShipmentLabel" />
+  </wsdl:message>
+  <wsdl:message name="PalletBShipmentLabelSoapOut">
+    <wsdl:part name="parameters" element="tns:PalletBShipmentLabelResponse" />
+  </wsdl:message>
+  <wsdl:message name="BsamPalletBShipmentLabelSoapIn">
+    <wsdl:part name="parameters" element="tns:BsamPalletBShipmentLabel" />
+  </wsdl:message>
+  <wsdl:message name="BsamPalletBShipmentLabelSoapOut">
+    <wsdl:part name="parameters" element="tns:BsamPalletBShipmentLabelResponse" />
+  </wsdl:message>
+  <wsdl:message name="BsamPalletBShipmentClassLabelSoapIn">
+    <wsdl:part name="parameters" element="tns:BsamPalletBShipmentClassLabel" />
+  </wsdl:message>
+  <wsdl:message name="BsamPalletBShipmentClassLabelSoapOut">
+    <wsdl:part name="parameters" element="tns:BsamPalletBShipmentClassLabelResponse" />
+  </wsdl:message>
+  <wsdl:message name="WayBillListSoapIn">
+    <wsdl:part name="parameters" element="tns:WayBillList" />
+  </wsdl:message>
+  <wsdl:message name="WayBillListSoapOut">
+    <wsdl:part name="parameters" element="tns:WayBillListResponse" />
+  </wsdl:message>
+  <wsdl:message name="WayBillShipmentListSoapIn">
+    <wsdl:part name="parameters" element="tns:WayBillShipmentList" />
+  </wsdl:message>
+  <wsdl:message name="WayBillShipmentListSoapOut">
+    <wsdl:part name="parameters" element="tns:WayBillShipmentListResponse" />
+  </wsdl:message>
+  <wsdl:message name="HouseWaybillsSoapIn">
+    <wsdl:part name="parameters" element="tns:HouseWaybills" />
+  </wsdl:message>
+  <wsdl:message name="HouseWaybillsSoapOut">
+    <wsdl:part name="parameters" element="tns:HouseWaybillsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenPDFSoapIn">
+    <wsdl:part name="parameters" element="tns:GenPDF" />
+  </wsdl:message>
+  <wsdl:message name="GenPDFSoapOut">
+    <wsdl:part name="parameters" element="tns:GenPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenFOSoapIn">
+    <wsdl:part name="parameters" element="tns:GenFO" />
+  </wsdl:message>
+  <wsdl:message name="GenFOSoapOut">
+    <wsdl:part name="parameters" element="tns:GenFOResponse" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipLabelHttpGetIn">
+    <wsdl:part name="serialNO" type="s:string" />
+    <wsdl:part name="boxID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipLabelHttpGetOut">
+    <wsdl:part name="Body" element="tns:EDITSResponse" />
+  </wsdl:message>
+  <wsdl:message name="PackingLabelHttpGetIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PackingLabelHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PackingShipmentLabelHttpGetIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="Tp" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PackingShipmentLabelHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipToLabelHttpGetIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="SerialNum" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipToLabelHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipToShipmentLabelHttpGetIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="SerialNum" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipToShipmentLabelHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PalletALabelHttpGetIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="Pallet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PalletALabelHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PalletAShipmentLabelHttpGetIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="Pallet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PalletAShipmentLabelHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PalletBLabelHttpGetIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="Pallet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PalletBLabelHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PalletBShipmentLabelHttpGetIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="Pallet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PalletBShipmentLabelHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="BsamPalletBShipmentLabelHttpGetIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="Pallet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BsamPalletBShipmentLabelHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="BsamPalletBShipmentClassLabelHttpGetIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="Pallet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BsamPalletBShipmentClassLabelHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WayBillListHttpGetIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WayBillListHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WayBillShipmentListHttpGetIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WayBillShipmentListHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="HouseWaybillsHttpGetIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="HouseWaybillsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipLabelHttpPostIn">
+    <wsdl:part name="serialNO" type="s:string" />
+    <wsdl:part name="boxID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipLabelHttpPostOut">
+    <wsdl:part name="Body" element="tns:EDITSResponse" />
+  </wsdl:message>
+  <wsdl:message name="PackingLabelHttpPostIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PackingLabelHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PackingShipmentLabelHttpPostIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="Tp" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PackingShipmentLabelHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipToLabelHttpPostIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="SerialNum" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipToLabelHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipToShipmentLabelHttpPostIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="SerialNum" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BoxShipToShipmentLabelHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PalletALabelHttpPostIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="Pallet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PalletALabelHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PalletAShipmentLabelHttpPostIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="Pallet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PalletAShipmentLabelHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PalletBLabelHttpPostIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="Pallet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PalletBLabelHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PalletBShipmentLabelHttpPostIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="Pallet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PalletBShipmentLabelHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="BsamPalletBShipmentLabelHttpPostIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="Pallet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BsamPalletBShipmentLabelHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="BsamPalletBShipmentClassLabelHttpPostIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+    <wsdl:part name="Pallet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BsamPalletBShipmentClassLabelHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WayBillListHttpPostIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WayBillListHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WayBillShipmentListHttpPostIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WayBillShipmentListHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="HouseWaybillsHttpPostIn">
+    <wsdl:part name="FilePH" type="s:string" />
+    <wsdl:part name="Dn" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="HouseWaybillsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="EDITSSoap">
+    <wsdl:operation name="BoxShipLabel">
+      <wsdl:input message="tns:BoxShipLabelSoapIn" />
+      <wsdl:output message="tns:BoxShipLabelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PackingLabel">
+      <wsdl:input message="tns:PackingLabelSoapIn" />
+      <wsdl:output message="tns:PackingLabelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PackingShipmentLabel">
+      <wsdl:input message="tns:PackingShipmentLabelSoapIn" />
+      <wsdl:output message="tns:PackingShipmentLabelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BoxShipToLabel">
+      <wsdl:input message="tns:BoxShipToLabelSoapIn" />
+      <wsdl:output message="tns:BoxShipToLabelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BoxShipToShipmentLabel">
+      <wsdl:input message="tns:BoxShipToShipmentLabelSoapIn" />
+      <wsdl:output message="tns:BoxShipToShipmentLabelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PalletALabel">
+      <wsdl:input message="tns:PalletALabelSoapIn" />
+      <wsdl:output message="tns:PalletALabelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PalletAShipmentLabel">
+      <wsdl:input message="tns:PalletAShipmentLabelSoapIn" />
+      <wsdl:output message="tns:PalletAShipmentLabelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PalletBLabel">
+      <wsdl:input message="tns:PalletBLabelSoapIn" />
+      <wsdl:output message="tns:PalletBLabelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PalletBShipmentLabel">
+      <wsdl:input message="tns:PalletBShipmentLabelSoapIn" />
+      <wsdl:output message="tns:PalletBShipmentLabelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BsamPalletBShipmentLabel">
+      <wsdl:input message="tns:BsamPalletBShipmentLabelSoapIn" />
+      <wsdl:output message="tns:BsamPalletBShipmentLabelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BsamPalletBShipmentClassLabel">
+      <wsdl:input message="tns:BsamPalletBShipmentClassLabelSoapIn" />
+      <wsdl:output message="tns:BsamPalletBShipmentClassLabelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WayBillList">
+      <wsdl:input message="tns:WayBillListSoapIn" />
+      <wsdl:output message="tns:WayBillListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WayBillShipmentList">
+      <wsdl:input message="tns:WayBillShipmentListSoapIn" />
+      <wsdl:output message="tns:WayBillShipmentListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HouseWaybills">
+      <wsdl:input message="tns:HouseWaybillsSoapIn" />
+      <wsdl:output message="tns:HouseWaybillsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenPDF">
+      <wsdl:input message="tns:GenPDFSoapIn" />
+      <wsdl:output message="tns:GenPDFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenFO">
+      <wsdl:input message="tns:GenFOSoapIn" />
+      <wsdl:output message="tns:GenFOSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="EDITSHttpGet">
+    <wsdl:operation name="BoxShipLabel">
+      <wsdl:input message="tns:BoxShipLabelHttpGetIn" />
+      <wsdl:output message="tns:BoxShipLabelHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PackingLabel">
+      <wsdl:input message="tns:PackingLabelHttpGetIn" />
+      <wsdl:output message="tns:PackingLabelHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PackingShipmentLabel">
+      <wsdl:input message="tns:PackingShipmentLabelHttpGetIn" />
+      <wsdl:output message="tns:PackingShipmentLabelHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BoxShipToLabel">
+      <wsdl:input message="tns:BoxShipToLabelHttpGetIn" />
+      <wsdl:output message="tns:BoxShipToLabelHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BoxShipToShipmentLabel">
+      <wsdl:input message="tns:BoxShipToShipmentLabelHttpGetIn" />
+      <wsdl:output message="tns:BoxShipToShipmentLabelHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PalletALabel">
+      <wsdl:input message="tns:PalletALabelHttpGetIn" />
+      <wsdl:output message="tns:PalletALabelHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PalletAShipmentLabel">
+      <wsdl:input message="tns:PalletAShipmentLabelHttpGetIn" />
+      <wsdl:output message="tns:PalletAShipmentLabelHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PalletBLabel">
+      <wsdl:input message="tns:PalletBLabelHttpGetIn" />
+      <wsdl:output message="tns:PalletBLabelHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PalletBShipmentLabel">
+      <wsdl:input message="tns:PalletBShipmentLabelHttpGetIn" />
+      <wsdl:output message="tns:PalletBShipmentLabelHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BsamPalletBShipmentLabel">
+      <wsdl:input message="tns:BsamPalletBShipmentLabelHttpGetIn" />
+      <wsdl:output message="tns:BsamPalletBShipmentLabelHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BsamPalletBShipmentClassLabel">
+      <wsdl:input message="tns:BsamPalletBShipmentClassLabelHttpGetIn" />
+      <wsdl:output message="tns:BsamPalletBShipmentClassLabelHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WayBillList">
+      <wsdl:input message="tns:WayBillListHttpGetIn" />
+      <wsdl:output message="tns:WayBillListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WayBillShipmentList">
+      <wsdl:input message="tns:WayBillShipmentListHttpGetIn" />
+      <wsdl:output message="tns:WayBillShipmentListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HouseWaybills">
+      <wsdl:input message="tns:HouseWaybillsHttpGetIn" />
+      <wsdl:output message="tns:HouseWaybillsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="EDITSHttpPost">
+    <wsdl:operation name="BoxShipLabel">
+      <wsdl:input message="tns:BoxShipLabelHttpPostIn" />
+      <wsdl:output message="tns:BoxShipLabelHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PackingLabel">
+      <wsdl:input message="tns:PackingLabelHttpPostIn" />
+      <wsdl:output message="tns:PackingLabelHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PackingShipmentLabel">
+      <wsdl:input message="tns:PackingShipmentLabelHttpPostIn" />
+      <wsdl:output message="tns:PackingShipmentLabelHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BoxShipToLabel">
+      <wsdl:input message="tns:BoxShipToLabelHttpPostIn" />
+      <wsdl:output message="tns:BoxShipToLabelHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BoxShipToShipmentLabel">
+      <wsdl:input message="tns:BoxShipToShipmentLabelHttpPostIn" />
+      <wsdl:output message="tns:BoxShipToShipmentLabelHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PalletALabel">
+      <wsdl:input message="tns:PalletALabelHttpPostIn" />
+      <wsdl:output message="tns:PalletALabelHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PalletAShipmentLabel">
+      <wsdl:input message="tns:PalletAShipmentLabelHttpPostIn" />
+      <wsdl:output message="tns:PalletAShipmentLabelHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PalletBLabel">
+      <wsdl:input message="tns:PalletBLabelHttpPostIn" />
+      <wsdl:output message="tns:PalletBLabelHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PalletBShipmentLabel">
+      <wsdl:input message="tns:PalletBShipmentLabelHttpPostIn" />
+      <wsdl:output message="tns:PalletBShipmentLabelHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BsamPalletBShipmentLabel">
+      <wsdl:input message="tns:BsamPalletBShipmentLabelHttpPostIn" />
+      <wsdl:output message="tns:BsamPalletBShipmentLabelHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BsamPalletBShipmentClassLabel">
+      <wsdl:input message="tns:BsamPalletBShipmentClassLabelHttpPostIn" />
+      <wsdl:output message="tns:BsamPalletBShipmentClassLabelHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WayBillList">
+      <wsdl:input message="tns:WayBillListHttpPostIn" />
+      <wsdl:output message="tns:WayBillListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WayBillShipmentList">
+      <wsdl:input message="tns:WayBillShipmentListHttpPostIn" />
+      <wsdl:output message="tns:WayBillShipmentListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HouseWaybills">
+      <wsdl:input message="tns:HouseWaybillsHttpPostIn" />
+      <wsdl:output message="tns:HouseWaybillsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EDITSSoap" type="tns:EDITSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="BoxShipLabel">
+      <soap:operation soapAction="http://tempuri.org/BoxShipLabel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PackingLabel">
+      <soap:operation soapAction="http://tempuri.org/PackingLabel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PackingShipmentLabel">
+      <soap:operation soapAction="http://tempuri.org/PackingShipmentLabel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BoxShipToLabel">
+      <soap:operation soapAction="http://tempuri.org/BoxShipToLabel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BoxShipToShipmentLabel">
+      <soap:operation soapAction="http://tempuri.org/BoxShipToShipmentLabel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PalletALabel">
+      <soap:operation soapAction="http://tempuri.org/PalletALabel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PalletAShipmentLabel">
+      <soap:operation soapAction="http://tempuri.org/PalletAShipmentLabel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PalletBLabel">
+      <soap:operation soapAction="http://tempuri.org/PalletBLabel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PalletBShipmentLabel">
+      <soap:operation soapAction="http://tempuri.org/PalletBShipmentLabel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BsamPalletBShipmentLabel">
+      <soap:operation soapAction="http://tempuri.org/BsamPalletBShipmentLabel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BsamPalletBShipmentClassLabel">
+      <soap:operation soapAction="http://tempuri.org/BsamPalletBShipmentClassLabel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WayBillList">
+      <soap:operation soapAction="http://tempuri.org/WayBillList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WayBillShipmentList">
+      <soap:operation soapAction="http://tempuri.org/WayBillShipmentList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HouseWaybills">
+      <soap:operation soapAction="http://tempuri.org/HouseWaybills" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenPDF">
+      <soap:operation soapAction="http://tempuri.org/GenPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenFO">
+      <soap:operation soapAction="http://tempuri.org/GenFO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EDITSSoap12" type="tns:EDITSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="BoxShipLabel">
+      <soap12:operation soapAction="http://tempuri.org/BoxShipLabel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PackingLabel">
+      <soap12:operation soapAction="http://tempuri.org/PackingLabel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PackingShipmentLabel">
+      <soap12:operation soapAction="http://tempuri.org/PackingShipmentLabel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BoxShipToLabel">
+      <soap12:operation soapAction="http://tempuri.org/BoxShipToLabel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BoxShipToShipmentLabel">
+      <soap12:operation soapAction="http://tempuri.org/BoxShipToShipmentLabel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PalletALabel">
+      <soap12:operation soapAction="http://tempuri.org/PalletALabel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PalletAShipmentLabel">
+      <soap12:operation soapAction="http://tempuri.org/PalletAShipmentLabel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PalletBLabel">
+      <soap12:operation soapAction="http://tempuri.org/PalletBLabel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PalletBShipmentLabel">
+      <soap12:operation soapAction="http://tempuri.org/PalletBShipmentLabel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BsamPalletBShipmentLabel">
+      <soap12:operation soapAction="http://tempuri.org/BsamPalletBShipmentLabel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BsamPalletBShipmentClassLabel">
+      <soap12:operation soapAction="http://tempuri.org/BsamPalletBShipmentClassLabel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WayBillList">
+      <soap12:operation soapAction="http://tempuri.org/WayBillList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WayBillShipmentList">
+      <soap12:operation soapAction="http://tempuri.org/WayBillShipmentList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HouseWaybills">
+      <soap12:operation soapAction="http://tempuri.org/HouseWaybills" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenPDF">
+      <soap12:operation soapAction="http://tempuri.org/GenPDF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenFO">
+      <soap12:operation soapAction="http://tempuri.org/GenFO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EDITSHttpGet" type="tns:EDITSHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="BoxShipLabel">
+      <http:operation location="/BoxShipLabel" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PackingLabel">
+      <http:operation location="/PackingLabel" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PackingShipmentLabel">
+      <http:operation location="/PackingShipmentLabel" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BoxShipToLabel">
+      <http:operation location="/BoxShipToLabel" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BoxShipToShipmentLabel">
+      <http:operation location="/BoxShipToShipmentLabel" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PalletALabel">
+      <http:operation location="/PalletALabel" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PalletAShipmentLabel">
+      <http:operation location="/PalletAShipmentLabel" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PalletBLabel">
+      <http:operation location="/PalletBLabel" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PalletBShipmentLabel">
+      <http:operation location="/PalletBShipmentLabel" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BsamPalletBShipmentLabel">
+      <http:operation location="/BsamPalletBShipmentLabel" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BsamPalletBShipmentClassLabel">
+      <http:operation location="/BsamPalletBShipmentClassLabel" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WayBillList">
+      <http:operation location="/WayBillList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WayBillShipmentList">
+      <http:operation location="/WayBillShipmentList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HouseWaybills">
+      <http:operation location="/HouseWaybills" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EDITSHttpPost" type="tns:EDITSHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="BoxShipLabel">
+      <http:operation location="/BoxShipLabel" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PackingLabel">
+      <http:operation location="/PackingLabel" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PackingShipmentLabel">
+      <http:operation location="/PackingShipmentLabel" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BoxShipToLabel">
+      <http:operation location="/BoxShipToLabel" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BoxShipToShipmentLabel">
+      <http:operation location="/BoxShipToShipmentLabel" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PalletALabel">
+      <http:operation location="/PalletALabel" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PalletAShipmentLabel">
+      <http:operation location="/PalletAShipmentLabel" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PalletBLabel">
+      <http:operation location="/PalletBLabel" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PalletBShipmentLabel">
+      <http:operation location="/PalletBShipmentLabel" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BsamPalletBShipmentLabel">
+      <http:operation location="/BsamPalletBShipmentLabel" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BsamPalletBShipmentClassLabel">
+      <http:operation location="/BsamPalletBShipmentClassLabel" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WayBillList">
+      <http:operation location="/WayBillList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WayBillShipmentList">
+      <http:operation location="/WayBillShipmentList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HouseWaybills">
+      <http:operation location="/HouseWaybills" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EDITS">
+    <wsdl:port name="EDITSSoap" binding="tns:EDITSSoap">
+      <soap:address location="http://localhost:2656/HPEDITS_WebApp_20080124/EDITS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EDITSSoap12" binding="tns:EDITSSoap12">
+      <soap12:address location="http://localhost:2656/HPEDITS_WebApp_20080124/EDITS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EDITSHttpGet" binding="tns:EDITSHttpGet">
+      <http:address location="http://localhost:2656/HPEDITS_WebApp_20080124/EDITS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EDITSHttpPost" binding="tns:EDITSHttpPost">
+      <http:address location="http://localhost:2656/HPEDITS_WebApp_20080124/EDITS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

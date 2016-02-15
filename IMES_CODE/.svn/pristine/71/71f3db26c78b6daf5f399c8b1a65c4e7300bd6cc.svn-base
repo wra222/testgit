@@ -1,0 +1,27 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="CombinePack" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind CombinePack,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind CombinePack,Path=SessionType}" Editor="{ActivityBind CombinePack,Path=Editor}" Station="{ActivityBind CombinePack,Path=Station}" x:Name="getProductByProdIDorCUSTSN1" Line="{ActivityBind CombinePack,Path=PdLine}" Key="{ActivityBind CombinePack,Path=Key}" InputType="ProductID" />
+	<ns0:BlockStation Customer="{ActivityBind CombinePack,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind CombinePack,Path=SessionType}" Editor="{ActivityBind CombinePack,Path=Editor}" ProcessType="Product" Station="{ActivityBind CombinePack,Path=Station}" Line="{ActivityBind CombinePack,Path=PdLine}" Key="{ActivityBind CombinePack,Path=Key}" />
+	<ns0:GetBOM Customer="{ActivityBind CombinePack,Path=Customer}" x:Name="getBOM1" SessionType="{ActivityBind CombinePack,Path=SessionType}" Editor="{ActivityBind CombinePack,Path=Editor}" Station="{ActivityBind CombinePack,Path=Station}" ModelFrom="Product" Line="{ActivityBind CombinePack,Path=PdLine}" Key="{ActivityBind CombinePack,Path=Key}" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="ifComplete" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind CombinePack,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind CombinePack,Path=SessionType}" Editor="{ActivityBind CombinePack,Path=Editor}" Station="{ActivityBind CombinePack,Path=Station}" Line="{ActivityBind CombinePack,Path=PdLine}" Key="{ActivityBind CombinePack,Path=Key}" />
+			<IfElseActivity x:Name="ifElseActivity1">
+				<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="ifComplete" />
+					</IfElseBranchActivity.Condition>
+					<ns0:PartMatch Customer="{ActivityBind CombinePack,Path=Customer}" AllowReplaceMatch="True" SessionType="{ActivityBind CombinePack,Path=SessionType}" Editor="{ActivityBind CombinePack,Path=Editor}" Station="{ActivityBind CombinePack,Path=Station}" x:Name="partMatch1" BindTo="Product" Line="{ActivityBind CombinePack,Path=PdLine}" Key="{ActivityBind CombinePack,Path=Key}" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:DBScope Station="{ActivityBind CombinePack,Path=Station}" x:Name="dbScope1" Key="{ActivityBind CombinePack,Path=Key}" SessionType="{ActivityBind CombinePack,Path=SessionType}">
+		<ns0:DeleteProductPartForPack Customer="{ActivityBind CombinePack,Path=Customer}" x:Name="deleteProductPartForPack1" SessionType="{ActivityBind CombinePack,Path=SessionType}" Editor="{ActivityBind CombinePack,Path=Editor}" Station="{ActivityBind CombinePack,Path=Station}" Line="{ActivityBind CombinePack,Path=PdLine}" Key="{ActivityBind CombinePack,Path=Key}" />
+		<ns0:BindParts Customer="{ActivityBind CombinePack,Path=Customer}" x:Name="bindParts1" SessionType="{ActivityBind CombinePack,Path=SessionType}" Editor="{ActivityBind CombinePack,Path=Editor}" Station="{ActivityBind CombinePack,Path=Station}" BindTo="Product" Line="{ActivityBind CombinePack,Path=PdLine}" Key="{ActivityBind CombinePack,Path=Key}" />
+		<ns0:UpdateProductStatus Customer="{ActivityBind CombinePack,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind CombinePack,Path=SessionType}" Editor="{ActivityBind CombinePack,Path=Editor}" Status="Pass" Station="{ActivityBind CombinePack,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind CombinePack,Path=PdLine}" Key="{ActivityBind CombinePack,Path=Key}" />
+		<ns0:WriteProductLog Customer="{ActivityBind CombinePack,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind CombinePack,Path=SessionType}" Editor="{ActivityBind CombinePack,Path=Editor}" Station="{ActivityBind CombinePack,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind CombinePack,Path=PdLine}" Key="{ActivityBind CombinePack,Path=Key}" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

@@ -1,0 +1,390 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IMES.Resolve.Common</name>
+    </assembly>
+    <members>
+        <member name="T:IMES.Resolve.Common.PrintUtility">
+            <summary>
+            Print Utiltiy
+            </summary>
+        </member>
+        <member name="M:IMES.Resolve.Common.PrintUtility.#ctor(IMES.Infrastructure.Session,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            constructure
+            </summary>
+            <param name="session">session object</param>       
+            <param name="modelName"> model name</param>
+            <param name="moNo">MO Id</param>
+            <param name="dnNo">Delivery No</param>
+            <param name="partNo">Part No</param>
+            <param name="customer">Customer</param>
+        </member>
+        <member name="M:IMES.Resolve.Common.PrintUtility.GetPrintTemplate(System.String,System.Int32,System.Int32)">
+            <summary>
+            Get Print Template
+            </summary>
+            <param name="labelType"></param>
+            <param name="ruleMode"></param>
+            <param name="printMode"></param>
+            <returns></returns>             
+        </member>
+        <member name="T:IMES.Resolve.Common.ResolveValue">
+            <summary>
+            Resolve value from object name 
+            </summary>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.GetValue(IMES.Infrastructure.Session,IMES.FisObject.FA.Product.IProduct,IMES.FisObject.PCA.MB.IMB,IMES.FisObject.PAK.DN.Delivery,IMES.FisObject.Common.Part.IPart,System.String,System.Char)">
+            <summary>
+            GetValue
+            </summary>
+            <param name="session"></param>
+            <param name="product"></param>
+            <param name="mb"></param>
+            <param name="delivery"></param>
+            <param name="part"></param>
+            <param name="name"></param>
+            <param name="spliter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.GetValue(IMES.FisObject.FA.Product.IProduct,IMES.FisObject.PCA.MB.IMB,IMES.FisObject.PAK.DN.Delivery,IMES.FisObject.Common.Part.IPart,System.String,System.Char)">
+            <summary>
+            
+            </summary>
+            <param name="product"></param>
+            <param name="mb"></param>
+            <param name="delivery"></param>
+            <param name="part"></param>
+            <param name="name"></param>
+            <param name="spliter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.GetValue(IMES.Infrastructure.Session,IMES.FisObject.FA.Product.IProduct,IMES.FisObject.PCA.MB.IMB,IMES.FisObject.PAK.DN.Delivery,IMES.FisObject.Common.Part.IPart,IMES.FisObject.Common.TestLog.TestLog,System.String,System.Char)">
+            <summary>
+            GetValue
+            </summary>
+            <param name="session"></param>
+            <param name="product"></param>
+            <param name="mb"></param>
+            <param name="delivery"></param>
+            <param name="part"></param>
+            <param name="testLog"></param>
+            <param name="name"></param>
+            <param name="spliter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.GetValueWithoutError(IMES.Infrastructure.Session,IMES.FisObject.FA.Product.IProduct,IMES.FisObject.PCA.MB.IMB,IMES.FisObject.PAK.DN.Delivery,IMES.FisObject.Common.Part.IPart,System.String,System.Char)">
+            <summary>
+            
+            </summary>
+            <param name="session"></param>
+            <param name="product"></param>
+            <param name="mb"></param>
+            <param name="delivery"></param>
+            <param name="part"></param>
+            <param name="name"></param>
+            <param name="spliter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.GetValueWithoutError(IMES.FisObject.FA.Product.IProduct,IMES.FisObject.PCA.MB.IMB,IMES.FisObject.PAK.DN.Delivery,IMES.FisObject.Common.Part.IPart,System.String,System.Char)">
+            <summary>
+            
+            </summary>
+            <param name="product"></param>
+            <param name="mb"></param>
+            <param name="delivery"></param>
+            <param name="part"></param>
+            <param name="name"></param>
+            <param name="spliter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.GetValueWithoutError(IMES.Infrastructure.Session,IMES.FisObject.FA.Product.IProduct,IMES.FisObject.PCA.MB.IMB,IMES.FisObject.PAK.DN.Delivery,IMES.FisObject.Common.Part.IPart,IMES.FisObject.Common.TestLog.TestLog,System.String,System.Char)">
+            <summary>
+            
+            </summary>
+            <param name="session"></param>
+            <param name="product"></param>
+            <param name="mb"></param>
+            <param name="delivery"></param>
+            <param name="part"></param>
+            <param name="testLog"></param>
+            <param name="name"></param>
+            <param name="spliter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.ResolvePart(IMES.FisObject.Common.Part.IPart,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="part"></param>
+            <param name="name"></param>
+            <param name="objName"></param>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.CheckResolveBOM(System.String,System.Collections.Generic.IList{System.String}@)">
+            <summary>
+            
+            </summary>
+            <param name="resolveName">BOM@Level~Method</param>
+            <param name="paramList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.CheckBomExpression(System.String,System.Collections.Generic.IList{System.String}@)">
+            <summary>
+            
+            </summary>
+            <param name="expression">
+            Bom Expression BOM@Level~Method  
+            Level~Method 
+            Level </param>
+            <param name="paramList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.MatchBomRule(IMES.Infrastructure.Session,IMES.FisObject.FA.Product.IProduct,System.String,System.String,System.Char,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="session"></param>
+            <param name="product"></param>
+            <param name="bomNodeTypeLink"></param>
+            <param name="resolveName"></param>
+            <param name="spliter"></param>
+            <param name="matchRule"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.CheckBom(IMES.FisObject.FA.Product.IProduct,System.String,System.String)">
+            <summary>
+            根據設置bomResolveName及matchRule檢查是否BOM 有包含料件
+            </summary>
+            <param name="product"></param>
+            <param name="bomResolveName">
+            case1: BOM@Level~ResolveValue ,example: BOM@PL,PartType,PartDesc,PN->KP,PartType,PartDesct,PN~PartInfo.VendorCode
+            case2: Level~ResolveValue ,example: PL,PartType,PartDesc,PN->KP,PartType,PartDesct,PN~PartInfo.VendorCode
+            case3: Level ,example: PL,PartType,PartDesc,PN->KP,PartType,PartDesct,PN
+            </param>
+            <param name="matchRule">
+            case1: BOM@Level~ResolveValue ,example: BOM@PL,PartType,PartDesc,PN->KP,PartType,PartDesct,PN~PartInfo.VendorCode
+            case2: Level~ResolveValue ,example: PL,PartType,PartDesc,PN->KP,PartType,PartDesct,PN~PartInfo.VendorCode
+            Part 物件 ResolveValue 的Regex 規則
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.MatchBomNodeFromBomRule(IMES.Infrastructure.Session,IMES.FisObject.FA.Product.IProduct,System.String,System.String,System.Char,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="session"></param>
+            <param name="product"></param>
+            <param name="filterBomRuleLink"></param>
+            <param name="resolveName"></param>
+            <param name="spliter"></param>
+            <param name="matchRule"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.GetBom(IMES.FisObject.Common.FisBOM.IHierarchicalBOM,System.String,System.String,System.String,System.String)">
+            <summary>
+            Expand Bom to button level by BomNodeTypeRule/partType/partDescr/PartNo setting value
+            </summary>
+            <param name="bom">IHierarchicalBOM </param>
+            <param name="bomNodeTypeRule">必要有值,範例:PL->KP</param>
+            <param name="partType">最後階層BOM檢查條件,空白或是Null則不檢查,使用Regex</param>
+            <param name="partDescr">最後階層BOM檢查條件,空白或是Null則不檢查,使用Regex</param>
+            <param name="partNo">最後階層BOM檢查條件,空白或是Null則不檢查,使用Regex</param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.GetBomByExpression(System.Collections.Generic.IList{IMES.FisObject.Common.FisBOM.IBOMNode},IMES.FisObject.FA.Product.IProduct,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="bomNodeList"></param>
+            <param name="product"></param>
+            <param name="expressionName"></param>
+            <param name="filterExpression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.GetBom(System.String,System.String)">
+            <summary>
+            展BOM規則根據filterBomRule 規則
+            </summary>
+            <param name="model"></param>
+            <param name="filterBomRule">
+            規則: BomNodeType,PartType Regex,PartDesc Regex,PartNo Regex->...->...
+            範例: PL,Battery,HP Battery->KP,Battery,HP Battery,645890-001|645890-002
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.GetNextBom(System.String,System.String,System.String,System.String,IMES.FisObject.Common.FisBOM.IBOMNode)">
+            <summary>
+            展下階BOM規則根據輸入參數
+            </summary>
+            <param name="bomNodeTypeRule">PL->KP</param>
+            <param name="partType">最後階PartType條件</param>
+            <param name="partDescr">最後階PartDescr條件</param>
+            <param name="partNo">最後階PartNo條件</param>
+            <param name="parentBomNode">上階BomNode</param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.GetNextBom(System.String,System.Collections.Generic.IList{IMES.FisObject.Common.FisBOM.IBOMNode})">
+            <summary>
+            展下階BOM規則根據filterBomRuleLink 規則
+            </summary>
+            <param name="filterBomRuleLink">
+            PL,PartType,PartDesc,PN->KP,PartType,PartDesc,PN
+            </param>
+            <param name="bomNodes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.CheckBomNodeMatch(IMES.FisObject.Common.Part.IPart,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="part"></param>
+            <param name="filterRule">PL,PartType,PartDesc,PN</param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.RegexMatchRule(System.String,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="input"></param>
+            <param name="pattern"></param>
+            <param name="isEmptyPatternPass"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.GetRegexGroupName(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.GetRegexGroupValue(System.String,System.String,System.Collections.Generic.IList{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="inputValue"></param>
+            <param name="pattern"></param>
+            <param name="groupNameList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveValue.GetRegexGroupValue(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="inputValue"></param>
+            <param name="pattern"></param>
+            <param name="groupName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Resolve.Common.ResolveProcess">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveProcess.CreateModelProcess(IMES.FisObject.Common.Model.Model,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <param name="editor"></param>
+            <param name="firstLine"></param>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveProcess.CreateModelProcess(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="modelName"></param>
+            <param name="editor"></param>
+            <param name="firstLine"></param>
+        </member>
+        <member name="T:IMES.Resolve.Common.ResolveExpression">
+            <summary>
+            invoke expression script code
+            </summary>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveExpression.InvokeCondition(IMES.FisObject.FA.Product.IProduct,System.String,System.String,System.Boolean)">
+            <summary>
+            invoke condition code
+            </summary>
+            <param name="product"></param>
+            <param name="name"></param>
+            <param name="code"></param>
+            <param name="isCached"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveExpression.InvokeCondition(IMES.FisObject.PCA.MB.IMB,System.String,System.String,System.Boolean)">
+            <summary>
+            invoke condition code
+            </summary>
+            <param name="mb"></param>
+            <param name="name"></param>
+            <param name="code"></param>
+            <param name="isCached"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveExpression.InvokeCondition(IMES.FisObject.FA.Product.IProduct,IMES.FisObject.Common.Part.IPart,System.String,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="product"></param>
+            <param name="part"></param>
+            <param name="name"></param>
+            <param name="code"></param>
+            <param name="isCached"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveExpression.InvokeCondition(IMES.FisObject.Common.Part.IPart,System.String,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="part"></param>
+            <param name="name"></param>
+            <param name="code"></param>
+            <param name="isCached"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveExpression.InvokeCondition(IMES.FisObject.PCA.MB.IMB,IMES.FisObject.Common.TestLog.TestLog,System.String,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="mb"></param>
+            <param name="testLog"></param>
+            <param name="name"></param>
+            <param name="code"></param>
+            <param name="isCached"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveExpression.InvokeCondition(IMES.FisObject.FA.Product.IProduct,IMES.FisObject.PAK.DN.Delivery,System.String,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="product"></param>
+            <param name="dn"></param>
+            <param name="name"></param>
+            <param name="code"></param>
+            <param name="isCached"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveExpression.GetValue``1(IMES.FisObject.FA.Product.IProduct,System.String,System.String,System.Boolean)">
+            <summary>
+            Get Value from script code
+            </summary>
+            <param name="product"></param>
+            <param name="name"></param>
+            <param name="code"></param>
+            <param name="isCached"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Resolve.Common.ResolveExpression.GetValue``1(IMES.FisObject.PCA.MB.IMB,System.String,System.String,System.Boolean)">
+            <summary>
+            get value from executed script code
+            </summary>
+            <param name="mb"></param>
+            <param name="name"></param>
+            <param name="code"></param>
+            <param name="isCached"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

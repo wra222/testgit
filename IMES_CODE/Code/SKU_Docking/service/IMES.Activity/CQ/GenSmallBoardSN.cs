@@ -1,0 +1,176 @@
+﻿// INVENTEC corporation (c)2012 all rights reserved. 
+// Description: Generate Small Board SN
+//                         
+// Update: 
+// Date         Name                         Reason 
+// ==========   =======================      ============
+// 2015-12-09   Vincent                 create
+// Known issues:
+
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+using System.Workflow.ComponentModel;
+using IMES.DataModel;
+using IMES.FisObject.Common.Model;
+using IMES.FisObject.PCA.MB;
+using IMES.Infrastructure;
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+using IMES.Infrastructure.UnitOfWork;
+using IMES.Infrastructure.Utility.Generates.impl;
+using IMES.Infrastructure.Utility.Generates.intf;
+using IMES.Infrastructure.Extend;
+using System.ComponentModel;
+using IMES.FisObject.Common.Misc;
+using IMES.Common;
+using metas=IMES.Infrastructure.Repository._Metas;
+using IMES.Infrastructure.Util;
+using IMES.Infrastructure.Extend.Dictionary;
+
+namespace IMES.Activity
+{
+    /// <summary>
+    /// Generate Small Board SN
+    /// </summary>
+    public partial class GenSmallBoardSN : BaseActivity
+    {
+        /// <summary>
+        /// Generate Small Board SN
+        /// </summary>
+        public GenSmallBoardSN()
+        {
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="executionContext"></param>
+        /// <returns></returns>
+        protected internal override ActivityExecutionStatus DoExecute(ActivityExecutionContext executionContext)
+        {
+            Session session = CurrentSession;
+            ActivityCommonImpl utl = ActivityCommonImpl.Instance;
+            IMB  mb = utl.IsNull<IMB>(session ,Session.SessionKeys.MB);
+
+            //Check SmallBoardDefine
+            IList<SmallBoardDefineInfo> sbInfoList= utl.miscRep.GetData<metas.SmallBoardDefine, SmallBoardDefineInfo>(new SmallBoardDefineInfo { Family = mb.Family });
+            if (sbInfoList == null || sbInfoList.Count == 0)
+            {
+                return base.DoExecute(executionContext);
+            }            
+
+            string prefixCode = null;
+            string postfixCode = null;
+            string mbCode =null;
+            if (mb.Sn.Length == 11)
+            {
+                prefixCode = mb.Sn.Substring(0, 5);
+                postfixCode = mb.Sn.Substring(7);
+                mbCode=mb.Sn.Substring(0,3);
+            }
+            else
+            {
+                prefixCode = mb.Sn.Substring(0, 4);
+                postfixCode = mb.Sn.Substring(6);
+                mbCode =mb.Sn.Substring(0,2);
+            }
+
+            sbInfoList = sbInfoList.OrderBy(x => x.Priority).ToList();
+             int maxPrintQty = sbInfoList[0].MaxQty;
+
+             IList<string> smallBoardSNList = new List<string>();
+             IList<string> smallBoardPartNoList = new List<string>();
+             IList<string> smallBoardECRList = new List<string>();
+            //Generate SmallBoard middle Code
+            IList<string> smallBoardMBType=new List<string>();
+            int qty = 0;
+            bool bOverQty = false;
+            List<string> childMBSnList = new List<string>();
+            if (this.IsSplitMB)
+            {
+                childMBSnList = utl.IsNull<List<string>>(session, Session.SessionKeys.MBNOList);
+            }else
+            {
+                childMBSnList.Add(mb.Sn);
+            }
+
+            int childMBCount = childMBSnList.Count;
+
+            foreach(SmallBoardDefineInfo info  in sbInfoList)
+            {   
+               //IList<SmallBoardECRInfo> ecrInfoList= utl.miscRep.GetData<metas.SmallBoardECR, SmallBoardECRInfo>(new SmallBoardECRInfo{ Family = info.Family, MBCode =mbCode, MBType =info.MBType}).ToList();
+               //if (ecrInfoList == null || ecrInfoList.Count == 0)
+               //{
+               //    throw new FisException("ICT026", new string[] {info.Family, mbCode, info.MBType });
+               //}
+
+               //ecrInfoList = ecrInfoList.Where(x => x.EffectiveDate <= DateTime.Now).OrderByDescending(x => x.ECR).ToList();
+               //if (ecrInfoList.Count == 0)
+               //{
+               //    throw new FisException("ICT026", new string[] { info.Family, mbCode, info.MBType });
+               //}
+                if (string.IsNullOrEmpty(info.PartNo))
+                {
+                    throw new FisException("ICT030", new string[] { info.Family,info.MBType });
+                }
+                if (string.IsNullOrEmpty(info.ECR) || string.IsNullOrEmpty(info.IECVer))
+                {
+                    throw new FisException("ICT026", new string[] { info.Family,info.MBType });
+                }
+
+                string ecrStr = info.ECR + GlobalConstName.SlashStr + info.IECVer;
+                int printQty = info.Qty;
+                qty = qty + info.Qty;                
+                if (qty >= maxPrintQty)
+                {
+                    printQty = printQty - qty + maxPrintQty;
+                    bOverQty = true;
+                }
+              
+                for (int i = 0; i < printQty;++i)
+                {
+                    int index = i % childMBCount;
+                    string sbSN = prefixCode + info.MBType + utl.ChildMBChar[i+1] + postfixCode + GlobalConstName.SlashStr + childMBSnList[index];
+                    smallBoardSNList.Add(sbSN);
+                    smallBoardPartNoList.Add(info.PartNo ?? string.Empty);
+                    smallBoardECRList.Add(ecrStr);
+                }
+                if (bOverQty)
+                {
+                    break;
+                }
+            }  
+            session.AddValue(ExtendSession.SessionKeys.SmallBoardSNList, smallBoardSNList);
+            session.AddValue(ExtendSession.SessionKeys.SmallBoardPartNoList, smallBoardPartNoList);
+            session.AddValue(ExtendSession.SessionKeys.SmallBoardECRList, smallBoardECRList);
+            return base.DoExecute(executionContext);          
+        }
+
+        /// <summary>
+        ///  多連板設置
+        /// </summary>
+        public static DependencyProperty IsSplitMBProperty = DependencyProperty.Register("IsSplitMB", typeof(bool), typeof(GenSmallBoardSN), new PropertyMetadata(true));
+
+        /// <summary>
+        ///  多連板設置
+        /// </summary>
+        [DescriptionAttribute("IsSplitMB")]
+        [CategoryAttribute(" IsSplitMB Arguments")]
+        [BrowsableAttribute(true)]
+        [DesignerSerializationVisibilityAttribute(DesignerSerializationVisibility.Visible)]
+        public bool IsSplitMB
+        {
+            get
+            {
+                return ((bool)(base.GetValue(IsSplitMBProperty)));
+            }
+            set
+            {
+                base.SetValue(IsSplitMBProperty, value);
+            }
+        }     
+
+    }
+}

@@ -1,0 +1,45 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="FATestStation" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind FATestStation,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind FATestStation,Path=SessionType}" Editor="{ActivityBind FATestStation,Path=Editor}" Station="{ActivityBind FATestStation,Path=Station}" x:Name="getProduct1" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" InputType="ProductID" />
+	<ns0:BlockStation Customer="{ActivityBind FATestStation,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind FATestStation,Path=SessionType}" Editor="{ActivityBind FATestStation,Path=Editor}" ProcessType="Product" Station="{ActivityBind FATestStation,Path=Station}" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" />
+	<ns0:RunInTimeControl Customer="{ActivityBind FATestStation,Path=Customer}" x:Name="RunInTimeControl1" SessionType="{ActivityBind FATestStation,Path=SessionType}" Editor="{ActivityBind FATestStation,Path=Editor}" Station="{ActivityBind FATestStation,Path=Station}" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" />
+	<ns0:WaitInput Customer="{ActivityBind FATestStation,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind FATestStation,Path=SessionType}" Editor="{ActivityBind FATestStation,Path=Editor}" Station="{ActivityBind FATestStation,Path=Station}" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" />
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="NoDefectBranch">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="noDefect" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind FATestStation,Path=Station}" x:Name="dbScope1" Key="{ActivityBind FATestStation,Path=Key}" SessionType="{ActivityBind FATestStation,Path=SessionType}">
+				<ns0:WriteProductTestLog Customer="{ActivityBind FATestStation,Path=Customer}" Station="{ActivityBind FATestStation,Path=Station}" SessionType="{ActivityBind FATestStation,Path=SessionType}" Editor="{ActivityBind FATestStation,Path=Editor}" IsPass="True" x:Name="writeProductTestLog2" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind FATestStation,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind FATestStation,Path=SessionType}" Editor="{ActivityBind FATestStation,Path=Editor}" Status="Pass" Station="{ActivityBind FATestStation,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind FATestStation,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind FATestStation,Path=SessionType}" Editor="{ActivityBind FATestStation,Path=Editor}" Station="{ActivityBind FATestStation,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" />
+				<ns0:GetProductQCForFATest Customer="{ActivityBind FATestStation,Path=Customer}" x:Name="getProductQCForFATest1" SessionType="{ActivityBind FATestStation,Path=SessionType}" Editor="{ActivityBind FATestStation,Path=Editor}" Station="{ActivityBind FATestStation,Path=Station}" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity2">
+					<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="isPIA" />
+						</IfElseBranchActivity.Condition>
+						<ns0:WriteQCStatus Customer="{ActivityBind FATestStation,Path=Customer}" Remark="{x:Null}" Status="5" Editor="{ActivityBind FATestStation,Path=Editor}" SessionType="{ActivityBind FATestStation,Path=SessionType}" Station="{ActivityBind FATestStation,Path=Station}" x:Name="writeQCStatus1" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" Type="PIA1" />
+						<ns0:WriteProductLog Customer="{ActivityBind FATestStation,Path=Customer}" x:Name="writeProductLog3" Status="Pass" Editor="{ActivityBind FATestStation,Path=Editor}" SessionType="{ActivityBind FATestStation,Path=SessionType}" Station="71" IsSingle="True" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind FATestStation,Path=Customer}" x:Name="updateProductStatus3" Status="Pass" Editor="{ActivityBind FATestStation,Path=Editor}" SessionType="{ActivityBind FATestStation,Path=SessionType}" Station="71" IsReturnStatoin="False" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="NoPIA" />
+						</IfElseBranchActivity.Condition>
+						<ns0:WriteQCStatus Customer="{ActivityBind FATestStation,Path=Customer}" Remark="{x:Null}" Status="1" Editor="{ActivityBind FATestStation,Path=Editor}" SessionType="{ActivityBind FATestStation,Path=SessionType}" Station="{ActivityBind FATestStation,Path=Station}" x:Name="writeQCStatus2" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" Type="PIA1" />
+						<ns0:WriteProductLog Customer="{ActivityBind FATestStation,Path=Customer}" x:Name="writeProductLog4" Status="Pass" Editor="{ActivityBind FATestStation,Path=Editor}" SessionType="{ActivityBind FATestStation,Path=SessionType}" Station="78" IsSingle="True" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind FATestStation,Path=Customer}" x:Name="updateProductStatus4" Status="Fail" Editor="{ActivityBind FATestStation,Path=Editor}" SessionType="{ActivityBind FATestStation,Path=SessionType}" Enabled="False" Station="{ActivityBind FATestStation,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity Enabled="False" x:Name="ifElseBranchActivity3" />
+				</IfElseActivity>
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="DefectBranch">
+			<ns0:DBScope Station="{ActivityBind FATestStation,Path=Station}" x:Name="dbScope2" Key="{ActivityBind FATestStation,Path=Key}" SessionType="{ActivityBind FATestStation,Path=SessionType}">
+				<ns0:WriteProductTestLog Customer="{ActivityBind FATestStation,Path=Customer}" Station="{ActivityBind FATestStation,Path=Station}" SessionType="{ActivityBind FATestStation,Path=SessionType}" Editor="{ActivityBind FATestStation,Path=Editor}" x:Name="writeProductTestLog1" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind FATestStation,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind FATestStation,Path=SessionType}" Editor="{ActivityBind FATestStation,Path=Editor}" Status="Fail" Station="{ActivityBind FATestStation,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind FATestStation,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind FATestStation,Path=SessionType}" Editor="{ActivityBind FATestStation,Path=Editor}" Station="{ActivityBind FATestStation,Path=Station}" Status="Fail" IsSingle="True" Line="{ActivityBind FATestStation,Path=PdLine}" Key="{ActivityBind FATestStation,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

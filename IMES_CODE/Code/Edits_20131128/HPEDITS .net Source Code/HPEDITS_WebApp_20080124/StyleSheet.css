@@ -1,0 +1,24 @@
+﻿body {
+}
+.conditionTable
+{
+	font-family:Calibri;			
+}
+.conditionTable th
+{	
+	background-color:#006699;
+	color:White;
+	font-size:10;
+}
+.content1
+{
+	background-color:#00aaff;
+	color:White;
+	font-size:smaller;
+}
+.content2
+{
+	background-color:white;
+	color:black;
+	font-size:smaller;
+}

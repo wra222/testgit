@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="SAP_IMES_WSSoapBinding" closeTimeout="00:01:00"
+                    openTimeout="00:01:00" receiveTimeout="00:10:00" sendTimeout="00:01:00"
+                    allowCookies="false" bypassProxyOnLocal="false" hostNameComparisonMode="StrongWildcard"
+                    maxBufferSize="65536" maxBufferPoolSize="524288" maxReceivedMessageSize="65536"
+                    messageEncoding="Text" textEncoding="utf-8" transferMode="Buffered"
+                    useDefaultWebProxy="true">
+                    <readerQuotas maxDepth="32" maxStringContentLength="8192" maxArrayLength="16384"
+                        maxBytesPerRead="4096" maxNameTableCharCount="16384" />
+                    <security mode="TransportCredentialOnly">
+                        <transport clientCredentialType="Basic" proxyCredentialType="None"
+                            realm="" />
+                        <message clientCredentialType="UserName" algorithmSuite="Default" />
+                    </security>
+                </binding>
+            </basicHttpBinding>          
+        </bindings>
+        <client>
+            <endpoint address="http://xidqdb.iec.inventec.com:8000/sap/bc/srt/rfc/sap/Z_RFC_GET_MATMAS?sap-client=001"
+                binding="basicHttpBinding" bindingConfiguration="SAP_IMES_WSSoapBinding"
+                contract="SAPWSQueryMaterial.Z_RFC_GET_MATMAS" name="SAPQueryMaterial" />
+            <endpoint address="http://xidqdb.iec.inventec.com:8000/sap/bc/srt/rfc/sap/Z_GET_PRODORD_TO_IMES_WS?sap-client=001"
+                binding="basicHttpBinding" bindingConfiguration="SAP_IMES_WSSoapBinding"
+                contract="SAPWSQueryMO.Z_GET_PRODORD_TO_IMES_WS" name="SAPQueryMO" />
+            <endpoint address="http://xidqdb.iec.inventec.com:8000/sap/bc/srt/rfc/sap/Z_SET_PRODORD_TO_IMES_TECO_WS?sap-client=001"
+                binding="basicHttpBinding" bindingConfiguration="SAP_IMES_WSSoapBinding"
+                contract="SAPMOChangeStatusWS.Z_SET_PRODORD_TO_IMES_TECO_WS"
+                name="SAPMOChangeStatus" />
+            <endpoint address="http://xidqdb.iec.inventec.com:8000/sap/bc/srt/rfc/sap/ZWS_DELIVERY_WEIGHT_UPLOAD?sap-client=001"
+                binding="basicHttpBinding" bindingConfiguration="SAP_IMES_WSSoapBinding"
+                contract="SAPDeliveryWeightWS.ZWS_DELIVERY_WEIGHT_UPLOAD"
+                name="SAPDeliveryWeight" />
+            <endpoint address="http://xidqdb.iec.inventec.com:8000/sap/bc/srt/rfc/sap/ZWS_PALLET_WEIGHT_UPLOAD?sap-client=001"
+                binding="basicHttpBinding" bindingConfiguration="SAP_IMES_WSSoapBinding"
+                contract="SAPPalletWeightWS.ZWS_PALLET_WEIGHT_UPLOAD" name="SAPPalletWeight" />
+            <endpoint address="http://xidqdb.iec.inventec.com:8000/sap/bc/srt/rfc/sap/ZWS_CANCEL_SERIAL?sap-client=001"
+                binding="basicHttpBinding" bindingConfiguration="SAP_IMES_WSSoapBinding"
+                contract="SAPCancelBindDNWS.ZWS_CANCEL_SERIAL" name="SAPCancelBindDN" />
+            <endpoint address="http://xidqdb.iec.inventec.com:8000/sap/bc/srt/rfc/sap/ZWS_MASTER_WEIGHT_UPLOAD?sap-client=001"
+                binding="basicHttpBinding" bindingConfiguration="SAP_IMES_WSSoapBinding"
+                contract="SAPMasterWeightWS.ZWS_MASTER_WEIGHT_UPLOAD" name="SAPMasterWeight" />
+            <endpoint address="http://eccqdap.sapecc.inventec:8000/sap/bc/srt/rfc/sap/zws_co_sn_upload/100/zws_co_sn_upload/binding_sn"
+                binding="basicHttpBinding" bindingConfiguration="SAP_IMES_WSSoapBinding"
+                contract="SAPUploadSN.ZWS_CO_SN_UPLOAD" name="SAPUploadSN" />
+            <endpoint address="http://eccqdap.sapecc.inventec:8000/sap/bc/srt/rfc/sap/zws_co_poinfo_query/100/zws_co_poinfo_query/binding_po"
+                binding="basicHttpBinding" bindingConfiguration="SAP_IMES_WSSoapBinding"
+                contract="SAPPO.ZWS_CO_POINFO_QUERY" name="SAPPOInfo" />            
+        </client>
+    </system.serviceModel>
+</configuration>

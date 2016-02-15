@@ -1,0 +1,27 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="CombinePoInCarton" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplet" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:BlockStation Customer="{ActivityBind CombinePoInCarton,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind CombinePoInCarton,Path=SessionType}" Editor="{ActivityBind CombinePoInCarton,Path=Editor}" ProcessType="Product" Station="{ActivityBind CombinePoInCarton,Path=Station}" Line="{ActivityBind CombinePoInCarton,Path=PdLine}" Key="{ActivityBind CombinePoInCarton,Path=Key}" IsStopWF="NotStop" />
+			<ns0:WaitInput Customer="{ActivityBind CombinePoInCarton,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind CombinePoInCarton,Path=SessionType}" Editor="{ActivityBind CombinePoInCarton,Path=Editor}" Station="{ActivityBind CombinePoInCarton,Path=Station}" Line="{ActivityBind CombinePoInCarton,Path=PdLine}" Key="{ActivityBind CombinePoInCarton,Path=Key}" />
+		</SequenceActivity>
+	</WhileActivity>
+	<IfElseActivity x:Name="ifBT">
+		<IfElseBranchActivity x:Name="BT">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="isBT" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind CombinePoInCarton,Path=Station}" x:Name="dbScope2" Key="{ActivityBind CombinePoInCarton,Path=Key}" SessionType="{ActivityBind CombinePoInCarton,Path=SessionType}">
+				<ns0:ChangeDNOnly Customer="{ActivityBind CombinePoInCarton,Path=Customer}" x:Name="changeDNOnly1" SessionType="{ActivityBind CombinePoInCarton,Path=SessionType}" Editor="{ActivityBind CombinePoInCarton,Path=Editor}" Station="{ActivityBind CombinePoInCarton,Path=Station}" Line="{ActivityBind CombinePoInCarton,Path=PdLine}" Key="{ActivityBind CombinePoInCarton,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<ns0:DBScope Station="{ActivityBind CombinePoInCarton,Path=Station}" x:Name="dbScope1" Key="{ActivityBind CombinePoInCarton,Path=Key}" SessionType="{ActivityBind CombinePoInCarton,Path=SessionType}">
+		<ns0:GenerateCartonNo Customer="{ActivityBind CombinePoInCarton,Path=Customer}" x:Name="generateCartonNo1" SessionType="{ActivityBind CombinePoInCarton,Path=SessionType}" Editor="{ActivityBind CombinePoInCarton,Path=Editor}" Station="{ActivityBind CombinePoInCarton,Path=Station}" Line="{ActivityBind CombinePoInCarton,Path=PdLine}" Key="{ActivityBind CombinePoInCarton,Path=Key}" />
+		<ns0:AssignForCarton Customer="{ActivityBind CombinePoInCarton,Path=Customer}" x:Name="assignForCarton1" SessionType="{ActivityBind CombinePoInCarton,Path=SessionType}" Editor="{ActivityBind CombinePoInCarton,Path=Editor}" Station="{ActivityBind CombinePoInCarton,Path=Station}" Line="{ActivityBind CombinePoInCarton,Path=PdLine}" Key="{ActivityBind CombinePoInCarton,Path=Key}" />
+		<ns0:GenerateBoxID Customer="{ActivityBind CombinePoInCarton,Path=Customer}" x:Name="generateBoxID1" SessionType="{ActivityBind CombinePoInCarton,Path=SessionType}" Editor="{ActivityBind CombinePoInCarton,Path=Editor}" Station="{ActivityBind CombinePoInCarton,Path=Station}" Line="{ActivityBind CombinePoInCarton,Path=PdLine}" Key="{ActivityBind CombinePoInCarton,Path=Key}" />
+	</ns0:DBScope>
+	<ns0:Print Customer="{ActivityBind CombinePoInCarton,Path=Customer}" NotExistException="True" SessionType="{ActivityBind CombinePoInCarton,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind CombinePoInCarton,Path=Editor}" x:Name="print1" Station="{ActivityBind CombinePoInCarton,Path=Station}" MOFrom="No" ModelFrom="No" Line="{ActivityBind CombinePoInCarton,Path=PdLine}" Key="{ActivityBind CombinePoInCarton,Path=Key}" DnFrom="No" />
+</ns0:BaseFlow>

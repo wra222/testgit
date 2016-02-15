@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{11CDE432-CA3F-4D23-A47F-0FCC66EED40B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IMES.DataModel</RootNamespace>
+    <AssemblyName>IMES.DataModel</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\IMES.DataModel.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AlarmInfo.cs" />
+    <Compile Include="AlarmQueryCondition.cs" />
+    <Compile Include="AlarmSettingInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApprovalContentInfo.cs" />
+    <Compile Include="ApprovalItemAttrInfo.cs" />
+    <Compile Include="ApprovalItemInfo.cs" />
+    <Compile Include="ApprovalStatusInfo.cs" />
+    <Compile Include="AssignedDeliveryPalletInfo.cs" />
+    <Compile Include="AttributeInfo.cs" />
+    <Compile Include="AvailableDelivery.cs" />
+    <Compile Include="BSamLocQuery.cs" />
+    <Compile Include="CartonProductInfo.cs" />
+    <Compile Include="CeldataDef.cs" />
+    <Compile Include="CeldataInfo.cs" />
+    <Compile Include="CheckItemTypeRuleDef.cs" />
+    <Compile Include="ChinaLabelInfo.cs" />
+    <Compile Include="CdsiastInfo.cs" />
+    <Compile Include="CombinedAstNumberInfo.cs" />
+    <Compile Include="ConstValueTypeInfo.cs" />
+    <Compile Include="CombinedPalletCartonQty.cs" />
+    <Compile Include="AstDefineInfo.cs" />
+    <Compile Include="SmallBoardDefineInfo.cs" />
+    <Compile Include="UPSModelInfo.cs" />
+    <Compile Include="UPSIECPOInfo.cs" />
+    <Compile Include="UPSPOAVPartInfo.cs" />
+    <Compile Include="UPSHPPOInfo.cs" />
+    <Compile Include="ModelAssemblyCodeInfo.cs" />
+    <Compile Include="DefectComponentInfo.cs" />
+    <Compile Include="FAIModelApprovalInfo.cs" />
+    <Compile Include="FAIModelInfo.cs" />
+    <Compile Include="LabelTemplateRuleDef.cs" />
+    <Compile Include="EDIUploadPOLogInfo.cs" />
+    <Compile Include="DefectHoldRuleInfo.cs" />
+    <Compile Include="MpUserInfo.cs" />
+    <Compile Include="PartForbidPriorityInfo.cs" />
+    <Compile Include="PartForbidRuleInfo.cs" />
+    <Compile Include="PilotMolInfo.cs" />
+    <Compile Include="ProductMBInfo.cs" />
+    <Compile Include="HoldRuleInfo.cs" />
+    <Compile Include="RCTO146MBInfo.cs" />
+    <Compile Include="DeliveryForRCTO146.cs" />
+    <Compile Include="EnergyLabelInfo.cs" />
+    <Compile Include="DefectCodeNextStationInfo.cs" />
+    <Compile Include="FailKPCollectionInfo.cs" />
+    <Compile Include="FisToSapWeightDef.cs" />
+    <Compile Include="FruMBVerInfo.cs" />
+    <Compile Include="HoldInfo.cs" />
+    <Compile Include="LabelTypeRuleDef.cs" />
+    <Compile Include="LineStopLogInfo.cs" />
+    <Compile Include="MaterialLotQtyInfo.cs" />
+    <Compile Include="MaterialProcess.cs" />
+    <Compile Include="ModelChangeQtyDef.cs" />
+    <Compile Include="MRPLabelDef.cs" />
+    <Compile Include="PalletCollectionUI.cs" />
+    <Compile Include="PizzaInfo.cs" />
+    <Compile Include="ProductPlanInfo.cs" />
+    <Compile Include="ProductStatusExInfo.cs" />
+    <Compile Include="ReleasedAstNumberInfo.cs" />
+    <Compile Include="ShipmentInfoDef.cs" />
+    <Compile Include="SpecialOrderInfo.cs" />
+    <Compile Include="StationAttrDef.cs" />
+    <Compile Include="StationDescrQty.cs" />
+    <Compile Include="DTPallet.cs" />
+    <Compile Include="DNPalletWeight.cs" />
+    <Compile Include="ModelQty.cs" />
+    <Compile Include="ModelWeightDef.cs" />
+    <Compile Include="PartQty.cs" />
+    <Compile Include="SATestCheckRuleDef.cs" />
+    <Compile Include="SQEDefectCTNoInfo.cs" />
+    <Compile Include="SQEDefectProductRepairReportInfo.cs" />
+    <Compile Include="IqcKpDef.cs" />
+    <Compile Include="ForceNWCInfo.cs" />
+    <Compile Include="LightStDef.cs" />
+    <Compile Include="SapWeightInfo.cs" />
+    <Compile Include="TbProductStatus.cs" />
+    <Compile Include="UploadDNInfo.cs" />
+    <Compile Include="UploadFilesInfo.cs" />
+    <Compile Include="WeightSettingDef.cs" />
+    <Compile Include="WhPltWeightInfo.cs" />
+    <Compile Include="PakOdmSessionInfo.cs" />
+    <Compile Include="PakediInstrInfo.cs" />
+    <Compile Include="PakLocMasInfo.cs" />
+    <Compile Include="RepairInfoMaintainDef.cs" />
+    <Compile Include="AssetRangeDef.cs" />
+    <Compile Include="AssetRuleDef.cs" />
+    <Compile Include="BatteryDef.cs" />
+    <Compile Include="BomDescrDef.cs" />
+    <Compile Include="CacheType.cs" />
+    <Compile Include="CacheUpdateInfo.cs" />
+    <Compile Include="AstRuleInfo.cs" />
+    <Compile Include="ConstValueInfo.cs" />
+    <Compile Include="DefectInfoDef.cs" />
+    <Compile Include="CtoBomInfo.cs" />
+    <Compile Include="PoDataEdiInfo.cs" />
+    <Compile Include="PoPltEdiInfo.cs" />
+    <Compile Include="PakDotPakPaltnoInfo.cs" />
+    <Compile Include="PakDotPakComnInfo.cs" />
+    <Compile Include="SpecialCombinationInfo.cs" />
+    <Compile Include="SpecialMaintainInfo.cs" />
+    <Compile Include="PakPqclogInfo.cs" />
+    <Compile Include="PakChnTwLightInfo.cs" />
+    <Compile Include="ITCNDDefectCheckDef.cs" />
+    <Compile Include="CartonSSCC.cs" />
+    <Compile Include="CheckItemDef.cs" />
+    <Compile Include="CheckItemSetiingDef.cs" />
+    <Compile Include="ChepPalletDef.cs" />
+    <Compile Include="COAReceivingDef.cs" />
+    <Compile Include="CommonInfo.cs" />
+    <Compile Include="ACAdaptor.cs" />
+    <Compile Include="ACAdapMaintainInfo.cs" />
+    <Compile Include="MBCFGDef.cs" />
+    <Compile Include="PalletRfidInfo.cs" />
+    <Compile Include="PCBStatusInfo.cs" />
+    <Compile Include="OlymBatteryInfo.cs" />
+    <Compile Include="PoDataInfo.cs" />
+    <Compile Include="DOAListInfo.cs" />
+    <Compile Include="PoPltInfo.cs" />
+    <Compile Include="MBTestDef.cs" />
+    <Compile Include="TmpTableInfo.cs" />
+    <Compile Include="DeliveryPalletInfo.cs" />
+    <Compile Include="MB_TestDef .cs" />
+    <Compile Include="TsModelInfo.cs" />
+    <Compile Include="WhPltLocLogInfo.cs" />
+    <Compile Include="PakWhLocMasInfo.cs" />
+    <Compile Include="PakWhPltTypeInfo.cs" />
+    <Compile Include="DummyShipDetInfo.cs" />
+    <Compile Include="WhPltMasInfo.cs" />
+    <Compile Include="WhPltLogInfo.cs" />
+    <Compile Include="ShipBoxDetInfo.cs" />
+    <Compile Include="SnoCtrlBoxIdSQInfo.cs" />
+    <Compile Include="SnoCtrlBoxIdInfo.cs" />
+    <Compile Include="MasterLabelDef.cs" />
+    <Compile Include="AssetRule.cs" />
+    <Compile Include="BatteryInfo.cs" />
+    <Compile Include="ChepPalletInfo.cs" />
+    <Compile Include="COAMasInfo.cs" />
+    <Compile Include="BTOceanOrder.cs" />
+    <Compile Include="COATransLog.cs" />
+    <Compile Include="AssetRangeInfo.cs" />
+    <Compile Include="PackinglistRePrintInfo.cs" />
+    <Compile Include="SupplierCodeInfo.cs" />
+    <Compile Include="MasterLabelInfo.cs" />
+    <Compile Include="PakPackkingDataInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PakSkuMasterWeightFisInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="VendorCodeDef.cs" />
+    <Compile Include="VPakComnInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="VShipmentPakComnInfo.cs" />
+    <Compile Include="DnPrintListInfo.cs" />
+    <Compile Include="MpBtOrderInfo.cs" />
+    <Compile Include="PakDashPakComnInfo.cs" />
+    <Compile Include="PakShipmentWeightFisInfo.cs" />
+    <Compile Include="RptPcaRepInfo.cs" />
+    <Compile Include="ICASADef.cs" />
+    <Compile Include="ICASAInfo.cs" />
+    <Compile Include="MBCodeDef.cs" />
+    <Compile Include="PartDef.cs" />
+    <Compile Include="DescTypeInfo.cs" />
+    <Compile Include="PartTypeDef.cs" />
+    <Compile Include="FaSnobtdetInfo.cs" />
+    <Compile Include="PartTypeAttributeDef.cs" />
+    <Compile Include="ProductBTInfo.cs" />
+    <Compile Include="PAKitLoc.cs" />
+    <Compile Include="FAFloatLocationDef.cs" />
+    <Compile Include="FAFloatLocationInfo.cs" />
+    <Compile Include="SpecialDetInfo.cs" />
+    <Compile Include="GradeInfo.cs" />
+    <Compile Include="InternalCOADef.cs" />
+    <Compile Include="PAKitLocDef.cs" />
+    <Compile Include="PalletQtyDBInfo.cs" />
+    <Compile Include="PalletQtyDef.cs" />
+    <Compile Include="SnoDetBtLocInfo.cs" />
+    <Compile Include="PakBtLocMasInfo.cs" />
+    <Compile Include="CSNMasInfo.cs" />
+    <Compile Include="CSNLogInfo.cs" />
+    <Compile Include="OfflineLableSettingDef.cs" />
+    <Compile Include="PalletQtyInfo.cs" />
+    <Compile Include="PODLabelPartDef.cs" />
+    <Compile Include="InternalCOAInfo.cs" />
+    <Compile Include="KittingCodeDef.cs" />
+    <Compile Include="LabelSettingMaintainInfo.cs" />
+    <Compile Include="LineDef.cs" />
+    <Compile Include="PilotRunPrintInfo.cs" />
+    <Compile Include="ProductInfoMaintain.cs" />
+    <Compile Include="ReworkInfoMaintain.cs" />
+    <Compile Include="ReworkProcessInfoMaintain.cs" />
+    <Compile Include="RuleInfoMaintain.cs" />
+    <Compile Include="RulesetInfoDataMaintain.cs" />
+    <Compile Include="RunInTimeControlInfoMaintain.cs" />
+    <Compile Include="ShipTypeMaintain.cs" />
+    <Compile Include="StationAndCount.cs" />
+    <Compile Include="ModelAndCount.cs" />
+    <Compile Include="StationDef.cs" />
+    <Compile Include="TmpKitInfoDef.cs" />
+    <Compile Include="TPCBDet.cs" />
+    <Compile Include="TPCBInfo.cs" />
+    <Compile Include="DNUpdateCondition.cs" />
+    <Compile Include="DNInfoForUI.cs" />
+    <Compile Include="FRUFISToSAPWeight.cs" />
+    <Compile Include="FRUWeightLog.cs" />
+    <Compile Include="MACInfoDef.cs" />
+    <Compile Include="MatchedPartOrCheckItem.cs" />
+    <Compile Include="FamilyDef.cs" />
+    <Compile Include="MACRangeDef.cs" />
+    <Compile Include="MoBOMInfo.cs" />
+    <Compile Include="ModelBOMDef.cs" />
+    <Compile Include="ModelBOMInfo.cs" />
+    <Compile Include="ModelInfoNameAndModelInfoValue.cs" />
+    <Compile Include="PalletWeightMaintain.cs" />
+    <Compile Include="TreeNodeDef.cs" />
+    <Compile Include="ModelWeightTolerance.cs" />
+    <Compile Include="PartCheckDef.cs" />
+    <Compile Include="PartCheckMatchRuleDef.cs" />
+    <Compile Include="PartCheckSetting.cs" />
+    <Compile Include="PartCheckSettingDef.cs" />
+    <Compile Include="PartTypeAttributeAndPartInfoValue.cs" />
+    <Compile Include="ProcessMaintainInfo.cs" />
+    <Compile Include="ProcessRule.cs" />
+    <Compile Include="QCRatioDef.cs" />
+    <Compile Include="Region.cs" />
+    <Compile Include="SelectInfoDef.cs" />
+    <Compile Include="SessionInfo.cs" />
+    <Compile Include="StationInfo.cs" />
+    <Compile Include="SVBInfo.cs" />
+    <Compile Include="CustomerInfo.cs" />
+    <Compile Include="EcrVersionInfo.cs" />
+    <Compile Include="MatchedPart.cs" />
+    <Compile Include="NeedCheckPart.cs" />
+    <Compile Include="DefectCodeDescr.cs" />
+    <Compile Include="DNForUI.cs" />
+    <Compile Include="DNQueryCondition.cs" />
+    <Compile Include="DNPalletQty.cs" />
+    <Compile Include="ProductModel.cs" />
+    <Compile Include="ProductRepairDefect.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StandardWeight.cs" />
+    <Compile Include="ModelMaintainInfo.cs" />
+    <Compile Include="VCodeInfo.cs" />
+    <Compile Include="WarrantyDef.cs" />
+    <Compile Include="PartMaintainInfo.cs" />
+    <Compile Include="MOBOMMaintainInfo.cs" />
+    <Compile Include="InputMaterialInfoDef.cs" />
+    <Compile Include="ModelBOMInfoDef.cs" />
+    <Compile Include="WipBufferDef.cs" />
+    <Compile Include="PartForbiddenMaintainInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IMES.Infrastructure.Repository.Metas\IMES.Infrastructure.Repository.Metas.csproj">
+      <Project>{83A40B2C-8597-4D60-A7AD-CFEDC3942ECE}</Project>
+      <Name>IMES.Infrastructure.Repository.Metas</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

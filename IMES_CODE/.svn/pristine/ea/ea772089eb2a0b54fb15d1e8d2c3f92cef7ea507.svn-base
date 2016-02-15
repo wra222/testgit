@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="viewport" content="width=device-width,initial-scale=1.0">
+<head runat="server">
+    <title>未来3天出货状况</title>
+    
+    <link rel="stylesheet" href="../../css/tanchu.css" media="all" />
+   <script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+
+     
+    <link rel="stylesheet" href="../../bootstrap-table/bootstrap-table.css" />
+    <script src="../../bootstrap/js/bootstrap.js"></script>
+    <script src="../../bootstrap-table/bootstrap-table.js"></script>
+    <script src="../../bootstrap-table/bootstrap-table-export.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap/tableExport.js"></script>
+    <link href="../../bootstrap/css/bootstrap/bootstrap.min.css" rel="stylesheet" />            <link type="text/css" rel="stylesheet" href="../../css/timer.css" />
+<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+<script src="../../js/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="../../js/jquery.ui.datepicker-zh-CN.js"></script>
+<script src="../../js/jquery-ui-timepicker-addon.js"></script>
+<script src="../../js/jquery-ui-timepicker-zh-CN.js"></script>
+
+<style type="text/css">
+        .table1 {
+            width: 1220px;
+            font-size: 13px;
+        }
+
+        .textbb {
+            left: 20px;
+            font-size: 13px;
+        }
+
+        .test {
+            position: absolute; /* 按鈕"按條件查詢"的上下位置 */
+            right: 380px;
+            top: 0px;
+            width: 100px;
+            height: 40px;
+        }
+
+        .Sumbb {
+            position: absolute; /* 這里是指定"按條件查詢"中的"查詢"鍵高度位置*/
+            top: 212px;
+        }
+        .navbar-brand1 {
+                    position: absolute;
+                    top: 10px;
+                    left:400px;
+                    float: left;
+                    height: 50px;
+                    width: 400px;
+                    padding: 15px 55px;
+                    font-size: 25px;
+                    line-height: 20px;
+                    font-weight: bold;
+                    color: #000;
+                    font-family: 'Microsoft YaHei';
+                }
+                .tips { color:#f00; font-size:15px; }
+
+    </style>    <script type="text/javascript">
+
+        $(function() {
+            $('#reportTable').bootstrapTable({
+                dataType: 'JSON',
+                method: 'get',
+                url: '../../Service/Commn_GetUPHDara.ashx?TYPE=GetProductQty',
+                cache: false,
+                height: 280,
+                striped: true,
+                pagination: true,
+                pageSize: 20,
+                pageNumber: 1,
+                pageList: [20, 50, 100, 150, 249, 5000],
+                search: true,
+                showToggle: true,
+                showColumns: true,
+                showRefresh: true,
+                showExport: true,
+                exportTypes: ['excel'],
+                search: true,
+                clickToSelect: true,
+                columns: [
+                   { field: "ShipDate", title: "Ship Date", align: "center", valign: "middle", sortable: "true" },
+                   { field: "TotalQty", title: "Total(目标值)", align: "center", valign: "middle", sortable: "true" },
+
+                   { field: "WaitPackQty", title: "实际入包装", align: "center", valign: "middle", sortable: "true" },
+                    { field: "WaitPackRate", title: "入包装达成率(%)", align: "center", valign: "middle", sortable: "true", cellStyle: function(value) { if (parseInt(value) < 90) return { classes: 'tips' }; else return {} }, formatter: function(value) { return value + '%'; } },
+
+                   { field: "PalletQty", title: "实际上栈板", align: "center", valign: "middle", sortable: "true" },
+                     { field: "PalletRate", title: "上栈板达成率(%)", align: "center", valign: "middle", sortable: "true", formatter: function(value) { return value + '%'; }, cellStyle: function(value) { if (parseInt(value) < 90) return { classes: 'tips' }; else return {} } },
+
+                   { field: "PLTWQty", title: "已上傳SAP", align: "center", valign: "middle", sortable: "true" },
+                     { field: "PLTWRate", title: "上傳SAP达成率(%)", align: "center", valign: "middle", sortable: "true", formatter: function(value) { return value + '%'; }, cellStyle: function(value) { if (parseInt(value) < 90) return { classes: 'tips' }; else return {} } },
+
+                   { field: "PGIQty", title: "实际刷PGI", align: "center", valign: "middle", sortable: "true" },
+                   { field: "PGIRate", title: "刷PGI达成率(%)", align: "center", valign: "middle", sortable: "true", formatter: function(value) { return value + '%'; }, cellStyle: function(value) { if (parseInt(value) < 90) return { classes: 'tips' }; else return {} } }
+
+                  ],
+                onPageChange: function(size, number) {
+                },
+                formatNoMatches: function() {
+                    return 'No Data！';
+                }
+            });
+
+
+
+        });
+                 
+            </script>
+
+</head>
+<body >
+
+ 
+        <div id="tab" style="width: 100%; height: 40%; position: absolute; border: 1px" >           
+              <div id="reportTableDiv">
+               <i  class="navbar-brand1">HP未來3天出货状况</i>
+                    <table id="reportTable" >
+                    </table>
+            </div>
+        </div>
+       
+        
+        <div id="main" style="width: 100%; height: 60%;  z-index: -1;position: absolute; top: 40%; left: 0px; border: 1px solid #eee;">
+     
+           <script type="text/javascript" src="../../echarts-2.2.7/build/source/echarts.js"></script>
+     
+            <script type="text/javascript">
+
+        // 路径配置
+        // 路径配置
+
+        require.config({
+            paths: {
+                echarts: '../../echarts-2.2.7/build/dist'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/line',
+                'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+            ], DrawEChart
+            )
+        var myChart;
+        function DrawEChart(ec) {
+            myChart = ec.init(document.getElementById('main'));
+            var ecConfig = require('echarts/config');
+            option = {
+                title: {
+                text: 'HPIMES 生產出貨即時報表（未來3天)',
+                    subtext: '',
+                    x: 0,   //這個指示位置,單位px
+                    y: 20,
+                    textStyle: {
+                        color: '#C1232B',
+                        fontWeight: 'bolder'
+                    }
+
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    },
+                    formatter: '{b}<br/>{a0}:{c0}%<br/>{a1}:{c1}%<br/>{a2}:{c2}%<br/>{a3}:{c3}%<br/>'
+                },
+                toolbox: {
+                    y: 0,
+                    show: true,
+                    feature: {
+                        mark: { show: true },
+                        dataView: { show: true, readOnly: false },
+                        magicType: { show: true, type: ['line', 'bar'] },
+                        restore: { show: true },
+                        saveAsImage: { show: true }
+                    }
+                },
+                calculable: true,
+                legend: {
+                    selected: {},
+                    data: ['入包装达成率','上栈板达成率','上傳SAP达成率','刷PGI达成率']
+                },
+                xAxis: [
+                                {
+                                    type: 'category',
+                                    data: []
+                                }
+                        ],
+                yAxis: [
+                            {
+                                type: 'value',
+                                name: '百分比',
+                                axisLabel: {
+                                    formatter: '{value} %'
+                                }
+                            }
+                        ],
+                series: [
+                                         {
+                                             name: '入包装达成率',
+                                             type: 'bar',
+                                             stack: 'sum',
+                                             itemStyle: {
+                                                 normal: {
+                                                 color: '#60c0dd',
+                                                 label: { show: true, formatter: '{c} %' }
+
+                                                 }
+                                             },
+                                             data: []
+                                         },
+                                            {
+                                                name: '上栈板达成率',
+                                                type: 'bar',
+                                              //  yAxisIndex: 1,
+                                                itemStyle: {
+                                                    normal: {
+                                                        color: '#d7504b',
+                                                        label: {
+                                                            show: true, formatter: '{c} %',
+                                                            textStyle: {
+                                                            //fontWeight: 'bolder',
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            data: []
+                                        }, {
+                                            name: '上傳SAP达成率',
+                                            type: 'bar',
+                                          //  yAxisIndex: 1,
+                                            itemStyle: {
+                                                normal: {
+                                                color: '#551A8B',
+                                                    label: {
+                                                        show: true, formatter: '{c} %',
+                                                        textStyle: {
+                                                        //fontWeight: 'bolder',
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        data: []
+                                    },
+                                    {
+                                        name: '刷PGI达成率',
+                                        type: 'bar',
+                                      //  yAxisIndex: 1,
+                                        itemStyle: {
+                                            normal: {
+                                            color: '#0000CD',
+                                                label: {
+                                                    show: true, formatter: '{c} %',
+                                                    textStyle: {
+                                                    //fontWeight: 'bolder',
+                                                }
+                                            }
+                                        }
+                                    },
+                                    data: []
+                                }
+
+                         ]
+
+
+
+            };// end option
+            myChart.setOption(option); 
+              GetAjaxChartData();
+            
+       
+    
+             //setInterval(AutoRefresh, 1000*60);
+            function AutoRefresh() {
+                var options = myChart.getOption();
+                myChart.showLoading({
+                    text: "图表数据正在努力加载..."
+                });
+               // myChart.refresh(true);
+                GetAjaxChartData();
+            }
+        
+
+        function GetAjaxChartData() {
+           
+            $.ajax({
+                type: "post",
+                async: false,
+                 url: '../../Service/Commn_GetUPHDara.ashx?TYPE=GetProductQty',
+                 dataType: "json",
+                success: inputSucc,
+                error: inputFail
+            });
+          }
+
+       function inputSucc(GetYieldAnalysis) {
+                if (GetYieldAnalysis) {
+                    drawseries(option, GetYieldAnalysis)//根据返回的数据自动添加线条
+                    myChart.hideLoading();
+                    myChart.setOption(option, true);
+                }
+
+
+            }
+
+       function drawseries(option, ChartItem) {
+                var seriesArraytotal = new Array();
+                  var seriesArrayplt = new Array();
+                    var seriesArraysap = new Array();
+                      var seriesArraypgi = new Array();
+               
+                var XValue= new Array(); 
+          
+                 for (var i = 0; i < ChartItem.length; i++) {
+                     XValue.push(ChartItem[i].ShipDate);
+                     seriesArraytotal.push(ChartItem[i].WaitPackRate);
+                        seriesArrayplt.push(ChartItem[i].PalletRate);
+                           seriesArraysap.push(ChartItem[i].PLTWRate);
+                              seriesArraypgi.push(ChartItem[i].PGIRate);
+                  
+                  }
+                option.xAxis[0].data =XValue;
+
+                option.series[0].data =seriesArraytotal;
+                option.series[1].data =seriesArrayplt;
+                option.series[2].data =seriesArraysap;
+                option.series[3].data =seriesArraypgi;
+               
+
+
+            }
+            function inputFail(result) {
+                var options = myChart.getOption();
+                myChart.showLoading({
+                    text: "效率系统服务连接失败..."
+                });
+
+            }
+         }//end  DrawEChart
+        
+         </script>
+        </div>
+    
+   
+    <script type="text/javascript">
+        $("input[name='act_start_time'],input[name='act_stop_time']").datetimepicker();
+    </script>
+</body>
+</html>
+

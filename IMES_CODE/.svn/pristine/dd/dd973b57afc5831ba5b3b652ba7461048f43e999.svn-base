@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IMES.DataModel;
+using System.Data;
+
+namespace IMES.Maintain.Interface.MaintainIntf
+{
+    /// <summary>
+    /// ICheckItemTypeListMaintain接口
+    /// </summary>
+    public interface ICheckItemTypeListMaintain
+    {
+        #region CheckItemTypeRule
+
+        IList<CheckItemTypeRuleDef> GetCheckItemTypeRuleWithPriority(string itemType, string line, string station, string family);
+
+        IList<CheckItemTypeRuleDef> GetCheckItemTypeRuleByItemType(string itemType);
+
+        IList<string> GetChechItemTypeList();
+
+        bool CheckExistCheckItemTypeRule(string itemType, string line, string station, string family);
+
+        bool CheckExistCheckItemTypeRule(CheckItemTypeRuleDef item);
+
+        void AddCheckItemTypeRule(CheckItemTypeRuleDef itemType);
+
+        void DeleteCheckItemTypeRule(int id);
+
+        void UpdateCheckItemTypeRule(CheckItemTypeRuleDef itemType);
+
+        IList<string> GetAllAliasLine();
+
+        DataTable GetStationInfoList();
+        
+        #endregion
+    }
+}

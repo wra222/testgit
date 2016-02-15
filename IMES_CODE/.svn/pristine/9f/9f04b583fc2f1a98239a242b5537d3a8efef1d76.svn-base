@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Microsoft YaHei" Size="8.25" />
+  <Class Name="Inventec.HPEDITS.Parser.ComnParser">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>ComnParser.cs</FileName>
+      <HashCode>AQAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Inventec.HPEDITS.Parser.Parser">
+    <Position X="3" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Parser.cs</FileName>
+      <HashCode>gAQAAEAgAAACEAAAAgAAAACCAAAQAAAAAAAQIABAAAI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Inventec.HPEDITS.Parser.PaltnoParser">
+    <Position X="5.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>PaltnoParser.cs</FileName>
+      <HashCode>AAAAAEAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Inventec.HPEDITS.Parser.EDI850RAWParser">
+    <Position X="5.75" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>EDI850RAWParser.cs</FileName>
+      <HashCode>CAAAAEAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+</ClassDiagram>

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1">
+  <asmv1:assemblyIdentity name="IMES_Reports.exe" version="1.0.0.20" publicKeyToken="122a043d784d0fc6" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="IMES_Reports" version="1.0.0.2" language="neutral" processorArchitecture="msil" />
+    <commandLine file="IMES_Reports.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="2.0.50727.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="System.Core" version="3.5.0.0" publicKeyToken="b77a5c561934e089" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="WindowsBase" version="3.0.0.0" publicKeyToken="31bf3856ad364e35" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IMES_Reports.exe" size="659456">
+      <assemblyIdentity name="IMES_Reports" version="1.0.0.2" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>z+2VpyxvHxuATvCAdsLZhU5bSAY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Register.dll" size="36864">
+      <assemblyIdentity name="Register" version="0.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>X+bt/MhaQa1wp45M2ttUqfC1D5g=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="IMES_Reports.exe.config" size="2352">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>U9o/9MjU5iUNr2UTayLAXp7adQE=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=IES\ICC112589" issuerKeyHash="f2fbec990a7896e263a7cfea90b5beabcadc3f8c" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>M4MSRP22KGEmgm5WUeviLCFVBWw=</DigestValue></Reference></SignedInfo><SignatureValue>s5ll/Vqo1md3ZehdqO3/gqEGRy5cQERvXHoxN02tVZfk7zNTag77XgnpcfFabKN2IHZkKwVeAJhnRe+Zd+l0KrzJ6559hSkkanwC2WRGgxqvvH7a/kx8jSuW7MeADdjPHkQNKofLOyxoI/irKd1thWU8Va8RwbJeuPRakJXDXkI=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>uYHeUsiPLCvCjIy60U5/qaYuy29DNJBR+tR9Saq5WHsChBZy4lW+3Yz9ZLR4TP8E57sbTB/xqz5woMQZdWi0W5P2dIdq/6itDogpHZ/g2okAayZpu/YWkyTOQSbsQ/f4oLg9XFufsVw3hFukPGMFaSHdza1+5I878NUbn1nI088=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="6c0555212ce2eb51566e82266128b6fd44128333" Description="" Url=""><as:assemblyIdentity name="IMES_Reports.exe" version="1.0.0.20" publicKeyToken="122a043d784d0fc6" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=IES\ICC112589</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>49eDHYkHtpomIyOEeIZyGAaFD5M=</DigestValue></Reference></SignedInfo><SignatureValue>TzM2Hcd6CQmePgKrJYyqY7RC0JEuStrca3+W7WLgS3UJZd9xVG22r/VsZ0/ctV98bhPlgcvGRFTjS9RX1jkoqHL8O6mOGpfbhgOyVoR1l6SEo2dFYh3LL26Y2xpypmbhEvmV8yLNnpegoJ+YrkhKwnflW22+8EkouMRAU0GKEsY=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>uYHeUsiPLCvCjIy60U5/qaYuy29DNJBR+tR9Saq5WHsChBZy4lW+3Yz9ZLR4TP8E57sbTB/xqz5woMQZdWi0W5P2dIdq/6itDogpHZ/g2okAayZpu/YWkyTOQSbsQ/f4oLg9XFufsVw3hFukPGMFaSHdza1+5I878NUbn1nI088=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBzTCCATagAwIBAgIQJho2/+uWq6tDVQriRULLUDANBgkqhkiG9w0BAQUFADAlMSMwIQYDVQQDHhoASQBFAFMAXABJAEMAQwAxADEAMgA1ADgAOTAeFw0xNDA4MjAxNzMwMTFaFw0xNTA4MjAyMzMwMTFaMCUxIzAhBgNVBAMeGgBJAEUAUwBcAEkAQwBDADEAMQAyADUAOAA5MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC5gd5SyI8sK8KMjLrRTn+ppi7Lb0M0kFH61H1JqrlYewKEFnLiVb7djP1ktHhM/wTnuxtMH/GrPnCgxBl1aLRbk/Z0h2r/qK0OiCkdn+DaiQBrJmm79haTJM5BJuxD9/iguD1cW5+xXDeEW6Q8YwVpId3NrX7kjzvw1RufWcjTzwIDAQABMA0GCSqGSIb3DQEBBQUAA4GBAG0guOgVpVwZWQfsiEP1q5ErEcwMdzUOJ/d/LVfxeB5biSJOe/kfr4p3q4lx1VaXKdb8uGOKmGyj95Wu+8BQB/qhj4Pzh9v/ikst2VnZdl/hkaYrHDliMBVxkHuxtttPyy/YX1fKcwHqHZQQO9J2WA9p7a4GSe4Gb3dAxZ3pRnfU</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

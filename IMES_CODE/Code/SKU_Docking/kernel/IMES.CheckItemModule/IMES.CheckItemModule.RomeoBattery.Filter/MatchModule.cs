@@ -1,0 +1,85 @@
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using IMES.CheckItemModule.Interface;
+using IMES.FisObject.Common.FisBOM;
+using IMES.FisObject.Common.Part;
+using IMES.CheckItemModule.Utility;
+
+namespace IMES.CheckItemModule.RomeoBattery.Filter
+{
+    [Export(typeof(IMatchModule))]
+    [ExportMetadata("ProgramName", "IMES.CheckItemModule.RomeoBattery.Filter.dll")]
+    public class MatchModule: IMatchModule
+    {
+        private const string VendorCodePropertyName = "VendorCode";
+
+        /// <summary>
+        /// 长14，前5位与Vendor Code 相同
+        /// </summary>
+        /// <param name="subject">value to be matched</param>
+        /// <param name="bomItem">bomItem</param>
+        /// <param name="station">station</param>
+        /// <returns></returns>
+        public object Match(string subject, object bomItem, string station)
+        {
+            PartUnit ret = null;
+            if (subject == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (bomItem == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (!string.IsNullOrEmpty(subject)
+                && subject.Length == 14)
+            {
+            }
+            else
+            {
+                return null;
+            }
+            string prefix = subject.Substring(0, 5);
+
+            IList<IPart> parts = ((FlatBOMItem)bomItem).AlterParts;
+            if (parts == null)
+            {
+                return null;
+            }
+
+            IList<KPVendorCode> kpVCList = (IList<KPVendorCode>)((IFlatBOMItem)bomItem).Tag;
+            if (kpVCList == null)
+            {
+                return ret;
+            }
+
+            foreach (IPart part in parts)
+            {
+                //string vcString = part.GetAttribute(VendorCodePropertyName);
+                string vcString = kpVCList.Where(x => x.PartNo == part.PN)
+                                                        .Select(x=>x.VendorCode)
+                                                        .FirstOrDefault();
+                if (string.IsNullOrEmpty(vcString))
+                {
+                    continue;
+                }
+
+                string[] vendorCodes = vcString.Split(',');
+                foreach (string vc in vendorCodes)
+                {
+                    if (string.Compare(vc, prefix) == 0)
+                    {
+                        ret = new PartUnit(part.PN, subject.Trim(), part.BOMNodeType, part.Type,
+                                           string.Empty, part.CustPn,
+                                           ((FlatBOMItem)bomItem).CheckItemType);
+                        return ret;
+                    }
+                }
+            }
+            return null;
+        }
+    }
+}

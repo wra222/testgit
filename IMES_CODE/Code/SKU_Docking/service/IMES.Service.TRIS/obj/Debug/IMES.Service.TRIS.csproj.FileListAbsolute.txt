@@ -1,0 +1,9 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Service.TRIS.exe.config
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Service.TRIS.exe
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Service.TRIS.pdb
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.TRIS\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.TRIS\obj\Debug\IMES.Service.IMESService.resources
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.TRIS\obj\Debug\IMES.Service.ProjectInstaller.resources
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.TRIS\obj\Debug\IMES.Service.TRIS.csproj.GenerateResource.Cache
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.TRIS\obj\Debug\IMES.Service.TRIS.exe
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.TRIS\obj\Debug\IMES.Service.TRIS.pdb

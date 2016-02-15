@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IMES.DataModel;
+
+
+namespace IMES.FisObject.Common.Part
+{
+    public interface IPartRepositoryEx : IPartRepository
+    {
+        IList<string> GetBomNodeTypeList();
+        IList<string> GetPartTypeList(string bomNodeType);
+        IList<PartDef> GetPartListByPartialPartNo(string partNo, int rowCount);
+        IList<PartInfoMaintainInfo> GetPartInfoListByPartNo(string partNo);
+        void DeletePartInfoByID(int id);
+
+        IList<PartDef> GetPartListByPartType(string partType, int rowCount);
+        void SavePartEx(PartDef newPart, string oldPartNo);
+
+        IList<string> GetProductsFromProduct_Part(string partNo, int rowCount);
+        void DeletePartEx(string partNo);
+    }
+}

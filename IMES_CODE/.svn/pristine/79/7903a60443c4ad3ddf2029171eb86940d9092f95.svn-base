@@ -1,0 +1,157 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Echart.aspx.cs" Inherits="webroot_aspx_Echart" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    
+</head>
+<body>
+ <form id="form1" runat="server"  >
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+            <Services>
+                <asp:ServiceReference Path="../Service/WebServiceEchart.asmx" />
+            </Services>
+        </asp:ScriptManager>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px"></div>
+    <!-- ECharts单文件引入 -->
+     <script type="text/javascript" src="../../echarts-2.2.7/build/source/echarts.js"></script>
+            <script type="text/javascript" src="../../echarts-2.2.7/build/dist/chart/line.js"></script>
+            <script type="text/javascript" src="../../echarts-2.2.7/build/dist/chart/bar.js"></script>
+    <script type="text/javascript">
+       
+        // 路径配置
+        require.config({
+            paths: {
+            echarts: '../../echarts-2.2.7/build/dist'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/line',
+                'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function(ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main'));
+
+                option = {
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+                    },
+                    toolbox: {
+                        show: true,
+                        feature: {
+                            mark: { show: true },
+                            dataView: { show: true, readOnly: false },
+                            magicType: { show: true, type: ['line', 'bar', 'stack', 'tiled'] },
+                            restore: { show: true },
+                            saveAsImage: { show: true }
+                        }
+                    },
+                    calculable: true,
+                    xAxis: [
+        {
+            type: 'category',
+            boundaryGap: false,
+            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        }
+    ],
+                    yAxis: [
+        {
+            type: 'value'
+        }
+    ],
+                    series: [
+        {
+            name: '邮件营销',
+            type: 'line',
+            stack: '总量',
+            data: [120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name: '联盟广告',
+            type: 'line',
+            stack: '总量',
+            data: [220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name: '视频广告',
+            type: 'line',
+            stack: '总量',
+            data: [150, 232, 201, 154, 190, 330, 410]
+        },
+        {
+            name: '直接访问',
+            type: 'line',
+            stack: '总量',
+            data: [320, 332, 301, 334, 390, 330, 320]
+        },
+        {
+            name: '搜索引擎',
+            type: 'line',
+            stack: '总量',
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+        }
+    ]
+                };
+                    
+
+                // 为echarts对象加载数据
+                myChart.setOption(option);
+              //  WebServiceEchart.GetData(inputSucc, inputFail);
+                function inputSucc(GetYieldAnalysis) {
+                    if (GetYieldAnalysis) {
+                        drawseries(option, GetYieldAnalysis)//根据返回的数据自动添加线条
+                        myChart.hideLoading();
+                        myChart.setOption(option, true);
+                    }
+
+                }
+
+                function drawseries(option, ChartItem) {
+
+                    var seriesArray = new Array();
+                    var legendlist = new Array(); //图例
+                    var XValue; //X轴
+                    option.title.subtext = ChartItem.Title;
+                    // option.xAxis[0].data = ChartItem.XValue;
+                    seriesArray = ChartItem.Series;
+                    for (var i = 0; i < seriesArray.length; i++) {
+                        var item = {
+                            name: seriesArray[i].Name,
+                            type: "line",
+                            data: seriesArray[i].SeriesValues
+                        }
+                        XValue = seriesArray[i].XValue;
+
+                        option.series.push(item);
+                        legendlist.push(seriesArray[i].Name); //把线条的名字放在图例
+                    }
+                    option.legend.data = legendlist; //把线条的名字放在图例
+                    option.xAxis[0].data = XValue;
+                }
+                function inputFail(result) {
+                    alert(result);
+
+                }
+
+            }
+        );
+    </script>
+    </form>
+</body>
+
+
+
+</html>

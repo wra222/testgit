@@ -1,0 +1,59 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="PCARepairForDocking" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetMB Customer="{ActivityBind PCARepairForDocking,Path=Customer}" x:Name="getMB1" SessionType="{ActivityBind PCARepairForDocking,Path=SessionType}" Editor="{ActivityBind PCARepairForDocking,Path=Editor}" Station="{ActivityBind PCARepairForDocking,Path=Station}" MBSnSessionKey="{x:Null}" Line="{ActivityBind PCARepairForDocking,Path=PdLine}" Key="{ActivityBind PCARepairForDocking,Path=Key}" />
+	<ns0:BlockStation Customer="{ActivityBind PCARepairForDocking,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind PCARepairForDocking,Path=SessionType}" Editor="{ActivityBind PCARepairForDocking,Path=Editor}" ProcessType="MB" Station="{ActivityBind PCARepairForDocking,Path=Station}" Line="{ActivityBind PCARepairForDocking,Path=PdLine}" Key="{ActivityBind PCARepairForDocking,Path=Key}" />
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="ifFirstRepair" Description="no unfinished repair record exists">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="IFFirstRepair" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind PCARepairForDocking,Path=Station}" x:Name="dbScopeForGenerateRepair" Key="{ActivityBind PCARepairForDocking,Path=Key}" SessionType="{ActivityBind PCARepairForDocking,Path=SessionType}">
+				<ns0:GenerateRepairByTestLog Customer="{ActivityBind PCARepairForDocking,Path=Customer}" x:Name="generatePCBRepairByTestLog1" SessionType="{ActivityBind PCARepairForDocking,Path=SessionType}" Editor="{ActivityBind PCARepairForDocking,Path=Editor}" RepairStationType="SA" Station="{ActivityBind PCARepairForDocking,Path=Station}" Line="{ActivityBind PCARepairForDocking,Path=PdLine}" Key="{ActivityBind PCARepairForDocking,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="WhileCondition" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind PCARepairForDocking,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind PCARepairForDocking,Path=SessionType}" Editor="{ActivityBind PCARepairForDocking,Path=Editor}" Station="{ActivityBind PCARepairForDocking,Path=Station}" Line="{ActivityBind PCARepairForDocking,Path=PdLine}" Key="{ActivityBind PCARepairForDocking,Path=Key}" />
+			<IfElseActivity x:Name="ifElseActivity2">
+				<IfElseBranchActivity x:Name="ifAddEditDelete">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="EditOrComplete" />
+					</IfElseBranchActivity.Condition>
+					<IfElseActivity x:Name="ifElseActivity3">
+						<IfElseBranchActivity x:Name="ifAddEdit">
+							<IfElseBranchActivity.Condition>
+								<RuleConditionReference ConditionName="AddEditOrDelete" />
+							</IfElseBranchActivity.Condition>
+							<ns0:DBScope Station="{ActivityBind PCARepairForDocking,Path=Station}" x:Name="dbScopeForAddEdit" Key="{ActivityBind PCARepairForDocking,Path=Key}" SessionType="{ActivityBind PCARepairForDocking,Path=SessionType}">
+								<IfElseActivity x:Name="ifElseActivity4">
+									<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+										<IfElseBranchActivity.Condition>
+											<RuleConditionReference ConditionName="AddOrEdit" />
+										</IfElseBranchActivity.Condition>
+										<ns0:CheckRepairDefect Customer="{ActivityBind PCARepairForDocking,Path=Customer}" x:Name="checkRepairDefect1" SessionType="{ActivityBind PCARepairForDocking,Path=SessionType}" Editor="{ActivityBind PCARepairForDocking,Path=Editor}" RepairStationType="SA" Station="{ActivityBind PCARepairForDocking,Path=Station}" Line="{ActivityBind PCARepairForDocking,Path=PdLine}" Key="{ActivityBind PCARepairForDocking,Path=Key}" />
+										<ns0:AddRepairDefect Customer="{ActivityBind PCARepairForDocking,Path=Customer}" x:Name="addRepairDefect1" SessionType="{ActivityBind PCARepairForDocking,Path=SessionType}" Editor="{ActivityBind PCARepairForDocking,Path=Editor}" Station="{ActivityBind PCARepairForDocking,Path=Station}" Line="{ActivityBind PCARepairForDocking,Path=PdLine}" Key="{ActivityBind PCARepairForDocking,Path=Key}" />
+									</IfElseBranchActivity>
+									<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+										<ns0:CheckRepairDefect Customer="{ActivityBind PCARepairForDocking,Path=Customer}" x:Name="checkRepairDefect2" SessionType="{ActivityBind PCARepairForDocking,Path=SessionType}" Editor="{ActivityBind PCARepairForDocking,Path=Editor}" RepairStationType="SA" Station="{ActivityBind PCARepairForDocking,Path=Station}" Line="{ActivityBind PCARepairForDocking,Path=PdLine}" Key="{ActivityBind PCARepairForDocking,Path=Key}" />
+										<ns0:UpdateRepairDefect Customer="{ActivityBind PCARepairForDocking,Path=Customer}" x:Name="updateRepairDefect1" SessionType="{ActivityBind PCARepairForDocking,Path=SessionType}" Editor="{ActivityBind PCARepairForDocking,Path=Editor}" Station="{ActivityBind PCARepairForDocking,Path=Station}" Line="{ActivityBind PCARepairForDocking,Path=PdLine}" Key="{ActivityBind PCARepairForDocking,Path=Key}" />
+									</IfElseBranchActivity>
+								</IfElseActivity>
+								<ns0:UpdateParts Customer="{ActivityBind PCARepairForDocking,Path=Customer}" x:Name="updatePCBParts1" SessionType="{ActivityBind PCARepairForDocking,Path=SessionType}" Editor="{ActivityBind PCARepairForDocking,Path=Editor}" RepairStationType="SA" Station="{ActivityBind PCARepairForDocking,Path=Station}" Line="{ActivityBind PCARepairForDocking,Path=PdLine}" Key="{ActivityBind PCARepairForDocking,Path=Key}" />
+							</ns0:DBScope>
+						</IfElseBranchActivity>
+					</IfElseActivity>
+				</IfElseBranchActivity>
+				<IfElseBranchActivity x:Name="ifComplete">
+					<ns0:DBScope Station="{ActivityBind PCARepairForDocking,Path=Station}" x:Name="dbScopeForComplete" Key="{ActivityBind PCARepairForDocking,Path=Key}" SessionType="{ActivityBind PCARepairForDocking,Path=SessionType}">
+						<ns0:CompleteRepair Customer="{ActivityBind PCARepairForDocking,Path=Customer}" x:Name="completeRepair1" SessionType="{ActivityBind PCARepairForDocking,Path=SessionType}" Editor="{ActivityBind PCARepairForDocking,Path=Editor}" Station="{ActivityBind PCARepairForDocking,Path=Station}" Line="{ActivityBind PCARepairForDocking,Path=PdLine}" Key="{ActivityBind PCARepairForDocking,Path=Key}" />
+						<ns0:WriteMBLog Customer="{ActivityBind PCARepairForDocking,Path=Customer}" Station="{ActivityBind PCARepairForDocking,Path=Station}" SessionType="{ActivityBind PCARepairForDocking,Path=SessionType}" Editor="{ActivityBind PCARepairForDocking,Path=Editor}" IsPass="True" x:Name="writeMBLog1" IsSingle="True" Line="{ActivityBind PCARepairForDocking,Path=PdLine}" Key="{ActivityBind PCARepairForDocking,Path=Key}" />
+						<ns0:UpdateMBStatus Customer="{ActivityBind PCARepairForDocking,Path=Customer}" Station="{ActivityBind PCARepairForDocking,Path=Station}" SessionType="{ActivityBind PCARepairForDocking,Path=SessionType}" ManualStation="{x:Null}" Editor="{ActivityBind PCARepairForDocking,Path=Editor}" IsPass="Pass" x:Name="updateMBStatus1" Line="{ActivityBind PCARepairForDocking,Path=PdLine}" Key="{ActivityBind PCARepairForDocking,Path=Key}" />
+					</ns0:DBScope>
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+</ns0:BaseFlow>

@@ -1,0 +1,9 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Service.FAKitting.exe.config
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Service.FAKitting.exe
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Service.FAKitting.pdb
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.FAKitting\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.FAKitting\obj\Debug\IMES.Service.IMESService.resources
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.FAKitting\obj\Debug\IMES.Service.ProjectInstaller.resources
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.FAKitting\obj\Debug\IMES.Service.FAKitting.csproj.GenerateResource.Cache
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.FAKitting\obj\Debug\IMES.Service.FAKitting.exe
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.FAKitting\obj\Debug\IMES.Service.FAKitting.pdb

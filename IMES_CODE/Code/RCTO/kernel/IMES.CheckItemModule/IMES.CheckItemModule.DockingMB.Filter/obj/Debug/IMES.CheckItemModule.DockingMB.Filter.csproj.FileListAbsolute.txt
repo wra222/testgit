@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.DockingMB.Filter.dll
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.DockingMB.Filter.pdb
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.DockingMB.Filter\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.DockingMB.Filter\obj\Debug\IMES.CheckItemModule.DockingMB.Filter.dll
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.DockingMB.Filter\obj\Debug\IMES.CheckItemModule.DockingMB.Filter.pdb

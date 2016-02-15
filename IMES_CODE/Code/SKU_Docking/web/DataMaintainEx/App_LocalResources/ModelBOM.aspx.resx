@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cn_btnAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="cn_btnAllParent" xml:space="preserve">
+    <value>所有上阶</value>
+  </data>
+  <data name="cn_btnApproveModel" xml:space="preserve">
+    <value>Approve Model</value>
+  </data>
+  <data name="cn_btnDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="cn_btnExp" xml:space="preserve">
+    <value>全部展开</value>
+  </data>
+  <data name="cn_btnFind" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="cn_btnGroupNo" xml:space="preserve">
+    <value>设共用料</value>
+  </data>
+  <data name="cn_btnParent" xml:space="preserve">
+    <value>直接上阶</value>
+  </data>
+  <data name="cn_btnRefreshMOBOM" xml:space="preserve">
+    <value>Save BOM</value>
+  </data>
+  <data name="cn_btnRep" xml:space="preserve">
+    <value>全部折叠</value>
+  </data>
+  <data name="cn_btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="cn_btnSaveAs" xml:space="preserve">
+    <value>Save As</value>
+  </data>
+  <data name="cn_btnShowBOM" xml:space="preserve">
+    <value>Show BOM</value>
+  </data>
+  <data name="cn_btnToExcel" xml:space="preserve">
+    <value>ToExcel</value>
+  </data>
+  <data name="cn_lblBOMTree" xml:space="preserve">
+    <value>BOM Tree</value>
+  </data>
+  <data name="cn_lblModelPN" xml:space="preserve">
+    <value>Model/PN:</value>
+  </data>
+  <data name="cn_lblPartNo" xml:space="preserve">
+    <value>Part No:</value>
+  </data>
+  <data name="cn_lblPartTypeText" xml:space="preserve">
+    <value>Part Type:</value>
+  </data>
+  <data name="cn_lblPriority" xml:space="preserve">
+    <value>Flag:</value>
+  </data>
+  <data name="cn_lblQty" xml:space="preserve">
+    <value>Qty:</value>
+  </data>
+  <data name="cn_lblType" xml:space="preserve">
+    <value>Type:</value>
+  </data>
+  <data name="cn_lstItemBomNodeType" xml:space="preserve">
+    <value>Bom Node Type</value>
+  </data>
+  <data name="cn_lstItemCdt" xml:space="preserve">
+    <value>Cdt</value>
+  </data>
+  <data name="cn_lstItemDesc" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="cn_lstItemEditor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="cn_lstItemGroupNo" xml:space="preserve">
+    <value>Group No</value>
+  </data>
+  <data name="cn_lstItemPartNo" xml:space="preserve">
+    <value>Part No</value>
+  </data>
+  <data name="cn_lstItemPriority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="cn_lstItemQty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="cn_lstItemType" xml:space="preserve">
+    <value>Part Type</value>
+  </data>
+  <data name="cn_lstItemUdt" xml:space="preserve">
+    <value>Udt</value>
+  </data>
+  <data name="cn_msgBOMNodeRelationChildTypes" xml:space="preserve">
+    <value>节点在 BOMNodeRelation 可用的 BomNodeType 為 </value>
+  </data>
+  <data name="cn_msgBOMNodeRelationNoChildType" xml:space="preserve">
+    <value>节点在 BOMNodeRelation 無可用的 Part BomNodeType</value>
+  </data>
+  <data name="cn_msgBOMNodeRelationNotExist" xml:space="preserve">
+    <value>节点的 BomNodeType，不符合 BOMNodeRelation</value>
+  </data>
+  <data name="cn_msgNowChildType" xml:space="preserve">
+    <value>这个 Part 的 BomNodeType 為 : </value>
+  </data>
+  <data name="cn_msgNowParentType" xml:space="preserve">
+    <value>这个节点的 BomNodeType 為 : </value>
+  </data>
+  <data name="cn_pmtMessage1" xml:space="preserve">
+    <value>需要在树上选择当前节点</value>
+  </data>
+  <data name="cn_pmtMessage10" xml:space="preserve">
+    <value>[Qty]应该是大于0的数</value>
+  </data>
+  <data name="cn_pmtMessage11" xml:space="preserve">
+    <value>需要输入[Priority]</value>
+  </data>
+  <data name="cn_pmtMessage12" xml:space="preserve">
+    <value>需要选择树上的父节点</value>
+  </data>
+  <data name="cn_pmtMessage13" xml:space="preserve">
+    <value>需要输入[Model/PN]</value>
+  </data>
+  <data name="cn_pmtMessage14" xml:space="preserve">
+    <value>这个Model目前在数据库中已经不存在</value>
+  </data>
+  <data name="cn_pmtMessage15" xml:space="preserve">
+    <value>已经成功修改节点，新改的数据不在可被显示的范围内</value>
+  </data>
+  <data name="cn_pmtMessage2" xml:space="preserve">
+    <value>需要成功输入显示了[Model/PN]才能调用执行[Save As]功能</value>
+  </data>
+  <data name="cn_pmtMessage3" xml:space="preserve">
+    <value>确定要Approve Model？</value>
+  </data>
+  <data name="cn_pmtMessage4" xml:space="preserve">
+    <value>需要通过复选框选择要设置公用料的项目</value>
+  </data>
+  <data name="cn_pmtMessage5" xml:space="preserve">
+    <value>确定要设置共用料？</value>
+  </data>
+  <data name="cn_pmtMessage6" xml:space="preserve">
+    <value>需要通过复选框选择要删除的项目</value>
+  </data>
+  <data name="cn_pmtMessage7" xml:space="preserve">
+    <value>确定要删除这些记录么？</value>
+  </data>
+  <data name="cn_pmtMessage8" xml:space="preserve">
+    <value>需要输入[Part No]</value>
+  </data>
+  <data name="cn_pmtMessage9" xml:space="preserve">
+    <value>需要输入[Qty]</value>
+  </data>
+  <data name="cn_pmtModel1" xml:space="preserve">
+    <value>Approved by</value>
+  </data>
+  <data name="cn_pmtModel2" xml:space="preserve">
+    <value>at</value>
+  </data>
+  <data name="eng_btnAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="eng_btnAllParent" xml:space="preserve">
+    <value>所有上阶</value>
+  </data>
+  <data name="eng_btnApproveModel" xml:space="preserve">
+    <value>Approve Model</value>
+  </data>
+  <data name="eng_btnDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="eng_btnExp" xml:space="preserve">
+    <value>全部展开</value>
+  </data>
+  <data name="eng_btnFind" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="eng_btnGroupNo" xml:space="preserve">
+    <value>设共用料</value>
+  </data>
+  <data name="eng_btnParent" xml:space="preserve">
+    <value>直接上阶</value>
+  </data>
+  <data name="eng_btnRefreshMOBOM" xml:space="preserve">
+    <value>Save BOM</value>
+  </data>
+  <data name="eng_btnRep" xml:space="preserve">
+    <value>全部折叠</value>
+  </data>
+  <data name="eng_btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="eng_btnSaveAs" xml:space="preserve">
+    <value>Save As</value>
+  </data>
+  <data name="eng_btnShowBOM" xml:space="preserve">
+    <value>Show BOM</value>
+  </data>
+  <data name="eng_btnToExcel" xml:space="preserve">
+    <value>ToExcel</value>
+  </data>
+  <data name="eng_lblBOMTree" xml:space="preserve">
+    <value>BOM Tree</value>
+  </data>
+  <data name="eng_lblModelPN" xml:space="preserve">
+    <value>Model/PN:</value>
+  </data>
+  <data name="eng_lblPartNo" xml:space="preserve">
+    <value>Part No:</value>
+  </data>
+  <data name="eng_lblPartTypeText" xml:space="preserve">
+    <value>Part Type:</value>
+  </data>
+  <data name="eng_lblPriority" xml:space="preserve">
+    <value>Flag:</value>
+  </data>
+  <data name="eng_lblQty" xml:space="preserve">
+    <value>Qty:</value>
+  </data>
+  <data name="eng_lblType" xml:space="preserve">
+    <value>Type:</value>
+  </data>
+  <data name="eng_lstItemBomNodeType" xml:space="preserve">
+    <value>Bom Node Type</value>
+  </data>
+  <data name="eng_lstItemCdt" xml:space="preserve">
+    <value>Cdt</value>
+  </data>
+  <data name="eng_lstItemDesc" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="eng_lstItemEditor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="eng_lstItemGroupNo" xml:space="preserve">
+    <value>Group No</value>
+  </data>
+  <data name="eng_lstItemPartNo" xml:space="preserve">
+    <value>Part No</value>
+  </data>
+  <data name="eng_lstItemPriority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="eng_lstItemQty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="eng_lstItemType" xml:space="preserve">
+    <value>Part Type</value>
+  </data>
+  <data name="eng_lstItemUdt" xml:space="preserve">
+    <value>Udt</value>
+  </data>
+  <data name="eng_msgBOMNodeRelationChildTypes" xml:space="preserve">
+    <value>The available BomNodeTypes in BOMNodeRelation for this Node to create Part were : </value>
+  </data>
+  <data name="eng_msgBOMNodeRelationNoChildType" xml:space="preserve">
+    <value>This Node don't have available BomNodeType in BOMNodeRelation to create Part</value>
+  </data>
+  <data name="eng_msgBOMNodeRelationNotExist" xml:space="preserve">
+    <value>BomNodeType not existed in BOMNodeRelation</value>
+  </data>
+  <data name="eng_msgNowChildType" xml:space="preserve">
+    <value>BomNodeType of this Part is : </value>
+  </data>
+  <data name="eng_msgNowParentType" xml:space="preserve">
+    <value>BomNodeType of this Node is : </value>
+  </data>
+  <data name="eng_pmtMessage1" xml:space="preserve">
+    <value>需要在树上选择当前节点</value>
+  </data>
+  <data name="eng_pmtMessage10" xml:space="preserve">
+    <value>[Qty]应该是大于0的数</value>
+  </data>
+  <data name="eng_pmtMessage11" xml:space="preserve">
+    <value>需要输入[Priority]</value>
+  </data>
+  <data name="eng_pmtMessage12" xml:space="preserve">
+    <value>需要选择树上的父节点</value>
+  </data>
+  <data name="eng_pmtMessage13" xml:space="preserve">
+    <value>需要输入[Model/PN]</value>
+  </data>
+  <data name="eng_pmtMessage14" xml:space="preserve">
+    <value>这个Model目前在数据库中已经不存在</value>
+  </data>
+  <data name="eng_pmtMessage15" xml:space="preserve">
+    <value>已经成功修改节点，新改的数据不在可被显示的范围内</value>
+  </data>
+  <data name="eng_pmtMessage2" xml:space="preserve">
+    <value>需要成功输入显示了[Model/PN]才能调用执行[Save As]功能</value>
+  </data>
+  <data name="eng_pmtMessage3" xml:space="preserve">
+    <value>确定要Approve Model？</value>
+  </data>
+  <data name="eng_pmtMessage4" xml:space="preserve">
+    <value>需要通过复选框选择要设置公用料的项目</value>
+  </data>
+  <data name="eng_pmtMessage5" xml:space="preserve">
+    <value>确定要设置共用料？</value>
+  </data>
+  <data name="eng_pmtMessage6" xml:space="preserve">
+    <value>需要通过复选框选择要删除的项目</value>
+  </data>
+  <data name="eng_pmtMessage7" xml:space="preserve">
+    <value>确定要删除这些记录么？</value>
+  </data>
+  <data name="eng_pmtMessage8" xml:space="preserve">
+    <value>需要输入[Part No]</value>
+  </data>
+  <data name="eng_pmtMessage9" xml:space="preserve">
+    <value>需要输入[Qty]</value>
+  </data>
+  <data name="eng_pmtModel1" xml:space="preserve">
+    <value>Approved by</value>
+  </data>
+  <data name="eng_pmtModel2" xml:space="preserve">
+    <value>at</value>
+  </data>
+</root>

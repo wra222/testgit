@@ -1,0 +1,37 @@
+
+G:\MyProjects-hjy\ImagePLC\ImageConsole\ImageConsole\bin\Debug\ImageConsole.exe "EntryShelfNo" ,"1","1","1","192.168.0.10","8192"
+
+rem G:\MyProjects-hjy\ImagePLC\ImageConsole\ImageConsole\bin\Debug\ImageConsole.exe "ExitWork","100","OK/NG","","192.168.0.10","8192"
+
+rem G:\MyProjects-hjy\ImagePLC\ImageConsole\ImageConsole\bin\Debug\ImageConsole.exe "All_ShelfStatus","","","Free/During/Downloading/OK Complete/NG Complete/Exiting","192.168.0.10","8192"
+
+
+每個功能需要6個參數，不需要轉的就用零
+1. EntryShelfNo  --向PLC 詢問庫位
+    ImageConsole.exe "EntryShelfNo" ,"1","1","1","192.168.0.10","8192"
+2.CheckEntryShelfNo(★追加)--詢問PLC 是否有可用庫位
+   ImageConsole.exe "CheckEntryShelfNo" ,"1","1","1","192.168.0.10","8192"
+
+3.SetEntryShelfNo --向PLC 發送庫位
+    ImageConsole.exe "SetEntryShelfNo" ,"100","1","1","192.168.0.10","8192"
+
+4.ClearEntryShelfNo
+      ImageConsole.exe "ClearEntryShelfNo" ,"1","1","1","192.168.0.10","8192"
+5.ExitWork 告訴PLC 夾出機器
+    ImageConsole.exe "ExitWork","100","OK/NG","0","192.168.0.10","8192"
+
+6.CheckExitWork
+     ImageConsole.exe "CheckExitWork","100","OK/NG","0","192.168.0.10","8192"
+7.ClearExitWork
+    ImageConsole.exe "ClearExitWork","0","0","0","192.168.0.10","8192"
+8.All_ShelfStatus
+
+   ImageConsole.exe "All_ShelfStatus","0","0","Free/During/Downloading/OK Complete/NG Complete/Exiting","192.168.0.10","8192"
+
+rem functionname:EntryShelfNo;ExitWork;All_ShelfStatus
+  rem      /// 2=shelfno
+  rem      /// 3=downloadresult
+  rem      /// 4=shelfnostatus
+  rem      /// 5=Socketip, 
+  rem       /// 6=SocketportNo
+

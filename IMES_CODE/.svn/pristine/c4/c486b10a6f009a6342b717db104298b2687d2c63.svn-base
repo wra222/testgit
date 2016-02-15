@@ -1,0 +1,63 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IMES.Station.Interface.CommonIntf;
+using IMES.DataModel;
+using System.Collections;
+
+namespace IMES.Station.Interface.StationIntf
+{
+
+    public interface IReleaseProductIDHold
+    {
+        /// <summary>
+        /// GetReleaseDefectList
+        /// </summary>
+        /// <param name="Type">Type</param>
+        /// <returns></returns>
+        List<string> GetReleaseDefectList(string Type);
+
+        /// <summary>
+        /// GetGotoStationList
+        /// </summary>
+        /// <param name="Type">Type</param>
+        /// <returns></returns>
+        IList<ConstValueInfo> GetGotoStationList(string Type);
+
+        /// <summary>
+        /// GetReleaseProductIDHoldInfo
+        /// </summary>
+        /// <param name="inputData">inputData</param>
+        /// <param name="stationId">stationId</param>
+        /// <param name="editor">editor</param>
+        /// <param name="customerId">customerId</param>
+        /// <returns></returns>
+        ArrayList GetReleaseProductIDHoldInfo(IList<string> inputData, string stationId, string editor, string customerId, string IsCUSTSN, IList<string> HoldStationList);
+
+        /// <summary>
+        /// Save
+        /// </summary>
+        /// <param name="key">string</param>
+        /// <param name="releaseCode">string</param>
+        /// <param name="goToStation">string</param>
+        /// <returns></returns>
+        ArrayList Save(string key, string releaseCode, string goToStation);
+
+        /// <summary>
+        /// offlineHold
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="releaseCode"></param>
+        /// <param name="goToStation"></param>
+        /// <returns></returns>
+        ArrayList OfflineHoldSave(string key, string stationId, string editor, string customerId, string releaseCode, string goToStation);
+
+
+        /// <summary>
+        /// 取消工作流
+        /// </summary>
+        /// <param name="sessionKey"></param>
+        void Cancel(string sessionKey);
+    }
+}

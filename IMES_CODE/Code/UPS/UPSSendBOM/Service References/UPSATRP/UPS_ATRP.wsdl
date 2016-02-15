@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://hp.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://hp.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://hp.com/">
+      <s:element name="UPSGetTags">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetTagsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSGetTagsResult" type="tns:ATRPStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ATRPStruct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="version" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="retcode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tagdata">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UPSGetRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PartNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AssetNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HPPO" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSGetRangeResult" type="tns:ATRPStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetImages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetImagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSGetImagesResult" type="tns:ATRPStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetATRP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetATRPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSGetATRPResult" type="tns:ATRPStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UPSGetTagsSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetTags" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetTagsSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetTagsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetRange" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetImagesSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetImages" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetImagesSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetImagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetATRPSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetATRP" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetATRPSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetATRPResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ATRPSoap">
+    <wsdl:operation name="UPSGetTags">
+      <wsdl:input message="tns:UPSGetTagsSoapIn" />
+      <wsdl:output message="tns:UPSGetTagsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetRange">
+      <wsdl:input message="tns:UPSGetRangeSoapIn" />
+      <wsdl:output message="tns:UPSGetRangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetImages">
+      <wsdl:input message="tns:UPSGetImagesSoapIn" />
+      <wsdl:output message="tns:UPSGetImagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetATRP">
+      <wsdl:input message="tns:UPSGetATRPSoapIn" />
+      <wsdl:output message="tns:UPSGetATRPSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ATRPSoap" type="tns:ATRPSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UPSGetTags">
+      <soap:operation soapAction="http://hp.com/UPSGetTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetRange">
+      <soap:operation soapAction="http://hp.com/UPSGetRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetImages">
+      <soap:operation soapAction="http://hp.com/UPSGetImages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetATRP">
+      <soap:operation soapAction="http://hp.com/UPSGetATRP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ATRPSoap12" type="tns:ATRPSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UPSGetTags">
+      <soap12:operation soapAction="http://hp.com/UPSGetTags" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetRange">
+      <soap12:operation soapAction="http://hp.com/UPSGetRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetImages">
+      <soap12:operation soapAction="http://hp.com/UPSGetImages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetATRP">
+      <soap12:operation soapAction="http://hp.com/UPSGetATRP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ATRP">
+    <wsdl:port name="ATRPSoap" binding="tns:ATRPSoap">
+      <soap:address location="http://10.99.82.252:81/UPSATRP/UPS_ATRP.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ATRPSoap12" binding="tns:ATRPSoap12">
+      <soap12:address location="http://10.99.82.252:81/UPSATRP/UPS_ATRP.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

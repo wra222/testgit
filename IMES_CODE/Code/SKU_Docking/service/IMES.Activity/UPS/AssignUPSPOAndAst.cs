@@ -1,0 +1,354 @@
+﻿// INVENTEC corporation (c)2011 all rights reserved. 
+// Description: Change PO Product Condition
+//                         
+// Update: 
+// Date         Name                         Reason 
+// ==========   =======================      ============
+// 2015-01-21 Vincent             create
+// Known issues:
+using System;
+using System.Linq;
+using System.Workflow.ComponentModel;
+using IMES.FisObject.FA.Product;
+using IMES.Infrastructure;
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+using System.Collections.Generic;
+using System.ComponentModel;
+using IMES.DataModel;
+using IMES.FisObject.Common.Part;
+using IMES.FisObject.Common.UPS;
+using IMES.UPS;
+using IMES.UPS.WS;
+using IMES.FisObject.PAK.DN;
+using IMES.Infrastructure.Extend;
+using IMES.Common;
+using IMES.Infrastructure.Extend.Dictionary;
+
+namespace IMES.Activity
+{
+    /// <summary>
+    /// AssignUPSPOAndAst Product
+    /// </summary>
+    public partial class AssignUPSPOAndAst : BaseActivity
+    {
+        ///<summary>
+        ///</summary>
+        public AssignUPSPOAndAst()
+        {
+            InitializeComponent();
+        }
+        /// <summary>
+        ///  ShipDateOffSetDays 
+        /// </summary>
+        public static DependencyProperty ShipDateOffSetDaysProperty = DependencyProperty.Register("ShipDateOffSetDays", typeof(int), typeof(AssignUPSPOAndAst), new PropertyMetadata(-4));
+        /// <summary>
+        /// Sync object
+        /// </summary>
+        private static object syncObject = new object(); 
+        /// <summary>
+        /// ShipDateOffSetDays
+        /// </summary>
+        [DescriptionAttribute("ShipDateOffSetDays")]
+        [CategoryAttribute("ShipDateOffSetDays Category")]
+        [BrowsableAttribute(true)]
+        [DesignerSerializationVisibilityAttribute(DesignerSerializationVisibility.Visible)]
+        public int ShipDateOffSetDays
+        {
+            get
+            {
+                return ((int)(base.GetValue(ShipDateOffSetDaysProperty)));
+            }
+            set
+            {
+                base.SetValue(ShipDateOffSetDaysProperty, value);
+            }
+        }
+        /// <summary>
+        /// AssignUPSPO
+        /// </summary>
+        /// <param name="executionContext"></param>
+        /// <returns></returns>
+        protected internal override ActivityExecutionStatus DoExecute(ActivityExecutionContext executionContext)
+        {
+            Session session = CurrentSession;
+            ActivityCommonImpl utl = ActivityCommonImpl.Instance;
+
+            var currenProduct = utl.IsNull<IProduct>(session, Session.SessionKeys.Product);
+            IProductRepository prodRep = RepositoryFactory.GetInstance().GetRepository<IProductRepository, IProduct>();
+            IDeliveryRepository dnRep = RepositoryFactory.GetInstance().GetRepository<IDeliveryRepository>();
+            IUPSRepository upsRep = RepositoryFactory.GetInstance().GetRepository<IUPSRepository>();
+            bool  isUPSDevice = (string)session.GetValue(Session.SessionKeys.IsUPSDevice) ==ConstName.Letter.Y;
+            bool hasGenAst = (string)session.GetValue(Session.SessionKeys.GenerateASTSN) == ConstName.Letter.Y;
+            UPSCombinePO combinePO = null;
+            if (hasGenAst &&
+                isUPSDevice)
+            {   
+                #region UPS device &&  CDSI case
+                IList<AstDefineInfo> astDefineList = utl.IsNull<IList<AstDefineInfo>>(session, Session.SessionKeys.NeedGenAstDefineList);
+                IList<IPart> partList = utl.IsNull<IList<IPart>>(session, Session.SessionKeys.NeedGenAstPartList);
+
+                if (!utl.UPS.checkUPSDeviceInAssignStation(currenProduct, astDefineList, this.Station))
+                {
+                    session.AddValue(ExtendSession.SessionKeys.WarningMsg,"None UPS Device dose not assign UPS assset number in this station"); 
+                    return base.DoExecute(executionContext);
+                }
+             
+                lock (syncObject)   //for sync 
+                {
+                    #region UPS getATM
+                    DateTime now = DateTime.Now;
+                    combinePO = assignPO(upsRep, currenProduct);
+                    if (combinePO == null)
+                    {
+                        //throw no UPS combine PO,please waiting UPS server assign PO
+                        throw new FisException("CQCHK1115", new string[] { currenProduct.CUSTSN, currenProduct.Model });
+                    }
+
+                    UPSWS ws = UPSWS.Instance;
+                    IList<IProductPart> assetPartList = new List<IProductPart>();
+                    IList<string> hppoList = new List<string>();
+                    List<string> upsAVPartNoList = new List<string>();
+                    IList<IPart> noneUPSPartList = new List<IPart>();
+
+                    foreach (AstDefineInfo define in astDefineList)
+                    {
+                        var matchPartList = partList.Where(x => x.BOMNodeType == define.AstType && x.Descr == define.AstCode).ToList();
+                        if (matchPartList == null || matchPartList.Count == 0)
+                        {
+                            continue;
+                        }
+
+                        if (define.NeedBindUPSPO == ConstName.Letter.Y) // Check Delivery upload
+                        {
+                            DateTime today = new DateTime(now.Year, now.Month, now.Day);
+                            bool hasDn = dnRep.ExistsDeliveryByPoNo(currenProduct.Model, combinePO.IECPO, ConstName.DeliveryStatus.Status00, today.AddDays(this.ShipDateOffSetDays));
+                            if (!hasDn)
+                            {
+                                //提示:CQCHK1114 	CHS	UPS機器:%1 機型:%2 綁定PO:%2 需先上傳船務後才能分配資產標籤!
+                                //throw error waiting upload PoNo deliveryNo
+                                throw new FisException("CQCHK1121", new string[] { currenProduct.CUSTSN, currenProduct.Model, combinePO.IECPO });
+                            }
+                        }
+
+                        var upsAvPart = combinePO.UPSAVPart;
+                        if (upsAvPart == null || upsAvPart.Count == 0)
+                        {
+                            //throw error no UPS AV PartNo
+                            throw new FisException("CQCHK1115", new string[] { currenProduct.CUSTSN, currenProduct.Model });
+                        }
+
+                        string sn = currenProduct.CUSTSN;
+                        string hppo = combinePO.HPPO;
+                        hppoList.Add(hppo);
+
+                        List<string> avPartNoList = new List<string>();
+                        foreach (IPart part in matchPartList)
+                        {
+                            string avPartNo = part.Attributes.Where(x => x.InfoType == ConstName.PartInfo.AV && !string.IsNullOrEmpty(x.InfoValue)).Select(x => x.InfoValue).FirstOrDefault();
+                            if (string.IsNullOrEmpty(avPartNo))
+                            {
+                                //throw error 2TGXXXX part no setup AV part no
+                                throw new FisException("CQCHK1116", new string[] { currenProduct.CUSTSN, currenProduct.Model, part.PN });
+                            }
+
+                            if (!upsAvPart.Any(x => x.AVPartNo == avPartNo))
+                            {
+                                //throw error AVPart is not UPS AV Part number 
+                                noneUPSPartList.Add(part);
+                                continue;
+                                //throw new FisException("CQCHK1117", new string[] { currenProduct.CUSTSN, currenProduct.Model, part.PN, avPartNo });
+                            }
+
+                            ATMStruct ret = ws.GetATM(sn, avPartNo, hppo);
+                            if (ret.retcode < 0)
+                            {
+                                //throw new Exception(ret.message);
+                                throw new FisException("CQCHK1118", new string[] { "UPSATM", currenProduct.CUSTSN, hppo, avPartNo, ret.message });
+                            }
+
+                            upsAVPartNoList.Add(avPartNo);
+
+                            if (!string.IsNullOrEmpty(ret.assetTagNum))
+                            {
+                                //Add Product_Part 多筆case....
+                                IProductPart assetTag = new ProductPart();
+                                assetTag.ProductID = currenProduct.ProId;
+                                assetTag.PartID = part.PN;
+                                assetTag.PartType = part.Descr;
+                                assetTag.Iecpn = string.Empty;
+                                assetTag.CustomerPn = avPartNo;
+                                assetTag.PartSn = ret.assetTagNum;
+                                assetTag.Station = Station;
+                                assetTag.Editor = Editor;
+                                assetTag.Cdt = now;
+                                assetTag.Udt = now;
+                                assetTag.BomNodeType = part.BOMNodeType;
+                                assetTag.CheckItemType = "UPS";
+                                assetPartList.Add(assetTag);
+                                //currenProduct.AddPart(assetTag);
+                            }
+                            else //warning
+                            {
+                                string warningMsg = ((string)session.GetValue(ExtendSession.SessionKeys.WarningMsg)) ?? string.Empty;
+                                FisException ex = new FisException("CQCHK1118", new string[] { "UPSATM", currenProduct.CUSTSN, hppo, avPartNo, "UPS return assetTagNum is empty" });
+                                session.AddValue(ExtendSession.SessionKeys.WarningMsg, warningMsg + ex.mErrmsg + Environment.NewLine);
+                            }
+                        }
+                    }
+
+                    if (assetPartList.Count == 0) //都沒有UPS AV Part throw error
+                    {
+                        throw new FisException("CQCHK1118", new string[] { "UPSATM", currenProduct.CUSTSN, 
+                                                                                                    string.Join(",",hppoList.Distinct().ToArray()), 
+                                                                                                    string.Join(",",upsAVPartNoList.Distinct().ToArray()), 
+                                                                                                    "UPS return assetTagNum is empty" });
+                    }
+
+                    if (noneUPSPartList.Count > 0) //handle 非UPS AV Part
+                    {
+                        foreach (IPart part in noneUPSPartList)  //iMES assign ast number
+                        {
+                            assignAstNumberByMES(utl, session, part, currenProduct, assetPartList);
+                        }
+                    }
+
+                    foreach (var assetTag in assetPartList)
+                    {
+                        currenProduct.AddPart(assetTag);
+                    }
+
+                    //Update Combine PO
+                    combinePO.Station = this.Station;
+                    combinePO.Editor = this.Editor;
+                    combinePO.Udt = now;
+                    combinePO.IsShipPO = astDefineList.Any(x => x.NeedBindUPSPO == ConstName.Letter.Y &&
+                                                                                           x.HasUPSAst == ConstName.Letter.Y) ? ConstName.Letter.Y : ConstName.Letter.N;
+                    if (combinePO.Status != EnumUPSCombinePOStatus.Used.ToString())
+                    {
+                        combinePO.ProductID = currenProduct.ProId;
+                        combinePO.CUSTSN = currenProduct.CUSTSN;
+                        combinePO.Status = EnumUPSCombinePOStatus.Used.ToString();
+                    }
+
+                    upsRep.Update(combinePO, session.UnitOfWork);
+                    prodRep.Update(currenProduct, session.UnitOfWork);
+
+
+                    session.AddValue(Session.SessionKeys.UPSCombinePO, combinePO);
+                    CurrentSession.AddValue("AssetSN", assetPartList[0].PartSn);
+                    if (assetPartList.Count > 1)
+                    {
+                        CurrentSession.AddValue("AssetSN3", assetPartList[1].PartSn);
+                    }
+                    #endregion
+                } //lock object for sync
+                #endregion
+            }
+
+            #region 處理UPS機器不需分配資產標籤序號且未分配UPSCombinePO
+            if (isUPSDevice && combinePO==null)
+            {
+                IList<AstDefineInfo> astDefineList = utl.IsNull<IList<AstDefineInfo>>(session, Session.SessionKeys.NeedCombineAstDefineList);
+                IList<IPart> partList = utl.IsNull<IList<IPart>>(session, Session.SessionKeys.NeedCombineAstPartList);
+
+                var combineDefineList = astDefineList.Where(x => string.IsNullOrEmpty(x.AssignAstSNStation) &&
+                                                                                                x.NeedAssignAstSN == ConstName.Letter.N &&
+                                                                                                x.HasUPSAst == ConstName.Letter.Y).ToList();
+                if (combineDefineList.Count > 0)
+                {   //需要分配UPSCombinePO
+                    combinePO = assignPO(upsRep, currenProduct);
+                    if (combinePO == null)
+                    {
+                        //throw no UPS combine PO,please waiting UPS server assign PO
+                        throw new FisException("CQCHK1115", new string[] { currenProduct.CUSTSN, currenProduct.Model });
+                    }
+
+                    //Update Combine PO
+                    combinePO.Station = this.Station;
+                    combinePO.Editor = this.Editor;
+                    combinePO.Udt = DateTime.Now;
+                    combinePO.IsShipPO = ConstName.Letter.N;
+                    if (combinePO.Status != EnumUPSCombinePOStatus.Used.ToString())
+                    {
+                        combinePO.ProductID = currenProduct.ProId;
+                        combinePO.CUSTSN = currenProduct.CUSTSN;
+                        combinePO.Status = EnumUPSCombinePOStatus.Used.ToString();
+                    }
+
+                    upsRep.Update(combinePO, session.UnitOfWork);
+
+                    session.AddValue(Session.SessionKeys.UPSCombinePO, combinePO);
+                } 
+            }
+            #endregion
+
+            
+            return base.DoExecute(executionContext);
+        }
+
+        private UPSCombinePO assignPO(IUPSRepository upsRep,IProduct product)
+        {
+            //檢查是否有分配過
+            UPSCombinePO combinePO = upsRep.Find(product.ProId);
+            if (combinePO == null)
+            {
+                combinePO = upsRep.GetAvailablePOWithTrans(product.Model,
+                                                                       new List<string>{EnumUPSCombinePOStatus.Free.ToString(), 
+                                                                                        EnumUPSCombinePOStatus.Release.ToString()});             
+            }
+
+            return combinePO;
+        }
+
+
+        private void assignAstNumberByMES(ActivityCommonImpl utl ,
+                                                                    Session session,
+                                                                    IPart part,
+                                                                    IProduct curProduct,
+                                                                    IList<IProductPart> assetPartList )
+        {
+             string custNum3 = null;
+             string custNum=utl.GenAst.AssignAstNumber(session, part, curProduct, this.Station, this.Customer, this.Editor, out  custNum3);
+          
+            //保存product和Asset SN的绑定关系
+
+            if (!string.IsNullOrEmpty(custNum))
+            {
+                IProductPart assetTag = new ProductPart();
+                assetTag.ProductID = curProduct.ProId;
+                assetTag.PartID = part.PN;
+                assetTag.PartType = part.Descr;
+                assetTag.Iecpn = "";
+                assetTag.CustomerPn = part.GetAttribute("AV") ?? string.Empty;
+                assetTag.PartSn = custNum;
+                assetTag.Station = Station;
+                assetTag.Editor = Editor;
+                assetTag.Cdt = DateTime.Now;
+                assetTag.Udt = DateTime.Now;
+                assetTag.BomNodeType = part.BOMNodeType;
+                assetTag.CheckItemType = "GenASTSN";
+               assetPartList.Add(assetTag);
+            }
+
+            if (!string.IsNullOrEmpty(custNum3))
+            {
+                IProductPart assetTag = new ProductPart();
+                assetTag.ProductID = curProduct.ProId;
+                assetTag.PartID = part.PN;
+                assetTag.PartType = part.Descr;
+                assetTag.Iecpn = "";
+                assetTag.CustomerPn = part.GetAttribute("AV") ?? string.Empty;
+                assetTag.PartSn = custNum3;
+                assetTag.Station = Station;
+                assetTag.Editor = Editor;
+                assetTag.Cdt = DateTime.Now;
+                assetTag.Udt = DateTime.Now;
+                assetTag.BomNodeType = part.BOMNodeType;
+                assetTag.CheckItemType = "GenASTSN";
+                assetPartList.Add(assetTag);
+            }      
+        }
+
+        
+    }
+}

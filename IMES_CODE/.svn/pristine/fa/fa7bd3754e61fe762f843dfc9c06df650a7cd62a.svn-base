@@ -1,0 +1,267 @@
+﻿using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+using UPH.Interface;
+using com.inventec.iMESWEB;
+using System.Collections.Generic;
+using System.Data.OleDb;
+public partial class webroot_aspx_UPH : System.Web.UI.Page
+{
+
+    IUPH_Family uph = ServiceAgent.getInstance().GetObjectByName<IUPH_Family>(WebConstant.IUPH_Family);
+    protected void Page_Load(object sender, EventArgs e) //获取全部的Family
+    { 
+        DataTable fy = new DataTable();
+        fy = uph.GetUPHFamily();
+        var q = from r in fy.AsEnumerable()
+                select new ListItem(r[0].ToString());
+
+        string FY = fy.ToString();
+        this.Select3.Items.AddRange(q.ToArray());
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)//添加维护数据
+    {   
+        UPHInfo uphinfo = new UPHInfo()
+        {
+            Process = Select1.Value,
+            Family = Select3.Value,
+            Attend_normal = int.Parse(TextBox1.Text),
+            ST = TextBox1.Text,
+            NormalUPH = int.Parse(TextBox2.Text),
+            Cycle = TextBox3.Text,
+            Remark = TextBox4.Text,
+            Special=Select2.Value,
+            //Editor = TextBox4.Text,
+            Editor = Master.userInfo.UserId,
+            Cdt = DateTime.Now,
+            Udt = DateTime.Now
+        };
+       
+        IList<UPHInfo> list = uph.GetProductUPHInfoList(uphinfo);
+        if (list != null && list.Count > 0)
+        {
+            Response.Write("<script>alert('数据已维护不能重复操作，请确认!')</script>");
+                Response.Flush();
+        }
+        else
+        {
+            uph.AddProductUPHInfo(uphinfo);
+                Response.Write("<script>alert('添加完成!')</script>");
+                 Response.Flush();
+        }
+
+    }
+
+
+    protected void Button1_Click(object sender, EventArgs e)//查询符合条件的数据
+    {
+        UPHInfo uphinfo = new UPHInfo()
+        {
+            Process = Select1.Value,
+            Family = Select3.Value,
+            Special=Select2.Value,
+           
+        };
+
+       IList<UPHInfo> list= uph.GetProductUPHInfoList(uphinfo);
+       if (list != null && list.Count > 0)
+       {
+           TextBox1.Text = list[0].Attend_normal.ToString();
+           TextBox2.Text = list[0].NormalUPH.ToString();
+           TextBox3.Text = list[0].Cycle;
+           TextBox4.Text = list[0].Remark;
+           TextBox6.Text = list[0].ST;
+       }
+       else
+       {
+           Response.Write("<script>alert('你查询数据为空!')</script>");
+           Response.Flush();
+
+       }
+        
+    }
+    protected void Button4_Click(object sender, EventArgs e)//删除符合条件的数据
+    { 
+        UPHInfo uphinfo = new UPHInfo()
+   
+        {
+            Process = Select1.Value,
+            Family =  Select3.Value,
+            Attend_normal = int.Parse(TextBox1.Text),
+            ST = TextBox1.Text,
+            NormalUPH = int.Parse(TextBox2.Text),
+            Cycle = TextBox3.Text,
+            Special=Select2.Value,
+            Remark = TextBox4.Text,
+            //Editor = TextBox4.Text,
+            Editor = Master.userInfo.UserId,
+            Cdt = DateTime.Now,
+
+        };
+        IList<UPHInfo> list = uph.GetProductUPHInfoList(uphinfo);
+        if (list != null && list.Count > 0)
+        {
+            uph.AddUPHLog(uphinfo);
+            uph.DelProductUPHInfo(uphinfo);
+            Response.Write("<script>alert('删除数据成功!')</script>");
+            Response.Flush();
+            uph.GetProductUPHInfoList(uphinfo);
+        }
+        else
+        {
+            Response.Write("<script>alert('维护的数据不存在!')</script>");
+            Response.Flush();
+
+        }
+
+    }
+    protected void Button5_Click(object sender, EventArgs e)//修改数据
+    {
+
+        UPHInfo uphinfo = new UPHInfo()
+        
+        {
+            Process = Select1.Value,
+            Family = Select3.Value,
+            Attend_normal = int.Parse(TextBox1.Text),
+            ST = TextBox1.Text,
+            NormalUPH = int.Parse(TextBox2.Text),
+            Cycle = TextBox3.Text,
+            Special=Select2.Value,
+            Remark = TextBox4.Text,
+            //Editor = TextBox4.Text,
+            Editor = Master.userInfo.UserId,
+            Cdt = DateTime.Now,
+            Udt = DateTime.Now
+        };
+        IList<UPHInfo> list = uph.GetProductUPHInfoList(uphinfo);
+        if (list != null && list.Count > 0)
+        {
+            uph.AddUPHLog(uphinfo);
+            uph.UpdateProductUPHInfo(uphinfo);
+
+            Response.Write("<script>alert('修改完成!')</script>");
+            Response.Flush();
+        }
+        else
+        {
+            Response.Write("<script>alert('你维护的数据不存在!')</script>");
+            Response.Flush();
+
+        }
+     
+    }
+    protected void Button6_Click(object sender, EventArgs e)
+    {
+        
+        DataTable sn = new DataTable();
+        sn = uph.GetAlarmALL();
+        if (sn != null)
+        {
+            this.GridView1.DataSource = sn;
+            this.GridView1.DataBind();
+        }
+        else
+        {
+            Response.Write("<script>alert('你查询的数据为空!')</script>");
+            Response.Flush();
+        }
+
+    }//查询全部数据
+
+    public override void VerifyRenderingInServerForm(Control control)
+    {
+        // Confirms that an HtmlForm control is rendered for
+    }
+    protected void Button7_Click(object sender, EventArgs e)
+    {
+        if (GridView1.Rows.Count > 0)
+        {
+            ToolUtility tu = new ToolUtility();
+
+            tu.ExportExcel(GridView1, "Sheet1", this.Page);
+        }
+        else
+        {
+            Response.Write("<script>alert('请全部查询后再进行导出!')</script>");
+            Response.Flush();
+        }
+     
+        
+    }//将数据导出Excel
+    protected void paging(object sender, GridViewPageEventArgs e)
+    {
+        GridView1.PageIndex = e.NewPageIndex;
+    }
+    private void InputExcel(string pPath)
+    {
+        string conn = "Provider = Microsoft.ACE.OLEDB.12.0 ; Data Source =" + pPath + ";Extended Properties='Excel 12.0;HDR=Yes;IMEX=1'";
+        OleDbConnection oleCon = new OleDbConnection(conn);
+        oleCon.Open();
+        string Sql = "select DISTINCT * from [Sheet1$] WHERE Process<>''AND Family<>''AND Attend_normal<>''AND ST<>''AND Cycle<>''AND NormalUPH<>''AND Special<>''";
+        OleDbDataAdapter mycommand = new OleDbDataAdapter(Sql, oleCon);
+        DataSet ds = new DataSet();
+        mycommand.Fill(ds, "[Sheet1$]");
+        oleCon.Close();
+        int count = ds.Tables["[Sheet1$]"].Rows.Count;
+        UPHInfo alarminfo = new UPHInfo();
+        for (int i = 0; i < count; i++)
+        {
+            if (ds.Tables["[Sheet1$]"].Rows[i]["Process"].ToString().Trim() != "" && ds.Tables["[Sheet1$]"].Rows[i]["Family"].ToString().Trim() !="")
+            {
+                alarminfo.Process = ds.Tables["[Sheet1$]"].Rows[i]["Process"].ToString().Trim();
+                alarminfo.Family = ds.Tables["[Sheet1$]"].Rows[i]["Family"].ToString().Trim();
+                alarminfo.Attend_normal = int.Parse(ds.Tables["[Sheet1$]"].Rows[i]["Attend_normal"].ToString().Trim());
+                alarminfo.ST = ds.Tables["[Sheet1$]"].Rows[i]["ST"].ToString().Trim();
+                alarminfo.NormalUPH = int.Parse(ds.Tables["[Sheet1$]"].Rows[i]["NormalUPH"].ToString().Trim());
+                alarminfo.Cycle = ds.Tables["[Sheet1$]"].Rows[i]["Cycle"].ToString().Trim();
+                alarminfo.Remark = ds.Tables["[Sheet1$]"].Rows[i]["Remark"].ToString().Trim();
+                alarminfo.Special = ds.Tables["[Sheet1$]"].Rows[i]["Special"].ToString().Trim();
+                alarminfo.Editor = ((MasterPageMaintain)Master).userInfo.UserName.ToString().Trim();
+                alarminfo.Cdt = DateTime.Now;
+                alarminfo.Udt = DateTime.Now;
+                uph.AddProductUPHInfo(alarminfo);
+            }
+            else
+            {
+                break;
+            }
+        }
+        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyScript", "alert('导入成功！'+count)", true);
+    }
+    protected void Button8_Click(object sender, EventArgs e)//将Excel数据插入数据库中
+    {
+        
+        string filePath = this.FileUpload1.PostedFile.FileName;
+        //string SavePath = HttpRuntime.AppDomainAppPath + "Temp\\" + filePath;
+
+        if (filePath != "")
+        {
+            if (filePath.Contains("xls"))//判?文件是否存在
+            {
+                //FileUpload1.SaveAs(SavePath);
+                InputExcel(filePath);
+            }
+            else
+            {
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyScript", "alert('请确认是否为Excel文件！')", true);
+            }
+        }
+
+        else
+        {
+            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyScript", "alert('请选择文件，再进行导入！')", true);
+
+        }
+    }
+}

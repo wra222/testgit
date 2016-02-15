@@ -1,0 +1,325 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9A714E45-56A6-4984-ADB5-2E350148E6AF}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IMES.WS</RootNamespace>
+    <AssemblyName>IMES.WS.MO</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IMES.Query.DB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\IMES.Query.DB.dll</HintPath>
+    </Reference>
+    <Reference Include="IMES.SAP.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\IMES.SAP.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="IMES.Station.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\IMES.Station.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IMES.WS.NotifyECOModel\WSNotifyECOModel.asmx" />
+    <Content Include="IMES.WS.DefectComponentUpdate\WSDefectComponentUpdate.asmx" />
+    <Content Include="IMES.WS.DefectComponentDetail\WSDefectComponentDetail.asmx" />
+    <Content Include="IMES.WS.FisBomCompare\WSFisBomCompare.asmx" />
+    <Content Include="IMES.WS.NotifyStdWeight\WSNotifyStdWeight.asmx" />
+    <Content Include="IMES.WS.NotifyBsamModel\WSNotifyBsamModel.asmx" />
+    <Content Include="IMES.WS.CancelBindDN\WSCancelBindDN.asmx" />
+    <Content Include="IMES.WS.HPMORelease\WSHPMORelease.asmx" />
+    <Content Include="IMES.WS.MaterialInfoNotice\WSMaterialInfoNotice.asmx" />
+    <Content Include="IMES.WS.MOConfirmChange\WSMOConfirmChange.asmx" />
+    <Content Include="IMES.WS.MOConfirm\WSMOConfirm.asmx" />
+    <Content Include="IMES.WS.MoPullRelease\WSMOPullRelease.asmx" />
+    <Content Include="IMES.WS.MOQuery\WSMoQuery.asmx" />
+    <Content Include="IMES.WS.MORelease\WSMORelease.asmx" />
+    <None Include="Service References\SAPMOChangeStatusWS\configuration91.svcinfo" />
+    <None Include="Service References\SAPMOChangeStatusWS\configuration.svcinfo" />
+    <None Include="Service References\SAPMOChangeStatusWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="IMES.WS.NotifyMAWB\WSNotifyMAWB.asmx" />
+    <Content Include="IMES.WS.PGIStatus\WSPGIStatus.asmx" />
+    <None Include="Service References\SAPCancelBindDNWS\configuration91.svcinfo" />
+    <None Include="Service References\SAPCancelBindDNWS\configuration.svcinfo" />
+    <None Include="Service References\SAPCancelBindDNWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\SAPFisBomCompareWS\configuration91.svcinfo" />
+    <None Include="Service References\SAPFisBomCompareWS\configuration.svcinfo" />
+    <None Include="Service References\SAPFisBomCompareWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="IMES.WS.SAPPO\WSSAPPO.asmx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IMES.WS.NotifyECOModel\DataStruct.cs" />
+    <Compile Include="IMES.WS.NotifyECOModel\Execute.cs" />
+    <Compile Include="IMES.WS.NotifyECOModel\SQLStatement.cs" />
+    <Compile Include="IMES.WS.NotifyECOModel\WSNotifyECOModel.asmx.cs">
+      <DependentUpon>WSNotifyECOModel.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMES.WS.DefectComponentUpdate\DataStruct.cs" />
+    <Compile Include="IMES.WS.DefectComponentUpdate\Execute.cs" />
+    <Compile Include="IMES.WS.DefectComponentUpdate\SQLStatement.cs" />
+    <Compile Include="IMES.WS.DefectComponentUpdate\WSDefectComponentUpdate.asmx.cs">
+      <DependentUpon>WSDefectComponentUpdate.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMES.WS.DefectComponentDetail\DataStruct.cs" />
+    <Compile Include="IMES.WS.DefectComponentDetail\Execute.cs" />
+    <Compile Include="IMES.WS.DefectComponentDetail\SQLStatement.cs" />
+    <Compile Include="IMES.WS.DefectComponentDetail\WSDefectComponentDetail.asmx.cs">
+      <DependentUpon>WSDefectComponentDetail.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMES.WS.FisBomCompare\DataStruct.cs" />
+    <Compile Include="IMES.WS.FisBomCompare\Execute.cs" />
+    <Compile Include="IMES.WS.FisBomCompare\SQLStatement.cs" />
+    <Compile Include="IMES.WS.FisBomCompare\WSFisBomCompare.asmx.cs">
+      <DependentUpon>WSFisBomCompare.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMES.WS.NotifyStdWeight\DataStruct.cs" />
+    <Compile Include="IMES.WS.NotifyStdWeight\Execute.cs" />
+    <Compile Include="IMES.WS.NotifyStdWeight\SQLStatement.cs" />
+    <Compile Include="IMES.WS.NotifyStdWeight\WSNotifyStdWeight.asmx.cs">
+      <DependentUpon>WSNotifyStdWeight.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMES.WS.NotifyBsamModel\DataStruct.cs" />
+    <Compile Include="IMES.WS.NotifyBsamModel\Execute.cs" />
+    <Compile Include="IMES.WS.NotifyBsamModel\SQLStatement.cs" />
+    <Compile Include="IMES.WS.NotifyBsamModel\WSNotifyBsamModel.asmx.cs">
+      <DependentUpon>WSNotifyBsamModel.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMES.WS.CancelBindDN\DataStruct.cs" />
+    <Compile Include="IMES.WS.CancelBindDN\Execute.cs" />
+    <Compile Include="IMES.WS.CancelBindDN\SQLStatement.cs" />
+    <Compile Include="IMES.WS.CancelBindDN\WSCancelBindDN.asmx.cs">
+      <DependentUpon>WSCancelBindDN.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMES.WS.HPMORelease\DataStruct.cs" />
+    <Compile Include="IMES.WS.HPMORelease\Execute.cs" />
+    <Compile Include="IMES.WS.HPMORelease\SQLStatement.cs" />
+    <Compile Include="IMES.WS.HPMORelease\WSHPMORelease.asmx.cs">
+      <DependentUpon>WSHPMORelease.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMES.WS.Common\RemotingServiceAgent.cs" />
+    <Compile Include="IMES.WS.Common\SQLStatment.cs" />
+    <Compile Include="IMES.WS.Common\UTL.cs">
+    </Compile>
+    <Compile Include="IMES.WS.MaterialInfoNotice\DataStruct.cs" />
+    <Compile Include="IMES.WS.MaterialInfoNotice\Execute.cs" />
+    <Compile Include="IMES.WS.MaterialInfoNotice\SQLStatement.cs" />
+    <Compile Include="IMES.WS.MaterialInfoNotice\WSMaterialInfoNotice.asmx.cs">
+      <DependentUpon>WSMaterialInfoNotice.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMES.WS.MOConfirmChange\DataStruct.cs" />
+    <Compile Include="IMES.WS.MOConfirmChange\Execute.cs" />
+    <Compile Include="IMES.WS.MOConfirmChange\SQLStatement.cs" />
+    <Compile Include="IMES.WS.MOConfirmChange\WSMOConfirmChange.asmx.cs">
+      <DependentUpon>WSMOConfirmChange.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMES.WS.MoConfirm\DataStruct.cs" />
+    <Compile Include="IMES.WS.MoConfirm\Execute.cs" />
+    <Compile Include="IMES.WS.MoConfirm\SQLStatement.cs" />
+    <Compile Include="IMES.WS.MoConfirm\WSMOConfirm.asmx.cs">
+      <DependentUpon>WSMOConfirm.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMES.WS.MoPullRelease\DataStruct.cs" />
+    <Compile Include="IMES.WS.MoPullRelease\Execute.cs" />
+    <Compile Include="IMES.WS.MoPullRelease\SQLStatement.cs" />
+    <Compile Include="IMES.WS.MoPullRelease\WSMOPullRelease.asmx.cs">
+      <DependentUpon>WSMOPullRelease.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMES.WS.MOQuery\DataStruct.cs" />
+    <Compile Include="IMES.WS.MOQuery\Execute.cs" />
+    <Compile Include="IMES.WS.MOQuery\SQLStatement.cs" />
+    <Compile Include="IMES.WS.MOQuery\WSMoQuery.asmx.cs">
+      <DependentUpon>WSMoQuery.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMES.WS.MORelease\DataStruct.cs" />
+    <Compile Include="IMES.WS.MORelease\Execute.cs" />
+    <Compile Include="IMES.WS.MORelease\SQLStatement.cs" />
+    <Compile Include="IMES.WS.MORelease\WSMORelease.asmx.cs">
+      <DependentUpon>WSMORelease.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMES.WS.NotifyMAWB\DataStruct.cs" />
+    <Compile Include="IMES.WS.NotifyMAWB\Execute.cs" />
+    <Compile Include="IMES.WS.NotifyMAWB\SQLStatement.cs" />
+    <Compile Include="IMES.WS.NotifyMAWB\WSNotifyMAWB.asmx.cs">
+      <DependentUpon>WSNotifyMAWB.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMES.WS.PGIStatus\DataStruct.cs" />
+    <Compile Include="IMES.WS.PGIStatus\Execute.cs" />
+    <Compile Include="IMES.WS.PGIStatus\SQLStatement.cs" />
+    <Compile Include="IMES.WS.PGIStatus\WSPGIStatus.asmx.cs">
+      <DependentUpon>WSPGIStatus.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMES.WS.SAPPO\DataStruct.cs" />
+    <Compile Include="IMES.WS.SAPPO\WSSAPPO.asmx.cs">
+      <DependentUpon>WSSAPPO.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\SAPCancelBindDNWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SAPFisBomCompareWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SAPMOChangeStatusWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IMES.Query.DB\IMES.Query.DB.csproj">
+      <Project>{351C2553-AFD7-447B-8FDA-97AB040893B3}</Project>
+      <Name>IMES.Query.DB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SAPCancelBindDNWS\" />
+    <WCFMetadataStorage Include="Service References\SAPFisBomCompareWS\" />
+    <WCFMetadataStorage Include="Service References\SAPMOChangeStatusWS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SAPCancelBindDNWS\IMES.WS.SAPCancelBindDNWS.ZwsCancelSnOutLine.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SAPCancelBindDNWS\ZWS_CANCEL_SERIAL.wsdl" />
+    <None Include="Service References\SAPFisBomCompareWS\IMES.WS.SAPFisBomCompareWS.ZIMES_FIS_BOM_H_R.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SAPFisBomCompareWS\IMES.WS.SAPFisBomCompareWS.ZIMES_FIS_BOM_I.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SAPFisBomCompareWS\IMES.WS.SAPFisBomCompareWS.ZIMES_FIS_BOM_I_R.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SAPFisBomCompareWS\Z_RFC_FIS_BOM_WS.wsdl" />
+    <None Include="Service References\SAPMOChangeStatusWS\IMES.WS.SAPMOChangeStatusWS.ZMO_MES_TECO_E.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SAPMOChangeStatusWS\Z_SET_PRODORD_TO_IMES_TECO_WS.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IMES.WS.Common\App_Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53073</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetFileName)" ..\..\..\bin\  /Y/I
+xcopy $(TargetName).pdb ..\..\..\bin\  /Y/I</PostBuildEvent>
+  </PropertyGroup>
+</Project>

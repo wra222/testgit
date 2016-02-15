@@ -1,0 +1,41 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="CombineLCMBTDL" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" SessionType="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<SynchronizationScopeActivity x:Name="synchronizationScopeActivity1" SynchronizationHandles="UpdateSMTMOSequence">
+		<ns0:CheckBTDLLCMCT Customer="{ActivityBind CombineLCMBTDL,Path=Customer}" x:Name="checkBTDLLCMCT1" Editor="{ActivityBind CombineLCMBTDL,Path=Editor}" Station="{ActivityBind CombineLCMBTDL,Path=Station}" SessionType="{ActivityBind CombineLCMBTDL,Path=SessionType}" Line="{ActivityBind CombineLCMBTDL,Path=PdLine}" Key="{ActivityBind CombineLCMBTDL,Path=Key}" />
+		<WhileActivity x:Name="whileActivity2">
+			<WhileActivity.Condition>
+				<RuleConditionReference ConditionName="checkpass" />
+			</WhileActivity.Condition>
+			<SequenceActivity x:Name="sequenceActivity2">
+				<ns0:WaitInput Customer="{ActivityBind CombineLCMBTDL,Path=Customer}" x:Name="waitInput1" Editor="{ActivityBind CombineLCMBTDL,Path=Editor}" Station="{ActivityBind CombineLCMBTDL,Path=Station}" SessionType="{ActivityBind CombineLCMBTDL,Path=SessionType}" Line="{ActivityBind CombineLCMBTDL,Path=PdLine}" Key="{ActivityBind CombineLCMBTDL,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity1">
+					<IfElseBranchActivity x:Name="VenderSNCheckFailed">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="checkpass" />
+						</IfElseBranchActivity.Condition>
+						<ns0:CheckVendorSN Customer="{ActivityBind CombineLCMBTDL,Path=Customer}" x:Name="checkVendorSN1" Editor="{ActivityBind CombineLCMBTDL,Path=Editor}" Station="{ActivityBind CombineLCMBTDL,Path=Station}" SessionType="{ActivityBind CombineLCMBTDL,Path=SessionType}" Line="{ActivityBind CombineLCMBTDL,Path=PdLine}" Key="{ActivityBind CombineLCMBTDL,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</SequenceActivity>
+		</WhileActivity>
+		<WhileActivity x:Name="whileActivity1">
+			<WhileActivity.Condition>
+				<RuleConditionReference ConditionName="doBTDLSN" />
+			</WhileActivity.Condition>
+			<SequenceActivity x:Name="sequenceActivity1">
+				<ns0:WaitInput Customer="{ActivityBind CombineLCMBTDL,Path=Customer}" x:Name="waitInput2" Editor="{ActivityBind CombineLCMBTDL,Path=Editor}" Station="{ActivityBind CombineLCMBTDL,Path=Station}" SessionType="{ActivityBind CombineLCMBTDL,Path=SessionType}" Line="{ActivityBind CombineLCMBTDL,Path=PdLine}" Key="{ActivityBind CombineLCMBTDL,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity2">
+					<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="checkpass" />
+						</IfElseBranchActivity.Condition>
+						<ns0:CheckBTDLSN Customer="{ActivityBind CombineLCMBTDL,Path=Customer}" x:Name="checkBTDLSN1" Editor="{ActivityBind CombineLCMBTDL,Path=Editor}" Station="{ActivityBind CombineLCMBTDL,Path=Station}" SessionType="{ActivityBind CombineLCMBTDL,Path=SessionType}" Line="{ActivityBind CombineLCMBTDL,Path=PdLine}" Key="{ActivityBind CombineLCMBTDL,Path=Key}" />
+						<ns0:DBScope Station="{ActivityBind CombineLCMBTDL,Path=Station}" SessionType="{ActivityBind CombineLCMBTDL,Path=SessionType}" x:Name="dbScope1" Key="{ActivityBind CombineLCMBTDL,Path=Key}">
+							<ns0:SaveBTDL Customer="{ActivityBind CombineLCMBTDL,Path=Customer}" x:Name="saveBTDL1" Editor="{ActivityBind CombineLCMBTDL,Path=Editor}" Station="{ActivityBind CombineLCMBTDL,Path=Station}" SessionType="{ActivityBind CombineLCMBTDL,Path=SessionType}" Line="{ActivityBind CombineLCMBTDL,Path=PdLine}" Key="{ActivityBind CombineLCMBTDL,Path=Key}" />
+						</ns0:DBScope>  
+						<ns0:DataMigration Customer="{ActivityBind CombineLCMBTDL,Path=Customer}" x:Name="dataMigration1" Editor="{ActivityBind CombineLCMBTDL,Path=Editor}" Station="{ActivityBind CombineLCMBTDL,Path=Station}" SessionType="{ActivityBind CombineLCMBTDL,Path=SessionType}" Line="{ActivityBind CombineLCMBTDL,Path=PdLine}" Key="{ActivityBind CombineLCMBTDL,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</SequenceActivity>
+		</WhileActivity>
+	</SynchronizationScopeActivity>
+</ns0:BaseFlow>

@@ -1,0 +1,2613 @@
+<RuleDefinitions xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<RuleDefinitions.RuleSets>
+		<RuleSet Name="WritePrintLog" ChainingBehavior="None" Description="{p3:Null}" xmlns:p3="http://schemas.microsoft.com/winfx/2006/xaml">
+			<RuleSet.Rules>
+				<Rule Name="MB" ReevaluationBehavior="Always" Priority="4" Description="{p3:Null}" Active="True">
+					<Rule.ThenActions>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogBegNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeIndexerExpression>
+													<ns0:CodeIndexerExpression.Indices>
+														<ns0:CodePrimitiveExpression>
+															<ns0:CodePrimitiveExpression.Value>
+																<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Int32>
+															</ns0:CodePrimitiveExpression.Value>
+														</ns0:CodePrimitiveExpression>
+													</ns0:CodeIndexerExpression.Indices>
+													<ns0:CodeIndexerExpression.TargetObject>
+														<ns0:CodeCastExpression TargetType="System.Collections.Generic.List`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+															<ns0:CodeCastExpression.Expression>
+																<ns0:CodeMethodInvokeExpression>
+																	<ns0:CodeMethodInvokeExpression.Parameters>
+																		<ns0:CodeFieldReferenceExpression FieldName="MBNOList">
+																			<ns0:CodeFieldReferenceExpression.TargetObject>
+																				<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																			</ns0:CodeFieldReferenceExpression.TargetObject>
+																		</ns0:CodeFieldReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Parameters>
+																	<ns0:CodeMethodInvokeExpression.Method>
+																		<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																			<ns0:CodeMethodReferenceExpression.TargetObject>
+																				<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																					<ns0:CodePropertyReferenceExpression.TargetObject>
+																						<ns0:CodeThisReferenceExpression />
+																					</ns0:CodePropertyReferenceExpression.TargetObject>
+																				</ns0:CodePropertyReferenceExpression>
+																			</ns0:CodeMethodReferenceExpression.TargetObject>
+																		</ns0:CodeMethodReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Method>
+																</ns0:CodeMethodInvokeExpression>
+															</ns0:CodeCastExpression.Expression>
+														</ns0:CodeCastExpression>
+													</ns0:CodeIndexerExpression.TargetObject>
+												</ns0:CodeIndexerExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogEndNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeIndexerExpression>
+													<ns0:CodeIndexerExpression.Indices>
+														<ns0:CodeBinaryOperatorExpression Operator="Subtract">
+															<ns0:CodeBinaryOperatorExpression.Left>
+																<ns0:CodePropertyReferenceExpression PropertyName="Count">
+																	<ns0:CodePropertyReferenceExpression.TargetObject>
+																		<ns0:CodeCastExpression TargetType="System.Collections.Generic.List`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+																			<ns0:CodeCastExpression.Expression>
+																				<ns0:CodeMethodInvokeExpression>
+																					<ns0:CodeMethodInvokeExpression.Parameters>
+																						<ns0:CodeFieldReferenceExpression FieldName="MBNOList">
+																							<ns0:CodeFieldReferenceExpression.TargetObject>
+																								<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																							</ns0:CodeFieldReferenceExpression.TargetObject>
+																						</ns0:CodeFieldReferenceExpression>
+																					</ns0:CodeMethodInvokeExpression.Parameters>
+																					<ns0:CodeMethodInvokeExpression.Method>
+																						<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																							<ns0:CodeMethodReferenceExpression.TargetObject>
+																								<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																									<ns0:CodePropertyReferenceExpression.TargetObject>
+																										<ns0:CodeThisReferenceExpression />
+																									</ns0:CodePropertyReferenceExpression.TargetObject>
+																								</ns0:CodePropertyReferenceExpression>
+																							</ns0:CodeMethodReferenceExpression.TargetObject>
+																						</ns0:CodeMethodReferenceExpression>
+																					</ns0:CodeMethodInvokeExpression.Method>
+																				</ns0:CodeMethodInvokeExpression>
+																			</ns0:CodeCastExpression.Expression>
+																		</ns0:CodeCastExpression>
+																	</ns0:CodePropertyReferenceExpression.TargetObject>
+																</ns0:CodePropertyReferenceExpression>
+															</ns0:CodeBinaryOperatorExpression.Left>
+															<ns0:CodeBinaryOperatorExpression.Right>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">1</ns1:Int32>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+															</ns0:CodeBinaryOperatorExpression.Right>
+														</ns0:CodeBinaryOperatorExpression>
+													</ns0:CodeIndexerExpression.Indices>
+													<ns0:CodeIndexerExpression.TargetObject>
+														<ns0:CodeCastExpression TargetType="System.Collections.Generic.List`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+															<ns0:CodeCastExpression.Expression>
+																<ns0:CodeMethodInvokeExpression>
+																	<ns0:CodeMethodInvokeExpression.Parameters>
+																		<ns0:CodeFieldReferenceExpression FieldName="MBNOList">
+																			<ns0:CodeFieldReferenceExpression.TargetObject>
+																				<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																			</ns0:CodeFieldReferenceExpression.TargetObject>
+																		</ns0:CodeFieldReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Parameters>
+																	<ns0:CodeMethodInvokeExpression.Method>
+																		<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																			<ns0:CodeMethodReferenceExpression.TargetObject>
+																				<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																					<ns0:CodePropertyReferenceExpression.TargetObject>
+																						<ns0:CodeThisReferenceExpression />
+																					</ns0:CodePropertyReferenceExpression.TargetObject>
+																				</ns0:CodePropertyReferenceExpression>
+																			</ns0:CodeMethodReferenceExpression.TargetObject>
+																		</ns0:CodeMethodReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Method>
+																</ns0:CodeMethodInvokeExpression>
+															</ns0:CodeCastExpression.Expression>
+														</ns0:CodeCastExpression>
+													</ns0:CodeIndexerExpression.TargetObject>
+												</ns0:CodeIndexerExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogName">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodePropertyReferenceExpression PropertyName="Type">
+													<ns0:CodePropertyReferenceExpression.TargetObject>
+														<ns0:CodeMethodInvokeExpression>
+															<ns0:CodeMethodInvokeExpression.Parameters>
+																<ns0:CodeMethodInvokeExpression>
+																	<ns0:CodeMethodInvokeExpression.Parameters>
+																		<ns0:CodeFieldReferenceExpression FieldName="ModelName">
+																			<ns0:CodeFieldReferenceExpression.TargetObject>
+																				<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																			</ns0:CodeFieldReferenceExpression.TargetObject>
+																		</ns0:CodeFieldReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Parameters>
+																	<ns0:CodeMethodInvokeExpression.Method>
+																		<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																			<ns0:CodeMethodReferenceExpression.TargetObject>
+																				<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																					<ns0:CodePropertyReferenceExpression.TargetObject>
+																						<ns0:CodeThisReferenceExpression />
+																					</ns0:CodePropertyReferenceExpression.TargetObject>
+																				</ns0:CodePropertyReferenceExpression>
+																			</ns0:CodeMethodReferenceExpression.TargetObject>
+																		</ns0:CodeMethodReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Method>
+																</ns0:CodeMethodInvokeExpression>
+															</ns0:CodeMethodInvokeExpression.Parameters>
+															<ns0:CodeMethodInvokeExpression.Method>
+																<ns0:CodeMethodReferenceExpression MethodName="Find">
+																	<ns0:CodeMethodReferenceExpression.TargetObject>
+																		<ns0:CodeCastExpression TargetType="IMES.FisObject.PCA.MBModel.IMBModelRepository, IMES.FisObject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+																			<ns0:CodeCastExpression.Expression>
+																				<ns0:CodeMethodInvokeExpression>
+																					<ns0:CodeMethodInvokeExpression.Parameters>
+																						<ns0:CodePrimitiveExpression>
+																							<ns0:CodePrimitiveExpression.Value>
+																								<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">IMBModelRepository</ns1:String>
+																							</ns0:CodePrimitiveExpression.Value>
+																						</ns0:CodePrimitiveExpression>
+																					</ns0:CodeMethodInvokeExpression.Parameters>
+																					<ns0:CodeMethodInvokeExpression.Method>
+																						<ns0:CodeMethodReferenceExpression MethodName="GetRepoistory">
+																							<ns0:CodeMethodReferenceExpression.TargetObject>
+																								<ns0:CodeMethodInvokeExpression>
+																									<ns0:CodeMethodInvokeExpression.Method>
+																										<ns0:CodeMethodReferenceExpression MethodName="GetInstance">
+																											<ns0:CodeMethodReferenceExpression.TargetObject>
+																												<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.FisObjectRepositoryFramework.RepositoryFactory, IMES.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																											</ns0:CodeMethodReferenceExpression.TargetObject>
+																										</ns0:CodeMethodReferenceExpression>
+																									</ns0:CodeMethodInvokeExpression.Method>
+																								</ns0:CodeMethodInvokeExpression>
+																							</ns0:CodeMethodReferenceExpression.TargetObject>
+																						</ns0:CodeMethodReferenceExpression>
+																					</ns0:CodeMethodInvokeExpression.Method>
+																				</ns0:CodeMethodInvokeExpression>
+																			</ns0:CodeCastExpression.Expression>
+																		</ns0:CodeCastExpression>
+																	</ns0:CodeMethodReferenceExpression.TargetObject>
+																</ns0:CodeMethodReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Method>
+														</ns0:CodeMethodInvokeExpression>
+													</ns0:CodePropertyReferenceExpression.TargetObject>
+												</ns0:CodePropertyReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogDescr">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeBinaryOperatorExpression Operator="Add">
+													<ns0:CodeBinaryOperatorExpression.Left>
+														<ns0:CodeBinaryOperatorExpression Operator="Add">
+															<ns0:CodeBinaryOperatorExpression.Left>
+																<ns0:CodeBinaryOperatorExpression Operator="Add">
+																	<ns0:CodeBinaryOperatorExpression.Left>
+																		<ns0:CodeBinaryOperatorExpression Operator="Add">
+																			<ns0:CodeBinaryOperatorExpression.Left>
+																				<ns0:CodePropertyReferenceExpression PropertyName="PdLine">
+																					<ns0:CodePropertyReferenceExpression.TargetObject>
+																						<ns0:CodeThisReferenceExpression />
+																					</ns0:CodePropertyReferenceExpression.TargetObject>
+																				</ns0:CodePropertyReferenceExpression>
+																			</ns0:CodeBinaryOperatorExpression.Left>
+																			<ns0:CodeBinaryOperatorExpression.Right>
+																				<ns0:CodePrimitiveExpression>
+																					<ns0:CodePrimitiveExpression.Value>
+																						<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"> </ns1:String>
+																					</ns0:CodePrimitiveExpression.Value>
+																				</ns0:CodePrimitiveExpression>
+																			</ns0:CodeBinaryOperatorExpression.Right>
+																		</ns0:CodeBinaryOperatorExpression>
+																	</ns0:CodeBinaryOperatorExpression.Left>
+																	<ns0:CodeBinaryOperatorExpression.Right>
+																		<ns0:CodeMethodInvokeExpression>
+																			<ns0:CodeMethodInvokeExpression.Method>
+																				<ns0:CodeMethodReferenceExpression MethodName="ToString">
+																					<ns0:CodeMethodReferenceExpression.TargetObject>
+																						<ns0:CodeMethodInvokeExpression>
+																							<ns0:CodeMethodInvokeExpression.Parameters>
+																								<ns0:CodeFieldReferenceExpression FieldName="MBMONO">
+																									<ns0:CodeFieldReferenceExpression.TargetObject>
+																										<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																									</ns0:CodeFieldReferenceExpression.TargetObject>
+																								</ns0:CodeFieldReferenceExpression>
+																							</ns0:CodeMethodInvokeExpression.Parameters>
+																							<ns0:CodeMethodInvokeExpression.Method>
+																								<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																									<ns0:CodeMethodReferenceExpression.TargetObject>
+																										<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																											<ns0:CodePropertyReferenceExpression.TargetObject>
+																												<ns0:CodeThisReferenceExpression />
+																											</ns0:CodePropertyReferenceExpression.TargetObject>
+																										</ns0:CodePropertyReferenceExpression>
+																									</ns0:CodeMethodReferenceExpression.TargetObject>
+																								</ns0:CodeMethodReferenceExpression>
+																							</ns0:CodeMethodInvokeExpression.Method>
+																						</ns0:CodeMethodInvokeExpression>
+																					</ns0:CodeMethodReferenceExpression.TargetObject>
+																				</ns0:CodeMethodReferenceExpression>
+																			</ns0:CodeMethodInvokeExpression.Method>
+																		</ns0:CodeMethodInvokeExpression>
+																	</ns0:CodeBinaryOperatorExpression.Right>
+																</ns0:CodeBinaryOperatorExpression>
+															</ns0:CodeBinaryOperatorExpression.Left>
+															<ns0:CodeBinaryOperatorExpression.Right>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"> </ns1:String>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+															</ns0:CodeBinaryOperatorExpression.Right>
+														</ns0:CodeBinaryOperatorExpression>
+													</ns0:CodeBinaryOperatorExpression.Left>
+													<ns0:CodeBinaryOperatorExpression.Right>
+														<ns0:CodeMethodInvokeExpression>
+															<ns0:CodeMethodInvokeExpression.Method>
+																<ns0:CodeMethodReferenceExpression MethodName="ToString">
+																	<ns0:CodeMethodReferenceExpression.TargetObject>
+																		<ns0:CodeMethodInvokeExpression>
+																			<ns0:CodeMethodInvokeExpression.Parameters>
+																				<ns0:CodeFieldReferenceExpression FieldName="ModelName">
+																					<ns0:CodeFieldReferenceExpression.TargetObject>
+																						<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																					</ns0:CodeFieldReferenceExpression.TargetObject>
+																				</ns0:CodeFieldReferenceExpression>
+																			</ns0:CodeMethodInvokeExpression.Parameters>
+																			<ns0:CodeMethodInvokeExpression.Method>
+																				<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																					<ns0:CodeMethodReferenceExpression.TargetObject>
+																						<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																							<ns0:CodePropertyReferenceExpression.TargetObject>
+																								<ns0:CodeThisReferenceExpression />
+																							</ns0:CodePropertyReferenceExpression.TargetObject>
+																						</ns0:CodePropertyReferenceExpression>
+																					</ns0:CodeMethodReferenceExpression.TargetObject>
+																				</ns0:CodeMethodReferenceExpression>
+																			</ns0:CodeMethodInvokeExpression.Method>
+																		</ns0:CodeMethodInvokeExpression>
+																	</ns0:CodeMethodReferenceExpression.TargetObject>
+																</ns0:CodeMethodReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Method>
+														</ns0:CodeMethodInvokeExpression>
+													</ns0:CodeBinaryOperatorExpression.Right>
+												</ns0:CodeBinaryOperatorExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+					</Rule.ThenActions>
+					<Rule.Condition>
+						<RuleExpressionCondition Name="{p3:Null}">
+							<RuleExpressionCondition.Expression>
+								<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="ToString">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodeMethodInvokeExpression>
+															<ns0:CodeMethodInvokeExpression.Parameters>
+																<ns0:CodeFieldReferenceExpression FieldName="LogType">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Parameters>
+															<ns0:CodeMethodInvokeExpression.Method>
+																<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																	<ns0:CodeMethodReferenceExpression.TargetObject>
+																		<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																			<ns0:CodePropertyReferenceExpression.TargetObject>
+																				<ns0:CodeThisReferenceExpression />
+																			</ns0:CodePropertyReferenceExpression.TargetObject>
+																		</ns0:CodePropertyReferenceExpression>
+																	</ns0:CodeMethodReferenceExpression.TargetObject>
+																</ns0:CodeMethodReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Method>
+														</ns0:CodeMethodInvokeExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">MB</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+								</ns0:CodeBinaryOperatorExpression>
+							</RuleExpressionCondition.Expression>
+						</RuleExpressionCondition>
+					</Rule.Condition>
+				</Rule>
+				<Rule Name="SMTMO" ReevaluationBehavior="Always" Priority="0" Description="{p3:Null}" Active="True">
+					<Rule.ThenActions>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogBegNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeCastExpression TargetType="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+													<ns0:CodeCastExpression.Expression>
+														<ns0:CodeMethodInvokeExpression>
+															<ns0:CodeMethodInvokeExpression.Parameters>
+																<ns0:CodeFieldReferenceExpression FieldName="MBMONO">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Parameters>
+															<ns0:CodeMethodInvokeExpression.Method>
+																<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																	<ns0:CodeMethodReferenceExpression.TargetObject>
+																		<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																			<ns0:CodePropertyReferenceExpression.TargetObject>
+																				<ns0:CodeThisReferenceExpression />
+																			</ns0:CodePropertyReferenceExpression.TargetObject>
+																		</ns0:CodePropertyReferenceExpression>
+																	</ns0:CodeMethodReferenceExpression.TargetObject>
+																</ns0:CodeMethodReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Method>
+														</ns0:CodeMethodInvokeExpression>
+													</ns0:CodeCastExpression.Expression>
+												</ns0:CodeCastExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogEndNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeCastExpression TargetType="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+													<ns0:CodeCastExpression.Expression>
+														<ns0:CodeMethodInvokeExpression>
+															<ns0:CodeMethodInvokeExpression.Parameters>
+																<ns0:CodeFieldReferenceExpression FieldName="MBMONO">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Parameters>
+															<ns0:CodeMethodInvokeExpression.Method>
+																<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																	<ns0:CodeMethodReferenceExpression.TargetObject>
+																		<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																			<ns0:CodePropertyReferenceExpression.TargetObject>
+																				<ns0:CodeThisReferenceExpression />
+																			</ns0:CodePropertyReferenceExpression.TargetObject>
+																		</ns0:CodePropertyReferenceExpression>
+																	</ns0:CodeMethodReferenceExpression.TargetObject>
+																</ns0:CodeMethodReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Method>
+														</ns0:CodeMethodInvokeExpression>
+													</ns0:CodeCastExpression.Expression>
+												</ns0:CodeCastExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogName">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodePrimitiveExpression>
+													<ns0:CodePrimitiveExpression.Value>
+														<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">SMTMO</ns1:String>
+													</ns0:CodePrimitiveExpression.Value>
+												</ns0:CodePrimitiveExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogDescr">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeCastExpression TargetType="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+													<ns0:CodeCastExpression.Expression>
+														<ns0:CodeMethodInvokeExpression>
+															<ns0:CodeMethodInvokeExpression.Parameters>
+																<ns0:CodeFieldReferenceExpression FieldName="PN111">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Parameters>
+															<ns0:CodeMethodInvokeExpression.Method>
+																<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																	<ns0:CodeMethodReferenceExpression.TargetObject>
+																		<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																			<ns0:CodePropertyReferenceExpression.TargetObject>
+																				<ns0:CodeThisReferenceExpression />
+																			</ns0:CodePropertyReferenceExpression.TargetObject>
+																		</ns0:CodePropertyReferenceExpression>
+																	</ns0:CodeMethodReferenceExpression.TargetObject>
+																</ns0:CodeMethodReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Method>
+														</ns0:CodeMethodInvokeExpression>
+													</ns0:CodeCastExpression.Expression>
+												</ns0:CodeCastExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+					</Rule.ThenActions>
+					<Rule.Condition>
+						<RuleExpressionCondition Name="{p3:Null}">
+							<RuleExpressionCondition.Expression>
+								<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="ToString">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodeMethodInvokeExpression>
+															<ns0:CodeMethodInvokeExpression.Parameters>
+																<ns0:CodeFieldReferenceExpression FieldName="LogType">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Parameters>
+															<ns0:CodeMethodInvokeExpression.Method>
+																<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																	<ns0:CodeMethodReferenceExpression.TargetObject>
+																		<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																			<ns0:CodePropertyReferenceExpression.TargetObject>
+																				<ns0:CodeThisReferenceExpression />
+																			</ns0:CodePropertyReferenceExpression.TargetObject>
+																		</ns0:CodePropertyReferenceExpression>
+																	</ns0:CodeMethodReferenceExpression.TargetObject>
+																</ns0:CodeMethodReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Method>
+														</ns0:CodeMethodInvokeExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">SMTMO</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+								</ns0:CodeBinaryOperatorExpression>
+							</RuleExpressionCondition.Expression>
+						</RuleExpressionCondition>
+					</Rule.Condition>
+				</Rule>
+				<Rule Name="KP" ReevaluationBehavior="Always" Priority="0" Description="{p3:Null}" Active="True">
+					<Rule.ThenActions>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogBegNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeIndexerExpression>
+													<ns0:CodeIndexerExpression.Indices>
+														<ns0:CodePrimitiveExpression>
+															<ns0:CodePrimitiveExpression.Value>
+																<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Int32>
+															</ns0:CodePrimitiveExpression.Value>
+														</ns0:CodePrimitiveExpression>
+													</ns0:CodeIndexerExpression.Indices>
+													<ns0:CodeIndexerExpression.TargetObject>
+														<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+															<ns0:CodeCastExpression.Expression>
+																<ns0:CodeMethodInvokeExpression>
+																	<ns0:CodeMethodInvokeExpression.Parameters>
+																		<ns0:CodeFieldReferenceExpression FieldName="CTList">
+																			<ns0:CodeFieldReferenceExpression.TargetObject>
+																				<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																			</ns0:CodeFieldReferenceExpression.TargetObject>
+																		</ns0:CodeFieldReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Parameters>
+																	<ns0:CodeMethodInvokeExpression.Method>
+																		<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																			<ns0:CodeMethodReferenceExpression.TargetObject>
+																				<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																					<ns0:CodePropertyReferenceExpression.TargetObject>
+																						<ns0:CodeThisReferenceExpression />
+																					</ns0:CodePropertyReferenceExpression.TargetObject>
+																				</ns0:CodePropertyReferenceExpression>
+																			</ns0:CodeMethodReferenceExpression.TargetObject>
+																		</ns0:CodeMethodReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Method>
+																</ns0:CodeMethodInvokeExpression>
+															</ns0:CodeCastExpression.Expression>
+														</ns0:CodeCastExpression>
+													</ns0:CodeIndexerExpression.TargetObject>
+												</ns0:CodeIndexerExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogEndNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeIndexerExpression>
+													<ns0:CodeIndexerExpression.Indices>
+														<ns0:CodeBinaryOperatorExpression Operator="Subtract">
+															<ns0:CodeBinaryOperatorExpression.Left>
+																<ns0:CodePropertyReferenceExpression PropertyName="Count">
+																	<ns0:CodePropertyReferenceExpression.TargetObject>
+																		<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+																			<ns0:CodeCastExpression.Expression>
+																				<ns0:CodeMethodInvokeExpression>
+																					<ns0:CodeMethodInvokeExpression.Parameters>
+																						<ns0:CodeFieldReferenceExpression FieldName="CTList">
+																							<ns0:CodeFieldReferenceExpression.TargetObject>
+																								<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																							</ns0:CodeFieldReferenceExpression.TargetObject>
+																						</ns0:CodeFieldReferenceExpression>
+																					</ns0:CodeMethodInvokeExpression.Parameters>
+																					<ns0:CodeMethodInvokeExpression.Method>
+																						<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																							<ns0:CodeMethodReferenceExpression.TargetObject>
+																								<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																									<ns0:CodePropertyReferenceExpression.TargetObject>
+																										<ns0:CodeThisReferenceExpression />
+																									</ns0:CodePropertyReferenceExpression.TargetObject>
+																								</ns0:CodePropertyReferenceExpression>
+																							</ns0:CodeMethodReferenceExpression.TargetObject>
+																						</ns0:CodeMethodReferenceExpression>
+																					</ns0:CodeMethodInvokeExpression.Method>
+																				</ns0:CodeMethodInvokeExpression>
+																			</ns0:CodeCastExpression.Expression>
+																		</ns0:CodeCastExpression>
+																	</ns0:CodePropertyReferenceExpression.TargetObject>
+																</ns0:CodePropertyReferenceExpression>
+															</ns0:CodeBinaryOperatorExpression.Left>
+															<ns0:CodeBinaryOperatorExpression.Right>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">1</ns1:Int32>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+															</ns0:CodeBinaryOperatorExpression.Right>
+														</ns0:CodeBinaryOperatorExpression>
+													</ns0:CodeIndexerExpression.Indices>
+													<ns0:CodeIndexerExpression.TargetObject>
+														<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+															<ns0:CodeCastExpression.Expression>
+																<ns0:CodeMethodInvokeExpression>
+																	<ns0:CodeMethodInvokeExpression.Parameters>
+																		<ns0:CodeFieldReferenceExpression FieldName="CTList">
+																			<ns0:CodeFieldReferenceExpression.TargetObject>
+																				<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																			</ns0:CodeFieldReferenceExpression.TargetObject>
+																		</ns0:CodeFieldReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Parameters>
+																	<ns0:CodeMethodInvokeExpression.Method>
+																		<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																			<ns0:CodeMethodReferenceExpression.TargetObject>
+																				<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																					<ns0:CodePropertyReferenceExpression.TargetObject>
+																						<ns0:CodeThisReferenceExpression />
+																					</ns0:CodePropertyReferenceExpression.TargetObject>
+																				</ns0:CodePropertyReferenceExpression>
+																			</ns0:CodeMethodReferenceExpression.TargetObject>
+																		</ns0:CodeMethodReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Method>
+																</ns0:CodeMethodInvokeExpression>
+															</ns0:CodeCastExpression.Expression>
+														</ns0:CodeCastExpression>
+													</ns0:CodeIndexerExpression.TargetObject>
+												</ns0:CodeIndexerExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogName">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodePrimitiveExpression>
+													<ns0:CodePrimitiveExpression.Value>
+														<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">KP</ns1:String>
+													</ns0:CodePrimitiveExpression.Value>
+												</ns0:CodePrimitiveExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogDescr">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeCastExpression TargetType="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+													<ns0:CodeCastExpression.Expression>
+														<ns0:CodeMethodInvokeExpression>
+															<ns0:CodeMethodInvokeExpression.Parameters>
+																<ns0:CodeFieldReferenceExpression FieldName="PN111">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Parameters>
+															<ns0:CodeMethodInvokeExpression.Method>
+																<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																	<ns0:CodeMethodReferenceExpression.TargetObject>
+																		<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																			<ns0:CodePropertyReferenceExpression.TargetObject>
+																				<ns0:CodeThisReferenceExpression />
+																			</ns0:CodePropertyReferenceExpression.TargetObject>
+																		</ns0:CodePropertyReferenceExpression>
+																	</ns0:CodeMethodReferenceExpression.TargetObject>
+																</ns0:CodeMethodReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Method>
+														</ns0:CodeMethodInvokeExpression>
+													</ns0:CodeCastExpression.Expression>
+												</ns0:CodeCastExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+					</Rule.ThenActions>
+					<Rule.Condition>
+						<RuleExpressionCondition Name="{p3:Null}">
+							<RuleExpressionCondition.Expression>
+								<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="ToString">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodeMethodInvokeExpression>
+															<ns0:CodeMethodInvokeExpression.Parameters>
+																<ns0:CodeFieldReferenceExpression FieldName="LogType">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Parameters>
+															<ns0:CodeMethodInvokeExpression.Method>
+																<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																	<ns0:CodeMethodReferenceExpression.TargetObject>
+																		<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																			<ns0:CodePropertyReferenceExpression.TargetObject>
+																				<ns0:CodeThisReferenceExpression />
+																			</ns0:CodePropertyReferenceExpression.TargetObject>
+																		</ns0:CodePropertyReferenceExpression>
+																	</ns0:CodeMethodReferenceExpression.TargetObject>
+																</ns0:CodeMethodReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Method>
+														</ns0:CodeMethodInvokeExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">KP</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+								</ns0:CodeBinaryOperatorExpression>
+							</RuleExpressionCondition.Expression>
+						</RuleExpressionCondition>
+					</Rule.Condition>
+				</Rule>
+				<Rule Name="CUSTOMERSN" ReevaluationBehavior="Always" Priority="0" Description="{p3:Null}" Active="True">
+					<Rule.ThenActions>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogBegNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeIndexerExpression>
+													<ns0:CodeIndexerExpression.Indices>
+														<ns0:CodePrimitiveExpression>
+															<ns0:CodePrimitiveExpression.Value>
+																<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Int32>
+															</ns0:CodePrimitiveExpression.Value>
+														</ns0:CodePrimitiveExpression>
+													</ns0:CodeIndexerExpression.Indices>
+													<ns0:CodeIndexerExpression.TargetObject>
+														<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+															<ns0:CodeCastExpression.Expression>
+																<ns0:CodeMethodInvokeExpression>
+																	<ns0:CodeMethodInvokeExpression.Parameters>
+																		<ns0:CodeFieldReferenceExpression FieldName="CustomSnList">
+																			<ns0:CodeFieldReferenceExpression.TargetObject>
+																				<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																			</ns0:CodeFieldReferenceExpression.TargetObject>
+																		</ns0:CodeFieldReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Parameters>
+																	<ns0:CodeMethodInvokeExpression.Method>
+																		<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																			<ns0:CodeMethodReferenceExpression.TargetObject>
+																				<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																					<ns0:CodePropertyReferenceExpression.TargetObject>
+																						<ns0:CodeThisReferenceExpression />
+																					</ns0:CodePropertyReferenceExpression.TargetObject>
+																				</ns0:CodePropertyReferenceExpression>
+																			</ns0:CodeMethodReferenceExpression.TargetObject>
+																		</ns0:CodeMethodReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Method>
+																</ns0:CodeMethodInvokeExpression>
+															</ns0:CodeCastExpression.Expression>
+														</ns0:CodeCastExpression>
+													</ns0:CodeIndexerExpression.TargetObject>
+												</ns0:CodeIndexerExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogEndNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeIndexerExpression>
+													<ns0:CodeIndexerExpression.Indices>
+														<ns0:CodeBinaryOperatorExpression Operator="Subtract">
+															<ns0:CodeBinaryOperatorExpression.Left>
+																<ns0:CodePropertyReferenceExpression PropertyName="Count">
+																	<ns0:CodePropertyReferenceExpression.TargetObject>
+																		<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+																			<ns0:CodeCastExpression.Expression>
+																				<ns0:CodeMethodInvokeExpression>
+																					<ns0:CodeMethodInvokeExpression.Parameters>
+																						<ns0:CodeFieldReferenceExpression FieldName="CustomSnList">
+																							<ns0:CodeFieldReferenceExpression.TargetObject>
+																								<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																							</ns0:CodeFieldReferenceExpression.TargetObject>
+																						</ns0:CodeFieldReferenceExpression>
+																					</ns0:CodeMethodInvokeExpression.Parameters>
+																					<ns0:CodeMethodInvokeExpression.Method>
+																						<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																							<ns0:CodeMethodReferenceExpression.TargetObject>
+																								<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																									<ns0:CodePropertyReferenceExpression.TargetObject>
+																										<ns0:CodeThisReferenceExpression />
+																									</ns0:CodePropertyReferenceExpression.TargetObject>
+																								</ns0:CodePropertyReferenceExpression>
+																							</ns0:CodeMethodReferenceExpression.TargetObject>
+																						</ns0:CodeMethodReferenceExpression>
+																					</ns0:CodeMethodInvokeExpression.Method>
+																				</ns0:CodeMethodInvokeExpression>
+																			</ns0:CodeCastExpression.Expression>
+																		</ns0:CodeCastExpression>
+																	</ns0:CodePropertyReferenceExpression.TargetObject>
+																</ns0:CodePropertyReferenceExpression>
+															</ns0:CodeBinaryOperatorExpression.Left>
+															<ns0:CodeBinaryOperatorExpression.Right>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">1</ns1:Int32>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+															</ns0:CodeBinaryOperatorExpression.Right>
+														</ns0:CodeBinaryOperatorExpression>
+													</ns0:CodeIndexerExpression.Indices>
+													<ns0:CodeIndexerExpression.TargetObject>
+														<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+															<ns0:CodeCastExpression.Expression>
+																<ns0:CodeMethodInvokeExpression>
+																	<ns0:CodeMethodInvokeExpression.Parameters>
+																		<ns0:CodeFieldReferenceExpression FieldName="CustomSnList">
+																			<ns0:CodeFieldReferenceExpression.TargetObject>
+																				<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																			</ns0:CodeFieldReferenceExpression.TargetObject>
+																		</ns0:CodeFieldReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Parameters>
+																	<ns0:CodeMethodInvokeExpression.Method>
+																		<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																			<ns0:CodeMethodReferenceExpression.TargetObject>
+																				<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																					<ns0:CodePropertyReferenceExpression.TargetObject>
+																						<ns0:CodeThisReferenceExpression />
+																					</ns0:CodePropertyReferenceExpression.TargetObject>
+																				</ns0:CodePropertyReferenceExpression>
+																			</ns0:CodeMethodReferenceExpression.TargetObject>
+																		</ns0:CodeMethodReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Method>
+																</ns0:CodeMethodInvokeExpression>
+															</ns0:CodeCastExpression.Expression>
+														</ns0:CodeCastExpression>
+													</ns0:CodeIndexerExpression.TargetObject>
+												</ns0:CodeIndexerExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogName">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeBinaryOperatorExpression Operator="Add">
+													<ns0:CodeBinaryOperatorExpression.Left>
+														<ns0:CodePropertyReferenceExpression PropertyName="Customer">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeBinaryOperatorExpression.Left>
+													<ns0:CodeBinaryOperatorExpression.Right>
+														<ns0:CodePrimitiveExpression>
+															<ns0:CodePrimitiveExpression.Value>
+																<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">SNO</ns1:String>
+															</ns0:CodePrimitiveExpression.Value>
+														</ns0:CodePrimitiveExpression>
+													</ns0:CodeBinaryOperatorExpression.Right>
+												</ns0:CodeBinaryOperatorExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogDescr">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeCastExpression TargetType="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+													<ns0:CodeCastExpression.Expression>
+														<ns0:CodeMethodInvokeExpression>
+															<ns0:CodeMethodInvokeExpression.Parameters>
+																<ns0:CodeFieldReferenceExpression FieldName="ModelForRule">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Parameters>
+															<ns0:CodeMethodInvokeExpression.Method>
+																<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																	<ns0:CodeMethodReferenceExpression.TargetObject>
+																		<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																			<ns0:CodePropertyReferenceExpression.TargetObject>
+																				<ns0:CodeThisReferenceExpression />
+																			</ns0:CodePropertyReferenceExpression.TargetObject>
+																		</ns0:CodePropertyReferenceExpression>
+																	</ns0:CodeMethodReferenceExpression.TargetObject>
+																</ns0:CodeMethodReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Method>
+														</ns0:CodeMethodInvokeExpression>
+													</ns0:CodeCastExpression.Expression>
+												</ns0:CodeCastExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+					</Rule.ThenActions>
+					<Rule.Condition>
+						<RuleExpressionCondition Name="{p3:Null}">
+							<RuleExpressionCondition.Expression>
+								<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="ToString">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodeMethodInvokeExpression>
+															<ns0:CodeMethodInvokeExpression.Parameters>
+																<ns0:CodeFieldReferenceExpression FieldName="LogType">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Parameters>
+															<ns0:CodeMethodInvokeExpression.Method>
+																<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																	<ns0:CodeMethodReferenceExpression.TargetObject>
+																		<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																			<ns0:CodePropertyReferenceExpression.TargetObject>
+																				<ns0:CodeThisReferenceExpression />
+																			</ns0:CodePropertyReferenceExpression.TargetObject>
+																		</ns0:CodePropertyReferenceExpression>
+																	</ns0:CodeMethodReferenceExpression.TargetObject>
+																</ns0:CodeMethodReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Method>
+														</ns0:CodeMethodInvokeExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">CUSTOMERSN</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+								</ns0:CodeBinaryOperatorExpression>
+							</RuleExpressionCondition.Expression>
+						</RuleExpressionCondition>
+					</Rule.Condition>
+				</Rule>
+				<Rule Name="PRD" ReevaluationBehavior="Always" Priority="0" Description="{p3:Null}" Active="True">
+					<Rule.ThenActions>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogBegNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeIndexerExpression>
+													<ns0:CodeIndexerExpression.Indices>
+														<ns0:CodePrimitiveExpression>
+															<ns0:CodePrimitiveExpression.Value>
+																<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Int32>
+															</ns0:CodePrimitiveExpression.Value>
+														</ns0:CodePrimitiveExpression>
+													</ns0:CodeIndexerExpression.Indices>
+													<ns0:CodeIndexerExpression.TargetObject>
+														<ns0:CodeCastExpression TargetType="System.Collections.Generic.List`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+															<ns0:CodeCastExpression.Expression>
+																<ns0:CodeMethodInvokeExpression>
+																	<ns0:CodeMethodInvokeExpression.Parameters>
+																		<ns0:CodeFieldReferenceExpression FieldName="ProdNoList">
+																			<ns0:CodeFieldReferenceExpression.TargetObject>
+																				<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																			</ns0:CodeFieldReferenceExpression.TargetObject>
+																		</ns0:CodeFieldReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Parameters>
+																	<ns0:CodeMethodInvokeExpression.Method>
+																		<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																			<ns0:CodeMethodReferenceExpression.TargetObject>
+																				<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																					<ns0:CodePropertyReferenceExpression.TargetObject>
+																						<ns0:CodeThisReferenceExpression />
+																					</ns0:CodePropertyReferenceExpression.TargetObject>
+																				</ns0:CodePropertyReferenceExpression>
+																			</ns0:CodeMethodReferenceExpression.TargetObject>
+																		</ns0:CodeMethodReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Method>
+																</ns0:CodeMethodInvokeExpression>
+															</ns0:CodeCastExpression.Expression>
+														</ns0:CodeCastExpression>
+													</ns0:CodeIndexerExpression.TargetObject>
+												</ns0:CodeIndexerExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogEndNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeIndexerExpression>
+													<ns0:CodeIndexerExpression.Indices>
+														<ns0:CodeBinaryOperatorExpression Operator="Subtract">
+															<ns0:CodeBinaryOperatorExpression.Left>
+																<ns0:CodePropertyReferenceExpression PropertyName="Count">
+																	<ns0:CodePropertyReferenceExpression.TargetObject>
+																		<ns0:CodeCastExpression TargetType="System.Collections.Generic.List`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+																			<ns0:CodeCastExpression.Expression>
+																				<ns0:CodeMethodInvokeExpression>
+																					<ns0:CodeMethodInvokeExpression.Parameters>
+																						<ns0:CodeFieldReferenceExpression FieldName="ProdNoList">
+																							<ns0:CodeFieldReferenceExpression.TargetObject>
+																								<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																							</ns0:CodeFieldReferenceExpression.TargetObject>
+																						</ns0:CodeFieldReferenceExpression>
+																					</ns0:CodeMethodInvokeExpression.Parameters>
+																					<ns0:CodeMethodInvokeExpression.Method>
+																						<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																							<ns0:CodeMethodReferenceExpression.TargetObject>
+																								<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																									<ns0:CodePropertyReferenceExpression.TargetObject>
+																										<ns0:CodeThisReferenceExpression />
+																									</ns0:CodePropertyReferenceExpression.TargetObject>
+																								</ns0:CodePropertyReferenceExpression>
+																							</ns0:CodeMethodReferenceExpression.TargetObject>
+																						</ns0:CodeMethodReferenceExpression>
+																					</ns0:CodeMethodInvokeExpression.Method>
+																				</ns0:CodeMethodInvokeExpression>
+																			</ns0:CodeCastExpression.Expression>
+																		</ns0:CodeCastExpression>
+																	</ns0:CodePropertyReferenceExpression.TargetObject>
+																</ns0:CodePropertyReferenceExpression>
+															</ns0:CodeBinaryOperatorExpression.Left>
+															<ns0:CodeBinaryOperatorExpression.Right>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">1</ns1:Int32>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+															</ns0:CodeBinaryOperatorExpression.Right>
+														</ns0:CodeBinaryOperatorExpression>
+													</ns0:CodeIndexerExpression.Indices>
+													<ns0:CodeIndexerExpression.TargetObject>
+														<ns0:CodeCastExpression TargetType="System.Collections.Generic.List`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+															<ns0:CodeCastExpression.Expression>
+																<ns0:CodeMethodInvokeExpression>
+																	<ns0:CodeMethodInvokeExpression.Parameters>
+																		<ns0:CodeFieldReferenceExpression FieldName="ProdNoList">
+																			<ns0:CodeFieldReferenceExpression.TargetObject>
+																				<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																			</ns0:CodeFieldReferenceExpression.TargetObject>
+																		</ns0:CodeFieldReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Parameters>
+																	<ns0:CodeMethodInvokeExpression.Method>
+																		<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																			<ns0:CodeMethodReferenceExpression.TargetObject>
+																				<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																					<ns0:CodePropertyReferenceExpression.TargetObject>
+																						<ns0:CodeThisReferenceExpression />
+																					</ns0:CodePropertyReferenceExpression.TargetObject>
+																				</ns0:CodePropertyReferenceExpression>
+																			</ns0:CodeMethodReferenceExpression.TargetObject>
+																		</ns0:CodeMethodReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Method>
+																</ns0:CodeMethodInvokeExpression>
+															</ns0:CodeCastExpression.Expression>
+														</ns0:CodeCastExpression>
+													</ns0:CodeIndexerExpression.TargetObject>
+												</ns0:CodeIndexerExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogName">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodePrimitiveExpression>
+													<ns0:CodePrimitiveExpression.Value>
+														<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">PrdId</ns1:String>
+													</ns0:CodePrimitiveExpression.Value>
+												</ns0:CodePrimitiveExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogDescr">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeMethodInvokeExpression>
+													<ns0:CodeMethodInvokeExpression.Method>
+														<ns0:CodeMethodReferenceExpression MethodName="ToString">
+															<ns0:CodeMethodReferenceExpression.TargetObject>
+																<ns0:CodeMethodInvokeExpression>
+																	<ns0:CodeMethodInvokeExpression.Parameters>
+																		<ns0:CodeFieldReferenceExpression FieldName="MONO">
+																			<ns0:CodeFieldReferenceExpression.TargetObject>
+																				<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																			</ns0:CodeFieldReferenceExpression.TargetObject>
+																		</ns0:CodeFieldReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Parameters>
+																	<ns0:CodeMethodInvokeExpression.Method>
+																		<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																			<ns0:CodeMethodReferenceExpression.TargetObject>
+																				<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																					<ns0:CodePropertyReferenceExpression.TargetObject>
+																						<ns0:CodeThisReferenceExpression />
+																					</ns0:CodePropertyReferenceExpression.TargetObject>
+																				</ns0:CodePropertyReferenceExpression>
+																			</ns0:CodeMethodReferenceExpression.TargetObject>
+																		</ns0:CodeMethodReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Method>
+																</ns0:CodeMethodInvokeExpression>
+															</ns0:CodeMethodReferenceExpression.TargetObject>
+														</ns0:CodeMethodReferenceExpression>
+													</ns0:CodeMethodInvokeExpression.Method>
+												</ns0:CodeMethodInvokeExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+					</Rule.ThenActions>
+					<Rule.Condition>
+						<RuleExpressionCondition Name="{p3:Null}">
+							<RuleExpressionCondition.Expression>
+								<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="ToString">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodeMethodInvokeExpression>
+															<ns0:CodeMethodInvokeExpression.Parameters>
+																<ns0:CodeFieldReferenceExpression FieldName="LogType">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Parameters>
+															<ns0:CodeMethodInvokeExpression.Method>
+																<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																	<ns0:CodeMethodReferenceExpression.TargetObject>
+																		<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																			<ns0:CodePropertyReferenceExpression.TargetObject>
+																				<ns0:CodeThisReferenceExpression />
+																			</ns0:CodePropertyReferenceExpression.TargetObject>
+																		</ns0:CodePropertyReferenceExpression>
+																	</ns0:CodeMethodReferenceExpression.TargetObject>
+																</ns0:CodeMethodReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Method>
+														</ns0:CodeMethodInvokeExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">PrdId</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+								</ns0:CodeBinaryOperatorExpression>
+							</RuleExpressionCondition.Expression>
+						</RuleExpressionCondition>
+					</Rule.Condition>
+				</Rule>
+				<Rule Name="SVB" ReevaluationBehavior="Always" Priority="0" Description="{p3:Null}" Active="True">
+					<Rule.ThenActions>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogBegNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeIndexerExpression>
+													<ns0:CodeIndexerExpression.Indices>
+														<ns0:CodePrimitiveExpression>
+															<ns0:CodePrimitiveExpression.Value>
+																<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Int32>
+															</ns0:CodePrimitiveExpression.Value>
+														</ns0:CodePrimitiveExpression>
+													</ns0:CodeIndexerExpression.Indices>
+													<ns0:CodeIndexerExpression.TargetObject>
+														<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+															<ns0:CodeCastExpression.Expression>
+																<ns0:CodeMethodInvokeExpression>
+																	<ns0:CodeMethodInvokeExpression.Parameters>
+																		<ns0:CodeFieldReferenceExpression FieldName="SVBSnList">
+																			<ns0:CodeFieldReferenceExpression.TargetObject>
+																				<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																			</ns0:CodeFieldReferenceExpression.TargetObject>
+																		</ns0:CodeFieldReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Parameters>
+																	<ns0:CodeMethodInvokeExpression.Method>
+																		<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																			<ns0:CodeMethodReferenceExpression.TargetObject>
+																				<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																					<ns0:CodePropertyReferenceExpression.TargetObject>
+																						<ns0:CodeThisReferenceExpression />
+																					</ns0:CodePropertyReferenceExpression.TargetObject>
+																				</ns0:CodePropertyReferenceExpression>
+																			</ns0:CodeMethodReferenceExpression.TargetObject>
+																		</ns0:CodeMethodReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Method>
+																</ns0:CodeMethodInvokeExpression>
+															</ns0:CodeCastExpression.Expression>
+														</ns0:CodeCastExpression>
+													</ns0:CodeIndexerExpression.TargetObject>
+												</ns0:CodeIndexerExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogEndNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeIndexerExpression>
+													<ns0:CodeIndexerExpression.Indices>
+														<ns0:CodeBinaryOperatorExpression Operator="Subtract">
+															<ns0:CodeBinaryOperatorExpression.Left>
+																<ns0:CodePropertyReferenceExpression PropertyName="Count">
+																	<ns0:CodePropertyReferenceExpression.TargetObject>
+																		<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+																			<ns0:CodeCastExpression.Expression>
+																				<ns0:CodeMethodInvokeExpression>
+																					<ns0:CodeMethodInvokeExpression.Parameters>
+																						<ns0:CodeFieldReferenceExpression FieldName="SVBSnList">
+																							<ns0:CodeFieldReferenceExpression.TargetObject>
+																								<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																							</ns0:CodeFieldReferenceExpression.TargetObject>
+																						</ns0:CodeFieldReferenceExpression>
+																					</ns0:CodeMethodInvokeExpression.Parameters>
+																					<ns0:CodeMethodInvokeExpression.Method>
+																						<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																							<ns0:CodeMethodReferenceExpression.TargetObject>
+																								<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																									<ns0:CodePropertyReferenceExpression.TargetObject>
+																										<ns0:CodeThisReferenceExpression />
+																									</ns0:CodePropertyReferenceExpression.TargetObject>
+																								</ns0:CodePropertyReferenceExpression>
+																							</ns0:CodeMethodReferenceExpression.TargetObject>
+																						</ns0:CodeMethodReferenceExpression>
+																					</ns0:CodeMethodInvokeExpression.Method>
+																				</ns0:CodeMethodInvokeExpression>
+																			</ns0:CodeCastExpression.Expression>
+																		</ns0:CodeCastExpression>
+																	</ns0:CodePropertyReferenceExpression.TargetObject>
+																</ns0:CodePropertyReferenceExpression>
+															</ns0:CodeBinaryOperatorExpression.Left>
+															<ns0:CodeBinaryOperatorExpression.Right>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">1</ns1:Int32>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+															</ns0:CodeBinaryOperatorExpression.Right>
+														</ns0:CodeBinaryOperatorExpression>
+													</ns0:CodeIndexerExpression.Indices>
+													<ns0:CodeIndexerExpression.TargetObject>
+														<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+															<ns0:CodeCastExpression.Expression>
+																<ns0:CodeMethodInvokeExpression>
+																	<ns0:CodeMethodInvokeExpression.Parameters>
+																		<ns0:CodeFieldReferenceExpression FieldName="SVBSnList">
+																			<ns0:CodeFieldReferenceExpression.TargetObject>
+																				<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																			</ns0:CodeFieldReferenceExpression.TargetObject>
+																		</ns0:CodeFieldReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Parameters>
+																	<ns0:CodeMethodInvokeExpression.Method>
+																		<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																			<ns0:CodeMethodReferenceExpression.TargetObject>
+																				<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																					<ns0:CodePropertyReferenceExpression.TargetObject>
+																						<ns0:CodeThisReferenceExpression />
+																					</ns0:CodePropertyReferenceExpression.TargetObject>
+																				</ns0:CodePropertyReferenceExpression>
+																			</ns0:CodeMethodReferenceExpression.TargetObject>
+																		</ns0:CodeMethodReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Method>
+																</ns0:CodeMethodInvokeExpression>
+															</ns0:CodeCastExpression.Expression>
+														</ns0:CodeCastExpression>
+													</ns0:CodeIndexerExpression.TargetObject>
+												</ns0:CodeIndexerExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogName">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodePrimitiveExpression>
+													<ns0:CodePrimitiveExpression.Value>
+														<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">SVB</ns1:String>
+													</ns0:CodePrimitiveExpression.Value>
+												</ns0:CodePrimitiveExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogDescr">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodePrimitiveExpression>
+													<ns0:CodePrimitiveExpression.Value>
+														<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">PCA</ns1:String>
+													</ns0:CodePrimitiveExpression.Value>
+												</ns0:CodePrimitiveExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+					</Rule.ThenActions>
+					<Rule.Condition>
+						<RuleExpressionCondition Name="{p3:Null}">
+							<RuleExpressionCondition.Expression>
+								<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="ToString">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodeMethodInvokeExpression>
+															<ns0:CodeMethodInvokeExpression.Parameters>
+																<ns0:CodeFieldReferenceExpression FieldName="LogType">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Parameters>
+															<ns0:CodeMethodInvokeExpression.Method>
+																<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																	<ns0:CodeMethodReferenceExpression.TargetObject>
+																		<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																			<ns0:CodePropertyReferenceExpression.TargetObject>
+																				<ns0:CodeThisReferenceExpression />
+																			</ns0:CodePropertyReferenceExpression.TargetObject>
+																		</ns0:CodePropertyReferenceExpression>
+																	</ns0:CodeMethodReferenceExpression.TargetObject>
+																</ns0:CodeMethodReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Method>
+														</ns0:CodeMethodInvokeExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">SVB</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+								</ns0:CodeBinaryOperatorExpression>
+							</RuleExpressionCondition.Expression>
+						</RuleExpressionCondition>
+					</Rule.Condition>
+				</Rule>
+				<Rule Name="FRUGiftCtn" ReevaluationBehavior="Always" Priority="0" Description="{p3:Null}" Active="True">
+					<Rule.ThenActions>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogBegNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeCastExpression TargetType="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+													<ns0:CodeCastExpression.Expression>
+														<ns0:CodeIndexerExpression>
+															<ns0:CodeIndexerExpression.Indices>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Int32>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+															</ns0:CodeIndexerExpression.Indices>
+															<ns0:CodeIndexerExpression.TargetObject>
+																<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+																	<ns0:CodeCastExpression.Expression>
+																		<ns0:CodeMethodInvokeExpression>
+																			<ns0:CodeMethodInvokeExpression.Parameters>
+																				<ns0:CodeFieldReferenceExpression FieldName="FRUCartonNoList">
+																					<ns0:CodeFieldReferenceExpression.TargetObject>
+																						<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																					</ns0:CodeFieldReferenceExpression.TargetObject>
+																				</ns0:CodeFieldReferenceExpression>
+																			</ns0:CodeMethodInvokeExpression.Parameters>
+																			<ns0:CodeMethodInvokeExpression.Method>
+																				<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																					<ns0:CodeMethodReferenceExpression.TargetObject>
+																						<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																							<ns0:CodePropertyReferenceExpression.TargetObject>
+																								<ns0:CodeThisReferenceExpression />
+																							</ns0:CodePropertyReferenceExpression.TargetObject>
+																						</ns0:CodePropertyReferenceExpression>
+																					</ns0:CodeMethodReferenceExpression.TargetObject>
+																				</ns0:CodeMethodReferenceExpression>
+																			</ns0:CodeMethodInvokeExpression.Method>
+																		</ns0:CodeMethodInvokeExpression>
+																	</ns0:CodeCastExpression.Expression>
+																</ns0:CodeCastExpression>
+															</ns0:CodeIndexerExpression.TargetObject>
+														</ns0:CodeIndexerExpression>
+													</ns0:CodeCastExpression.Expression>
+												</ns0:CodeCastExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogEndNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeCastExpression TargetType="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+													<ns0:CodeCastExpression.Expression>
+														<ns0:CodeIndexerExpression>
+															<ns0:CodeIndexerExpression.Indices>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Int32>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+															</ns0:CodeIndexerExpression.Indices>
+															<ns0:CodeIndexerExpression.TargetObject>
+																<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+																	<ns0:CodeCastExpression.Expression>
+																		<ns0:CodeMethodInvokeExpression>
+																			<ns0:CodeMethodInvokeExpression.Parameters>
+																				<ns0:CodeFieldReferenceExpression FieldName="FRUCartonNoList">
+																					<ns0:CodeFieldReferenceExpression.TargetObject>
+																						<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																					</ns0:CodeFieldReferenceExpression.TargetObject>
+																				</ns0:CodeFieldReferenceExpression>
+																			</ns0:CodeMethodInvokeExpression.Parameters>
+																			<ns0:CodeMethodInvokeExpression.Method>
+																				<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																					<ns0:CodeMethodReferenceExpression.TargetObject>
+																						<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																							<ns0:CodePropertyReferenceExpression.TargetObject>
+																								<ns0:CodeThisReferenceExpression />
+																							</ns0:CodePropertyReferenceExpression.TargetObject>
+																						</ns0:CodePropertyReferenceExpression>
+																					</ns0:CodeMethodReferenceExpression.TargetObject>
+																				</ns0:CodeMethodReferenceExpression>
+																			</ns0:CodeMethodInvokeExpression.Method>
+																		</ns0:CodeMethodInvokeExpression>
+																	</ns0:CodeCastExpression.Expression>
+																</ns0:CodeCastExpression>
+															</ns0:CodeIndexerExpression.TargetObject>
+														</ns0:CodeIndexerExpression>
+													</ns0:CodeCastExpression.Expression>
+												</ns0:CodeCastExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogName">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodePrimitiveExpression>
+													<ns0:CodePrimitiveExpression.Value>
+														<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">FRUGiftCtn</ns1:String>
+													</ns0:CodePrimitiveExpression.Value>
+												</ns0:CodePrimitiveExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogDescr">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeFieldReferenceExpression FieldName="Empty">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+					</Rule.ThenActions>
+					<Rule.Condition>
+						<RuleExpressionCondition Name="{p3:Null}">
+							<RuleExpressionCondition.Expression>
+								<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="ToString">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodeMethodInvokeExpression>
+															<ns0:CodeMethodInvokeExpression.Parameters>
+																<ns0:CodeFieldReferenceExpression FieldName="LogType">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Parameters>
+															<ns0:CodeMethodInvokeExpression.Method>
+																<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																	<ns0:CodeMethodReferenceExpression.TargetObject>
+																		<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																			<ns0:CodePropertyReferenceExpression.TargetObject>
+																				<ns0:CodeThisReferenceExpression />
+																			</ns0:CodePropertyReferenceExpression.TargetObject>
+																		</ns0:CodePropertyReferenceExpression>
+																	</ns0:CodeMethodReferenceExpression.TargetObject>
+																</ns0:CodeMethodReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Method>
+														</ns0:CodeMethodInvokeExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">FRUGiftCtn</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+								</ns0:CodeBinaryOperatorExpression>
+							</RuleExpressionCondition.Expression>
+						</RuleExpressionCondition>
+					</Rule.Condition>
+				</Rule>
+				<Rule Name="FRUGiftLab" ReevaluationBehavior="Always" Priority="0" Description="{p3:Null}" Active="True">
+					<Rule.ThenActions>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogBegNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeIndexerExpression>
+													<ns0:CodeIndexerExpression.Indices>
+														<ns0:CodePrimitiveExpression>
+															<ns0:CodePrimitiveExpression.Value>
+																<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Int32>
+															</ns0:CodePrimitiveExpression.Value>
+														</ns0:CodePrimitiveExpression>
+													</ns0:CodeIndexerExpression.Indices>
+													<ns0:CodeIndexerExpression.TargetObject>
+														<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+															<ns0:CodeCastExpression.Expression>
+																<ns0:CodeMethodInvokeExpression>
+																	<ns0:CodeMethodInvokeExpression.Parameters>
+																		<ns0:CodeFieldReferenceExpression FieldName="GiftNoList">
+																			<ns0:CodeFieldReferenceExpression.TargetObject>
+																				<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																			</ns0:CodeFieldReferenceExpression.TargetObject>
+																		</ns0:CodeFieldReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Parameters>
+																	<ns0:CodeMethodInvokeExpression.Method>
+																		<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																			<ns0:CodeMethodReferenceExpression.TargetObject>
+																				<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																					<ns0:CodePropertyReferenceExpression.TargetObject>
+																						<ns0:CodeThisReferenceExpression />
+																					</ns0:CodePropertyReferenceExpression.TargetObject>
+																				</ns0:CodePropertyReferenceExpression>
+																			</ns0:CodeMethodReferenceExpression.TargetObject>
+																		</ns0:CodeMethodReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Method>
+																</ns0:CodeMethodInvokeExpression>
+															</ns0:CodeCastExpression.Expression>
+														</ns0:CodeCastExpression>
+													</ns0:CodeIndexerExpression.TargetObject>
+												</ns0:CodeIndexerExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogEndNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeIndexerExpression>
+													<ns0:CodeIndexerExpression.Indices>
+														<ns0:CodeBinaryOperatorExpression Operator="Subtract">
+															<ns0:CodeBinaryOperatorExpression.Left>
+																<ns0:CodePropertyReferenceExpression PropertyName="Count">
+																	<ns0:CodePropertyReferenceExpression.TargetObject>
+																		<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+																			<ns0:CodeCastExpression.Expression>
+																				<ns0:CodeMethodInvokeExpression>
+																					<ns0:CodeMethodInvokeExpression.Parameters>
+																						<ns0:CodeFieldReferenceExpression FieldName="GiftNoList">
+																							<ns0:CodeFieldReferenceExpression.TargetObject>
+																								<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																							</ns0:CodeFieldReferenceExpression.TargetObject>
+																						</ns0:CodeFieldReferenceExpression>
+																					</ns0:CodeMethodInvokeExpression.Parameters>
+																					<ns0:CodeMethodInvokeExpression.Method>
+																						<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																							<ns0:CodeMethodReferenceExpression.TargetObject>
+																								<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																									<ns0:CodePropertyReferenceExpression.TargetObject>
+																										<ns0:CodeThisReferenceExpression />
+																									</ns0:CodePropertyReferenceExpression.TargetObject>
+																								</ns0:CodePropertyReferenceExpression>
+																							</ns0:CodeMethodReferenceExpression.TargetObject>
+																						</ns0:CodeMethodReferenceExpression>
+																					</ns0:CodeMethodInvokeExpression.Method>
+																				</ns0:CodeMethodInvokeExpression>
+																			</ns0:CodeCastExpression.Expression>
+																		</ns0:CodeCastExpression>
+																	</ns0:CodePropertyReferenceExpression.TargetObject>
+																</ns0:CodePropertyReferenceExpression>
+															</ns0:CodeBinaryOperatorExpression.Left>
+															<ns0:CodeBinaryOperatorExpression.Right>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">1</ns1:Int32>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+															</ns0:CodeBinaryOperatorExpression.Right>
+														</ns0:CodeBinaryOperatorExpression>
+													</ns0:CodeIndexerExpression.Indices>
+													<ns0:CodeIndexerExpression.TargetObject>
+														<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+															<ns0:CodeCastExpression.Expression>
+																<ns0:CodeMethodInvokeExpression>
+																	<ns0:CodeMethodInvokeExpression.Parameters>
+																		<ns0:CodeFieldReferenceExpression FieldName="GiftNoList">
+																			<ns0:CodeFieldReferenceExpression.TargetObject>
+																				<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																			</ns0:CodeFieldReferenceExpression.TargetObject>
+																		</ns0:CodeFieldReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Parameters>
+																	<ns0:CodeMethodInvokeExpression.Method>
+																		<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																			<ns0:CodeMethodReferenceExpression.TargetObject>
+																				<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																					<ns0:CodePropertyReferenceExpression.TargetObject>
+																						<ns0:CodeThisReferenceExpression />
+																					</ns0:CodePropertyReferenceExpression.TargetObject>
+																				</ns0:CodePropertyReferenceExpression>
+																			</ns0:CodeMethodReferenceExpression.TargetObject>
+																		</ns0:CodeMethodReferenceExpression>
+																	</ns0:CodeMethodInvokeExpression.Method>
+																</ns0:CodeMethodInvokeExpression>
+															</ns0:CodeCastExpression.Expression>
+														</ns0:CodeCastExpression>
+													</ns0:CodeIndexerExpression.TargetObject>
+												</ns0:CodeIndexerExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogName">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodePrimitiveExpression>
+													<ns0:CodePrimitiveExpression.Value>
+														<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">FRUGiftLab</ns1:String>
+													</ns0:CodePrimitiveExpression.Value>
+												</ns0:CodePrimitiveExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogDescr">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeFieldReferenceExpression FieldName="Empty">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+					</Rule.ThenActions>
+					<Rule.Condition>
+						<RuleExpressionCondition Name="{p3:Null}">
+							<RuleExpressionCondition.Expression>
+								<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="ToString">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodeMethodInvokeExpression>
+															<ns0:CodeMethodInvokeExpression.Parameters>
+																<ns0:CodeFieldReferenceExpression FieldName="LogType">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Parameters>
+															<ns0:CodeMethodInvokeExpression.Method>
+																<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																	<ns0:CodeMethodReferenceExpression.TargetObject>
+																		<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																			<ns0:CodePropertyReferenceExpression.TargetObject>
+																				<ns0:CodeThisReferenceExpression />
+																			</ns0:CodePropertyReferenceExpression.TargetObject>
+																		</ns0:CodePropertyReferenceExpression>
+																	</ns0:CodeMethodReferenceExpression.TargetObject>
+																</ns0:CodeMethodReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Method>
+														</ns0:CodeMethodInvokeExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">FRUGiftLab</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+								</ns0:CodeBinaryOperatorExpression>
+							</RuleExpressionCondition.Expression>
+						</RuleExpressionCondition>
+					</Rule.Condition>
+				</Rule>
+				<Rule Name="FRUCarton" ReevaluationBehavior="Always" Priority="0" Description="{p3:Null}" Active="True">
+					<Rule.ThenActions>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogBegNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeCastExpression TargetType="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+													<ns0:CodeCastExpression.Expression>
+														<ns0:CodeIndexerExpression>
+															<ns0:CodeIndexerExpression.Indices>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Int32>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+															</ns0:CodeIndexerExpression.Indices>
+															<ns0:CodeIndexerExpression.TargetObject>
+																<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+																	<ns0:CodeCastExpression.Expression>
+																		<ns0:CodeMethodInvokeExpression>
+																			<ns0:CodeMethodInvokeExpression.Parameters>
+																				<ns0:CodeFieldReferenceExpression FieldName="FRUCartonNoList">
+																					<ns0:CodeFieldReferenceExpression.TargetObject>
+																						<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																					</ns0:CodeFieldReferenceExpression.TargetObject>
+																				</ns0:CodeFieldReferenceExpression>
+																			</ns0:CodeMethodInvokeExpression.Parameters>
+																			<ns0:CodeMethodInvokeExpression.Method>
+																				<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																					<ns0:CodeMethodReferenceExpression.TargetObject>
+																						<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																							<ns0:CodePropertyReferenceExpression.TargetObject>
+																								<ns0:CodeThisReferenceExpression />
+																							</ns0:CodePropertyReferenceExpression.TargetObject>
+																						</ns0:CodePropertyReferenceExpression>
+																					</ns0:CodeMethodReferenceExpression.TargetObject>
+																				</ns0:CodeMethodReferenceExpression>
+																			</ns0:CodeMethodInvokeExpression.Method>
+																		</ns0:CodeMethodInvokeExpression>
+																	</ns0:CodeCastExpression.Expression>
+																</ns0:CodeCastExpression>
+															</ns0:CodeIndexerExpression.TargetObject>
+														</ns0:CodeIndexerExpression>
+													</ns0:CodeCastExpression.Expression>
+												</ns0:CodeCastExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogEndNo">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeCastExpression TargetType="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+													<ns0:CodeCastExpression.Expression>
+														<ns0:CodeIndexerExpression>
+															<ns0:CodeIndexerExpression.Indices>
+																<ns0:CodePrimitiveExpression>
+																	<ns0:CodePrimitiveExpression.Value>
+																		<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Int32>
+																	</ns0:CodePrimitiveExpression.Value>
+																</ns0:CodePrimitiveExpression>
+															</ns0:CodeIndexerExpression.Indices>
+															<ns0:CodeIndexerExpression.TargetObject>
+																<ns0:CodeCastExpression TargetType="System.Collections.Generic.IList`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+																	<ns0:CodeCastExpression.Expression>
+																		<ns0:CodeMethodInvokeExpression>
+																			<ns0:CodeMethodInvokeExpression.Parameters>
+																				<ns0:CodeFieldReferenceExpression FieldName="FRUCartonNoList">
+																					<ns0:CodeFieldReferenceExpression.TargetObject>
+																						<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																					</ns0:CodeFieldReferenceExpression.TargetObject>
+																				</ns0:CodeFieldReferenceExpression>
+																			</ns0:CodeMethodInvokeExpression.Parameters>
+																			<ns0:CodeMethodInvokeExpression.Method>
+																				<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																					<ns0:CodeMethodReferenceExpression.TargetObject>
+																						<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																							<ns0:CodePropertyReferenceExpression.TargetObject>
+																								<ns0:CodeThisReferenceExpression />
+																							</ns0:CodePropertyReferenceExpression.TargetObject>
+																						</ns0:CodePropertyReferenceExpression>
+																					</ns0:CodeMethodReferenceExpression.TargetObject>
+																				</ns0:CodeMethodReferenceExpression>
+																			</ns0:CodeMethodInvokeExpression.Method>
+																		</ns0:CodeMethodInvokeExpression>
+																	</ns0:CodeCastExpression.Expression>
+																</ns0:CodeCastExpression>
+															</ns0:CodeIndexerExpression.TargetObject>
+														</ns0:CodeIndexerExpression>
+													</ns0:CodeCastExpression.Expression>
+												</ns0:CodeCastExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogName">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodePrimitiveExpression>
+													<ns0:CodePrimitiveExpression.Value>
+														<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">FRUCarton</ns1:String>
+													</ns0:CodePrimitiveExpression.Value>
+												</ns0:CodePrimitiveExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+						<RuleStatementAction>
+							<RuleStatementAction.CodeDomStatement>
+								<ns0:CodeExpressionStatement LinePragma="{p3:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeExpressionStatement.Expression>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Parameters>
+												<ns0:CodeFieldReferenceExpression FieldName="PrintLogDescr">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+												<ns0:CodeFieldReferenceExpression FieldName="Empty">
+													<ns0:CodeFieldReferenceExpression.TargetObject>
+														<ns0:CodeTypeReferenceExpression Type="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+													</ns0:CodeFieldReferenceExpression.TargetObject>
+												</ns0:CodeFieldReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Parameters>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="AddValue">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+															<ns0:CodePropertyReferenceExpression.TargetObject>
+																<ns0:CodeThisReferenceExpression />
+															</ns0:CodePropertyReferenceExpression.TargetObject>
+														</ns0:CodePropertyReferenceExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeExpressionStatement.Expression>
+								</ns0:CodeExpressionStatement>
+							</RuleStatementAction.CodeDomStatement>
+						</RuleStatementAction>
+					</Rule.ThenActions>
+					<Rule.Condition>
+						<RuleExpressionCondition Name="{p3:Null}">
+							<RuleExpressionCondition.Expression>
+								<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodeMethodInvokeExpression>
+											<ns0:CodeMethodInvokeExpression.Method>
+												<ns0:CodeMethodReferenceExpression MethodName="ToString">
+													<ns0:CodeMethodReferenceExpression.TargetObject>
+														<ns0:CodeMethodInvokeExpression>
+															<ns0:CodeMethodInvokeExpression.Parameters>
+																<ns0:CodeFieldReferenceExpression FieldName="LogType">
+																	<ns0:CodeFieldReferenceExpression.TargetObject>
+																		<ns0:CodeTypeReferenceExpression Type="IMES.Infrastructure.Session+SessionKeys, IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+																	</ns0:CodeFieldReferenceExpression.TargetObject>
+																</ns0:CodeFieldReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Parameters>
+															<ns0:CodeMethodInvokeExpression.Method>
+																<ns0:CodeMethodReferenceExpression MethodName="GetValue">
+																	<ns0:CodeMethodReferenceExpression.TargetObject>
+																		<ns0:CodePropertyReferenceExpression PropertyName="CurrentFlowSession">
+																			<ns0:CodePropertyReferenceExpression.TargetObject>
+																				<ns0:CodeThisReferenceExpression />
+																			</ns0:CodePropertyReferenceExpression.TargetObject>
+																		</ns0:CodePropertyReferenceExpression>
+																	</ns0:CodeMethodReferenceExpression.TargetObject>
+																</ns0:CodeMethodReferenceExpression>
+															</ns0:CodeMethodInvokeExpression.Method>
+														</ns0:CodeMethodInvokeExpression>
+													</ns0:CodeMethodReferenceExpression.TargetObject>
+												</ns0:CodeMethodReferenceExpression>
+											</ns0:CodeMethodInvokeExpression.Method>
+										</ns0:CodeMethodInvokeExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">FRUCarton</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+								</ns0:CodeBinaryOperatorExpression>
+							</RuleExpressionCondition.Expression>
+						</RuleExpressionCondition>
+					</Rule.Condition>
+				</Rule>
+			</RuleSet.Rules>
+		</RuleSet>
+	</RuleDefinitions.RuleSets>
+</RuleDefinitions>

@@ -1,0 +1,27 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="MBCTCheck" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProductByInput Customer="{ActivityBind MBCTCheck,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind MBCTCheck,Path=SessionType}" Editor="{ActivityBind MBCTCheck,Path=Editor}" Station="{ActivityBind MBCTCheck,Path=Station}" x:Name="getProductByInput1" Line="{ActivityBind MBCTCheck,Path=PdLine}" Key="{ActivityBind MBCTCheck,Path=Key}" IsStopWF="Stop" InputType="ProductIDOrCustSN" />
+	<ns0:BlockStation Customer="{ActivityBind MBCTCheck,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind MBCTCheck,Path=SessionType}" Editor="{ActivityBind MBCTCheck,Path=Editor}" ProcessType="Product" Station="{ActivityBind MBCTCheck,Path=Station}" Line="{ActivityBind MBCTCheck,Path=PdLine}" Key="{ActivityBind MBCTCheck,Path=Key}" />
+	<ns0:GetMBCT_LCMCheck Customer="{ActivityBind MBCTCheck,Path=Customer}" x:Name="getMBCT_LCMCheck1" SessionType="{ActivityBind MBCTCheck,Path=SessionType}" Editor="{ActivityBind MBCTCheck,Path=Editor}" Station="{ActivityBind MBCTCheck,Path=Station}" Line="{ActivityBind MBCTCheck,Path=PdLine}" Key="{ActivityBind MBCTCheck,Path=Key}" />
+	<ns0:WaitInput Customer="{ActivityBind MBCTCheck,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind MBCTCheck,Path=SessionType}" Editor="{ActivityBind MBCTCheck,Path=Editor}" Station="{ActivityBind MBCTCheck,Path=Station}" Line="{ActivityBind MBCTCheck,Path=PdLine}" Key="{ActivityBind MBCTCheck,Path=Key}" />
+	<ns0:DBScope Station="{ActivityBind MBCTCheck,Path=Station}" x:Name="dbScope1" Key="{ActivityBind MBCTCheck,Path=Key}" SessionType="{ActivityBind MBCTCheck,Path=SessionType}">
+		<ns0:UpdateProductStatus Customer="{ActivityBind MBCTCheck,Path=Customer}" x:Name="updateProductStatus3" SessionType="{ActivityBind MBCTCheck,Path=SessionType}" Editor="{ActivityBind MBCTCheck,Path=Editor}" Status="Pass" Station="CM" IsReturnStatoin="False" Line="{ActivityBind MBCTCheck,Path=PdLine}" Key="{ActivityBind MBCTCheck,Path=Key}" />
+		<ns0:WriteProductLog Customer="{ActivityBind MBCTCheck,Path=Customer}" x:Name="writeProductLog3" SessionType="{ActivityBind MBCTCheck,Path=SessionType}" Editor="{ActivityBind MBCTCheck,Path=Editor}" Station="CM" Status="Pass" IsSingle="True" Line="{ActivityBind MBCTCheck,Path=PdLine}" Key="{ActivityBind MBCTCheck,Path=Key}" />
+	</ns0:DBScope>
+	<IfElseActivity x:Name="ifElseActivity1" Enabled="False">
+		<IfElseBranchActivity x:Name="NoDefectBranch">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="hasDefect" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind MBCTCheck,Path=Station}" x:Name="dbScope2" Key="{ActivityBind MBCTCheck,Path=Key}" SessionType="{ActivityBind MBCTCheck,Path=SessionType}">
+				<ns0:UpdateProductStatus Customer="{ActivityBind MBCTCheck,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind MBCTCheck,Path=SessionType}" Editor="{ActivityBind MBCTCheck,Path=Editor}" Status="Pass" Station="CM" IsReturnStatoin="False" Line="{ActivityBind MBCTCheck,Path=PdLine}" Key="{ActivityBind MBCTCheck,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind MBCTCheck,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind MBCTCheck,Path=SessionType}" Editor="{ActivityBind MBCTCheck,Path=Editor}" Station="CM" Status="Pass" IsSingle="True" Line="{ActivityBind MBCTCheck,Path=PdLine}" Key="{ActivityBind MBCTCheck,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="DefectBranch">
+			<ns0:DBScope Station="{ActivityBind MBCTCheck,Path=Station}" x:Name="dbScope3" Key="{ActivityBind MBCTCheck,Path=Key}" SessionType="{ActivityBind MBCTCheck,Path=SessionType}">
+				<ns0:UpdateProductStatus Customer="{ActivityBind MBCTCheck,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind MBCTCheck,Path=SessionType}" Editor="{ActivityBind MBCTCheck,Path=Editor}" Status="Fail" Station="CM" IsReturnStatoin="False" Line="{ActivityBind MBCTCheck,Path=PdLine}" Key="{ActivityBind MBCTCheck,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind MBCTCheck,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind MBCTCheck,Path=SessionType}" Editor="{ActivityBind MBCTCheck,Path=Editor}" Station="CM" Status="Fail" IsSingle="True" Line="{ActivityBind MBCTCheck,Path=PdLine}" Key="{ActivityBind MBCTCheck,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

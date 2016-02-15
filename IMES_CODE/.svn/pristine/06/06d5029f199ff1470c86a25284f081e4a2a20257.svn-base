@@ -1,0 +1,11 @@
+﻿200=ZDesigner 105SL 203DPI
+201=ZDesigner 105SL 203DPI
+202=ZDesigner 105SL 203DPI
+203=ZDesigner 105SL 203DPI
+300=ZDesigner 105SL 300DPI
+600=ZDesigner 110XiIII Plus 600DPI
+1200=ZDesigner 110XiIII Plus 600DPI
+ScreenBaseWidth=0.265
+localDatabaseString=Persist Security Info=False;User ID=imes2012;Password=iccfis=123;Initial Catalog=TSBLabelTemplate;Server=10.96.183.192;App=WEB01_TSB_PrintTemplate
+
+ocxversion=1,0,0,8;1,0,0,9;1,0,0,10;1,0,0,11;1,0,0,12

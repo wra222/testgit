@@ -1,0 +1,184 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <title>Test</title>
+		<script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript">
+		
+	
+            var noSupportMessage = "Your browser cannot support WebSocket!";
+            var ws;
+
+            function appendMessage(message) {
+                $('body').append("<div class='message'>" + message + "</div>");
+            }
+
+            function connectSocketServer() {
+                var support = "MozWebSocket" in window ? 'MozWebSocket' : ("WebSocket" in window ? 'WebSocket' : null);
+
+                if (support == null) {
+                    appendMessage("* " + noSupportMessage + "<br/>");
+                    return;
+                }
+
+                appendMessage("* Connecting to server ..<br/>");
+                // create a new websocket and connect
+                ws = new window[support]('ws://10.96.183.193:2012/');
+
+                // when data is comming from the server, this metod is called
+                ws.onmessage = function (evt) {
+                    appendMessage("# Received Raw:" + evt.data + "<br />");
+					var obj=JSON.parse(evt.data);
+					appendMessage("# Context:" + obj.Context+ "<br />");
+                };
+
+                // when the connection is established, this method is called
+                ws.onopen = function () {
+                    appendMessage('* Connection open<br/>');
+                    $('#messageInput').attr("disabled", "");
+                    $('#sendButton').attr("disabled", "");
+                    $('#connectButton').attr("disabled", "disabled");
+                    $('#disconnectButton').attr("disabled", "");
+                };
+
+                // when the connection is closed, this method is called
+                ws.onclose = function () {
+                    appendMessage('* Connection closed<br/>');
+                    $('#messageInput').attr("disabled", "disabled");
+                    $('#sendButton').attr("disabled", "disabled");
+                    $('#connectButton').attr("disabled", "");
+                    $('#disconnectButton').attr("disabled", "disabled");
+                }
+            }
+
+            function sendMessage() {
+                if (ws) {
+                    //var messageBox = document.getElementById('messageInput');
+                    //ws.send(messageBox.value);
+					//var subscribe={
+					//   Cmd:'S',
+					//   Subject:'Test'				
+					//};
+					//ws.send(JSON.stringify(subscribe));
+					//appendMessage('# Send Message :' + JSON.stringify(subscribe) +' <br/>');
+                    //messageBox.value = "";
+					var messageBox = document.getElementById('SubjectInput');
+					var sendData=Subscribe(messageBox.value);
+					ws.send(sendData);
+					appendMessage('@ Subscribe :' + sendData +' <br/>');
+                }
+            }
+
+            function disconnectWebSocket() {
+                if (ws) {
+                    ws.close();
+                }
+            }
+
+            function connectWebSocket() {
+                connectSocketServer();
+            }
+
+            window.onload = function () {
+                $('#messageInput').attr("disabled", "disabled");
+                $('#sendButton').attr("disabled", "disabled");
+                $('#disconnectButton').attr("disabled", "disabled");
+            }
+			
+			function getXmlHttp() {
+			if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari	    
+				return new XMLHttpRequest();
+				}
+
+				// code for IE6, IE5
+			return new ActiveXObject("Microsoft.XMLHTTP");
+
+		}
+
+		var send;
+		
+		function intervalhttptest(){
+			if (send){
+				clearInterval(send);				
+				send = 0;
+			}else{
+				send = setInterval(function(){$("#sendHttpButton").click();}, 1000);
+				return;
+			}
+		}
+		function testhttp() {
+			
+			var xmlhttp;
+			xmlhttp=getXmlHttp();
+			xmlhttp.open("POST", 'http://10.96.183.193:8989/test', true); //async mode
+
+			xmlhttp.onreadystatechange = function() {        
+				if (xmlhttp.readyState == 4) {
+					var respText = xmlhttp.responseText;
+					if (xmlhttp.status == 200) {
+						appendMessage("<- Get Http Server Reply " + respText + "<br />");
+					}
+					else {
+						appendMessage("<- Get Http Server Status:" + xmlhttp.status + "<br />");
+					}
+			    }
+			};
+			
+			xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");    
+			//xmlhttp.send('{"Cmd":"P","Subject":"Test","Context":"test1234"}');
+			var messageBox = document.getElementById('messageInput');
+			var subjectBox = document.getElementById('SubjectInput');
+			var sendData=Publish(subjectBox.value, messageBox.value);
+			xmlhttp.send(sendData);	
+			appendMessage("->Publish Message:" +sendData+'<br/>');
+		}
+		
+		function Subscribe(subject)
+		{
+			//var datetime = "LastSync: " + new Date().today() + " @ " + new Date().timeNow();
+			var data={
+					   Cmd:'S',
+					   Subject:subject,					   
+					   Timestamp:GetNow()			
+					};
+			return JSON.stringify(data);		
+		}
+		
+		function Publish(subject, context)
+		{
+			//var datetime = "LastSync: " + new Date().today() + " @ " + new Date().timeNow();
+			var data={
+					   Cmd:'P',
+					   Subject:subject,
+					   Context:context,
+					   Timestamp:GetNow()			
+					};
+			return JSON.stringify(data);		
+		}
+		function GetNow()
+		{
+			var now = new Date(); 
+			var datetime = now.getFullYear()+'/'+(now.getMonth()+1)+'/'+now.getDate(); 
+				datetime += ' '+now.getHours()+':'+now.getMinutes()+':'+now.getSeconds(); 
+			return datetime;
+		}
+    
+    </script>
+    </head>
+    <body>
+        <input type="button" id="connectButton" value="Connect" onclick="connectWebSocket()"/> 
+		<input type="button" id="disconnectButton" value="Disconnect" onclick="disconnectWebSocket()"/> 
+		<input type="button" id="sendButton" value="Subscribe" onclick="sendMessage()"/> 
+		<input type="button" id="sendHttpButton" value="Publish" onclick="testhttp()"/> 
+		<input type="button" id="intervalhttptest" value="intervalhttptest" onclick="intervalhttptest()"/><br/>
+		<br/> 		
+		Subject:<input type="text"  size="150" id="SubjectInput" Value='A-Line' /> <br/>
+        <br/> 		
+		Message:<input type="text"  size="150" id="messageInput" Value='{"PartNo":"P12344","Model":"Test","CustSN":"test1234"}' /> <br/><br/>
+		<br />
+    </body>
+	<script type="text/javascript" >
+		
+		setInterval(function(){ if ($(".message").length > 3){$(".message").remove();}}, 5000);
+	</script>
+</html>

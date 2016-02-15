@@ -1,0 +1,6 @@
+E:\IMES_CODE\Code\RCTO\bin\IMES.Infrastructure.ExpressionScript.XML
+E:\IMES_CODE\Code\RCTO\bin\IMES.Infrastructure.ExpressionScript.dll
+E:\IMES_CODE\Code\RCTO\bin\IMES.Infrastructure.ExpressionScript.pdb
+E:\IMES_CODE\Code\RCTO\kernel\IMES.Infrastructure.ExpressionScript\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\kernel\IMES.Infrastructure.ExpressionScript\obj\Debug\IMES.Infrastructure.ExpressionScript.dll
+E:\IMES_CODE\Code\RCTO\kernel\IMES.Infrastructure.ExpressionScript\obj\Debug\IMES.Infrastructure.ExpressionScript.pdb

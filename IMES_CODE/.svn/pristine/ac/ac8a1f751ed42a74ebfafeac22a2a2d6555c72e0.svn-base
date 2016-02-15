@@ -1,0 +1,51 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="EPIAOutput" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind EPIAOutput,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" Station="{ActivityBind EPIAOutput,Path=Station}" x:Name="getProduct1" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" InputType="ProductIDOrCustSN" />
+	<ns0:CheckStatusForDocking Customer="{ActivityBind EPIAOutput,Path=Customer}" x:Name="checkStatusForDocking1" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" Station="{ActivityBind EPIAOutput,Path=Station}" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" />
+	<ns0:BlockStation Customer="{ActivityBind EPIAOutput,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" ProcessType="Product" Station="{ActivityBind EPIAOutput,Path=Station}" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" />
+	<ns0:WaitInput Customer="{ActivityBind EPIAOutput,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" Station="{ActivityBind EPIAOutput,Path=Station}" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" />
+	<ns0:DBScope Station="{ActivityBind EPIAOutput,Path=Station}" x:Name="dbScope2" Key="{ActivityBind EPIAOutput,Path=Key}" SessionType="{ActivityBind EPIAOutput,Path=SessionType}">
+		<IfElseActivity x:Name="ifElseActivity5">
+			<IfElseBranchActivity x:Name="IsEpiaBranchActivity1">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="Condition1" />
+				</IfElseBranchActivity.Condition>
+				<IfElseActivity x:Name="ifElseActivity6">
+					<IfElseBranchActivity x:Name="EPIApassBranchActivity1" Description="isPass">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="Condition2" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateQCStatus Customer="{ActivityBind EPIAOutput,Path=Customer}" x:Name="updateQCStatus5" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" Station="{ActivityBind EPIAOutput,Path=Station}" Status="3" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" Type="EPIAOutputForDocking" />
+						<ns0:WriteProductLog Customer="{ActivityBind EPIAOutput,Path=Customer}" x:Name="writeProductLog4" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" Station="6A" Status="Pass" IsSingle="True" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind EPIAOutput,Path=Customer}" x:Name="updateProductStatus3" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" Status="Pass" Station="6A" IsReturnStatoin="False" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" />
+						<ns0:WriteProductTestLog Customer="{ActivityBind EPIAOutput,Path=Customer}" Station="6A" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" IsPass="True" x:Name="writeProductTestLog4" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="EPIAFailBranchActivity2">
+						<ns0:UpdateQCStatus Customer="{ActivityBind EPIAOutput,Path=Customer}" x:Name="updateQCStatus6" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" Station="{ActivityBind EPIAOutput,Path=Station}" Status="4" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" Type="EPIAOutputForDocking" />
+						<ns0:WriteProductLog Customer="{ActivityBind EPIAOutput,Path=Customer}" x:Name="writeProductLog3" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" Station="6A" Status="Fail" IsSingle="True" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind EPIAOutput,Path=Customer}" x:Name="updateProductStatus4" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" Status="Fail" Station="6A" IsReturnStatoin="False" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" />
+						<ns0:WriteProductTestLog Customer="{ActivityBind EPIAOutput,Path=Customer}" Station="6A" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" x:Name="writeProductTestLog3" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="noEPIABranchActivity">
+				<IfElseActivity x:Name="ifElseActivity7">
+					<IfElseBranchActivity x:Name="noEPIApassBranchActivity1">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="Condition3" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateQCStatus Customer="{ActivityBind EPIAOutput,Path=Customer}" x:Name="updateQCStatus7" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" Station="{ActivityBind EPIAOutput,Path=Station}" Status="6" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" Type="EPIAOutputForDocking" />
+						<ns0:WriteProductLog Customer="{ActivityBind EPIAOutput,Path=Customer}" x:Name="writeProductLog5" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" Station="6A" Status="Pass" IsSingle="True" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind EPIAOutput,Path=Customer}" x:Name="updateProductStatus5" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" Status="Pass" Station="6A" IsReturnStatoin="False" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" />
+						<ns0:WriteProductTestLog Customer="{ActivityBind EPIAOutput,Path=Customer}" Station="6A" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" IsPass="True" x:Name="writeProductTestLog5" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="noEPIAFailBranchActivity2">
+						<ns0:UpdateQCStatus Customer="{ActivityBind EPIAOutput,Path=Customer}" x:Name="updateQCStatus8" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" Station="{ActivityBind EPIAOutput,Path=Station}" Status="7" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" Type="EPIAOutputForDocking" />
+						<ns0:WriteProductLog Customer="{ActivityBind EPIAOutput,Path=Customer}" x:Name="writeProductLog6" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" Station="6A" Status="Fail" IsSingle="True" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind EPIAOutput,Path=Customer}" x:Name="updateProductStatus6" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" Status="Fail" Station="6A" IsReturnStatoin="False" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" />
+						<ns0:WriteProductTestLog Customer="{ActivityBind EPIAOutput,Path=Customer}" Station="6A" SessionType="{ActivityBind EPIAOutput,Path=SessionType}" Editor="{ActivityBind EPIAOutput,Path=Editor}" x:Name="writeProductTestLog6" Line="{ActivityBind EPIAOutput,Path=PdLine}" Key="{ActivityBind EPIAOutput,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+</ns0:BaseFlow>

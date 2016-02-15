@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://hp.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://hp.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://hp.com/">
+      <s:element name="UPSGetTags">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetTagsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSGetTagsResult" type="tns:ATRPStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ATRPStruct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="version" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="retcode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tagdata">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UPSGetRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PartNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AssetNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HPPO" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSGetRangeResult" type="tns:ATRPStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetImages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetImagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSGetImagesResult" type="tns:ATRPStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetATRP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetATRPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSGetATRPResult" type="tns:ATRPStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetBTWFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PartNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetBTWFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSGetBTWFileResult" type="tns:ATRPStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetPrintCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetPrintCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSGetPrintCountResult" type="tns:PrintCountStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PrintCountStruct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="version" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="retcode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="isPrinted" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UPSResetSN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSResetSNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSResetSNResult" type="tns:ResetStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResetStruct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="version" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="retcode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UPSUpdateSN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newSN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSUpdateSNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSUpdateSNResult" type="tns:ResetStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSUpdateHPPO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PartNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AssetNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HPPO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newHPPO" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSUpdateHPPOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSUpdateHPPOResult" type="tns:ResetStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSUpdatePrintInfoOld">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PartNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AssetNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HPPO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MAC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MAC2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SystemID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Placement" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TagInfo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSUpdatePrintInfoOldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSUpdatePrintInfoOldResult" type="tns:ATMStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ATMStruct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="version" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="retcode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="assetTagNum" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UPSUpdatePrintInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PartNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AssetNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HPPO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MAC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MAC2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SystemID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UUID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Placement" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TagInfo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSUpdatePrintInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSUpdatePrintInfoResult" type="tns:ATMStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSUpdateShellPrintInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PartNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HPPO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MAC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SystemID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Placement" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSUpdateShellPrintInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSUpdateShellPrintInfoResult" type="tns:ATMStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetTagOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZWAR" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetTagOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSGetTagOrderResult" type="tns:TagOrderStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TagOrderStruct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="version" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="retcode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="datastring" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UPSGetATM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PartNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AssetNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HPPO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AssetTagNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetATMResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSGetATMResult" type="tns:ATMStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetUSI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HPPO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PartNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FGPartNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSGetUSIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPSGetUSIResult" type="tns:USIStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="USIStruct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="version" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="retcode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="unattend" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UPSGetTagsSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetTags" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetTagsSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetTagsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetRange" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetImagesSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetImages" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetImagesSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetImagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetATRPSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetATRP" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetATRPSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetATRPResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetBTWFileSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetBTWFile" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetBTWFileSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetBTWFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetPrintCountSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetPrintCount" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetPrintCountSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetPrintCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSResetSNSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSResetSN" />
+  </wsdl:message>
+  <wsdl:message name="UPSResetSNSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSResetSNResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSUpdateSNSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSUpdateSN" />
+  </wsdl:message>
+  <wsdl:message name="UPSUpdateSNSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSUpdateSNResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSUpdateHPPOSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSUpdateHPPO" />
+  </wsdl:message>
+  <wsdl:message name="UPSUpdateHPPOSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSUpdateHPPOResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSUpdatePrintInfoOldSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSUpdatePrintInfoOld" />
+  </wsdl:message>
+  <wsdl:message name="UPSUpdatePrintInfoOldSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSUpdatePrintInfoOldResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSUpdatePrintInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSUpdatePrintInfo" />
+  </wsdl:message>
+  <wsdl:message name="UPSUpdatePrintInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSUpdatePrintInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSUpdateShellPrintInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSUpdateShellPrintInfo" />
+  </wsdl:message>
+  <wsdl:message name="UPSUpdateShellPrintInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSUpdateShellPrintInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetTagOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetTagOrder" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetTagOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetTagOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetATMSoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetATM" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetATMSoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetATMResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetUSISoapIn">
+    <wsdl:part name="parameters" element="tns:UPSGetUSI" />
+  </wsdl:message>
+  <wsdl:message name="UPSGetUSISoapOut">
+    <wsdl:part name="parameters" element="tns:UPSGetUSIResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ATRPSoap">
+    <wsdl:operation name="UPSGetTags">
+      <wsdl:input message="tns:UPSGetTagsSoapIn" />
+      <wsdl:output message="tns:UPSGetTagsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetRange">
+      <wsdl:input message="tns:UPSGetRangeSoapIn" />
+      <wsdl:output message="tns:UPSGetRangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetImages">
+      <wsdl:input message="tns:UPSGetImagesSoapIn" />
+      <wsdl:output message="tns:UPSGetImagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetATRP">
+      <wsdl:input message="tns:UPSGetATRPSoapIn" />
+      <wsdl:output message="tns:UPSGetATRPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetBTWFile">
+      <wsdl:input message="tns:UPSGetBTWFileSoapIn" />
+      <wsdl:output message="tns:UPSGetBTWFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetPrintCount">
+      <wsdl:input message="tns:UPSGetPrintCountSoapIn" />
+      <wsdl:output message="tns:UPSGetPrintCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSResetSN">
+      <wsdl:input message="tns:UPSResetSNSoapIn" />
+      <wsdl:output message="tns:UPSResetSNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSUpdateSN">
+      <wsdl:input message="tns:UPSUpdateSNSoapIn" />
+      <wsdl:output message="tns:UPSUpdateSNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSUpdateHPPO">
+      <wsdl:input message="tns:UPSUpdateHPPOSoapIn" />
+      <wsdl:output message="tns:UPSUpdateHPPOSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSUpdatePrintInfoOld">
+      <wsdl:input message="tns:UPSUpdatePrintInfoOldSoapIn" />
+      <wsdl:output message="tns:UPSUpdatePrintInfoOldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSUpdatePrintInfo">
+      <wsdl:input message="tns:UPSUpdatePrintInfoSoapIn" />
+      <wsdl:output message="tns:UPSUpdatePrintInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSUpdateShellPrintInfo">
+      <wsdl:input message="tns:UPSUpdateShellPrintInfoSoapIn" />
+      <wsdl:output message="tns:UPSUpdateShellPrintInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetTagOrder">
+      <wsdl:input message="tns:UPSGetTagOrderSoapIn" />
+      <wsdl:output message="tns:UPSGetTagOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetATM">
+      <wsdl:input message="tns:UPSGetATMSoapIn" />
+      <wsdl:output message="tns:UPSGetATMSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetUSI">
+      <wsdl:input message="tns:UPSGetUSISoapIn" />
+      <wsdl:output message="tns:UPSGetUSISoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ATRPSoap" type="tns:ATRPSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UPSGetTags">
+      <soap:operation soapAction="http://hp.com/UPSGetTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetRange">
+      <soap:operation soapAction="http://hp.com/UPSGetRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetImages">
+      <soap:operation soapAction="http://hp.com/UPSGetImages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetATRP">
+      <soap:operation soapAction="http://hp.com/UPSGetATRP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetBTWFile">
+      <soap:operation soapAction="http://hp.com/UPSGetBTWFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetPrintCount">
+      <soap:operation soapAction="http://hp.com/UPSGetPrintCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSResetSN">
+      <soap:operation soapAction="http://hp.com/UPSResetSN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSUpdateSN">
+      <soap:operation soapAction="http://hp.com/UPSUpdateSN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSUpdateHPPO">
+      <soap:operation soapAction="http://hp.com/UPSUpdateHPPO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSUpdatePrintInfoOld">
+      <soap:operation soapAction="http://hp.com/UPSUpdatePrintInfoOld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSUpdatePrintInfo">
+      <soap:operation soapAction="http://hp.com/UPSUpdatePrintInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSUpdateShellPrintInfo">
+      <soap:operation soapAction="http://hp.com/UPSUpdateShellPrintInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetTagOrder">
+      <soap:operation soapAction="http://hp.com/UPSGetTagOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetATM">
+      <soap:operation soapAction="http://hp.com/UPSGetATM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetUSI">
+      <soap:operation soapAction="http://hp.com/UPSGetUSI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ATRPSoap12" type="tns:ATRPSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UPSGetTags">
+      <soap12:operation soapAction="http://hp.com/UPSGetTags" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetRange">
+      <soap12:operation soapAction="http://hp.com/UPSGetRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetImages">
+      <soap12:operation soapAction="http://hp.com/UPSGetImages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetATRP">
+      <soap12:operation soapAction="http://hp.com/UPSGetATRP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetBTWFile">
+      <soap12:operation soapAction="http://hp.com/UPSGetBTWFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetPrintCount">
+      <soap12:operation soapAction="http://hp.com/UPSGetPrintCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSResetSN">
+      <soap12:operation soapAction="http://hp.com/UPSResetSN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSUpdateSN">
+      <soap12:operation soapAction="http://hp.com/UPSUpdateSN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSUpdateHPPO">
+      <soap12:operation soapAction="http://hp.com/UPSUpdateHPPO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSUpdatePrintInfoOld">
+      <soap12:operation soapAction="http://hp.com/UPSUpdatePrintInfoOld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSUpdatePrintInfo">
+      <soap12:operation soapAction="http://hp.com/UPSUpdatePrintInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSUpdateShellPrintInfo">
+      <soap12:operation soapAction="http://hp.com/UPSUpdateShellPrintInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetTagOrder">
+      <soap12:operation soapAction="http://hp.com/UPSGetTagOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetATM">
+      <soap12:operation soapAction="http://hp.com/UPSGetATM" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPSGetUSI">
+      <soap12:operation soapAction="http://hp.com/UPSGetUSI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ATRP">
+    <wsdl:port name="ATRPSoap" binding="tns:ATRPSoap">
+      <soap:address location="http://10.96.3.35:81/UPSATRP/UPS_ATRP.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ATRPSoap12" binding="tns:ATRPSoap12">
+      <soap12:address location="http://10.96.3.35:81/UPSATRP/UPS_ATRP.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

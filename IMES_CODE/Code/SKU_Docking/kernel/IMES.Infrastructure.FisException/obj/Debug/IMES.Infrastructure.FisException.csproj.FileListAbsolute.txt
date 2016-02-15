@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Infrastructure.FisException.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Infrastructure.FisException.pdb
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Infrastructure.FisException\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Infrastructure.FisException\obj\Debug\IMES.Infrastructure.FisException.dll
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Infrastructure.FisException\obj\Debug\IMES.Infrastructure.FisException.pdb

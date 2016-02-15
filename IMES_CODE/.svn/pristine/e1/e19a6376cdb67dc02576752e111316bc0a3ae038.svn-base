@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 rel. 3 sp1 (http://www.altova.com) by hr lin (HYT) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="PACK_ID">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="WAYBILL_NUMBER" type="xs:string"/>
+				<xs:element name="MASTER_WAYBILL_NUMBER" type="xs:string"/>
+				<xs:element name="PACK_ID" type="xs:string"/>
+				<xs:element name="PACK_ID_CONS" type="xs:string"/>
+				<xs:element name="SHIP_REF" type="xs:string"/>
+				<xs:element name="ACTUAL_SHIPDATE" type="xs:date"/>
+				<xs:element name="CURRENT_DATE" type="xs:date"/>
+				<xs:element name="ORDER_DATE_HP_PO" type="xs:date"/>
+				<xs:element name="INTL_CARRIER" type="xs:string"/>
+				<xs:element name="REG_CARRIER" type="xs:string"/>
+				<xs:element name="PREF_GATEWAY" type="xs:string"/>
+				<xs:element name="SHIP_MODE" type="xs:string"/>
+				<xs:element name="DUTY_CODE" type="xs:string"/>
+				<xs:element name="TRANS_SERV_LEVEL" type="xs:string"/>
+				<xs:element name="SHIP_FROM_ID" type="xs:string"/>
+				<xs:element name="SHIP_FROM_NAME" type="xs:string"/>
+				<xs:element name="SHIP_FROM_NAME_2" type="xs:string"/>
+				<xs:element name="SHIP_FROM_NAME_3" type="xs:string"/>
+				<xs:element name="SHIP_FROM_STREET" type="xs:string"/>
+				<xs:element name="SHIP_FROM_STREET_2" type="xs:string"/>
+				<xs:element name="SHIP_FROM_CITY" type="xs:string"/>
+				<xs:element name="SHIP_FROM_STATE" type="xs:string"/>
+				<xs:element name="SHIP_FROM_ZIP" type="xs:string"/>
+				<xs:element name="SHIP_FROM_COUNTRY_CODE" type="xs:string"/>
+				<xs:element name="SHIP_FROM_COUNTRY_NAME" type="xs:string"/>
+				<xs:element name="SHIP_FROM_CONTACT" type="xs:string"/>
+				<xs:element name="SHIP_FROM_TELEPHONE" type="xs:string"/>
+				<xs:element name="RESELLER_NAME" type="xs:string"/>
+				<xs:element name="SHIP_TO_ID" type="xs:string"/>
+				<xs:element name="SHIP_TO_NAME" type="xs:string"/>
+				<xs:element name="SHIP_TO_NAME_2" type="xs:string"/>
+				<xs:element name="SHIP_TO_NAME_3" type="xs:string"/>
+				<xs:element name="SHIP_TO_STREET" type="xs:string"/>
+				<xs:element name="SHIP_TO_STREET_2" type="xs:string"/>
+				<xs:element name="SHIP_TO_CITY" type="xs:string"/>
+				<xs:element name="SHIP_TO_STATE" type="xs:string"/>
+				<xs:element name="SHIP_TO_ZIP" type="xs:string"/>
+				<xs:element name="SHIP_TO_COUNTRY_CODE" type="xs:string"/>
+				<xs:element name="SHIP_TO_COUNTRY_NAME" type="xs:string"/>
+				<xs:element name="SHIP_TO_CONTACT" type="xs:string"/>
+				<xs:element name="SHIP_TO_TELEPHONE" type="xs:string"/>
+				<xs:element name="SOLD_TO_CONTACT" type="xs:string"/>
+				<xs:element name="SHIP_VIA_ID" type="xs:string"/>
+				<xs:element name="SHIP_VIA_NAME" type="xs:string"/>
+				<xs:element name="SHIP_VIA_NAME_2" type="xs:string"/>
+				<xs:element name="SHIP_VIA_NAME_3" type="xs:string"/>
+				<xs:element name="SHIP_VIA_STREET" type="xs:string"/>
+				<xs:element name="SHIP_VIA_STREET_2" type="xs:string"/>
+				<xs:element name="SHIP_VIA_CITY" type="xs:string"/>
+				<xs:element name="SHIP_VIA_STATE" type="xs:string"/>
+				<xs:element name="SHIP_VIA_ZIP" type="xs:string"/>
+				<xs:element name="SHIP_VIA_COUNTRY_CODE" type="xs:string"/>
+				<xs:element name="SHIP_VIA_COUNTRY_NAME" type="xs:string"/>
+				<xs:element name="SHIP_VIA_CONTACT" type="xs:string"/>
+				<xs:element name="SHIP_VIA_TELEPHONE" type="xs:string"/>
+				<xs:element name="RETURN_TO_ID" type="xs:string"/>
+				<xs:element name="RETURN_TO_NAME" type="xs:string"/>
+				<xs:element name="RETURN_TO_NAME_2" type="xs:string"/>
+				<xs:element name="RETURN_TO_NAME_3" type="xs:string"/>
+				<xs:element name="RETURN_TO_STREET" type="xs:string"/>
+				<xs:element name="RETURN_TO_STREET_2" type="xs:string"/>
+				<xs:element name="RETURN_TO_CITY" type="xs:string"/>
+				<xs:element name="RETURN_TO_STATE" type="xs:string"/>
+				<xs:element name="RETURN_TO_ZIP" type="xs:string"/>
+				<xs:element name="RETURN_TO_COUNTRY_CODE" type="xs:string"/>
+				<xs:element name="RETURN_TO_COUNTRY_NAME" type="xs:string"/>
+				<xs:element name="RETURN_TO_CONTACT" type="xs:string"/>
+				<xs:element name="RETURN_TO_TELEPHONE" type="xs:string"/>
+				<xs:element name="HP_SO" type="xs:string"/>
+				<xs:element name="SHIP_COMPLETE_ID" type="xs:string"/>
+				<xs:element name="CUST_PO" type="xs:string"/>
+				<xs:element name="CUST_ORD_REF" type="xs:string"/>
+				<xs:element name="HAWB_UNIT_QTY" type="xs:double"/>
+				<xs:element name="PACK_ID_BOX_QTY" type="xs:double"/>
+				<xs:element name="PACK_ID_UNIT_QTY" type="xs:double"/>
+				<xs:element name="HAWB_BOX_QTY" type="xs:double"/>
+				<xs:element name="PACK_ID_PALLET_QTY" type="xs:double"/>
+				<xs:element name="HAWB_PALLET_QTY" type="xs:double"/>
+				<xs:element name="PACKID_ACT_WEIGHT" type="xs:double"/>
+				<xs:element name="HAWB_ACT_WEIGHT" type="xs:double"/>
+				<xs:element name="EXPORT_NOTES_HEAD" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="SHIPPING_INSTR_HEAD" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="PICKING_INSTR_HEAD" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="DELIVERY_INSTR_HEAD" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="SPECIAL_INSTR_HEAD" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="CUSTOMER_INSTR_HEAD" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="LABEL_INSTR_HEAD" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="CARRIER_INST_HEAD" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="INVOICE_UDF_HEAD" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="UDF_HEAD" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="UDF_HEADER" type="UDFType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="HANDLING_INSTR_HEAD" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="PACK_ID_LINE_ITEM" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="HP_SO_LINE_ITEM" type="xs:string"/>
+							<xs:element name="PROD_TYPE" type="xs:string"/>
+							<xs:element name="HP_PN" type="xs:string"/>
+							<xs:element name="PROD_DESC_BASE" type="xs:string"/>
+							<xs:element name="HP_Cust_PN" type="xs:string"/>
+							<xs:element name="PACK_ID_LINE_ITEM_UNIT_QTY" type="xs:double"/>
+							<xs:element name="PACK_ID_LINE_ITEM_BOX_QTY" type="xs:double"/>
+							<xs:element name="PACK_ID_UNIT_UOM" type="xs:string"/>
+							<xs:element name="EXTD_BOX_WEIGHT" type="xs:double"/>
+							<xs:element name="EXPORT_NOTES_DETAIL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="SHIPPING_INSTR_DETAIL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="PICKING_INSTR_DETAIL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="DELIVERY_INSTR_DETAIL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="SPECIAL_INSTR_DETAIL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="CUSTOMER_INSTR_DETAIL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="HANDLING_INSTR_DETAIL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="UID_INSTR_DETAIL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="CONFIG_INSTR_DETAIL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="MAXKIT_DETAIL" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="UDF_DET" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="UDF_DETAIL" type="UDFType" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="HP_PN_COMPONENTS" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="HP_PN_COMPONENT" type="xs:string"/>
+										<xs:element name="PROD_DESC_COMP" type="xs:string"/>
+										<xs:element name="COMPONENT_UNIT_QTY" type="xs:double"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="BOX" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="BOX_ID" type="xs:string"/>
+										<xs:element name="SERIAL_NUM" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="TRACK_NO_PARCEL" type="xs:string"/>
+										<xs:element name="BOX_WEIGHT" type="xs:double"/>
+										<xs:element name="BOX_WEIGHT_UOM" type="xs:string"/>
+										<xs:element name="BOX_UNIT_QTY" type="xs:double"/>
+										<xs:element name="UDF_BOX" type="UDFType" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="UDFType">
+		<xs:sequence>
+			<xs:element name="KEY" type="xs:string"/>
+			<xs:element name="VALUE" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

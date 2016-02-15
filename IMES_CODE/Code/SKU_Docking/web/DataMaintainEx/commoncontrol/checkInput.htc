@@ -1,0 +1,161 @@
+<PUBLIC:COMPONENT>
+<PUBLIC:ATTACH EVENT="onkeypress"  ONEVENT="DoKeyPress()" />
+<PUBLIC:ATTACH EVENT="onpaste"  ONEVENT="DoPaste()" /> 
+<PUBLIC:ATTACH EVENT="ondrop"  ONEVENT="event.returnValue=false;" /> 
+
+<SCRIPT LANGUAGE="JScript">   
+/*
+	Create by:lzy
+	Date:2007-11-13
+	Function:limit the input content.
+*/ 	
+	function DoKeyPress()
+	{ 
+		 
+ 	 	//38=&; 39-'; 37-%; 95-_; 91-[;93-]; 62->;60-<;92-\;94-^; 34="; 44=,
+	 	if (event.keyCode==34 || event.keyCode==38 || event.keyCode==62 || event.keyCode==60
+	 		|| event.keyCode==91 || event.keyCode==93 || event.keyCode==44)
+//	 	if(event.keyCode==38 || event.keyCode==39 ||  
+//		 	event.keyCode==37 || event.keyCode==95 || event.keyCode==91 || event.keyCode==94 || 
+//		 	event.keyCode==93 || event.keyCode==62 || event.keyCode==60 || event.keyCode==92)
+		{			
+			event.returnValue=false;
+			return false;	
+		}	
+
+	}
+	
+	function DoPaste()
+	{ 
+		var reValue=window.clipboardData.getData("Text");	
+	//	window.clipboardData.clearData("Text");
+	
+		try{ 
+			if (reValue.indexOf("&")!=-1)
+			{
+				var re = /&/g;            
+				reValue=reValue.replace(re,"" );    
+ 				if(! window.clipboardData.setData("Text",reValue)==true)
+					window.event.returnValue=false;
+			} 
+			
+			if (reValue.indexOf("\"")!=-1)
+			{
+				var re = /"/g;            
+				reValue=reValue.replace(re,"" );    
+ 				if(! window.clipboardData.setData("Text",reValue)==true)
+					window.event.returnValue=false;
+			} 
+			
+			if (reValue.indexOf(",")!=-1)
+			{
+				var re = /,/g;            
+				reValue=reValue.replace(re,"" );    
+ 				if(! window.clipboardData.setData("Text",reValue)==true)
+					window.event.returnValue=false;
+			} 
+			
+//			if (reValue.indexOf("'")!=-1)
+//			{
+//				var re = /'/g;            
+//				reValue=reValue.replace(re,"" );    
+// 				if(! window.clipboardData.setData("Text",reValue)==true)
+//					window.event.returnValue=false;
+//			}  
+//			
+//			if (reValue.indexOf("%")!=-1)
+//			{
+//				var re = /%/g;            
+//				reValue=reValue.replace(re,"" );    
+// 				if(! window.clipboardData.setData("Text",reValue)==true)
+//					window.event.returnValue=false;
+//			}  
+//			
+//			if (reValue.indexOf("_")!=-1)
+//			{
+//				var re = /_/g;            
+//				reValue=reValue.replace(re,"" );    
+// 				if(! window.clipboardData.setData("Text",reValue)==true)
+//					window.event.returnValue=false;
+//			}  
+//			
+			if (reValue.indexOf("[")!=-1)
+			{
+				reValue = filterSpecialCharacter(reValue, "[");
+				
+				if(! window.clipboardData.setData("Text",reValue)==true)
+					window.event.returnValue=false;
+			}  
+			
+			if (reValue.indexOf("]")!=-1)
+			{
+				           
+				reValue=reValue.replace("]","" );    
+ 				if(! window.clipboardData.setData("Text",reValue)==true)
+					window.event.returnValue=false;
+			}  
+			
+			if (reValue.indexOf(">")!=-1)
+			{
+				var re = />/g;            
+				reValue=reValue.replace(re,"" );    
+ 				if(! window.clipboardData.setData("Text",reValue)==true)
+					window.event.returnValue=false;
+			}  
+			if (reValue.indexOf("<")!=-1)
+			{
+				var re = /</g;            
+				reValue=reValue.replace(re,"" );    
+ 				if(! window.clipboardData.setData("Text",reValue)==true)
+					window.event.returnValue=false;
+			}  
+			
+//			if (reValue.indexOf("\\")!=-1)
+//			{	
+//				var re = /\\/g;			          
+//				reValue=reValue.replace(re,"" );    
+// 				if(! window.clipboardData.setData("Text",reValue)==true)
+//					window.event.returnValue=false;
+//			}
+//			  
+//			if (reValue.indexOf("^")!=-1)
+//			{	
+//				reValue = filterSpecialCharacter(reValue, "^");
+//				
+//				if(! window.clipboardData.setData("Text",reValue)==true)
+//					window.event.returnValue=false;
+//			}  
+			
+		}
+		catch(e)
+		{
+			//如果剪切板数据转换失败，取消本次拷贝操作。
+			event.returnValue=false;
+			return false;	
+			
+		}
+		
+	}
+	
+	function filterSpecialCharacter(source, keyStr)
+	{
+		var reValue = source;
+
+		while(reValue.indexOf(keyStr)!=-1)
+		{	
+			reValue=reValue.replace(keyStr,"" );    
+			
+		}  
+
+		return reValue
+	
+	}
+</SCRIPT>
+<SCRIPT LANGUAGE="VBScript">    
+	function rep(str,s,d)
+		rep=Replace(str,s,d)
+	end function
+	
+</SCRIPT>
+</PUBLIC:COMPONENT>
+

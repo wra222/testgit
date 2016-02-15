@@ -1,0 +1,156 @@
+﻿body {
+}
+.commonLabelBig
+{
+	 font-size:13; 
+
+}
+.commonLabelSmall
+{
+	 font-size:11;
+} 
+
+.commonTxtBig
+{
+	 font-size:13;
+    height:20px;
+     
+}
+.commonTxtSmall
+{
+	font-size:11;
+	height:20px  ;
+
+} 
+
+.commonBtn
+{
+	font-size:11;
+    width:80px; 
+} 
+.common_grid_OverRowGvExt
+{
+	background-color: ActiveBorder;
+	text-align: center;
+	font-size: 14px;
+}
+
+.common_grid_SelectedRowGvExt
+{
+	background-color: RGB(0,84,227);
+	color: RGB(255,255,255);
+	text-align: center;
+	font-size: 14px;
+}
+.common_grid_SelectedRowGvExt1
+{
+	background-color: RGB(0,84,227);
+	color: RGB(255,255,255);
+	text-align: center;
+	font-size: 16px;
+}
+
+.common_grid_TableGvExt
+{
+	color: black;
+	background-color:RGB(149,190,222);	
+	border: solid 2px RGB(149,190,222);
+}
+
+.common_grid_RowGvExt
+{
+	background-color: White;
+	text-align: center;
+	font-size: 14px;
+}
+
+.common_grid_RowGvExt1
+{
+	background-color: White;
+	text-align: center;
+	font-size: 16px;
+}
+
+.common_grid_AlternatingRowGvExt
+{
+	background-color: White;
+	text-align: center;
+	font-size: 14px;
+}
+
+.common_grid_AlternatingRowGvExt1
+{
+	background-color: White;
+	text-align: center;
+	font-size: 16px;
+}
+
+.common_grid_HeaderRowGvExt
+{
+	background-color: RGB(230,230,230);
+	font-weight: bold;
+	color:RGB(11,99,122);
+	font-size: 15px;	
+	height: 25px;
+	text-align: left;
+	border-top-width:2px;
+	border-top-color: RGB(149,190,222); 
+	border-top-style:  solid ;
+	border-bottom-width: 1px;
+	border-bottom-color: RGB(149,190,222); 
+	border-bottom-style: solid;
+}
+
+.common_grid_gvTextBox
+{
+	font-size: 14px;
+	background-color:Transparent ;
+	border:0; 
+	text-align: center ;  
+	width:100%; 
+}
+.common_grid_PagerRowGvExt
+{
+    background-color: white;
+	text-align: right;
+	font-size: 16px; 
+}
+.common_input
+{
+	font-size: 17px;
+	font-weight: bold;
+	padding-top:5px;
+	padding-bottom:5px;
+	text-align: center;
+}
+
+.footer_line
+{
+	background-color: RGB(153,153,153);
+}
+
+.common_msgbox
+{
+	font-size: 22px;
+	color: Red;
+	font-weight: bold;
+	border: solid 1px black;
+	background: white; 
+	overflow:auto;
+}
+.errMessage_style
+{
+	color: red;
+	 font-size :larger;
+	 width: 580px; 
+	 height:340px; 
+	 overflow:auto;
+	 word-wrap: break-word;
+}
+.common_textarea
+{
+	font-size:15px;
+	background-color:Transparent;
+	text-align:left;
+	font-family: Times New Roman;
+}

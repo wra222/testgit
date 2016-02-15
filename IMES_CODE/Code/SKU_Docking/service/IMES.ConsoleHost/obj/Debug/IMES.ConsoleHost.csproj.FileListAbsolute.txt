@@ -1,0 +1,6 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.ConsoleHost.exe.config
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.ConsoleHost.exe
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.ConsoleHost.pdb
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.ConsoleHost\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.ConsoleHost\obj\Debug\IMES.ConsoleHost.exe
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.ConsoleHost\obj\Debug\IMES.ConsoleHost.pdb

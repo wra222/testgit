@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IMES.Infrastructure.Repository._Metas;
+
+namespace IMES.DataModel
+{
+    [Serializable]
+    [ORMapping(typeof(SmallBoardDefine))]
+    public class SmallBoardDefineInfo
+    {
+        [ORMapping(SmallBoardDefine.fn_id)]
+        public long ID = long.MinValue;
+        [ORMapping(SmallBoardDefine.fn_family)]
+        public string Family = null;
+        [ORMapping(SmallBoardDefine.fn_mbtype)]
+        public string MBType = null;
+        [ORMapping(SmallBoardDefine.fn_qty)]
+        public int Qty = int.MinValue;
+        [ORMapping(SmallBoardDefine.fn_priority)]
+        public int Priority = int.MinValue;
+        [ORMapping(SmallBoardDefine.fn_editor)]
+        public String Editor = null;
+        [ORMapping(SmallBoardDefine.fn_cdt)]
+        public DateTime Cdt = DateTime.MinValue;
+        [ORMapping(SmallBoardDefine.fn_udt)]
+        public DateTime Udt = DateTime.MinValue;
+    }
+}

@@ -1,0 +1,7 @@
+E:\IMES_CODE\Code\Query\bin\IMES.Query.Service.exe
+E:\IMES_CODE\Code\Query\bin\IMES.Query.Service.pdb
+E:\IMES_CODE\Code\Query\IMESService\IMES.Query.Service\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\Query\IMESService\IMES.Query.Service\obj\Debug\IMES.Service.ProjectInstaller.resources
+E:\IMES_CODE\Code\Query\IMESService\IMES.Query.Service\obj\Debug\IMES.Query.Service.csproj.GenerateResource.Cache
+E:\IMES_CODE\Code\Query\IMESService\IMES.Query.Service\obj\Debug\IMES.Query.Service.exe
+E:\IMES_CODE\Code\Query\IMESService\IMES.Query.Service\obj\Debug\IMES.Query.Service.pdb

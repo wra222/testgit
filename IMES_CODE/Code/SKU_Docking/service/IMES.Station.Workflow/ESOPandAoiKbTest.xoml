@@ -1,0 +1,77 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="ESOPandAoiKbTest" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind ESOPandAoiKbTest,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind ESOPandAoiKbTest,Path=SessionType}" Editor="{ActivityBind ESOPandAoiKbTest,Path=Editor}" AddObjectWithSessionKey="{x:Null}" Station="{ActivityBind ESOPandAoiKbTest,Path=Station}" x:Name="getProduct1" Line="{ActivityBind ESOPandAoiKbTest,Path=PdLine}" Key="{ActivityBind ESOPandAoiKbTest,Path=Key}" InputType="ProductIDOrCustSN" />
+	<IfElseActivity x:Name="ConditionalBlockStation">
+		<IfElseBranchActivity x:Name="ifNeedBlock">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="bNeedBlock" />
+			</IfElseBranchActivity.Condition>
+			<ns0:BlockStation Customer="{ActivityBind ESOPandAoiKbTest,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind ESOPandAoiKbTest,Path=SessionType}" Editor="{ActivityBind ESOPandAoiKbTest,Path=Editor}" ProcessType="Product" Station="{ActivityBind ESOPandAoiKbTest,Path=Station}" Line="{ActivityBind ESOPandAoiKbTest,Path=PdLine}" Key="{ActivityBind ESOPandAoiKbTest,Path=Key}" />
+			<ns0:CheckIsAOILine Customer="{ActivityBind ESOPandAoiKbTest,Path=Customer}" x:Name="checkIsAOILine1" SessionType="{ActivityBind ESOPandAoiKbTest,Path=SessionType}" Editor="{ActivityBind ESOPandAoiKbTest,Path=Editor}" Station="{ActivityBind ESOPandAoiKbTest,Path=Station}" Line="{ActivityBind ESOPandAoiKbTest,Path=PdLine}" Key="{ActivityBind ESOPandAoiKbTest,Path=Key}" />
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<IfElseActivity x:Name="ifElseActivity3">
+		<IfElseBranchActivity x:Name="IsAOILine3">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="IsAOILine" />
+			</IfElseBranchActivity.Condition>
+			<ns0:GetKbAndLabelPnForAOI Customer="{ActivityBind ESOPandAoiKbTest,Path=Customer}" x:Name="getKbAndLabelPnForAOI1" SessionType="{ActivityBind ESOPandAoiKbTest,Path=SessionType}" Editor="{ActivityBind ESOPandAoiKbTest,Path=Editor}" Station="{ActivityBind ESOPandAoiKbTest,Path=Station}" Line="{ActivityBind ESOPandAoiKbTest,Path=PdLine}" Key="{ActivityBind ESOPandAoiKbTest,Path=Key}" />
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<ns0:GetBOM Customer="{ActivityBind ESOPandAoiKbTest,Path=Customer}" MainObjFrom="Product" SessionType="{ActivityBind ESOPandAoiKbTest,Path=SessionType}" x:Name="getBOM1" Editor="{ActivityBind ESOPandAoiKbTest,Path=Editor}" Station="{ActivityBind ESOPandAoiKbTest,Path=Station}" ModelFrom="Product" Line="{ActivityBind ESOPandAoiKbTest,Path=PdLine}" Key="{ActivityBind ESOPandAoiKbTest,Path=Key}" />
+	<IfElseActivity x:Name="ifElseActivity5">
+		<IfElseBranchActivity x:Name="ifNotQuery">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="bNeedBlock" />
+			</IfElseBranchActivity.Condition>
+			<WhileActivity x:Name="whileActivity1">
+				<WhileActivity.Condition>
+					<RuleConditionReference ConditionName="NotComplete" />
+				</WhileActivity.Condition>
+				<SequenceActivity x:Name="sequenceActivity1">
+					<ns0:WaitInput Customer="{ActivityBind ESOPandAoiKbTest,Path=Customer}" x:Name="waitInput2" SessionType="{ActivityBind ESOPandAoiKbTest,Path=SessionType}" Editor="{ActivityBind ESOPandAoiKbTest,Path=Editor}" Station="{ActivityBind ESOPandAoiKbTest,Path=Station}" Line="{ActivityBind ESOPandAoiKbTest,Path=PdLine}" Key="{ActivityBind ESOPandAoiKbTest,Path=Key}" />
+					<IfElseActivity x:Name="IfComplete">
+						<IfElseBranchActivity x:Name="NotComplete">
+							<IfElseBranchActivity.Condition>
+								<RuleConditionReference ConditionName="NotComplete" />
+							</IfElseBranchActivity.Condition>
+							<ns0:PartMatch Customer="{ActivityBind ESOPandAoiKbTest,Path=Customer}" SessionType="{ActivityBind ESOPandAoiKbTest,Path=SessionType}" Editor="{ActivityBind ESOPandAoiKbTest,Path=Editor}" Station="{ActivityBind ESOPandAoiKbTest,Path=Station}" x:Name="partMatch1" BindTo="Product" Line="{ActivityBind ESOPandAoiKbTest,Path=PdLine}" Key="{ActivityBind ESOPandAoiKbTest,Path=Key}" />
+						</IfElseBranchActivity>
+					</IfElseActivity>
+				</SequenceActivity>
+			</WhileActivity>
+			<ns0:WaitInput Customer="{ActivityBind ESOPandAoiKbTest,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind ESOPandAoiKbTest,Path=SessionType}" Editor="{ActivityBind ESOPandAoiKbTest,Path=Editor}" Enabled="False" Station="{ActivityBind ESOPandAoiKbTest,Path=Station}" Line="{ActivityBind ESOPandAoiKbTest,Path=PdLine}" Key="{ActivityBind ESOPandAoiKbTest,Path=Key}" />
+			<ns0:DBScope Station="{ActivityBind ESOPandAoiKbTest,Path=Station}" x:Name="dbScope1" Key="{ActivityBind ESOPandAoiKbTest,Path=Key}" SessionType="{ActivityBind ESOPandAoiKbTest,Path=SessionType}">
+				<ns0:BindParts Customer="{ActivityBind ESOPandAoiKbTest,Path=Customer}" x:Name="bindParts1" SessionType="{ActivityBind ESOPandAoiKbTest,Path=SessionType}" Editor="{ActivityBind ESOPandAoiKbTest,Path=Editor}" Station="{ActivityBind ESOPandAoiKbTest,Path=Station}" BindTo="Product" Line="{ActivityBind ESOPandAoiKbTest,Path=PdLine}" Key="{ActivityBind ESOPandAoiKbTest,Path=Key}" />
+				<IfElseActivity x:Name="ifHaveDefect">
+					<IfElseBranchActivity x:Name="HaveDefect">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="HaveDefect" />
+						</IfElseBranchActivity.Condition>
+						<ns0:WriteProductTestLog Customer="{ActivityBind ESOPandAoiKbTest,Path=Customer}" Station="{ActivityBind ESOPandAoiKbTest,Path=Station}" SessionType="{ActivityBind ESOPandAoiKbTest,Path=SessionType}" Editor="{ActivityBind ESOPandAoiKbTest,Path=Editor}" x:Name="writeProductTestLog1" Line="{ActivityBind ESOPandAoiKbTest,Path=PdLine}" Key="{ActivityBind ESOPandAoiKbTest,Path=Key}" />
+						<ns0:WriteProductLog Customer="{ActivityBind ESOPandAoiKbTest,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind ESOPandAoiKbTest,Path=SessionType}" Editor="{ActivityBind ESOPandAoiKbTest,Path=Editor}" Station="{ActivityBind ESOPandAoiKbTest,Path=Station}" Status="Fail" IsSingle="True" Line="{ActivityBind ESOPandAoiKbTest,Path=PdLine}" Key="{ActivityBind ESOPandAoiKbTest,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind ESOPandAoiKbTest,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind ESOPandAoiKbTest,Path=SessionType}" Editor="{ActivityBind ESOPandAoiKbTest,Path=Editor}" Status="Fail" Station="{ActivityBind ESOPandAoiKbTest,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind ESOPandAoiKbTest,Path=PdLine}" Key="{ActivityBind ESOPandAoiKbTest,Path=Key}" />
+						<IfElseActivity x:Name="ifElseActivity1" Enabled="False">
+							<IfElseBranchActivity x:Name="NotAOILine">
+								<IfElseBranchActivity.Condition>
+									<RuleConditionReference ConditionName="NotAOILine" />
+								</IfElseBranchActivity.Condition>
+							</IfElseBranchActivity>
+						</IfElseActivity>
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="NoDefect">
+						<ns0:WriteProductTestLog Customer="{ActivityBind ESOPandAoiKbTest,Path=Customer}" Station="{ActivityBind ESOPandAoiKbTest,Path=Station}" SessionType="{ActivityBind ESOPandAoiKbTest,Path=SessionType}" Editor="{ActivityBind ESOPandAoiKbTest,Path=Editor}" IsPass="True" x:Name="writeProductTestLog2" Line="{ActivityBind ESOPandAoiKbTest,Path=PdLine}" Key="{ActivityBind ESOPandAoiKbTest,Path=Key}" />
+						<ns0:WriteProductLog Customer="{ActivityBind ESOPandAoiKbTest,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind ESOPandAoiKbTest,Path=SessionType}" Editor="{ActivityBind ESOPandAoiKbTest,Path=Editor}" Station="{ActivityBind ESOPandAoiKbTest,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind ESOPandAoiKbTest,Path=PdLine}" Key="{ActivityBind ESOPandAoiKbTest,Path=Key}" />
+						<IfElseActivity x:Name="ifElseActivity2">
+							<IfElseBranchActivity x:Name="NotAOILine2">
+								<IfElseBranchActivity.Condition>
+									<RuleConditionReference ConditionName="NotAOILine" />
+								</IfElseBranchActivity.Condition>
+								<ns0:UpdateProductStatus Customer="{ActivityBind ESOPandAoiKbTest,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind ESOPandAoiKbTest,Path=SessionType}" Editor="{ActivityBind ESOPandAoiKbTest,Path=Editor}" Status="Pass" Station="{ActivityBind ESOPandAoiKbTest,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind ESOPandAoiKbTest,Path=PdLine}" Key="{ActivityBind ESOPandAoiKbTest,Path=Key}" />
+							</IfElseBranchActivity>
+						</IfElseActivity>
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

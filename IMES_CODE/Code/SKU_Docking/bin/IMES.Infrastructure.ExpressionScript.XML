@@ -1,0 +1,345 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IMES.Infrastructure.ExpressionScript</name>
+    </assembly>
+    <members>
+        <member name="T:IMES.Infrastructure.ExpressionScript.DictionaryWithDefault`2">
+            <summary>
+            not find key return default value
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DictionaryWithDefault`2.#ctor">
+            <summary>
+            inherit base class
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DictionaryWithDefault`2.#ctor(`1)">
+            <summary>
+            constructor
+            </summary>
+            <param name="defaultValue"></param>
+        </member>
+        <member name="P:IMES.Infrastructure.ExpressionScript.DictionaryWithDefault`2.DefaultValue">
+            <summary>
+            assign Default Value
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.ExpressionScript.DictionaryWithDefault`2.Item(`0)">
+            <summary>
+            no data return default value
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.ExpressionScript.TypeExtension">
+            <summary>
+            Get Type Extension Refection     
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.TypeExtension.GetExtensionMethods(System.Type)">
+            <summary>
+            get all entension method info
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.TypeExtension.GetExtensionMethod(System.Type,System.String)">
+            <summary>
+            Extends the System.Type-type to search for a given extended MethodeName
+            </summary>
+            <param name="t"></param>
+            <param name="MethodeName">Name of the Methode</param>
+            <returns>the found Methode or null</returns>
+        </member>
+        <member name="T:IMES.Infrastructure.ExpressionScript.FISObjectExpression">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.FISObjectExpression.FISProperty2Method(System.Type,System.String,System.String@,System.Linq.Expressions.Expression[]@)">
+            <summary>
+            iMES special property example:ProductInfo.XXXX, ModelInfo.XXXX....
+            </summary>
+            <param name="type"></param>
+            <param name="propertyName"></param>
+            <param name="methodName"></param>
+            <param name="methodArgs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.FISObjectExpression.CompileWithCache(IMES.Infrastructure.ExpressionScript.FISObjectExpression.ScriptTypeEnum,System.String,System.String,System.Linq.Expressions.ParameterExpression[])">
+            <summary>
+            Compile ok store into cache,
+            Arguement sequence:IProduct,IMB, Delivery,Part,Model,Family,TestLog,BOM
+            </summary>
+            <param name="scriptType"></param>
+            <param name="name"></param>
+            <param name="code"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.FISObjectExpression.Compile(IMES.Infrastructure.ExpressionScript.FISObjectExpression.ScriptTypeEnum,System.String,System.Linq.Expressions.ParameterExpression[])">
+            <summary>
+             arguement sequence:Product,PCB,Delivery,Part,Model,Family,TestLog,BOM
+            </summary>
+            <param name="scriptType"></param>
+            <param name="code"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.ExpressionScript.FISObjectExpression.ScriptTypeEnum">
+            <summary>
+             return type
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.ExpressionScript.FISObjectExpression.ScriptTypeEnum.Condition">
+            <summary>
+            return true/false
+            </summary>
+        </member>
+        <member name="F:IMES.Infrastructure.ExpressionScript.FISObjectExpression.ScriptTypeEnum.GetValue">
+            <summary>
+            return string
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.ExpressionScript.StringExtension">
+            <summary>
+            string extension
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.StringExtension.IsMatch(System.String,System.String)">
+            <summary>
+            Regex IsMatch
+            </summary>
+            <param name="input"></param>
+            <param name="partern"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.StringExtension.MatchGroup(System.String,System.String)">
+            <summary>
+            Regex Match Group Name
+            </summary>
+            <param name="input"></param>
+            <param name="pattern"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.ExpressionScript.DynamicQueryable">
+            <summary>
+            DynamicQueryable
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicQueryable.Where``1(System.Linq.IQueryable{``0},System.String,System.Object[])">
+            <summary>
+            Where
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="predicate"></param>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicQueryable.Where(System.Linq.IQueryable,System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="predicate"></param>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicQueryable.Select(System.Linq.IQueryable,System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="selector"></param>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicQueryable.OrderBy``1(System.Linq.IQueryable{``0},System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="ordering"></param>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicQueryable.OrderBy(System.Linq.IQueryable,System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="ordering"></param>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicQueryable.Take(System.Linq.IQueryable,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicQueryable.Skip(System.Linq.IQueryable,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicQueryable.GroupBy(System.Linq.IQueryable,System.String,System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="keySelector"></param>
+            <param name="elementSelector"></param>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicQueryable.Any(System.Linq.IQueryable)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicQueryable.Count(System.Linq.IQueryable)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.ExpressionScript.DynamicClass">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicClass.ToString">
+            <summary>
+            ToString
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.ExpressionScript.DynamicProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicProperty.#ctor(System.String,System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="type"></param>
+        </member>
+        <member name="P:IMES.Infrastructure.ExpressionScript.DynamicProperty.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.ExpressionScript.DynamicProperty.Type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.ExpressionScript.DynamicExpression">
+            <summary>
+            Dynamic Expression
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicExpression.Parse(System.Type,System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="resultType"></param>
+            <param name="expression"></param>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicExpression.ParseLambda(System.Type,System.Type,System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="itType"></param>
+            <param name="resultType"></param>
+            <param name="expression"></param>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicExpression.ParseLambda(System.Linq.Expressions.ParameterExpression[],System.Type,System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="parameters"></param>
+            <param name="resultType"></param>
+            <param name="expression"></param>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicExpression.ParseLambda``2(System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="S"></typeparam>
+            <param name="expression"></param>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicExpression.CreateClass(IMES.Infrastructure.ExpressionScript.DynamicProperty[])">
+            <summary>
+            
+            </summary>
+            <param name="properties"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.DynamicExpression.CreateClass(System.Collections.Generic.IEnumerable{IMES.Infrastructure.ExpressionScript.DynamicProperty})">
+            <summary>
+            
+            </summary>
+            <param name="properties"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.ExpressionScript.ParseException">
+            <summary>
+            Parse Exception
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.ParseException.#ctor(System.String,System.Int32)">
+            <summary>
+            .ctor
+            </summary>
+            <param name="message"></param>
+            <param name="position"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.ParseException.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:IMES.Infrastructure.ExpressionScript.ParseException.Position">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.ExpressionScript.ExpressionParser.InvokeExpressionCall(System.Type,System.Linq.Expressions.Expression,System.String,System.Linq.Expressions.Expression[])">
+            <summary>
+            invoke expression call method 
+            </summary>
+            <param name="type"></param>
+            <param name="instance"></param>
+            <param name="methodName"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

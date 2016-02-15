@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9317685B-F17D-4195-910D-757A2425FCFA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IMES.Query.Interface</RootNamespace>
+    <AssemblyName>IMES.Query.Interface</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryIntf\IFA_TouchGlassTimeQuery.cs" />
+    <Compile Include="QueryIntf\IFA_ECOModelQuery.cs" />
+    <Compile Include="QueryIntf\ICheatSheet.cs" />
+    <Compile Include="QueryIntf\ICT_TAT_Query.cs" />
+    <Compile Include="QueryIntf\IFA_LocQuery.cs" />
+    <Compile Include="QueryIntf\IFA_MPLineInput.cs" />
+    <Compile Include="QueryIntf\IFA_ProductPlanInputQuery.cs" />
+    <Compile Include="QueryIntf\IFA_ProductPlanInputQuery_CR.cs" />
+    <Compile Include="QueryIntf\IFA_MPInputEx.cs" />
+    <Compile Include="QueryIntf\IFA_ReworkQuery.cs" />
+    <Compile Include="QueryIntf\IFA_rpt_sqeweeklyreport.cs" />
+    <Compile Include="QueryIntf\IFA_SQEReport.cs" />
+    <Compile Include="QueryIntf\IFA_WaittingDefectComponentRejudge.cs" />
+    <Compile Include="QueryIntf\IPAK_MrpQuery.cs" />
+    <Compile Include="QueryIntf\IPAK_NonPaletProductQuery.cs" />
+    <Compile Include="QueryIntf\ISA_OQCQuery.cs" />
+    <Compile Include="QueryIntf\ISA_SAReceiveReturnMBQuery.cs" />
+    <Compile Include="QueryIntf\IFA_KeyPartsRequirementQuery.cs" />
+    <Compile Include="QueryIntf\IFA_ProductRepairQuery.cs" />
+    <Compile Include="QueryIntf\IFA_MastereSOPQuery.cs" />
+    <Compile Include="QueryIntf\IPAK_BsamShipSnList.cs" />
+    <Compile Include="QueryIntf\IPAK_BsamLocationQuery.cs" />
+    <Compile Include="QueryIntf\IFA_IMG_2PPQuery.cs" />
+    <Compile Include="QueryIntf\IPAK_NoneShipProductQuery.cs" />
+    <Compile Include="QueryIntf\ICOAStatus.cs" />
+    <Compile Include="QueryIntf\IPAK_DockSnQuery.cs" />
+    <Compile Include="QueryIntf\IPAK_IdleTime.cs" />
+    <Compile Include="QueryIntf\IPAK_KitPartQuery.cs" />
+    <Compile Include="QueryIntf\IPAK_MaterialBoxQuery.cs" />
+    <Compile Include="QueryIntf\IPAK_PLT3.cs" />
+    <Compile Include="QueryIntf\IPAK_ShipPLT3.cs" />
+    <Compile Include="QueryIntf\IPAK_UnShipSnList.cs" />
+    <Compile Include="QueryIntf\IFA_ProductImageDownTimeout.cs" />
+    <Compile Include="QueryIntf\IPAK_COARMAQuery.cs" />
+    <Compile Include="QueryIntf\IPAK_COAStoreQuery.cs" />
+    <Compile Include="QueryIntf\IPAK_PAQCSortingQuery.cs" />
+    <Compile Include="QueryIntf\IPAK_StandModelWeight.cs" />
+    <Compile Include="QueryIntf\IPAK_Warehouse1.cs" />
+    <Compile Include="QueryIntf\IRBPC_Tool.cs" />
+    <Compile Include="QueryIntf\IFA_KeyPartDefectReport.cs" />
+    <Compile Include="QueryIntf\IFA_MaterialUsed.cs" />
+    <Compile Include="QueryIntf\IFA_ProductEfficiency.cs" />
+    <Compile Include="QueryIntf\IFA_MQuery.cs" />
+    <Compile Include="QueryIntf\ISA_CpuQuery.cs" />
+    <Compile Include="QueryIntf\ISA_PCBLotQuery.cs" />
+    <Compile Include="QueryIntf\ISA_PCBTestReport.cs" />
+    <Compile Include="QueryIntf\IPAK_WipTracking.cs" />
+    <Compile Include="QueryIntf\ISA_PCBInputQuery.cs" />
+    <Compile Include="QueryIntf\IFA_ProductStatement.cs" />
+    <Compile Include="QueryIntf\IFA_ProductYield.cs" />
+    <Compile Include="QueryIntf\IFA_QueryByPartSN.cs" />
+    <Compile Include="QueryIntf\IFA_ModelBOM.cs" />
+    <Compile Include="QueryIntf\IPAK_CDSIPOQuery.cs" />
+    <Compile Include="QueryIntf\IPAK_FirstPizza.cs" />
+    <Compile Include="QueryIntf\IPAK_KitFloatLocQuery.cs" />
+    <Compile Include="QueryIntf\IModel_ASTQyery.cs" />
+    <Compile Include="QueryIntf\IPAK_ASTReport.cs" />
+    <Compile Include="QueryIntf\IPAK_ASTeSQPQuery.cs" />
+    <Compile Include="QueryIntf\IConfigDB.cs" />
+    <Compile Include="QueryIntf\IFamily.cs" />
+    <Compile Include="QueryIntf\IFA_EPIAModelList.cs" />
+    <Compile Include="QueryIntf\IFA_MPInput.cs" />
+    <Compile Include="QueryIntf\IFA_PIADefectList.cs" />
+    <Compile Include="QueryIntf\IFA_PoWIPTracking.cs" />
+    <Compile Include="QueryIntf\IFA_PrdIdOnLine.cs" />
+    <Compile Include="QueryIntf\IFA_ProductInfo.cs" />
+    <Compile Include="QueryIntf\IModel.cs" />
+    <Compile Include="QueryIntf\IFA_SNByFamily.cs" />
+    <Compile Include="QueryIntf\IPAK_ChepPallet.cs" />
+    <Compile Include="QueryIntf\IPAK_COAStatusReport.cs" />
+    <Compile Include="QueryIntf\IPAK_COAStockQty.cs" />
+    <Compile Include="QueryIntf\IPdLine.cs" />
+    <Compile Include="QueryIntf\ISA_FAReturnPCA.cs" />
+    <Compile Include="QueryIntf\ISA_PCBNoQuery.cs" />
+    <Compile Include="QueryIntf\ISA_SABANDIT.cs" />
+    <Compile Include="QueryIntf\ISA_SMTDashboard.cs" />
+    <Compile Include="QueryIntf\ISA_TestDefect.cs" />
+    <Compile Include="QueryIntf\ISA_PCBInfo.cs" />
+    <Compile Include="QueryIntf\ISA_PCBStationQuery.cs" />
+    <Compile Include="QueryIntf\ISA_SAMBRepair.cs" />
+    <Compile Include="QueryIntf\ISMT_TestDataReport.cs" />
+    <Compile Include="QueryIntf\IStation.cs" />
+    <Compile Include="QueryIntf\IPAK_VirtualPalletInfo.cs" />
+    <Compile Include="QueryIntf\IPAK_PackingDailyReport.cs" />
+    <Compile Include="QueryIntf\IPAK_PakBufferQuery.cs" />
+    <Compile Include="QueryIntf\IPAK_PLTDimension.cs" />
+    <Compile Include="QueryIntf\IPAK_PackingDataQuery.cs" />
+    <Compile Include="QueryIntf\IQueryCommon.cs" />
+    <Compile Include="QueryIntf\IPAK_BTLocQuery.cs" />
+    <Compile Include="QueryIntf\IPAK_ASTQuery.cs" />
+    <Compile Include="QueryIntf\IPAK_ShipLogQuery.cs" />
+    <Compile Include="QueryIntf\IPAK_StatusByDeliveryNo.cs" />
+    <Compile Include="QueryIntf\IPAK_PAQCUnTest.cs" />
+    <Compile Include="QueryIntf\IPAK_NonBulkPalletSummaryRpt.cs" />
+    <Compile Include="QueryIntf\IPAK_BulkPalletReport.cs" />
+    <Compile Include="QueryIntf\IPAK_Common.cs" />
+    <Compile Include="QueryIntf\IPAK_Query87Product.cs" />
+    <Compile Include="QueryIntf\IUploadFile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IMES.Entity.Infrastructure\IMES.Entity.Infrastructure.csproj">
+      <Project>{D5E00F47-1636-451C-B7A0-C4F2BFC3C34C}</Project>
+      <Name>IMES.Entity.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.Entity.Repository.Meta\IMES.Entity.Repository.Meta.csproj">
+      <Project>{20929D0C-C172-4918-942E-1E3C912C4914}</Project>
+      <Name>IMES.Entity.Repository.Meta</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>xcopy ..\bin\$(TargetFileName) ..\WEB\Bin\  /Y /I</PostBuildEvent>
+  </PropertyGroup>
+</Project>

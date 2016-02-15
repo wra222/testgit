@@ -1,0 +1,3879 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D69A3126-A2F0-4EF8-8A3E-59AD9AA3A646}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>IMES.Activity</RootNamespace>
+    <AssemblyName>IMES.Activity</AssemblyName>
+    <ProjectTypeGuids>{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <DocumentationFile>..\..\bin\IMES.Activity.XML</DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IMES.DataModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\IMES.DataModel.dll</HintPath>
+    </Reference>
+    <Reference Include="IMES.FisObject, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\IMES.FisObject.dll</HintPath>
+    </Reference>
+    <Reference Include="IMES.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\IMES.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="IMES.Infrastructure.FisException, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\IMES.Infrastructure.FisException.dll</HintPath>
+    </Reference>
+    <Reference Include="IMES.Infrastructure.Repository, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.Repository.Metas, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Interface.RouteManagement, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.SAP.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\IMES.SAP.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="mysql.data, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\mysql.data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Workflow.Activities">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Workflow.ComponentModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Workflow.Runtime">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.WorkflowServices">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AST\CheckAndGenerateATSN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\CheckAndGenerateATSN.Designer.cs">
+      <DependentUpon>CheckAndGenerateATSN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\GetGenAstSNDefineInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\GetGenAstSNDefineInfo.Designer.cs">
+      <DependentUpon>GetGenAstSNDefineInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\WriteASTPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\WriteASTPrint.Designer.cs">
+      <DependentUpon>WriteASTPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\GetAstDefineInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\GetAstDefineInfo.Designer.cs">
+      <DependentUpon>GetAstDefineInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\BaseAcquireActivity.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BaseAcquireActivity.Designer.cs">
+      <DependentUpon>BaseAcquireActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\BaseActivity.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BaseActivity.Designer.cs">
+      <DependentUpon>BaseActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\BaseExecuteRuleSetActivity.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BaseExecuteRuleSetActivity.Designer.cs">
+      <DependentUpon>BaseExecuteRuleSetActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\BaseFlow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\TxnScope.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\TxnScope.Designer.cs">
+      <DependentUpon>TxnScope.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Birch\AcquireIMEI.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Birch\AcquireIMEI.Designer.cs">
+      <DependentUpon>AcquireIMEI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Birch\AcquireMACInProduct.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Birch\AcquireMACInProduct.designer.cs">
+      <DependentUpon>AcquireMACInProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Birch\AssignModel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Birch\AssignModel.designer.cs">
+      <DependentUpon>AssignModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Birch\CheckAssignModel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Birch\CheckAssignModel.designer.cs">
+      <DependentUpon>CheckAssignModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Birch\CheckStationAssignCUSTSN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Birch\CheckStationAssignCUSTSN.designer.cs">
+      <DependentUpon>CheckStationAssignCUSTSN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Birch\CheckTabletSecureOn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Birch\CheckTabletSecureOn.Designer.cs">
+      <DependentUpon>CheckTabletSecureOn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Birch\GenerateProdAndBindMO.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Birch\GenerateProdAndBindMO.designer.cs">
+      <DependentUpon>GenerateProdAndBindMO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Birch\GenSkodaSN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Birch\GenSkodaSN.designer.cs">
+      <DependentUpon>GenSkodaSN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Birch\PartMatch_BIRCH.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Birch\PartMatch_BIRCH.designer.cs">
+      <DependentUpon>PartMatch_BIRCH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\AssignPalletLocWithCarton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\AssignPalletLocWithCarton.Designer.cs">
+      <DependentUpon>AssignPalletLocWithCarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\CheckBSamModel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\CheckBSamModel.Designer.cs">
+      <DependentUpon>CheckBSamModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\CheckBSamLoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\CheckBSamLoc.Designer.cs">
+      <DependentUpon>CheckBSamLoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\AssignDNWithCarton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\AssignDNWithCarton.Designer.cs">
+      <DependentUpon>AssignDNWithCarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\AssignPalletWithCarton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\AssignPalletWithCarton.Designer.cs">
+      <DependentUpon>AssignPalletWithCarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\AssignBoxUccWithCarton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\AssignBoxUccWithCarton.Designer.cs">
+      <DependentUpon>AssignBoxUccWithCarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\CalUnitWeightWithCarton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\CalUnitWeightWithCarton.Designer.cs">
+      <DependentUpon>CalUnitWeightWithCarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\CheckBSamUnPackAllBySN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\CheckBSamUnPackAllBySN.Designer.cs">
+      <DependentUpon>CheckBSamUnPackAllBySN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\CheckCOOLabelPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\CheckCOOLabelPrint.Designer.cs">
+      <DependentUpon>CheckCOOLabelPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\CheckPalletByCarton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\CheckPalletByCarton.Designer.cs">
+      <DependentUpon>CheckPalletByCarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\CheckUnPackStatusByCarton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\CheckUnPackStatusByCarton.Designer.cs">
+      <DependentUpon>CheckUnPackStatusByCarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\CheckSameModelAndStation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\CheckSameModelAndStation.Designer.cs">
+      <DependentUpon>CheckSameModelAndStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\CheckDnAndCOAByProductList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\CheckDnAndCOAByProductList.Designer.cs">
+      <DependentUpon>CheckDnAndCOAByProductList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\GetConstValue.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\GetConstValue.Designer.cs">
+      <DependentUpon>GetConstValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\CheckUnPackStatusByDn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\CheckUnPackStatusByDn.Designer.cs">
+      <DependentUpon>CheckUnPackStatusByDn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\GetConstValueType.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\GetConstValueType.Designer.cs">
+      <DependentUpon>GetConstValueType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\MoveInBSamLoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\MoveInBSamLoc.Designer.cs">
+      <DependentUpon>MoveInBSamLoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\SetDeliveryExInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\SetDeliveryExInfo.Designer.cs">
+      <DependentUpon>SetDeliveryExInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\UnPackBackupProductByCarton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\UnPackBackupProductByCarton.Designer.cs">
+      <DependentUpon>UnPackBackupProductByCarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\UnpackDataByCarton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\UnpackDataByCarton.Designer.cs">
+      <DependentUpon>UnpackDataByCarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\UpdateCartonStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\UpdateCartonStatus.Designer.cs">
+      <DependentUpon>UpdateCartonStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\GetCarton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\GetCarton.Designer.cs">
+      <DependentUpon>GetCarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\UpdateModelWeightWithCarton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\UpdateModelWeightWithCarton.Designer.cs">
+      <DependentUpon>UpdateModelWeightWithCarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\UpdateUnitWeightWithCarton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\UpdateUnitWeightWithCarton.Designer.cs">
+      <DependentUpon>UpdateUnitWeightWithCarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\WriteCartonLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\WriteCartonLog.Designer.cs">
+      <DependentUpon>WriteCartonLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\OutCartonLoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\OutCartonLoc.Designer.cs">
+      <DependentUpon>OutCartonLoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BSam\GenCartonSN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BSam\GenCartonSN.Designer.cs">
+      <DependentUpon>GenCartonSN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckItemType\FilterFlatBom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CheckItemType\FilterFlatBom.designer.cs">
+      <DependentUpon>FilterFlatBom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckLabelType\CheckTabletCartonLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CheckLabelType\CheckTabletCartonLabel.Designer.cs">
+      <DependentUpon>CheckTabletCartonLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckLabelType\FilterLabelTypeRule.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CheckLabelType\FilterLabelTypeRule.Designer.cs">
+      <DependentUpon>FilterLabelTypeRule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckLabelType\WritePrintLogList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CheckLabelType\WritePrintLogList.Designer.cs">
+      <DependentUpon>WritePrintLogList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\CheckBaseTime.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\CheckBaseTime.Designer.cs">
+      <DependentUpon>CheckBaseTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\MBCombineCPUCheckandSave.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\MBCombineCPUCheckandSave.Designer.cs">
+      <DependentUpon>MBCombineCPUCheckandSave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBIctTestLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBIctTestLog.Designer.cs">
+      <DependentUpon>CheckMBIctTestLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\BlockStationByCarton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\BlockStationByCarton.Designer.cs">
+      <DependentUpon>BlockStationByCarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\BlockStationByProductList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\BlockStationByProductList.designer.cs">
+      <DependentUpon>BlockStationByProductList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CheckModelByProcReg.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\CheckModelByProcReg.Designer.cs">
+      <DependentUpon>CheckModelByProcReg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GenSequenceNum.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\GenSequenceNum.designer.cs">
+      <DependentUpon>GenSequenceNum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WaitInputTimeOut.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\WaitInputTimeOut.Designer.cs">
+      <DependentUpon>WaitInputTimeOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GetPiloMoInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\GetPiloMoInfo.designer.cs">
+      <DependentUpon>GetPiloMoInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\UpdateSession_PrintLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\UpdateSession_PrintLog.designer.cs">
+      <DependentUpon>UpdateSession_PrintLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\WriteProductPartAndPrintLogForAsstage3.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\WriteProductPartAndPrintLogForAsstage3.Designer.cs">
+      <DependentUpon>WriteProductPartAndPrintLogForAsstage3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\CheckSampleEPIAOut.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\CheckSampleEPIAOut.Designer.cs">
+      <DependentUpon>CheckSampleEPIAOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\GenModelCT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\GenModelCT.Designer.cs">
+      <DependentUpon>GenModelCT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\CheckAndSetDefectHoldRule.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\CheckAndSetDefectHoldRule.Designer.cs">
+      <DependentUpon>CheckAndSetDefectHoldRule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\CheckBatteryAndProductInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\CheckBatteryAndProductInfo.Designer.cs">
+      <DependentUpon>CheckBatteryAndProductInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\CheckIsAOILine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\CheckIsAOILine.Designer.cs">
+      <DependentUpon>CheckIsAOILine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\CheckAndSetColorMsg.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\CheckAndSetColorMsg.Designer.cs">
+      <DependentUpon>CheckAndSetColorMsg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\CheckEDI850.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\CheckEDI850.Designer.cs">
+      <DependentUpon>CheckEDI850.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\CheckMaterialCpuStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\CheckMaterialCpuStatus.designer.cs">
+      <DependentUpon>CheckMaterialCpuStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\CheckModelWeight.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\CheckModelWeight.Designer.cs">
+      <DependentUpon>CheckModelWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\CheckProductLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\CheckProductLog.Designer.cs">
+      <DependentUpon>CheckProductLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\CheckRoyaltyPaper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\CheckRoyaltyPaper.designer.cs">
+      <DependentUpon>CheckRoyaltyPaper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\CheckTabletIamgeLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\CheckTabletIamgeLog.Designer.cs">
+      <DependentUpon>CheckTabletIamgeLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\DismantleOA3Key.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\DismantleOA3Key.Designer.cs">
+      <DependentUpon>DismantleOA3Key.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\GetAstPart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\GetAstPart.Designer.cs">
+      <DependentUpon>GetAstPart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\MBAssignTestTypeSFCSP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\MBAssignTestTypeSFCSP.Designer.cs">
+      <DependentUpon>MBAssignTestTypeSFCSP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\CheckPltZeroWeight.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\CheckPltZeroWeight.Designer.cs">
+      <DependentUpon>CheckPltZeroWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\UpdateMaterialCpuStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\UpdateMaterialCpuStatus.designer.cs">
+      <DependentUpon>UpdateMaterialCpuStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\WriteForceNWCMultiProduct.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\WriteForceNWCMultiProduct.Designer.cs">
+      <DependentUpon>WriteForceNWCMultiProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\UnPackProductPartByStation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\UnPackProductPartByStation.Designer.cs">
+      <DependentUpon>UnPackProductPartByStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\GetASTwithoutATSNAV.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\GetASTwithoutATSNAV.designer.cs">
+      <DependentUpon>GetASTwithoutATSNAV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\WriteMultiProductLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\WriteMultiProductLog.Designer.cs">
+      <DependentUpon>WriteMultiProductLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\GetKbAndLabelPnForAOI.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\GetKbAndLabelPnForAOI.Designer.cs">
+      <DependentUpon>GetKbAndLabelPnForAOI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\GetProductHoldInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\GetProductHoldInfo.Designer.cs">
+      <DependentUpon>GetProductHoldInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQ\UpdateProductStatusToPreStation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQ\UpdateProductStatusToPreStation.Designer.cs">
+      <DependentUpon>UpdateProductStatusToPreStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DefectComponent\CheckDefectComponentInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DefectComponent\CheckDefectComponentInfo.designer.cs">
+      <DependentUpon>CheckDefectComponentInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DefectComponent\CheckDefectComponentStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DefectComponent\CheckDefectComponentStatus.designer.cs">
+      <DependentUpon>CheckDefectComponentStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DefectComponent\CreateDefectComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DefectComponent\CreateDefectComponent.designer.cs">
+      <DependentUpon>CreateDefectComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DefectComponent\GetDefectComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DefectComponent\GetDefectComponent.designer.cs">
+      <DependentUpon>GetDefectComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DefectComponent\UpdateDefectComponentBatchID.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DefectComponent\UpdateDefectComponentBatchID.designer.cs">
+      <DependentUpon>UpdateDefectComponentBatchID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DefectComponent\UpdateDefectComponentBatchStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DefectComponent\UpdateDefectComponentBatchStatus.designer.cs">
+      <DependentUpon>UpdateDefectComponentBatchStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DefectComponent\UpdateDefectComponentStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DefectComponent\UpdateDefectComponentStatus.designer.cs">
+      <DependentUpon>UpdateDefectComponentStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DefectComponent\WriteDefectComponentBatchStatusLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DefectComponent\WriteDefectComponentBatchStatusLog.designer.cs">
+      <DependentUpon>WriteDefectComponentBatchStatusLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DefectComponent\WriteDefectComponentLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DefectComponent\WriteDefectComponentLog.designer.cs">
+      <DependentUpon>WriteDefectComponentLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FAI\CheckAndSetFAIModel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FAI\CheckAndSetFAIModel.designer.cs">
+      <DependentUpon>CheckAndSetFAIModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FAI\CheckAndSetPAKFAIModel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FAI\CheckAndSetPAKFAIModel.designer.cs">
+      <DependentUpon>CheckAndSetPAKFAIModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FAI\CheckFAIPAKModel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FAI\CheckFAIPAKModel.designer.cs">
+      <DependentUpon>CheckFAIPAKModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JameStown\CheckOfflinePizzaFamily.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JameStown\CheckOfflinePizzaFamily.designer.cs">
+      <DependentUpon>CheckOfflinePizzaFamily.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JameStown\ConbimeOfflinePizza.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JameStown\ConbimeOfflinePizza.designer.cs">
+      <DependentUpon>ConbimeOfflinePizza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JameStown\MasterLabel_CheckJamestown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JameStown\MasterLabel_CheckJamestown.designer.cs">
+      <DependentUpon>MasterLabel_CheckJamestown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JameStown\UnpackCombinePizza.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JameStown\UnpackCombinePizza.designer.cs">
+      <DependentUpon>UnpackCombinePizza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JameStown\UnpackOfflinePizza.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JameStown\UnpackOfflinePizza.designer.cs">
+      <DependentUpon>UnpackOfflinePizza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JameStown\UpdatePizzaStatusExt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JameStown\UpdatePizzaStatusExt.designer.cs">
+      <DependentUpon>UpdatePizzaStatusExt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JameStown\WritePizzaLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JameStown\WritePizzaLog.designer.cs">
+      <DependentUpon>WritePizzaLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\Obsoleted\CheckAsstage2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\Obsoleted\CheckAsstage2.designer.cs">
+      <DependentUpon>CheckAsstage2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Material\SaveMaterialCTList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Material\SaveMaterialCTList.designer.cs">
+      <DependentUpon>SaveMaterialCTList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Material\CreateMaterial.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Material\CreateMaterial.designer.cs">
+      <DependentUpon>CreateMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Material\CreateMaterialBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Material\CreateMaterialBox.designer.cs">
+      <DependentUpon>CreateMaterialBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Material\GetMaterial.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Material\GetMaterial.designer.cs">
+      <DependentUpon>GetMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Material\GetMaterialBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Material\GetMaterialBox.designer.cs">
+      <DependentUpon>GetMaterialBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Material\GetRCTO146Category.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Material\GetRCTO146Category.designer.cs">
+      <DependentUpon>GetRCTO146Category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Material\MaterialBlockStation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Material\MaterialBlockStation.designer.cs">
+      <DependentUpon>MaterialBlockStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Material\UpdateMaterialBoxStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Material\UpdateMaterialBoxStatus.designer.cs">
+      <DependentUpon>UpdateMaterialBoxStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Material\UpdateMaterialStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Material\UpdateMaterialStatus.designer.cs">
+      <DependentUpon>UpdateMaterialStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Material\WriteMaterialLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Material\WriteMaterialLog.designer.cs">
+      <DependentUpon>WriteMaterialLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckAndLockUploadDelivery.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckAndLockUploadDelivery.Designer.cs">
+      <DependentUpon>CheckAndLockUploadDelivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckASTForCombineAST_CheckCombinePart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckASTForCombineAST_CheckCombinePart.Designer.cs">
+      <DependentUpon>CheckASTForCombineAST_CheckCombinePart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckASTForCombineAST_CheckNeedPart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckASTForCombineAST_CheckNeedPart.designer.cs">
+      <DependentUpon>CheckASTForCombineAST_CheckNeedPart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckAutoICT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckAutoICT.designer.cs">
+      <DependentUpon>CheckAutoICT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckPostelLabelPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckPostelLabelPrint.Designer.cs">
+      <DependentUpon>CheckPostelLabelPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBData.designer.cs">
+      <DependentUpon>CheckMBData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBFunctionTestLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBFunctionTestLog.designer.cs">
+      <DependentUpon>CheckMBFunctionTestLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckScanedProductList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckScanedProductList.Designer.cs">
+      <DependentUpon>CheckScanedProductList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckWWANAndPCID.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckWWANAndPCID.designer.cs">
+      <DependentUpon>CheckWWANAndPCID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CollectProduct.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CollectProduct.Designer.cs">
+      <DependentUpon>CollectProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PilotRun\CheckAndCombinedPilotMo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PilotRun\CheckAndCombinedPilotMo.Designer.cs">
+      <DependentUpon>CheckAndCombinedPilotMo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PilotRun\CheckPilotMoState.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PilotRun\CheckPilotMoState.Designer.cs">
+      <DependentUpon>CheckPilotMoState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PilotRun\CreatePilotMo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PilotRun\CreatePilotMo.Designer.cs">
+      <DependentUpon>CreatePilotMo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PilotRun\WriteProductInfo_PilotRun.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PilotRun\WriteProductInfo_PilotRun.Designer.cs">
+      <DependentUpon>WriteProductInfo_PilotRun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PO\CheckChangePo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PO\CheckChangePo.Designer.cs">
+      <DependentUpon>CheckChangePo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PO\ChangePo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PO\ChangePo.Designer.cs">
+      <DependentUpon>ChangePo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rework\CheckReturnStation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rework\CheckReturnStation.designer.cs">
+      <DependentUpon>CheckReturnStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rework\ReturnStation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rework\ReturnStation.designer.cs">
+      <DependentUpon>ReturnStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rework\SetReturnStation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rework\SetReturnStation.designer.cs">
+      <DependentUpon>SetReturnStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SAP\SendSAPCustSN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SAP\SendSAPCustSN.designer.cs">
+      <DependentUpon>SendSAPCustSN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SAP\SetSAPShipmentZeroWeight.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SAP\SetSAPShipmentZeroWeight.Designer.cs">
+      <DependentUpon>SetSAPShipmentZeroWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckImageDownLoadLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckImageDownLoadLog.designer.cs">
+      <DependentUpon>CheckImageDownLoadLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckProductIsCleanRoom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckProductIsCleanRoom.designer.cs">
+      <DependentUpon>CheckProductIsCleanRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckQCStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckQCStatus.designer.cs">
+      <DependentUpon>CheckQCStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckReadyForAssetTag.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckReadyForAssetTag.Designer.cs">
+      <DependentUpon>CheckReadyForAssetTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\BindParts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\BindParts.Designer.cs">
+      <DependentUpon>BindParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\BlockStation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\BlockStation.Designer.cs">
+      <DependentUpon>BlockStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\DBScope.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\DBScope.Designer.cs">
+      <DependentUpon>DBScope.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CheckWeight.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\CheckWeight.Designer.cs">
+      <DependentUpon>CheckWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\UpdateMultiProductStatusAndLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\UpdateMultiProductStatusAndLog.Designer.cs">
+      <DependentUpon>UpdateMultiProductStatusAndLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\ChangeDNOnly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\ChangeDNOnly.designer.cs">
+      <DependentUpon>ChangeDNOnly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\ChangeModelOnly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\ChangeModelOnly.designer.cs">
+      <DependentUpon>ChangeModelOnly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\ChangeProductBTOnly.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\ChangeProductBTOnly.designer.cs">
+      <DependentUpon>ChangeProductBTOnly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckBindPartForDocking.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckBindPartForDocking.Designer.cs">
+      <DependentUpon>CheckBindPartForDocking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckInputPassForPCATestDocking.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckInputPassForPCATestDocking.designer.cs">
+      <DependentUpon>CheckInputPassForPCATestDocking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WriteUnitWeightLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\WriteUnitWeightLog.Designer.cs">
+      <DependentUpon>WriteUnitWeightLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckLogForShipToLabelRePrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckLogForShipToLabelRePrint.Designer.cs">
+      <DependentUpon>CheckLogForShipToLabelRePrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckPalletDownForPalletVerify.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckPalletDownForPalletVerify.Designer.cs">
+      <DependentUpon>CheckPalletDownForPalletVerify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckPrintFlagForPalletVerify.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckPrintFlagForPalletVerify.Designer.cs">
+      <DependentUpon>CheckPrintFlagForPalletVerify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckProductForRegenerateCustSN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckProductForRegenerateCustSN.Designer.cs">
+      <DependentUpon>CheckProductForRegenerateCustSN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\DismantleDataForRegenerateCustSN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\DismantleDataForRegenerateCustSN.Designer.cs">
+      <DependentUpon>DismantleDataForRegenerateCustSN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\GenerateSnForRegenerateCustSN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\GenerateSnForRegenerateCustSN.Designer.cs">
+      <DependentUpon>GenerateSnForRegenerateCustSN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckProductForVirtualMo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckProductForVirtualMo.Designer.cs">
+      <DependentUpon>CheckProductForVirtualMo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\GetProdListForUnpack.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\GetProdListForUnpack.Designer.cs">
+      <DependentUpon>GetProdListForUnpack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\GetProductListByCarton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\GetProductListByCarton.Designer.cs">
+      <DependentUpon>GetProductListByCarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\UpdateMoForVirtualMo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\UpdateMoForVirtualMo.Designer.cs">
+      <DependentUpon>UpdateMoForVirtualMo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\UpdatePartsForDocking.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\UpdatePartsForDocking.Designer.cs">
+      <DependentUpon>UpdatePartsForDocking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\UpdateProductListStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\UpdateProductListStatus.Designer.cs">
+      <DependentUpon>UpdateProductListStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\BolDnForPackingList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\BolDnForPackingList.Designer.cs">
+      <DependentUpon>BolDnForPackingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\Callsp_Txf_IMES_To_FIS_PCA_ByPCBNO.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\Callsp_Txf_IMES_To_FIS_PCA_ByPCBNO.designer.cs">
+      <DependentUpon>Callsp_Txf_IMES_To_FIS_PCA_ByPCBNO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckASTForCombineAST.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckASTForCombineAST.Designer.cs">
+      <DependentUpon>CheckASTForCombineAST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBackflowProduct.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBackflowProductForPAQCRepair.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBackflowProductForPAQCRepair.designer.cs">
+      <DependentUpon>CheckBackflowProductForPAQCRepair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckCOAForUnpackAllByDN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckCOAForUnpackAllByDN.Designer.cs">
+      <DependentUpon>CheckCOAForUnpackAllByDN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckDDRCT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckDDRCT.designer.cs">
+      <DependentUpon>CheckDDRCT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckLabelLanguagePrintForCQ.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckLabelLanguagePrintForCQ.designer.cs">
+      <DependentUpon>CheckLabelLanguagePrintForCQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckProdForMVunpack.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckProdForMVunpack.Designer.cs">
+      <DependentUpon>CheckProdForMVunpack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckWin8LabelPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckWin8LabelPrint.Designer.cs">
+      <DependentUpon>CheckWin8LabelPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckEnergyLabelPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckEnergyLabelPrint.Designer.cs">
+      <DependentUpon>CheckEnergyLabelPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\DismantleXYZ.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\DismantleXYZ.designer.cs">
+      <DependentUpon>DismantleXYZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetChildMBSn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetChildMBSn.Designer.cs">
+      <DependentUpon>GetChildMBSn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\RemoveProductInfoByProdIdAndType.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\RemoveProductInfoByProdIdAndType.designer.cs">
+      <DependentUpon>RemoveProductInfoByProdIdAndType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\RemoveProductInfoByTypeAndValue.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\RemoveProductInfoByTypeAndValue.designer.cs">
+      <DependentUpon>RemoveProductInfoByTypeAndValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\ReuseCustomerSn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\ReuseCustomerSn.designer.cs">
+      <DependentUpon>ReuseCustomerSn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnpackOSCOA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnpackOSCOA.Designer.cs">
+      <DependentUpon>UnpackOSCOA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateMO_Excel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateMO_Excel.Designer.cs">
+      <DependentUpon>UpdateMO_Excel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\WhetherNoCheckDDRCT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\WhetherNoCheckDDRCT.designer.cs">
+      <DependentUpon>WhetherNoCheckDDRCT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\WriteForceNWCForMVunpack.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\WriteForceNWCForMVunpack.Designer.cs">
+      <DependentUpon>WriteForceNWCForMVunpack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBackflowProduct.Designer.cs">
+      <DependentUpon>CheckBackflowProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckforCombinePcb.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckforCombinePcb.designer.cs">
+      <DependentUpon>CheckforCombinePcb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBType.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBType.designer.cs">
+      <DependentUpon>CheckMBType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckAndGetMBInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckAndGetMBInfo.Designer.cs">
+      <DependentUpon>CheckAndGetMBInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckModelForChangeAST.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckModelForChangeAST.Designer.cs">
+      <DependentUpon>CheckModelForChangeAST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckP2ForChangeAST.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckP2ForChangeAST.Designer.cs">
+      <DependentUpon>CheckP2ForChangeAST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckPrintForChangeAST.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckPrintForChangeAST.Designer.cs">
+      <DependentUpon>CheckPrintForChangeAST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\MaintainKPRepairDefect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\MaintainKPRepairDefect.designer.cs">
+      <DependentUpon>MaintainKPRepairDefect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CompleteKPRepair.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CompleteKPRepair.designer.cs">
+      <DependentUpon>CompleteKPRepair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GenerateKPRepairList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GenerateKPRepairList.designer.cs">
+      <DependentUpon>GenerateKPRepairList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetLotListForCombinPCB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetLotListForCombinPCB.designer.cs">
+      <DependentUpon>GetLotListForCombinPCB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetReturnStationForQCRepair.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetReturnStationForQCRepair.designer.cs">
+      <DependentUpon>GetReturnStationForQCRepair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\SaveReflowForQCRepair.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\SaveReflowForQCRepair.Designer.cs">
+      <DependentUpon>SaveReflowForQCRepair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateLotForCombinePCB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateLotForCombinePCB.designer.cs">
+      <DependentUpon>UpdateLotForCombinePCB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\SaveForPCAOQCCosmetic.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\SaveForPCAOQCCosmetic.Designer.cs">
+      <DependentUpon>SaveForPCAOQCCosmetic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateLotForFARepair.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateLotForFARepair.Designer.cs">
+      <DependentUpon>UpdateLotForFARepair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckProductForChangeAST.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckProductForChangeAST.Designer.cs">
+      <DependentUpon>CheckProductForChangeAST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBOMForMasterLable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBOMForMasterLable.designer.cs">
+      <DependentUpon>CheckBOMForMasterLable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\ProductForPalletDataVerify.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\ProductForPalletDataVerify.Designer.cs">
+      <DependentUpon>ProductForPalletDataVerify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\DismantlePCBForPCATEST.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\DismantlePCBForPCATEST.designer.cs">
+      <DependentUpon>DismantlePCBForPCATEST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetASTByProduct.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetASTByProduct.Designer.cs">
+      <DependentUpon>GetASTByProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetQcstatusForPiaOutput.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetQcstatusForPiaOutput.Designer.cs">
+      <DependentUpon>GetQcstatusForPiaOutput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\SaveKPDefects.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\SaveKPDefects.designer.cs">
+      <DependentUpon>SaveKPDefects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateProductPartForChangeAST.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateProductPartForChangeAST.Designer.cs">
+      <DependentUpon>UpdateProductPartForChangeAST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\DismantleProductforDocking.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\DismantleProductforDocking.designer.cs">
+      <DependentUpon>DismantleProductforDocking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\GetDCodeForREVLabelPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\GetDCodeForREVLabelPrint.designer.cs">
+      <DependentUpon>GetDCodeForREVLabelPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\UnpackByDN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\UnpackByDN.Designer.cs">
+      <DependentUpon>UnpackByDN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\UploadPoDataForDocking.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\UploadPoDataForDocking.designer.cs">
+      <DependentUpon>UploadPoDataForDocking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetProductQCForFATest.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetProductQCForFATest.designer.cs">
+      <DependentUpon>GetProductQCForFATest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckProdidAndKBCT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckProdidAndKBCT.Designer.cs">
+      <DependentUpon>CheckProdidAndKBCT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateProductProperty.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateProductProperty.Designer.cs">
+      <DependentUpon>UpdateProductProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WritePalletListLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\WritePalletListLog.Designer.cs">
+      <DependentUpon>WritePalletListLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\DeleteMBRepair.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\DeleteMBRepair.Designer.cs">
+      <DependentUpon>DeleteMBRepair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GetLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\GetLine.Designer.cs">
+      <DependentUpon>GetLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GetModelWeight.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\GetModelWeight.Designer.cs">
+      <DependentUpon>GetModelWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\AllowShipForPalletVerify.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\AllowShipForPalletVerify.Designer.cs">
+      <DependentUpon>AllowShipForPalletVerify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckCUSTSNForDocking.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckCUSTSNForDocking.designer.cs">
+      <DependentUpon>CheckCUSTSNForDocking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckPalletForPalletVerify.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckPalletForPalletVerify.Designer.cs">
+      <DependentUpon>CheckPalletForPalletVerify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckPrintType.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckPrintType.Designer.cs">
+      <DependentUpon>CheckPrintType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckMBSnoforPCATestLot.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckMBSnoforPCATestLot.designer.cs">
+      <DependentUpon>CheckMBSnoforPCATestLot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckProductRepair.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckProductRepair.Designer.cs">
+      <DependentUpon>CheckProductRepair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\AssignForCarton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\AssignForCarton.Designer.cs">
+      <DependentUpon>AssignForCarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckREVLabelPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckREVLabelPrint.Designer.cs">
+      <DependentUpon>CheckREVLabelPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckShipForPalletVerify.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckShipForPalletVerify.Designer.cs">
+      <DependentUpon>CheckShipForPalletVerify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckStatusForDocking.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckStatusForDocking.Designer.cs">
+      <DependentUpon>CheckStatusForDocking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckStatusForEPIAInput.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckStatusForEPIAInput.Designer.cs">
+      <DependentUpon>CheckStatusForEPIAInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckPrintCountForPalletVerify.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckPrintCountForPalletVerify.Designer.cs">
+      <DependentUpon>CheckPrintCountForPalletVerify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckPalletForPalletVerifyReprint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckPalletForPalletVerifyReprint.Designer.cs">
+      <DependentUpon>CheckPalletForPalletVerifyReprint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CombineDNBefore.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CombineDNBefore.designer.cs">
+      <DependentUpon>CombineDNBefore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CombineDNNormal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CombineDNNormal.designer.cs">
+      <DependentUpon>CombineDNNormal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\DeleteProductPartForPack .cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\DeleteProductPartForPack .Designer.cs">
+      <DependentUpon>DeleteProductPartForPack .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\GenerateBoxID.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\GenerateBoxID.Designer.cs">
+      <DependentUpon>GenerateBoxID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\GenerateCartonNo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\GenerateCartonNo.Designer.cs">
+      <DependentUpon>GenerateCartonNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\GenerateCustomerSnForDocking.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\GenerateCustomerSnForDocking.Designer.cs">
+      <DependentUpon>GenerateCustomerSnForDocking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\GetCartonByProduct.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\GetCartonByProduct.Designer.cs">
+      <DependentUpon>GetCartonByProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\GetMultiQty.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\GetMultiQty.Designer.cs">
+      <DependentUpon>GetMultiQty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\CheckPCBStatus0.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\CheckPCBStatus0.Designer.cs">
+      <DependentUpon>CheckPCBStatus0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\GetPalletStandardWeightForDocking.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\GetPalletStandardWeightForDocking.Designer.cs">
+      <DependentUpon>GetPalletStandardWeightForDocking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\SavePalletWeightForDocking.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\SavePalletWeightForDocking.Designer.cs">
+      <DependentUpon>SavePalletWeightForDocking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\TestEpiaForDocking.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\TestEpiaForDocking.Designer.cs">
+      <DependentUpon>TestEpiaForDocking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\UnPackProducForDocking.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\UnPackProducForDocking.Designer.cs">
+      <DependentUpon>UnPackProducForDocking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\UnPackUnpdateDnStatusForDocking.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\UnPackUnpdateDnStatusForDocking.Designer.cs">
+      <DependentUpon>UnPackUnpdateDnStatusForDocking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\AcquireMBCTForShipping.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\AcquireMBCTForShipping.Designer.cs">
+      <DependentUpon>AcquireMBCTForShipping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\AcquireProdIdSectionForDocking.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\AcquireProdIdSectionForDocking.designer.cs">
+      <DependentUpon>AcquireProdIdSectionForDocking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\AcquireSMTMOSection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\AcquireSMTMOSection.designer.cs">
+      <DependentUpon>AcquireSMTMOSection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\AcquireVendorCTList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\AcquireVendorCTList.Designer.cs">
+      <DependentUpon>AcquireVendorCTList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\AddRepairItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\AddRepairItem.Designer.cs">
+      <DependentUpon>AddRepairItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\BackupProductToUnpackByDN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\BackupProductToUnpackByDN.Designer.cs">
+      <DependentUpon>BackupProductToUnpackByDN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBOMForWWAN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBOMForWWAN.Designer.cs">
+      <DependentUpon>CheckBOMForWWAN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBOXAndUCC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBOXAndUCC.Designer.cs">
+      <DependentUpon>CheckBOXAndUCC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\Obsoleted\CheckGenerateAST.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\Obsoleted\CheckGenerateAST.designer.cs">
+      <DependentUpon>CheckGenerateAST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckInputPass.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckInputPass.Designer.cs">
+      <DependentUpon>CheckInputPass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckInputPassForPCATest.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckInputPassForPCATest.designer.cs">
+      <DependentUpon>CheckInputPassForPCATest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBPass.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBPass.Designer.cs">
+      <DependentUpon>CheckMBPass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBSNoExist.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBSNoExist.Designer.cs">
+      <DependentUpon>CheckMBSNoExist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBSnoPrintLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBSnoPrintLog.designer.cs">
+      <DependentUpon>CheckMBSnoPrintLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckPrintLogForIEC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckPrintLogForIEC.designer.cs">
+      <DependentUpon>CheckPrintLogForIEC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckStationForShiptocarton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckStationForShiptocarton.Designer.cs">
+      <DependentUpon>CheckStationForShiptocarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CombineMBCPU.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CombineMBCPU.Designer.cs">
+      <DependentUpon>CombineMBCPU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBSnoSplit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBSnoSplit.Designer.cs">
+      <DependentUpon>CheckMBSnoSplit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBSnoforPCATest.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBSnoforPCATest.designer.cs">
+      <DependentUpon>CheckMBSnoforPCATest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBPassAndRepair.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBPassAndRepair.Designer.cs">
+      <DependentUpon>CheckMBPassAndRepair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBCTExist.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBCTExist.Designer.cs">
+      <DependentUpon>CheckMBCTExist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\BlockbyStag.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\BlockbyStag.Designer.cs">
+      <DependentUpon>BlockbyStag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckPrintLogForReprint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckPrintLogForReprint.Designer.cs">
+      <DependentUpon>CheckPrintLogForReprint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckQcstatusForPiaOutput.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckQcstatusForPiaOutput.Designer.cs">
+      <DependentUpon>CheckQcstatusForPiaOutput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\BlockForPiaOutput.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\BlockForPiaOutput.Designer.cs">
+      <DependentUpon>BlockForPiaOutput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckIsConnectBoard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckIsConnectBoard.Designer.cs">
+      <DependentUpon>CheckIsConnectBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docking\GenerateProductRecordForDocking.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\GenerateProductRecordForDocking.Designer.cs">
+      <DependentUpon>GenerateProductRecordForDocking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBForSMTDefectInput.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckMBForSMTDefectInput.Designer.cs">
+      <DependentUpon>CheckMBForSMTDefectInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\AddSMTDefect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\AddSMTDefect.designer.cs">
+      <DependentUpon>AddSMTDefect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetLotSetting.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetLotSetting.Designer.cs">
+      <DependentUpon>GetLotSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\Obsoleted\GetNullPrintInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\Obsoleted\GetNullPrintInfo.Designer.cs">
+      <DependentUpon>GetNullPrintInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackUnpdateDnStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackUnpdateDnStatus.Designer.cs">
+      <DependentUpon>UnPackUnpdateDnStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\DeleteRepairDefect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBomForPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBomForPrint.Designer.cs">
+      <DependentUpon>CheckBomForPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\DeleteRepairDefect.Designer.cs">
+      <DependentUpon>DeleteRepairDefect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GenerateMBSn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GenerateMBSn.Designer.cs">
+      <DependentUpon>GenerateMBSn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GenerateSnForMasterLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GenerateSnForMasterLabel.Designer.cs">
+      <DependentUpon>GenerateSnForMasterLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\Obsoleted\GetAST2Info.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\Obsoleted\GetAST2Info.Designer.cs">
+      <DependentUpon>GetAST2Info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetDCodeForShipping.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetDCodeForShipping.designer.cs">
+      <DependentUpon>GetDCodeForShipping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckDeliveryPallet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckDeliveryPallet.Designer.cs">
+      <DependentUpon>CheckDeliveryPallet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetMBSno.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetMBSno.designer.cs">
+      <DependentUpon>GetMBSno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetSMTMO.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetSMTMO.Designer.cs">
+      <DependentUpon>GetSMTMO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\SaveMB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\SaveMB.Designer.cs">
+      <DependentUpon>SaveMB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GenerateSMTMO.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GenerateSMTMO.designer.cs">
+      <DependentUpon>GenerateSMTMO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckPrintLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckPrintLog.Designer.cs">
+      <DependentUpon>CheckPrintLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckRepairDefect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackProductPartByBomType.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackProductPartByBomType.Designer.cs">
+      <DependentUpon>UnPackProductPartByBomType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckRepairDefect.designer.cs">
+      <DependentUpon>CheckRepairDefect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\InsertMTAMark.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\InsertMTAMark.Designer.cs">
+      <DependentUpon>InsertMTAMark.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\InsertRpt_PCARep.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\InsertRpt_PCARep.Designer.cs">
+      <DependentUpon>InsertRpt_PCARep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\DeleteSMTMO.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\DeleteSMTMO.designer.cs">
+      <DependentUpon>DeleteSMTMO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\DismantleKP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\DismantleKP.Designer.cs">
+      <DependentUpon>DismantleKP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetPCBModel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetPCBModel.Designer.cs">
+      <DependentUpon>GetPCBModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetPrintLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetPrintLog.Designer.cs">
+      <DependentUpon>GetPrintLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\ModifyLineforIsVB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\ModifyLineforIsVB.designer.cs">
+      <DependentUpon>ModifyLineforIsVB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\SaveCOANoList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\SaveCOANoList.designer.cs">
+      <DependentUpon>SaveCOANoList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetStagAndSaveSn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetStagAndSaveSn.Designer.cs">
+      <DependentUpon>GetStagAndSaveSn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackCheckDnStatusBySn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackCheckDnStatusBySn.Designer.cs">
+      <DependentUpon>UnPackCheckDnStatusBySn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AcquireVirtualMOSection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\AcquireVirtualMOSection.Designer.cs">
+      <DependentUpon>AcquireVirtualMOSection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackUpdateCOAMas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackUpdateCOAMas.Designer.cs">
+      <DependentUpon>UnPackUpdateCOAMas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateLotNoForPCATEST.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateLotNoForPCATEST.Designer.cs">
+      <DependentUpon>UpdateLotNoForPCATEST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateMBForDCode.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateMBForDCode.designer.cs">
+      <DependentUpon>UpdateMBForDCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateMBForShipping.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateMBForShipping.designer.cs">
+      <DependentUpon>UpdateMBForShipping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateMTAMark.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateMTAMark.Designer.cs">
+      <DependentUpon>UpdateMTAMark.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdatePizzaStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdatePizzaStatus.designer.cs">
+      <DependentUpon>UpdatePizzaStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateRptPcaRep.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateRptPcaRep.Designer.cs">
+      <DependentUpon>UpdateRptPcaRep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateSMTMO.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateSMTMO.Designer.cs">
+      <DependentUpon>UpdateSMTMO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\WriteDockingProductInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\WriteDockingProductInfo.Designer.cs">
+      <DependentUpon>WriteDockingProductInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\WriteFARepairList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\WriteFARepairList.Designer.cs">
+      <DependentUpon>WriteFARepairList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\WritePartSnForIECLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\WritePartSnForIECLabel.Designer.cs">
+      <DependentUpon>WritePartSnForIECLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\WritePrLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\WritePrLog.Designer.cs">
+      <DependentUpon>WritePrLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RCTO\RCTOChangeMulti.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RCTO\RCTOChangeMulti.Designer.cs">
+      <DependentUpon>RCTOChangeMulti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SAP\DeleteSnOnSAP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SAP\DeleteSnOnSAP.Designer.cs">
+      <DependentUpon>DeleteSnOnSAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RCTO\RCTOChangeSingle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RCTO\RCTOChangeSingle.Designer.cs">
+      <DependentUpon>RCTOChangeSingle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\AcquireDCode.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\AcquireDCode.Designer.cs">
+      <DependentUpon>AcquireDCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\AcquireChildMBSn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\AcquireChildMBSn.Designer.cs">
+      <DependentUpon>AcquireChildMBSn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\BindCoaToProduct.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\BindCoaToProduct.Designer.cs">
+      <DependentUpon>BindCoaToProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\BindDummyCPU.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\BindDummyCPU.Designer.cs">
+      <DependentUpon>BindDummyCPU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\BlockForCenerateCustSN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\BlockForCenerateCustSN.Designer.cs">
+      <DependentUpon>BlockForCenerateCustSN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\ChangeModelCheck.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\ChangeModelCheck.Designer.cs">
+      <DependentUpon>ChangeModelCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckAndSetQTime.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckAndSetQTime.Designer.cs">
+      <DependentUpon>CheckAndSetQTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckCTOBom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckCTOBom.Designer.cs">
+      <DependentUpon>CheckCTOBom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckImageDownLoadStation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckImageDownLoadStation.Designer.cs">
+      <DependentUpon>CheckImageDownLoadStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckModel1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckModel1.Designer.cs">
+      <DependentUpon>CheckModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckPilotRun.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckPilotRun.Designer.cs">
+      <DependentUpon>CheckPilotRun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckECR.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckECR.Designer.cs">
+      <DependentUpon>CheckECR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckExistPrintLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckExistPrintLog.Designer.cs">
+      <DependentUpon>CheckExistPrintLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckPCBLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckPCBLog.Designer.cs">
+      <DependentUpon>CheckPCBLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckMBSplit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckMBSplit.Designer.cs">
+      <DependentUpon>CheckMBSplit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\AcquireEEP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\AcquireEEP.Designer.cs">
+      <DependentUpon>AcquireEEP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\AcquireMBCT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\AcquireMBCT.Designer.cs">
+      <DependentUpon>AcquireMBCT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\AcquireMAC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\AcquireMAC.Designer.cs">
+      <DependentUpon>AcquireMAC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\AcquireEEPList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\AcquireEEPList.Designer.cs">
+      <DependentUpon>AcquireEEPList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\AcquireMACList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\AcquireMACList.Designer.cs">
+      <DependentUpon>AcquireMACList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\AcquireMBCTList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\AcquireMBCTList.Designer.cs">
+      <DependentUpon>AcquireMBCTList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckReprintLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckReprintLabel.Designer.cs">
+      <DependentUpon>CheckReprintLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckPCBStatusCL.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckPCBStatusCL.Designer.cs">
+      <DependentUpon>CheckPCBStatusCL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckPalletForDT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckPalletForDT.Designer.cs">
+      <DependentUpon>CheckPalletForDT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\AssignDeliveryForNonBT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\AssignDeliveryForNonBT.Designer.cs">
+      <DependentUpon>AssignDeliveryForNonBT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\ChangeModelSave.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\ChangeModelSave.Designer.cs">
+      <DependentUpon>ChangeModelSave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\AssignDeliveryCoaDn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\AssignDeliveryCoaDn.Designer.cs">
+      <DependentUpon>AssignDeliveryCoaDn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckShipDateAndSetMsg.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckShipDateAndSetMsg.designer.cs">
+      <DependentUpon>CheckShipDateAndSetMsg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetPCAReceiveReturnMBInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetPCAReceiveReturnMBInfo.designer.cs">
+      <DependentUpon>GetPCAReceiveReturnMBInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetFamilyInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetFamilyInfo.designer.cs">
+      <DependentUpon>GetFamilyInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JameStown\GerneratePizza.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JameStown\GerneratePizza.designer.cs">
+      <DependentUpon>GerneratePizza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\AssignBoxUccForCQ.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\AssignBoxUccForCQ.Designer.cs">
+      <DependentUpon>AssignBoxUccForCQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetPCBVersion.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetPCBVersion.Designer.cs">
+      <DependentUpon>GetPCBVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetPicPositionName.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetPicPositionName.Designer.cs">
+      <DependentUpon>GetPicPositionName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckPCBInputStationTimes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckPCBInputStationTimes.Designer.cs">
+      <DependentUpon>CheckPCBInputStationTimes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\PAQC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\PAQC.designer.cs">
+      <DependentUpon>PAQC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\RegetProductFromBackup.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\RegetProductFromBackup.designer.cs">
+      <DependentUpon>RegetProductFromBackup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\ReleaseCombinedAstNumber.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\ReleaseCombinedAstNumber.Designer.cs">
+      <DependentUpon>ReleaseCombinedAstNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\TravelCardHoldModel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\TravelCardHoldModel.Designer.cs">
+      <DependentUpon>TravelCardHoldModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdateCOAandDN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdateCOAandDN.designer.cs">
+      <DependentUpon>UpdateCOAandDN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetPizzaIDForCOA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetPizzaIDForCOA.designer.cs">
+      <DependentUpon>GetPizzaIDForCOA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\GenerateATSN7.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\GenerateATSN7.Designer.cs">
+      <DependentUpon>GenerateATSN7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\PODLabelCheck.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\PODLabelCheck.Designer.cs">
+      <DependentUpon>PODLabelCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdateLotForFAMBReturn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdateLotForFAMBReturn.Designer.cs">
+      <DependentUpon>UpdateLotForFAMBReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\KittingInputCheck.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\KittingInputCheck.Designer.cs">
+      <DependentUpon>KittingInputCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdateProductStatusForCR.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdateProductStatusForCR.Designer.cs">
+      <DependentUpon>UpdateProductStatusForCR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\VGAMBCheck.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\VGAMBCheck.Designer.cs">
+      <DependentUpon>VGAMBCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\MBCodeMatch.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\MBCodeMatch.Designer.cs">
+      <DependentUpon>MBCodeMatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdateBTLoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdateBTLoc.Designer.cs">
+      <DependentUpon>UpdateBTLoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdateLot.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdateLot.Designer.cs">
+      <DependentUpon>UpdateLot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdatePCBLot.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdatePCBLot.Designer.cs">
+      <DependentUpon>UpdatePCBLot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\PizzaKittingLineCheck.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\PizzaKittingLineCheck.Designer.cs">
+      <DependentUpon>PizzaKittingLineCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UnPackDummyPallet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UnPackDummyPallet.Designer.cs">
+      <DependentUpon>UnPackDummyPallet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\DealWithECRLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\DealWithECRLabel.Designer.cs">
+      <DependentUpon>DealWithECRLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetPCAICTCount.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetPCAICTCount.Designer.cs">
+      <DependentUpon>GetPCAICTCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetPizzaID.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetPizzaID.designer.cs">
+      <DependentUpon>GetPizzaID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdatePCAICTCount.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdatePCAICTCount.Designer.cs">
+      <DependentUpon>UpdatePCAICTCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdateMBForICTInput.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdateMBForICTInput.Designer.cs">
+      <DependentUpon>UpdateMBForICTInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GenerateChildMB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GenerateChildMB.Designer.cs">
+      <DependentUpon>GenerateChildMB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetPartSN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetPartSN.Designer.cs">
+      <DependentUpon>GetPartSN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\AssignDeliveryForBT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\AssignDeliveryForBT.Designer.cs">
+      <DependentUpon>AssignDeliveryForBT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckUnitWeightPrintLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckUnitWeightPrintLabel.Designer.cs">
+      <DependentUpon>CheckUnitWeightPrintLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckBorrowMB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckBorrowMB.Designer.cs">
+      <DependentUpon>CheckBorrowMB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\InsertBorrowLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\InsertBorrowLog.Designer.cs">
+      <DependentUpon>InsertBorrowLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\LightOff.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\LightOff.Designer.cs">
+      <DependentUpon>LightOff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\LightOn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\LightOn.Designer.cs">
+      <DependentUpon>LightOn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdatePakLocMas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdatePakLocMas.Designer.cs">
+      <DependentUpon>UpdatePakLocMas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\UpdateProductListStatusByProIDs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\UpdateProductListStatusByProIds.Designer.cs">
+      <DependentUpon>UpdateProductListStatusByProIDs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WriteMBInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\WriteMBInfo.Designer.cs">
+      <DependentUpon>WriteMBInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GetCOAStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\GetCOAStatus.Designer.cs">
+      <DependentUpon>GetCOAStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GetBOM.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\GetBOM.Designer.cs">
+      <DependentUpon>GetBOM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GetMB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\GetMB.Designer.cs">
+      <DependentUpon>GetMB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GetPallet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\GetPallet.Designer.cs">
+      <DependentUpon>GetPallet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GetProduct.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\GetProduct.Designer.cs">
+      <DependentUpon>GetProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GetProductByInput.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\GetProductByInput.Designer.cs">
+      <DependentUpon>GetProductByInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ModelHold.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\ModelHold.Designer.cs">
+      <DependentUpon>ModelHold.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\PartMatch.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\PartMatch.Designer.cs">
+      <DependentUpon>PartMatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Print.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\Print.Designer.cs">
+      <DependentUpon>Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WaitInput.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\WaitInput.Designer.cs">
+      <DependentUpon>WaitInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WriteMBLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\WriteMBLog.Designer.cs">
+      <DependentUpon>WriteMBLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WritePrintLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\WritePrintLog.Designer.cs">
+      <DependentUpon>WritePrintLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WriteProductLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\WriteProductLog.Designer.cs">
+      <DependentUpon>WriteProductLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WriteRePrintLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\WriteRePrintLog.Designer.cs">
+      <DependentUpon>WriteRePrintLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\UpdateProductStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\UpdateProductStatus.Designer.cs">
+      <DependentUpon>UpdateProductStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\UpdateMBStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\UpdateMBStatus.Designer.cs">
+      <DependentUpon>UpdateMBStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WritePalletLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\WritePalletLog.Designer.cs">
+      <DependentUpon>WritePalletLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\UpdatePalletStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\UpdatePalletStatus.Designer.cs">
+      <DependentUpon>UpdatePalletStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\UpdateDeliveryStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\UpdateDeliveryStatus.Designer.cs">
+      <DependentUpon>UpdateDeliveryStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CheckProductPropertyExist.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\CheckProductPropertyExist.Designer.cs">
+      <DependentUpon>CheckProductPropertyExist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\AcquirePizzaSection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\AcquirePizzaSection.Designer.cs">
+      <DependentUpon>AcquirePizzaSection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\AcquireProdIdSection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\AcquireProdIdSection.Designer.cs">
+      <DependentUpon>AcquireProdIdSection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\AddRepairDefect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\AddRepairDefect.designer.cs">
+      <DependentUpon>AddRepairDefect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\Alarm.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\Alarm.Designer.cs">
+      <DependentUpon>Alarm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\AllocateBoxId.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\AllocateBoxId.designer.cs">
+      <DependentUpon>AllocateBoxId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\BindAST.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\BindAST.Designer.cs">
+      <DependentUpon>BindAST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\BlockStationForEpiaPia.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\BlockStationForEpiaPia.Designer.cs">
+      <DependentUpon>BlockStationForEpiaPia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\CheckASTPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\CheckASTPrint.Designer.cs">
+      <DependentUpon>CheckASTPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\Obsoleted\CheckASTReprint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\Obsoleted\CheckASTReprint.Designer.cs">
+      <DependentUpon>CheckASTReprint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBindPart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBindPart.designer.cs">
+      <DependentUpon>CheckBindPart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckCompleteForScaningList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckCompleteForScaningList.Designer.cs">
+      <DependentUpon>CheckCompleteForScaningList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckCSN2InBegNoAndEndNo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckCSN2InBegNoAndEndNo.designer.cs">
+      <DependentUpon>CheckCSN2InBegNoAndEndNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckInputForScaningList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckInputForScaningList.Designer.cs">
+      <DependentUpon>CheckInputForScaningList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckNeedPrintForScaningList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckNeedPrintForScaningList.Designer.cs">
+      <DependentUpon>CheckNeedPrintForScaningList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckShipLabelPrintData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckShipLabelPrintData.Designer.cs">
+      <DependentUpon>CheckShipLabelPrintData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckWeightForScaningList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckWeightForScaningList.Designer.cs">
+      <DependentUpon>CheckWeightForScaningList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CombineASTBlockStation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CombineASTBlockStation.Designer.cs">
+      <DependentUpon>CombineASTBlockStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CompleteRepair.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CompleteRepair.designer.cs">
+      <DependentUpon>CompleteRepair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CreateCSNMas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CreateCSNMas.designer.cs">
+      <DependentUpon>CreateCSNMas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CreateFileForScaningList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CreateFileForScaningList.Designer.cs">
+      <DependentUpon>CreateFileForScaningList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\Obsoleted\GenerateAssetTagLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\Obsoleted\GenerateAssetTagLabel.Designer.cs">
+      <DependentUpon>GenerateAssetTagLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\GenerateAST.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\GenerateAST.Designer.cs">
+      <DependentUpon>GenerateAST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GenerateDummyPalletNo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GenerateDummyPalletNo.Designer.cs">
+      <DependentUpon>GenerateDummyPalletNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GenerateRepairByTestLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GenerateRepairByTestLog.designer.cs">
+      <DependentUpon>GenerateRepairByTestLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetBindPallet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetBindPallet.Designer.cs">
+      <DependentUpon>GetBindPallet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetIECLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetIECLabel.Designer.cs">
+      <DependentUpon>GetIECLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetKitID.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetKitID.designer.cs">
+      <DependentUpon>GetKitID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetLocationMessage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetLocationMessage.Designer.cs">
+      <DependentUpon>GetLocationMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\ReturnMB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\ReturnMB.designer.cs">
+      <DependentUpon>ReturnMB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\SaveAST.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\SaveAST.Designer.cs">
+      <DependentUpon>SaveAST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\ShipLabelPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\ShipLabelPrint.Designer.cs">
+      <DependentUpon>ShipLabelPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateForceNWC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateForceNWC.Designer.cs">
+      <DependentUpon>UpdateForceNWC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdatePalletWeight.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdatePalletWeight.Designer.cs">
+      <DependentUpon>UpdatePalletWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateParts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateParts.designer.cs">
+      <DependentUpon>UpdateParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateRepairDefect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateRepairDefect.designer.cs">
+      <DependentUpon>UpdateRepairDefect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\AssignBoxUcc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\AssignBoxUcc.Designer.cs">
+      <DependentUpon>AssignBoxUcc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\AssignDelivery.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\AssignDelivery.Designer.cs">
+      <DependentUpon>AssignDelivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\AssignPallet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\AssignPallet.Designer.cs">
+      <DependentUpon>AssignPallet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\BackupDeletedDNAndPallet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\BackupDeletedDNAndPallet.designer.cs">
+      <DependentUpon>BackupDeletedDNAndPallet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\WriteForceNWC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\WriteForceNWC.Designer.cs">
+      <DependentUpon>WriteForceNWC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnBindParts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnBindParts.Designer.cs">
+      <DependentUpon>UnBindParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckCanChangeKP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckCanChangeKP.Designer.cs">
+      <DependentUpon>CheckCanChangeKP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetBOMByPartTypeAndModel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetBOMByPartTypeAndModel.Designer.cs">
+      <DependentUpon>GetBOMByPartTypeAndModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetReturnWC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetReturnWC.Designer.cs">
+      <DependentUpon>GetReturnWC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckLabelLanguagePrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckLabelLanguagePrint.Designer.cs">
+      <DependentUpon>CheckLabelLanguagePrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckLANOMLabelPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckLANOMLabelPrint.Designer.cs">
+      <DependentUpon>CheckLANOMLabelPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckWimaxLabelPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckWimaxLabelPrint.Designer.cs">
+      <DependentUpon>CheckWimaxLabelPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetPalletStandardWeight.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetPalletStandardWeight.Designer.cs">
+      <DependentUpon>GetPalletStandardWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateProductStatusByPallet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateProductStatusByPallet.Designer.cs">
+      <DependentUpon>UpdateProductStatusByPallet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateWhPalletWeight.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateWhPalletWeight.Designer.cs">
+      <DependentUpon>UpdateWhPalletWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\BindPizza.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\BindPizza.Designer.cs">
+      <DependentUpon>BindPizza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckAllowPass.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckAllowPass.designer.cs">
+      <DependentUpon>CheckAllowPass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\CheckAssetSNReprint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\CheckAssetSNReprint.Designer.cs">
+      <DependentUpon>CheckAssetSNReprint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckAssetTagSN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckAssetTagSN.Designer.cs">
+      <DependentUpon>CheckAssetTagSN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckASTCombine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckASTCombine.Designer.cs">
+      <DependentUpon>CheckASTCombine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBindForPackingList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBindForPackingList.Designer.cs">
+      <DependentUpon>CheckBindForPackingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBindForPL.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBindForPL.Designer.cs">
+      <DependentUpon>CheckBindForPL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\CheckBOMAndModifySpecialDet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\CheckBOMAndModifySpecialDet.designer.cs">
+      <DependentUpon>CheckBOMAndModifySpecialDet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBomNULL.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBomNULL.Designer.cs">
+      <DependentUpon>CheckBomNULL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBTProduct.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckBTProduct.Designer.cs">
+      <DependentUpon>CheckBTProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckCOA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckCOA.Designer.cs">
+      <DependentUpon>CheckCOA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckCPQSNO.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckCPQSNO.Designer.cs">
+      <DependentUpon>CheckCPQSNO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckCUSTSN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckCUSTSN.Designer.cs">
+      <DependentUpon>CheckCUSTSN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckDataForPackingList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckDataForPackingList.Designer.cs">
+      <DependentUpon>CheckDataForPackingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckDeliveryForPackingList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckDeliveryForPackingList.Designer.cs">
+      <DependentUpon>CheckDeliveryForPackingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckDummyPalletCase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckDummyPalletCase.Designer.cs">
+      <DependentUpon>CheckDummyPalletCase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckEDIForPackingList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckEDIForPackingList.Designer.cs">
+      <DependentUpon>CheckEDIForPackingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckInstrForPackingList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckInstrForPackingList.Designer.cs">
+      <DependentUpon>CheckInstrForPackingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckItem.Designer.cs">
+      <DependentUpon>CheckItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckMBMatch.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckMBMatch.Designer.cs">
+      <DependentUpon>CheckMBMatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckPCMBRCTOMB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckPCMBRCTOMB.Designer.cs">
+      <DependentUpon>CheckPCMBRCTOMB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckPizzaIDExist.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckPizzaIDExist.designer.cs">
+      <DependentUpon>CheckPizzaIDExist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckProductStation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckProductStation.designer.cs">
+      <DependentUpon>CheckProductStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckRMN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckRMN.Designer.cs">
+      <DependentUpon>CheckRMN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckSNIdentical.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckSNIdentical.Designer.cs">
+      <DependentUpon>CheckSNIdentical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckStationQTime.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckStationQTime.designer.cs">
+      <DependentUpon>CheckStationQTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckTrackForPackingList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckTrackForPackingList.Designer.cs">
+      <DependentUpon>CheckTrackForPackingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckUnpackPizza.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckUnpackPizza.designer.cs">
+      <DependentUpon>CheckUnpackPizza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckVCodeCombineStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckVCodeCombineStatus.designer.cs">
+      <DependentUpon>CheckVCodeCombineStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckVendorCT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckVendorCT.designer.cs">
+      <DependentUpon>CheckVendorCT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\CombineAndPrintAST.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\CombineAndPrintAST.Designer.cs">
+      <DependentUpon>CombineAndPrintAST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CreateFileForPackingList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CreateFileForPackingList.Designer.cs">
+      <DependentUpon>CreateFileForPackingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CreateNewPizza.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CreateNewPizza.Designer.cs">
+      <DependentUpon>CreateNewPizza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\DeleteAST.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\DeleteAST.Designer.cs">
+      <DependentUpon>DeleteAST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\DeleteChepPLTAndUpdatePalletRfid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\DeleteChepPLTAndUpdatePalletRfid.Designer.cs">
+      <DependentUpon>DeleteChepPLTAndUpdatePalletRfid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\DeleteDN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\DeleteDN.Designer.cs">
+      <DependentUpon>DeleteDN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\DeleteHPEDIDNData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\DeleteHPEDIDNData.designer.cs">
+      <DependentUpon>DeleteHPEDIDNData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\DeletePAKEDIDNData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\DeletePAKEDIDNData.designer.cs">
+      <DependentUpon>DeletePAKEDIDNData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\DeletePizza.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\DeletePizza.designer.cs">
+      <DependentUpon>DeletePizza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\DeleteShipBoxDet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\DeleteShipBoxDet.designer.cs">
+      <DependentUpon>DeleteShipBoxDet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\DismantleAST.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\DismantleAST.Designer.cs">
+      <DependentUpon>DismantleAST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\Dismantleimei.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\Dismantleimei.Designer.cs">
+      <DependentUpon>Dismantleimei.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\DoImageDownloadSave.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\DoImageDownloadSave.Designer.cs">
+      <DependentUpon>DoImageDownloadSave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GenerateCustomerSn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GenerateCustomerSn.Designer.cs">
+      <DependentUpon>GenerateCustomerSn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GeneratePizzaID.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GeneratePizzaID.Designer.cs">
+      <DependentUpon>GeneratePizzaID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GenerateProductRecord.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GenerateProductRecord.Designer.cs">
+      <DependentUpon>GenerateProductRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\GetASTList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\GetASTList.Designer.cs">
+      <DependentUpon>GetASTList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetBOMForWipbuffer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetBOMForWipbuffer.Designer.cs">
+      <DependentUpon>GetBOMForWipbuffer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetDCode.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetDCode.designer.cs">
+      <DependentUpon>GetDCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetDeliveryByProduct.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetDeliveryByProduct.Designer.cs">
+      <DependentUpon>GetDeliveryByProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetDummyPallet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetDummyPallet.Designer.cs">
+      <DependentUpon>GetDummyPallet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetFDEPalletQty.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetFDEPalletQty.Designer.cs">
+      <DependentUpon>GetFDEPalletQty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetFDEScanQty.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetFDEScanQty.Designer.cs">
+      <DependentUpon>GetFDEScanQty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetFDESkuList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetFDESkuList.Designer.cs">
+      <DependentUpon>GetFDESkuList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetFDETotalQty.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetFDETotalQty.Designer.cs">
+      <DependentUpon>GetFDETotalQty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetMO.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetMO.Designer.cs">
+      <DependentUpon>GetMO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetModel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetModel.Designer.cs">
+      <DependentUpon>GetModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetPartByPartType.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetPartByPartType.Designer.cs">
+      <DependentUpon>GetPartByPartType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetProductLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetProductLog.Designer.cs">
+      <DependentUpon>GetProductLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetUnitWeightProductLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetUnitWeightProductLog.Designer.cs">
+      <DependentUpon>GetUnitWeightProductLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetVendorCT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetVendorCT.designer.cs">
+      <DependentUpon>GetVendorCT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetWipbuffer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetWipbuffer.Designer.cs">
+      <DependentUpon>GetWipbuffer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\InsertAndUpdateModelWeight.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\InsertAndUpdateModelWeight.Designer.cs">
+      <DependentUpon>InsertAndUpdateModelWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\InsertPakSkuMasterWeightFis.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\InsertPakSkuMasterWeightFis.Designer.cs">
+      <DependentUpon>InsertPakSkuMasterWeightFis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\ITCNDCheckItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\ITCNDCheckItem.designer.cs">
+      <DependentUpon>ITCNDCheckItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\ITCNDCheckProduct.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\ITCNDCheckProduct.Designer.cs">
+      <DependentUpon>ITCNDCheckProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\RemovePart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\RemovePart.designer.cs">
+      <DependentUpon>RemovePart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\RunInTimeControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\RunInTimeControl.Designer.cs">
+      <DependentUpon>RunInTimeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\SaveForPackingList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\SaveForPackingList.Designer.cs">
+      <DependentUpon>SaveForPackingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackCheckCOA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackCheckCOA.Designer.cs">
+      <DependentUpon>UnPackCheckCOA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackCheckDelivery.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackCheckDelivery.Designer.cs">
+      <DependentUpon>UnPackCheckDelivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackCOA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackCOA.Designer.cs">
+      <DependentUpon>UnPackCOA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackDelEDIBySN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackDelEDIBySN.Designer.cs">
+      <DependentUpon>UnPackDelEDIBySN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackDelPiazzPart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackDelPiazzPart.Designer.cs">
+      <DependentUpon>UnPackDelPiazzPart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackPartByProdId.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackPartByProdId.Designer.cs">
+      <DependentUpon>UnPackPartByProdId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackProductByDN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackProductByDN.Designer.cs">
+      <DependentUpon>UnPackProductByDN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackProductInfoByDN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackProductInfoByDN.Designer.cs">
+      <DependentUpon>UnPackProductInfoByDN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackUpdateCSNMas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UnPackUpdateCSNMas.Designer.cs">
+      <DependentUpon>UnPackUpdateCSNMas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdateBorrowLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdateBorrowLog.designer.cs">
+      <DependentUpon>UpdateBorrowLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdateConsolidatedValue.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdateConsolidatedValue.Designer.cs">
+      <DependentUpon>UpdateConsolidatedValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateIfBT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateIfBT.Designer.cs">
+      <DependentUpon>UpdateIfBT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateMPBTOrder.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateMPBTOrder.Designer.cs">
+      <DependentUpon>UpdateMPBTOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdatePakWhLoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdatePakWhLoc.Designer.cs">
+      <DependentUpon>UpdatePakWhLoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdatePakWhLocTMP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdatePakWhLocTMP.Designer.cs">
+      <DependentUpon>UpdatePakWhLocTMP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdatePrSN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdatePrSN.Designer.cs">
+      <DependentUpon>UpdatePrSN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateUDTofDN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateUDTofDN.designer.cs">
+      <DependentUpon>UpdateUDTofDN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UploadOBPoData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UploadOBPoData.designer.cs">
+      <DependentUpon>UploadOBPoData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UploadPoData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UploadPoData.designer.cs">
+      <DependentUpon>UploadPoData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UploadPoDataEDI.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UploadPoDataEDI.designer.cs">
+      <DependentUpon>UploadPoDataEDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\WriteCSNLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\WriteCSNLog.Designer.cs">
+      <DependentUpon>WriteCSNLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\WriteLogForPackingList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\WriteLogForPackingList.Designer.cs">
+      <DependentUpon>WriteLogForPackingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WriteProductInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\WriteProductInfo.Designer.cs">
+      <DependentUpon>WriteProductInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\UpdateQCStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\UpdateQCStatus.designer.cs">
+      <DependentUpon>UpdateQCStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\UpdateUnitWeight.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\UpdateUnitWeight.Designer.cs">
+      <DependentUpon>UpdateUnitWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\UpdatePalletWeightToSAP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\UpdatePalletWeightToSAP.Designer.cs">
+      <DependentUpon>UpdatePalletWeightToSAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SaveVirtualMo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\SaveVirtualMo.Designer.cs">
+      <DependentUpon>SaveVirtualMo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GenerateVirtualMoBOM.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\GenerateVirtualMoBOM.Designer.cs">
+      <DependentUpon>GenerateVirtualMoBOM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WriteProductTestLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\WriteProductTestLog.Designer.cs">
+      <DependentUpon>WriteProductTestLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WriteQCStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\WriteQCStatus.designer.cs">
+      <DependentUpon>WriteQCStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GetDelivery.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\GetDelivery.Designer.cs">
+      <DependentUpon>GetDelivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WriteCOALog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\WriteCOALog.Designer.cs">
+      <DependentUpon>WriteCOALog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\BackupForUnpack.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\BackupForUnpack.Designer.cs">
+      <DependentUpon>BackupForUnpack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\ChangeToBT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\ChangeToBT.Designer.cs">
+      <DependentUpon>ChangeToBT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\ChangeToNonBT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\ChangeToNonBT.Designer.cs">
+      <DependentUpon>ChangeToNonBT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckBoxID.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckBoxID.Designer.cs">
+      <DependentUpon>CheckBoxID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckBTSKU.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckBTSKU.Designer.cs">
+      <DependentUpon>CheckBTSKU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckChepPallet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckChepPallet.Designer.cs">
+      <DependentUpon>CheckChepPallet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckDNAndShipment.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckDNAndShipment.Designer.cs">
+      <DependentUpon>CheckDNAndShipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\CheckDNForAssetTagPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\CheckDNForAssetTagPrint.Designer.cs">
+      <DependentUpon>CheckDNForAssetTagPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckForceEOQC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckForceEOQC.Designer.cs">
+      <DependentUpon>CheckForceEOQC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckMac.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckMac.Designer.cs">
+      <DependentUpon>CheckMac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckMBSNo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckMBSNo.Designer.cs">
+      <DependentUpon>CheckMBSNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckModelValid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckModelValid.Designer.cs">
+      <DependentUpon>CheckModelValid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CheckPNValid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CheckPNValid.Designer.cs">
+      <DependentUpon>CheckPNValid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AST\CheckStationForAssetTagPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AST\CheckStationForAssetTagPrint.Designer.cs">
+      <DependentUpon>CheckStationForAssetTagPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CloseLocation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CloseLocation.Designer.cs">
+      <DependentUpon>CloseLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\CombinePizzSpecialCheck.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\CombinePizzSpecialCheck.Designer.cs">
+      <DependentUpon>CombinePizzSpecialCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\DismantleProduct.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\DismantleProduct.Designer.cs">
+      <DependentUpon>DismantleProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\DocTypeList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\DocTypeList.Designer.cs">
+      <DependentUpon>DocTypeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetCarrierList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetCarrierList.Designer.cs">
+      <DependentUpon>GetCarrierList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetForwarderByTruckID.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetForwarderByTruckID.Designer.cs">
+      <DependentUpon>GetForwarderByTruckID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetPackedPalletQty.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetPackedPalletQty.Designer.cs">
+      <DependentUpon>GetPackedPalletQty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetPalletNoByUCC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetPalletNoByUCC.Designer.cs">
+      <DependentUpon>GetPalletNoByUCC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetPickIDCtrlByPickID.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetPickIDCtrlByPickID.Designer.cs">
+      <DependentUpon>GetPickIDCtrlByPickID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetProductQC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetProductQC.Designer.cs">
+      <DependentUpon>GetProductQC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetRegionList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetRegionList.Designer.cs">
+      <DependentUpon>GetRegionList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetWHLocation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetWHLocation.Designer.cs">
+      <DependentUpon>GetWHLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\GetWHPltMas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\GetWHPltMas.Designer.cs">
+      <DependentUpon>GetWHPltMas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\InsertSnoDetBTLoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\InsertSnoDetBTLoc.Designer.cs">
+      <DependentUpon>InsertSnoDetBTLoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\IsScan2DBarCode.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\IsScan2DBarCode.Designer.cs">
+      <DependentUpon>IsScan2DBarCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\ModelExist.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\ModelExist.Designer.cs">
+      <DependentUpon>ModelExist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\SaveDataForPickCard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\SaveDataForPickCard.Designer.cs">
+      <DependentUpon>SaveDataForPickCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\SavePakingList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\SavePakingList.Designer.cs">
+      <DependentUpon>SavePakingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UnPackPackingDataByDeliveryNo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UnPackPackingDataByDeliveryNo.Designer.cs">
+      <DependentUpon>UnPackPackingDataByDeliveryNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UnPackPakODMSessionByDeliveryNo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UnPackPakODMSessionByDeliveryNo.Designer.cs">
+      <DependentUpon>UnPackPakODMSessionByDeliveryNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UnPackProductByDeliveryNo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UnPackProductByDeliveryNo.Designer.cs">
+      <DependentUpon>UnPackProductByDeliveryNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UnPackProductInfoByDeliveryNo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UnPackProductInfoByDeliveryNo.Designer.cs">
+      <DependentUpon>UnPackProductInfoByDeliveryNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UnpackShipBoxDetByDn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UnpackShipBoxDetByDn.Designer.cs">
+      <DependentUpon>UnpackShipBoxDetByDn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdateCMBQty.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdateCMBQty.Designer.cs">
+      <DependentUpon>UpdateCMBQty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdateDeliveryShipDate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdateDeliveryShipDate.Designer.cs">
+      <DependentUpon>UpdateDeliveryShipDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdateFwdPltStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdateFwdPltStatus.Designer.cs">
+      <DependentUpon>UpdateFwdPltStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdateHP_EDI.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdateHP_EDI.Designer.cs">
+      <DependentUpon>UpdateHP_EDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdateMO.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdateMO.Designer.cs">
+      <DependentUpon>UpdateMO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdateUnPackProductStatusByDeliveryNo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdateUnPackProductStatusByDeliveryNo.Designer.cs">
+      <DependentUpon>UpdateUnPackProductStatusByDeliveryNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\UpdateWHPltMas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\UpdateWHPltMas.Designer.cs">
+      <DependentUpon>UpdateWHPltMas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\WriteDeliveryLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\WriteDeliveryLog.Designer.cs">
+      <DependentUpon>WriteDeliveryLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WritePCBTestLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\WritePCBTestLog.Designer.cs">
+      <DependentUpon>WritePCBTestLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\WritePQCLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\WritePQCLog.Designer.cs">
+      <DependentUpon>WritePQCLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\WriteProductAttr.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\WriteProductAttr.Designer.cs">
+      <DependentUpon>WriteProductAttr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\WriteContentWarrantyLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\WriteContentWarrantyLog.Designer.cs">
+      <DependentUpon>WriteContentWarrantyLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\WriteProductAttrExt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\WriteProductAttrExt.designer.cs">
+      <DependentUpon>WriteProductAttrExt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\WriteUnPackProductLogByDeliveryNo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\WriteUnPackProductLogByDeliveryNo.Designer.cs">
+      <DependentUpon>WriteUnPackProductLogByDeliveryNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\WriteWHPltLog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\WriteWHPltLog.Designer.cs">
+      <DependentUpon>WriteWHPltLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Special\WriteWHPltMas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Special\WriteWHPltMas.Designer.cs">
+      <DependentUpon>WriteWHPltMas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckCOANo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckCOANo.designer.cs">
+      <DependentUpon>CheckCOANo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckCOANoInputStandard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckCOANoInputStandard.designer.cs">
+      <DependentUpon>CheckCOANoInputStandard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckPizzaLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckPizzaLabel.designer.cs">
+      <DependentUpon>CheckPizzaLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\ClearProductCOAID_OOAID.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\ClearProductCOAID_OOAID.designer.cs">
+      <DependentUpon>ClearProductCOAID_OOAID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CollectMaterial.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CollectMaterial.designer.cs">
+      <DependentUpon>CollectMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetPartList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetPartList.designer.cs">
+      <DependentUpon>GetPartList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateBtLocStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\UpdateBtLocStatus.designer.cs">
+      <DependentUpon>UpdateBtLocStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\BoundProdIDAndBoxId.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\BoundProdIDAndBoxId.designer.cs">
+      <DependentUpon>BoundProdIDAndBoxId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckKittingInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\CheckKittingInfo.designer.cs">
+      <DependentUpon>CheckKittingInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetPartBomFromModelThenFix.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\GetPartBomFromModelThenFix.designer.cs">
+      <DependentUpon>GetPartBomFromModelThenFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewNeedCheck\SendBomPartToKittingServer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewNeedCheck\SendBomPartToKittingServer.designer.cs">
+      <DependentUpon>SendBomPartToKittingServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TRIS\AssignDeliveryForTris.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRIS\AssignDeliveryForTris.Designer.cs">
+      <DependentUpon>AssignDeliveryForTris.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TRIS\CheckDeliveryStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRIS\CheckDeliveryStatus.Designer.cs">
+      <DependentUpon>CheckDeliveryStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UPS\AssignUPSPOAndAst.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UPS\AssignUPSPOAndAst.Designer.cs">
+      <DependentUpon>AssignUPSPOAndAst.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UPS\CheckAndSetBtwPrintInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UPS\CheckAndSetBtwPrintInfo.Designer.cs">
+      <DependentUpon>CheckAndSetBtwPrintInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UPS\RemoveUPSAst.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UPS\RemoveUPSAst.Designer.cs">
+      <DependentUpon>RemoveUPSAst.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UPS\GetAndSetBtwFile.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UPS\GetAndSetBtwFile.Designer.cs">
+      <DependentUpon>GetAndSetBtwFile.cs</DependentUpon>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IMES.Common\IMES.Common.csproj">
+      <Project>{6E8F1B4C-47BE-4C82-9DB3-259D649695AA}</Project>
+      <Name>IMES.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.Infrastructure.Extend\IMES.Infrastructure.Extend.csproj">
+      <Project>{35D26952-01C0-4616-9340-9C49A9B2205E}</Project>
+      <Name>IMES.Infrastructure.Extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.UPS\IMES.UPS.csproj">
+      <Project>{EF026E04-A275-4F58-90C8-DBAD1E12FDD6}</Project>
+      <Name>IMES.UPS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Windows Workflow Foundation\v3.5\Workflow.Targets" />
+</Project>

@@ -1,0 +1,25 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="OfflinePizzaKitting" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetBOM Customer="{ActivityBind OfflinePizzaKitting,Path=Customer}" MainObjFrom="Product" SessionType="{ActivityBind OfflinePizzaKitting,Path=SessionType}" x:Name="getBOM1" Editor="{ActivityBind OfflinePizzaKitting,Path=Editor}" Station="{ActivityBind OfflinePizzaKitting,Path=Station}" ModelFrom="ModelName" Line="{ActivityBind OfflinePizzaKitting,Path=PdLine}" Key="{ActivityBind OfflinePizzaKitting,Path=Key}" />
+	<ns0:GerneratePizza Customer="{ActivityBind OfflinePizzaKitting,Path=Customer}" x:Name="gerneratePizza1" SessionType="{ActivityBind OfflinePizzaKitting,Path=SessionType}" Editor="{ActivityBind OfflinePizzaKitting,Path=Editor}" Station="{ActivityBind OfflinePizzaKitting,Path=Station}" Line="{ActivityBind OfflinePizzaKitting,Path=PdLine}" Key="{ActivityBind OfflinePizzaKitting,Path=Key}" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplet" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind OfflinePizzaKitting,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind OfflinePizzaKitting,Path=SessionType}" Editor="{ActivityBind OfflinePizzaKitting,Path=Editor}" Station="{ActivityBind OfflinePizzaKitting,Path=Station}" Line="{ActivityBind OfflinePizzaKitting,Path=PdLine}" Key="{ActivityBind OfflinePizzaKitting,Path=Key}" />
+			<IfElseActivity x:Name="IfComplete">
+				<IfElseBranchActivity x:Name="NotComplete">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplet" />
+					</IfElseBranchActivity.Condition>
+					<ns0:PartMatch Customer="{ActivityBind OfflinePizzaKitting,Path=Customer}" SessionType="{ActivityBind OfflinePizzaKitting,Path=SessionType}" Editor="{ActivityBind OfflinePizzaKitting,Path=Editor}" Station="{ActivityBind OfflinePizzaKitting,Path=Station}" x:Name="partMatch1" BindTo="Pizza" Line="{ActivityBind OfflinePizzaKitting,Path=PdLine}" Key="{ActivityBind OfflinePizzaKitting,Path=Key}" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:DBScope Station="{ActivityBind OfflinePizzaKitting,Path=Station}" x:Name="dbScope1" Key="{ActivityBind OfflinePizzaKitting,Path=Key}" SessionType="{ActivityBind OfflinePizzaKitting,Path=SessionType}">
+		<ns0:BindParts Customer="{ActivityBind OfflinePizzaKitting,Path=Customer}" x:Name="bindParts1" SessionType="{ActivityBind OfflinePizzaKitting,Path=SessionType}" Editor="{ActivityBind OfflinePizzaKitting,Path=Editor}" Station="{ActivityBind OfflinePizzaKitting,Path=Station}" BindTo="Pizza" Line="{ActivityBind OfflinePizzaKitting,Path=PdLine}" Key="{ActivityBind OfflinePizzaKitting,Path=Key}" />
+		<ns0:Print Customer="{ActivityBind OfflinePizzaKitting,Path=Customer}" NotExistException="True" SessionType="{ActivityBind OfflinePizzaKitting,Path=SessionType}" Editor="{ActivityBind OfflinePizzaKitting,Path=Editor}" Station="{x:Null}" DnFrom="No" Line="{ActivityBind OfflinePizzaKitting,Path=PdLine}" Key="{ActivityBind OfflinePizzaKitting,Path=Key}" x:Name="print1" />
+		<ns0:WritePrintLogList Customer="{ActivityBind OfflinePizzaKitting,Path=Customer}" x:Name="writePrintLogList1" SessionType="{ActivityBind OfflinePizzaKitting,Path=SessionType}" Editor="{ActivityBind OfflinePizzaKitting,Path=Editor}" Key="{ActivityBind OfflinePizzaKitting,Path=Key}" Station="{ActivityBind OfflinePizzaKitting,Path=Station}" Line="{ActivityBind OfflinePizzaKitting,Path=PdLine}" BeginAndEndNoFrom="PizzaID" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

@@ -1,0 +1,268 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace IMES.Infrastructure.Extend.Dictionary
+{
+    public static class ConstName
+    {
+        public static class SNFormat
+        {
+            public static readonly string NUMBER = "NUMBER";
+            public static readonly string DATE = "DATE";
+            public static readonly string NUMBERAT = "NUMBER@";
+            public static readonly string CHECKSUM = "CHECKSUM";
+            public static readonly string CHECKSUMAT = "CHECKSUM@";
+            public static readonly string LINE = "LINE";
+            public static readonly string ALIASLINE = "ALIASLINE";
+            public static readonly string ALIAS = "ALIAS";
+            public static readonly string SYS = "SYS";
+            public static readonly string PREFIXColon = "PREFIX:";
+
+            public static readonly string Lock = "Lock";
+        }
+
+        public static class CartonOrPalletStatus
+        {
+            public static readonly string Full = "Full";
+            public static readonly string Partial = "Partial";
+            public static readonly string UnPack = "UnPack";
+            public static readonly string Empty = "Empty";
+            public static readonly string Abort = "Abort";
+
+            public static readonly string full = "full";
+            public static readonly string partial = "partial";
+        }
+
+        public static readonly string FRU = "FRU";
+
+        public static readonly string Name = "Name";
+
+        public static class Customer
+        {
+            public static readonly string ASUS = "ASUS";
+            public static readonly string Acer = "Acer";
+            public static readonly string HP = "HP";
+        }
+       
+        public static class CUSTSN
+        {
+            public static readonly string CNU = "CNU";
+        }
+
+        public static class Letter
+        {
+            public static readonly string X = "X";
+            public static readonly string Y = "Y";
+            public static readonly string N = "N";
+            public static readonly string M = "M";
+            public static readonly string D = "D";
+            public static readonly string C = "C";
+            public static readonly string T = "T";
+            public static readonly string P = "P";
+            public static readonly string Zero = "0";
+            public static readonly string Nine = "9"; 
+
+
+        }
+
+        public static class DateFormat
+        {
+            public static readonly string yyyyMMddHHmmss = "yyyyMMddHHmmss";
+            public static readonly string yyyyMMddHHmmssfff = "yyyyMMddHHmmss.fff";
+            public static readonly string yyyyMMdd = "yyyyMMdd";
+            public static readonly string yyyy = "yyyy";
+            public static readonly string MM = "MM";
+            public static readonly string YM = "YM";
+        }
+
+        public static class Digit
+        {
+            public static readonly string D1 = "D1";
+            public static readonly string D2 = "D2";
+            public static readonly string D3 = "D3";
+            public static readonly string D4 = "D4";
+            public static readonly string D6 = "D6";
+            public static readonly string D7 = "D7";
+
+            public static readonly string X1 = "X1";
+            public static readonly string X2 = "X2";
+            public static readonly string X3 = "X3";
+            public static readonly string X4 = "X4";
+            public static readonly string X6 = "X6";
+            public static readonly string X7 = "X7";
+            public static readonly string X12 = "X112";
+        }
+
+        public static class Site
+        {
+            public static readonly string IPC = "IPC";
+            public static readonly string ICC = "ICC";
+            public static readonly string ICI = "ICI";
+        }
+
+        //ConstValue.Type Name List
+        public static class ConstValue
+        {
+            public static readonly string ProcReg = "ProcReg";
+            public static readonly string CustSNExceptRule = "CustSNExceptRule";
+            public static readonly string PreFixDateAST = "PreFixDateAST";
+            public static readonly string PreFixSNAST="PreFixSNAST";
+            public static readonly string AssignCUSTSNStation = "AssignCUSTSNStation";
+            public static readonly string CustSNRule = "CustSNRule";
+            public static readonly string MBSNRule = "MBSNRule";
+            public static readonly string CartonSNRule = "CartonSNRule";
+            public static readonly string AST = "AST";
+            public static readonly string CheckMaterialStatus = "CheckMaterialStatus";
+            public static readonly string NoCheckCPUStatus = "NoCheckCPUStatus";
+           
+        }
+
+        //ConstValueType.Type Name List
+        public static class ConstValueType
+        {
+            public static readonly string SpecialOrderInfoTypeList = "SpecialOrderInfoTypeList";
+            public static readonly string ASTPostFixCheckSum = "ASTPostFixCheckSum";
+            public static readonly string Customer_PltWeightRoundingShipWay = "{0}_PltWeightRoundingShipWay";
+        }
+
+        //SysSetting
+        public static class SysSetting
+        {
+            public static readonly string Site = "Site";
+            public static readonly string AssignPOCustomerList = "AssignPOCustomerList";//Assign PO Customer 
+            public static readonly string AssignBoxIdCustomerList = "AssignBoxIdCustomerList";//Assign BoxId Customer 
+        }
+
+        public static class DeliveryStatus
+        {
+            public static readonly string Status00 = "00"; //Delivery available
+
+            public static readonly string Status86 = "86"; //Delivery Full
+            public static readonly string Status87 = "87"; //Pallet full per delivery
+            
+            public static readonly string Status90 = "90";  //Withdraw Delivery 
+            public static readonly string Status91 = "91";  //SAP PGI
+            public static readonly string Status93 = "93";  //Sent B2B SN Report
+            public static readonly string Status95 = "95";   //B2B CBR Report
+            public static readonly string Status97 = "97";   //B2B KP Report
+            public static readonly string Status98 = "98";   //SAP SN Report
+
+            public static readonly string StatusP0 = "P0"; //PO available
+            public static readonly string StatusP2 = "P2"; //PO full
+            public static readonly string StatusP4 = "P4"; //Pallet full in PO
+            public static readonly string StatusP6 = "P6"; //PO combined Delivery
+        }
+
+        public static class DeliveryPalletstatus
+        {
+            public static readonly string NotFullStatus = "0"; //not full
+            public static readonly string FullStatus = "1"; //full
+        }
+
+        public static class DeliveryHoldStatus
+        {
+            public static readonly string Active = "A"; 
+            public static readonly string Hold = "H"; 
+        }
+
+        public static class COAStatus
+        {
+            public static readonly string StatusP1 = "P1"; 
+            //public static readonly string StatusA0 = "A0"; 
+            //public static readonly string StatusA1 = "A1";
+            public static readonly string StatusA2 = "A2";
+        }
+
+        public static class KeyBoxStatus
+        {
+            public static readonly string Created = "Created";
+            public static readonly string Release = "Release";
+            public static readonly string Used = "Used";
+            public static readonly string ReAssigned = "ReAssigned";
+
+        }
+
+        public static class BomNodeType
+        {
+            public static readonly string P1 = "P1";
+            public static readonly string PL = "PL";
+            public static readonly string KP = "KP";
+            public static readonly string MB = "MB";
+            public static readonly string C1 = "C1";
+            public static readonly string C2 = "C2";
+            public static readonly string C3 = "C3";
+            public static readonly string C4 = "C4";
+            public static readonly string PS = "PS";
+            public static readonly string AT = "AT";
+        }
+
+        public static class AstType
+        {
+            public static readonly string ATSN3="ATSN3";
+        }
+
+        public static class PartInfo
+        {
+            public static readonly string MACRule = "MACRule";
+            public static readonly string AV="AV";
+        }      
+
+        public static class NumControlType
+        {
+            public static readonly string MAC = "MAC";
+            public static readonly string IMEI = "IMEI";
+            public static readonly string MBSN = "MBSN";
+            public static readonly string CUSTSN = "CUSTSN";
+            public static readonly string CARTONNO = "CARTONNO";
+            public static readonly string AST = "AST";
+        }
+
+        public static class FamilyInfo
+        {
+            public static readonly string MACRule = "MACRule";  //none-HP MAC Rule
+        }
+
+        public static class ProductInfo
+        {
+            public static readonly string LabelPO = "LabelPO";  //LabelPO
+        }
+
+        public static class MACRule
+        {
+            public static readonly string NewMACStatus2 = "2";  //none-HP MAC Rule
+        }
+
+       
+        public static class PAKLocMasType
+        {
+            public static readonly string PakLoc = "PakLoc";
+        }
+
+        public static class DeliveryInfo
+        {
+            public static readonly string PalletLayer = "PalletLayer";
+            public static readonly string OceanType = "OceanType";
+            public static readonly string PltType = "PltType";
+            public static readonly string PALLET_TYPE = "PALLET_TYPE";
+        }
+
+        public static class PalletAttr
+        {
+            public static readonly string SendStatus = "SendStatus";
+        }
+
+        public static class ModelInfo
+        {
+            public static readonly string Cust = "Cust";
+            public static readonly string Cust3 = "Cust3";
+            public static readonly string ATSNAV="ATSNAV";
+        }
+
+        public static class MaterialType
+        {
+            public static readonly string CPU = "CPU";            
+        }
+    }
+}

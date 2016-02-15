@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  
+  <configSections>
+    
+    <section name="log4net" type="System.Configuration.IgnoreSectionHandler" />
+    
+  
+  </configSections>
+  
+  <connectionStrings>
+    <add name="OnlineDBServer" connectionString="Data Source=10.99.183.65;Initial Catalog={0};Persist Security Info=True;User ID=fis;Password=fis+123;Max Pool Size=100;Min Pool Size=5;App=test_Query" providerName="" />
+    <add name="HistoryDBServer" connectionString="Data Source=10.99.183.65;Initial Catalog={0};Persist Security Info=True;User ID=fis;Password=fis+123;Max Pool Size=100;Min Pool Size=5;App=test_Query" providerName="" />
+    <!--<add name="DBServer" connectionString="Data Source=10.99.183.65;Initial Catalog={0};Persist Security Info=True;User ID=fis;Password=fis+123;Max Pool Size=100;Min Pool Size=50" providerName="" />-->
+    <!--<add name="DBRemote" connectionString="Data Source=Itc-qa5-fis1;Initial Catalog=IMES_DataMigration;Persist Security Info=True;User ID=sa;Password=11111111;Max Pool Size=100;Min Pool Size=50" providerName="" />-->    
+  </connectionStrings>
+  
+  <log4net>
+    <appender name="RollingLogFileAppender" type="log4net.Appender.RollingFileAppender">
+      <file value="./log/logfile" />
+      <appendToFile value="true" />
+      <rollingStyle value="Composite" />
+      <datePattern value="yyyy-MM-dd'.log'" />
+      <maxSizeRollBackups value="-1" />
+      <maximumFileSize value="1MB" />
+      <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+      </layout>
+    </appender>
+    <root>
+      <level value="DEBUG" />
+      <appender-ref ref="RollingLogFileAppender" />
+    </root>
+  </log4net>
+  
+  <system.runtime.remoting>
+    <application>
+      <service>      
+	<wellknown mode="Singleton" type="IMES.Query.Implementation.Family, IMES.Query.Implementation" objectUri="IMESQueryService.IFamily" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.ConfigDB, IMES.Query.Implementation" objectUri="IMESQueryService.IConfigDB" />
+
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.COAStatus, IMES.Query.Implementation" objectUri="IMESQueryService.ICOAStatus" />
+
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PdLine, IMES.Query.Implementation" objectUri="IMESQueryService.IPdLine" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.Model, IMES.Query.Implementation" objectUri="IMESQueryService.IModel" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.Station, IMES.Query.Implementation" objectUri="IMESQueryService.IStation" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.QueryCommon, IMES.Query.Implementation" objectUri="IMESQueryService.IQueryCommon" />
+
+	      <wellknown mode="Singleton" type="IMES.Query.Implementation.SA_PCBInfo, IMES.Query.Implementation" objectUri="IMESQueryService.ISA_PCBInfo" />
+	      <wellknown mode="Singleton" type="IMES.Query.Implementation.SA_FAReturnPCAImpl, IMES.Query.Implementation" objectUri="IMESQueryService.ISA_FAReturnPCA" />
+	      <wellknown mode="Singleton" type="IMES.Query.Implementation.SA_SAMBRepair, IMES.Query.Implementation" objectUri="IMESQueryService.ISA_SAMBRepair" />
+	      <wellknown mode="Singleton" type="IMES.Query.Implementation.SA_PCBTestDefect, IMES.Query.Implementation" objectUri="IMESQueryService.ISA_TestDefect" />
+	      <wellknown mode="Singleton" type="IMES.Query.Implementation.SA_PCBStationQuery, IMES.Query.Implementation" objectUri="IMESQueryService.ISA_PCBStation" />
+
+
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.FA_PIADefectList, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_PIADefectList" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.FA_ProductInfo, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_ProductInfo" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.FA_PrdIdOnLine, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_PrdIdOnLine" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.FA_SNByFamily, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_SNByFamily" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.FA_ProductYield, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_ProductYield" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.FA_MPInput, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_MPInput" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.FA_EPIAModelList, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_EPIAModelList" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.FA_PoWIPTracking, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_PoWIPTracking" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.FA_ModelBOM, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_ModelBOM" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.FA_ProductStatement, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_ProductStatement" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.FA_MaterialUsed, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_MaterialUsed" />
+        
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_VirtualPalletInfo, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_VirtualPalletInfo" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_PackingDailyReport, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_PackingDailyReport" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_PakBufferQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_PakBufferQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_PLTDimension, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_PLTDimension" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_PackingDataQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_PackingDataQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_BTLocQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_BTLocQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_ASTQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_ASTQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_ShipLogQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_ShipLogQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_StatusByDeliveryNo, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_StatusByDeliveryNo" />
+
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_ASTReport, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_ASTReport" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_KitPartQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_KitPartQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_KitFloatLocQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_KitFloatLocQuery" />        
+
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_PAQCUnTest, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_PAQCUnTest" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_PackingCombinePallet, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_PackingCombinePallet" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_PalletReport, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_PalletReport" />
+
+
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_ChepPallet, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_ChepPallet" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_COAStockQty, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_COAStockQty" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_COAStatusReport, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_COAStatusReport" />
+
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_CDSIPOQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_CDSIPOQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_FirstPizza, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_FirstPizza" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_COAStoreQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_COAStoreQuery" />
+
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_BulkPalletReport, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_BulkPalletReport" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_NonBulkPalletSummaryRpt, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_NonBulkPalletSummaryRpt" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_NonBulkPalletDetailRpt, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_NonBulkPalletDetailRpt" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_ASTeSOPQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_ASTeSOP" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.SA_PCBNoQuery, IMES.Query.Implementation" objectUri="IMESQueryService.ISA_PCBNoQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.FA_KeyPartDefectReport, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_KeyPartDefectReport" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.SA_PCBTestReport, IMES.Query.Implementation" objectUri="IMESQueryService.ISA_PCBTestReport" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_PAQCSortingQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_PAQCSortingQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_StandModelWeight, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_StandModelWeight" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.FA_ProductImageDownTimeout, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_ProductImageDownTimeout" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_WipTracking, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_WipTracking" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_COARMAQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_COARMAQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.SA_PCBLotQuery, IMES.Query.Implementation" objectUri="IMESQueryService.ISA_PCBLotQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_UnShipSnList, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_UnShipSnList" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_IdleTime, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_IdleTime" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.SA_SABANDIT, IMES.Query.Implementation" objectUri="IMESQueryService.ISA_SABANDIT" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_Warehouse1, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_Warehouse1" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.Model_ASTQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IModel_ASTQyery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_DockSnQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_DockSnQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_PLT3, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_PLT3" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_ShipPLT3, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_ShipPLT3" />  
+				<wellknown mode="Singleton" type="IMES.Query.Implementation.FA_ProductPlanInputQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_ProductPlanInputQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.FA_IMG_2PPQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_IMG_2PPQuery" />		
+				<wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_BsamLocationQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_BsamLocationQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_BsamShipSnList, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_BsamShipSnList" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.SA_CpuQuery, IMES.Query.Implementation" objectUri="IMESQueryService.ISA_CpuQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.FA_ProductRepairQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_ProductRepairQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.PAK_MaterialBoxQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IPAK_MaterialBoxQuery" />
+        <wellknown mode="Singleton" type="IMES.Query.Implementation.FA_KeyPartsRequirementQuery, IMES.Query.Implementation" objectUri="IMESQueryService.IFA_KeyPartsRequirementQuery" />
+        
+      </service>
+      <channels>
+        <channel ref="tcp" port="8800" />
+      </channels>
+    </application>
+  </system.runtime.remoting>
+  
+  <appSettings>
+
+  
+	  
+    
+    <!--Sevice Name-->
+    <add key="ServiceName" value="IMES.HP.Query.Service" />
+    
+    <!--DB Catalogs-->
+    <add key="DB_CFG" value="HPIMES" />
+   
+    <!--History DB Catelogs 允許設多個以,或是;分隔如BK2011,BK2012,...   --> 
+    <add key="DB_HISTORY" value="HPIMES;IMES0901"/>
+    <!--Language of Error Message ["ENG,CHS,CHT,CZE,ESP"]-->
+    <add key="ERROR_LAN" value="ENG,CHT" />
+    <add key ="RDS_Server" value="http://5b3f-mp-sql/IPC/mp/Picture/FA/" />
+	  <!--SQL Command TimeOut default is 30 seconds-->
+	  <add key ="SQLCmdTimeOut" value="30" />
+  </appSettings>  
+</configuration>

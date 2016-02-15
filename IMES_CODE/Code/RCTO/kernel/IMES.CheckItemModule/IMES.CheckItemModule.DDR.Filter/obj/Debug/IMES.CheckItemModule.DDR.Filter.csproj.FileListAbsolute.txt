@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.DDR.Filter.dll
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.DDR.Filter.pdb
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.DDR.Filter\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.DDR.Filter\obj\Debug\IMES.CheckItemModule.DDR.Filter.dll
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.DDR.Filter\obj\Debug\IMES.CheckItemModule.DDR.Filter.pdb

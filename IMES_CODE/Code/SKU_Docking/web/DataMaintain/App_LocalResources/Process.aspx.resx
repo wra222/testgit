@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cn_btnQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="cn_btnDeleteProcess" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="cn_btnProcessRelation" xml:space="preserve">
+    <value>Process Relation</value>
+  </data>
+  <data name="cn_btnAddProcess" xml:space="preserve">
+    <value>Save Process</value>
+  </data>
+  <data name="cn_btnSaveProcess" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="cn_btnAddStation" xml:space="preserve">
+    <value>Add Station</value>
+  </data>
+  <data name="cn_btnDeleteStation" xml:space="preserve">
+    <value>Delete Station</value>
+  </data>
+  <data name="cn_btnSaveStation" xml:space="preserve">
+    <value>Save Station</value>
+  </data>
+  <data name="cn_colPreStation" xml:space="preserve">
+    <value>Pre Station</value>
+  </data>
+  <data name="cn_colStation" xml:space="preserve">
+    <value>Station</value>
+  </data>
+  <data name="cn_colStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="cn_lblModel" xml:space="preserve">
+    <value>Model:</value>
+  </data>
+  <data name="cn_lblName" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="cn_lblPallet" xml:space="preserve">
+    <value>Pallet:</value>
+  </data>
+  <data name="cn_lblPCB" xml:space="preserve">
+    <value>PCB:</value>
+  </data>
+  <data name="cn_lblPreStation" xml:space="preserve">
+    <value>Pre Station:</value>
+  </data>
+  <data name="cn_lblProcess" xml:space="preserve">
+    <value>Process:</value>
+  </data>
+  <data name="cn_lblProcessList" xml:space="preserve">
+    <value>Process List:</value>
+  </data>
+  <data name="cn_lblQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="cn_lblRework" xml:space="preserve">
+    <value>Rework:</value>
+  </data>
+  <data name="cn_lblStation" xml:space="preserve">
+    <value>Station:</value>
+  </data>
+  <data name="cn_lblStationList" xml:space="preserve">
+    <value>Station List:</value>
+  </data>
+  <data name="cn_lblStatus" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="eng_btnAddProcess" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="eng_btnAddStation" xml:space="preserve">
+    <value>Add Station</value>
+  </data>
+  <data name="eng_btnDeleteProcess" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="eng_btnDeleteStation" xml:space="preserve">
+    <value>Delete Station</value>
+  </data>
+  <data name="eng_btnProcessRelation" xml:space="preserve">
+    <value>Process Relation</value>
+  </data>
+  <data name="eng_btnQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="eng_btnSaveProcess" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="eng_btnSaveStation" xml:space="preserve">
+    <value>Save Station</value>
+  </data>
+  <data name="eng_colPreStation" xml:space="preserve">
+    <value>Pre Station</value>
+  </data>
+  <data name="eng_colStation" xml:space="preserve">
+    <value>Station</value>
+  </data>
+  <data name="eng_colStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="eng_lblModel" xml:space="preserve">
+    <value>Model:</value>
+  </data>
+  <data name="eng_lblName" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="eng_lblPallet" xml:space="preserve">
+    <value>Pallet:</value>
+  </data>
+  <data name="eng_lblPCB" xml:space="preserve">
+    <value>PCB:</value>
+  </data>
+  <data name="eng_lblPreStation" xml:space="preserve">
+    <value>Pre Station:</value>
+  </data>
+  <data name="eng_lblProcess" xml:space="preserve">
+    <value>Process:</value>
+  </data>
+  <data name="eng_lblProcessList" xml:space="preserve">
+    <value>Process List:</value>
+  </data>
+  <data name="eng_lblQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="eng_lblRework" xml:space="preserve">
+    <value>Rework:</value>
+  </data>
+  <data name="eng_lblStation" xml:space="preserve">
+    <value>Station:</value>
+  </data>
+  <data name="eng_lblStationList" xml:space="preserve">
+    <value>Station List:</value>
+  </data>
+  <data name="eng_lblStatus" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="cn_CmbStationStatusItemValue1" xml:space="preserve">
+    <value>PASS</value>
+  </data>
+  <data name="cn_CmbStationStatusItemValue2" xml:space="preserve">
+    <value>FAIL</value>
+  </data>
+  <data name="eng_CmbStationStatusItemValue1" xml:space="preserve">
+    <value>PASS</value>
+  </data>
+  <data name="eng_CmbStationStatusItemValue2" xml:space="preserve">
+    <value>FAIL</value>
+  </data>
+  <data name="cn_msgDelete" xml:space="preserve">
+    <value>确定要删除这条记录吗?</value>
+  </data>
+  <data name="eng_msgDelete" xml:space="preserve">
+    <value>Do you really want to delete this item?</value>
+  </data>
+  <data name="cn_colCdt" xml:space="preserve">
+    <value>Cdt</value>
+  </data>
+  <data name="cn_colEditor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="cn_colUdt" xml:space="preserve">
+    <value>Udt</value>
+  </data>
+  <data name="eng_colCdt" xml:space="preserve">
+    <value>Cdt</value>
+  </data>
+  <data name="eng_colEditor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="eng_colUdt" xml:space="preserve">
+    <value>Udt</value>
+  </data>
+  <data name="cn_colProcess" xml:space="preserve">
+    <value>Process</value>
+  </data>
+  <data name="eng_colProcess" xml:space="preserve">
+    <value>Process</value>
+  </data>
+  <data name="cn_CmbStationStatusItemValue3" xml:space="preserve">
+    <value>PROCESSING</value>
+  </data>
+  <data name="eng_CmbStationStatusItemValue3" xml:space="preserve">
+    <value>PROCESSING</value>
+  </data>
+  <data name="cn_colDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="cn_lblDescription" xml:space="preserve">
+    <value>Descr:</value>
+  </data>
+  <data name="eng_colDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="eng_lblDescription" xml:space="preserve">
+    <value>Descr:</value>
+  </data>
+  <data name="cn_lblProcessType" xml:space="preserve">
+    <value>Type:</value>
+  </data>
+  <data name="eng_lblProcessType" xml:space="preserve">
+    <value>Type:</value>
+  </data>
+  <data name="cn_colType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="cn_btnExport" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="cn_btnImport" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="cn_btnProcessRule" xml:space="preserve">
+    <value>Process Rule</value>
+  </data>
+  <data name="cn_btnProcessRuleSet" xml:space="preserve">
+    <value>Process Rule Set</value>
+  </data>
+  <data name="eng_colType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="eng_btnExport" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="eng_btnImport" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="eng_btnProcessRule" xml:space="preserve">
+    <value>Process Rule</value>
+  </data>
+  <data name="eng_btnProcessRuleSet" xml:space="preserve">
+    <value>Process Rule Set</value>
+  </data>
+  <data name="cn_btnSaveAs" xml:space="preserve">
+    <value>Save As</value>
+  </data>
+  <data name="eng_btnSaveAs" xml:space="preserve">
+    <value>Save As</value>
+  </data>
+  <data name="cn_msgPrompt1" xml:space="preserve">
+    <value>需要输入[Process]!</value>
+  </data>
+  <data name="eng_msgPrompt1" xml:space="preserve">
+    <value>Please input [Process]!</value>
+  </data>
+</root>

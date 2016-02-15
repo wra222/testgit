@@ -1,0 +1,159 @@
+
+<script type='text/javascript'>
+var timerId;
+function callbackfun(sn,result,errorCode,errorDesc)
+{
+    
+   //if (result=='TimeOut' || result=='Status')
+   alert(sn+','+result+','+errorCode+','+errorDesc);
+   /*
+   timerId=setTimeout(function(){SendAOICmd('http://127.0.0.1:80/test',
+											'1234567890',
+											'kb123',
+											'lb1234',
+											20,
+											callbackfun);},
+								1000); 	
+  	*/							
+}
+function testStop()
+{
+   if (timerId) clearInterval( timerId);
+   //if (timerId) clearTimeout( timerId);
+  
+  //alert(result.Result);
+}
+
+function testAOI()
+{
+   /* 
+   timerId=setInterval(function(){ var url='http://127.0.0.1:8080/test';
+								  var sn='1234567890';
+								  var kb='kb123';
+								  var lb='lb1234';
+								  SendAOICmd(url,sn,kb,lb,5,callbackfun);},
+								500); 		
+   */
+   /*
+  var url='http://127.0.0.1:8080/test';
+								  var sn='1234567890';
+								  var kb='kb123';
+								  var lb='lb1234';
+ */								  
+								  SendAOICmd('http://127.0.0.1:80/test',
+											'1234567890',
+											'kb123',
+											'lb1234',
+											10,
+											callbackfun);
+  //alert(result.Result);
+}
+
+function SendAOICmd(url,sn,kbPartNo,lbPartNo,timeOut,callback)
+{
+	var xmlhttp;
+	var timeOutFunc;
+	var abort;
+	
+	if (window.XMLHttpRequest)
+	{// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	
+	//xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    xmlhttp.open("POST", url, true); //async mode
+    //xmlhttp.open("Get", url, false);
+	
+	xmlhttp.onreadystatechange = function() {	
+		if (xmlhttp.readyState == 4){
+			if (timeOutFunc) clearTimeout(timeOutFunc);
+			if (abort===1) {
+			    delete xmlhttp;
+			    return;
+			}
+			if(xmlhttp.status == 200) 
+			{
+				var respText = xmlhttp.responseText;
+				//alert('Receive httpServer responseText: '+ respText);	
+				var xmlDoc;
+				if (window.DOMParser)
+				{
+					var parser=new DOMParser();
+					var xmlDoc=parser.parseFromString(respText,"text/xml");
+					callback(xmlDoc.getElementsByTagName('SN')[0].textContent, 
+						xmlDoc.getElementsByTagName('Result')[0].textContent,
+						xmlDoc.getElementsByTagName('ErrorCode')[0].textContent,
+						xmlDoc.getElementsByTagName('ErrorDescr')[0].textContent);					
+                    delete xmlhttp;					
+					return;
+				}
+				else
+				{
+					var xmlDoc=new ActiveXObject("Msxml2.DOMDocument");
+					xmlDoc.async=false;
+					xmlDoc.loadXML(respText);					
+					callback(xmlDoc.getElementsByTagName('SN')[0].text, 
+						xmlDoc.getElementsByTagName('Result')[0].text,
+						xmlDoc.getElementsByTagName('ErrorCode')[0].text,
+						xmlDoc.getElementsByTagName('ErrorDescr')[0].text);
+                    delete xmlhttp;					
+					return;		
+				}
+			}
+			else
+			{
+				var respText = xmlhttp.responseText;
+				callback.apply(null, [
+					 sn,
+					'Status',
+					xmlhttp.status?xmlhttp.status:'',
+					xmlhttp.statusText?xmlhttp.statusText:''         		
+				]);
+				delete xmlhttp;		
+			}		
+			
+		   
+		}
+		
+		
+	};  
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	var sendText='<?xml version="1.0" encoding="utf-8"?><Device><SN>%sn%</SN><KBPartNo>%kb%</KBPartNo><LabelPartNo>%lb%</LabelPartNo></Device>';
+	sendText=sendText.replace('%sn%',sn);
+	sendText=sendText.replace('%kb%',kbPartNo);
+	sendText=sendText.replace('%lb%',lbPartNo);	
+	if (timeOut>0)
+	{
+		timeOutFunc=setTimeout(function(){ abort=1;
+											if (xmlhttp) xmlhttp.abort();
+											callback.apply(xmlhttp, [
+											sn,
+											'TimeOut',
+											'TimeOut',
+											'Request web server time out'         		
+											]);},
+								timeOut*1000); 		
+      
+	}	
+    xmlhttp.send(sendText);	  
+  
+}
+
+
+</script>
+</head>
+
+<body class="body">
+<div id="div_1">
+	
+</div>
+
+<form id="form1" action="" onsubmit="">	
+	<input type="button" value="testAOI" onclick="testAOI()"/>
+	<input type="button" value="stop" onclick="testStop()"/>
+  
+</form>

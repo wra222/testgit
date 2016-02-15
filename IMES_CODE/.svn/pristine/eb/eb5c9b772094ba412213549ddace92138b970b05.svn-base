@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="eng_titlePalletNO" xml:space="preserve">
+    <value>Pallet NO.</value>
+  </data>
+  <data name="eng_titleForwarder" xml:space="preserve">
+    <value>Forwarder</value>
+  </data>
+  <data name="eng_titleDeliveryNO" xml:space="preserve">
+    <value>Delivery NO.</value>
+  </data>
+  <data name="eng_titleModel" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="eng_titleHAWB" xml:space="preserve">
+    <value>HAWB</value>
+  </data>
+  <data name="eng_titleSatus" xml:space="preserve">
+    <value>Satus</value>
+  </data>
+  <data name="eng_titleLOC" xml:space="preserve">
+    <value>LOC</value>
+  </data>
+  <data name="cn_lbDataEntry" xml:space="preserve">
+    <value>Data Entry:</value>
+  </data>
+  <data name="cn_lbTableTitle" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="eng_lbDataEntry" xml:space="preserve">
+    <value>Data Entry:</value>
+  </data>
+  <data name="eng_lbTableTitle" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="eng_titleQty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="cn_titleDeliveryNO" xml:space="preserve">
+    <value>Delivery NO.</value>
+  </data>
+  <data name="cn_titleForwarder" xml:space="preserve">
+    <value>Forwarder</value>
+  </data>
+  <data name="cn_titleHAWB" xml:space="preserve">
+    <value>HAWB</value>
+  </data>
+  <data name="cn_titleLOC" xml:space="preserve">
+    <value>LOC</value>
+  </data>
+  <data name="cn_titleModel" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="cn_titlePalletNO" xml:space="preserve">
+    <value>Pallet NO.</value>
+  </data>
+  <data name="cn_titleQty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="cn_titleSatus" xml:space="preserve">
+    <value>Satus</value>
+  </data>
+  <data name="cn_btnExcel" xml:space="preserve">
+    <value>Excel</value>
+  </data>
+  <data name="cn_btnQuery7Days" xml:space="preserve">
+    <value>Query(7Days)</value>
+  </data>
+  <data name="cn_btnQueryIN" xml:space="preserve">
+    <value>Query(IN)</value>
+  </data>
+  <data name="cn_btnQueryNotIN" xml:space="preserve">
+    <value>Query(NotIN)</value>
+  </data>
+  <data name="cn_btnRemove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="cn_btnTotal" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="cn_lbDataEntryTitle" xml:space="preserve">
+    <value>Auto Assign</value>
+  </data>
+  <data name="cn_lbFrom" xml:space="preserve">
+    <value>Date From:</value>
+  </data>
+  <data name="cn_lbPalletNO" xml:space="preserve">
+    <value>Pallet NO:</value>
+  </data>
+  <data name="cn_lbPalletNOTitle" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="cn_lbTo" xml:space="preserve">
+    <value>To:</value>
+  </data>
+  <data name="cn_msgBadDate" xml:space="preserve">
+    <value>开始日期不应晚于结束日期！</value>
+  </data>
+  <data name="cn_msgNoFromDate" xml:space="preserve">
+    <value>请选择开始日期！</value>
+  </data>
+  <data name="cn_msgNoToDate" xml:space="preserve">
+    <value>请选择结束日期！</value>
+  </data>
+  <data name="eng_btnExcel" xml:space="preserve">
+    <value>Excel</value>
+  </data>
+  <data name="eng_btnQuery7Days" xml:space="preserve">
+    <value>Query(7Days)</value>
+  </data>
+  <data name="eng_btnQueryIN" xml:space="preserve">
+    <value>Query(IN)</value>
+  </data>
+  <data name="eng_btnQueryNotIN" xml:space="preserve">
+    <value>Query(NotIN)</value>
+  </data>
+  <data name="eng_btnRemove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="eng_btnTotal" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="eng_lbDataEntryTitle" xml:space="preserve">
+    <value>Auto Assign</value>
+  </data>
+  <data name="eng_lbFrom" xml:space="preserve">
+    <value>Date From:</value>
+  </data>
+  <data name="eng_lbPalletNO" xml:space="preserve">
+    <value>Pallet NO:</value>
+  </data>
+  <data name="eng_lbPalletNOTitle" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="eng_lbTo" xml:space="preserve">
+    <value>To:</value>
+  </data>
+  <data name="eng_msgBadDate" xml:space="preserve">
+    <value>From-date should not be later than to-date!</value>
+  </data>
+  <data name="eng_msgNoFromDate" xml:space="preserve">
+    <value>Please select the from-date!</value>
+  </data>
+  <data name="eng_msgNoToDate" xml:space="preserve">
+    <value>Please select the to-date!</value>
+  </data>
+  <data name="cn_DateStatus1" xml:space="preserve">
+    <value>已刷入W/H</value>
+  </data>
+  <data name="cn_DateStatus2" xml:space="preserve">
+    <value>已刷出車管系統</value>
+  </data>
+  <data name="cn_DateStatus3" xml:space="preserve">
+    <value>已退回產線</value>
+  </data>
+  <data name="cn_SevendaysStatus" xml:space="preserve">
+    <value>已刷入W/H</value>
+  </data>
+  <data name="eng_DateStatus1" xml:space="preserve">
+    <value>pallet in W/H</value>
+  </data>
+  <data name="eng_DateStatus2" xml:space="preserve">
+    <value>out of system</value>
+  </data>
+  <data name="eng_DateStatus3" xml:space="preserve">
+    <value>return to line</value>
+  </data>
+  <data name="eng_SevendaysStatus" xml:space="preserve">
+    <value>pallet in W/H</value>
+  </data>
+  <data name="cn_DateStatusNotIN" xml:space="preserve">
+    <value>未刷入W/H</value>
+  </data>
+  <data name="cn_msgNotIN" xml:space="preserve">
+    <value>無棧板刷入W/H！</value>
+  </data>
+  <data name="eng_DateStatusNotIN" xml:space="preserve">
+    <value>Not in W/H</value>
+  </data>
+  <data name="eng_msgNotIN" xml:space="preserve">
+    <value>No Pallet in W/H !</value>
+  </data>
+  <data name="cn_msgWrongHave" xml:space="preserve">
+    <value>此板不存在！</value>
+  </data>
+  <data name="cn_msgWrongIn" xml:space="preserve">
+    <value>此板已刷入，不需再刷！</value>
+  </data>
+  <data name="cn_msgWrongOut" xml:space="preserve">
+    <value>此板已出貨，不能再刷入！</value>
+  </data>
+  <data name="cn_msgWrongPlt" xml:space="preserve">
+    <value>WRONG CODE</value>
+  </data>
+  <data name="eng_msgWrongHave" xml:space="preserve">
+    <value>This pallet does not exsit !</value>
+  </data>
+  <data name="eng_msgWrongIn" xml:space="preserve">
+    <value>This pallet is in the system,  the operation of check in is not necessary!</value>
+  </data>
+  <data name="eng_msgWrongOut" xml:space="preserve">
+    <value>This pallet is shipped, the operation of check in is not necessary!</value>
+  </data>
+  <data name="eng_msgWrongPlt" xml:space="preserve">
+    <value>WRONG CODE</value>
+  </data>
+  <data name="cn_msg12" xml:space="preserve">
+    <value>FDE散裝虛擬板，請自行管控庫位</value>
+  </data>
+  <data name="eng_msg12" xml:space="preserve">
+    <value>The Pallet is FDE bulk virtual board, please control its location by yourself.</value>
+  </data>
+  <data name="cn_msg11" xml:space="preserve">
+    <value>小棧板，請自行管控庫位</value>
+  </data>
+  <data name="cn_msg13" xml:space="preserve">
+    <value>非整機棧板，請自行管控庫位</value>
+  </data>
+  <data name="cn_msg31" xml:space="preserve">
+    <value>此貨代庫位已滿,請自行處理擺放</value>
+  </data>
+  <data name="eng_msg11" xml:space="preserve">
+    <value>Little pallet, please control its location by yourself.</value>
+  </data>
+  <data name="eng_msg13" xml:space="preserve">
+    <value>Not whole machine pallet,please control its location by yourself.</value>
+  </data>
+  <data name="eng_msg31" xml:space="preserve">
+    <value>The place to delivery  is full,please control its location by yourself.</value>
+  </data>
+  <data name="cn_msgWrongInRW" xml:space="preserve">
+    <value>此板已經退回產線，不能再退</value>
+  </data>
+  <data name="cn_msgWrongOutRW" xml:space="preserve">
+    <value>此板已出貨，不能再退回產線！</value>
+  </data>
+  <data name="eng_msgWrongInRW" xml:space="preserve">
+    <value>This pallet is in the line again, can not return!</value>
+  </data>
+  <data name="eng_msgWrongOutRW" xml:space="preserve">
+    <value>This pallet is shipped, can not return!</value>
+  </data>
+  <data name="cn_msgWrongEX" xml:space="preserve">
+    <value>此板尚未刷入，不能刷出</value>
+  </data>
+  <data name="eng_msgWrongEX" xml:space="preserve">
+    <value>This pallet is not in the system, so can not do the operation of out!</value>
+  </data>
+  <data name="cn_msgOT" xml:space="preserve">
+    <value>已刷出車管系統</value>
+  </data>
+  <data name="cn_msgRW" xml:space="preserve">
+    <value>已退回產線</value>
+  </data>
+  <data name="eng_msgOT" xml:space="preserve">
+    <value>out of system</value>
+  </data>
+  <data name="eng_msgRW" xml:space="preserve">
+    <value>return to line</value>
+  </data>
+  <data name="cn_msgWrongDT" xml:space="preserve">
+    <value>栈板状态错误!</value>
+  </data>
+  <data name="eng_msgWrongDT" xml:space="preserve">
+    <value>The status of pallet is wrong!</value>
+  </data>
+</root>

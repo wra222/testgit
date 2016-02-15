@@ -1,0 +1,327 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<%@ Import Namespace="com.inventec.iMESWEB" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>MasterPage</title>
+
+    <script type="text/javascript" src=" ../CommonControl/JS/Browser.js"></script>
+    <script type="text/javascript" src=" ../CommonControl/JS/iMESCommonUse.js"></script>
+
+    <script language="javascript" type="text/javascript">
+  
+  
+     function getClientHostName()
+    {
+        var WshNetwork = new ActiveXObject("WScript.Network");
+        var hostnameLocal= WshNetwork.ComputerName.toLowerCase();
+        if(hostnameLocal==null)
+        {
+            hostnameLocal="";
+        }
+        
+        if(hostnameLocal.trim()=="")
+        {
+            var message='Found host name failed,please check!';
+            alert(message); 
+        }
+        return hostnameLocal;
+    }
+    
+    </script>
+
+</head>
+<body style=" position: relative; width: 100%">
+    <bgsound src="" autostart="true" id="bsound"></bgsound>
+    <form id="form1" runat="server">
+    <object classid="clsid:{24BB7CDB-562E-4D60-8A56-4DD1DD77BE48}" codebase="../CommonControl/print.cab#version=<%=WebConstant.version%>"
+        id="objPrint" style="margin: 0; padding: 0; display: none;">
+    </object>
+    <object classid="clsid:648A5600-2C6E-101B-82B6-000000000014" codebase="../CommonControl/MSCOMM32.cab" id="objMSComm" style="margin: 0; padding: 0; display: none;">
+        <param name="_ExtentX" value="1005" /><param name="_ExtentY" value="1005" /><param name="_Version" value="393216" /><param name="CommPort" value="1" />
+        <param name="DTREnable" value="-1" /><param name="Handshaking" value="0" /><param name="InBufferSize" value="1024" /><param name="InputLen" value="0" />
+        <param name="NullDiscard" value="0" /><param name="OutBufferSize" value="512" /><param name="ParityReplace" value="63" /><param name="RThreshold" value="0" />
+        <param name="RTSEnable" value="0" /><param name="BaudRate" value="9600" /><param name="ParitySetting" value="1" /><param name="DataBits" value="7" />
+        <param name="StopBits" value="0" /><param name="SThreshold" value="0" /><param name="EOFEnable" value="0" /><param name="InputMode" value="0" />
+    </object>
+
+    <div id="div_center" class="iMes_div_center">
+        <asp:ContentPlaceHolder ID="iMESContent" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <asp:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
+        <Services>
+            <asp:ServiceReference Path="~/Service/PrintService.asmx" />
+        </Services>
+    </asp:ScriptManagerProxy>
+    <div style="height: 1px">
+    </div>
+    <div align="center" >
+        <textarea id="MessageTextArea" class="iMes_Master_msgbox" readonly="readOnly" tabindex="2"
+            runat="server"></textarea>
+        <script language="javascript" type="text/javascript">
+            function ShowInfo(message)
+            {
+                document.getElementById("<%=MessageTextArea.ClientID %>").value = message;
+                
+            }            
+        </script>
+    </div>
+    <div align="center">
+    <table>
+        <tr>
+
+            <td style="width: 50%;" align="center">
+                <asp:UpdatePanel ID="updatePanel1" runat="server">
+                    <ContentTemplate>
+                        <asp:LinkButton ID="BtnDownloadBat" runat="server" OnClientClick="return DownLoadAllBat();"
+                             ></asp:LinkButton>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+             <td style="width: 50%;" align="center">
+              <asp:UpdatePanel ID="updatePanel2" runat="server">
+                    <ContentTemplate>
+                        <asp:LinkButton ID="lbtFreshPage" runat="server" OnClientClick="return ReloadImesPage();" ></asp:LinkButton>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+        </tr>
+    </table>
+    </div>
+    <iMES:WaitingCoverDiv ID="divCover" runat="server"  KeyDownFun="KeyDownEvent()"  />
+    <div id="hiddenArea">
+        <asp:UpdatePanel ID="updatePanelStation" runat="server">
+            <ContentTemplate>
+                <input id="hiddenStation" type="hidden" runat="server" />
+                <input type="hidden" runat="server" id="hiddenPCode" /> 
+                
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </div>
+    </form>
+</body>
+</html>
+
+<script language="javascript" type="text/javascript">
+if (browser.msie && browser.version == "6.0") {
+    document.body.style.width = "98%";
+}
+else {
+    document.body.style.width = "100%";
+}
+
+var msgSucc = '<%=Resources.iMESGlobalMessage.ResourceManager.GetString(WebCommonMethod.getConfiguration(WebConstant.LANGUAGE) + "_msgSuccess") %>';
+var BatFileNotExist = '<%=Resources.iMESGlobalMessage.ResourceManager.GetString(WebCommonMethod.getConfiguration(WebConstant.LANGUAGE) + "_BatNoExist") %>';
+var PrinterOrBatNotExit='<%=Resources.iMESGlobalMessage.ResourceManager.GetString(WebCommonMethod.getConfiguration(WebConstant.LANGUAGE) + "_PrinterOrBatNotExit") %>';
+var msgLabelTypeChange= '<%=Resources.iMESGlobalMessage.ResourceManager.GetString(WebCommonMethod.getConfiguration(WebConstant.LANGUAGE) + "_msgLabelTypeChange") %>';
+//play sound function
+var soundUrl = '../Sound/' + '<%=System.Configuration.ConfigurationManager.AppSettings["PassAudioFile"] %>';
+var ClientBatFilePath = '<%=System.Configuration.ConfigurationManager.AppSettings["ClientBatFilePath"]%>';
+var FtpServerIP = '<%=System.Configuration.ConfigurationManager.AppSettings["FtpServerIP"]%>';
+var CartonWeightConfigFilePath = '<%=System.Configuration.ConfigurationManager.AppSettings["CartonWeightConfigFilePath"]%>';
+var PaletWeightConfigFilePath = '<%=System.Configuration.ConfigurationManager.AppSettings["PalletWeightConfigFilePath"]%>';
+
+function DownLoadAllBat(){
+
+    var fileObj = new ActiveXObject("Scripting.FileSystemObject"); 
+    if (fileObj.FolderExists(ClientBatFilePath)){
+        fileObj.DeleteFolder(ClientBatFilePath);
+    }
+    createDir(ClientBatFilePath);
+    
+    var batFile = fileObj.CreateTextFile(ClientBatFilePath + "\\DownloadAllBat.bat" , true);
+    
+    batFile.WriteLine(getHomeDisk(ClientBatFilePath));
+    batFile.WriteLine("cd " + ClientBatFilePath);
+    batFile.WriteLine("FTP -A -i -s:" + ClientBatFilePath + "\\DownloadAllBat.txt");
+    batFile.Close()
+
+    var txtFile = fileObj.CreateTextFile(ClientBatFilePath + "\\DownloadAllBat.txt" , true);
+    txtFile.WriteLine("open " + FtpServerIP);
+    txtFile.WriteLine("mget *.*");
+    txtFile.WriteLine("disconnect");
+    txtFile.WriteLine("quit");
+    txtFile.Close()
+    
+    wsh = new ActiveXObject("wscript.shell");
+    wsh.run("cmd /k " + getHomeDisk(ClientBatFilePath) + "&cd " + ClientBatFilePath + " &DownloadAllBat.bat&exit", 2, true); 
+    ShowSuccessfulInfo(true);
+    return false;
+
+}
+
+
+function m_playSound()
+{ 
+    var obj=getSoundObj();
+    obj.src = soundUrl;
+}
+
+  function ShowSuccessfulInfo(isPlaySound, message)
+{
+   if (arguments.length == 1)
+   {
+        message = msgSucc;
+   }
+   ShowInfo(message);
+   
+   if (isPlaySound)
+   {
+        m_playSound();       
+   }
+}
+
+function GetCommonInfo()
+{
+    return document.getElementById("<%=MessageTextArea.ClientID %>").value;
+}
+
+function setGetInfoTextHeight(txtAheight)
+{
+    document.getElementById("<%=MessageTextArea.ClientID %>").style.height = txtAheight;
+}
+
+function getSoundObj()
+{
+    return document.getElementById("bsound");
+}
+
+function setGetInfoTextHeight(txtAheight)
+{
+    document.getElementById("<%=MessageTextArea.ClientID %>").style.height = txtAheight;
+}
+
+function HideInfoText()
+{
+    document.getElementById("<%=MessageTextArea.ClientID %>").style.display = "none";
+}
+
+function DisplayInfoText()
+{
+    document.getElementById("<%=MessageTextArea.ClientID %>").style.display = "";
+}
+ 
+</script>
+
+<script language="javascript" type="text/javascript">
+
+//////// add by itc-208014 Get Print Data  /////////// Get Print Data Begining //////////////////////////////////////////
+
+   var MasterStation="";
+   var MasterPCode="";
+   var LabelTypeLst= new Array ();
+   var CookieLst= new Array ();
+   var PrinterLst=new Array ();            
+   var SUCCESSRET ="SUCCESSRET";
+   var printers="";
+   var xdpi="";
+   var ydpi="";
+   var XDPILst = new Array ();
+   var YDPILst = new Array ();
+   var LabelTypeLstLength="";
+   var PreLanguage="";
+     
+   function prepareForPrint()
+   {
+       var NeedPrint = '<%=NeedPrint %>';
+       if(NeedPrint.toLowerCase() == 'false'){
+         return false;
+       }
+       MasterStation=document.getElementById("<%=hiddenStation.ClientID %>").value;
+       MasterPCode=document.getElementById("<%=hiddenPCode.ClientID %>").value;
+
+       GetPrinterLst();
+       GetDPILst();
+       GetLabelTypeLst();
+        
+   }
+   
+   function GetPrinterLst()
+   {
+      printers=document.getElementById("objPrint").getPrintList();
+      PrinterLst=printers.split(";");
+   }
+   
+   function GetDPILst()
+   {
+     for (i=0; i< PrinterLst.length; i++)
+     {   
+         var x = "x";
+         xdpi = document.getElementById("objPrint").getPrinterDPI(PrinterLst[i],x);
+         if ((xdpi!="")||(xdpi=null))
+         {
+            XDPILst.push(xdpi);
+         }
+         
+         var y = "y";
+         ydpi = document.getElementById("objPrint").getPrinterDPI(PrinterLst[i],y);
+         if ((ydpi!="")||(ydpi=null))
+         {
+            YDPILst.push(ydpi);
+         }
+      }
+   }
+  
+  
+  function GetLabelTypeLst()
+   {
+      if(MasterPCode!="")
+      {
+        
+        PrintService.GetLabelTypeList(MasterPCode,onLabelTypeSuccess,onLabelTypeFailed);
+        
+      }
+   }
+  
+   function onLabelTypeSuccess(result)
+    {
+     try
+      { 
+       if((result.length==2)&&(result[0]==SUCCESSRET))
+        {
+        
+           for (i=0; i< result[1].length; i++)
+             {
+                 LabelTypeLst.push(result[1][i]);   
+                
+             }
+          
+           LabelTypeLstLength=LabelTypeLst.length;
+           TransferMasterData(LabelTypeLst,PrinterLst,XDPILst,YDPILst,LabelTypeLstLength,MasterPCode,MasterStation);
+  
+       }
+        
+        else
+        {
+           LabelTypeLst="";
+           LabelTypeLstLength="";
+        }
+        
+      }
+    
+      catch (e) 
+      {
+        alert(e.description);
+      }
+      
+    }
+
+    
+    function onLabelTypeFailed(error)
+    {
+       try 
+       {
+        ShowMessage(error.get_message());
+        ShowInfo(error.get_message());
+       }
+       catch (e)
+       {
+        alert(e.description);
+       } 
+    }
+    
+    prepareForPrint();
+</script>
+

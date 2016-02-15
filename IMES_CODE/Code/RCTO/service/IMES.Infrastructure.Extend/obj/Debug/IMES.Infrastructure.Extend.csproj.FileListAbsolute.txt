@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\RCTO\bin\IMES.Infrastructure.Extend.dll
+E:\IMES_CODE\Code\RCTO\bin\IMES.Infrastructure.Extend.pdb
+E:\IMES_CODE\Code\RCTO\service\IMES.Infrastructure.Extend\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\service\IMES.Infrastructure.Extend\obj\Debug\IMES.Infrastructure.Extend.dll
+E:\IMES_CODE\Code\RCTO\service\IMES.Infrastructure.Extend\obj\Debug\IMES.Infrastructure.Extend.pdb

@@ -1,0 +1,18 @@
+*{margin:0;padding:0;list-style:none;border:0;outline:0}
+
+#slide{background-color:#133e64;width:44px;left:0;top:0;bottom:0;z-index:99999}
+#slide dl{list-style:none;padding:0;margin:0;border-top:1px solid #184e7e;width:44px;position:absolute;left:0;top:50%;bottom:0;vertical-align:middle;margin-top:-240px}
+#slide dt{position:absolute;width:44px;display:block;bottom:30px}
+#slide dd{border-bottom:1px solid #184e7e;font:normal 12px/normal 'microsoft yahei'}
+#slide a,#slide a:link,#slide a:visited{text-decoration:none;display:block;height:60px;background:transparent url(~/webroot/images/fixed.png) top center no-repeat;color:#fff;text-align:center;line-height:90px;overflow:hidden}
+#slide a:hover{background-color:#1c588e}
+#slide a.count{background-position:-7px -10px}
+#slide a.search{background-position:-67px -10px}
+#slide a.zc{background-position:-127px -10px}
+#slide a.tousu{background-position:-187px -10px}
+#slide a.my{background-position:-247px -10px}
+#slide a.charge{background-position:-307px -10px}
+#slide a.message{background-position:-367px -10px}
+#slide a.close{background-color:#c40000;background-position:-427px top}
+
+/* 代码整理：懒人之家 www.lanrenzhijia.com */

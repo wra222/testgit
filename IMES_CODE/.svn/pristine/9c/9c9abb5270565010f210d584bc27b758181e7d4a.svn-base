@@ -1,0 +1,125 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Inventec_MainPage1.aspx.cs" Inherits="webroot_aspx_Detail" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>产生效率监控系统</title>
+    
+     <style type="text/css">          
+   *{margin:0;padding:0;list-style-type:none;}/*清楚内外默认边距*/
+.lanren{width:1024px; overflow:hidden;margin:0px auto;}
+.lanren ul li{width:297px;height:198px;float:left;margin:0 15px 15px 0;position:relative;overflow:hidden;cursor:pointer;}
+.lanren .txt{width:297px;background:url(../../webroot/images/1px.png) repeat;position:absolute;left:0;bottom:0;color:#fff;font-family:"微软雅黑";
+    }
+.lanren .txt h3{font-size:20px;font-weight:100;height:45px;text-align:center;line-height:45px;}
+.lanren .txt p{font-size:14px;text-align:center;}
+     </style>
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="UTF-8" />
+ <link rel="stylesheet" type="text/css" href="../../css/jquery-ui-1.8.13.custom.css">
+ <link rel="stylesheet" type="text/css" href="../../css/StyleSheet.css">
+ <link href="../../css/hjy.css" type="text/css" rel="stylesheet" />
+ 
+ <script type="text/javascript" src="../../js/jquery.min.js"></script>
+ 
+
+<link href="../../css/topanv.v1.0.css" rel="stylesheet" type="text/css" />
+<script src="../..js/topanv.js"></script>
+<script src="../../js/zhuye.js"></script>
+
+
+
+</head>
+<body leftMargin="0" topMargin="0" rightMargin="1" class="form" scroll="yes"  >
+      <script type ="text/javascript" >
+                                                          setInterval
+("curTime.innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());", 1000); 
+</script>
+<!-- 代码begin -->
+
+
+<div>
+<asp:Image ID="Image1" runat="server" ImageUrl="~/webroot/images/inventec.png" />
+</div>     
+<form id="form1" runat="server" Class="form" >
+     <table id="titleTable"  width="100%" 	height:100px;  bgcolor="rgb(60,64,67)">
+        <tr align="left">
+       <td>
+         
+            <a href="http://www.mi.com/index.html"  >生产效率实时监控监控</a><span class="sep">|</span>
+            <a href="http://www.miui.com/" target="_blank">生产投入速率</a><span class="sep">|</span>
+            <a href="http://www.miliao.com/" target="_blank">未来3天出货计划</a><span class="sep">|</span>
+            <a href="https://i.mi.com/" target="_blank">云服务</a><span class="sep">|</span>
+            <a href="http://www.mi.com/c/appdownload/" target="_blank">IMES介绍</a><span class="sep">|</span>
+            <a href="http://static.mi.com/feedback/" target="_blank">问题反馈</a><span class="sep">|</span>
+          
+           
+          
+       </td>
+       <td align="right" width="22%">
+         <a href="http://www.mi.com/c/appdownload/" target="_blank">登陆</a><span class="sep">|</span>
+            <a href="http://static.mi.com/feedback/" target="_blank">注册</a><span class="sep">|</span>
+       </td>
+       
+       </td>
+       <td align="right" width="22%" >
+            <asp:Label ID="curTime" runat="server" ForeColor="Red" 
+                Font-Size="Small"></asp:Label>
+        </td>
+        </tr>
+        </table>  
+        
+     
+ <table>
+        <tr>
+         <td align="left" width="10%"></td>
+         <td >
+            <div class="lanren">
+	            <ul>
+		            <li><img src="../../webroot/images/class7.jpg"/><div class="txt"><h3>效率系统</h3><p>为您铺就成为IT大神的在线学习之路</p></div></li>
+		            <li><img src="../../webroot/images/class8.jpg"/><div class="txt"><h3>品质报表</h3><p>英语、韩语、日语各类语言课程一网打尽</p></div></li>
+                    <li><img src="../../webroot/images/class9.jpg"/><div class="txt"><h3>产能分析</h3><p>传授会计师、建筑师等各类考证学习宝典</p></div></li>
+		            <li><img src="../../webroot/images/class14.jpg"/><div class="txt"><h3>出货报表</h3><p>小学、初中、高中各科课程在线辅导</p></div></li>
+	               <li><img src="../../webroot/images/class11.png"/><div class="txt"><h3>系统维护</h3><p>吉他、摄影等各类兴趣教程让你成为生活达人</p></div></li>
+		            <li><img src="../../webroot/images/class12.jpg"/><div class="txt"><h3>联系我们</h3><p><a href="Detail.aspx" target="_blank"> 教你如何和宝宝一起成长 </a></p></div></li>	
+	            </ul>
+	          </div>
+	     </td>
+	     <td align="right" width="10%"></td>
+	</tr>
+
+</table>
+<script type ="text/javascript">
+    $(".lanren ul li").hover(function() {
+        $(this).find(".txt").stop().animate({ height: "198px" }, 400);
+        $(this).find(".txt h3").stop().animate({ paddingTop: "60px" }, 400);
+    }, function() {
+        $(this).find(".txt").stop().animate({ height: "45px" }, 400);
+        $(this).find(".txt h3").stop().animate({ paddingTop: "0px" }, 400);
+    })
+</script>
+
+
+        
+    
+
+
+   
+    </form>
+  
+
+</body>
+<div id="footer">
+        <div id="footer_Descr">版权所有@2015 英业达重庆制造系统部</div>
+    </div>
+
+
+<script type="text/javascript">
+    window.onload = function() {
+    //new AutoPlay("box_lanrenzhijia");
+    };
+</script>
+</html>
+

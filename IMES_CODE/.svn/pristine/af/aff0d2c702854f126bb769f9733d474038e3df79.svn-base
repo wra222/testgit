@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="urn:sap-com:document:sap:soap:functions:mc-style" xmlns:n0="urn:sap-com:document:sap:rfc:functions" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns:tns="urn:sap-com:document:sap:rfc:functions" attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+      <xsd:simpleType name="char1">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char125">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="125" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char15">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="15" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char17">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="17" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char2">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char25">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="25" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char32">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="32" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char4">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char8">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style">
+      <xsd:import namespace="urn:sap-com:document:sap:rfc:functions" />
+      <xsd:complexType name="ZwsDeliveryWeightLine">
+        <xsd:sequence>
+          <xsd:element name="Serialnumber" type="n0:char17" />
+          <xsd:element name="Plant" type="n0:char4" />
+          <xsd:element name="Id" type="n0:char10" />
+          <xsd:element name="Type" type="n0:char1" />
+          <xsd:element name="Grossweight" type="n0:char15" />
+          <xsd:element name="Unit" type="n0:char2" />
+          <xsd:element name="Remark1" type="n0:char25" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZwsDeliveryWeightOutLine">
+        <xsd:sequence>
+          <xsd:element name="Serialnumber" type="n0:char17" />
+          <xsd:element name="Plant" type="n0:char8" />
+          <xsd:element name="Id" type="n0:char32" />
+          <xsd:element name="Type" type="n0:char1" />
+          <xsd:element name="Result" type="n0:char1" />
+          <xsd:element name="Message" type="n0:char125" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZwsDeliveryWeightTab">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZwsDeliveryWeightLine" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZwsDeliveryWeightOutTab">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZwsDeliveryWeightOutLine" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ZwsDeliveryWeightUpload">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="In" type="tns:ZwsDeliveryWeightTab" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZwsDeliveryWeightUploadResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Out" type="tns:ZwsDeliveryWeightOutTab" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ZwsDeliveryWeightUpload">
+    <wsdl:part name="parameters" element="tns:ZwsDeliveryWeightUpload" />
+  </wsdl:message>
+  <wsdl:message name="ZwsDeliveryWeightUploadResponse">
+    <wsdl:part name="parameters" element="tns:ZwsDeliveryWeightUploadResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ZWS_DELIVERY_WEIGHT_UPLOAD">
+    <wsdl:operation name="ZwsDeliveryWeightUpload">
+      <wsdl:input message="tns:ZwsDeliveryWeightUpload" />
+      <wsdl:output message="tns:ZwsDeliveryWeightUploadResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ZWS_DELIVERY_WEIGHT_UPLOADSoapBinding" type="tns:ZWS_DELIVERY_WEIGHT_UPLOAD">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ZwsDeliveryWeightUpload">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ZWS_DELIVERY_WEIGHT_UPLOADService">
+    <wsdl:port name="ZWS_DELIVERY_WEIGHT_UPLOADSoapBinding" binding="tns:ZWS_DELIVERY_WEIGHT_UPLOADSoapBinding">
+      <soap:address location="http://xidqdb.iec.inventec.com:8000/sap/bc/srt/rfc/sap/ZWS_DELIVERY_WEIGHT_UPLOAD?sap-client=001" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

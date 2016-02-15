@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A7FC375A-AFB5-49EB-83CD-FA41AEECD850}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IMES.Docking.Implementation</RootNamespace>
+    <AssemblyName>IMES.Docking.Implementation</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IMES.DataModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.FisObject, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.Extend, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.FisException, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.Repository, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.Session, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Infrastructure.WorkflowRuntime, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Interface.RouteManagement, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Resolve.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Station.Implementation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="IMES.Station.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Workflow.Runtime">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="002MBLabelPrint.cs" />
+    <Compile Include="ChangeModel.cs" />
+    <Compile Include="CombinePack.cs" />
+    <Compile Include="CombinePcbInLot.cs" />
+    <Compile Include="CombineTmp.cs" />
+    <Compile Include="CommonImpl.cs" />
+    <Compile Include="coolabel.cs" />
+    <Compile Include="FPCBoardLabelPrint.cs" />
+    <Compile Include="FAMBReturn.cs" />
+    <Compile Include="FRUCartonLabel.cs" />
+    <Compile Include="EPIAInputImpl.cs" />
+    <Compile Include="BoardInputForDocking.cs" />
+    <Compile Include="CombinePoInCarton.cs" />
+    <Compile Include="FARepairForDocking.cs" />
+    <Compile Include="FATestStationforDocking.cs" />
+    <Compile Include="OfflineLabelPrint.cs" />
+    <Compile Include="OQCRepairForDockingImpl.cs" />
+    <Compile Include="PACosmeticForDocking.cs" />
+    <Compile Include="PakUnitWeight.cs" />
+    <Compile Include="GenSMTMO.cs" />
+    <Compile Include="PalletVerifyDataForDocking.cs" />
+    <Compile Include="PalletWeight.cs" />
+    <Compile Include="PAQCOutputForDocking.cs" />
+    <Compile Include="PAQCRepairForDockingImpl.cs" />
+    <Compile Include="PCAOQCCosmeticForDocking.cs" />
+    <Compile Include="PCAOQCInput.cs" />
+    <Compile Include="PCAOQCOutput.cs" />
+    <Compile Include="GenerateCustomerSNForDockingImpl.cs" />
+    <Compile Include="ICTInput.cs" />
+    <Compile Include="PCAReceiveReturnMB.cs" />
+    <Compile Include="PCARepairImpl.cs" />
+    <Compile Include="PCATestStation.cs" />
+    <Compile Include="EPIAOutputImpl.cs" />
+    <Compile Include="PoData.cs" />
+    <Compile Include="ProdIdDismantleForDocking.cs" />
+    <Compile Include="ProdIdPrintForDocking.cs" />
+    <Compile Include="PartCollection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegenerateCustSNForDockingImpl.cs" />
+    <Compile Include="REVLabelPrintForDocking.cs" />
+    <Compile Include="RouteManagement.cs" />
+    <Compile Include="ShipToLabelPrintForDocking.cs" />
+    <Compile Include="unpackallbydn.cs" />
+    <Compile Include="UnpackForDocking.cs" />
+    <Compile Include="UploadShipmentData.cs" />
+    <Compile Include="VirtualMoForDocking.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IMES.Common\IMES.Common.csproj">
+      <Project>{6E8F1B4C-47BE-4C82-9DB3-259D649695AA}</Project>
+      <Name>IMES.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMES.Docking.Interface\IMES.Docking.Interface.csproj">
+      <Project>{E8710015-EE0D-4419-A4F1-48BF2D8203EC}</Project>
+      <Name>IMES.Docking.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utility\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cn_btnQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="cn_btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="cn_lbCardNo" xml:space="preserve">
+    <value>Card No:</value>
+  </data>
+  <data name="cn_msgCOA_InputFormat" xml:space="preserve">
+    <value>The length of COA Card should be more than six, and the last six characters should be number.</value>
+  </data>
+  <data name="cn_lbCount" xml:space="preserve">
+    <value>Count:</value>
+  </data>
+  <data name="cn_lbPlace" xml:space="preserve">
+    <value>目前位置:</value>
+  </data>
+  <data name="cn_lbPN" xml:space="preserve">
+    <value>P/N:</value>
+  </data>
+  <data name="cn_lbRange" xml:space="preserve">
+    <value>Range:</value>
+  </data>
+  <data name="cn_lbTarget" xml:space="preserve">
+    <value>转移至:</value>
+  </data>
+  <data name="eng_btnQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="eng_btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="eng_lbCardNo" xml:space="preserve">
+    <value>Card No:</value>
+  </data>
+  <data name="eng_lbCount" xml:space="preserve">
+    <value>Count:</value>
+  </data>
+  <data name="eng_lbPlace" xml:space="preserve">
+    <value>Current position:</value>
+  </data>
+  <data name="eng_lbPN" xml:space="preserve">
+    <value>P/N:</value>
+  </data>
+  <data name="eng_lbRange" xml:space="preserve">
+    <value>Range:</value>
+  </data>
+  <data name="eng_lbTarget" xml:space="preserve">
+    <value>Change to:</value>
+  </data>
+  <data name="eng_msgCOA_InputFormat" xml:space="preserve">
+    <value>The length of COA Card should be more than six, and the last six characters should be number.</value>
+  </data>
+  <data name="cn_btnReceive" xml:space="preserve">
+    <value>Receive</value>
+  </data>
+  <data name="eng_btnReceive" xml:space="preserve">
+    <value>Receive</value>
+  </data>
+  <data name="cn_msgErrorSameStatus" xml:space="preserve">
+    <value>Please chose the rihgt location!</value>
+  </data>
+  <data name="cn_msgInputTxt" xml:space="preserve">
+    <value>Please query COA status first！</value>
+  </data>
+  <data name="eng_msgErrorSameStatus" xml:space="preserve">
+    <value>Please chose the right location!</value>
+  </data>
+  <data name="eng_msgInputTxt" xml:space="preserve">
+    <value>Please query COA status first！</value>
+  </data>
+  <data name="cn_cmdValue" xml:space="preserve">
+    <value>Damaged,01;Return,16;</value>
+  </data>
+  <data name="eng_cmdValue" xml:space="preserve">
+    <value>Damaged,01;Return,16;</value>
+  </data>
+  <data name="cn_msgCountError" xml:space="preserve">
+    <value>Not Consecutive Number!Can not send out at the same time!</value>
+  </data>
+  <data name="cn_msgPnoError" xml:space="preserve">
+    <value>Not Same P/N!</value>
+  </data>
+  <data name="cn_msgSame" xml:space="preserve">
+    <value>Data has been saved ! Please  restart !</value>
+  </data>
+  <data name="cn_msgSelectTaget" xml:space="preserve">
+    <value>Please select the target  to change!</value>
+  </data>
+  <data name="cn_msgStatusError" xml:space="preserve">
+    <value>Not  In The Same Place!</value>
+  </data>
+  <data name="cn_msgWrongCode" xml:space="preserve">
+    <value>Wrong Code！</value>
+  </data>
+  <data name="eng_msgCountError" xml:space="preserve">
+    <value>Not Consecutive Number!Can not send out at the same time!</value>
+  </data>
+  <data name="eng_msgPnoError" xml:space="preserve">
+    <value>Not Same P/N!</value>
+  </data>
+  <data name="eng_msgSame" xml:space="preserve">
+    <value>Data has been saved ! Please  restart !</value>
+  </data>
+  <data name="eng_msgSelectTaget" xml:space="preserve">
+    <value>Please select the target  to change!</value>
+  </data>
+  <data name="eng_msgStatusError" xml:space="preserve">
+    <value>Not  In The Same Place!</value>
+  </data>
+  <data name="eng_msgWrongCode" xml:space="preserve">
+    <value>Wrong Code！</value>
+  </data>
+  <data name="cn_msg11" xml:space="preserve">
+    <value>Failed!! Coa Returned.</value>
+  </data>
+  <data name="cn_msgA1" xml:space="preserve">
+    <value>Failed!!Coa Consumed.</value>
+  </data>
+  <data name="cn_msgCountFirst" xml:space="preserve">
+    <value>Please query COA status first！</value>
+  </data>
+  <data name="eng_msg11" xml:space="preserve">
+    <value>Failed!! Coa Returned.</value>
+  </data>
+  <data name="eng_msgA1" xml:space="preserve">
+    <value>Failed!!Coa Consumed.</value>
+  </data>
+  <data name="eng_msgCountFirst" xml:space="preserve">
+    <value>Please query COA status first！</value>
+  </data>
+  <data name="cn_msgWrongStatus" xml:space="preserve">
+    <value>状态检查没通过，不能更新到目标状态！</value>
+  </data>
+  <data name="eng_msgWrongStatus" xml:space="preserve">
+    <value>Fail to pass the check of status, can not change to target status!</value>
+  </data>
+  <data name="cn_msgEmptyFile" xml:space="preserve">
+    <value>需要选择上传的文件!</value>
+  </data>
+  <data name="cn_msgFileEmpty" xml:space="preserve">
+    <value>空文件！</value>
+  </data>
+  <data name="cn_MsgInvalidFileType" xml:space="preserve">
+    <value>请选择txt文件!</value>
+  </data>
+  <data name="cn_msgSaveWrong" xml:space="preserve">
+    <value>文件中的Product 信息有误，请检查后重试!</value>
+  </data>
+  <data name="cn_msgWrongBuyer" xml:space="preserve">
+    <value>采购专用页面，不能转换当前状态非RE 的COA!!</value>
+  </data>
+  <data name="eng_msgEmptyFile" xml:space="preserve">
+    <value>Please choose a txt file!</value>
+  </data>
+  <data name="eng_msgFileEmpty" xml:space="preserve">
+    <value>File is empty！</value>
+  </data>
+  <data name="eng_MsgInvalidFileType" xml:space="preserve">
+    <value>Please choose txt file!</value>
+  </data>
+  <data name="eng_msgSaveWrong" xml:space="preserve">
+    <value>The information of Product is wrong，please check and then try again!</value>
+  </data>
+  <data name="eng_msgWrongBuyer" xml:space="preserve">
+    <value>This web page is for purchasing manager, can not change COA that its current status is not RE!!</value>
+  </data>
+  <data name="cn_msgUpload1" xml:space="preserve">
+    <value>请点击Upload 按钮!</value>
+  </data>
+  <data name="cn_msgUpload2" xml:space="preserve">
+    <value>请选择所要更改coa的状态，然后点击Upload 按钮!</value>
+  </data>
+  <data name="eng_msgUpload1" xml:space="preserve">
+    <value>Please click Upload button!</value>
+  </data>
+  <data name="eng_msgUpload2" xml:space="preserve">
+    <value>Please select the target  to change,and then click Upload button!</value>
+  </data>
+</root>

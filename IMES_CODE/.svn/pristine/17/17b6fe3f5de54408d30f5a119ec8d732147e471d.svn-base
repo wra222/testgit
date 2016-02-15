@@ -1,0 +1,17 @@
+﻿<ns0:BaseFlow x:Class="IMES.Station.Workflow._100ReworkInput" x:Name="_100ReworkInput" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<ns0:CheckReworkSettings Station="{x:Null}" x:Name="checkReworkSettings1" Customer="{x:Null}" Editor="{x:Null}" Line="{x:Null}" />
+	<ns0:GetProduct Station="{x:Null}" x:Name="getProduct1" Customer="{x:Null}" Editor="{x:Null}" Line="{x:Null}" />
+	<ns0:BlockStation Station="{x:Null}" x:Name="blockStation1" Customer="{x:Null}" Editor="{x:Null}" Line="{x:Null}" />
+	<WhileActivity x:Name="whileActivity1" Condition="{x:Null}">
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Station="{x:Null}" x:Name="waitInput1" Customer="{x:Null}" Editor="{x:Null}" Line="{x:Null}" />
+			<ns0:CheckExplicitCheckItem Station="{x:Null}" x:Name="checkExplicitCheckItem1" Customer="{x:Null}" Editor="{x:Null}" Line="{x:Null}" />
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:UpdateProductStatus Station="{x:Null}" x:Name="updateProductStatus1" Customer="{x:Null}" Editor="{x:Null}" Line="{x:Null}" />
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="ifNeed">
+			<ns0:Print Station="{x:Null}" x:Name="print1" Customer="{x:Null}" Editor="{x:Null}" Line="{x:Null}" />
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

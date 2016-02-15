@@ -1,0 +1,36 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="_018FinalPartsCollection" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" SessionType="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind _018FinalPartsCollection,Path=Customer}" x:Name="getProduct1" Editor="{ActivityBind _018FinalPartsCollection,Path=Editor}" Station="{ActivityBind _018FinalPartsCollection,Path=Station}" SessionType="{ActivityBind _018FinalPartsCollection,Path=SessionType}" Line="{ActivityBind _018FinalPartsCollection,Path=PdLine}" Key="{ActivityBind _018FinalPartsCollection,Path=Key}" />
+	<ns0:BlockStation Customer="{ActivityBind _018FinalPartsCollection,Path=Customer}" x:Name="blockStation1" Editor="{ActivityBind _018FinalPartsCollection,Path=Editor}" ProcessType="Product" Station="{ActivityBind _018FinalPartsCollection,Path=Station}" SessionType="{ActivityBind _018FinalPartsCollection,Path=SessionType}" Line="{ActivityBind _018FinalPartsCollection,Path=PdLine}" Key="{ActivityBind _018FinalPartsCollection,Path=Key}" />
+	<ns0:CheckImplicitCheckItem Customer="{ActivityBind _018FinalPartsCollection,Path=Customer}" x:Name="checkImplicitCheckItem1" Editor="{ActivityBind _018FinalPartsCollection,Path=Editor}" Station="{ActivityBind _018FinalPartsCollection,Path=Station}" SessionType="{ActivityBind _018FinalPartsCollection,Path=SessionType}" Line="{ActivityBind _018FinalPartsCollection,Path=PdLine}" Key="{ActivityBind _018FinalPartsCollection,Path=Key}" />
+	<ns0:GetBOM Customer="{ActivityBind _018FinalPartsCollection,Path=Customer}" x:Name="getBOM1" Editor="{ActivityBind _018FinalPartsCollection,Path=Editor}" Station="{ActivityBind _018FinalPartsCollection,Path=Station}" SessionType="{ActivityBind _018FinalPartsCollection,Path=SessionType}" Line="{ActivityBind _018FinalPartsCollection,Path=PdLine}" Key="{ActivityBind _018FinalPartsCollection,Path=Key}" />
+	<ns0:GetExplicitCheckItem Customer="{ActivityBind _018FinalPartsCollection,Path=Customer}" x:Name="getExplicitCheckItem1" Editor="{ActivityBind _018FinalPartsCollection,Path=Editor}" Station="{ActivityBind _018FinalPartsCollection,Path=Station}" SessionType="{ActivityBind _018FinalPartsCollection,Path=SessionType}" Line="{ActivityBind _018FinalPartsCollection,Path=PdLine}" Key="{ActivityBind _018FinalPartsCollection,Path=Key}" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="LoopCondi" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind _018FinalPartsCollection,Path=Customer}" x:Name="waitInput1" Editor="{ActivityBind _018FinalPartsCollection,Path=Editor}" Station="{ActivityBind _018FinalPartsCollection,Path=Station}" SessionType="{ActivityBind _018FinalPartsCollection,Path=SessionType}" Line="{ActivityBind _018FinalPartsCollection,Path=PdLine}" Key="{ActivityBind _018FinalPartsCollection,Path=Key}" />
+			<IfElseActivity x:Name="ifComplete">
+				<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplete" />
+					</IfElseBranchActivity.Condition>
+					<ns0:PartMatch Customer="{ActivityBind _018FinalPartsCollection,Path=Customer}" x:Name="partMatch1" Editor="{ActivityBind _018FinalPartsCollection,Path=Editor}" Station="{ActivityBind _018FinalPartsCollection,Path=Station}" SessionType="{ActivityBind _018FinalPartsCollection,Path=SessionType}" Line="{ActivityBind _018FinalPartsCollection,Path=PdLine}" Key="{ActivityBind _018FinalPartsCollection,Path=Key}" />
+					<IfElseActivity x:Name="ifElseActivity2">
+						<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+							<IfElseBranchActivity.Condition>
+								<RuleConditionReference ConditionName="notMatched" />
+							</IfElseBranchActivity.Condition>
+							<ns0:CheckExplicitCheckItem Customer="{ActivityBind _018FinalPartsCollection,Path=Customer}" x:Name="CheckExplicitCheckItem1" Editor="{ActivityBind _018FinalPartsCollection,Path=Editor}" Station="{ActivityBind _018FinalPartsCollection,Path=Station}" SessionType="{ActivityBind _018FinalPartsCollection,Path=SessionType}" Line="{ActivityBind _018FinalPartsCollection,Path=PdLine}" Key="{ActivityBind _018FinalPartsCollection,Path=Key}" />
+						</IfElseBranchActivity>
+					</IfElseActivity>
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:DBScope Station="{ActivityBind _018FinalPartsCollection,Path=Station}" SessionType="{ActivityBind _018FinalPartsCollection,Path=SessionType}" x:Name="dbScope1" Key="{ActivityBind _018FinalPartsCollection,Path=Key}">
+		<ns0:BindProductParts Customer="{ActivityBind _018FinalPartsCollection,Path=Customer}" x:Name="bindProductParts1" Editor="{ActivityBind _018FinalPartsCollection,Path=Editor}" Station="{ActivityBind _018FinalPartsCollection,Path=Station}" SessionType="{ActivityBind _018FinalPartsCollection,Path=SessionType}" Line="{ActivityBind _018FinalPartsCollection,Path=PdLine}" Key="{ActivityBind _018FinalPartsCollection,Path=Key}" />
+		<ns0:UpdateProductStatus Customer="{ActivityBind _018FinalPartsCollection,Path=Customer}" x:Name="updateProductStatus1" Status="Pass" Editor="{ActivityBind _018FinalPartsCollection,Path=Editor}" Station="{ActivityBind _018FinalPartsCollection,Path=Station}" SessionType="{ActivityBind _018FinalPartsCollection,Path=SessionType}" IsReturnStatoin="False" Line="{ActivityBind _018FinalPartsCollection,Path=PdLine}" Key="{ActivityBind _018FinalPartsCollection,Path=Key}" />
+		<ns0:WriteProductLog Customer="{ActivityBind _018FinalPartsCollection,Path=Customer}" x:Name="writeProductLog1" Status="Pass" Editor="{ActivityBind _018FinalPartsCollection,Path=Editor}" Station="{ActivityBind _018FinalPartsCollection,Path=Station}" SessionType="{ActivityBind _018FinalPartsCollection,Path=SessionType}" IsSingle="True" Line="{ActivityBind _018FinalPartsCollection,Path=PdLine}" Key="{ActivityBind _018FinalPartsCollection,Path=Key}" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

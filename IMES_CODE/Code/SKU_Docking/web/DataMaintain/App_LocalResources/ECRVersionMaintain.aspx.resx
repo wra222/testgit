@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cn_btnDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="cn_btnQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="cn_btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="cn_colCreateDate" xml:space="preserve">
+    <value>Cdt</value>
+  </data>
+  <data name="cn_colCustomerVersion" xml:space="preserve">
+    <value>Customer Version</value>
+  </data>
+  <data name="cn_colECR" xml:space="preserve">
+    <value>ECR</value>
+  </data>
+  <data name="cn_colEditor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="cn_colFamily" xml:space="preserve">
+    <value>Family</value>
+  </data>
+  <data name="cn_colIECVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="cn_colMBCode" xml:space="preserve">
+    <value>MB Code</value>
+  </data>
+  <data name="cn_colRemark" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="cn_colUpdateDate" xml:space="preserve">
+    <value>Udt</value>
+  </data>
+  <data name="cn_lblCustVersion" xml:space="preserve">
+    <value>Cust Version:</value>
+  </data>
+  <data name="cn_lblECR" xml:space="preserve">
+    <value>ECR:</value>
+  </data>
+  <data name="cn_lblEcrVersionList" xml:space="preserve">
+    <value>ECR Version List</value>
+  </data>
+  <data name="cn_lblFamily" xml:space="preserve">
+    <value>Family:</value>
+  </data>
+  <data name="cn_lblIECVersion" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="cn_lblMBCode" xml:space="preserve">
+    <value>MB Code:</value>
+  </data>
+  <data name="cn_lblRemark" xml:space="preserve">
+    <value>Remark:</value>
+  </data>
+  <data name="cn_msgConfirmDelete" xml:space="preserve">
+    <value>您确实要删除该条记录吗?</value>
+  </data>
+  <data name="cn_msgCustVersionFormatError" xml:space="preserve">
+    <value>Cust Version格式不正确!(长度为3,范围0-9,A-Z)</value>
+  </data>
+  <data name="cn_msgECRFormatError" xml:space="preserve">
+    <value>ECR格式不正确!(长度为5,范围0-9,A-Z)</value>
+  </data>
+  <data name="cn_msgHasExistRecord" xml:space="preserve">
+    <value>已经存在具有相同Family,MBCode,ECR的记录</value>
+  </data>
+  <data name="cn_msgIECVersionFormatError" xml:space="preserve">
+    <value>Version格式不正确!(长度为4,范围0-9,第二位为小数点)</value>
+  </data>
+  <data name="cn_msgInputECR" xml:space="preserve">
+    <value>请输入[ECR]!</value>
+  </data>
+  <data name="cn_msgInputFamily" xml:space="preserve">
+    <value>请选择[Family]!</value>
+  </data>
+  <data name="cn_msgInputIECVersion" xml:space="preserve">
+    <value>请输入[IEC Version]!</value>
+  </data>
+  <data name="cn_msgInputMBCode" xml:space="preserve">
+    <value>请输入[ MB Code]!</value>
+  </data>
+  <data name="cn_msgMBCodeFormatError" xml:space="preserve">
+    <value>MB Code格式不正确!(长度为2,范围0-9,A-Z)</value>
+  </data>
+  <data name="cn_titleResult" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="eng_btnDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="eng_btnQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="eng_btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="eng_colCreateDate" xml:space="preserve">
+    <value>Cdt</value>
+  </data>
+  <data name="eng_colCustomerVersion" xml:space="preserve">
+    <value>Customer Version</value>
+  </data>
+  <data name="eng_colECR" xml:space="preserve">
+    <value>ECR</value>
+  </data>
+  <data name="eng_colEditor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="eng_colFamily" xml:space="preserve">
+    <value>Family</value>
+  </data>
+  <data name="eng_colIECVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="eng_colMBCode" xml:space="preserve">
+    <value>MB Code</value>
+  </data>
+  <data name="eng_colRemark" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="eng_colUpdateDate" xml:space="preserve">
+    <value>Udt</value>
+  </data>
+  <data name="eng_lblCustVersion" xml:space="preserve">
+    <value>Cust Version:</value>
+  </data>
+  <data name="eng_lblECR" xml:space="preserve">
+    <value>ECR:</value>
+  </data>
+  <data name="eng_lblEcrVersionList" xml:space="preserve">
+    <value>ECR Version List</value>
+  </data>
+  <data name="eng_lblFamily" xml:space="preserve">
+    <value>Family:</value>
+  </data>
+  <data name="eng_lblIECVersion" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="eng_lblMBCode" xml:space="preserve">
+    <value>MB Code:</value>
+  </data>
+  <data name="eng_lblRemark" xml:space="preserve">
+    <value>Remark:</value>
+  </data>
+  <data name="eng_msgConfirmDelete" xml:space="preserve">
+    <value>Do you really want to delete this item?</value>
+  </data>
+  <data name="eng_msgCustVersionFormatError" xml:space="preserve">
+    <value>The format of Cust Version is invalid!(length should be 3, range should be 0-9,A-Z)</value>
+  </data>
+  <data name="eng_msgECRFormatError" xml:space="preserve">
+    <value>The format of ECR is invalid!(length should be 5, range should be 0-9,A-Z)</value>
+  </data>
+  <data name="eng_msgHasExistRecord" xml:space="preserve">
+    <value>Duplicate record!</value>
+  </data>
+  <data name="eng_msgIECVersionFormatError" xml:space="preserve">
+    <value>The format of  Version is invalid!(length should be 4, range should be 0-9, the second position should be a point)</value>
+  </data>
+  <data name="eng_msgInputECR" xml:space="preserve">
+    <value>Please input [ECR]!</value>
+  </data>
+  <data name="eng_msgInputFamily" xml:space="preserve">
+    <value>Please select [Family]!</value>
+  </data>
+  <data name="eng_msgInputIECVersion" xml:space="preserve">
+    <value>Please input [Version]!</value>
+  </data>
+  <data name="eng_msgInputMBCode" xml:space="preserve">
+    <value>Please input [MB Code]!</value>
+  </data>
+  <data name="eng_msgMBCodeFormatError" xml:space="preserve">
+    <value>The format of MB Code is invalid!(length should be 2, range should be 0-9,A-Z)</value>
+  </data>
+  <data name="eng_titleResult" xml:space="preserve">
+    <value>Result</value>
+  </data>
+</root>

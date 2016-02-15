@@ -1,0 +1,27 @@
+/* 代码整理：懒人之家 www.lanrenzhijia.com */
+*{ margin:0; padding:0; list-style:none}
+body{font:12px/21px "microsoft yahei";color:#404040;background-position:center 31px;background-repeat:no-repeat;}
+.wrap{width:1000px;overflow:hidden;margin:10px auto 74px;}
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { float: left; clear:left; padding: 0 0 0 5px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 45%; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; padding: 0 5px 0 0; }
+.ui-timepicker-rtl dl dt{ float: right; clear: right; }
+.ui-timepicker-rtl dl dd { margin: 0 45% 10px 10px; }
+.sub-nav{border-bottom:1px solid #e6e6e6;overflow: hidden;font-size:16px;font-family:"microsoft yahei";padding-top:6px;}
+.sub-nav li{float:left;display:inline;margin-right:30px;}
+.sub-nav a{color:#333;display:inline-block;height:30px;}
+.sub-nav .cur a,.sub-nav a:hover{color:#007bc9;border-bottom:3px solid #007bc9;height:28px;text-decoration:none;_position:relative;_margin-bottom:-6px;}
+.sub-nav .link{color: #0085da;font-style: italic;}
+.text-box{border:1px solid #ededed;height:35px;line-height:35px;margin-right:6px;padding-left: 11px;}
+
+
+
+
+
+
+

@@ -1,0 +1,309 @@
+﻿<?xml version="1.0"?>
+<configuration>
+	<configSections>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler,log4net"/>
+    <sectionGroup name="system.web.extensions" type="System.Web.Configuration.SystemWebExtensionsSectionGroup, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35">
+			<sectionGroup name="scripting" type="System.Web.Configuration.ScriptingSectionGroup, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35">
+   
+        <section name="scriptResourceHandler" type="System.Web.Configuration.ScriptingScriptResourceHandlerSection, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" allowDefinition="MachineToApplication"/>
+				<sectionGroup name="webServices" type="System.Web.Configuration.ScriptingWebServicesSectionGroup, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35">
+					<section name="jsonSerialization" type="System.Web.Configuration.ScriptingJsonSerializationSection, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" allowDefinition="Everywhere"/>
+					<section name="profileService" type="System.Web.Configuration.ScriptingProfileServiceSection, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" allowDefinition="MachineToApplication"/>
+					<section name="authenticationService" type="System.Web.Configuration.ScriptingAuthenticationServiceSection, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" allowDefinition="MachineToApplication"/>
+					<section name="roleService" type="System.Web.Configuration.ScriptingRoleServiceSection, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" allowDefinition="MachineToApplication"/>
+				</sectionGroup>
+			</sectionGroup>
+		</sectionGroup>
+	</configSections>
+  <connectionStrings>
+    <!-- India Testing-->
+    <add name="OnlineDBServer" connectionString="Data Source=10.60.1.48;Initial Catalog={0};Persist Security Info=True;User ID=sa;Password=Iciimes+2015;" providerName="" />
+    <!-- CQ Testing
+    <add name="OnlineDBServer" connectionString="Data Source=10.96.183.192;Initial Catalog={0};Persist Security Info=True;User ID=iec-imes;Password=imes+123;" providerName="" />
+    -->
+    <add name="HistoryDBServer" connectionString="Data Source=10.96.183.192;Initial Catalog={0};Persist Security Info=True;User ID=iec-imes;Password=imes+123;" providerName="" />
+	<add name="PP_DBServer" connectionString="Data Source=10.96.183.192;Initial Catalog={0};Persist Security Info=True;User ID=imes2012;Password=hpimesap@2014;" providerName="" />
+	<!-- CQ Setting-->
+  <!--
+  <add name="SD_DBServer" connectionString="Data Source=10.96.183.192;Initial Catalog={0};Persist Security Info=True;User ID=imes2012;Password=iccfis=123;" providerName="" />
+	<add name="SD_DBServer_BK" connectionString="Data Source=10.96.183.192;Initial Catalog={0};Persist Security Info=True;User ID=IMES2011;Password=11111111;" providerName="" />
+	<add name="SD_DBServer_EDI" connectionString="Data Source=10.96.183.199;Initial Catalog={0};Persist Security Info=True;User ID=SKU_WEIGHT;Password=THGIEW_UKS;" providerName="" />
+  -->
+   <!--<add name="SD_DBServer"     connectionString="Data Source=10.99.183.65;Initial Catalog={0};Persist Security Info=True;User ID=IMES2012;Password=IMES+2012;" providerName="" />-->
+  <add name="SD_DBServer"  connectionString="Data Source=10.96.183.192;Initial Catalog={0};Persist Security Info=True;User ID=iec-imes;Password=imes+123;" providerName="" />
+	<add name="SD_DBServer_BK"  connectionString="Data Source=10.99.183.65;Initial Catalog={0};Persist Security Info=True;User ID=IMES2012;Password=IMES+2012;" providerName="" />
+  <add name="SD_DBServer_BK_CQ"  connectionString="Data Source=10.96.183.192;Initial Catalog={0};Persist Security Info=True;User ID=iec-imes;Password=imes+123;" providerName="" />
+  <add name="TSB_DBServer"    connectionString="Data Source=10.99.183.65;Initial Catalog={0};Persist Security Info=True;User ID=IMES2011;Password=11111111;" providerName="" />
+	<add name="SD_DBServer_EDI" connectionString="Data Source=10.96.183.192;Initial Catalog={0};Persist Security Info=True;User ID=imes2012;Password=hpimesap@2014;" providerName="" />
+  <add name="TSB_DBServer"    connectionString="Data Source=10.99.183.65;Initial Catalog={0};Persist Security Info=True;User ID=IMES2011;Password=11111111;" providerName="" />
+	<add name="TSB_FisDBServer" connectionString="Data Source=10.99.252.18;Initial Catalog={0};Persist Security Info=True;User ID=pis;Password=shanghai+FIS;" providerName="" />
+
+  </connectionStrings>
+    <log4net>
+    <appender name="RollingLogFileAppender" type="log4net.Appender.RollingFileAppender">
+      <file value="./log/logfile" />
+      <appendToFile value="true" />
+      <rollingStyle value="Composite" />
+      <staticLogFileName value="false"/>
+      <datePattern value="yyMMddHH'.log'" />
+      <maxSizeRollBackups value="-1" />
+      <maximumFileSize value="1MB" />
+      <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%date [%thread] [%-5level] [%logger] - %message%newline" />
+      </layout>
+    </appender>
+    <root>
+      <level value="DEBUG" />
+      <appender-ref ref="RollingLogFileAppender" />
+    </root>
+  </log4net>
+
+	<system.web>
+		<!-- 
+            設定 compilation debug="true" 會將偵錯 
+            符號插入編譯過的頁面。因為這樣會
+            影響效能，所以只有在開發期間才能將
+            這個值設定為 true。
+        -->
+		<compilation debug="true">
+			<assemblies>
+				<add assembly="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+				<add assembly="System.Data.DataSetExtensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+				<add assembly="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+				<add assembly="System.Xml.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+			</assemblies>
+		</compilation>
+		<!--
+            <authentication> 區段可以用來設定 ASP.NET 
+            使用的安全性驗證模式，以識別連入的 
+            使用者。 
+        -->
+		<authentication mode="Windows"/>
+		<!--
+            <customErrors> 區段可以用來設定 
+            在執行要求期間發生未處理 
+            錯誤時所要執行的動作。具體來說，
+            它可以讓開發人員設定要顯示的 HTML 錯誤網頁，
+            以取代錯誤堆疊追蹤。
+
+        <customErrors mode="RemoteOnly" defaultRedirect="GenericErrorPage.htm">
+            <error statusCode="403" redirect="NoAccess.htm" />
+            <error statusCode="404" redirect="FileNotFound.htm" />
+        </customErrors>
+        -->
+		<pages>
+			<controls>
+				<add tagPrefix="asp" namespace="System.Web.UI" assembly="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+				<add tagPrefix="asp" namespace="System.Web.UI.WebControls" assembly="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+			</controls>
+		</pages>
+		<httpHandlers>
+			<remove verb="*" path="*.asmx"/>
+			<add verb="*" path="*.asmx" validate="false" type="System.Web.Script.Services.ScriptHandlerFactory, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+			<add verb="*" path="*_AppService.axd" validate="false" type="System.Web.Script.Services.ScriptHandlerFactory, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+			<add verb="GET,HEAD" path="ScriptResource.axd" type="System.Web.Handlers.ScriptResourceHandler, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" validate="false"/>
+		</httpHandlers>
+		<httpModules>
+			<add name="ScriptModule" type="System.Web.Handlers.ScriptModule, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+		</httpModules>
+	</system.web>
+	<system.codedom>
+		<compilers>
+			<compiler language="c#;cs;csharp" extension=".cs" warningLevel="4" type="Microsoft.CSharp.CSharpCodeProvider, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+				<providerOption name="CompilerVersion" value="v3.5"/>
+				<providerOption name="WarnAsError" value="false"/>
+			</compiler>
+		</compilers>
+	</system.codedom>
+	<!-- 
+        需要 system.webServer 區段才能在 Internet Information Services 7.0 下
+        執行 ASP.NET AJAX。舊版的 IIS 則不需要。
+    -->
+	<system.webServer>
+		<validation validateIntegratedModeConfiguration="false"/>
+		<modules>
+			<remove name="ScriptModule"/>
+			<add name="ScriptModule" preCondition="managedHandler" type="System.Web.Handlers.ScriptModule, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+		</modules>
+		<handlers>
+			<remove name="WebServiceHandlerFactory-Integrated"/>
+			<remove name="ScriptHandlerFactory"/>
+			<remove name="ScriptHandlerFactoryAppServices"/>
+			<remove name="ScriptResource"/>
+			<add name="ScriptHandlerFactory" verb="*" path="*.asmx" preCondition="integratedMode" type="System.Web.Script.Services.ScriptHandlerFactory, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+			<add name="ScriptHandlerFactoryAppServices" verb="*" path="*_AppService.axd" preCondition="integratedMode" type="System.Web.Script.Services.ScriptHandlerFactory, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+			<add name="ScriptResource" preCondition="integratedMode" verb="GET,HEAD" path="ScriptResource.axd" type="System.Web.Handlers.ScriptResourceHandler, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+		</handlers>
+	</system.webServer>
+	<runtime>
+		<assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+			<dependentAssembly>
+				<assemblyIdentity name="System.Web.Extensions" publicKeyToken="31bf3856ad364e35"/>
+				<bindingRedirect oldVersion="1.0.0.0-1.1.0.0" newVersion="3.5.0.0"/>
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="System.Web.Extensions.Design" publicKeyToken="31bf3856ad364e35"/>
+				<bindingRedirect oldVersion="1.0.0.0-1.1.0.0" newVersion="3.5.0.0"/>
+			</dependentAssembly>
+		</assemblyBinding>
+	</runtime>
+
+  <appSettings>
+    
+    <!--DB Catalogs-->
+    <add key="DB_CFG" value="HPIMES" />
+    <add key="DB_SA" value="HPIMES" />
+    <add key="DB_FA" value="HPIMES" />
+    <add key="DB_PAK" value="HPIMES" />
+    <!--History DB Catelogs 允許設多個以,或是;分隔如BK2011,BK2012,...   -->
+	<add key="DB_HISTORY" value=""/>
+	<!--設定與 PP 間 Web Service 所用到的 DB;允許設多個以,或是;分隔如 BK2011,BK2012,... -->
+	<add key="PP_DBServer" value="HPIMES;HPIMES;"/>
+  <!--設定與 SD 間 Web Service 所用到的 DB;允許設多個以,或是;分隔如 BK2011,BK2012,... -->
+  <add key="SD_DBServer" value="HPIMES;HPIMES;HPEDI"/>	
+  <!--設定與 SD 間 Web Service 所用到的 DB;允許設多個以,或是;分隔如 BK2011,BK2012,... -->
+  <add key="SD_DBServer_BK" value="HPIMES_RPT;"/>
+  <!--設定與 SD 間 Web Service 所用到的 DB;允許設多個以,或是;分隔如 BK2011,BK2012,... -->
+  <add key="SD_DBServer_BK_CQ" value="HPIMES_RPT;"/>
+  <!--設定與 SD 間 Web Service 所用到的 DB;允許設多個以,或是;分隔如 BK2011,BK2012,... -->
+	<add key="SD_DBServer_EDI" value="HP_EDI;"/>
+	<!--設定與 TSB DB 間 Web Service 所用到的 DB;允許設多個以,或是;分隔如 BK2011,BK2012,... -->
+	<add key="TSB_DBServer" value="TSBIMES;"/>	
+	<!--設定與 TSB FisDB 間 Web Service 所用到的 DB;允許設多個以,或是;分隔如 BK2011,BK2012,... -->
+	<add key="TSB_FisDBServer" value="PAK;"/>	
+	  
+	  <!-- unit is minute-->
+    <add key="DBTxnTimeOut" value="2"/>
+
+    <!-- 設置 Mail server -->
+    <add key="MailServer" value="ics-mx03.ies.inventec" />
+    <add key="FromAddress" value="ies_agent@inventec.com" />
+    <!--傳給多人以隔開;-->
+    <add key="ToAddress" value="bu.jia-jia@inventec.com.cn" />
+    <add key="CcAddress" value="" />
+
+	<add key="SAPUserName" value="RFC_USER" />
+	<add key="SAPUserPwd" value="1QAZ2WSX" />
+    <add key="SAPUserName_8010" value="RFC_USER" />
+	<add key="SAPUserPwd_8010" value="12345678" />
+
+    <!--For SAP PO download case 傳給多人以隔開;-->
+    <add key="SAPPOHoldToAddress" value="bu.jia-jia@inventec.com.cn" />
+    <add key="SAPPOHolldCcAddress" value="" />
+    <add key="SAPPOFailToAddress" value="bu.jia-jia@inventec.com.cn" />
+    <add key="SAPPOFailCcAddress" value="" />
+    
+    <add key="SAPDNHoldToAddress" value="bu.jia-jia@inventec.com.cn" />
+    <add key="SAPDNHolldCcAddress" value="" />
+    <add key="SAPDNFailToAddress" value="bu.jia-jia@inventec.com.cn" />
+    <add key="SAPDNFailCcAddress" value="" />
+
+    <!--For SAP Fru PO download case 傳給多人以隔開;-->
+    <add key="SAPFruPOHoldToAddress" value="bu.jia-jia@inventec.com.cn" />
+    <add key="SAPFruPOHolldCcAddress" value="" />
+    <add key="SAPFruPOFailToAddress" value="bu.jia-jia@inventec.com.cn" />
+    <add key="SAPFruPOFailCcAddress" value="" />
+
+    <add key="SAPFruDNHoldToAddress" value="bu.jia-jia@inventec.com.cn" />
+    <add key="SAPFruDNHolldCcAddress" value="" />
+    <add key="SAPFruDNFailToAddress" value="bu.jia-jia@inventec.com.cn" />
+    <add key="SAPFruDNFailCcAddress" value="" />
+
+
+    <!--For Cancel SAP PO download case 傳給多人以隔開;-->
+    <add key="SAPCancelPOHoldToAddress" value="bu.jia-jia@inventec.com.cn" />
+    <add key="SAPCancelPOHoldCcAddress" value="" />
+    <add key="SAPCancelPOFailToAddress" value="bu.jia-jia@inventec.com.cn" />
+    <add key="SAPCancelPOFailCcAddress" value="" />        
+    
+    
+	<!--配置几个后台的Service地址和端口号-->
+	<!--SAP service address -->
+	<add key="SAPServiceAddress" value="10.6.253.29"/>
+	<!--SAP service port-->
+	<add key="SAPServicePort" value="8200"/>
+	  
+	<add key="IMESService.ISAPService" value="SAPService"/>	
+	  
+	<!-- 抓取 MO Model 前 2 碼 -->
+	<add key="FAMOMaterialPreFix" value="SC;17;BC;15"/>
+	<add key="DockMOMaterialPreFix" value="PO;172;PF;2P"/>
+
+	<!-- Plant -->
+	<add key="HPPlantCode" value="CP60"/>
+
+  <!-- The Plants need to Update Delivery Status  -->
+  <add key="UpdateDeliveryByPlant" value="CP86;CP85"/>
+  <!-- Delivery Status of PGI  -->    
+  <add key="PGIDeliveryStatus" value="91"/>
+  <!-- The Plants need to Update Delivery ShipDate  -->
+  <add key="UpdateDnShipDateByPlant" value="CP85"/> 
+    
+	<!-- FIS BOM SP name -->
+	<add key="FisBomSpName" value="op_PAK_CheckBom_test"/>
+
+  <!-- Sync StdWeight for EDI to FIS & iMES (Y:for bith, N:for FIS/iMES only) -->
+  <add key="SyncEDIStdWeight" value="Y"/>
+
+    <!-- Switch Save MAWB temp data to CQ -->
+    <add key="SwitchMAWBTempDataToCQ" value="Y"/>
+
+    <!--SAP PO call PAK Service-->
+    <add key="IMESService.IPoData" value="PAK"/>
+    <!--PAK service address -->
+    <add key="PAKAddress" value="127.0.0.1"/>
+    <!--PAK service port-->
+    <add key="PAKPort" value="8020"/>
+
+    <add key="RunEnviroment" value="測試環境"/>
+    
+  </appSettings>
+	
+  <system.serviceModel>
+    <bindings>
+      <basicHttpBinding>
+        <binding name="SAP_IMES_WSSoapBinding" closeTimeout="00:10:00"
+          openTimeout="00:10:00" receiveTimeout="00:10:00" sendTimeout="00:10:00"
+          allowCookies="false" bypassProxyOnLocal="false" hostNameComparisonMode="StrongWildcard"
+          maxBufferSize="65536000" maxBufferPoolSize="524288000" maxReceivedMessageSize="65536000"
+          messageEncoding="Text" textEncoding="utf-8" transferMode="Buffered"
+          useDefaultWebProxy="true">
+          <readerQuotas maxDepth="32" maxStringContentLength="819200" maxArrayLength="163840"
+            maxBytesPerRead="4096000" maxNameTableCharCount="16384" />
+          <security mode="TransportCredentialOnly">
+            <transport clientCredentialType="Basic" proxyCredentialType="None"
+              realm="" />
+            <message clientCredentialType="UserName" algorithmSuite="Default" />
+          </security>
+        </binding>
+        <binding name="Z_RFC_FIS_BOM_WSSoapBinding" closeTimeout="00:01:00"
+          openTimeout="00:01:00" receiveTimeout="00:10:00" sendTimeout="00:01:00"
+          allowCookies="false" bypassProxyOnLocal="false" hostNameComparisonMode="StrongWildcard"
+          maxBufferSize="65536" maxBufferPoolSize="524288" maxReceivedMessageSize="65536"
+          messageEncoding="Text" textEncoding="utf-8" transferMode="Buffered"
+          useDefaultWebProxy="true">
+          <readerQuotas maxDepth="32" maxStringContentLength="8192" maxArrayLength="16384"
+            maxBytesPerRead="4096" maxNameTableCharCount="16384" />
+          <security mode="None">
+            <transport clientCredentialType="None" proxyCredentialType="None"
+              realm="" />
+            <message clientCredentialType="UserName" algorithmSuite="Default" />
+          </security>
+        </binding>
+      </basicHttpBinding>
+    </bindings>
+    <client>
+      <endpoint address="http://xidqdb.iec.inventec.com:8000/sap/bc/srt/rfc/sap/Z_SET_PRODORD_TO_IMES_TECO_WS?sap-client=001"
+        binding="basicHttpBinding" bindingConfiguration="SAP_IMES_WSSoapBinding"
+        contract="SAPMOChangeStatusWS.Z_SET_PRODORD_TO_IMES_TECO_WS"
+        name="SAPMOChangeStatus" />
+      <endpoint address="http://xidqdb.iec.inventec.com:8000/sap/bc/srt/rfc/sap/ZWS_CANCEL_SERIAL?sap-client=001"
+        binding="basicHttpBinding" bindingConfiguration="SAP_IMES_WSSoapBinding"
+        contract="SAPCancelBindDNWS.ZWS_CANCEL_SERIAL" name="SAPCancelBindDN" />
+      <endpoint address="http://xidqdb.iec.inventec.com:8010/sap/bc/srt/rfc/sap/Z_RFC_FIS_BOM_WS?sap-client=001"
+        binding="basicHttpBinding" bindingConfiguration="SAP_IMES_WSSoapBinding"
+        contract="SAPFisBomCompareWS.Z_RFC_FIS_BOM_WS" name="SAPFisBomCompare" />
+    </client>
+  </system.serviceModel>
+</configuration>

@@ -1,0 +1,136 @@
+﻿// INVENTEC corporation (c)2012 all rights reserved. 
+// Description:
+//      1.Change Model Save
+//                   
+// Update: 
+// Date         Name                         Reason 
+// ==========   =======================      ============
+// 2012-06-18   Kerwin                       create
+// Known issues:
+
+using System.Data.SqlClient;
+using System.Workflow.ComponentModel;
+using IMES.FisObject.FA.Product;
+using IMES.Infrastructure;
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+using IMES.Infrastructure.Repository._Schema;
+using System.Collections.Generic;
+using System.Data;
+using IMES.DataModel;
+
+namespace IMES.Activity
+{
+
+    /// <summary>
+    /// Change Model Save
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// 基类：
+    ///         <see cref="IMES.Activity.BaseActivity">BaseActivity</see>  
+    /// </para>
+    /// <para>
+    /// 应用场景：
+    ///      CI-MES12-SPEC-FA-UC Change Model
+    /// </para>
+    /// <para>
+    /// 实现逻辑：
+    ///     1.检查[Model1]是否存在未进包装（不存在69的成功过站Log）且已经产生CUSTSN（Product.CUSTSN!=''）的Product记录，若不存在记录，则报错：“Model：XXX不存在可以转换的Product
+    ///     2.获取[Current Station]，Station倒序排列
+    ///</para> 
+    /// <para> 
+    /// 异常类型：
+    ///         1.系统异常：
+    ///         2.业务异常：
+    ///                     CHK155
+    /// 
+    /// </para> 
+    /// <para>    
+    /// 输入：
+    ///         Session.MB
+    /// </para> 
+    /// <para>    
+    /// 中间变量：
+    ///         无
+    /// </para> 
+    ///<para> 
+    /// 输出：
+    ///         无
+    /// </para> 
+    ///<para> 
+    /// 数据更新:
+    ///         无
+    /// </para> 
+    ///<para> 
+    /// 相关FisObject:
+    ///         MB
+    ///         
+    /// </para> 
+    /// </remarks>
+    public partial class ChangeModelSave : BaseActivity
+    {
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public ChangeModelSave()
+        {
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// Change Model Save
+        /// </summary>
+        /// <param name="executionContext"></param>
+        /// <returns></returns>
+        protected internal override ActivityExecutionStatus DoExecute(ActivityExecutionContext executionContext)
+        {
+            Session session = CurrentSession;
+            var moList = session.GetValue(Session.SessionKeys.VirtualMOList) as IList<string>;
+            string VirtualMO = moList[0];
+            string model1 = session.GetValue(Session.SessionKeys.Model1) as string;
+            string model2 = session.GetValue(Session.SessionKeys.Model2) as string;
+            string SelectStation = session.GetValue(Session.SessionKeys.SelectStation) as string;
+            int changeQty = (int)session.GetValue(Session.SessionKeys.Qty);
+            string productIDStr = session.GetValue(Session.SessionKeys.ProductIDListStr) as string;
+            string typeChangeModel = session.GetValue("TypeChangeModel") as string;
+
+            SqlParameter[] paramsArray = new SqlParameter[7];
+            paramsArray[0] = new SqlParameter("Model1", model1);
+            paramsArray[1] = new SqlParameter("Model2", model2);
+            paramsArray[2] = new SqlParameter("VirtualMO", VirtualMO);
+            paramsArray[3] = new SqlParameter("ChangeQty", changeQty);
+            paramsArray[4] = new SqlParameter("ProductIDStr", productIDStr);
+            paramsArray[5] = new SqlParameter("Editor", Editor);
+            paramsArray[6] = new SqlParameter("Station", SelectStation);
+
+
+            IProductRepository CurrentProductRepository = RepositoryFactory.GetInstance().GetRepository<IProductRepository, IProduct>();
+            DataTable ProductIDCustSNTable;
+            if ("FIC".Equals(typeChangeModel))
+                ProductIDCustSNTable = CurrentProductRepository.ExecSpForQuery(SqlHelper.ConnectionString_FA, "IMES_ChangeModelSave_FIC", paramsArray);
+            else
+                ProductIDCustSNTable = CurrentProductRepository.ExecSpForQuery(SqlHelper.ConnectionString_FA, "IMES_ChangeModelSave", paramsArray);
+            
+            using (ProductIDCustSNTable)
+            {
+                List<ProductModel> ProductList = new List<ProductModel>();
+                if (ProductIDCustSNTable != null && ProductIDCustSNTable.Rows.Count > 0)
+                {                   
+                    int maxNum = ProductIDCustSNTable.Rows.Count;
+                    for (int i = 0; i < maxNum; i++)
+                    {
+                        ProductModel temp = new ProductModel();
+                        temp.ProductID = ProductIDCustSNTable.Rows[i][0] as string;
+                        temp.CustSN = ProductIDCustSNTable.Rows[i][1] as string;
+                        ProductList.Add(temp);
+                    }
+                }
+                session.AddValue(Session.SessionKeys.ProductIDListStr, ProductList);
+            }
+
+            return base.DoExecute(executionContext);
+        }
+
+    }
+}
+

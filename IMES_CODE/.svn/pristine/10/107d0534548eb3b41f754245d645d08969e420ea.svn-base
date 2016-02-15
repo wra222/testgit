@@ -1,0 +1,24 @@
+using System.Collections.Generic;
+using IMES.FisObject.Common.Part;
+
+namespace IMES.FisObject.Common.FisBOM
+{
+    public interface ITreeNode
+    {
+    }
+    public interface IBOMNode
+    {
+        IPart Part { get; }
+        int Qty { get; }
+        IBOMNode Parent { get; set; }
+        IList<IBOMNode> Children { get; }
+        IList<IBOMNode> Sibling { get; }
+        int Level { get; }
+        bool IsRoot { get; }
+        string AlternativeItemGroup { get; }
+
+        void AddChild(IBOMNode child);
+        void AddChildren(IList<IBOMNode> children);
+        void RemoveChild(IBOMNode child);
+    }
+}

@@ -1,0 +1,535 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IMES.Infrastructure</name>
+    </assembly>
+    <members>
+        <member name="T:IMES.Infrastructure.FisObjectRepositoryFramework.IUnitOfWorkRepository">
+            <summary>
+             执行UnitOfWork数据操作的Repository接口
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.IUnitOfWorkRepository.PersistNewItem(IMES.Infrastructure.FisObjectBase.IAggregateRoot)">
+            <summary>
+            执行新增对象的持久化
+            </summary>
+            <param name="item">目标对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.IUnitOfWorkRepository.PersistUpdatedItem(IMES.Infrastructure.FisObjectBase.IAggregateRoot)">
+            <summary>
+            执行更新对象的持久化
+            </summary>
+            <param name="item">目标对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.IUnitOfWorkRepository.PersistDeletedItem(IMES.Infrastructure.FisObjectBase.IAggregateRoot)">
+            <summary>
+            执行删除对象的持久化
+            </summary>
+            <param name="item">目标对象</param>
+        </member>
+        <member name="T:IMES.Infrastructure.FisObjectBase.IFisObject">
+            <summary>
+            FisObject必须实现此接口
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.FisObjectBase.IDirty">
+            <summary>
+             Dirty tracking諉諳
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectBase.IDirty.Clean">
+            <summary>
+            壺勤砓囀窒垀衄Dirty flag
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.FisObjectBase.IDirty.IsDirty">
+            <summary>
+             勤砓岆瘁掩党蜊
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.FisObjectBase.IFisObject.Key">
+            <summary>
+             对象标识, 在同类型的FisObject范围内唯一
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.FisObjectBase.IFisObject.GKey">
+            <summary>
+             对象标识, 在各种类型的FisObject范围内唯一
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.FisObjectBase.GlobalKey">
+            <summary>
+             对象标识, 在各种类型的FisObject范围内唯一
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectBase.GlobalKey.#ctor(System.Object,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Object"/> class.
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectBase.GlobalKey.GetHashCode">
+            <summary>
+            获取对象的HashCode
+            </summary>
+            <returns>对象的HashCode</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectBase.GlobalKey.Equals(System.Object)">
+            <summary>
+            判断指定对象是否与此对象相等
+            </summary>
+            <param name="obj">指定对象</param>
+            <returns>是否相等</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectBase.GlobalKey.op_Equality(IMES.Infrastructure.FisObjectBase.GlobalKey,IMES.Infrastructure.FisObjectBase.GlobalKey)">
+            <summary>
+            比较两个实例是否相等.
+            </summary>
+            <param name="base1">第一个实例
+            <see cref="T:IMES.Infrastructure.FisObjectBase.FisObjectBase"/>.</param>
+            <param name="base2">第二个实例
+            <see cref="T:IMES.Infrastructure.FisObjectBase.FisObjectBase"/>.</param>
+            <returns>如果相等返回true.</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectBase.GlobalKey.op_Inequality(IMES.Infrastructure.FisObjectBase.GlobalKey,IMES.Infrastructure.FisObjectBase.GlobalKey)">
+            <summary>
+            测试两个实例不等.
+            </summary>
+            <param name="base1">第一个实例
+            <see cref="T:IMES.Infrastructure.FisObjectBase.FisObjectBase"/>.</param>
+            <param name="base2">第二个实例
+            <see cref="T:IMES.Infrastructure.FisObjectBase.FisObjectBase"/>.</param>
+            <returns>如果不相等,返回true</returns>
+        </member>
+        <member name="P:IMES.Infrastructure.FisObjectBase.GlobalKey.Key">
+            <summary>
+             对象标识, 在同类型的FisObject范围内唯一
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.FisObjectBase.GlobalKey.Type">
+            <summary>
+             对象具体类型
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1">
+            <summary>
+            Repository基类
+            </summary>
+            <typeparam name="T">具体的Repository访问的IAggregateRoot对象类型</typeparam>
+        </member>
+        <member name="T:IMES.Infrastructure.FisObjectRepositoryFramework.IRepository`1">
+            <summary>
+             Repository基类
+            </summary>
+            <typeparam name="T">Repository访问的IAggregateRoot具体类型</typeparam>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.IRepository`1.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.IRepository`1.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.IRepository`1.Add(`0,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.IRepository`1.Remove(`0,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.IRepository`1.Update(`0,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="F:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.batchSQLCnt">
+            <summary>
+            批量SQL操作个数
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.Find(System.Object)">
+            <summary>
+            根据对象key获取对象
+            </summary>
+            <param name="key">对象的key</param>
+            <returns>对象实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.FindAll">
+            <summary>
+            获取所有对象列表
+            </summary>
+            <returns>所有对象列表</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.Add(`0,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            添加一个对象
+            </summary>
+            <param name="item">新添加的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.Remove(`0,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            删除指定对象
+            </summary>
+            <param name="item">需删除的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.Update(`0,IMES.Infrastructure.UnitOfWork.IUnitOfWork)">
+            <summary>
+            更新指定对象
+            </summary>
+            <param name="item">需更新的对象</param>
+            <param name="uow"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.PersistNewItem(IMES.Infrastructure.FisObjectBase.IAggregateRoot)">
+            <summary>
+            执行新增对象的持久化
+            </summary>
+            <param name="item">目标对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.PersistUpdatedItem(IMES.Infrastructure.FisObjectBase.IAggregateRoot)">
+            <summary>
+            执行更新对象的持久化
+            </summary>
+            <param name="item">目标对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.PersistDeletedItem(IMES.Infrastructure.FisObjectBase.IAggregateRoot)">
+            <summary>
+            执行删除对象的持久化
+            </summary>
+            <param name="item">目标对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.GetValue_Str(System.Data.SqlClient.SqlDataReader,System.Int32)">
+            <summary>
+            判断空值并赋值(string)
+            </summary>
+            <param name="sqlDataReader"></param>
+            <param name="iCol"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.GetValue_Int32(System.Data.SqlClient.SqlDataReader,System.Int32)">
+            <summary>
+            判断空值并赋值(Int32)
+            </summary>
+            <param name="sqlDataReader"></param>
+            <param name="iCol"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.GetValue_Byte(System.Data.SqlClient.SqlDataReader,System.Int32)">
+            <summary>
+            判断空值并赋值(Byte)
+            </summary>
+            <param name="sqlDataReader"></param>
+            <param name="iCol"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.GetValue_Int16(System.Data.SqlClient.SqlDataReader,System.Int32)">
+            <summary>
+            判断空值并赋值(Int16)
+            </summary>
+            <param name="sqlDataReader"></param>
+            <param name="iCol"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.GetValue_DateTime(System.Data.SqlClient.SqlDataReader,System.Int32)">
+            <summary>
+            判断空值并赋值(DateTime)
+            </summary>
+            <param name="sqlDataReader"></param>
+            <param name="iCol"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.GetValue_Float(System.Data.SqlClient.SqlDataReader,System.Int32)">
+            <summary>
+            判断空值并赋值(float)
+            数据库里的 Float 类型，其实相当于double, DataReader.GetFloat()會報錯
+            </summary>
+            <param name="sqlDataReader"></param>
+            <param name="iCol"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.GetValue_Decimal(System.Data.SqlClient.SqlDataReader,System.Int32)">
+            <summary>
+            判断空值并赋值(decimal)
+            </summary>
+            <param name="sqlDataReader"></param>
+            <param name="iCol"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.GetValue_Char(System.Data.SqlClient.SqlDataReader,System.Int32)">
+            <summary>
+            判断空值并赋值(char)
+            </summary>
+            <param name="sqlDataReader"></param>
+            <param name="iCol"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.GetValue_Int64(System.Data.SqlClient.SqlDataReader,System.Int32)">
+            <summary>
+            判断空值并赋值(Int64)
+            </summary>
+            <param name="sqlDataReader"></param>
+            <param name="iCol"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.BaseRepository`1.GetValue_Boolean(System.Data.SqlClient.SqlDataReader,System.Int32)">
+            <summary>
+            判断空值并赋值(char)
+            </summary>
+            <param name="sqlDataReader"></param>
+            <param name="iCol"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.UnitOfWork.IUnitOfWork">
+            <summary>
+             Unit of work接口
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.UnitOfWork.IUnitOfWork.RegisterAdded(IMES.Infrastructure.FisObjectBase.IAggregateRoot,IMES.Infrastructure.FisObjectRepositoryFramework.IUnitOfWorkRepository)">
+            <summary>
+             将一个FisObject注册为Added
+            </summary>
+            <param name="entity">fisobject</param>
+            <param name="repository">该FisObject类型的Repository对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.UnitOfWork.IUnitOfWork.RegisterChanged(IMES.Infrastructure.FisObjectBase.IAggregateRoot,IMES.Infrastructure.FisObjectRepositoryFramework.IUnitOfWorkRepository)">
+            <summary>
+             将一个FisObject注册为Changed
+            </summary>
+            <param name="entity">fisobject</param>
+            <param name="repository">该FisObject类型的Repository对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.UnitOfWork.IUnitOfWork.RegisterRemoved(IMES.Infrastructure.FisObjectBase.IAggregateRoot,IMES.Infrastructure.FisObjectRepositoryFramework.IUnitOfWorkRepository)">
+            <summary>
+             将一个FisObject注册为Removed
+            </summary>
+            <param name="entity">fisobject</param>
+            <param name="repository">该FisObject类型的Repository对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.UnitOfWork.IUnitOfWork.RegisterDeferMethods(IMES.Infrastructure.Util.InvokeBody)">
+            <summary>
+            注册延迟改库方法
+            </summary>
+            <param name="ivkBdy"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.UnitOfWork.IUnitOfWork.RegisterSetterBetween(IMES.Infrastructure.UnitOfWork.SetterBetween)">
+            <summary>
+            注册对象间属性关联赋值请求
+            </summary>
+            <param name="setter"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.UnitOfWork.IUnitOfWork.Commit">
+            <summary>
+             提交所有修改结果
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.FisObjectRepositoryFramework.RepositoryFactory">
+            <summary>
+             Repository工厂
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.RepositoryFactory.GetInstance">
+            <summary>
+            获取RepositoryFactory实例
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:IMES.Infrastructure.FisObjectRepositoryFramework.RepositoryFactory._repositories">
+            <summary>
+            key: FisObjectType.Name, Value: Repository Object
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.RepositoryFactory.GetRepository``2">
+            <summary>
+            获取/创建Repository对象, 
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.RepositoryFactory.GetRepository``1">
+            <summary>
+            获取Repository对象
+            </summary>
+            <typeparam name="TRepository">Reporsitory具体类型</typeparam>
+            <returns>Repository对象</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.RepositoryFactory.GetRepoistory(System.Type)">
+            <summary>
+            this method should only be used in ruleset,  for ruleset does not support template.
+            </summary>
+            <param name="repositoryType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectRepositoryFramework.RepositoryFactory.GetRepoistory(System.String)">
+            <summary>
+            this method should only be used in ruleset,  for ruleset does not support template.
+            </summary>
+            <param name="repositoryType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IMES.Infrastructure.FisObjectBase.DirtyInterceptor">
+            <summary>
+             用于定义属性改变事件处理方式的类
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectBase.DirtyInterceptor.OnPropertyChange(System.Object,System.Object,System.Object)">
+            <summary>
+            </summary>
+            <param name="obj">IDirty对象</param>
+            <param name="oldValue">属性的旧值</param>
+            <param name="newValue">属性的新值</param>
+        </member>
+        <member name="T:IMES.Infrastructure.FisObjectBase.FisObjectBase">
+            <summary>
+            FisObject的基类, 提供key属性, 比较方法
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectBase.FisObjectBase.#ctor">
+            <summary>
+            默认构造函数
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.FisObjectBase.FisObjectBase.Clean">
+            <summary>
+            清除对象内部所有Dirty flag
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.FisObjectBase.FisObjectBase.Tracker">
+            <summary>
+            StateTracker to track state change
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.FisObjectBase.FisObjectBase.Key">
+            <summary>
+            对象标示key, 在同类型FisObject范围内唯一
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.FisObjectBase.FisObjectBase.GKey">
+            <summary>
+             对象标识, 在各种类型的FisObject范围内唯一
+            </summary>
+        </member>
+        <member name="P:IMES.Infrastructure.FisObjectBase.FisObjectBase.IsDirty">
+            <summary>
+             对象是否被修改
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.Util.StateTracker">
+            <summary>
+            状态改变跟踪器
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Util.StateTracker.MarkAsDetached``1(``0)">
+            <summary>
+            将状态标记为Detached
+            </summary>
+            <typeparam name="T">被跟踪对象类型</typeparam>
+            <param name="t">被跟踪对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Util.StateTracker.MarkAsAdded``1(``0)">
+            <summary>
+            将状态标记为Added
+            </summary>
+            <typeparam name="T">被跟踪对象类型</typeparam>
+            <param name="t">被跟踪对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Util.StateTracker.MarkAsDeleted``1(``0)">
+            <summary>
+            将状态标记为Deleted
+            </summary>
+            <typeparam name="T">被跟踪对象类型</typeparam>
+            <param name="t">被跟踪对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Util.StateTracker.MarkAsModified``1(``0)">
+            <summary>
+            将状态标记为Modified
+            </summary>
+            <typeparam name="T">被跟踪对象类型</typeparam>
+            <param name="t">被跟踪对象</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Util.StateTracker.GetState``1(``0)">
+            <summary>
+            取得对象状态
+            </summary>
+            <typeparam name="T">被跟踪对象类型</typeparam>
+            <param name="t">被跟踪对象</param>
+            <returns>对象状态</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.Util.StateTracker.MarkState``1(``0,System.Data.DataRowState)">
+            <summary>
+            标记对象状态
+            </summary>
+            <typeparam name="T">被跟踪对象类型</typeparam>
+            <param name="t">被跟踪对象</param>
+            <param name="state">对象状态</param>
+        </member>
+        <member name="M:IMES.Infrastructure.Util.StateTracker.Clear">
+            <summary>
+            清除所有跟踪的状态
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.Util.StateTracker.MarkAllAs(System.Data.DataRowState)">
+            <summary>
+            标记所有的状态为同一个
+            </summary>
+            <param name="state">对象状态</param>
+        </member>
+        <member name="T:IMES.Infrastructure.UnitOfWork.UnitOfWork">
+            <summary>
+             Unit of work
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.UnitOfWork.UnitOfWork.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:IMES.Infrastructure.UnitOfWork.UnitOfWork.RegisterAdded(IMES.Infrastructure.FisObjectBase.IAggregateRoot,IMES.Infrastructure.FisObjectRepositoryFramework.IUnitOfWorkRepository)">
+            <summary>
+             蔚珨跺FisObject蛁聊峈Added
+            </summary>
+            <param name="entity">fisobject</param>
+            <param name="repository">蜆FisObject濬倰腔Repository勤砓</param>
+        </member>
+        <member name="M:IMES.Infrastructure.UnitOfWork.UnitOfWork.RegisterChanged(IMES.Infrastructure.FisObjectBase.IAggregateRoot,IMES.Infrastructure.FisObjectRepositoryFramework.IUnitOfWorkRepository)">
+            <summary>
+             蔚珨跺FisObject蛁聊峈Changed
+            </summary>
+            <param name="entity">fisobject</param>
+            <param name="repository">蜆FisObject濬倰腔Repository勤砓</param>
+        </member>
+        <member name="M:IMES.Infrastructure.UnitOfWork.UnitOfWork.RegisterRemoved(IMES.Infrastructure.FisObjectBase.IAggregateRoot,IMES.Infrastructure.FisObjectRepositoryFramework.IUnitOfWorkRepository)">
+            <summary>
+             蔚珨跺FisObject蛁聊峈Removed
+            </summary>
+            <param name="entity">fisobject</param>
+            <param name="repository">蜆FisObject濬倰腔Repository勤砓</param>
+        </member>
+        <member name="M:IMES.Infrastructure.UnitOfWork.UnitOfWork.RegisterDeferMethods(IMES.Infrastructure.Util.InvokeBody)">
+            <summary>
+            蛁聊晊喧蜊踱源楊
+            </summary>
+            <param name="ivkBdy"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.UnitOfWork.UnitOfWork.RegisterSetterBetween(IMES.Infrastructure.UnitOfWork.SetterBetween)">
+            <summary>
+            蛁聊勤砓潔扽俶壽薊董硉
+            </summary>
+            <param name="setter"></param>
+        </member>
+        <member name="M:IMES.Infrastructure.UnitOfWork.UnitOfWork.Commit">
+            <summary>
+             枑蝠垀衄党蜊賦彆
+            </summary>
+        </member>
+        <member name="T:IMES.Infrastructure.FisObjectBase.IAggregateRoot">
+            <summary>
+            AggregateRoot接口, 作为AggregateRoot的FisObject必须实现此接口
+            </summary>
+        </member>
+    </members>
+</doc>

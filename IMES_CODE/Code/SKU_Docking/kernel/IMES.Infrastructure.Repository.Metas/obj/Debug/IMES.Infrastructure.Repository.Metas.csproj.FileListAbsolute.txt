@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Infrastructure.Repository.Metas.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Infrastructure.Repository.Metas.pdb
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Infrastructure.Repository.Metas\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Infrastructure.Repository.Metas\obj\Debug\IMES.Infrastructure.Repository.Metas.dll
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Infrastructure.Repository.Metas\obj\Debug\IMES.Infrastructure.Repository.Metas.pdb

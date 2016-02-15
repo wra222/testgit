@@ -1,0 +1,27 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="CombineCOAandDNPizza" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:DBScope Station="{ActivityBind CombineCOAandDNPizza,Path=Station}" x:Name="dbScope1" Key="{ActivityBind CombineCOAandDNPizza,Path=Key}" SessionType="{ActivityBind CombineCOAandDNPizza,Path=SessionType}">
+		<ns0:GetPizzaID Customer="{ActivityBind CombineCOAandDNPizza,Path=Customer}" x:Name="getPizzaID1" SessionType="{ActivityBind CombineCOAandDNPizza,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNPizza,Path=Editor}" Station="{ActivityBind CombineCOAandDNPizza,Path=Station}" Line="{ActivityBind CombineCOAandDNPizza,Path=PdLine}" Key="{ActivityBind CombineCOAandDNPizza,Path=Key}" />
+		<ns0:UpdateProductStatus Customer="{ActivityBind CombineCOAandDNPizza,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind CombineCOAandDNPizza,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNPizza,Path=Editor}" Status="Pass" Station="{ActivityBind CombineCOAandDNPizza,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind CombineCOAandDNPizza,Path=PdLine}" Key="{ActivityBind CombineCOAandDNPizza,Path=Key}" />
+	</ns0:DBScope>
+	<IfElseActivity x:Name="IfPAQC">
+		<IfElseBranchActivity x:Name="PAQC">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="PAQC" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind CombineCOAandDNPizza,Path=Station}" x:Name="dbScope2" Key="{ActivityBind CombineCOAandDNPizza,Path=Key}" SessionType="{ActivityBind CombineCOAandDNPizza,Path=SessionType}">
+				<ns0:WriteQCStatus Customer="{ActivityBind CombineCOAandDNPizza,Path=Customer}" Remark="" SessionType="{ActivityBind CombineCOAandDNPizza,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNPizza,Path=Editor}" Station="{ActivityBind CombineCOAandDNPizza,Path=Station}" Status="8" x:Name="writeQCStatus1" Line="{ActivityBind CombineCOAandDNPizza,Path=PdLine}" Key="{ActivityBind CombineCOAandDNPizza,Path=Key}" Type="PAQC" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="NotPAQC">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="NotPAQC" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind CombineCOAandDNPizza,Path=Station}" x:Name="dbScope4" Key="{ActivityBind CombineCOAandDNPizza,Path=Key}" SessionType="{ActivityBind CombineCOAandDNPizza,Path=SessionType}">
+				<ns0:WriteQCStatus Customer="{ActivityBind CombineCOAandDNPizza,Path=Customer}" Remark="" SessionType="{ActivityBind CombineCOAandDNPizza,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNPizza,Path=Editor}" Station="{ActivityBind CombineCOAandDNPizza,Path=Station}" Status="1" x:Name="writeQCStatus2" Line="{ActivityBind CombineCOAandDNPizza,Path=PdLine}" Key="{ActivityBind CombineCOAandDNPizza,Path=Key}" Type="PAQC" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<ns0:DBScope Station="{ActivityBind CombineCOAandDNPizza,Path=Station}" x:Name="dbScope3" Key="{ActivityBind CombineCOAandDNPizza,Path=Key}" SessionType="{ActivityBind CombineCOAandDNPizza,Path=SessionType}">
+		<ns0:WriteProductLog Customer="{ActivityBind CombineCOAandDNPizza,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind CombineCOAandDNPizza,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNPizza,Path=Editor}" Station="{ActivityBind CombineCOAandDNPizza,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind CombineCOAandDNPizza,Path=PdLine}" Key="{ActivityBind CombineCOAandDNPizza,Path=Key}" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

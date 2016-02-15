@@ -1,0 +1,166 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IMES.DataModel;
+using IMES.Maintain.Interface.MaintainIntf;
+using IMES.FisObject.Common.FisBOM;
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+using IMES.Infrastructure;
+using IMES.FisObject.Common.Line;
+using IMES.FisObject.Common.Station;
+using System.Data;
+
+namespace IMES.Maintain.Implementation
+{
+    public class CheckItemTypeListMaintainImpl : MarshalByRefObject, ICheckItemTypeListMaintain       
+    {
+
+        #region CheckItemTypeRule
+
+        public IList<CheckItemTypeRuleDef> GetCheckItemTypeRuleWithPriority(string itemType, string line, string station, string family)
+        {
+            try
+            {
+                IBOMRepository itemRepository = RepositoryFactory.GetInstance().GetRepository<IBOMRepository>();
+                return itemRepository.GetCheckItemTypeRuleWithPriority(itemType, line, station, family);
+            }
+            catch (Exception)
+            {
+                throw;
+            } 
+        }
+
+        public IList<CheckItemTypeRuleDef> GetCheckItemTypeRuleByItemType(string itemType)
+        {
+            try
+            {
+                IBOMRepository itemRepository = RepositoryFactory.GetInstance().GetRepository<IBOMRepository>();
+                return itemRepository.GetCheckItemTypeRuleByItemType(itemType);
+            }
+            catch (Exception)
+            {
+                throw;
+            } 
+        }
+
+        public IList<string> GetChechItemTypeList()
+        {
+            try
+            {
+                IBOMRepository itemRepository = RepositoryFactory.GetInstance().GetRepository<IBOMRepository>();
+                IList<string> reLst = itemRepository.GetChechItemTypeList();
+                return reLst;
+            }
+            catch (Exception)
+            {
+                throw;
+            } 
+        }
+
+        public bool CheckExistCheckItemTypeRule(string itemType, string line, string station, string family)
+        {
+            try
+            {
+                IBOMRepository itemRepository = RepositoryFactory.GetInstance().GetRepository<IBOMRepository>();
+                return itemRepository.CheckExistCheckItemTypeRule(itemType, line, station, family);
+            }
+            catch (Exception)
+            {
+                throw;
+            } 
+        }
+
+        public bool CheckExistCheckItemTypeRule(CheckItemTypeRuleDef item)
+        {
+            try
+            {
+                IBOMRepository itemRepository = RepositoryFactory.GetInstance().GetRepository<IBOMRepository>();
+                return itemRepository.CheckExistCheckItemTypeRule(item);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void AddCheckItemTypeRule(CheckItemTypeRuleDef itemType)
+        {
+            try
+            {
+                IBOMRepository itemRepository = RepositoryFactory.GetInstance().GetRepository<IBOMRepository>();
+                itemRepository.AddCheckItemTypeRule(itemType);
+            }
+            catch (Exception)
+            {
+                throw;
+            } 
+        }
+
+        public void DeleteCheckItemTypeRule(int id)
+        {
+            try
+            {
+                IBOMRepository itemRepository = RepositoryFactory.GetInstance().GetRepository<IBOMRepository>();
+                itemRepository.DeleteCheckItemTypeRule(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            } 
+        }
+
+        public void UpdateCheckItemTypeRule(CheckItemTypeRuleDef itemType)
+        {
+            try
+            {
+                IBOMRepository itemRepository = RepositoryFactory.GetInstance().GetRepository<IBOMRepository>();
+                itemRepository.UpdateCheckItemTypeRule(itemType);
+            }
+            catch (Exception)
+            {
+                throw;
+            } 
+        }
+
+        public IList<string> GetAllAliasLine()
+        {
+            try
+            {
+                ILineRepository itemRepository = RepositoryFactory.GetInstance().GetRepository<ILineRepository>();
+                return itemRepository.GetAllAliasLine();
+            }
+            catch (Exception)
+            {
+                throw;
+            } 
+        }
+
+        public DataTable GetStationInfoList()
+        {
+            try
+            {
+                IStationRepository itemRepository = RepositoryFactory.GetInstance().GetRepository<IStationRepository>();
+
+                return itemRepository.GetStationInfoList();
+            }
+            catch (Exception)
+            {
+                throw;
+            } 
+        }
+
+        #endregion
+
+        public static String Null2String(Object _input)
+        {
+            if (_input == null)
+            {
+                return "";
+            }
+            return _input.ToString().Trim();
+        }
+
+
+    }
+}

@@ -1,0 +1,18 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="_BGAOutput" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:BlockStation Customer="{ActivityBind _BGAOutput,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind _BGAOutput,Path=SessionType}" Editor="{ActivityBind _BGAOutput,Path=Editor}" ProcessType="MB" Station="{ActivityBind _BGAOutput,Path=Station}" Line="{ActivityBind _BGAOutput,Path=PdLine}" Key="{ActivityBind _BGAOutput,Path=Key}" />
+	<ns0:GetMB Customer="{ActivityBind _BGAOutput,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind _BGAOutput,Path=SessionType}" Editor="{ActivityBind _BGAOutput,Path=Editor}" Station="{ActivityBind _BGAOutput,Path=Station}" MBSnSessionKey="" x:Name="getMB1" Line="{ActivityBind _BGAOutput,Path=PdLine}" Key="{ActivityBind _BGAOutput,Path=Key}" />
+	<ns0:WaitInput Customer="{ActivityBind _BGAOutput,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind _BGAOutput,Path=SessionType}" Editor="{ActivityBind _BGAOutput,Path=Editor}" Station="{ActivityBind _BGAOutput,Path=Station}" Line="{ActivityBind _BGAOutput,Path=PdLine}" Key="{ActivityBind _BGAOutput,Path=Key}" />
+	<ns0:DBScope Station="{ActivityBind _BGAOutput,Path=Station}" x:Name="dbScope1" Key="{ActivityBind _BGAOutput,Path=Key}" SessionType="{ActivityBind _BGAOutput,Path=SessionType}">
+		<WhileActivity x:Name="whileActivity1">
+			<WhileActivity.Condition>
+				<RuleConditionReference ConditionName="addFinished" />
+			</WhileActivity.Condition>
+			<SequenceActivity x:Name="sequenceActivity1">
+				<ns0:AddRepairItem Customer="{ActivityBind _BGAOutput,Path=Customer}" x:Name="addRepairItem1" SessionType="{ActivityBind _BGAOutput,Path=SessionType}" Editor="{ActivityBind _BGAOutput,Path=Editor}" Station="{ActivityBind _BGAOutput,Path=Station}" Line="{ActivityBind _BGAOutput,Path=PdLine}" Key="{ActivityBind _BGAOutput,Path=Key}" />
+				<ns0:WaitInput Customer="{ActivityBind _BGAOutput,Path=Customer}" x:Name="waitInput2" SessionType="{ActivityBind _BGAOutput,Path=SessionType}" Editor="{ActivityBind _BGAOutput,Path=Editor}" Station="{ActivityBind _BGAOutput,Path=Station}" Line="{ActivityBind _BGAOutput,Path=PdLine}" Key="{ActivityBind _BGAOutput,Path=Key}" />
+			</SequenceActivity>
+		</WhileActivity>
+		<ns0:UpdateMBStatus Customer="{ActivityBind _BGAOutput,Path=Customer}" Station="{ActivityBind _BGAOutput,Path=Station}" SessionType="{ActivityBind _BGAOutput,Path=SessionType}" ManualStation="22" Editor="{ActivityBind _BGAOutput,Path=Editor}" IsPass="Pass" x:Name="updateMBStatus1" Line="{ActivityBind _BGAOutput,Path=PdLine}" Key="{ActivityBind _BGAOutput,Path=Key}" />
+		<ns0:WriteMBLog Customer="{ActivityBind _BGAOutput,Path=Customer}" LineSuffix="{x:Null}" Station="{ActivityBind _BGAOutput,Path=Station}" SessionType="{ActivityBind _BGAOutput,Path=SessionType}" ManualStation="{x:Null}" Editor="{ActivityBind _BGAOutput,Path=Editor}" IsPass="True" x:Name="writeMBLog1" IsSingle="True" Line="{ActivityBind _BGAOutput,Path=PdLine}" Key="{ActivityBind _BGAOutput,Path=Key}" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

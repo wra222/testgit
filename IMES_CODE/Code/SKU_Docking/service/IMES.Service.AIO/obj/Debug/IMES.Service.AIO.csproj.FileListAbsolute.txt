@@ -1,0 +1,9 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Service.AIO.exe.config
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Service.AIO.exe
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Service.AIO.pdb
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.AIO\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.AIO\obj\Debug\IMES.Service.IMESService.resources
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.AIO\obj\Debug\IMES.Service.ProjectInstaller.resources
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.AIO\obj\Debug\IMES.Service.AIO.csproj.GenerateResource.Cache
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.AIO\obj\Debug\IMES.Service.AIO.exe
+E:\IMES_CODE\Code\SKU_Docking\service\IMES.Service.AIO\obj\Debug\IMES.Service.AIO.pdb

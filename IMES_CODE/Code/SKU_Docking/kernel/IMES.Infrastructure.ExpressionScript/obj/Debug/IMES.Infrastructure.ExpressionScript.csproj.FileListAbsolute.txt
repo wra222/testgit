@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Infrastructure.ExpressionScript.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Infrastructure.ExpressionScript.pdb
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Infrastructure.ExpressionScript\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Infrastructure.ExpressionScript\obj\Debug\IMES.Infrastructure.ExpressionScript.dll
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Infrastructure.ExpressionScript\obj\Debug\IMES.Infrastructure.ExpressionScript.pdb

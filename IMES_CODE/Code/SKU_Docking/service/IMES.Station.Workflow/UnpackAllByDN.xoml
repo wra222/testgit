@@ -1,0 +1,59 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="_UnpackAllByDN" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" AddObjectWithSessionKey="{x:Null}" Station="{ActivityBind _UnpackAllByDN,Path=Station}" x:Name="getProduct1" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" InputType="ProductID" />
+	<ns0:CheckBSamModel Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" NotExistException="False" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" ExistException="True" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="{ActivityBind _UnpackAllByDN,Path=Station}" x:Name="checkBSamModel1" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" IsStopWF="True" />
+	<ns0:DBScope Station="{ActivityBind _UnpackAllByDN,Path=Station}" x:Name="dbScope1" Key="{ActivityBind _UnpackAllByDN,Path=Key}" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}">
+		<ns0:UnPackDelPiazzPart Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="unPackDelPiazzPart1" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="{ActivityBind _UnpackAllByDN,Path=Station}" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+		<ns0:UnPackCheckCOA Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="unPackCheckCOA1" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="{ActivityBind _UnpackAllByDN,Path=Station}" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+		<IfElseActivity x:Name="ifElseActivity3">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity7">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="isFind" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UnPackUpdateCOAMas Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="unPackUpdateCOAMas3" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="P1" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ifElseBranchActivity8" />
+		</IfElseActivity>
+		<ns0:CheckCOAForUnpackAllByDN Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="checkCOAForUnpackAllByDN1" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="{ActivityBind _UnpackAllByDN,Path=Station}" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+		<IfElseActivity x:Name="CheckCOA">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="ExistCOA" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UnPackUpdateCOAMas Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="unPackUpdateCOAMas1" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="P1" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ifElseBranchActivity2" />
+		</IfElseActivity>
+		<ns0:GetProductPartByPartType Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="getProductPartByPartType1" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" PartType="P1" Station="{ActivityBind _UnpackAllByDN,Path=Station}" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" PartDesc="Royalty" />
+		<IfElseActivity x:Name="ifElseActivity1">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity3">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="CheckRoyalty" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UnPackUpdateCOAMas Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="unPackUpdateCOAMas2" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="P1" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ifElseBranchActivity4" />
+		</IfElseActivity>
+		<ns0:GetProductPartByPartType Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="getProductPartByPartType2" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" PartType="P1" Station="{ActivityBind _UnpackAllByDN,Path=Station}" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" PartDesc="Home Card" />
+		<IfElseActivity x:Name="ifElseActivity2">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity5">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="CheckHomeCard" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteCSNLog Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" Station="P1" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" IsPass="0" Tp="CNCard" x:Name="writeCSNLog1" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+				<ns0:UnPackUpdateCSNMas Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="unPackUpdateCSNMas1" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="P1" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ifElseBranchActivity6" />
+		</IfElseActivity>
+		<ns0:UnPackProductInfoByDN Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="unPackProductInfoByDN1" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="{ActivityBind _UnpackAllByDN,Path=Station}" InfoType="KIT2" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+		<ns0:UnPackProductInfoByDN Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="unPackProductInfoByDN2" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="{ActivityBind _UnpackAllByDN,Path=Station}" InfoType="BoxId" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+		<ns0:UnPackProductInfoByDN Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="unPackProductInfoByDN3" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="{ActivityBind _UnpackAllByDN,Path=Station}" InfoType="UCC" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+		<ns0:UnPackProductPartByBomType Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="unPackProductPartByBomType1" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="{ActivityBind _UnpackAllByDN,Path=Station}" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+		<ns0:UnpackOSCOA Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="unpackOSCOA1" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="{ActivityBind _UnpackAllByDN,Path=Station}" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+		<ns0:UpdateProductStatus Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Status="Pass" Station="SP1" IsReturnStatoin="False" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+		<ns0:WriteProductLog Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="SP1" Status="Pass" IsSingle="True" Line="SuperUnpack-CM" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+		<ns0:UnPackUnpdateDnStatus Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="unPackUnpdateDnStatus1" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="{ActivityBind _UnpackAllByDN,Path=Station}" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+		<ns0:UnPackDelEDIBySN Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="unPackDelEDIBySN1" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="{ActivityBind _UnpackAllByDN,Path=Station}" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+		<ns0:UnPackProductByDN Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="unPackProductByDN1" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="{ActivityBind _UnpackAllByDN,Path=Station}" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+		<ns0:SetSAPShipmentZeroWeight Customer="{ActivityBind _UnpackAllByDN,Path=Customer}" x:Name="setSAPShipmentZeroWeight1" SessionType="{ActivityBind _UnpackAllByDN,Path=SessionType}" Editor="{ActivityBind _UnpackAllByDN,Path=Editor}" Station="{ActivityBind _UnpackAllByDN,Path=Station}" Line="{ActivityBind _UnpackAllByDN,Path=PdLine}" Key="{ActivityBind _UnpackAllByDN,Path=Key}" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

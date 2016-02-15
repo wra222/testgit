@@ -1,0 +1,52 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="PCATest" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetMB Customer="{ActivityBind PCATest,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind PCATest,Path=SessionType}" Editor="{ActivityBind PCATest,Path=Editor}" Station="{ActivityBind PCATest,Path=Station}" MBSnSessionKey="{x:Null}" x:Name="getMB1" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+	<ns0:BlockStation Customer="{ActivityBind PCATest,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind PCATest,Path=SessionType}" Editor="{ActivityBind PCATest,Path=Editor}" ProcessType="MB" Station="{ActivityBind PCATest,Path=Station}" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+	<ns0:CheckMac Customer="{ActivityBind PCATest,Path=Customer}" x:Name="checkMac1" SessionType="{ActivityBind PCATest,Path=SessionType}" Editor="{ActivityBind PCATest,Path=Editor}" Enabled="False" Station="{ActivityBind PCATest,Path=Station}" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+	<ns0:CheckAllowPass Customer="{ActivityBind PCATest,Path=Customer}" x:Name="checkAllowPass1" SessionType="{ActivityBind PCATest,Path=SessionType}" Editor="{ActivityBind PCATest,Path=Editor}" Enabled="False" Station="{ActivityBind PCATest,Path=Station}" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+	<ns0:CheckMBSnoforPCATest Customer="{ActivityBind PCATest,Path=Customer}" x:Name="checkMBSnoforPCATest1" SessionType="{ActivityBind PCATest,Path=SessionType}" Editor="{ActivityBind PCATest,Path=Editor}" Station="{ActivityBind PCATest,Path=Station}" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+	<ns0:WaitInput Customer="{ActivityBind PCATest,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind PCATest,Path=SessionType}" Editor="{ActivityBind PCATest,Path=Editor}" Station="{ActivityBind PCATest,Path=Station}" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+	<ns0:CheckInputPassForPCATest Customer="{ActivityBind PCATest,Path=Customer}" x:Name="checkInputPassForPCATest1" SessionType="{ActivityBind PCATest,Path=SessionType}" Editor="{ActivityBind PCATest,Path=Editor}" Station="{ActivityBind PCATest,Path=Station}" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="NoDefectBranchty">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="noDefect" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind PCATest,Path=Station}" x:Name="dbScope1" Key="{ActivityBind PCATest,Path=Key}" SessionType="{ActivityBind PCATest,Path=SessionType}">
+				<ns0:WritePCBTestLog Customer="{ActivityBind PCATest,Path=Customer}" x:Name="writePCBTestLog2" SessionType="{ActivityBind PCATest,Path=SessionType}" Editor="{ActivityBind PCATest,Path=Editor}" Station="{ActivityBind PCATest,Path=Station}" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+				<ns0:Alarm Customer="{ActivityBind PCATest,Path=Customer}" alarmType="MB" SessionType="{ActivityBind PCATest,Path=SessionType}" Editor="{ActivityBind PCATest,Path=Editor}" Enabled="False" Station="{ActivityBind PCATest,Path=Station}" x:Name="alarm2" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+				<ns0:UpdateMBStatus Customer="{ActivityBind PCATest,Path=Customer}" Station="{ActivityBind PCATest,Path=Station}" SessionType="{ActivityBind PCATest,Path=SessionType}" ManualStation="{x:Null}" Editor="{ActivityBind PCATest,Path=Editor}" IsPass="Pass" x:Name="updateMBStatus2" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+				<ns0:WriteMBLog Customer="{ActivityBind PCATest,Path=Customer}" Station="{ActivityBind PCATest,Path=Station}" SessionType="{ActivityBind PCATest,Path=SessionType}" Editor="{ActivityBind PCATest,Path=Editor}" IsPass="True" x:Name="writeMBLog2" IsSingle="True" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+				<ns0:DBScope Station="{x:Null}" x:Name="dbScope3" Key="{x:Null}" Enabled="False" SessionType="0">
+					<IfElseActivity x:Name="ifElseActivity3">
+						<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+							<IfElseBranchActivity.Condition>
+								<RuleConditionReference ConditionName="IsSA5andFru" />
+							</IfElseBranchActivity.Condition>
+							<ns0:WriteProductLog Customer="{ActivityBind PCATest,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind PCATest,Path=SessionType}" Editor="{ActivityBind PCATest,Path=Editor}" Station="{ActivityBind PCATest,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+						</IfElseBranchActivity>
+					</IfElseActivity>
+				</ns0:DBScope>
+			</ns0:DBScope>
+			<ns0:DBScope Station="{ActivityBind PCATest,Path=Station}" x:Name="dbScope4" Key="{ActivityBind PCATest,Path=Key}" SessionType="{ActivityBind PCATest,Path=SessionType}">
+				<IfElseActivity x:Name="ifElseActivity2">
+					<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="isVGA" />
+						</IfElseBranchActivity.Condition>
+						<ns0:ModifyLineforIsVB Customer="{ActivityBind PCATest,Path=Customer}" x:Name="modifyLineforIsVB1" SessionType="{ActivityBind PCATest,Path=SessionType}" Editor="{ActivityBind PCATest,Path=Editor}" Enabled="False" Station="{ActivityBind PCATest,Path=Station}" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+						<ns0:UpdateMBStatus Customer="{ActivityBind PCATest,Path=Customer}" ManualStation="{x:Null}" SessionType="{ActivityBind PCATest,Path=SessionType}" x:Name="updateMBStatus3" Editor="{ActivityBind PCATest,Path=Editor}" IsPass="Pass" Station="30" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+						<ns0:WriteMBLog Customer="{ActivityBind PCATest,Path=Customer}" Station="30" SessionType="{ActivityBind PCATest,Path=SessionType}" Editor="{ActivityBind PCATest,Path=Editor}" IsPass="True" x:Name="writeMBLog3" IsSingle="True" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="DefectBranch">
+			<ns0:DBScope Station="{ActivityBind PCATest,Path=Station}" x:Name="dbScope2" Key="{ActivityBind PCATest,Path=Key}" SessionType="{ActivityBind PCATest,Path=SessionType}">
+				<ns0:WritePCBTestLog Customer="{ActivityBind PCATest,Path=Customer}" x:Name="writePCBTestLog1" SessionType="{ActivityBind PCATest,Path=SessionType}" Editor="{ActivityBind PCATest,Path=Editor}" Station="{ActivityBind PCATest,Path=Station}" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+				<ns0:Alarm Customer="{ActivityBind PCATest,Path=Customer}" alarmType="MB" SessionType="{ActivityBind PCATest,Path=SessionType}" Editor="{ActivityBind PCATest,Path=Editor}" Enabled="False" Station="{ActivityBind PCATest,Path=Station}" x:Name="alarm1" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+				<ns0:UpdateMBStatus Customer="{ActivityBind PCATest,Path=Customer}" Station="{ActivityBind PCATest,Path=Station}" SessionType="{ActivityBind PCATest,Path=SessionType}" ManualStation="{x:Null}" Editor="{ActivityBind PCATest,Path=Editor}" IsPass="Fail" x:Name="updateMBStatus1" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+				<ns0:WriteMBLog Customer="{ActivityBind PCATest,Path=Customer}" Station="{ActivityBind PCATest,Path=Station}" SessionType="{ActivityBind PCATest,Path=SessionType}" Editor="{ActivityBind PCATest,Path=Editor}" IsPass="False" x:Name="writeMBLog1" IsSingle="True" Line="{ActivityBind PCATest,Path=PdLine}" Key="{ActivityBind PCATest,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

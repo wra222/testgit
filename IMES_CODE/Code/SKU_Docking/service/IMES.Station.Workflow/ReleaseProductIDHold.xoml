@@ -1,0 +1,39 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="ReleaseProductIDHold" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<IfElseActivity x:Name="ifCUSTSNorModel">
+		<IfElseBranchActivity x:Name="QueryByCustSN">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="IsCUSTSN" />
+			</IfElseBranchActivity.Condition>
+			<ns0:GetProductHoldInfo Customer="{ActivityBind ReleaseProductIDHold,Path=Customer}" NotExistException="True" SessionType="{ActivityBind ReleaseProductIDHold,Path=SessionType}" Editor="{ActivityBind ReleaseProductIDHold,Path=Editor}" Station="{ActivityBind ReleaseProductIDHold,Path=Station}" x:Name="getProductHoldInfo1" InputSessionKey="CustSN" Line="{ActivityBind ReleaseProductIDHold,Path=PdLine}" Key="{ActivityBind ReleaseProductIDHold,Path=Key}" />
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="QueryByPrdid">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="isprdid" />
+			</IfElseBranchActivity.Condition>
+			<ns0:GetProductHoldInfo Customer="{ActivityBind ReleaseProductIDHold,Path=Customer}" NotExistException="True" SessionType="{ActivityBind ReleaseProductIDHold,Path=SessionType}" Editor="{ActivityBind ReleaseProductIDHold,Path=Editor}" Station="{ActivityBind ReleaseProductIDHold,Path=Station}" x:Name="getProductHoldInfo3" InputSessionKey="ProductID" Line="{ActivityBind ReleaseProductIDHold,Path=PdLine}" Key="{ActivityBind ReleaseProductIDHold,Path=Key}" />
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="QueryByModel">
+			<ns0:GetProductHoldInfo Customer="{ActivityBind ReleaseProductIDHold,Path=Customer}" NotExistException="True" SessionType="{ActivityBind ReleaseProductIDHold,Path=SessionType}" Editor="{ActivityBind ReleaseProductIDHold,Path=Editor}" Station="{ActivityBind ReleaseProductIDHold,Path=Station}" x:Name="getProductHoldInfo2" InputSessionKey="ModelName" Line="{ActivityBind ReleaseProductIDHold,Path=PdLine}" Key="{ActivityBind ReleaseProductIDHold,Path=Key}" />
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<ns0:WaitInput Customer="{ActivityBind ReleaseProductIDHold,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind ReleaseProductIDHold,Path=SessionType}" Editor="{ActivityBind ReleaseProductIDHold,Path=Editor}" Station="{ActivityBind ReleaseProductIDHold,Path=Station}" Line="{ActivityBind ReleaseProductIDHold,Path=PdLine}" Key="{ActivityBind ReleaseProductIDHold,Path=Key}" />
+	<IfElseActivity x:Name="ReleaseHold">
+		<IfElseBranchActivity x:Name="IsReleaseHold">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="IsReleaseHold" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind ReleaseProductIDHold,Path=Station}" x:Name="dbScope1" Key="{ActivityBind ReleaseProductIDHold,Path=Key}" SessionType="{ActivityBind ReleaseProductIDHold,Path=SessionType}">
+				<ns0:WriteMultiProductLog Customer="{ActivityBind ReleaseProductIDHold,Path=Customer}" x:Name="writeMultiProductLog1" SessionType="{ActivityBind ReleaseProductIDHold,Path=SessionType}" Editor="{ActivityBind ReleaseProductIDHold,Path=Editor}" Station="{ActivityBind ReleaseProductIDHold,Path=Station}" Status="Pass" Line="{ActivityBind ReleaseProductIDHold,Path=PdLine}" Key="{ActivityBind ReleaseProductIDHold,Path=Key}" />
+				<ns0:UpdateProductStatusToPreStation Customer="{ActivityBind ReleaseProductIDHold,Path=Customer}" x:Name="updateProductStatusToPreStation1" SessionType="{ActivityBind ReleaseProductIDHold,Path=SessionType}" Editor="{ActivityBind ReleaseProductIDHold,Path=Editor}" Station="{ActivityBind ReleaseProductIDHold,Path=Station}" IsSingle="False" Line="{ActivityBind ReleaseProductIDHold,Path=PdLine}" Key="{ActivityBind ReleaseProductIDHold,Path=Key}" IsReleaseHold="True" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="GoToStationCase">
+			<ns0:DBScope Station="{ActivityBind ReleaseProductIDHold,Path=Station}" x:Name="dbScope2" Key="{ActivityBind ReleaseProductIDHold,Path=Key}" SessionType="{ActivityBind ReleaseProductIDHold,Path=SessionType}">
+				<ns0:UnPackProductPartByStation Customer="{ActivityBind ReleaseProductIDHold,Path=Customer}" x:Name="unPackProductPartByStation1" SessionType="{ActivityBind ReleaseProductIDHold,Path=SessionType}" Editor="{ActivityBind ReleaseProductIDHold,Path=Editor}" Station="{ActivityBind ReleaseProductIDHold,Path=Station}" IsSingle="False" Line="{ActivityBind ReleaseProductIDHold,Path=PdLine}" Key="{ActivityBind ReleaseProductIDHold,Path=Key}" IsReleaseHold="False" />
+				<ns0:WriteMultiProductLog Customer="{ActivityBind ReleaseProductIDHold,Path=Customer}" x:Name="writeMultiProductLog2" SessionType="{ActivityBind ReleaseProductIDHold,Path=SessionType}" Editor="{ActivityBind ReleaseProductIDHold,Path=Editor}" Station="{ActivityBind ReleaseProductIDHold,Path=Station}" Status="Pass" Line="{ActivityBind ReleaseProductIDHold,Path=PdLine}" Key="{ActivityBind ReleaseProductIDHold,Path=Key}" />
+				<ns0:UpdateProductStatusToPreStation Customer="{ActivityBind ReleaseProductIDHold,Path=Customer}" x:Name="updateProductStatusToPreStation2" SessionType="{ActivityBind ReleaseProductIDHold,Path=SessionType}" Editor="{ActivityBind ReleaseProductIDHold,Path=Editor}" Station="{ActivityBind ReleaseProductIDHold,Path=Station}" IsSingle="False" Line="{ActivityBind ReleaseProductIDHold,Path=PdLine}" Key="{ActivityBind ReleaseProductIDHold,Path=Key}" IsReleaseHold="True" />
+				<ns0:WriteForceNWCMultiProduct Customer="{ActivityBind ReleaseProductIDHold,Path=Customer}" x:Name="writeForceNWCMultiProduct1" SessionType="{ActivityBind ReleaseProductIDHold,Path=SessionType}" Editor="{ActivityBind ReleaseProductIDHold,Path=Editor}" Station="{ActivityBind ReleaseProductIDHold,Path=Station}" IsSingle="False" Line="{ActivityBind ReleaseProductIDHold,Path=PdLine}" Key="{ActivityBind ReleaseProductIDHold,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

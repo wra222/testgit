@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IMES.Infrastructure.WorkflowRuntime</name>
+    </assembly>
+    <members>
+        <member name="M:IMES.Infrastructure.WorkflowRuntime.WorkflowRuntimeManager.CreateFisWorkflow(System.Type,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            创建Workflow实例
+            </summary>
+            <param name="workflowType">workflow类型</param>
+            <param name="parameters">workflow的输入参数</param>
+            <returns>创建出的workflow实例</returns>
+        </member>
+        <member name="M:IMES.Infrastructure.WorkflowRuntime.WorkflowRuntimeManager.CreateXomlFisWorkflow(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            
+            </summary>
+            <param name="markupFileName"></param>
+            <param name="rulesMarkupFileName"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IMES.Infrastructure.WorkflowRuntime.WorkflowRuntimeManager._workflowRuntime_WorkflowTerminated(System.Object,System.Workflow.Runtime.WorkflowTerminatedEventArgs)">
+            <summary>
+            WorkflowTerminated事件的处理方法
+            </summary>
+            <param name="sender">事件发起对象</param>
+            <param name="e">事件参数</param>
+        </member>
+        <member name="M:IMES.Infrastructure.WorkflowRuntime.WorkflowRuntimeManager._workflowRuntime_WorkflowCompleted(System.Object,System.Workflow.Runtime.WorkflowCompletedEventArgs)">
+            <summary>
+            WorkflowCompleted事件的处理方法
+            </summary>
+            <param name="sender">事件发起对象</param>
+            <param name="e">事件参数</param>
+        </member>
+    </members>
+</doc>

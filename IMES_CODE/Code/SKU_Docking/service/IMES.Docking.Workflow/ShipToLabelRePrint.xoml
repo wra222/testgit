@@ -1,0 +1,19 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="ShipToLabelRePrint" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind ShipToLabelRePrint,Path=Customer}" NotExistException="CHK849" SessionType="{ActivityBind ShipToLabelRePrint,Path=SessionType}" Editor="{ActivityBind ShipToLabelRePrint,Path=Editor}" Station="{ActivityBind ShipToLabelRePrint,Path=Station}" x:Name="getProduct1" Line="{ActivityBind ShipToLabelRePrint,Path=PdLine}" Key="{ActivityBind ShipToLabelRePrint,Path=Key}" InputType="CustSN" />
+	<ns0:CheckLogForShipToLabelRePrint Customer="{ActivityBind ShipToLabelRePrint,Path=Customer}" x:Name="checkLogForShipToLabelRePrint1" SessionType="{ActivityBind ShipToLabelRePrint,Path=SessionType}" Editor="{ActivityBind ShipToLabelRePrint,Path=Editor}" Station="{ActivityBind ShipToLabelRePrint,Path=Station}" Line="{ActivityBind ShipToLabelRePrint,Path=PdLine}" Key="{ActivityBind ShipToLabelRePrint,Path=Key}" />
+	<ns0:GetCartonByProduct Customer="{ActivityBind ShipToLabelRePrint,Path=Customer}" x:Name="getCartonByProduct1" SessionType="{ActivityBind ShipToLabelRePrint,Path=SessionType}" Editor="{ActivityBind ShipToLabelRePrint,Path=Editor}" Station="{ActivityBind ShipToLabelRePrint,Path=Station}" Line="{ActivityBind ShipToLabelRePrint,Path=PdLine}" Key="{ActivityBind ShipToLabelRePrint,Path=Key}" />
+	<ns0:GetDeliveryByProduct Customer="{ActivityBind ShipToLabelRePrint,Path=Customer}" x:Name="getDeliveryByProduct1" SessionType="{ActivityBind ShipToLabelRePrint,Path=SessionType}" Editor="{ActivityBind ShipToLabelRePrint,Path=Editor}" Station="{ActivityBind ShipToLabelRePrint,Path=Station}" Line="{ActivityBind ShipToLabelRePrint,Path=PdLine}" Key="{ActivityBind ShipToLabelRePrint,Path=Key}" />
+	<ns0:CheckPrintType Customer="{ActivityBind ShipToLabelRePrint,Path=Customer}" x:Name="checkPrintType1" SessionType="{ActivityBind ShipToLabelRePrint,Path=SessionType}" Editor="{ActivityBind ShipToLabelRePrint,Path=Editor}" Station="{ActivityBind ShipToLabelRePrint,Path=Station}" Line="{ActivityBind ShipToLabelRePrint,Path=PdLine}" Key="{ActivityBind ShipToLabelRePrint,Path=Key}" />
+	<ns0:DBScope Station="{ActivityBind ShipToLabelRePrint,Path=Station}" x:Name="dbScope1" Key="{ActivityBind ShipToLabelRePrint,Path=Key}" SessionType="{ActivityBind ShipToLabelRePrint,Path=SessionType}">
+		<ns0:WriteRePrintLog Customer="{ActivityBind ShipToLabelRePrint,Path=Customer}" x:Name="writeRePrintLog1" SessionType="{ActivityBind ShipToLabelRePrint,Path=SessionType}" Editor="{ActivityBind ShipToLabelRePrint,Path=Editor}" Station="{ActivityBind ShipToLabelRePrint,Path=Station}" Line="{ActivityBind ShipToLabelRePrint,Path=PdLine}" Key="{ActivityBind ShipToLabelRePrint,Path=Key}" />
+	</ns0:DBScope>
+	<IfElseActivity x:Name="templateORedits">
+		<IfElseBranchActivity x:Name="template">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="ifTemplate" />
+			</IfElseBranchActivity.Condition>
+			<ns0:Print Customer="{ActivityBind ShipToLabelRePrint,Path=Customer}" x:Name="print1" SessionType="{ActivityBind ShipToLabelRePrint,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind ShipToLabelRePrint,Path=Editor}" IsReprint="True" Station="{ActivityBind ShipToLabelRePrint,Path=Station}" MOFrom="No" ModelFrom="No" Line="{ActivityBind ShipToLabelRePrint,Path=PdLine}" Key="{ActivityBind ShipToLabelRePrint,Path=Key}" DnFrom="No" />
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="edits" />
+	</IfElseActivity>
+</ns0:BaseFlow>

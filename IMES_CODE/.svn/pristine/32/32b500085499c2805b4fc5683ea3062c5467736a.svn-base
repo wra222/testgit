@@ -1,0 +1,657 @@
+﻿// 2010-01-29 Liu Dong(eB1-4)         Modify ITC-1122-0025 
+// 2010-02-10 Liu Dong(eB1-4)         Modify ITC-1122-0084 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Configuration;
+using System.Reflection;
+using IMES.DataModel;
+using System.Net;
+using IMES.Infrastructure.Utility.Tools;
+using log4net;
+
+namespace IMES.Infrastructure.Utility.Cache
+{
+    /// <summary>
+    /// Cache数据更新协调管理器
+    /// </summary>
+    public class DataChangeMediator
+    {
+        #region . LocalChangeDemand .
+        //private static Queue<CacheUpdateInfo> _localChangeDemands = new Queue<CacheUpdateInfo>();
+        //private static object _syncObj_localChangeDemands = new object();
+        /// <summary>
+        /// 增加一个Cache变更请求
+        /// </summary>
+        /// <param name="item"></param>
+        public static void AddChangeDemand(CacheUpdateInfo item)
+        {
+            #region OLD
+            ////lock (_syncObj_localChangeDemands)
+            ////{
+            ////    _localChangeDemands.Enqueue(item);   
+            ////}
+            //string err = "Bad Cache Subscribing IP List In Config File!";
+            //// 2010-02-10 Liu Dong(eB1-4)         Modify ITC-1122-0084 
+            //string IPAppslst = System.Configuration.ConfigurationManager.AppSettings["CSIPL"];
+            //if (!string.IsNullOrEmpty(IPAppslst))
+            //{
+            //    string[] IPAppses = IPAppslst.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+            //    if (IPAppses != null && IPAppses.Length > 0)
+            //    {
+            //        foreach (string IPApps in IPAppses)
+            //        {
+            //            string[] strs = IPApps.Split(new string[] { "[", "]" }, StringSplitOptions.RemoveEmptyEntries);
+            //            if (strs != null && strs.Length > 1)
+            //            {
+            //                item.CacheServerIP = strs[0].Trim();
+            //                string[] strs_i = strs[1].Split(new string[] { "|" }, StringSplitOptions.RemoveEmptyEntries);
+            //                if (strs_i != null && strs_i.Length > 0)
+            //                {
+            //                    foreach (string appName in strs_i)
+            //                    {
+            //                        item.AppName = appName.Trim();
+            //                        AddCacheUpdate(item);
+            //                    }
+            //                }
+            //                else
+            //                    throw new Exception(err);
+            //            }
+            //            else
+            //                throw new Exception(err);
+            //        }
+            //    }
+            //    else
+            //        throw new Exception(err);
+            //}
+            //else
+            //    throw new Exception(err);
+            #endregion
+
+            IList<string[]> ipps = GetCSIPLFromCacheUpdateServer();
+            if (ipps != null && ipps.Count > 0)
+            {
+                foreach(string[] entry in ipps)
+                {
+                    item.CacheServerIP = entry[0].Trim();
+                    item.AppName = entry[1].Trim();
+                    AddCacheUpdate(item);
+                }
+            }
+        }
+        #endregion
+
+        #region . Tools .
+        private static Type GetImplementedRepository(string interfaceName)
+        {
+            Type RTp = null;
+            //string path = ConfigurationManager.AppSettings.Get("RepositoryImplAssembly").ToString();
+            // Go with Vincent's idea to support out of box repository implementation
+            string[] paths = ConfigurationManager.AppSettings.Get("RepositoryImplAssembly").ToString().Split(new char[] {',',';'});
+            foreach (string path in paths)
+            {
+                Type[] tps = Assembly.Load(path).GetTypes();
+                foreach (Type tp in tps)
+                {
+                    if (tp.GetInterface(interfaceName) != null)
+                    {
+                        RTp = tp;
+                        break;
+                    }
+                }
+                if (RTp != null)
+                {
+                    break;
+                }
+            }
+            return RTp;
+        }
+
+        private static object EmbodyAnInstance(Type RTp)
+        {
+            return Activator.CreateInstance(RTp);
+        }
+
+        private static ICache GetRAsCache(string interfaceName)
+        {
+            return (ICache)EmbodyAnInstance(GetImplementedRepository(interfaceName));
+        }
+
+        //private static ICache GetRAsCacheWithSwitchCheck(string interfaceName)
+        //{
+        //    string key = interfaceName.Replace("Repository","").TrimStart('I');
+        //    if (CheckCacheSwitchOpen(key))
+        //        return GetRAsCache(interfaceName);
+        //    else
+        //        return null;
+        //}
+        //private static void ExcecuteAMethod(string interfaceName, string methodName)
+        //{
+        //    Type tp = GetImplementedRepository(interfaceName);
+        //    object obj = EmbodyAnInstance(tp);
+        //    MethodInfo mi = tp.GetMethod(methodName);
+        //    return mi.Invoke(obj, null);
+        //}
+
+        private static void ExcecuteAMethodWithSwitchCheck(string interfaceName, string methodName)
+        {
+            Type tp = GetImplementedRepository(interfaceName);
+            object obj = EmbodyAnInstance(tp);
+            MethodInfo mi = tp.GetMethod(methodName,BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+            MethodInfo mis = tp.GetMethod("IsCached",BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+            try
+            {
+                if ((bool)mis.Invoke(obj, null))
+                    mi.Invoke(obj, null);
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorFormat("Cache Proactive Load Error. InterfaceName: {0}, MethodName:{1}, Error:{2}.", interfaceName, methodName, ex.InnerException.Message);
+                throw ex.InnerException;
+            }
+        }
+
+        private static int GetSleepMilliseconds()
+        {
+            int iCacheStaleCheckInterval;
+            string CacheStaleCheckInterval = System.Configuration.ConfigurationManager.AppSettings["CacheStaleCheckInterval"];
+            if (string.IsNullOrEmpty(CacheStaleCheckInterval))
+                throw new Exception("Please maintain the CacheStaleCheckInterval property in AppSettings area of app.config file.");
+            else if (int.TryParse(CacheStaleCheckInterval, out iCacheStaleCheckInterval) && iCacheStaleCheckInterval > 0)
+                iCacheStaleCheckInterval *= 60000;
+            else
+                throw new Exception("The CacheStaleCheckInterval property in AppSettings area of app.config file should be a positive integer.");
+            return iCacheStaleCheckInterval;
+        }
+
+        private static string GetIPAddress()
+        {
+            string strHostName = Dns.GetHostName(); //得到本机的主机名
+            IPHostEntry ipEntry = Dns.GetHostEntry(strHostName); //取得本机IP
+            foreach (IPAddress ip in ipEntry.AddressList)
+            {
+                if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("Cannot get local IP address.");
+        }
+
+        private static string GetProcessName()
+        {
+            string ret = System.Diagnostics.Process.GetCurrentProcess().ProcessName;
+            return ret;
+        }
+        #endregion
+
+        #region . MiscRepository .
+        private static object _miscRepository = null;
+
+        private static MethodInfo _mthInfo_getAllCacheUpdate = null;
+        private static CacheUpdateInfo[] GetAllCacheUpdate(string IP, string appName, string[] types)
+        {
+            if (null == _miscRepository)
+            {
+                Type miscRTp = GetImplementedMiscRepository();
+                _miscRepository = EmbodyAnInstance(miscRTp);
+            }
+            if (null == _mthInfo_getAllCacheUpdate)
+            {
+                Type miscRTp = GetImplementedMiscRepository();
+                _mthInfo_getAllCacheUpdate = miscRTp.GetMethod("GetAllCacheUpdate");
+            }
+            try
+            {
+                return (CacheUpdateInfo[])_mthInfo_getAllCacheUpdate.Invoke(_miscRepository, new object[] { IP, appName, types });
+            }
+            catch (Exception ex)
+            {
+                throw ex.InnerException;
+            }
+        }
+
+        private static MethodInfo _mthInfo_deleteCacheUpdate = null;
+        private static int DeleteCacheUpdate(CacheUpdateInfo cacheUpdateInfo)
+        {
+            if (null == _miscRepository)
+            {
+                Type miscRTp = GetImplementedMiscRepository();
+                _miscRepository = EmbodyAnInstance(miscRTp);
+            }
+            if (null == _mthInfo_deleteCacheUpdate)
+            {
+                Type miscRTp = GetImplementedMiscRepository();
+                _mthInfo_deleteCacheUpdate = miscRTp.GetMethod("DeleteCacheUpdate");
+            }
+            try
+            {
+                return (int)_mthInfo_deleteCacheUpdate.Invoke(_miscRepository, new object[] { cacheUpdateInfo });
+            }
+            catch (Exception ex)
+            {
+                throw ex.InnerException;
+            }
+        }
+
+        private static MethodInfo _mthInfo_deleteCacheUpdateForSoloTypes = null;
+        private static int DeleteCacheUpdateForSoloTypes(CacheUpdateInfo cacheUpdateInfo, string[] types)
+        {
+            if (null == _miscRepository)
+            {
+                Type miscRTp = GetImplementedMiscRepository();
+                _miscRepository = EmbodyAnInstance(miscRTp);
+            }
+            if (null == _mthInfo_deleteCacheUpdateForSoloTypes)
+            {
+                Type miscRTp = GetImplementedMiscRepository();
+                _mthInfo_deleteCacheUpdateForSoloTypes = miscRTp.GetMethod("DeleteCacheUpdateForSoloTypes");
+            }
+            try
+            {
+                return (int)_mthInfo_deleteCacheUpdateForSoloTypes.Invoke(_miscRepository, new object[] { cacheUpdateInfo, types });
+            }
+            catch (Exception ex)
+            {
+                throw ex.InnerException;
+            }
+        }
+
+        private static MethodInfo _mthInfo_addCacheUpdate = null;
+        private static void AddCacheUpdate(CacheUpdateInfo cacheUpdateInfo)
+        {
+            if (null == _miscRepository)
+            {
+                Type miscRTp = GetImplementedMiscRepository();
+                _miscRepository = EmbodyAnInstance(miscRTp);
+            }
+            if (null == _mthInfo_addCacheUpdate)
+            {
+                Type miscRTp = GetImplementedMiscRepository();
+                _mthInfo_addCacheUpdate = miscRTp.GetMethod("AddCacheUpdate");
+            }
+            try
+            {
+                _mthInfo_addCacheUpdate.Invoke(_miscRepository, new object[] { cacheUpdateInfo });
+            }
+            catch (Exception ex)
+            {
+                throw ex.InnerException;
+            }
+        }
+
+        private static MethodInfo _mthInfo_deleteCacheUpdateByIPAddressAndAppName = null;
+        private static void DeleteCacheUpdateByIPAddressAndAppName(string IP, string appName)
+        {
+            if (null == _miscRepository )
+            {
+                Type miscRTp = GetImplementedMiscRepository();
+                _miscRepository = EmbodyAnInstance(miscRTp);
+            }
+            if (null == _mthInfo_deleteCacheUpdateByIPAddressAndAppName)
+            {
+                Type miscRTp = GetImplementedMiscRepository();
+                _mthInfo_deleteCacheUpdateByIPAddressAndAppName = miscRTp.GetMethod("DeleteCacheUpdateByIPAddressAndAppName");
+            }
+            try
+            {
+                _mthInfo_deleteCacheUpdateByIPAddressAndAppName.Invoke(_miscRepository, new object[] { IP, appName });
+            }
+            catch (Exception ex)
+            {
+                throw ex.InnerException;
+            }
+        }
+
+        private static MethodInfo _mthInfo_getCSIPLFromCacheUpdateServer = null;
+        private static IList<string[]> GetCSIPLFromCacheUpdateServer()
+        {
+            if (null == _miscRepository)
+            {
+                Type miscRTp = GetImplementedMiscRepository();
+                _miscRepository = EmbodyAnInstance(miscRTp);
+            }
+            if (null == _mthInfo_getCSIPLFromCacheUpdateServer)
+            {
+                Type miscRTp = GetImplementedMiscRepository();
+                _mthInfo_getCSIPLFromCacheUpdateServer = miscRTp.GetMethod("GetCSIPLFromCacheUpdateServer");
+            }
+            try
+            {
+                return (IList<string[]>)_mthInfo_getCSIPLFromCacheUpdateServer.Invoke(_miscRepository, null);
+            }
+            catch (Exception ex)
+            {
+                throw ex.InnerException;
+            }
+        }
+
+        private static Type _miscRTp = null;
+        private static Type GetImplementedMiscRepository()
+        {
+            if (_miscRTp == null)
+            {
+                _miscRTp = GetImplementedRepository("IMiscRepository");
+            }
+            return _miscRTp;
+        }
+        #endregion
+
+        private static object _syncObj = new object();
+        //private int SleepMilliseconds = -1;
+        private static log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        private static void LoadProactiveData()
+        {
+            ExcecuteAMethodWithSwitchCheck("IDefectRepository", "LoadAllCache");
+            ExcecuteAMethodWithSwitchCheck("IDefectInfoRepository", "LoadAllCache"); //Slower
+            ExcecuteAMethodWithSwitchCheck("IStationRepository", "LoadAllCache"); //StationType 不符合規範, 會報錯!
+            ExcecuteAMethodWithSwitchCheck("ILineRepository", "LoadAllCache");
+            ExcecuteAMethodWithSwitchCheck("IProcessRepository", "LoadAllCache");
+            ExcecuteAMethodWithSwitchCheck("IFamilyRepository", "LoadAllCacheQCRatio");
+        }
+
+        private static void ClearSoloCachedData()
+        {
+            ExcecuteAMethodWithSwitchCheck("IPartRepository", "ClearCache");
+            ExcecuteAMethodWithSwitchCheck("IFamilyRepository", "ClearCache");
+            ExcecuteAMethodWithSwitchCheck("IModelRepository", "ClearCache");
+            ExcecuteAMethodWithSwitchCheck("IBOMRepository", "ClearCache");
+            ExcecuteAMethodWithSwitchCheck("IModelWeightRepository", "ClearCache");
+            ExcecuteAMethodWithSwitchCheck("IModelToleranceRepository", "ClearCache");
+        }
+
+        /// <summary>
+        /// 开始处理线程
+        /// </summary>
+        public static void Start()
+        {
+            logger.Error(GetProcessName());
+            lock (_syncObj)
+            {
+                ClearBygoneUpdateRequest();
+
+                LoadProactiveData();
+            }
+            //DataChangeMediator mediator = new DataChangeMediator();
+            Thread threadMediator = new Thread(new ThreadStart(Process));
+            threadMediator.Start();
+        }
+
+        private static void ClearBygoneUpdateRequest()
+        {
+            DeleteCacheUpdateByIPAddressAndAppName(GetIPAddress(),GetProcessName());
+        }
+
+        /// <summary>
+        /// 处理线程的过程
+        /// </summary>
+        private static void Process()
+        {
+            bool serviceStopped = false;
+            while (!serviceStopped)
+            {
+                try
+                {
+                    int interval = GetSleepMilliseconds();
+                    //Thread.Sleep(interval);
+                    serviceStopped = BackgroundThreadNotifier.ServiceStopNotifier.WaitOne(interval);
+                    if (!serviceStopped)
+                    {
+                        ProcessOnce();
+                    }
+
+                    // 2010-01-29 Liu Dong(eB1-4)         Modify ITC-1122-0025 
+                    #region
+                    //For local Change
+                    //lock (_syncObj_localChangeDemands)
+                    //{
+                    //    while (_localChangeDemands.Count > 0)
+                    //    {
+                    //        try
+                    //        {
+                    //            CacheUpdateInfo cui = _localChangeDemands.Dequeue();
+                    //            ProcessItem(cui);
+                    //        }
+                    //        catch (Exception ex)
+                    //        {
+                    //            Console.Write("Local Change: " + ex.Message);
+                    //        }
+                    //    }
+                    //}
+                    #endregion
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.Message);
+                    logger.Error(ex);
+                }
+            }
+        }
+
+        private static IList<string> _soloTypes = new List<string>(new string[] { CacheType.BOM, CacheType.Family, CacheType.Model, CacheType.ModelTolerance, CacheType.ModelWeight, CacheType.Part });
+        private static IList<string> _nonSoloTypes = new List<string>(new string[] { CacheType.DefectCode, CacheType.DefectInfo, CacheType.Process, CacheType.Station, CacheType.Line, CacheType.QCRatio });
+
+        private static void ProcessOnce()
+        {
+            lock (_syncObj)
+            {
+                CacheUpdateInfo[] updateInfos_Solo = GetAllCacheUpdate(GetIPAddress(), GetProcessName(), _soloTypes.ToArray());
+                if (updateInfos_Solo != null && updateInfos_Solo.Length > 0)
+                {
+                    int succCnt = 0;
+                    int errrCnt = 0;
+                    foreach (CacheUpdateInfo item in updateInfos_Solo)
+                    {
+                        try
+                        {
+                            if (ProcessItem(item))
+                            {
+                                succCnt++;
+                                if (logger.IsInfoEnabled)
+                                {
+                                    logger.InfoFormat("Solo-Cache Updated. ID: {0}, Type:{1}, Item:{2}.", item.ID, item.Type, item.Item);
+                                }
+                            }
+                            else
+                            {
+                                if (logger.IsInfoEnabled)
+                                {
+                                    logger.InfoFormat("Solo-Cache Abnormal. ID: {0}, Type:{1}, Item:{2}. Cannot find the Assembly or Switch Off.", item.ID, item.Type, item.Item);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            errrCnt++;
+                            logger.ErrorFormat("Solo-Cache Change Error. ID: {0}, Type:{1}, Key:{2}, Error:{3}.", item.ID, item.Type, item.Item, ex.Message);
+                        }
+                    }
+                    if (logger.IsInfoEnabled)
+                    {
+                        logger.InfoFormat("Solo-Cache Updating Statistic: Total:{0}, Succeded:{1}, Error:{2}.", updateInfos_Solo.Length, succCnt.ToString(), errrCnt.ToString());
+                    }
+                    CacheUpdateInfo condition = updateInfos_Solo.Last();
+                    int afctRCnt = DeleteCacheUpdateForSoloTypes(condition, _soloTypes.ToArray());
+                    if (logger.IsInfoEnabled)
+                    {
+                        logger.InfoFormat("Solo-Cache DB Updated Statistic: Rows affected:{0}.", afctRCnt.ToString());
+                    }
+                }
+
+                CacheUpdateInfo[] updateInfos_NonSolo = GetAllCacheUpdate(GetIPAddress(), GetProcessName(), _nonSoloTypes.ToArray());// 2010-02-10 Liu Dong(eB1-4)         Modify ITC-1122-0084 
+                if (updateInfos_NonSolo != null && updateInfos_NonSolo.Length > 0)
+                {
+                    int succCnt = 0;
+                    int errrCnt = 0;
+                    int afctRCnt = 0;
+                    foreach (CacheUpdateInfo item in updateInfos_NonSolo)
+                    {
+                        try
+                        {
+                            if (ProcessItem(item))
+                            {
+                                succCnt++;
+                                afctRCnt += DeleteCacheUpdate(item);
+                                if (logger.IsInfoEnabled)
+                                {
+                                    logger.InfoFormat("NonSolo-Cache Updated. ID: {0}, Type:{1}, Item:{2}.", item.ID, item.Type, item.Item);
+                                }
+                            }
+                            else
+                            {
+                                if (logger.IsInfoEnabled)
+                                {
+                                    logger.InfoFormat("NonSolo-Cache Abnormal. ID: {0}, Type:{1}, Item:{2}. Cannot find the Assembly or Switch Off.", item.ID, item.Type, item.Item);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            errrCnt++;
+                            logger.ErrorFormat("NonSolo-Cache Change Error. ID: {0}, Type:{1}, Key:{2}, Error:{3}.", item.ID, item.Type, item.Item, ex.Message);
+                        }
+                    }
+
+                    if (logger.IsInfoEnabled)
+                    {
+                        logger.InfoFormat("NonSolo-Cache Updating Statistic: Total:{0}, Succeded:{1}, Error:{2}.", updateInfos_NonSolo.Length, succCnt.ToString(), errrCnt.ToString());
+                        logger.InfoFormat("NonSolo-Cache DB Updated Statistic: Rows affected:{0}.", afctRCnt.ToString());
+                    }
+                }
+            }
+        }
+
+        private static bool ProcessItem(CacheUpdateInfo item)
+        {
+            ICache worker = null;
+            switch (item.Type)
+            {
+                case CacheType.Part:
+                    worker = GetRAsCache("IPartRepository");
+                    break;
+
+                case CacheType.Family:
+                case CacheType.QCRatio:
+                    worker = GetRAsCache("IFamilyRepository");
+                    break;
+
+                case CacheType.Model:
+                    worker = GetRAsCache("IModelRepository");
+                    break;
+
+                case CacheType.BOM:
+                    worker = GetRAsCache("IBOMRepository");
+                    break;
+
+                case CacheType.DefectCode:
+                    worker = GetRAsCache("IDefectRepository");
+                    break;
+
+                case CacheType.DefectInfo:
+                    worker = GetRAsCache("IDefectInfoRepository");
+                    break;
+
+                case CacheType.Process:
+                    worker = GetRAsCache("IProcessRepository");
+                    break;
+
+                case CacheType.Station:
+                    worker = GetRAsCache("IStationRepository");
+                    break;
+
+                case CacheType.Line:
+                    worker = GetRAsCache("ILineRepository");
+                    break;
+
+                case CacheType.ModelWeight:
+                    worker = GetRAsCache("IModelWeightRepository");
+                    break;
+
+                case CacheType.ModelTolerance:
+                    worker = GetRAsCache("IModelToleranceRepository");
+                    break;
+            }
+            //item.CacheServerIP = GetIPAddress();// 2010-02-10 Liu Dong(eB1-4)         Modify ITC-1122-0084 
+            item.Updated = true;
+
+            if (worker != null)
+            {
+                if (worker.IsCached())
+                {
+                    worker.ProcessItem(item);
+                    return true;
+                }
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// 判断一种Cache的开关是否是打开状态
+        /// </summary>
+        /// <param name="cst"></param>
+        /// <returns></returns>
+        public static bool CheckCacheSwitchOpen(string cst)
+        {
+            string key = string.Format("CST_{0}",cst);
+            string value = string.Empty;
+            try
+            {
+                value = System.Configuration.ConfigurationManager.AppSettings[key];
+                return value.Equals("1");
+            }
+            catch(Exception ex)
+            {
+                logger.ErrorFormat("Switch cannot be found in config file: {0}. ", ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 做一次所有Cache的刷新操作
+        /// </summary>
+        public static void RefreshAllCache()
+        {
+            lock (_syncObj)
+            {
+                ClearBygoneUpdateRequest();
+
+                ClearSoloCachedData();
+
+                LoadProactiveData();
+            }
+        }
+
+        /// <summary>
+        /// 处理一个Cache变更请求
+        /// </summary>
+        public static void UpdateCacheNow()
+        {
+            ProcessOnce();
+        }
+
+        /// <summary>
+        /// Cache的种类
+        /// </summary>
+        public static class CacheSwitchType
+        {
+            public const string Station = "Station";
+            public const string Process = "Process";
+            public const string Part = "Part";
+            public const string Model = "Model";
+            public const string Line = "Line";
+            public const string Defect = "Defect";
+            public const string DefectInfo = "DefectInfo";
+
+            public const string BOM = "BOM";
+            public const string ModelWeight = "ModelWeight";
+            public const string ModelTolerance = "ModelTolerance";
+            public const string Family = "Family";
+        }
+    }
+}

@@ -1,0 +1,6 @@
+E:\IMES_CODE\Code\RCTO\bin\IMES.FisObject.dll
+E:\IMES_CODE\Code\RCTO\bin\IMES.FisObject.pdb
+E:\IMES_CODE\Code\RCTO\kernel\IMES.FisObject\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\kernel\IMES.FisObject\obj\Debug\IMES.FisObject.dll
+E:\IMES_CODE\Code\RCTO\kernel\IMES.FisObject\obj\Debug\IMES.FisObject.pdb
+E:\IMES_CODE\Code\RCTO\bin\IMES.FisObject.XML

@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.CheckItemModule.Interface.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.CheckItemModule.Interface.pdb
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.Interface\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.Interface\obj\Debug\IMES.CheckItemModule.Interface.dll
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.CheckItemModule\IMES.CheckItemModule.Interface\obj\Debug\IMES.CheckItemModule.Interface.pdb

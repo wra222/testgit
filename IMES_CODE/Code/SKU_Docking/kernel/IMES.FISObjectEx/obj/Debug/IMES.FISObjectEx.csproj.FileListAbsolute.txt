@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.FisObjectEx.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.FisObjectEx.pdb
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.FISObjectEx\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.FISObjectEx\obj\Debug\IMES.FisObjectEx.dll
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.FISObjectEx\obj\Debug\IMES.FisObjectEx.pdb

@@ -1,0 +1,62 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="_PAQCCosmetic_rcto" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind _PAQCCosmetic_rcto,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}" Editor="{ActivityBind _PAQCCosmetic_rcto,Path=Editor}" Station="{ActivityBind _PAQCCosmetic_rcto,Path=Station}" x:Name="getProduct1" Line="{ActivityBind _PAQCCosmetic_rcto,Path=PdLine}" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" InputType="ProductID" />
+	<ns0:BlockStation Customer="{ActivityBind _PAQCCosmetic_rcto,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}" Editor="{ActivityBind _PAQCCosmetic_rcto,Path=Editor}" ProcessType="Product" Station="{ActivityBind _PAQCCosmetic_rcto,Path=Station}" Line="{ActivityBind _PAQCCosmetic_rcto,Path=PdLine}" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" />
+	<ns0:CheckAndSetQTime Customer="{ActivityBind _PAQCCosmetic_rcto,Path=Customer}" x:Name="checkAndSetQTime1" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}" Editor="{ActivityBind _PAQCCosmetic_rcto,Path=Editor}" Station="{ActivityBind _PAQCCosmetic_rcto,Path=Station}" Line="{ActivityBind _PAQCCosmetic_rcto,Path=PdLine}" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" RemainLogDay="2" />
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="scan9999">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="if9999" />
+			</IfElseBranchActivity.Condition>
+			<ns0:WaitInput Customer="{ActivityBind _PAQCCosmetic_rcto,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}" Editor="{ActivityBind _PAQCCosmetic_rcto,Path=Editor}" Station="{ActivityBind _PAQCCosmetic_rcto,Path=Station}" Line="{ActivityBind _PAQCCosmetic_rcto,Path=PdLine}" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" />
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="no9999" />
+	</IfElseActivity>
+	<ns0:DBScope Station="{ActivityBind _PAQCCosmetic_rcto,Path=Station}" x:Name="dbScope1" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}">
+		<IfElseActivity x:Name="ifElseActivity4">
+			<IfElseBranchActivity x:Name="good1">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="ifGood1" />
+				</IfElseBranchActivity.Condition>
+				<IfElseActivity x:Name="CheckStation">
+					<IfElseBranchActivity x:Name="StationIsCR10">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="CheckStationIsCR10" />
+						</IfElseBranchActivity.Condition>
+						<ns0:CheckLastProductLog Customer="{ActivityBind _PAQCCosmetic_rcto,Path=Customer}" CheckLastStationLog="True" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}" Editor="{ActivityBind _PAQCCosmetic_rcto,Path=Editor}" Station="{ActivityBind _PAQCCosmetic_rcto,Path=Station}" x:Name="checkLastProductLog1" CheckStation="LT" Line="{ActivityBind _PAQCCosmetic_rcto,Path=PdLine}" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" CheckStatus="Pass" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+				<ns0:UpdateProductStatus Customer="{ActivityBind _PAQCCosmetic_rcto,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}" Editor="{ActivityBind _PAQCCosmetic_rcto,Path=Editor}" Status="Pass" Station="{ActivityBind _PAQCCosmetic_rcto,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind _PAQCCosmetic_rcto,Path=PdLine}" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind _PAQCCosmetic_rcto,Path=Customer}" x:Name="writeProductLog3" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}" Editor="{ActivityBind _PAQCCosmetic_rcto,Path=Editor}" Station="{ActivityBind _PAQCCosmetic_rcto,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind _PAQCCosmetic_rcto,Path=PdLine}" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" />
+				<ns0:WriteProductTestLog Customer="{ActivityBind _PAQCCosmetic_rcto,Path=Customer}" Station="{ActivityBind _PAQCCosmetic_rcto,Path=Station}" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}" Editor="{ActivityBind _PAQCCosmetic_rcto,Path=Editor}" IsPass="True" x:Name="writeProductTestLog2" Line="{ActivityBind _PAQCCosmetic_rcto,Path=PdLine}" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="nogood1">
+				<ns0:UpdateProductStatus Customer="{ActivityBind _PAQCCosmetic_rcto,Path=Customer}" x:Name="updateProductStatus3" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}" Editor="{ActivityBind _PAQCCosmetic_rcto,Path=Editor}" Status="Fail" Station="{ActivityBind _PAQCCosmetic_rcto,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind _PAQCCosmetic_rcto,Path=PdLine}" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind _PAQCCosmetic_rcto,Path=Customer}" x:Name="writeProductLog4" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}" Editor="{ActivityBind _PAQCCosmetic_rcto,Path=Editor}" Station="{ActivityBind _PAQCCosmetic_rcto,Path=Station}" Status="Fail" IsSingle="True" Line="{ActivityBind _PAQCCosmetic_rcto,Path=PdLine}" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" />
+				<ns0:WriteProductTestLog Customer="{ActivityBind _PAQCCosmetic_rcto,Path=Customer}" Station="{ActivityBind _PAQCCosmetic_rcto,Path=Station}" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}" Editor="{ActivityBind _PAQCCosmetic_rcto,Path=Editor}" x:Name="writeProductTestLog3" Line="{ActivityBind _PAQCCosmetic_rcto,Path=PdLine}" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<IfElseActivity x:Name="ifElseActivity2">
+			<IfElseBranchActivity x:Name="good">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="isGood" />
+				</IfElseBranchActivity.Condition>
+				<ns0:GetQCForPAQCCosmetic Customer="{ActivityBind _PAQCCosmetic_rcto,Path=Customer}" x:Name="getQCForPAQCCosmetic1" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}" Editor="{ActivityBind _PAQCCosmetic_rcto,Path=Editor}" Station="{ActivityBind _PAQCCosmetic_rcto,Path=Station}" Line="{ActivityBind _PAQCCosmetic_rcto,Path=PdLine}" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity3">
+					<IfElseBranchActivity x:Name="Sample">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="ifSample" />
+						</IfElseBranchActivity.Condition>
+						<ns0:WriteQCStatus Customer="{ActivityBind _PAQCCosmetic_rcto,Path=Customer}" Remark="{x:Null}" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}" ProductAttrName="{x:Null}" Editor="{ActivityBind _PAQCCosmetic_rcto,Path=Editor}" Station="{ActivityBind _PAQCCosmetic_rcto,Path=Station}" Status="8" x:Name="writeQCStatus1" Line="{ActivityBind _PAQCCosmetic_rcto,Path=PdLine}" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" Type="PAQC" />
+						<ns0:WriteProductLog Customer="{ActivityBind _PAQCCosmetic_rcto,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}" Editor="{ActivityBind _PAQCCosmetic_rcto,Path=Editor}" Station="PQ" Status="Pass" IsSingle="True" Line="{ActivityBind _PAQCCosmetic_rcto,Path=PdLine}" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="ifElseBranchActivity3">
+						<ns0:WriteQCStatus Customer="{ActivityBind _PAQCCosmetic_rcto,Path=Customer}" Remark="{x:Null}" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}" ProductAttrName="{x:Null}" Editor="{ActivityBind _PAQCCosmetic_rcto,Path=Editor}" Station="{ActivityBind _PAQCCosmetic_rcto,Path=Station}" Status="1" x:Name="writeQCStatus2" Line="{ActivityBind _PAQCCosmetic_rcto,Path=PdLine}" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" Type="PAQC" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+				<ns0:WriteProductTestLog_DefectInfo Customer="{ActivityBind _PAQCCosmetic_rcto,Path=Customer}" x:Name="writeProductTestLog_DefectInfo1" SessionType="{ActivityBind _PAQCCosmetic_rcto,Path=SessionType}" Editor="{ActivityBind _PAQCCosmetic_rcto,Path=Editor}" Station="{ActivityBind _PAQCCosmetic_rcto,Path=Station}" Line="{ActivityBind _PAQCCosmetic_rcto,Path=PdLine}" Key="{ActivityBind _PAQCCosmetic_rcto,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+</ns0:BaseFlow>

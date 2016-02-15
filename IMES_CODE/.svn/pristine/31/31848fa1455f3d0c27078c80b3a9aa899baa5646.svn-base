@@ -1,0 +1,276 @@
+
+<script type='text/javascript'>
+
+function Queue()
+{
+	var stack = [];
+	this.Add=function(key, value)
+	{
+		var count=stack.length;
+		if (count===0)
+		{
+			stack.push({Key:key,
+			        Value:value});			
+		}else
+		{
+			var index=-1
+			for(var i=0; i<count;++i)
+			{
+				if (stack[i].Key== key)
+				{
+					index=i;
+					break;
+				}
+			}
+			
+			if(index<0)
+			{
+				stack.push({Key:key,
+			        Value:value});
+			}
+			else
+			{
+				stack[index].Value =value;
+			}
+			
+		}
+		
+	}
+	this.Exists=function(key)
+	{
+		var count=stack.length;
+		if (count===0)
+		{
+			return false;
+		}
+		for(var i=0; i<count;++i)
+		{
+			if (stack[i].Key== key)
+			{
+			  return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	this.Item=function(key)
+	{
+		var count=stack.length;
+		if (count===0)
+		{
+			return null;
+		}
+		
+		for(var i=0; i<count;++i)
+		{
+			if (stack[i].Key== key)
+			{
+			  return stack[i];
+			}
+		}
+		
+	}
+	
+	this.First=function()
+	{
+		return stack.length===0? null:stack[0];
+	}
+	
+	this.Last=function()
+	{
+		return stack.length===0? null:stack[stack.length-1];
+	}
+	
+	this.Remove=function(key)
+	{	
+		
+		var count=stack.length;
+		if (count===0)
+		{
+			return;
+		}
+		
+		//remove		
+		if (typeof key== 'undefined')
+		{
+			stack.shift();
+			return;
+		}
+		else
+		{
+			
+			for(var i=0; i<count;++i)
+			{
+				if (stack[i].Key== key)
+				{
+					stack.splice(i, 1);
+				}
+			}
+			
+		}
+	}
+	
+	this.RemoveAll=function ()
+	{
+		stack = [];
+	}
+	
+	this.Count=function()
+	{
+		return stack.length;
+	}
+}
+
+var queue = new Queue();
+
+function callbackfun(sn, result, errorCode, errorDesc) {
+    alert(sn + ',' + result + ',' + errorCode + ',' + errorDesc);
+    var arr = new Array();
+    arr[0] = result;
+    arr[1] = errorCode;
+    arr[2] = errorDesc;
+	queue.Remove();
+	if (queue.Count()>0)
+	{
+		var data =queue.First();
+		alert('Send URL:' +data.Value);
+		SendAOICmd(data.Value, 30, callbackfun);
+	}
+    return arr;
+}
+
+function testAOI() {
+    var url = 'http://127.0.0.1:8686/AOI?SN=%sn%&KBPartNo=%kb%&LabelPartNo=%lb%';
+    var sn = '1234567890';
+    var kb = 'kb123';
+    var lb = 'lb1234';
+	url = url.replace('%sn%', sn);
+    url = url.replace('%kb%', kb);
+    url = url.replace('%lb%', lb);
+    
+	if (queue.Count()===0)
+	{
+		SendAOICmd(url, 30, callbackfun);
+	}
+	queue.Add(sn,url);
+	
+	url = 'http://127.0.0.1:8686/AOI?SN=%sn%&KBPartNo=%kb%&LabelPartNo=%lb%';
+    sn = '123456789';
+    kb = 'kb123';
+    lb = 'lb1234';
+	url = url.replace('%sn%', sn);
+    url = url.replace('%kb%', kb);
+    url = url.replace('%lb%', lb);
+    
+	if (queue.Count()===0)
+	{
+		SendAOICmd(url, 30, callbackfun);
+	}
+	queue.Add(sn,url);
+	
+    //alert(result.Result);
+    //SendAOICmd(url, sn, kb, lb, 5, callbackfun);
+	
+}
+
+
+function getXmlHttp() {
+
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari	    
+        return new XMLHttpRequest();
+    }
+
+    // code for IE6, IE5
+    return new ActiveXObject("Microsoft.XMLHTTP");
+
+}
+
+function SendAOICmd(url, timeOut, callback) {
+ 
+    var xmlhttp;
+    var timeOutFunc;
+    var abort = 0;
+    xmlhttp=getXmlHttp();
+    xmlhttp.open("GET", url, true); //async mode
+
+    xmlhttp.onreadystatechange = function() {        
+        if (xmlhttp.readyState == 4) {
+            if (timeOutFunc) {
+                clearTimeout(timeOutFunc);
+            }
+
+            if (abort === 1)
+                return;
+                
+            if (xmlhttp.status == 200) {
+                var respText = xmlhttp.responseText;
+                var xmlDoc;
+                if (window.DOMParser) {
+                    var parser = new DOMParser();
+                    var xmlDoc = parser.parseFromString(respText, "text/xml");
+
+                    callback(xmlDoc.getElementsByTagName('SN')[0].textContent,
+							 xmlDoc.getElementsByTagName('Result')[0].textContent,
+							 xmlDoc.getElementsByTagName('ErrorCode')[0].textContent,
+							 xmlDoc.getElementsByTagName('ErrorDescr')[0].textContent);
+                    return;
+                }
+                else {
+                    var xmlDoc = new ActiveXObject("Msxml2.DOMDocument");
+                    xmlDoc.async = false;
+                    xmlDoc.loadXML(respText);
+                    callback(xmlDoc.getElementsByTagName('SN')[0].text,
+						     xmlDoc.getElementsByTagName('Result')[0].text,
+						     xmlDoc.getElementsByTagName('ErrorCode')[0].text,
+						     xmlDoc.getElementsByTagName('ErrorDescr')[0].text);
+                    return;
+                }
+            }
+            else {
+                var respText = xmlhttp.responseText;
+                callback(sn,
+					     'Status',
+					     xmlhttp.status ? xmlhttp.status : '',
+					    xmlhttp.statusText ? xmlhttp.statusText : '');
+				return;		
+            }
+        }
+    };
+	
+        
+    if (timeOut > 0) {
+
+        timeOutFunc = setTimeout(function() {
+						if (xmlhttp) {
+							abort = 1;
+							xmlhttp.abort();
+						}
+						callback(sn,
+								'TimeOut',
+								'TimeOut',
+								'Request web server time out');
+						},
+								timeOut * 1000);
+         
+
+    }
+	
+	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");    
+    xmlhttp.send('');  
+
+}
+
+
+</script>
+</head>
+
+<body class="body">
+<div id="div_1">
+	
+</div>
+
+<form id="form1" action="" onsubmit="">	
+	<input type="button" value="testAOI" onclick="testAOI()"/>	
+  
+</form>

@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IMES.Infrastructure.Repository._Metas;
+
+namespace IMES.DataModel
+{
+    [Serializable]
+    public class ConstValueTypeInfo
+    {
+        public int id { get; set; }
+        public String type { get; set; }
+        public String value { get; set; }
+        public String description { get; set; }
+        public String editor { get; set; }
+        public DateTime cdt { get; set; }
+        public DateTime udt { get; set; }
+    }
+}

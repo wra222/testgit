@@ -1,0 +1,107 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="_OQCRepair" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind _OQCRepair,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" Station="{ActivityBind _OQCRepair,Path=Station}" x:Name="getProduct1" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" InputType="ProductID" />
+	<ns0:BlockStation Customer="{ActivityBind _OQCRepair,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" ProcessType="Product" Station="{ActivityBind _OQCRepair,Path=Station}" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+	<ns0:CheckProductRepairedCount Customer="{ActivityBind _OQCRepair,Path=Customer}" x:Name="checkProductRepairedCount1" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" Enabled="False" Station="{ActivityBind _OQCRepair,Path=Station}" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" OverRepairedCount="0" />
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="ifFirstRepairBranch">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="IFFirstRepair" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind _OQCRepair,Path=Station}" x:Name="dbScopeForGenerate" Key="{ActivityBind _OQCRepair,Path=Key}" SessionType="{ActivityBind _OQCRepair,Path=SessionType}">
+				<ns0:GenerateRepairByTestLog Customer="{x:Null}" x:Name="generateOQCRepairByTestLog1" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" RepairStationType="OQC" Station="{ActivityBind _OQCRepair,Path=Station}" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="WhileCondition" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind _OQCRepair,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" Station="{ActivityBind _OQCRepair,Path=Station}" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+			<IfElseActivity x:Name="ifElseActivity2">
+				<IfElseBranchActivity x:Name="ifAddEditDelete">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="EditOrComplete" />
+					</IfElseBranchActivity.Condition>
+					<IfElseActivity x:Name="ifElseActivity3">
+						<IfElseBranchActivity x:Name="ifAddEdit">
+							<IfElseBranchActivity.Condition>
+								<RuleConditionReference ConditionName="AddEditOrDelete" />
+							</IfElseBranchActivity.Condition>
+							<ns0:DBScope Station="{ActivityBind _OQCRepair,Path=Station}" x:Name="dbScope1" Key="{ActivityBind _OQCRepair,Path=Key}" SessionType="{ActivityBind _OQCRepair,Path=SessionType}">
+								<ns0:GetBOM Customer="{ActivityBind _OQCRepair,Path=Customer}" MainObjFrom="Product" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" x:Name="getBOM1" Editor="{ActivityBind _OQCRepair,Path=Editor}" Enabled="False" Station="{ActivityBind _OQCRepair,Path=Station}" ModelFrom="MB" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+								<IfElseActivity x:Name="ifElseActivity4">
+									<IfElseBranchActivity x:Name="ifAdd">
+										<IfElseBranchActivity.Condition>
+											<RuleConditionReference ConditionName="AddOrEdit" />
+										</IfElseBranchActivity.Condition>
+										<ns0:CheckRepairDefect Customer="{ActivityBind _OQCRepair,Path=Customer}" x:Name="checkRepairDefect2" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" RepairStationType="OQC" Station="{ActivityBind _OQCRepair,Path=Station}" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+										<ns0:GetReturnStationForQCRepair Customer="{ActivityBind _OQCRepair,Path=Customer}" x:Name="getReturnStationForQCRepair2" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" Station="{ActivityBind _OQCRepair,Path=Station}" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+										<ns0:AddRepairDefect Customer="{ActivityBind _OQCRepair,Path=Customer}" x:Name="addRepairDefect1" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" Station="{ActivityBind _OQCRepair,Path=Station}" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+									</IfElseBranchActivity>
+									<IfElseBranchActivity x:Name="ifEdit">
+										<ns0:GetReturnStationForQCRepair Customer="{ActivityBind _OQCRepair,Path=Customer}" x:Name="getReturnStationForQCRepair1" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" Station="{ActivityBind _OQCRepair,Path=Station}" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+										<ns0:UpdateRepairDefect Customer="{ActivityBind _OQCRepair,Path=Customer}" x:Name="updateRepairDefect1" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" Station="{ActivityBind _OQCRepair,Path=Station}" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+									</IfElseBranchActivity>
+								</IfElseActivity>
+								<IfElseActivity x:Name="ifElseActivity5" Enabled="False">
+									<IfElseBranchActivity x:Name="ifChangePart">
+										<IfElseBranchActivity.Condition>
+											<RuleConditionReference ConditionName="IFChangePart" />
+										</IfElseBranchActivity.Condition>
+										<ns0:UpdateParts Customer="{ActivityBind _OQCRepair,Path=Customer}" x:Name="updateParts1" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" RepairStationType="OQC" Station="{ActivityBind _OQCRepair,Path=Station}" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+										<IfElseActivity x:Name="ifMBType">
+											<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+												<IfElseBranchActivity.Condition>
+													<RuleConditionReference ConditionName="IFMBType" />
+												</IfElseBranchActivity.Condition>
+												<ns0:GetMB Customer="{ActivityBind _OQCRepair,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" Station="{ActivityBind _OQCRepair,Path=Station}" MBSnSessionKey="NewMB" x:Name="getNewMB" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+												<ns0:UpdateMBStatus Customer="{ActivityBind _OQCRepair,Path=Customer}" Station="{ActivityBind _OQCRepair,Path=Station}" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" ManualStation="32" Editor="{ActivityBind _OQCRepair,Path=Editor}" IsPass="Pass" x:Name="updateNewMBStatus" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+												<ns0:WriteMBLog Customer="{ActivityBind _OQCRepair,Path=Customer}" LineSuffix="{x:Null}" ManualStation="{x:Null}" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" x:Name="writeNewMBLog" Editor="{ActivityBind _OQCRepair,Path=Editor}" IsPass="True" Station="32" IsSingle="True" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+												<ns0:GetMB Customer="{ActivityBind _OQCRepair,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" Station="{ActivityBind _OQCRepair,Path=Station}" MBSnSessionKey="OldMB" x:Name="getOldMB" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+												<ns0:UpdateMBStatus Customer="{ActivityBind _OQCRepair,Path=Customer}" Station="{ActivityBind _OQCRepair,Path=Station}" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" ManualStation="33" Editor="{ActivityBind _OQCRepair,Path=Editor}" IsPass="Fail" x:Name="updateOldMBStatus" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+												<ns0:WriteMBLog Customer="{ActivityBind _OQCRepair,Path=Customer}" LineSuffix="{x:Null}" ManualStation="{x:Null}" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" x:Name="writeOldMBLog" Editor="{ActivityBind _OQCRepair,Path=Editor}" IsPass="False" Station="33" IsSingle="True" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+												<ns0:ReturnMB Customer="{ActivityBind _OQCRepair,Path=Customer}" x:Name="returnMB1" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" Station="{ActivityBind _OQCRepair,Path=Station}" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+											</IfElseBranchActivity>
+										</IfElseActivity>
+									</IfElseBranchActivity>
+								</IfElseActivity>
+							</ns0:DBScope>
+						</IfElseBranchActivity>
+						<IfElseBranchActivity Enabled="False" x:Name="ifDelete">
+							<ns0:DBScope Station="{x:Null}" x:Name="dbScopeForDelete" Key="{x:Null}" SessionType="0">
+								<ns0:DeleteRepairDefect Customer="{x:Null}" x:Name="deleteRepairDefect1" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{x:Null}" Station="{x:Null}" Line="{x:Null}" Key="{x:Null}" />
+							</ns0:DBScope>
+						</IfElseBranchActivity>
+					</IfElseActivity>
+				</IfElseBranchActivity>
+				<IfElseBranchActivity x:Name="ifComplete">
+					<ns0:DBScope Station="{ActivityBind _OQCRepair,Path=Station}" x:Name="dbScope2" Key="{ActivityBind _OQCRepair,Path=Key}" SessionType="{ActivityBind _OQCRepair,Path=SessionType}">
+						<IfElseActivity x:Name="ifElseActivity7">
+							<IfElseBranchActivity x:Name="ifElseBranchActivity4">
+								<IfElseBranchActivity.Condition>
+									<RuleConditionReference ConditionName="FARepairCopy" />
+								</IfElseBranchActivity.Condition>
+								<ns0:WriteFARepairList Customer="{ActivityBind _OQCRepair,Path=Customer}" x:Name="writeFARepairList1" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" Station="{ActivityBind _OQCRepair,Path=Station}" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+							</IfElseBranchActivity>
+							<IfElseBranchActivity x:Name="ifElseBranchActivity5" />
+						</IfElseActivity>
+						<ns0:CompleteRepair Customer="{ActivityBind _OQCRepair,Path=Customer}" x:Name="completeRepair1" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" Station="{ActivityBind _OQCRepair,Path=Station}" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+						<ns0:UpdateProductStatus Customer="{ActivityBind _OQCRepair,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" Status="Pass" Station="{ActivityBind _OQCRepair,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+						<ns0:WriteProductLog Customer="{ActivityBind _OQCRepair,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" Station="{ActivityBind _OQCRepair,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+						<ns0:CheckBackflowProduct Customer="{ActivityBind _OQCRepair,Path=Customer}" x:Name="checkBackflowProduct1" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" Enabled="False" Station="{ActivityBind _OQCRepair,Path=Station}" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+						<IfElseActivity x:Name="ifElseActivity6" Enabled="False">
+							<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+								<IfElseBranchActivity.Condition>
+									<RuleConditionReference ConditionName="DoSaveReflow" />
+								</IfElseBranchActivity.Condition>
+							</IfElseBranchActivity>
+							<IfElseBranchActivity x:Name="ifElseBranchActivity3" />
+						</IfElseActivity>
+						<ns0:SaveReflowForQCRepair Customer="{ActivityBind _OQCRepair,Path=Customer}" x:Name="saveReflowForQCRepair1" SessionType="{ActivityBind _OQCRepair,Path=SessionType}" Editor="{ActivityBind _OQCRepair,Path=Editor}" Station="{ActivityBind _OQCRepair,Path=Station}" Line="{ActivityBind _OQCRepair,Path=PdLine}" Key="{ActivityBind _OQCRepair,Path=Key}" />
+					</ns0:DBScope>
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+</ns0:BaseFlow>

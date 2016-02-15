@@ -1,0 +1,109 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="ICTInput" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetMB Customer="{ActivityBind ICTInput,Path=Customer}" NotExistException="" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" MBSnSessionKey="" x:Name="getMB1" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+	<ns0:CheckPilotRun Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="checkPilotRun1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Enabled="False" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+	<ns0:CheckECR Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="checkECR1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+	<ns0:CheckExistPrintLog Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="checkExistPrintLog1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+	<ns0:CheckPCBLog Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="checkPCBLog1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+	<ns0:CheckPCBStatusCL Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="checkPCBStatusCL1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+	<ns0:CheckMBSplit Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="checkMBSplit1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+	<ns0:BlockStation Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" ProcessType="MB" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+	<ns0:GetPCBVersion Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="getPCBVersion1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+	<ns0:WaitInput Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+	<IfElseActivity x:Name="HasDefect">
+		<IfElseBranchActivity x:Name="Defect">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="HasDefect" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind ICTInput,Path=Station}" x:Name="dbScope1" Key="{ActivityBind ICTInput,Path=Key}" SessionType="{ActivityBind ICTInput,Path=SessionType}">
+				<IfElseActivity x:Name="IsPilotMo2">
+					<IfElseBranchActivity x:Name="BindPilotMo2">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="IsPilotMoCheck" />
+						</IfElseBranchActivity.Condition>
+						<ns0:CheckAndCombinedPilotMo Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="checkAndCombinedPilotMo2" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:WriteMBInfo Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="writeMBInfo4" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" InfoValueSessionKey="PilotMoNo" Station="{ActivityBind ICTInput,Path=Station}" InfoType="PilotMo" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+				<IfElseActivity x:Name="HasAOI">
+					<IfElseBranchActivity x:Name="BindAOI">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="HasAOI" />
+						</IfElseBranchActivity.Condition>
+						<ns0:WriteMBInfo Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="writeMBInfo1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" InfoValueSessionKey="AOINo" Station="{ActivityBind ICTInput,Path=Station}" InfoType="AOINO" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+				<ns0:UpdateMBStatus Customer="{ActivityBind ICTInput,Path=Customer}" Station="{ActivityBind ICTInput,Path=Station}" SessionType="{ActivityBind ICTInput,Path=SessionType}" ManualStation="" Editor="{ActivityBind ICTInput,Path=Editor}" IsPass="Fail" x:Name="updateMBStatus2" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+				<ns0:WriteMBLog Customer="{ActivityBind ICTInput,Path=Customer}" LineSuffix="{x:Null}" Station="{ActivityBind ICTInput,Path=Station}" SessionType="{ActivityBind ICTInput,Path=SessionType}" ManualStation="{x:Null}" Editor="{ActivityBind ICTInput,Path=Editor}" IsPass="False" x:Name="writeMBLog2" IsSingle="True" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+				<ns0:WritePCBTestLog Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="writePCBTestLog1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+			</ns0:DBScope>
+			<ns0:GetPCAICTCount Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="getPCAICTCount1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="Good">
+			<ns0:DBScope Station="{ActivityBind ICTInput,Path=Station}" x:Name="dbScope2" Key="{ActivityBind ICTInput,Path=Key}" SessionType="{ActivityBind ICTInput,Path=SessionType}">
+				<IfElseActivity x:Name="IsPilotMo1">
+					<IfElseBranchActivity x:Name="BindPilotMo1">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="IsPilotMoCheck" />
+						</IfElseBranchActivity.Condition>
+						<ns0:CheckAndCombinedPilotMo Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="checkAndCombinedPilotMo1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:WriteMBInfo Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="writeMBInfo3" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" InfoValueSessionKey="PilotMoNo" Station="{ActivityBind ICTInput,Path=Station}" InfoType="PilotMo" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+				<ns0:UpdatePCAICTCount Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="updatePCAICTCount1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Customer}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+				<ns0:WritePCBTestLog Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="writePCBTestLog2" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+				<IfElseActivity x:Name="IFAOI">
+					<IfElseBranchActivity x:Name="SaveAOI">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="HasAOI" />
+						</IfElseBranchActivity.Condition>
+						<ns0:WriteMBInfo Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="writeMBInfo2" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" InfoValueSessionKey="AOINo" Station="{ActivityBind ICTInput,Path=Station}" InfoType="AOINO" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+				<ns0:AcquireDCode Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="acquireDCode1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+				<IfElseActivity x:Name="HasChildMB">
+					<IfElseBranchActivity x:Name="Y">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="HasChildMB" />
+						</IfElseBranchActivity.Condition>
+						<ns0:AcquireEEPList Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="acquireEEPList1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:AcquireMACList Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="acquireMACList1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:AcquireMBCTList Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="acquireMBCTList1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:AcquireChildMBSn Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="acquireChildMBSn1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<IfElseActivity x:Name="IfRCTONotR">
+							<IfElseBranchActivity x:Name="IsRCTONotR">
+								<IfElseBranchActivity.Condition>
+									<RuleConditionReference ConditionName="RCTONotR" />
+								</IfElseBranchActivity.Condition>
+								<ns0:RCTOChangeMulti Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="RCTOChangeMulti1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+							</IfElseBranchActivity>
+						</IfElseActivity>
+						<ns0:GenerateChildMB Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="generateChildMB1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:UpdateMBStatus Customer="{ActivityBind ICTInput,Path=Customer}" ManualStation="" SessionType="{ActivityBind ICTInput,Path=SessionType}" x:Name="updateMBStatus3" Editor="{ActivityBind ICTInput,Path=Editor}" IsPass="CL" Station="CL" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:WriteMBLog Customer="{ActivityBind ICTInput,Path=Customer}" LineSuffix="{x:Null}" ManualStation="{x:Null}" SessionType="{ActivityBind ICTInput,Path=SessionType}" x:Name="writeMBLog3" Editor="{ActivityBind ICTInput,Path=Editor}" IsPass="True" Station="CL" IsSingle="True" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:DealWithECRLabel Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="dealWithECRLabel1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:Print Customer="{ActivityBind ICTInput,Path=Customer}" NotExistException="False" SessionType="{ActivityBind ICTInput,Path=SessionType}" PartNoFrom="MB_Model" Editor="{ActivityBind ICTInput,Path=Editor}" x:Name="print2" Station="{ActivityBind ICTInput,Path=Station}" MOFrom="MB" ModelFrom="No" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" DnFrom="No" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="N">
+						<ns0:AcquireEEP Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="acquireEEP1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:AcquireMAC Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="acquireMAC1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:AcquireMBCT Customer="{ActivityBind ICTInput,Path=Customer}" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" x:Name="acquireMBCT1" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:UpdateMBForICTInput Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="updateMBForICTInput1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:UpdateMBStatus Customer="{ActivityBind ICTInput,Path=Customer}" Station="{ActivityBind ICTInput,Path=Station}" SessionType="{ActivityBind ICTInput,Path=SessionType}" ManualStation="" Editor="{ActivityBind ICTInput,Path=Editor}" IsPass="Pass" x:Name="updateMBStatus1" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:WriteMBLog Customer="{ActivityBind ICTInput,Path=Customer}" LineSuffix="{x:Null}" Station="{ActivityBind ICTInput,Path=Station}" SessionType="{ActivityBind ICTInput,Path=SessionType}" ManualStation="{x:Null}" Editor="{ActivityBind ICTInput,Path=Editor}" IsPass="True" x:Name="writeMBLog1" IsSingle="True" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<IfElseActivity x:Name="ifRCTONotRSingle">
+							<IfElseBranchActivity x:Name="IsRCTONotRSingle">
+								<IfElseBranchActivity.Condition>
+									<RuleConditionReference ConditionName="RCTONotR" />
+								</IfElseBranchActivity.Condition>
+								<ns0:RCTOChangeSingle Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="RCTOChangeSingle1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+							</IfElseBranchActivity>
+						</IfElseActivity>
+						<ns0:WritePrintLog Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="writePrintLog1" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:DealWithECRLabel Customer="{ActivityBind ICTInput,Path=Customer}" x:Name="dealWithECRLabel2" SessionType="{ActivityBind ICTInput,Path=SessionType}" Editor="{ActivityBind ICTInput,Path=Editor}" Station="{ActivityBind ICTInput,Path=Station}" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" />
+						<ns0:Print Customer="{ActivityBind ICTInput,Path=Customer}" NotExistException="False" SessionType="{ActivityBind ICTInput,Path=SessionType}" PartNoFrom="MB_Model" Editor="{ActivityBind ICTInput,Path=Editor}" x:Name="print1" Station="{ActivityBind ICTInput,Path=Station}" MOFrom="MB" ModelFrom="No" Line="{ActivityBind ICTInput,Path=PdLine}" Key="{ActivityBind ICTInput,Path=Key}" DnFrom="No" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

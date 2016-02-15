@@ -1,0 +1,12 @@
+﻿<ns0:BaseFlow x:Class="IMES.Station.Workflow.KittingInput" Customer="{x:Null}" x:Name="KittingInput" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{x:Null}" x:Name="getProduct1" SessionType="0" Editor="{x:Null}" Station="{x:Null}" Line="{x:Null}" Key="{x:Null}" InputType="ProductID" />
+	<ns0:BlockStation Customer="{x:Null}" x:Name="blockStation1" SessionType="0" Editor="{x:Null}" ProcessType="MB" Station="{x:Null}" Line="{x:Null}" Key="{x:Null}" />
+	<ns0:CheckBTSKU Customer="{x:Null}" x:Name="CheckStationForAssetTagPrint" SessionType="0" Editor="{x:Null}" Station="{x:Null}" Line="{x:Null}" Key="{x:Null}" />
+	<ns0:GetWHLocation Customer="{x:Null}" x:Name="getWHLocation1" SessionType="0" Editor="{x:Null}" Station="{x:Null}" Line="{x:Null}" Key="{x:Null}" />
+	<ns0:DBScope Station="{x:Null}" x:Name="dbScope1" Key="{x:Null}" SessionType="0">
+		<ns0:UpdateProductStatus Customer="{x:Null}" x:Name="updateProductStatus1" Status="Pass" Editor="{x:Null}" SessionType="0" Station="{x:Null}" IsReturnStatoin="False" Line="{x:Null}" Key="{x:Null}" />
+		<ns0:WriteProductLog Customer="{x:Null}" x:Name="writeProductLog1" Status="Fail" Editor="{x:Null}" SessionType="0" Station="{x:Null}" IsSingle="False" Line="{x:Null}" Key="{x:Null}" />
+		<ns0:InsertSnoDetBTLoc Customer="{x:Null}" x:Name="insertSnoDetBTLoc1" Status="{x:Null}" Editor="{x:Null}" SessionType="0" Station="{x:Null}" Tp="{x:Null}" Line="{x:Null}" Key="{x:Null}" />
+		<ns0:UpdateCMBQty Customer="{x:Null}" x:Name="updateCMBQty1" SessionType="0" Editor="{x:Null}" Station="{x:Null}" Line="{x:Null}" Key="{x:Null}" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

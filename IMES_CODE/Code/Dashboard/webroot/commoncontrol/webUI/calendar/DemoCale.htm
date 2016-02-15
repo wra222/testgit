@@ -1,0 +1,122 @@
+<html>
+<head>
+<!--meta HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=gb2312"-->
+<title>
+»’¿˙ —› æ“≥
+</title>
+ <!--Include Files-->
+<link rel="stylesheet" href="caleStyle.css" type="text/css">
+<script language="JavaScript" SRC="calendar.js"></script>
+<script language="VBScript" SRC="calendar.vbs"></script>
+<script language="JavaScript" SRC="clsclock.js"></script>
+
+<script FOR="window" EVENT="onbeforeunload">
+	finishCalFrame();
+</script>
+
+<script language="JavaScript">
+/*
+function showCal(obj)
+{
+	var szUrl;
+	var szFeatures;
+
+	szUrl = 'SubCal.htm';
+	szFeatures = 'dialogWidth:10; dialogHeight:10; status:0; help:0';
+
+	var str;
+	str = window.showModalDialog(szUrl, 0, szFeatures);
+	if(str!=null)
+		obj.value=str;
+}
+*/
+function doModal(url)
+{
+   var cSearchValue=showModalDialog(url,0,"dialogWidth:300px;dialogHeight:200px");
+   if (cSearchValue == -1 || cSearchValue == null)
+   {
+      alert('You clicked cancel or the close box');
+   }
+   else if (cSearchValue=="")
+   {
+      alert('You didn\'t enter a value');
+   }
+   else
+   {
+      alert('You want to search for ' + cSearchValue);
+   }
+}
+</script>
+</head>
+
+<body topmargin="0" style="Z-INDEX: 1" onclick="CalDisappear()">  
+<div id="TimeArea"></div>
+<script language="JavaScript">
+//	var MyTb=new clsTable(obGoods.recordset, "MyTb") 
+	createClock(TimeArea, 'white',"time1");
+	createClock(TimeArea, 'white',"time2");
+	
+</script>
+<input id="txTmIn" >
+<input id="btTmIn" type="button" value="TimeIn"
+ onclick="putTime(document.all.txTmIn.value, 'time1')">
+<input id="txTmOut" >
+<input id="btTmOut" type="button" value="TimeOut"
+ onclick="document.all.txTmOut.value = getTime('time1')">
+<br>
+<input id="txTmIn2" >
+<input id="btTmIn2" type="button" value="Time2In"
+ onclick="putTime(document.all.txTmIn2.value, 'time2')">
+<input id="txTmOut2" >
+<input id="btTmOut2" type="button" value="Time2Out"
+ onclick="document.all.txTmOut2.value = getTime('time2')">
+<hr>
+<input id="btTmDisable" type="button" value="Time1 Ω˚÷π"
+ onclick="disableClock('time1')">
+<input id="btTmEnable" type="button" value="Time1 §π≥\"
+ onclick="enableClock('time1')">
+<br>
+<hr>
+
+<select id="select1" name="select1" style="HEIGHT: 22px; WIDTH: 485px; Z-INDEX: -1"> <option selected></option></select>
+<P> </P>
+<br>
+<script language="JavaScript">
+//initCalendar();
+initCalFrame();
+//setCalLanguage('traditional');
+//setCalLanguage('simplified');
+//setCalLanguage('english');
+//initClockFrame();
+</script>
+<hr>
+
+<P><!--
+Date:<input id="text3" name="text3">
+<input id="button1" name="button1" type="button" value="000" onclick="showCal(text3)">
+<hr>
+<br>
+-->
+***************************************************************<BR>
+***************************************************************<BR>
+***************************************************************<BR>
+***************************************************************<BR>
+***************************************************************<BR>
+**********************************************************************Date:<input id="text5" name="text5" value="12345" style="WIDTH: 100px" >
+<input id="button5" name="button5" type="button" value="..." onclick="showCalFrame(text5)"> 
+</P>
+<P>
+Time:<input id="txTime" name="txTime"> </P> 
+<hr>
+<select id="select2" name="select2" style="HEIGHT: 22px; WIDTH: 485px; Z-INDEX: -1"> <option selected></option></select>
+<hr>
+<br><!--
+Date:<input id="text2" name="text2">
+<input id="button2" name="button2" type="button" value="..." onclick="showCalWindow(text2)">
+<br>
+-->
+SPAN Date:<span id="spantext" width="100px"></span>
+<input id="spanbutton" type="button" onclick="showCalFrame(spantext)">
+
+</body>
+</html>

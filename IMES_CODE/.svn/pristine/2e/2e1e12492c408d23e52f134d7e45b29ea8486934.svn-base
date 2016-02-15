@@ -1,0 +1,18 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="_ChangeAST_Change" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:CheckModelForChangeAST Customer="{ActivityBind _ChangeAST_Change,Path=Customer}" x:Name="checkModelForChangeAST1" SessionType="{ActivityBind _ChangeAST_Change,Path=SessionType}" Editor="{ActivityBind _ChangeAST_Change,Path=Editor}" Station="{ActivityBind _ChangeAST_Change,Path=Station}" Line="{ActivityBind _ChangeAST_Change,Path=PdLine}" Key="{ActivityBind _ChangeAST_Change,Path=Key}" />
+	<ns0:CheckP2ForChangeAST Customer="{ActivityBind _ChangeAST_Change,Path=Customer}" x:Name="checkP2ForChangeAST1" SessionType="{ActivityBind _ChangeAST_Change,Path=SessionType}" Editor="{ActivityBind _ChangeAST_Change,Path=Editor}" Station="{ActivityBind _ChangeAST_Change,Path=Station}" Line="{ActivityBind _ChangeAST_Change,Path=PdLine}" Key="{ActivityBind _ChangeAST_Change,Path=Key}" />
+	<ns0:UpdateProductPartForChangeAST Customer="{ActivityBind _ChangeAST_Change,Path=Customer}" x:Name="updateProductPartForChangeAST1" SessionType="{ActivityBind _ChangeAST_Change,Path=SessionType}" Editor="{ActivityBind _ChangeAST_Change,Path=Editor}" Station="{ActivityBind _ChangeAST_Change,Path=Station}" Line="{ActivityBind _ChangeAST_Change,Path=PdLine}" Key="{ActivityBind _ChangeAST_Change,Path=Key}" />
+	<ns0:CheckPrintForChangeAST Customer="{ActivityBind _ChangeAST_Change,Path=Customer}" x:Name="checkPrintForChangeAST1" SessionType="{ActivityBind _ChangeAST_Change,Path=SessionType}" Editor="{ActivityBind _ChangeAST_Change,Path=Editor}" Station="{ActivityBind _ChangeAST_Change,Path=Station}" Line="{ActivityBind _ChangeAST_Change,Path=PdLine}" Key="{ActivityBind _ChangeAST_Change,Path=Key}" />
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="Print">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="ifPrint" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind _ChangeAST_Change,Path=Station}" x:Name="dbScope1" Key="{ActivityBind _ChangeAST_Change,Path=Key}" SessionType="{ActivityBind _ChangeAST_Change,Path=SessionType}">
+				<ns0:WritePrintLog Customer="{ActivityBind _ChangeAST_Change,Path=Customer}" x:Name="writePrintLog1" SessionType="{ActivityBind _ChangeAST_Change,Path=SessionType}" Editor="{ActivityBind _ChangeAST_Change,Path=Editor}" Station="{ActivityBind _ChangeAST_Change,Path=Station}" Line="{ActivityBind _ChangeAST_Change,Path=PdLine}" Key="{ActivityBind _ChangeAST_Change,Path=Key}" />
+			</ns0:DBScope>
+			<ns0:Print Customer="{ActivityBind _ChangeAST_Change,Path=Customer}" x:Name="print1" SessionType="{ActivityBind _ChangeAST_Change,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind _ChangeAST_Change,Path=Editor}" Station="{ActivityBind _ChangeAST_Change,Path=Station}" MOFrom="No" ModelFrom="No" Line="{ActivityBind _ChangeAST_Change,Path=PdLine}" Key="{ActivityBind _ChangeAST_Change,Path=Key}" DnFrom="No" />
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseBranchActivity2" />
+	</IfElseActivity>
+</ns0:BaseFlow>

@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace IMES.DataModel
+{
+    [Serializable]
+    public class CheckItemTypeRuleDef
+    {
+        public int ID {get;set;}
+        public string CheckItemType{get;set;}
+        public string Line{get;set;}
+        public string Station {get;set;}
+        public string Family{get;set;}
+        public string BomNodeType { get; set; }
+        public string PartDescr { get; set; }
+        public string PartType { get; set; }
+        public string MatchRule{get;set;}
+        public string CheckRule {get;set;}
+        public string SaveRule{get;set;} 
+        public string Descr{get;set;} 
+        public string Editor{get;set;} 
+        public DateTime Cdt{get;set;} 
+        public DateTime Udt{get;set;}
+        public int Priority { get; set; }
+        public string NeedUniqueCheck { get; set; }
+        public string NeedCommonSave { get; set; }
+        public string NeedSave { get; set; }
+        public string CheckTestKPCount { get; set; }
+        public IDictionary<string,bool> MatchRuleGroupNames { get; set; }
+        public IDictionary<string, bool> CheckRuleGroupNames { get; set; }        
+    }
+}

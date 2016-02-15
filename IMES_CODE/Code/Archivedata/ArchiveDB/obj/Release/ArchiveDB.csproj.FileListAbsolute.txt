@@ -1,0 +1,6 @@
+D:\Project\iMES\TAP\ArchiveData\ArchiveDB\bin\Release\ArchiveDB.exe.config
+D:\Project\iMES\TAP\ArchiveData\ArchiveDB\bin\Release\ArchiveDB.exe
+D:\Project\iMES\TAP\ArchiveData\ArchiveDB\bin\Release\ArchiveDB.pdb
+D:\Project\iMES\TAP\ArchiveData\ArchiveDB\obj\Release\ResolveAssemblyReference.cache
+D:\Project\iMES\TAP\ArchiveData\ArchiveDB\obj\Release\ArchiveDB.exe
+D:\Project\iMES\TAP\ArchiveData\ArchiveDB\obj\Release\ArchiveDB.pdb

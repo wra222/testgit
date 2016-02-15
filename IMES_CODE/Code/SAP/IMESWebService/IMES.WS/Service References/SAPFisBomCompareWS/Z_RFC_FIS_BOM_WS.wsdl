@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="urn:sap-com:document:sap:rfc:functions" xmlns:n0="http://www.sap.com/webas/630/soap/features/authentication/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:sap="http://www.sap.com/webas/630/wsdl/features" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="urn:sap-com:document:sap:rfc:functions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <sap:Feature name="design_0 " uri="http://www.sap.com/webas/630/soap/features/authentication/">
+    <sap:Property qname="n0:AuthenticationLevel">
+      <sap:Option value="n0:Basic" />
+    </sap:Property>
+  </sap:Feature>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+      <xsd:simpleType name="char16">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="16" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char17">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="17" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char18">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="18" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char2">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char255">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="255" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char4">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric4">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ZIMES_FIS_BOM_H">
+        <xsd:sequence>
+          <xsd:element name="SERIALNUMBER" type="tns:char17" />
+          <xsd:element name="WERKS" type="tns:char4" />
+          <xsd:element name="MATNR" type="tns:char18" />
+          <xsd:element name="CNT" type="tns:numeric4" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZIMES_FIS_BOM_I">
+        <xsd:sequence>
+          <xsd:element name="SERIALNUMBER" type="tns:char17" />
+          <xsd:element name="ITEMNO" type="tns:char4" />
+          <xsd:element name="ALPGR" type="tns:char2" />
+          <xsd:element name="IDNRK" type="tns:char18" />
+          <xsd:element name="MENGE" type="tns:char16" />
+          <xsd:element name="MEINS" type="tns:char3" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZIMES_FIS_BOM_I_R">
+        <xsd:sequence>
+          <xsd:element name="SERIALNUMBER" type="tns:char17" />
+          <xsd:element name="ITEMNO" type="tns:char4" />
+          <xsd:element name="ERRORLOG" type="tns:char255" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZIMES_FIS_BOM_H_R">
+        <xsd:sequence>
+          <xsd:element name="SERIALNUMBER" type="tns:char17" />
+          <xsd:element name="WERKS" type="tns:char4" />
+          <xsd:element name="MATNR" type="tns:char18" />
+          <xsd:element name="CNT" type="tns:numeric4" />
+          <xsd:element name="STATUS" type="tns:char2" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_ZIMES_FIS_BOM_I">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZIMES_FIS_BOM_I" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_ZIMES_FIS_BOM_I_R">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZIMES_FIS_BOM_I_R" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Z_RFC_FIS_BOM">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ZIMES_FIS_BOM_H" type="tns:ZIMES_FIS_BOM_H" />
+            <xsd:element minOccurs="0" name="ZIMES_FIS_BOM_I" type="tns:TABLE_OF_ZIMES_FIS_BOM_I" />
+            <xsd:element minOccurs="0" name="ZIMES_FIS_BOM_I_R" type="tns:TABLE_OF_ZIMES_FIS_BOM_I_R" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Z_RFC_FIS_BOMResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ZIMES_FIS_BOM_H_R" type="tns:ZIMES_FIS_BOM_H_R" />
+            <xsd:element name="ZIMES_FIS_BOM_I" type="tns:TABLE_OF_ZIMES_FIS_BOM_I" />
+            <xsd:element name="ZIMES_FIS_BOM_I_R" type="tns:TABLE_OF_ZIMES_FIS_BOM_I_R" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="Z_RFC_FIS_BOM">
+    <wsdl:part name="parameters" element="tns:Z_RFC_FIS_BOM" />
+  </wsdl:message>
+  <wsdl:message name="Z_RFC_FIS_BOMResponse">
+    <wsdl:part name="parameters" element="tns:Z_RFC_FIS_BOMResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Z_RFC_FIS_BOM_WS">
+    <sap:useFeature feature="tns:design_0 " />
+    <wsdl:operation name="Z_RFC_FIS_BOM">
+      <wsdl:input message="tns:Z_RFC_FIS_BOM" />
+      <wsdl:output message="tns:Z_RFC_FIS_BOMResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Z_RFC_FIS_BOM_WSSoapBinding" type="tns:Z_RFC_FIS_BOM_WS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Z_RFC_FIS_BOM">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Z_RFC_FIS_BOM_WSService">
+    <wsdl:port name="Z_RFC_FIS_BOM_WSSoapBinding" binding="tns:Z_RFC_FIS_BOM_WSSoapBinding">
+      <soap:address location="http://xidqdb.iec.inventec.com:8010/sap/bc/srt/rfc/sap/Z_RFC_FIS_BOM_WS?sap-client=001" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

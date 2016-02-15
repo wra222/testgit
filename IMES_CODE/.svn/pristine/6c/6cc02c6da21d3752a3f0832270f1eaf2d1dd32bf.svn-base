@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<configuration>
+	<configSections>
+		<section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" />
+	</configSections>
+
+	<log4net>
+		<appender name="RollingLogFileAppender"  type="log4net.Appender.RollingFileAppender">
+			<file value="./log/logfile" />
+			<appendToFile value="true" />
+			<rollingStyle value="Composite" />
+			<datePattern value="yyyy-MM-dd'.log'" />
+			<maxSizeRollBackups value="-1" />
+			<maximumFileSize value="1MB" />
+			<lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+			<layout type="log4net.Layout.PatternLayout">
+				<conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+			</layout>
+		</appender>
+		<appender name="Console" type="log4net.Appender.ConsoleAppender">
+			<layout type="log4net.Layout.PatternLayout">
+				<!-- Print the date in ISO 8601 format -->
+				<conversionPattern value="%date [%-5level] [%logger] - %message%newline" />
+			</layout>
+		</appender>
+		<root>
+			<level value="DEBUG" />
+			<appender-ref ref="RollingLogFileAppender" />
+			<appender-ref ref="Console"/>
+		</root>
+	</log4net>
+
+	<connectionStrings>
+		<!--<add name="DBConnection" connectionString="Data Source=10.99.183.111,998;Initial Catalog=MBU_iMES;Persist Security Info=True;User ID=ssis;Password=ssisbear2006;MultipleActiveResultSets=True;"	/>-->
+		<add name="DBConnection" connectionString="Data Source=10.99.183.65;Initial Catalog=HPIMES;Persist Security Info=True;User ID=fis;Password=fis+123;MultipleActiveResultSets=True;" />
+
+	</connectionStrings>
+	<appSettings>
+
+    <!-- SAP CTO BOM 上傳Server & File path -->
+    <add key="SAPServerDomain"  value="ies" />
+    <add key="SAPServerUser"  value="imes_user" />
+    <add key="SAPServerPassword"  value="IES=123" />
+
+    <add key="SAPServerFolder"  value="D:\Temp\UPS\"  />
+    <add key="SAPServerBckupFolder"  value="D:\Temp\UPS\"  />
+
+    <add key="SAPPOFile"  value="UPS_Po.txt"   />
+
+    <!--指定抓取特定AV料號(多筆使用,或~分隔),空白是根據UPS提供所AV料好--> 
+    <add key="AVPartNo" value=""/>
+    <!--<add key="AVPartNo" value="YQ205AV,YQ206AV,YQ205AV,YQ206AV"/>-->
+
+    <!--指定抓取特定PO Number(多筆使用,或~分隔),空白是為所有PO-->
+    <add key="PONo" value=""/>
+    <!--<add key="PONo" value="70V983569001,L8V982315001"/>-->
+
+    <!--延遲送UPS Verify Po web service(單位:秒)-->
+    <add key="DelayVerifyPo" value="60"/>
+    <!--Waiting for UPS POVerify Expire time(單位:miniute) -->
+    <add key="WaitingUPSVerifyPOExpiredTime" value="120"/>
+    
+    
+    <!--UPS OSI 欄位設置-->
+    <add key="OSITagName" value="CustomerPO,Location" />
+    <!--UPS OSI 欄位對應值-->
+    <add key="OSITagNameMapValue" value="CustomerPO,Buttom"/>
+    
+   
+		
+		 
+		<!-- 設置 Mail server -->
+		<add key="MailServer" value="ics-mx03.ies.inventec" />
+		<add key="FromAddress" value="ies_agent@inventec.com" />
+		<!--傳給多人以隔開;-->
+		<add key="ToAddress" value="Gao.Song@inventec.com.cn" />
+		<add key="CcAddress" value="" />
+		<add key="MailSubject" value="[UPS] " />
+
+		
+
+	</appSettings>
+
+
+ <system.serviceModel>
+  <bindings>
+   <basicHttpBinding>
+    <binding name="UPSPrimaryService" closeTimeout="00:01:00"
+     openTimeout="00:01:00" receiveTimeout="00:10:00" sendTimeout="00:01:00"
+     allowCookies="false" bypassProxyOnLocal="false" hostNameComparisonMode="StrongWildcard"
+     maxBufferSize="6553600" maxBufferPoolSize="524288" maxReceivedMessageSize="6553600"
+     messageEncoding="Text" textEncoding="utf-8" transferMode="Buffered"
+     useDefaultWebProxy="true">
+     <readerQuotas maxDepth="32" maxStringContentLength="8192" maxArrayLength="16384"
+      maxBytesPerRead="4096" maxNameTableCharCount="16384" />
+     <security mode="None">
+      <transport clientCredentialType="None" proxyCredentialType="None"
+       realm="" />
+      <message clientCredentialType="UserName" algorithmSuite="Default" />
+     </security>
+    </binding>
+    
+   </basicHttpBinding>
+  </bindings>
+  <client>
+   <endpoint address="http://10.99.82.252:81/UPSPrimary/UPSPrimaryService.asmx"
+    binding="basicHttpBinding" bindingConfiguration="UPSPrimaryService"
+    contract="UPSPrimaryService.UPSPrimaryServiceSoap" name="UPS" />
+   <endpoint address="http://10.99.82.252:81/UPSATRP/UPS_ATRP.asmx"
+    binding="basicHttpBinding" bindingConfiguration="UPSPrimaryService" contract="UPSATRP.ATRPSoap"
+    name="UPS" />
+  </client>
+ </system.serviceModel>
+</configuration>

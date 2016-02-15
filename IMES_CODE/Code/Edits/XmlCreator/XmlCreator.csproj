@@ -1,0 +1,292 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2A588847-B617-4E70-8F73-6339A95DF140}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Inventec.HPEDITS.XmlCreator</RootNamespace>
+    <AssemblyName>Inventec.HPEDITS.XmlCreator</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\bin\Inventec.HPEDITS.XmlCreator.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\bin\Inventec.HPEDITS.XmlCreator.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="idautomation.pdf417, Version=5.6.1.0, Culture=neutral, PublicKeyToken=aaf1d3264dd94e0f">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\IDAutomation_PDF417FontEncoder\Dotnet DLL and Forms Control\idautomation.pdf417.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="NLog, Version=1.0.0.505, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BoxLabelShipmentXmlCreator.cs" />
+    <Compile Include="BoxLabelXmlCreator.cs" />
+    <Compile Include="BoxShipmentMRPXMLCreator.cs" />
+    <Compile Include="Database\EditsSqlProc.cs" />
+    <Compile Include="Database\SQLHelper.cs" />
+    <Compile Include="HouseWaybillsXmlCreator.cs" />
+    <Compile Include="PackListShipmentXmlCreator_QVC.cs" />
+    <Compile Include="PackListShipmentXmlCreator_QVC_Test.cs" />
+    <Compile Include="Database\TransferCode.cs" />
+    <Compile Include="IDAutomation.cs" />
+    <Compile Include="MasterWaybillShipmentXmlCreator.cs" />
+    <Compile Include="MasterWaybillShipmentXmlCreator_bck.cs" />
+    <Compile Include="PackListShipmentXmlCreator.cs" />
+    <Compile Include="PalletAShipmentXmlCreator.cs" />
+    <Compile Include="PalletBShipmentBsamXmlCreator.cs" />
+    <Compile Include="PalletBShipmentXmlCreator.cs" />
+    <Compile Include="POSXmlCreator.cs" />
+    <Compile Include="WayBillShipmentXmlCreator.cs" />
+    <Compile Include="WayBillShipmentXmlCreator_new.cs" />
+    <Compile Include="WayBillXmlCreator.cs" />
+    <Compile Include="PalletBXmlCreator.cs" />
+    <Compile Include="PalletAXmlCreator.cs" />
+    <Compile Include="Database\ITableMappingLookup.cs" />
+    <Compile Include="Database\TableLookupResult.cs" />
+    <Compile Include="Database\DBFactory.cs" />
+    <Compile Include="PackListXmlCreator.cs" />
+    <Compile Include="WayBill_AdditionXMLCreat_new.cs" />
+    <Compile Include="XmlCreator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XSD\Schema_Box_Ship_Label_001_20100104.cs">
+      <DependentUpon>Schema_Box_Ship_Label_001_20100104.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_Box_Ship_Label_BSaM_20121120b.cs">
+      <DependentUpon>Schema_Box_Ship_Label_BSaM_20121120b.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_BSaM_Pallet_Label_20130506.cs">
+      <DependentUpon>Schema_BSaM_Pallet_Label_20130506.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_BSAM_Waybill_001_20130124.cs">
+      <DependentUpon>Schema_BSAM_Waybill_001_20130124.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_Master_Waybill_002_20110823.cs">
+      <DependentUpon>Schema_Master_Waybill_002_20110823.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_Master_Waybill_002_20130204.cs">
+      <DependentUpon>Schema_Master_Waybill_002_20130204.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_Master_Waybill_003_20140310.cs">
+      <DependentUpon>Schema_Master_Waybill_003_20140310.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_Pack_List_001_20091212.cs">
+      <DependentUpon>Schema_Pack_List_001_20091212.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_Pallet_Label_TypeA_001_20091021.cs">
+      <DependentUpon>Schema_Pallet_Label_TypeA_001_20091021.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_Pallet_Label_TypeA_001_20091212.cs">
+      <DependentUpon>Schema_Pallet_Label_TypeA_001_20091212.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_Pallet_Label_TypeA_001_20100104.cs">
+      <DependentUpon>Schema_Pallet_Label_TypeA_001_20100104.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_Pallet_Label_TypeB_001_20090605.cs">
+      <DependentUpon>Schema_Pallet_Label_TypeB_001_20090605.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_Pallet_Label_TypeB_001_20100104.cs">
+      <DependentUpon>Schema_Pallet_Label_TypeB_001_20100104.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_Pallet_Label_TypeB_002_20150707.cs">
+      <DependentUpon>Schema_Pallet_Label_TypeB_002_20150707.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_POS_001_20140508.cs">
+      <DependentUpon>Schema_POS_001_20140508.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_Waybill_Addition_001_20090605.cs">
+      <DependentUpon>Schema_Waybill_Addition_001_20090605.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_Waybill_Addition_001_20091212.cs">
+      <DependentUpon>Schema_Waybill_Addition_001_20091212.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_Waybill_Addition_001_20120724.cs">
+      <DependentUpon>Schema_Waybill_Addition_001_20120724.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XSD\Schema_Waybill_Addition_001_20121127.cs">
+      <DependentUpon>Schema_Waybill_Addition_001_20121127.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="XSD\Schema_Box_Ship_Label_001_20100104.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\Schema_Box_Ship_Label_001_20100104.xsx">
+      <DependentUpon>Schema_Box_Ship_Label_001_20100104.xsd</DependentUpon>
+    </None>
+    <None Include="XSD\Schema_Box_Ship_Label_BSaM_20121120b.xsd" />
+    <None Include="XSD\Schema_BSaM_Pallet_Label_20130506.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\Schema_BSAM_Waybill_001_20130124.xsd" />
+    <None Include="XSD\Schema_Master_Waybill_002_20110823.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\Schema_Master_Waybill_002_20110823.xsx">
+      <DependentUpon>Schema_Master_Waybill_002_20110823.xsd</DependentUpon>
+    </None>
+    <None Include="XSD\Schema_Master_Waybill_002_20130204.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\Schema_Master_Waybill_002_20130204.xsx">
+      <DependentUpon>Schema_Master_Waybill_002_20130204.xsd</DependentUpon>
+    </None>
+    <None Include="XSD\Schema_Master_Waybill_003_20140310.xsd" />
+    <None Include="XSD\Schema_Pack_List_001_20091212.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\Schema_Pack_List_001_20091212.xsx">
+      <DependentUpon>Schema_Pack_List_001_20091212.xsd</DependentUpon>
+    </None>
+    <None Include="XSD\Schema_Pallet_Label_TypeA_001_20091021.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\Schema_Pallet_Label_TypeA_001_20091021.xsx">
+      <DependentUpon>Schema_Pallet_Label_TypeA_001_20091021.xsd</DependentUpon>
+    </None>
+    <None Include="XSD\Schema_Pallet_Label_TypeA_001_20091212.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XmlCreatorClassDiagram.cd" />
+    <None Include="XSD\Schema_Pallet_Label_TypeA_001_20091212.xsx">
+      <DependentUpon>Schema_Pallet_Label_TypeA_001_20091212.xsd</DependentUpon>
+    </None>
+    <None Include="XSD\Schema_Pallet_Label_TypeA_001_20100104.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\Schema_Pallet_Label_TypeA_001_20100104.xsx">
+      <DependentUpon>Schema_Pallet_Label_TypeA_001_20100104.xsd</DependentUpon>
+    </None>
+    <None Include="XSD\Schema_Pallet_Label_TypeB_001_20090605.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\Schema_Pallet_Label_TypeB_001_20090605.xsx">
+      <DependentUpon>Schema_Pallet_Label_TypeB_001_20090605.xsd</DependentUpon>
+    </None>
+    <None Include="XSD\Schema_Pallet_Label_TypeB_001_20100104.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\Schema_Pallet_Label_TypeB_001_20100104.xsx">
+      <DependentUpon>Schema_Pallet_Label_TypeB_001_20100104.xsd</DependentUpon>
+    </None>
+    <None Include="XSD\Schema_Pallet_Label_TypeB_002_20150707.xsd" />
+    <None Include="XSD\Schema_POS_001_20140508.xsd" />
+    <None Include="XSD\Schema_Waybill_Addition_001_20090605.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\Schema_Waybill_Addition_001_20091212.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\Schema_Waybill_Addition_001_20120724.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\Schema_Waybill_Addition_001_20120724.xsx">
+      <DependentUpon>Schema_Waybill_Addition_001_20120724.xsd</DependentUpon>
+    </None>
+    <None Include="XSD\Schema_Waybill_Addition_001_20121127.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\Schema_Waybill_Addition_001_20121127.xsx">
+      <DependentUpon>Schema_Waybill_Addition_001_20121127.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\idautomation.pdf417.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

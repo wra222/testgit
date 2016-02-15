@@ -1,0 +1,6 @@
+E:\IMES_CODE\Code\RCTO\bin\IMES.Infrastructure.Session.dll
+E:\IMES_CODE\Code\RCTO\bin\IMES.Infrastructure.Session.pdb
+E:\IMES_CODE\Code\RCTO\kernel\IMES.Infrastructure.Session\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\kernel\IMES.Infrastructure.Session\obj\Debug\IMES.Infrastructure.Session.dll
+E:\IMES_CODE\Code\RCTO\kernel\IMES.Infrastructure.Session\obj\Debug\IMES.Infrastructure.Session.pdb
+E:\IMES_CODE\Code\RCTO\bin\IMES.Infrastructure.Session.XML

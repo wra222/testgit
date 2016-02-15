@@ -1,0 +1,194 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageMaintain.master" AutoEventWireup="true"
+    CodeFile="SARepairWIP_Dashboard.aspx.cs" Inherits="Query_SA_SARepairWIP_Dashboard" EnableViewState="false" %>
+<%@ MasterType VirtualPath="~/MasterPageMaintain.master" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="iMESContent" runat="Server">
+
+    <script type="text/javascript" src=" ../../CommonControl/JS/Browser.js"></script>
+    <script type="text/javascript" src="../../CommonControl/JS/iMESCommonUse.js"></script>
+    <script type="text/javascript" src="../../js/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="../../js/jquery-ui-1.8.13.custom.min.js"></script>
+    <script type="text/javascript" src="../../js/jscal2.js"></script>
+
+    
+    <script src="../../js/lang/cn.js"></script>
+    <script src="../../js/jquery.dateFormat-1.0.js"></script>
+    <script type="text/javascript" src="../../js/assets/prettify.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="../../css/jscal2.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/border-radius.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/steel/steel.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/jquery-ui-1.8.13.custom.css">
+ <style type="text/css">
+       
+        .title
+        {
+            font-size: 18px;
+            font-weight: bold;
+            color:White;
+        }
+        th
+        {
+        	background-color: #000000;
+        }
+        .titleData
+        {
+            font-size: 22px;
+            font-weight: bold;
+            color: #57FEFF;
+        }
+        .titleSmallData
+        {
+            font-size: 16px;
+             color: #FFF8C6;
+        }
+        .blackMode
+        {
+         
+         }
+       .ctl td{  overflow:hidden;white-space: nowrap;padding:2px;font-size:9px}
+     .style1
+     {
+         width: 606px;
+     }
+     #DivDay
+     {
+         width: 985px;
+     }
+     .style6
+     {
+         width: 180px;
+     }
+    </style>
+
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+      
+    </asp:ScriptManager>
+
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" RenderMode="Inline">
+    <ContentTemplate>        
+        <button id="btnRefresh" runat="server" type="button" onclick="" style="display: none" />
+             <script language="javascript" type="text/javascript">
+                </script>
+    </ContentTemplate>    
+  </asp:UpdatePanel> 
+    <div style=" visibility:hidden">
+      <imesquery:cmbdbtype ID="CmbDBType" runat="server" />
+       <asp:Label ID="lblDB" runat="server" Text="DBName:" CssClass="iMes_label_13pt"></asp:Label>
+      </div>
+        <table id="titleTable"  width="100%"style='background-color:#000000'>
+        <tr align="center">
+        <td align="left">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="title" font-family="Agency FB" runat="server" ForeColor="Red" Text="SA Repair WIP Dashboard" 
+                Font-Size="50pt"></asp:Label>
+        </td>
+        <td align="right">
+            <asp:Label ID="curTime" runat="server" ForeColor="Red" 
+                Font-Size="25pt"></asp:Label>
+        </td>
+        </tr>
+        </table>
+        
+         <table border="0" width="100%" id='TableMain'>
+            <tr>
+            <td class="style1">
+                <fieldset id="Fieldset1" 
+                    style="border: thin solid #000000; width: 200%; height: auto;">
+                    <legend align="left" style="height :20px">
+                        <asp:Label ID="Label111" runat="server" CssClass="iMes_label_13pt" 
+                            Text="Repair WIP(08:00--)" ForeColor="#CC0066" Font-Size="20pt" 
+                            Font-Bold="False" ></asp:Label>
+                    </legend>
+                    
+                        <br />
+
+                        <table class='ctl' style='border-width:0px;height:50%;width:100%;'>
+                            <tr>  
+                                <td align="center" style="font-size: 30px;width: 50%" >Family</td>  
+                                <td align="center" style="font-size: 30px;width: 10%" >Input Qty</td>  
+                                <td align="center" style="font-size: 30px;width: 10%" >Output Qty</td>  
+                                <td align="center" style="font-size: 30px;width: 10%" >WIP Qty</td>  
+                                <td align="center" style="font-size: 30px;width: 10%" >W/H Qty</td>  
+                            </tr> 
+                        </table> 
+                        
+                        <div id="DivDay" style="overflow: hidden; height:390px;border:1px solid;overflow-y:scroll;width:100%">  
+                        </div>
+                            <%--<iMES:GridViewExt ID="gvResult" runat="server" 
+                                AutoGenerateColumns="true" GvExtHeight="150px" GvExtWidth="100%" Height="1px" 
+                                style="top: 100px; left: 2px" Width="98%">
+                            </iMES:GridViewExt>--%>
+                </fieldset>
+            </td>
+            <td width="50%">
+                &nbsp;</td>
+        </tr>
+         </table>
+       
+      <asp:HiddenField ID="hidConnection" runat="server" Value="1" />
+    <asp:HiddenField ID="hidDbName" runat="server" Value="" />
+    
+    <asp:HiddenField ID="hidImgPath" runat="server" Value="1" /> 
+     
+
+    <script type="text/javascript">
+      var userName="<%=userName %>";
+      var userId="<%=userId %>"
+      var accountId="<%=accountId %>";;
+      var customer="<%=customer %>";
+        window.onload = function() {
+            
+            getTime();
+            GetMain();
+            // setTimeout('GetMain( )', 10000)
+        };
+        
+        function getTime()
+       {
+            var now = new Date();
+            var t = now.format("yyyy-MM-dd HH:mm:ss");
+            var curTime = '#' + "<%=curTime.ClientID %>";
+            $(curTime).text(t);
+            setTimeout('getTime( )', 1000);
+       }
+       function GetMain()
+       {
+        var connection = document.getElementById("<%=hidConnection.ClientID %>").value;
+        PageMethods.RefreshTimeAndBindData(connection, onSuccessForMain, onErrorForMain);
+       }
+       function onSuccessForMain(receiveData) 
+       {
+            document.getElementById('DivDay').innerHTML = '';
+            document.getElementById('DivDay').innerHTML =receiveData[0];
+            setTimeout('GetMain()',parseInt(receiveData[1])*60*1000);
+       }    
+        function onErrorForMain(error)
+        {
+             if (error != null)
+                alert(error.get_message());
+        }
+
+
+        var speed = 50;
+        function Marquee() {
+            var divHight = $("#DivDay").height();
+            distanceScrollCount = DivDay.scrollHeight;
+            distanceScroll = DivDay.scrollTop;
+            if ((distanceScroll + divHight) >= distanceScrollCount) {
+                DivDay.scrollTop = 0;
+            }
+            else {
+                DivDay.scrollTop++;
+            }
+        }
+        var MyMar = setInterval(Marquee, speed);
+        DivDay.onmouseover = function() {
+            clearInterval(MyMar);
+        }
+        DivDay.onmouseout = function() {
+            MyMar = setInterval(Marquee, speed);
+        }
+    </script>
+</asp:Content>
+

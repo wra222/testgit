@@ -1,0 +1,18 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="FAMBReturn" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:BlockStation Customer="{ActivityBind FAMBReturn,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind FAMBReturn,Path=SessionType}" Editor="{ActivityBind FAMBReturn,Path=Editor}" ProcessType="MB" Station="{ActivityBind FAMBReturn,Path=Station}" Line="{ActivityBind FAMBReturn,Path=PdLine}" Key="{ActivityBind FAMBReturn,Path=Key}" />
+	<ns0:GetMB Customer="{ActivityBind FAMBReturn,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind FAMBReturn,Path=SessionType}" Editor="{ActivityBind FAMBReturn,Path=Editor}" Station="{ActivityBind FAMBReturn,Path=Station}" MBSnSessionKey="{x:Null}" x:Name="getMB1" Line="{ActivityBind FAMBReturn,Path=PdLine}" Key="{ActivityBind FAMBReturn,Path=Key}" />
+	<ns0:WaitInput Customer="{ActivityBind FAMBReturn,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind FAMBReturn,Path=SessionType}" Editor="{ActivityBind FAMBReturn,Path=Editor}" Station="{ActivityBind FAMBReturn,Path=Station}" Line="{ActivityBind FAMBReturn,Path=PdLine}" Key="{ActivityBind FAMBReturn,Path=Key}" />
+	<IfElseActivity x:Name="IfComplete">
+		<IfElseBranchActivity x:Name="ContinueDO">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="ContinueDO" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind FAMBReturn,Path=Station}" x:Name="dbScope1" Key="{ActivityBind FAMBReturn,Path=Key}" SessionType="{ActivityBind FAMBReturn,Path=SessionType}">
+				<ns0:DeleteMBRepair Customer="{ActivityBind FAMBReturn,Path=Customer}" x:Name="deleteMBRepair1" SessionType="{ActivityBind FAMBReturn,Path=SessionType}" Editor="{ActivityBind FAMBReturn,Path=Editor}" Station="{ActivityBind FAMBReturn,Path=Station}" Line="{ActivityBind FAMBReturn,Path=PdLine}" Key="{ActivityBind FAMBReturn,Path=Key}" />
+				<ns0:UpdateMBStatus Customer="{ActivityBind FAMBReturn,Path=Customer}" ManualStation="" SessionType="{ActivityBind FAMBReturn,Path=SessionType}" x:Name="updateMBStatus1" Editor="{ActivityBind FAMBReturn,Path=Editor}" IsPass="Pass" Station="{ActivityBind FAMBReturn,Path=Station}" Line="MP" Key="{ActivityBind FAMBReturn,Path=Key}" />
+				<ns0:WriteMBLog Customer="{ActivityBind FAMBReturn,Path=Customer}" LineSuffix="{x:Null}" ManualStation="{x:Null}" SessionType="{ActivityBind FAMBReturn,Path=SessionType}" x:Name="writeMBLog1" Editor="{ActivityBind FAMBReturn,Path=Editor}" IsPass="True" Station="FM" IsSingle="True" Line="MP" Key="{ActivityBind FAMBReturn,Path=Key}" />
+				<ns0:UpdateLotForFAMBReturn Customer="{ActivityBind FAMBReturn,Path=Customer}" x:Name="updateLotForFAMBReturn1" SessionType="{ActivityBind FAMBReturn,Path=SessionType}" Editor="{ActivityBind FAMBReturn,Path=Editor}" Station="{ActivityBind FAMBReturn,Path=Station}" Line="{ActivityBind FAMBReturn,Path=PdLine}" Key="{ActivityBind FAMBReturn,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

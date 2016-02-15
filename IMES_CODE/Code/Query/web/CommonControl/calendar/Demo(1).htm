@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+<script language="JavaScript" SRC="calendar.js"></script>
+<script language="VBScript" src="calendar.vbs"></script>
+</HEAD>
+
+<BODY>
+	<input type="text" id="txt" onpropertychange="chng()"/>
+	<button onclick="showCalFrame(txt)">button</button>
+</BODY>
+</HTML>
+
+<script>
+	window.onload = function()
+	{
+		document.getElementById("txt").onpropertychange = chng;	
+	};
+
+	function chng()
+	{
+		alert("change");
+	}
+
+	initCalFrame("./");
+</script>

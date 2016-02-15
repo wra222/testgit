@@ -1,0 +1,22 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="Loc2PP" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind Loc2PP,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind Loc2PP,Path=SessionType}" Editor="{ActivityBind Loc2PP,Path=Editor}" Station="{ActivityBind Loc2PP,Path=Station}" x:Name="getProduct1" Line="{ActivityBind Loc2PP,Path=PdLine}" Key="{ActivityBind Loc2PP,Path=Key}" InputType="ProductID" />
+	<ns0:DBScope Station="{ActivityBind Loc2PP,Path=Station}" x:Name="dbScope1" Key="{ActivityBind Loc2PP,Path=Key}" SessionType="{ActivityBind Loc2PP,Path=SessionType}">
+		<ns0:RemoveProductInfoByTypeAndValue Customer="{ActivityBind Loc2PP,Path=Customer}" x:Name="removeProductInfoByTypeAndValue1" SessionType="{ActivityBind Loc2PP,Path=SessionType}" Editor="{ActivityBind Loc2PP,Path=Editor}" Enabled="False" InfoValueSessionKey="{x:Null}" Station="{ActivityBind Loc2PP,Path=Station}" InfoType="2PPCL" Line="{ActivityBind Loc2PP,Path=PdLine}" Key="{ActivityBind Loc2PP,Path=Key}" />
+		<ns0:WriteDockingProductInfo Customer="{ActivityBind Loc2PP,Path=Customer}" x:Name="writeDockingProductInfo1" SessionType="{ActivityBind Loc2PP,Path=SessionType}" Editor="{ActivityBind Loc2PP,Path=Editor}" Enabled="False" InfoValueSessionKey="{x:Null}" Station="{ActivityBind Loc2PP,Path=Station}" InfoType="2PPCL" Line="{ActivityBind Loc2PP,Path=PdLine}" Key="{ActivityBind Loc2PP,Path=Key}" />
+		<IfElseActivity x:Name="ifElseActivity1">
+			<IfElseBranchActivity x:Name="ifRUNINCL">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="isRUNINCL" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteProductAttr AttributeName="RUNINCL" x:Name="WirteProductAttr" SessionType="{ActivityBind Loc2PP,Path=SessionType}" DescrOfProductAttrLog="Loc2PP" Editor="{ActivityBind Loc2PP,Path=Editor}" Station="{ActivityBind Loc2PP,Path=Station}" Customer="{ActivityBind Loc2PP,Path=Customer}" Line="{ActivityBind Loc2PP,Path=PdLine}" Key="{ActivityBind Loc2PP,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ifIMGCL">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="isIMGCL" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WriteProductAttr AttributeName="IMGCL" x:Name="writeProductAttr1" SessionType="{ActivityBind Loc2PP,Path=SessionType}" DescrOfProductAttrLog="Loc2PP" Editor="{ActivityBind Loc2PP,Path=Editor}" AttributeValue="{x:Null}" Station="{ActivityBind Loc2PP,Path=Station}" Customer="{ActivityBind Loc2PP,Path=Customer}" Line="{ActivityBind Loc2PP,Path=PdLine}" Key="{ActivityBind Loc2PP,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<ns0:WriteProductLog Customer="{ActivityBind Loc2PP,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind Loc2PP,Path=SessionType}" Editor="{ActivityBind Loc2PP,Path=Editor}" Station="{ActivityBind Loc2PP,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind Loc2PP,Path=PdLine}" Key="{ActivityBind Loc2PP,Path=Key}" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 rel. 3 sp1 (http://www.altova.com) by hr lin (HYT) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="PALLETS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PALLET" type="PALLETType" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="PALLETType">
+		<xs:sequence>
+			<xs:element name="WAYBILL_NUMBER" type="xs:string"/>
+			<xs:element name="MASTER_WAYBILL_NUMBER" type="xs:string"/>
+			<xs:element name="CONSOL_INVOICE" type="xs:string"/>
+			<xs:element name="PALLET_ID" type="xs:string"/>
+			<xs:element name="INTL_CARRIER" type="xs:string"/>
+			<xs:element name="PALLET_BOX_QTY" type="xs:double"/>
+			<xs:element name="PALLET_UNIT_QTY" type="xs:double"/>
+			<xs:element name="LABEL_INSTR_HEAD" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="PREF_GATEWAY" type="xs:string"/>
+			<xs:element name="SHIP_MODE" type="xs:string"/>
+			<xs:element name="TRANS_SERV_LEVEL" type="xs:string"/>
+			<xs:element name="UDF_PALLET" type="UDFType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="PACK_ID_LINE_ITEM" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PACK_ID" type="xs:string"/>
+						<xs:element name="SHIP_REF" type="xs:string"/>
+						<xs:element name="HP_PN" type="xs:string"/>
+						<xs:element name="PROD_DESC_BASE" type="xs:string"/>
+						<xs:element name="CONFIG_ID_NUMBER" type="xs:string"/>
+						<xs:element name="PROD_TYPE" type="xs:string"/>
+						<xs:element name="SUB_REGION" type="xs:string"/>
+						<xs:element name="REG_CARRIER" type="xs:string"/>
+						<xs:element name="HP_SO" type="xs:string"/>
+						<xs:element name="HP_SO_LINE_ITEM" type="xs:string"/>
+						<xs:element name="CUST_PO" type="xs:string"/>
+						<xs:element name="PACK_ID_LINE_ITEM_UNIT_QTY" type="xs:double"/>
+						<xs:element name="PACK_ID_LINE_ITEM_BOX_QTY" type="xs:double"/>
+						<xs:element name="PACK_ID_LINE_ITEM_UNIT_QTY_PER_PALLET" type="xs:double"/>
+						<xs:element name="PACK_ID_LINE_ITEM_BOX_QTY_PER_PALLET" type="xs:double"/>
+						<xs:element name="UDF_HEADER" type="UDFType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="UDF_DETAIL" type="UDFType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="BOX" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="BOX_ID" type="xs:string"/>
+									<xs:element name="BOX_UNIT_QTY" type="xs:double"/>
+									<xs:element name="SERIAL_NUM" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="TRACK_NO_PARCEL" type="xs:string"/>
+									<xs:element name="BOX_WEIGHT" type="xs:double"/>
+									<xs:element name="BOX_WEIGHT_UOM" type="xs:string"/>
+									<xs:element name="UDF_BOX" type="UDFType" minOccurs="0" maxOccurs="unbounded"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UDFType">
+		<xs:sequence>
+			<xs:element name="KEY" type="xs:string"/>
+			<xs:element name="VALUE" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

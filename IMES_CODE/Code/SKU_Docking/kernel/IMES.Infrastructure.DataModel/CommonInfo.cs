@@ -1,0 +1,4393 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IMES.Infrastructure.Repository._Metas;
+using mtns = IMES.Infrastructure.Repository._Metas;
+
+namespace IMES.DataModel
+{
+    //public class CommonInfo
+    /// <summary>
+    /// MB_CODE value object
+    /// </summary>
+    [Serializable]
+    public struct MB_CODEInfo
+    {
+        /// <summary>
+        /// MB_CODE Identifier
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// MB_CODE Friendly Name
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// MB_CODE value & MDL value object
+    /// </summary>
+    [Serializable]
+    public struct MB_CODEAndMDLInfo
+    {
+        /// <summary>
+        /// MB_CODE Identifier
+        /// </summary>
+        public string mbCode;
+        /// <summary>
+        /// MDL
+        /// </summary>
+        public string mdl;
+    }
+
+    /// <summary>
+    /// 111 Level value object
+    /// </summary>
+    [Serializable]
+    public struct _111LevelInfo
+    {
+        /// <summary>
+        /// 111 Level Identifier
+        /// </summary>
+        public string id;
+
+        /// <summary>
+        /// 111 Level Friendly Name
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// PdLine value object
+    /// </summary>
+    [Serializable]
+    public struct PdLineInfo
+    {
+        /// <summary>
+        /// PdLine Identifier
+        /// </summary>
+        public string id;
+
+        /// <summary>
+        /// PdLine Friendly Name
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// 打印模板信息
+    /// </summary>
+    [Serializable]
+    public struct PrintTemplateInfo
+    {
+        /// <summary>
+        /// 模板标识，一般为BAT的路径
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 模板的友好名字：比如Travel Card with lattice
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// SMTMO信息
+    /// </summary>
+    [Serializable]
+    public struct SMTMOInfo
+    {
+        /// <summary>
+        /// SMTMO id
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// SMTMO friendlyName (if exists)
+        /// </summary>
+        public string friendlyName;
+        /// <summary>
+        /// MB_CODE id
+        /// </summary>
+        public string MB_CODEId;
+
+        /// <summary>
+        /// SMTMO description
+        /// </summary>
+        public string description;
+
+        /// <summary>
+        /// 111阶Id
+        /// </summary>
+        public string _111LevelId;
+
+        /// <summary>
+        /// total qty
+        /// </summary>
+        public int totalMBQty;
+
+        /// <summary>
+        /// 未打印的qty
+        /// </summary>
+        public int printedMBQty;
+
+        /// <summary>
+        /// remark
+        /// </summary>
+        public string remark;
+
+        /// <summary>
+        /// Create Time
+        /// </summary>
+        public DateTime cdt;
+    }
+
+    /// <summary>
+    /// MO信息结构
+    /// </summary>
+    [Serializable]
+    public struct MOInfo
+    {
+        // MO标识符
+        public string id;
+
+        /// <summary>
+        /// MO的友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+
+        /// <summary>
+        /// Model name
+        /// </summary>
+        public string model;
+
+        /// <summary>
+        /// create date
+        /// </summary>
+        public DateTime createDate;
+
+        /// <summary>
+        /// start date?
+        /// </summary>
+        public DateTime startDate;
+
+        /// <summary>
+        /// MO的数量
+        /// </summary>
+        public int qty;
+
+        /// <summary>
+        /// 打印数量
+        /// </summary>
+        public int pqty;
+
+        public int customerSN_Qty;
+        /// <summary>
+        /// 綁定Po
+        /// </summary>
+        public string PoNo;
+    }
+
+    /// <summary>
+    /// 文档类型信息
+    /// </summary>
+    [Serializable]
+    public struct DocTypeInfo
+    {
+        /// <summary>
+        /// 文档类型标识符
+        /// </summary>
+        public string id;
+
+        /// <summary>
+        /// 文档类型友好名字
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// 测试站信息
+    /// </summary>
+    [Serializable]
+    public struct TestStationInfo
+    {
+        /// <summary>
+        /// 测试站标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 测试站友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// Product的Family信息
+    /// </summary>
+    [Serializable]
+    public struct FamilyInfo
+    {
+        /// <summary>
+        /// Family标识
+        /// </summary>
+        public string id;
+
+        /// <summary>
+        /// Family友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+    }
+
+
+    /// <summary>
+    /// 1397阶信息
+    /// </summary>
+    [Serializable]
+    public struct _1397LevelInfo
+    {
+        /// <summary>
+        /// 1397阶标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 1397阶友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// VGA信息
+    /// </summary>
+    [Serializable]
+    public struct VGAInfo
+    {
+        /// <summary>
+        /// VGA标识
+        /// </summary>
+        public string id;
+
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// FAN信息
+    /// </summary>
+    [Serializable]
+    public struct FANInfo
+    {
+        /// <summary>
+        /// FAN标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// Defect信息
+    /// </summary>
+    [Serializable]
+    public struct DefectInfo
+    {
+        /// <summary>
+        /// Defect标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+        /// <summary>
+        /// Defect描述
+        /// </summary>
+        public string description;
+    }
+
+    /// <summary>
+    /// Cause信息
+    /// </summary>
+    [Serializable]
+    public struct CauseInfo
+    {
+        /// <summary>
+        /// Cause标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+
+        /// <summary>
+        /// CauseInfo 构造函数
+        /// </summary>
+        /// <param name="id">Cause ID</param>
+        /// <param name="friendlyName">Cause友好名字</param>
+        public CauseInfo(string id, string friendlyName)
+        {
+            this.id = id;
+            this.friendlyName = friendlyName;
+        }
+    }
+
+    /// <summary>
+    /// MajorPart信息
+    /// </summary>
+    [Serializable]
+    public struct MajorPartInfo
+    {
+        /// <summary>
+        /// MajorPart标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+
+        /// <summary>
+        /// MajorPartInfo 构造函数
+        /// </summary>
+        /// <param name="id">MajorPart ID</param>
+        /// <param name="friendlyName">MajorPart友好名字</param>
+        public MajorPartInfo(string id, string friendlyName)
+        {
+            this.id = id;
+            this.friendlyName = friendlyName;
+        }
+    }
+
+    /// <summary>
+    /// Component信息
+    /// </summary>
+    [Serializable]
+    public struct ComponentInfo
+    {
+        /// <summary>
+        /// Component标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+
+        /// <summary>
+        /// ComponentInfo构造函数
+        /// </summary>
+        /// <param name="id">Component ID</param>
+        /// <param name="friendlyName">Component友好名字</param>
+        public ComponentInfo(string id, string friendlyName)
+        {
+            this.id = id;
+            this.friendlyName = friendlyName;
+        }
+    }
+
+    /// <summary>
+    /// Obligation信息
+    /// </summary>
+    [Serializable]
+    public struct ObligationInfo
+    {
+        /// <summary>
+        /// Obligation标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+
+        /// <summary>
+        /// ObligationInfo构造函数
+        /// </summary>
+        /// <param name="id">Obligation ID</param>
+        /// <param name="friendlyName">Obligation友好名字</param>
+        public ObligationInfo(string id, string friendlyName)
+        {
+            this.id = id;
+            this.friendlyName = friendlyName;
+        }
+    }
+
+    /// <summary>
+    /// Mark信息
+    /// </summary>
+    [Serializable]
+    public struct MarkInfo
+    {
+        /// <summary>
+        /// Mark标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+
+        /// <summary>
+        /// MarkInfo构造函数
+        /// </summary>
+        /// <param name="id">Mark ID</param>
+        /// <param name="friendlyName">Mark友好名字</param>
+        public MarkInfo(string id, string friendlyName)
+        {
+            this.id = id;
+            this.friendlyName = friendlyName;
+        }
+    }
+
+    /// <summary>
+    /// Floor信息
+    /// </summary>
+    [Serializable]
+    public struct FloorInfo
+    {
+        /// <summary>
+        /// Floor标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// PPIDType信息
+    /// </summary>
+    [Serializable]
+    public struct PPIDTypeInfo
+    {
+        /// <summary>
+        /// PPID类型标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// PPID描述信息
+    /// </summary>
+    [Serializable]
+    public struct PPIDDescriptionInfo
+    {
+        /// <summary>
+        /// PPID描述标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// Part信息
+    /// </summary>
+    [Serializable]
+    public struct PartNoInfo
+    {
+        /// <summary>
+        /// PartNo
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+
+        /// <summary>
+        /// IEC Part Number
+        /// </summary>
+        public string iecPartNo;
+
+        /// <summary>
+        /// Part类型
+        /// </summary>
+        public string partTypeId;
+
+        /// <summary>
+        /// Part描述
+        /// </summary>
+        public string description;
+
+        /// <summary>
+        /// 值类型
+        /// </summary>
+        public string valueType;
+
+        /// <summary>
+        /// part扩展属性
+        /// </summary>
+        public IList<NameValueInfo> properties;
+
+    }
+
+    /// <summary>
+    /// Name-Value结构
+    /// </summary>
+    [Serializable]
+    public struct NameValueInfo
+    {
+        /// <summary>
+        /// Part描述
+        /// </summary>
+        public string Name;
+
+        /// <summary>
+        /// 值类型
+        /// </summary>
+        public string Value;
+    }
+
+    /// <summary>
+    /// Name-Value-DataType结构 for bartender sp return structure
+    /// </summary>
+    [Serializable]
+    public class NameValueDataTypeInfo
+    {
+        /// <summary>
+        /// Part描述
+        /// </summary>
+        public string Name;
+
+        /// <summary>
+        /// 值类型
+        /// </summary>
+        public string Value;
+
+        /// <summary>
+        /// 資料型態
+        /// 1:Named Data source, 2:TextFile 3:ODBC, 4:OLEDB
+        /// </summary>
+        public string DataType = "1";
+    }
+
+    /// <summary>
+    /// Sub-Defect信息
+    /// </summary>
+    [Serializable]
+    public struct SubDefectInfo
+    {
+        /// <summary>
+        /// Sub-Defect标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// Responsibility信息
+    /// </summary>
+    [Serializable]
+    public struct ResponsibilityInfo
+    {
+        /// <summary>
+        /// Responsibility标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+
+        /// <summary>
+        /// ResponsibilityInfo构造函数
+        /// </summary>
+        /// <param name="id">Responsibility ID</param>
+        /// <param name="friendlyName">Responsibility友好名字</param>
+        public ResponsibilityInfo(string id, string friendlyName)
+        {
+            this.id = id;
+            this.friendlyName = friendlyName;
+        }
+    }
+
+    /// <summary>
+    /// 4M信息
+    /// </summary>
+    [Serializable]
+    public struct _4MInfo
+    {
+        /// <summary>
+        /// 4M标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+
+        /// <summary>
+        /// 4MInfo构造函数
+        /// </summary>
+        /// <param name="id">4M ID</param>
+        /// <param name="friendlyName">4M友好名字</param>
+        public _4MInfo(string id, string friendlyName)
+        {
+            this.id = id;
+            this.friendlyName = friendlyName;
+        }
+    }
+
+    /// <summary>
+    /// Cover信息
+    /// </summary>
+    [Serializable]
+    public struct CoverInfo
+    {
+        /// <summary>
+        /// Cover标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+
+        /// <summary>
+        /// CoverInfo构造函数
+        /// </summary>
+        /// <param name="id">Cover ID</param>
+        /// <param name="friendlyName">Cover友好名字</param>
+        public CoverInfo(string id, string friendlyName)
+        {
+            this.id = id;
+            this.friendlyName = friendlyName;
+        }
+    }
+
+    /// <summary>
+    /// Uncover信息
+    /// </summary>
+    [Serializable]
+    public struct UncoverInfo
+    {
+        /// <summary>
+        /// Uncover标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+
+        /// <summary>
+        /// UncoverInfo构造函数
+        /// </summary>
+        /// <param name="id">Uncover ID</param>
+        /// <param name="friendlyName">Uncover友好名字</param>
+        public UncoverInfo(string id, string friendlyName)
+        {
+            this.id = id;
+            this.friendlyName = friendlyName;
+        }
+    }
+
+    /// <summary>
+    /// Tracking Status信息
+    /// </summary>
+    [Serializable]
+    public struct TrackingStatusInfo
+    {
+        /// <summary>
+        /// Tracking Status标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+
+        /// <summary>
+        /// TrackingStatusInfo构造函数
+        /// </summary>
+        /// <param name="id">TrackingStatus ID</param>
+        /// <param name="friendlyName">TrackingStatus友好名字</param>
+        public TrackingStatusInfo(string id, string friendlyName)
+        {
+            this.id = id;
+            this.friendlyName = friendlyName;
+        }
+    }
+
+    /// <summary>
+    /// Distribution信息
+    /// </summary>
+    [Serializable]
+    public struct DistributionInfo
+    {
+        /// <summary>
+        /// Distribution标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+
+        /// <summary>
+        /// DistributionInfo构造函数
+        /// </summary>
+        /// <param name="id">Distribution ID</param>
+        /// <param name="friendlyName">Distribution友好名字</param>
+        public DistributionInfo(string id, string friendlyName)
+        {
+            this.id = id;
+            this.friendlyName = friendlyName;
+        }
+    }
+
+    /// <summary>
+    /// Model信息
+    /// </summary>
+    [Serializable]
+    public struct ModelInfo
+    {
+        /// <summary>
+        /// Model标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// ProdIdRange信息
+    /// </summary>
+    [Serializable]
+    public struct ProdIdRangeInfo
+    {
+        /// <summary>
+        /// 起始ID
+        /// </summary>
+        public string startId;
+        /// <summary>
+        /// 结束ID
+        /// </summary>
+        public string endId;
+    }
+
+    /// <summary>
+    /// KP类型信息
+    /// </summary>
+    [Serializable]
+    public struct KPTypeInfo
+    {
+        /// <summary>
+        /// KP类型标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// DN信息
+    /// </summary>
+    public struct DNInfo
+    {
+        /// <summary>
+        /// DN标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// BOLNo信息
+    /// </summary>
+    [Serializable]
+    public struct BOLNoInfo
+    {
+        /// <summary>
+        /// BOLNo标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// Pallet信息
+    /// </summary>
+    [Serializable]
+    public struct PalletInfo
+    {
+        /// <summary>
+        /// Pallet标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// CheckItem信息
+    /// </summary>
+    [Serializable]
+    public struct CheckItemInfo
+    {
+        /// <summary>
+        /// CheckItem标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 数量
+        /// </summary>
+        public int qty;
+        /// <summary>
+        /// 扫过的数量
+        /// </summary>
+        public int scannedQty;
+    }
+
+    /// <summary>
+    /// Repair-Defect信息，请参考Repair_Defect_Info表
+    /// </summary>
+    [Serializable]
+    [ORMapping(typeof(ProductRepair_DefectInfo))]
+    public class RepairInfo
+    {
+        /// <summary>
+        /// Repair Defect标识
+        /// </summary>
+        //[ORMapping(ProductRepair_DefectInfo.fn_id)]  类型不同
+        public string id;
+
+        [ORMapping(ProductRepair_DefectInfo.fn_id)]
+        public int Identity = int.MinValue;
+
+        /// <summary>
+        /// Product Line
+        /// </summary>
+        public string pdLine;
+        /// <summary>
+        /// 测试站标识
+        /// </summary>
+        public string testStation;
+        /// <summary>
+        /// 测试站
+        /// </summary>
+        public string testStationDesc;
+        /// <summary>
+        /// Repair标识
+        /// </summary>
+        //[ORMapping(ProductRepair_DefectInfo.fn_productRepairID)]  类型不同
+        public string repairID;
+        /// <summary>
+        /// 类型
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_type)]
+        public string type;
+        /// <summary>
+        /// Defect Code标识
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_defectCode)]
+        public string defectCodeID;
+        /// <summary>
+        /// Defect
+        /// </summary>
+        public string defectCodeDesc;
+        /// <summary>
+        /// Cause
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_cause)]
+        public string cause;
+        /// <summary>
+        /// cause description
+        /// </summary>
+        public string causeDesc;
+        /// <summary>
+        /// obligation
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_obligation)]
+        public string obligation;
+        /// <summary>
+        /// component
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_component)]
+        public string component;
+        /// <summary>
+        /// site
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_site)]
+        public string site;
+        /// <summary>
+        /// major part
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_majorPart)]
+        public string majorPart;
+        /// <summary>
+        /// remark
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_remark)]
+        public string remark;
+        /// <summary>
+        /// vendorCT
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_vendorCT)]
+        public string vendorCT;
+        /// <summary>
+        /// part type
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_partType)]
+        public string partType;
+        /// <summary>
+        /// old part
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_oldPart)]
+        public string oldPart;
+        /// <summary>
+        /// old part sno
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_oldPartSno)]
+        public string oldPartSno;
+        /// <summary>
+        /// new part
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_newPart)]
+        public string newPart;
+        /// <summary>
+        /// new part sno
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_newPartSno)]
+        public string newPartSno;
+        /// <summary>
+        /// manufacture
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_manufacture)]
+        public string manufacture;
+        /// <summary>
+        /// version A
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_versionA)]
+        public string versionA;
+        /// <summary>
+        /// version B
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_versionB)]
+        public string versionB;
+        /// <summary>
+        /// return sign
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_returnSign)]
+        public string returnSign;
+        /// <summary>
+        /// mark
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_mark)]
+        public string mark;
+        /// <summary>
+        /// sub-defect
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_subDefect)]
+        public string subDefect;
+        /// <summary>
+        /// pia-station
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_piastation)]
+        public string piaStation;
+        /// <summary>
+        /// distribution
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_distribution)]
+        public string distribution;
+        /// <summary>
+        /// 4M
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn__4M_)]
+        public string _4M;
+        /// <summary>
+        /// responsibility
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_responsibility)]
+        public string responsibility;
+        /// <summary>
+        /// action
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_action)]
+        public string action;
+        /// <summary>
+        /// cover
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_cover)]
+        public string cover;
+        /// <summary>
+        /// uncover
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_uncover)]
+        public string uncover;
+        /// <summary>
+        /// tracking status
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_trackingStatus)]
+        public string trackingStatus;
+        /// <summary>
+        /// is manual
+        /// </summary>
+        //[ORMapping(ProductRepair_DefectInfo.fn_isManual)] 类型不同
+        public string isManual;
+        /// <summary>
+        /// MTA ID
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_mtaid)]
+        public string mtaID;
+        /// <summary>
+        /// operator
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_editor)]
+        public string editor;
+        /// <summary>
+        /// create date
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        /// <summary>
+        /// update date
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+
+        /// <summary>
+        /// 新Part日期码
+        /// </summary>
+        public string newPartDateCode;
+        /// <summary>
+        /// location
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_location)]
+        public string location;
+        /// <summary>
+        /// side
+        /// </summary>
+        public string side;
+
+        /// <summary>
+        /// returnStation
+        /// </summary>
+        [ORMapping(ProductRepair_DefectInfo.fn_returnStn)]
+        public string returnStation;
+    }
+
+    /// <summary>
+    /// 操作员信息
+    /// </summary>
+    [Serializable]
+    public struct OperatorInfo
+    {
+        /// <summary>
+        /// Line标识
+        /// </summary>
+        public string lineId;
+        /// <summary>
+        /// 操作员标识
+        /// </summary>
+        public string editor;
+        /// <summary>
+        /// 客户端IP
+        /// </summary>
+        public string clientIP;
+        /// <summary>
+        /// 站标识
+        /// </summary>
+        public string wc;
+    }
+
+    /// <summary>
+    /// MB信息
+    /// </summary>
+    [Serializable]
+    public struct MBInfo
+    {
+        /// <summary>
+        /// MB SNO
+        /// </summary>
+        public string id;
+
+        /// <summary>
+        /// 111阶
+        /// </summary>
+        public string _111LevelId;
+
+        /// <summary>
+        /// MB CODE
+        /// </summary>
+        public string MB_CODEId;
+
+        /// <summary>
+        /// SMT MO
+        /// </summary>
+        public string SMTMOId;
+
+        /// <summary>
+        /// DATE CODE
+        /// </summary>
+        public string dateCode;
+
+        /// <summary>
+        /// Cust Version
+        /// </summary>
+        public string custVersion;
+
+        /// <summary>
+        /// IECVersion
+        /// </summary>
+        public string iecVersion;
+
+        /// <summary>
+        /// Family
+        /// </summary>
+        public string family;
+
+        /// <summary>
+        /// Test Station: 根据MB SN读出的不良数据取得
+        /// </summary>
+        public string testStation;
+
+        /// <summary>
+        /// ecr
+        /// </summary>
+        public string ecr;
+
+        /// <summary>
+        /// line
+        /// </summary>
+        public string line;
+
+        /// <summary>
+        /// lineDesc
+        /// </summary>
+        public string lineDesc;
+
+        /// <summary>
+        /// mac
+        /// </summary>
+        public string mac;
+
+        /// <summary>
+        /// properties
+        /// </summary>
+        public Dictionary<string, string> properties;
+    }
+
+    /// <summary>
+    /// 产品信息
+    /// </summary>
+    [Serializable]
+    public struct ProductInfo
+    {
+        /// <summary>
+        /// ProdId
+        /// </summary>
+        public string id;
+
+        /// <summary>
+        /// Model
+        /// </summary>
+        public string modelId;
+
+        /// <summary>
+        /// Family
+        /// </summary>
+        public string familyId;
+
+        /// <summary>
+        /// MO
+        /// </summary>
+        public string MOId;
+
+        /// <summary>
+        /// Custom SNO
+        /// </summary>
+        public string customSN;
+
+        /// <summary>
+        /// cv SN
+        /// </summary>
+        public string cvSN;
+
+        /// <summary>
+        /// pizza id
+        /// </summary>
+        public string pizzaId;
+    }
+
+    /// <summary>
+    /// Product状态信息
+    /// </summary>
+    [Serializable]
+    public struct ProductStatusInfo
+    {
+        /// <summary>
+        /// Product标识
+        /// </summary>
+        public string productId;
+        /// <summary>
+        /// Product Line
+        /// </summary>
+        public string pdLine;
+        /// <summary>
+        /// 状态标识
+        /// </summary>
+        public int status;
+        /// <summary>
+        /// 站标识
+        /// </summary>
+        public string station;
+    }
+
+    /// <summary>
+    /// PartType value object
+    /// </summary>
+    [Serializable]
+    public struct PartTypeInfo
+    {
+        /// <summary>
+        /// PartType Identifier
+        /// </summary>
+        public string id;
+
+        /// <summary>
+        /// PartType Friendly Name
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// QCStatistic value object
+    /// </summary>
+    [Serializable]
+    public struct QCStatisticInfo
+    {
+        /// <summary>
+        /// PDLine
+        /// </summary>
+        public string line;
+
+        /// <summary>
+        /// Model Identifier
+        /// </summary>
+        public string modelId;
+
+        /// <summary>
+        /// Input
+        /// </summary>
+        public int input;
+
+        /// <summary>
+        /// noCheck
+        /// </summary>
+        public int noCheck;
+
+        /// <summary>
+        /// PIA IN
+        /// </summary>
+        public int piaIn;
+
+        /// <summary>
+        /// ePIA IN
+        /// </summary>
+        public int epiaIn;
+
+        /// <summary>
+        /// PAQC IN
+        /// </summary>
+        public int paqcIn;
+
+        /// <summary>
+        /// PIA PASS
+        /// </summary>
+        public int piaPass;
+
+        /// <summary>
+        /// ePIA PASS
+        /// </summary>
+        public int epiaPass;
+
+        /// <summary>
+        /// PAQC PASS
+        /// </summary>
+        public int paqcPass;
+
+        /// <summary>
+        /// PIA ERROR
+        /// </summary>
+        public int piaError;
+
+        /// <summary>
+        /// ePIA ERROR
+        /// </summary>
+        public int epiaError;
+
+        /// <summary>
+        /// PAQC ERROR
+        /// </summary>
+        public int paqcError;
+    }
+    /// <summary>
+    /// Bom Item 信息
+    /// </summary>
+    [Serializable]
+    public struct pUnit
+    {
+
+        /// <summary>
+        /// 已扫描的sn
+        /// </summary>
+        public string sn;
+
+        /// <summary>
+        /// 已扫描的pn
+        /// </summary>
+        public string pn;
+
+        /// <summary>
+        /// 值类型
+        /// </summary>
+        public string valueType;
+    }
+
+    /// <summary>
+    /// Bom Item 信息
+    /// </summary>
+    [Serializable]
+    public struct BomItemInfo
+    {
+        /// <summary>
+        /// Part代用料列表
+        /// </summary>
+        public IList<PartNoInfo> parts;
+
+        /// <summary>
+        /// Description
+        /// </summary>
+        public string description;
+
+        /// <summary>
+        /// Type(CheckItemType)
+        /// </summary>
+        public string type;
+
+        /// <summary>
+        /// BomNodeType for UI
+        /// </summary>
+        public string tp;
+
+        /// <summary>
+        /// 数量
+        /// </summary>
+        public int qty;
+
+        /// <summary>
+        /// 已扫描的数量
+        /// </summary>
+        public int scannedQty;
+
+        /// <summary>
+        /// 收集数据
+        /// </summary>
+        public IList<pUnit> collectionData;
+
+        /// <summary>
+        /// UI 表格PartNo栏位显示内容
+        /// </summary>
+        public string PartNoItem;
+
+        /// <summary>
+        /// FlatBOMItem GUID
+        /// </summary>
+        public string GUID;
+    }
+
+    /// <summary>
+    /// DCODE信息
+    /// </summary>
+    [Serializable]
+    public struct DCodeInfo
+    {
+        /// <summary>
+        /// DCODE标识
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// 友好名字(没有时实现请等同为id)
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// 打印Item
+    /// </summary>
+    [Serializable]
+    public struct PrintItem
+    {
+        /// <summary>
+        /// 打印方式：0,Bat方式; 1,模板方式;
+        /// </summary>
+        public int PrintMode;
+
+        /// <summary>
+        /// 获取打印模板的方式：0,By MO; 1,By PO; 2,Part
+        /// </summary>
+        public int RuleMode;
+
+        /// <summary>
+        /// 模板类型对应PrintTemplate表的LabelType
+        /// </summary>
+        public string LabelType;
+
+        /// <summary>
+        /// 模板名称对应PrintTemplate表的TemplateName
+        /// </summary>
+        public string TemplateName;
+
+        /// <summary>
+        /// 模板名称对应PrintTemplate表的Piece
+        /// </summary>
+        public int Piece;
+
+        /// <summary>
+        /// 模板名称对应PrintTemplate表的SpName
+        /// </summary>
+        public string SpName;
+
+        ///// <summary>
+        ///// 模板名称对应PrintTemplate表的SpName定义的参数(bat)
+        ///// 或模板名称对应模板定义的参数(模板)
+        ///// Dictionary的Key必须写成SpName或模板定义的参数名称
+        ///// Dictionary的Value必须写成SpName或模板定义的参数的值
+        ///// </summary>
+        //public Dictionary<string, List<string>> parameters;
+
+        /// <summary>
+        /// 模板名称对应PrintTemplate表的SpName定义的参数(bat)
+        /// 或模板名称对应模板定义的参数(模板)
+        /// ParameterKeys的Key必须写成SpName或模板定义的参数名称
+        /// ParameterValues的Value必须写成SpName或模板定义的参数的值
+        /// ParameterKeys必须和ParameterValues的顺序保持一致
+        /// </summary>
+        public List<string> ParameterKeys;
+
+        /// <summary>
+        /// 模板名称对应PrintTemplate表的SpName定义的参数(bat)
+        /// 或模板名称对应模板定义的参数(模板)
+        /// ParameterKeys的Key必须写成SpName或模板定义的参数名称
+        /// ParameterValues的Value必须写成SpName或模板定义的参数的值
+        /// ParameterKeys必须和ParameterValues的顺序保持一致
+        /// </summary>
+        public List<List<string>> ParameterValues;
+
+        /// <summary>
+        /// 页面PrintSetting设置的X偏移量
+        /// </summary>
+        public int OffsetX;
+
+        /// <summary>
+        /// 页面PrintSetting设置的Y偏移量
+        /// </summary>
+        public int OffsetY;
+
+        /// <summary>
+        /// 页面PrintSetting设置的打印机和端口
+        /// </summary>
+        public string PrinterPort;
+
+        /// <summary>
+        /// 页面设置DPI
+        /// </summary>
+        public string dpi;
+
+        /// <summary>
+        /// Bat要打印的份数,用来接受界面输入的相同标签要打印的份数。
+        /// </summary>
+        public int BatPiece;
+
+        /// <summary>
+        /// 旋转180度
+        /// </summary>
+        public int Rotate180;
+
+        /// <summary>
+        /// 横打还是竖打
+        /// </summary>
+        public int Layout;
+    }
+
+    /// <summary>
+    /// for 030 Query
+    /// </summary>
+    [Serializable]
+    public struct ModelPassQty
+    {
+        /// <summary>
+        /// model
+        /// </summary>
+        public string model;
+        /// <summary>
+        /// 通过数量
+        /// </summary>
+        public int qty;
+    }
+
+    [Serializable]
+    public class Rework
+    {
+        /// <summary>
+        /// Rework代码
+        /// </summary>
+        public string ReworkCode;
+        /// <summary>
+        /// Rework状态
+        /// </summary>
+        public string Status;
+        /// <summary>
+        /// Editor
+        /// </summary>
+        public string Editor;
+        /// <summary>
+        /// Cdt
+        /// </summary>
+        public DateTime Cdt;
+        /// <summary>
+        /// Udt
+        /// </summary>
+        public DateTime Udt;
+
+        /// <summary>
+        /// Rework代码
+        /// </summary>
+        public string ReworkCodeProperty
+        {
+            get { return ReworkCode; }
+        }
+    }
+
+    /// <summary>
+    /// ReworkObj对象
+    /// </summary>
+    public class ReworkObj
+    {
+        /// <summary>
+        /// Rework代码
+        /// </summary>
+        public string ReworkCode;
+        /// <summary>
+        /// Rework状态
+        /// </summary>
+        public string Status;
+        /// <summary>
+        /// Editor
+        /// </summary>
+        public string Editor;
+        /// <summary>
+        /// Cdt
+        /// </summary>
+        public DateTime Cdt;
+        /// <summary>
+        /// Udt
+        /// </summary>
+        public DateTime Udt;
+        /// <summary>
+        /// Rework代码
+        /// </summary>
+        private string ReworkCodeProperty
+        {
+            set { ReworkCode = value; }
+        }
+    }
+
+    /// <summary>
+    /// ReworkExt对象
+    /// </summary>
+    [Serializable]
+    public struct ReworkExt
+    {
+        /// <summary>
+        /// Rework代码
+        /// </summary>
+        public string ReworkCode;
+        /// <summary>
+        /// 数量
+        /// </summary>
+        public int Qty;
+        /// <summary>
+        /// 状态
+        /// </summary>
+        public string Status;
+        /// <summary>
+        /// Editor
+        /// </summary>
+        public string Editor;
+        /// <summary>
+        /// Cdt
+        /// </summary>
+        public DateTime Cdt;
+        /// <summary>
+        /// Udt
+        /// </summary>
+        public DateTime Udt;
+
+        /// <summary>
+        /// Process
+        /// </summary>
+        public string Process;
+    }
+
+    /// <summary>
+    /// ProcessStationInfo结构
+    /// </summary>
+    [Serializable]
+    public struct ProcessStationInfo
+    {
+        /// <summary>
+        /// PreStation
+        /// </summary>
+        public string PreStation;
+        /// <summary>
+        /// PreStation描述
+        /// </summary>
+        public string PreStationDescr;
+        /// <summary>
+        /// Station
+        /// </summary>
+        public string Station;
+        /// <summary>
+        /// Station描述
+        /// </summary>
+        public string StationDescr;
+        /// <summary>
+        /// 状态
+        /// </summary>
+        public int Status;
+    }
+
+    /// <summary>
+    /// ProductStatus结构
+    /// </summary>
+    [Serializable]
+    public struct ProductStatus
+    {
+        /// <summary>
+        /// Product ID
+        /// </summary>
+        public string ProductId;
+        /// <summary>
+        /// Station名字
+        /// </summary>
+        public string Station;
+        /// <summary>
+        /// 状态
+        /// </summary>
+        public string Status;
+    }
+
+
+    /// <summary>
+    /// ShipmentInfo结构
+    /// </summary>
+    [Serializable]
+    public struct ShipmentInfo
+    {
+        /// <summary>
+        /// Shipment Identifier
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// Shipment Friendly Name
+        /// </summary>
+        public string friendlyName;
+    }
+
+
+    /// <summary>
+    /// PartNoDescrInfo结构
+    /// </summary>
+    [Serializable]
+    public struct PartNoDescrInfo
+    {
+        /// <summary>
+        /// PartNo
+        /// </summary>
+        public string partNo;
+        /// <summary>
+        /// 描述
+        /// </summary>
+        public string descr;
+        /// <summary>
+        /// 产生的PartNo
+        /// </summary>
+        public string generatedPartNo;
+    }
+
+    /// <summary>
+    /// DnShiptoInfo结构
+    /// </summary>
+    [Serializable]
+    public struct DnShiptoInfo
+    {
+        /// <summary>
+        /// dn
+        /// </summary>
+        public string dn;
+        /// <summary>
+        /// Shipment编号
+        /// </summary>
+        public string shipmentNo;
+        /// <summary>
+        /// PO编号
+        /// </summary>
+        public string poNo;
+        /// <summary>
+        /// Model
+        /// </summary>
+        public string model;
+        /// <summary>
+        /// Ship日期
+        /// </summary>
+        public string shipDate;
+        /// <summary>
+        /// 数量
+        /// </summary>
+        public int qty;
+        /// <summary>
+        /// 状态
+        /// </summary>
+        public string status;
+    }
+
+    /// <summary>
+    /// PalletShiptoInfo结构
+    /// </summary>
+    [Serializable]
+    public struct PalletShiptoInfo
+    {
+        /// <summary>
+        /// Pallet编号
+        /// </summary>
+        public string palletNo;
+        /// <summary>
+        /// ucc
+        /// </summary>
+        public string ucc;
+        /// <summary>
+        /// deliveryQty
+        /// </summary>
+        public int deliveryQty;
+    }
+
+
+    /// <summary>
+    /// Light Bom 信息
+    /// </summary>
+    [Serializable]
+    public struct LightBomInfo
+    {
+        /// <summary>
+        /// code
+        /// </summary>
+        public string code;
+        /// <summary>
+        /// part编号
+        /// </summary>
+        public string partNo;
+        /// <summary>
+        /// 类型
+        /// </summary>
+        public string type;
+        /// <summary>
+        /// lights编号
+        /// </summary>
+        public string lightNo;
+        /// <summary>
+        /// scan
+        /// </summary>
+        public string scan;
+    }
+
+    /// <summary>
+    /// KittingCodeInfo结构
+    /// </summary>
+    [Serializable]
+    public struct KittingCodeInfo
+    {
+        /// <summary>
+        /// KittingCode Identifier
+        /// </summary>
+        public string id;
+        /// <summary>
+        /// KittingCode Friendly Name
+        /// </summary>
+        public string friendlyName;
+    }
+
+    /// <summary>
+    /// BorrowLog结构
+    /// </summary>
+    [Serializable]
+    [ORMapping(typeof(IMES.Infrastructure.Repository._Metas.BorrowLog))]
+    public class BorrowLog
+    {
+        /// <summary>
+        /// ID
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.BorrowLog.fn_id)]
+        public int ID = int.MinValue;
+        /// <summary>
+        /// Sn
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.BorrowLog.fn_sn)]
+        public string Sn = null;
+        /// <summary>
+        /// Model
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.BorrowLog.fn_model)]
+        public string Model = null;
+        /// <summary>
+        /// Borrower借入者
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.BorrowLog.fn_borrower)]
+        public string Borrower = null;
+        /// <summary>
+        /// Lender借出者
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.BorrowLog.fn_lender)]
+        public string Lender = null;
+        /// <summary>
+        /// Returner归还者
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.BorrowLog.fn_returner)]
+        public string Returner = null;
+        /// <summary>
+        /// Acceptor接收者
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.BorrowLog.fn_acceptor)]
+        public string Acceptor = null;
+        /// <summary>
+        /// 状态
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.BorrowLog.fn_status)]
+        public string Status = null;
+        /// <summary>
+        /// 起借时间
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.BorrowLog.fn_bdate)]
+        public DateTime Bdate = DateTime.MinValue;
+        /// <summary>
+        /// 归还时间
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.BorrowLog.fn_rdate)]
+        public DateTime Rdate = DateTime.MinValue;
+    }
+
+    /// <summary>
+    /// WipBuffer结构
+    /// </summary>
+    [ORMapping(typeof(IMES.Infrastructure.Repository._Metas.WipBuffer))]
+    [Serializable]
+    public class WipBuffer
+    {
+        /// <summary>
+        /// ID
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_id)]
+        public int ID = int.MinValue;
+
+        /// <summary>
+        /// Code
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_code)]
+        public string Code = null;
+
+        /// <summary>
+        /// PartNo
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_partNo)]
+        public string PartNo = null;
+
+        /// <summary>
+        /// Tp
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_tp)]
+        public string Tp = null;
+
+        /// <summary>
+        /// LightNo
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_lightNo)]
+        public string LightNo = null;
+
+        /// <summary>
+        /// 图片
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_picture)]
+        public string Picture = null;
+
+        /// <summary>
+        /// 数量
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_qty)]
+        public int Qty = int.MinValue;
+
+        /// <summary>
+        /// Sub
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_sub)]
+        public string Sub = null;
+
+        /// <summary>
+        /// 安全库存
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_safety_Stock)]
+        public int Safety_Stock = int.MinValue;
+
+        /// <summary>
+        /// 最大库存
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_max_Stock)]
+        public int Max_Stock = int.MinValue;
+
+        /// <summary>
+        /// 注解
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_remark)]
+        public string Remark = null;
+
+        /// <summary>
+        /// Editor
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_editor)]
+        public string Editor = null;
+
+        /// <summary>
+        /// Cdt
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_cdt)]
+        public DateTime Cdt = DateTime.MinValue;
+
+        /// <summary>
+        /// Udt
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_udt)]
+        public DateTime Udt = DateTime.MinValue;
+
+        /// <summary>
+        /// Station
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_station)]
+        public string Station = null;
+
+        /// <summary>
+        /// KittingType
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_kittingType)]
+        public string KittingType = null;
+
+        /// <summary>
+        /// Line
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.WipBuffer.fn_line)]
+        public string Line = null;
+    }
+
+    /// <summary>
+    /// KittingCode结构
+    /// </summary>
+    [ORMapping(typeof(IMES.Infrastructure.Repository._Metas.KittingCode))]
+    [Serializable]
+    public class KittingCode
+    {
+        /// <summary>
+        /// 编码
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.KittingCode.fn_code)]
+        public string Code = null;
+        /// <summary>
+        /// 类型
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.KittingCode.fn_type)]
+        public string Type = null;
+        /// <summary>
+        /// 描述
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.KittingCode.fn_descr)]
+        public string Descr = null;
+        /// <summary>
+        /// 注解
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.KittingCode.fn_remark)]
+        public string Remark = null;
+        /// <summary>
+        /// Editor
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.KittingCode.fn_editor)]
+        public string Editor = null;
+        /// <summary>
+        /// Cdt
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.KittingCode.fn_cdt)]
+        public DateTime Cdt = DateTime.MinValue;
+        /// <summary>
+        /// Udt
+        /// </summary>
+        [ORMapping(IMES.Infrastructure.Repository._Metas.KittingCode.fn_udt)]
+        public DateTime Udt = DateTime.MinValue;
+    }
+
+    /// <summary>
+    /// SMALLPartsUploadInfo结构
+    /// </summary>
+    [Serializable]
+    public struct SMALLPartsUploadInfo
+    {
+        /// <summary>
+        /// TSB PN
+        /// </summary>
+        public string tsbPN;
+
+        /// <summary>
+        /// IEC PN
+        /// </summary>
+        public string iecPN;
+
+        /// <summary>
+        /// Create Time
+        /// </summary>
+        public DateTime cdt;
+
+        /// <summary>
+        /// editor
+        /// </summary>
+        public string editor;
+    }
+
+    /// <summary>
+    /// LineStation结构
+    /// </summary>
+    [Serializable]
+    public class LineStation
+    {
+        /// <summary>
+        /// ID
+        /// </summary>
+        public int ID;
+        /// <summary>
+        /// Line
+        /// </summary>
+        public string Line;
+        /// <summary>
+        /// Station
+        /// </summary>
+        public string Station;
+        /// <summary>
+        /// 状态
+        /// </summary>
+        public string Status;
+        /// <summary>
+        /// Editor
+        /// </summary>
+        public string Editor;
+        /// <summary>
+        /// Cdt
+        /// </summary>
+        public DateTime Cdt;
+        /// <summary>
+        /// Udt
+        /// </summary>
+        public DateTime Udt;
+    }
+    /// <summary>
+    /// ReworkRelease结构
+    /// </summary>
+    [Serializable]
+    public class ReworkReleaseType
+    {
+        /// <summary>
+        /// ID
+        /// </summary>
+        public int ID;
+        /// <summary>
+        /// Process
+        /// </summary>
+        public string Process;
+        /// <summary>
+        /// Release类型
+        /// </summary>
+        public string ReleaseType;
+        /// <summary>
+        /// Cdt时间
+        /// </summary>
+        public DateTime Cdt;
+    }
+
+    /// <summary>
+    /// 区域定义
+    /// </summary>
+    [Serializable]
+    public struct AreaDef
+    {
+        /// <summary>
+        /// 区域
+        /// </summary>
+        public string Area;
+    }
+
+    /// <summary>
+    /// TraceStd结构
+    /// </summary>
+    [Serializable]
+    public class TraceStdInfo
+    {
+        /// <summary>
+        /// ID
+        /// </summary>
+        public int Id;
+        /// <summary>
+        /// Family
+        /// </summary>
+        public string Family;
+        /// <summary>
+        /// 区域
+        /// </summary>
+        public string Area;
+        /// <summary>
+        /// 类型
+        /// </summary>
+        public string Type;
+        /// <summary>
+        /// Editor
+        /// </summary>
+        public string Editor;
+        /// <summary>
+        /// Cdt时间
+        /// </summary>
+        public DateTime Cdt;
+        /// <summary>
+        /// Udt时间
+        /// </summary>
+        public DateTime Udt;
+    }
+
+    /// <summary>
+    /// WLBTDescr结构
+    /// </summary>
+    [Serializable]
+    public class WLBTDescr
+    {
+        /// <summary>
+        /// 主键
+        /// </summary>
+        public int Id;
+
+        /// <summary>
+        /// 代码
+        /// </summary>
+        public string Code;
+
+        /// <summary>
+        /// 种类
+        /// </summary>
+        public string Tp;
+
+        /// <summary>
+        /// 种类描述
+        /// </summary>
+        public string TpDescr;
+
+        /// <summary>
+        /// 描述
+        /// </summary>
+        public string Descr;
+
+        /// <summary>
+        /// 站点
+        /// </summary>
+        public string Site;
+
+        /// <summary>
+        /// 建立人/修改人
+        /// </summary>
+        public string Editor;
+
+        /// <summary>
+        /// 建立时间
+        /// </summary>
+        public DateTime Cdt;
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime Udt;
+    }
+
+    /// <summary>
+    /// PCode_LabelType结构
+    /// </summary>
+    [Serializable]
+    public class PCodeLabelType
+    {
+        /// <summary>
+        /// PCode
+        /// </summary>
+        public string PCode;
+
+        /// <summary>
+        /// Label种类
+        /// </summary>
+        public string LabelType;
+    }
+
+    /// <summary>
+    /// Label规则
+    /// </summary>
+    [Serializable]
+    public class LabelRule
+    {
+        /// <summary>
+        /// Identity
+        /// </summary>
+        public int RuleID;
+
+        /// <summary>
+        /// Template名称
+        /// </summary>
+        public string TemplateName;
+    }
+
+    /// <summary>
+    /// Label规则集合
+    /// </summary>
+    [Serializable]
+    public class LabelRuleSet
+    {
+        /// <summary>
+        /// Identity
+        /// </summary>
+        public int ID;
+
+        /// <summary>
+        /// Rule Identity
+        /// </summary>
+        public int RuleID;
+
+        /// <summary>
+        /// 属性名称
+        /// </summary>
+        public string AttributeName;
+
+        /// <summary>
+        /// 属性值
+        /// </summary>
+        public string AttributeValue;
+
+        /// <summary>
+        /// 模式
+        /// </summary>
+        public string Mode;
+
+        /// <summary>
+        /// 创建者/修改者
+        /// </summary>
+        public string Editor;
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime Cdt;
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime Udt;
+    }
+
+    /// <summary>
+    /// DefectCodeInfo相关的信息
+    /// </summary>
+    [Serializable]
+    [ORMapping(typeof(DefectCode))]
+    public class DefectCodeInfo
+    {
+        /// <summary>
+        /// Defect
+        /// </summary>
+        [ORMapping(DefectCode.fn_defect)]
+        public string Defect = null;
+
+        /// <summary>
+        /// 类型
+        /// </summary>
+        [ORMapping(DefectCode.fn_type)]
+        public string Type = null;
+
+        /// <summary>
+        /// 描述
+        /// </summary>
+        [ORMapping(DefectCode.fn_descr)]
+        public string Descr = null;
+
+        /// <summary>
+        /// 创建者/修改者
+        /// </summary>
+        [ORMapping(DefectCode.fn_editor)]
+        public string Editor = null;
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        [ORMapping(DefectCode.fn_cdt)]
+        public DateTime Cdt = DateTime.MinValue;
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        [ORMapping(DefectCode.fn_udt)]
+        public DateTime Udt = DateTime.MinValue;
+
+        /// <summary>
+        /// English描述
+        /// </summary>
+        [ORMapping(DefectCode.fn_engDescr)]
+        public string engDescr = null;
+    }
+
+    [Serializable]
+    public class FaStationInfo
+    {
+        /// <summary>
+        /// Line
+        /// </summary>
+        public string Line;
+
+        /// <summary>
+        /// Station
+        /// </summary>
+        public string Station;
+
+        /// <summary>
+        /// OptCode
+        /// </summary>
+        public string OptCode;
+
+        /// <summary>
+        /// OptName
+        /// </summary>
+        public string OptName;
+
+        /// <summary>
+        /// Remark
+        /// </summary>
+        public string Remark;
+
+        /// <summary>
+        /// 创建者/修改者
+        /// </summary>
+        public string Editor;
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime Cdt;
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime Udt;
+
+        /// <summary>
+        /// Identity
+        /// </summary>
+        public int ID;
+    }
+
+    [Serializable]
+    public struct KittingLocationInfo
+    {
+        /// <summary>
+        /// Tag ID
+        /// </summary>
+        public string TagID;
+
+        /// <summary>
+        /// Tag TP
+        /// </summary>
+        public string TagTP;
+
+        /// <summary>
+        /// GateWay IP
+        /// </summary>
+        public short GateWayIP;
+
+        /// <summary>
+        /// GateWay Port
+        /// </summary>
+        public int GateWayPort;
+
+        /// <summary>
+        /// Rack ID
+        /// </summary>
+        public short RackID;
+
+        /// <summary>
+        /// Configed LED Status
+        /// </summary>
+        public bool ConfigedLEDStatus;
+
+        /// <summary>
+        /// Configed LED Block
+        /// </summary>
+        public short ConfigedLEDBlock;
+
+        /// <summary>
+        /// Configed Date
+        /// </summary>
+        public DateTime ConfigedDate;
+
+        /// <summary>
+        /// Comm
+        /// </summary>
+        public bool Comm;
+
+        /// <summary>
+        /// Running LED Status
+        /// </summary>
+        public bool RunningLEDStatus;
+
+        /// <summary>
+        /// Running LED Block
+        /// </summary>
+        public short RunningLEDBlock;
+
+        /// <summary>
+        /// Running Date
+        /// </summary>
+        public DateTime RunningDate;
+
+        /// <summary>
+        /// LED Values
+        /// </summary>
+        public string LEDValues;
+
+        /// <summary>
+        /// Tag Description
+        /// </summary>
+        public string TagDescr;
+
+        /// <summary>
+        /// 创建者/修改者
+        /// </summary>
+        public string Editor;
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime Cdt;
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime Udt;
+    }
+
+    [Serializable]
+    public struct ForwarderInfo
+    {
+        public int Id;
+
+        public string Forwarder;
+
+        public string Date;
+
+        public string MAWB;
+
+        public string Driver;
+
+        public string TruckID;
+
+        public string Editor;
+
+        public DateTime Cdt;
+
+        public DateTime Udt;
+
+        public string ContainerId;
+    }
+
+    [ORMapping(typeof(MAWB))]
+    [Serializable]
+    public class MAWBInfo
+    {
+        [ORMapping(IMES.Infrastructure.Repository._Metas.MAWB.fn_id)]
+        public int ID = int.MinValue;
+
+        [ORMapping(IMES.Infrastructure.Repository._Metas.MAWB.fn_mawb)]
+        public string MAWB = null;
+
+        [ORMapping(IMES.Infrastructure.Repository._Metas.MAWB.fn_delivery)]
+        public string Delivery = null;
+
+        [ORMapping(IMES.Infrastructure.Repository._Metas.MAWB.fn_declarationId)]
+        public string DeclarationId = null;
+
+        [ORMapping(IMES.Infrastructure.Repository._Metas.MAWB.fn_oceanContainer)]
+        public string OceanContainer = null;
+
+        [ORMapping(IMES.Infrastructure.Repository._Metas.MAWB.fn_hawb)]
+        public string HAWB = null;
+
+        [ORMapping(IMES.Infrastructure.Repository._Metas.MAWB.fn_cdt)]
+        public DateTime Cdt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    public struct PickIDCtrlInfo
+    {
+        public int Id;
+
+        public string PickID;
+
+        public string TruckID;
+
+        public string Driver;
+
+        public string Dt;
+
+        public string Fwd;
+
+        public DateTime Cdt;
+
+        public string InDt;
+
+        public string OutDt;
+    }
+
+    [Serializable]
+    public class FwdPltInfo
+    {
+        public string PickID { get; set; }
+
+        public string Plt { get; set; }
+
+        public int Qty { get; set; }
+
+        public string Status { get; set; }
+
+        public string Date { get; set; }
+
+        public string Operator { get; set; }
+
+        public DateTime Cdt { get; set; }
+
+        public DateTime Udt { get; set; }
+    }
+
+    [Serializable]
+    public class PalletIdInfo
+    {
+        public string PalletNo;
+
+        public string PalletId;
+
+        public string Editor;
+
+        public DateTime Cdt;
+    }
+
+    /// <summary>
+    /// LabelKittingCode结构
+    /// </summary>
+    [ORMapping(typeof(IMES.Infrastructure.Repository._Metas.LabelKitting))]
+    [Serializable]
+    public class LabelKittingCode
+    {
+        [ORMapping(IMES.Infrastructure.Repository._Metas.LabelKitting.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(IMES.Infrastructure.Repository._Metas.LabelKitting.fn_code)]
+        public String code = null;
+        [ORMapping(IMES.Infrastructure.Repository._Metas.LabelKitting.fn_descr)]
+        public String descr = null;
+        [ORMapping(IMES.Infrastructure.Repository._Metas.LabelKitting.fn_editor)]
+        public String editor = null;
+        [ORMapping(IMES.Infrastructure.Repository._Metas.LabelKitting.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(IMES.Infrastructure.Repository._Metas.LabelKitting.fn_remark)]
+        public String remark = null;
+        [ORMapping(IMES.Infrastructure.Repository._Metas.LabelKitting.fn_type)]
+        public String type = null;
+        [ORMapping(IMES.Infrastructure.Repository._Metas.LabelKitting.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    public class PalletCapacityInfo
+    {
+        /// <summary>
+        /// PalletNo
+        /// </summary>
+        public string PalletNo;
+
+        /// <summary>
+        /// TotalQty
+        /// </summary>
+        public int TotalQty;
+
+        /// <summary>
+        /// OKQty
+        /// </summary>
+        public int OKQty;
+
+        /// <summary>
+        /// DiffQty（DiffQty = TotalQty - OKQty）
+        /// </summary>
+        public int DiffQty
+        {
+            get { return TotalQty - OKQty; }
+        }
+    }
+
+    [Serializable]
+    public class ModelStatistics
+    {
+        public string Model;
+
+        public int Qty;
+    }
+
+    [Serializable]
+    public class PalletNoAndDeliveryQtyEntity
+    {
+        public string PalletNo;
+
+        public short DeliveryQty;
+    }
+
+    [Serializable]
+    public class PalletNoAndWeight
+    {
+        public string SnoId;
+
+        public Decimal KG;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Line))]
+    public class LineInfo
+    {
+        [ORMapping(Line.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Line.fn_customerID)]
+        public String customerID = null;
+        [ORMapping(Line.fn_descr)]
+        public String descr = null;
+        [ORMapping(Line.fn_editor)]
+        public String editor = null;
+        [ORMapping(Line.fn_line)]
+        public String line = null;
+        [ORMapping(Line.fn_stage)]
+        public String stage = null;
+        [ORMapping(Line.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Kitting_Loc_PLMapping_St))]
+    public class KittingLocPLMappingStInfo
+    {
+        [ORMapping(Kitting_Loc_PLMapping_St.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Kitting_Loc_PLMapping_St.fn_lightNo)]
+        public Int16 lightNo = short.MinValue;
+        [ORMapping(Kitting_Loc_PLMapping_St.fn_pdLine)]
+        public String pdLine = null;
+        [ORMapping(Kitting_Loc_PLMapping_St.fn_station)]
+        public String station = null;
+        [ORMapping(Kitting_Loc_PLMapping_St.fn_tagID)]
+        public String tagID = null;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Kitting_Location_FV))]
+    public class KittingLocationFvInfo
+    {
+        [ORMapping(Kitting_Location_FV.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Kitting_Location_FV.fn_comm)]
+        public Boolean comm = default(bool);
+        [ORMapping(Kitting_Location_FV.fn_configedDate)]
+        public DateTime configedDate = DateTime.MinValue;
+        [ORMapping(Kitting_Location_FV.fn_configedLEDB_Lock)]
+        public Int16 configedLEDB_Lock = short.MinValue;
+        [ORMapping(Kitting_Location_FV.fn_configedLEDStatus)]
+        public Boolean configedLEDStatus = default(bool);
+        [ORMapping(Kitting_Location_FV.fn_editor)]
+        public String editor = null;
+        [ORMapping(Kitting_Location_FV.fn_gateWayIP)]
+        public Int16 gateWayIP = short.MinValue;
+        [ORMapping(Kitting_Location_FV.fn_gateWayPort)]
+        public Int32 gateWayPort = int.MinValue;
+        [ORMapping(Kitting_Location_FV.fn_ledvalues)]
+        public String ledvalues = null;
+        [ORMapping(Kitting_Location_FV.fn_mgroup)]
+        public Int32 mgroup = int.MinValue;
+        [ORMapping(Kitting_Location_FV.fn_rackID)]
+        public Int16 rackID = short.MinValue;
+        [ORMapping(Kitting_Location_FV.fn_runningDate)]
+        public DateTime runningDate = DateTime.MinValue;
+        [ORMapping(Kitting_Location_FV.fn_runningLEDB_Lock)]
+        public Int16 runningLEDB_Lock = short.MinValue;
+        [ORMapping(Kitting_Location_FV.fn_runningLEDStatus)]
+        public Boolean runningLEDStatus = default(bool);
+        [ORMapping(Kitting_Location_FV.fn_tagDescr)]
+        public String tagDescr = null;
+        [ORMapping(Kitting_Location_FV.fn_tagID)]
+        public String tagID = null;
+        [ORMapping(Kitting_Location_FV.fn_tagTp)]
+        public String tagTp = null;
+        [ORMapping(Kitting_Location_FV.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Fa_Pa_Lightst))]
+    public class FaPaLightstInfo
+    {
+        [ORMapping(Fa_Pa_Lightst.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Fa_Pa_Lightst.fn_editor)]
+        public String editor = null;
+        [ORMapping(Fa_Pa_Lightst.fn_family)]
+        public String family = null;
+        [ORMapping(Fa_Pa_Lightst.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Fa_Pa_Lightst.fn_pno)]
+        public String pno = null;
+        [ORMapping(Fa_Pa_Lightst.fn_stn)]
+        public String stn = null;
+        [ORMapping(Fa_Pa_Lightst.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Kitting_Location_FA_A))]
+    public class KittingLocationFaXInfo
+    {
+        public string tableNameEpilogue = "A";
+
+        [ORMapping(Kitting_Location_FA_A.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Kitting_Location_FA_A.fn_comm)]
+        public Boolean comm = default(bool);
+        [ORMapping(Kitting_Location_FA_A.fn_configedDate)]
+        public DateTime configedDate = DateTime.MinValue;
+        [ORMapping(Kitting_Location_FA_A.fn_configedLEDB_Lock)]
+        public Int16 configedLEDB_Lock = short.MinValue;
+        [ORMapping(Kitting_Location_FA_A.fn_configedLEDStatus)]
+        public Boolean configedLEDStatus = default(bool);
+        [ORMapping(Kitting_Location_FA_A.fn_editor)]
+        public String editor = null;
+        [ORMapping(Kitting_Location_FA_A.fn_gateWayIP)]
+        public Int16 gateWayIP = short.MinValue;
+        [ORMapping(Kitting_Location_FA_A.fn_gateWayPort)]
+        public Int32 gateWayPort = int.MinValue;
+        [ORMapping(Kitting_Location_FA_A.fn_group)]
+        public Int32 group = int.MinValue;
+        [ORMapping(Kitting_Location_FA_A.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Kitting_Location_FA_A.fn_ledvalues)]
+        public String ledvalues = null;
+        [ORMapping(Kitting_Location_FA_A.fn_mgroup)]
+        public Int32 mgroup = int.MinValue;
+        [ORMapping(Kitting_Location_FA_A.fn_priority)]
+        public Int32 priority = int.MinValue;
+        [ORMapping(Kitting_Location_FA_A.fn_rackID)]
+        public Int16 rackID = short.MinValue;
+        [ORMapping(Kitting_Location_FA_A.fn_runningDate)]
+        public DateTime runningDate = DateTime.MinValue;
+        [ORMapping(Kitting_Location_FA_A.fn_runningLEDB_Lock)]
+        public Int16 runningLEDB_Lock = short.MinValue;
+        [ORMapping(Kitting_Location_FA_A.fn_runningLEDStatus)]
+        public Boolean runningLEDStatus = default(bool);
+        [ORMapping(Kitting_Location_FA_A.fn_tagDescr)]
+        public String tagDescr = null;
+        [ORMapping(Kitting_Location_FA_A.fn_tagID)]
+        public String tagID = null;
+        [ORMapping(Kitting_Location_FA_A.fn_tagTp)]
+        public String tagTp = null;
+        [ORMapping(Kitting_Location_FA_A.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Kitting_Loc_PLMapping))]
+    public class KittingLocPLMappingInfo
+    {
+        [ORMapping(Kitting_Loc_PLMapping.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Kitting_Loc_PLMapping.fn_lightNo)]
+        public Int16 lightNo = short.MinValue;
+        [ORMapping(Kitting_Loc_PLMapping.fn_pdLine)]
+        public String pdLine = null;
+        [ORMapping(Kitting_Loc_PLMapping.fn_tagID)]
+        public String tagID = null;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Fakittingboxsn))]
+    public class KittingBoxSNInfo
+    {
+        [ORMapping(Fakittingboxsn.fn_pdLine)]
+        public String pdLine = null;
+        [ORMapping(Fakittingboxsn.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Fakittingboxsn.fn_remark)]
+        public String remark = null;
+        [ORMapping(Fakittingboxsn.fn_sno)]
+        public String sno = null;
+        [ORMapping(Fakittingboxsn.fn_snoId)]
+        public String snoId = null;
+        [ORMapping(Fakittingboxsn.fn_status)]
+        public String status = null;
+        [ORMapping(Fakittingboxsn.fn_tp)]
+        public String tp = null;
+        [ORMapping(Fakittingboxsn.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(DefectCode_Station))]
+    public class DefectCodeStationInfo
+    {
+        [ORMapping(DefectCode_Station.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(DefectCode_Station.fn_crt_stn)]
+        public String crt_stn = null;
+        [ORMapping(DefectCode_Station.fn_defect)]
+        public String defect = null;
+        [ORMapping(DefectCode_Station.fn_editor)]
+        public String editor = null;
+        [ORMapping(DefectCode_Station.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(DefectCode_Station.fn_nxt_stn)]
+        public String nxt_stn = null;
+        [ORMapping(DefectCode_Station.fn_pre_stn)]
+        public String pre_stn = null;
+        [ORMapping(DefectCode_Station.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+        [ORMapping(DefectCode_Station.fn_cause)]
+        public String cause = null;
+        [ORMapping(DefectCode_Station.fn_majorPart)]
+        public String majorPart = null;
+        [ORMapping(DefectCode_Station.fn_family)]
+        public String family = null;
+
+        public string preName = null;
+        public string curName = null;
+        public string nxtName = null;
+        public string dfDescr = null;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Mta_Mark))]
+    public class MtaMarkInfo
+    {
+        [ORMapping(Mta_Mark.fn_defect)]
+        public String defect = null;
+        [ORMapping(Mta_Mark.fn_mark)]
+        public String mark = null;
+        [ORMapping(Mta_Mark.fn_rep_Id)]
+        public Int32 rep_Id = int.MinValue;
+        [ORMapping(Mta_Mark.fn_version)]
+        public String version = null;
+    }
+
+    /// <summary>
+    /// b.InfoValue as [MB Code], c.InfoValue as [MDL],b.InfoValue + ' ' + c.InfoValue as [DisplayName]
+    /// </summary>
+    [Serializable]
+    public class MbCodeAndMdlInfo
+    {
+        public string mbCode;
+
+        public string mdl;
+
+        public string displayName;
+    }
+
+    [Serializable]
+    public class ProductAndCustInfo
+    {
+        public string productId;
+
+        public string custSn;
+
+        public string custPno;
+    }
+
+    [Serializable]
+    public class DeliveryNoAndQtyEntity
+    {
+        public string DeliveryNo;
+
+        public int Qty;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Comsetting))]
+    public class COMSettingInfo
+    {
+        [ORMapping(Comsetting.fn_baudRate)]
+        public String baudRate = null;
+        [ORMapping(Comsetting.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Comsetting.fn_commPort)]
+        public String commPort = null;
+        [ORMapping(Comsetting.fn_editor)]
+        public String editor = null;
+        [ORMapping(Comsetting.fn_handshaking)]
+        public int handshaking = int.MinValue;
+        [ORMapping(Comsetting.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Comsetting.fn_name)]
+        public String name = null;
+        [ORMapping(Comsetting.fn_rthreshold)]
+        public int rthreshold = int.MinValue;
+        [ORMapping(Comsetting.fn_sthreshold)]
+        public int sthreshold = int.MinValue;
+        [ORMapping(Comsetting.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Smtmo))]
+    public class SmtmoInfo
+    {
+        [ORMapping(Smtmo.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Smtmo.fn_editor)]
+        public String editor = null;
+        [ORMapping(Smtmo.fn_iecpartno)]
+        public String iecpartno = null;
+        [ORMapping(Smtmo.fn_pcbfamily)]
+        public String pcbfamily = null;
+        [ORMapping(Smtmo.fn_printQty)]
+        public Int32 printQty = int.MinValue;
+        [ORMapping(Smtmo.fn_process)]
+        public String process = null;
+        [ORMapping(Smtmo.fn_qty)]
+        public Int32 qty = int.MinValue;
+        [ORMapping(Smtmo.fn_remark)]
+        public String remark = null;
+        [ORMapping(Smtmo.fn_smtmo)]
+        public String smtmo = null;
+        [ORMapping(Smtmo.fn_status)]
+        public String status = null;
+        [ORMapping(Smtmo.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(PrintTemplate))]
+    public class PrintTemplateEntity
+    {
+        [ORMapping(PrintTemplate.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(PrintTemplate.fn_description)]
+        public String description = null;
+        [ORMapping(PrintTemplate.fn_editor)]
+        public String editor = null;
+        [ORMapping(PrintTemplate.fn_labelType)]
+        public String labelType = null;
+        [ORMapping(PrintTemplate.fn_layout)]
+        public Int32 layout = int.MinValue;
+        [ORMapping(PrintTemplate.fn_piece)]
+        public Int32 piece = int.MinValue;
+        [ORMapping(PrintTemplate.fn_spName)]
+        public String spName = null;
+        [ORMapping(PrintTemplate.fn_templateName)]
+        public String templateName = null;
+        [ORMapping(PrintTemplate.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Pcaictcount))]
+    public class PcaIctCountInfo
+    {
+        [ORMapping(Pcaictcount.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Pcaictcount.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Pcaictcount.fn_pdLine)]
+        public String pdLine = null;
+        [ORMapping(Pcaictcount.fn_qty)]
+        public Int32 qty = int.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(FruDet))]
+    public class FruDetInfo
+    {
+        [ORMapping(FruDet.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(FruDet.fn_editor)]
+        public String editor = null;
+        [ORMapping(FruDet.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(FruDet.fn_sno)]
+        public String sno = null;
+        [ORMapping(FruDet.fn_snoId)]
+        public String snoId = null;
+        [ORMapping(FruDet.fn_tp)]
+        public String tp = null;
+        [ORMapping(FruDet.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Pcatest_Check))]
+    public class PcaTestCheckInfo
+    {
+        [ORMapping(Pcatest_Check.fn_bios)]
+        public String bios = null;
+        [ORMapping(Pcatest_Check.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Pcatest_Check.fn_code)]
+        public String code = null;
+        [ORMapping(Pcatest_Check.fn_editor)]
+        public String editor = null;
+        [ORMapping(Pcatest_Check.fn_hddv)]
+        public String hddv = null;
+        [ORMapping(Pcatest_Check.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Pcatest_Check.fn_mac)]
+        public String mac = null;
+        [ORMapping(Pcatest_Check.fn_mbct)]
+        public String mbct = null;
+        [ORMapping(Pcatest_Check.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(PrintList))]
+    public class PrintListInfo
+    {
+        [ORMapping(PrintList.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(PrintList.fn_doc_Name)]
+        public String doc_Name = null;
+        [ORMapping(PrintList.fn_id)]
+        public Int32 id = int.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(ModelWeight))]
+    public class ModelWeightInfo
+    {
+        [ORMapping(ModelWeight.fn_cartonWeight)]
+        public Decimal cartonWeight = decimal.MinValue;
+        [ORMapping(ModelWeight.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(ModelWeight.fn_editor)]
+        public String editor = null;
+        [ORMapping(ModelWeight.fn_model)]
+        public String model = null;
+        [ORMapping(ModelWeight.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+        [ORMapping(ModelWeight.fn_unitWeight)]
+        public Decimal unitWeight = decimal.MinValue;
+        [ORMapping(ModelWeight.fn_sendStatus)]
+        public String sendStatus = null;
+        [ORMapping(ModelWeight.fn_remark)]
+        public String remark = null;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(ConcurrentLocks))]
+    public class ConcurrentLocksInfo
+    {
+        [ORMapping(ConcurrentLocks.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(ConcurrentLocks.fn_clientAddr)]
+        public String clientAddr = null;
+        [ORMapping(ConcurrentLocks.fn_customer)]
+        public String customer = null;
+        [ORMapping(ConcurrentLocks.fn_descr)]
+        public String descr = null;
+        [ORMapping(ConcurrentLocks.fn_editor)]
+        public String editor = null;
+        [ORMapping(ConcurrentLocks.fn_guid)]
+        public Guid guid = Guid.Empty;
+        [ORMapping(ConcurrentLocks.fn_line)]
+        public String line = null;
+        [ORMapping(ConcurrentLocks.fn__LockValue)]
+        public String _LockValue = null;
+        [ORMapping(ConcurrentLocks.fn_station)]
+        public String station = null;
+        [ORMapping(ConcurrentLocks.fn_timeoutSpan4Hold)]
+        public long timeoutSpan4Hold = long.MinValue;
+        [ORMapping(ConcurrentLocks.fn_timeoutSpan4Wait)]
+        public long timeoutSpan4Wait = long.MinValue;
+        [ORMapping(ConcurrentLocks.fn_type)]
+        public String type = null;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(KittingLog))]
+    public class KittingLogInfo
+    {
+        [ORMapping(KittingLog.fn_boxId)]
+        public String boxId = null;
+        [ORMapping(KittingLog.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(KittingLog.fn_configedLEDStatus)]
+        public Boolean configedLEDStatus = default(bool);
+        [ORMapping(KittingLog.fn_editor)]
+        public String editor = null;
+        [ORMapping(KittingLog.fn_ledvalues)]
+        public String ledvalues = null;
+        [ORMapping(KittingLog.fn_line)]
+        public String line = null;
+        [ORMapping(KittingLog.fn_priority)]
+        public Int32 priority = int.MinValue;
+        [ORMapping(KittingLog.fn_productID)]
+        public String productID = null;
+        [ORMapping(KittingLog.fn_runningLEDStatus)]
+        public Boolean runningLEDStatus = default(bool);
+        [ORMapping(KittingLog.fn_tableName)]
+        public String table = null;
+        [ORMapping(KittingLog.fn_tagID)]
+        public String tagID = null;
+        [ORMapping(KittingLog.fn_time)]
+        public int time = int.MinValue;
+        [ORMapping(KittingLog.fn_id)]
+        public Int32 id = int.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Pcblot))]
+    public class PcblotInfo
+    {
+        [ORMapping(Pcblot.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Pcblot.fn_editor)]
+        public String editor = null;
+        [ORMapping(Pcblot.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Pcblot.fn_lotNo)]
+        public String lotNo = null;
+        [ORMapping(Pcblot.fn_pcbno)]
+        public String pcbno = null;
+        [ORMapping(Pcblot.fn_status)]
+        public String status = null;
+        [ORMapping(Pcblot.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Lot))]
+    public class LotInfo
+    {
+        [ORMapping(Lot.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Lot.fn_editor)]
+        public String editor = null;
+        [ORMapping(Lot.fn_line)]
+        public String line = null;
+        [ORMapping(Lot.fn_lotNo)]
+        public String lotNo = null;
+        [ORMapping(Lot.fn_qty)]
+        public Int32 qty = int.MinValue;
+        [ORMapping(Lot.fn_status)]
+        public String status = null;
+        [ORMapping(Lot.fn_type)]
+        public String type = null;
+        [ORMapping(Lot.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+        [ORMapping(Lot.fn_mbcode)]
+        public String mbcode = null;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(LotSetting))]
+    public class LotSettingInfo
+    {
+        [ORMapping(LotSetting.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(LotSetting.fn_checkQty)]
+        public Int32 checkQty = int.MinValue;
+        [ORMapping(LotSetting.fn_editor)]
+        public String editor = null;
+        [ORMapping(LotSetting.fn_failQty)]
+        public Int32 failQty = int.MinValue;
+        [ORMapping(LotSetting.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(LotSetting.fn_line)]
+        public String line = null;
+        [ORMapping(LotSetting.fn_passQty)]
+        public Int32 passQty = int.MinValue;
+        [ORMapping(LotSetting.fn_type)]
+        public String type = null;
+        [ORMapping(LotSetting.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Itcndcheckqchold))]
+    public class ITCNDCheckQCHoldDef
+    {
+        [ORMapping(Itcndcheckqchold.fn_cdt)]
+        public DateTime Cdt = DateTime.MinValue;
+        [ORMapping(Itcndcheckqchold.fn_code)]
+        public String Code = null;
+        [ORMapping(Itcndcheckqchold.fn_descr)]
+        public String Descr = null;
+        [ORMapping(Itcndcheckqchold.fn_editor)]
+        public String Editor = null;
+        [ORMapping(Itcndcheckqchold.fn_isHold)]
+        public String isHold = null;
+        [ORMapping(Itcndcheckqchold.fn_udt)]
+        public DateTime Udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Itcndchecksetting))]
+    public class ITCNDCheckSettingDef
+    {
+        [ORMapping(Itcndchecksetting.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Itcndchecksetting.fn_checkCondition)]
+        public String checkCondition = null;
+        [ORMapping(Itcndchecksetting.fn_checkItem)]
+        public String checkItem = null;
+        [ORMapping(Itcndchecksetting.fn_checkType)]
+        public String checkType = null;
+        [ORMapping(Itcndchecksetting.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Itcndchecksetting.fn_line)]
+        public String line = null;
+        [ORMapping(Itcndchecksetting.fn_station)]
+        public String station = null;
+        [ORMapping(Itcndchecksetting.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+        [ORMapping(Itcndchecksetting.fn_editor)]
+        public String editor = null;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(mtns.PalletWeight_NEW))]
+    public class PalletWeightInfo
+    {
+        [ORMapping(mtns.PalletWeight_NEW.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(mtns.PalletWeight_NEW.fn_editor)]
+        public String editor = null;
+        [ORMapping(mtns.PalletWeight_NEW.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(mtns.PalletWeight_NEW.fn_palletType)]
+        public String palletType = null;
+        [ORMapping(mtns.PalletWeight_NEW.fn_palletWeight)]
+        public Decimal palletWeight = decimal.MinValue;
+        [ORMapping(mtns.PalletWeight_NEW.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(mtns.SnoDet_PoMo))]
+    public class SnoDetPoMoInfo
+    {
+        [ORMapping(mtns.SnoDet_PoMo.fn_boxId)]
+        public String boxId = null;
+        [ORMapping(mtns.SnoDet_PoMo.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(mtns.SnoDet_PoMo.fn_delivery)]
+        public String delivery = null;
+        [ORMapping(mtns.SnoDet_PoMo.fn_editor)]
+        public String editor = null;
+        [ORMapping(mtns.SnoDet_PoMo.fn_mo)]
+        public String mo = null;
+        [ORMapping(mtns.SnoDet_PoMo.fn_plt)]
+        public String plt = null;
+        [ORMapping(mtns.SnoDet_PoMo.fn_po)]
+        public String po = null;
+        [ORMapping(mtns.SnoDet_PoMo.fn_poitem)]
+        public String poitem = null;
+        [ORMapping(mtns.SnoDet_PoMo.fn_remark)]
+        public String remark = null;
+        [ORMapping(mtns.SnoDet_PoMo.fn_snoId)]
+        public String snoId = null;
+        [ORMapping(mtns.SnoDet_PoMo.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(mtns.SysSetting))]
+    public class SysSettingInfo
+    {
+        [ORMapping(mtns.SysSetting.fn_description)]
+        public String description = null;
+        [ORMapping(mtns.SysSetting.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(mtns.SysSetting.fn_name)]
+        public String name = null;
+        [ORMapping(mtns.SysSetting.fn_value)]
+        public String value = null;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(mtns.CartonLog))]
+    public class CartonLogInfo
+    {
+        [ORMapping(mtns.CartonLog.fn_cartonNo)]
+        public String cartonNo = null;
+        [ORMapping(mtns.CartonLog.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(mtns.CartonLog.fn_editor)]
+        public String editor = null;
+        [ORMapping(mtns.CartonLog.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(mtns.CartonLog.fn_line)]
+        public String line = null;
+        [ORMapping(mtns.CartonLog.fn_station)]
+        public String station = null;
+        [ORMapping(mtns.CartonLog.fn_status)]
+        public Int32 status = int.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(mtns.CartonStatus))]
+    public class CartonStatusInfo
+    {
+        [ORMapping(mtns.CartonStatus.fn_cartonNo)]
+        public String cartonNo = null;
+        [ORMapping(mtns.CartonStatus.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(mtns.CartonStatus.fn_editor)]
+        public String editor = null;
+        [ORMapping(mtns.CartonStatus.fn_line)]
+        public String line = null;
+        [ORMapping(mtns.CartonStatus.fn_station)]
+        public String station = null;
+        [ORMapping(mtns.CartonStatus.fn_status)]
+        public Int32 status = int.MinValue;
+        [ORMapping(mtns.CartonStatus.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(mtns.CartonInfo))]
+    public class CartonInfoInfo
+    {
+        [ORMapping(mtns.CartonInfo.fn_cartonNo)]
+        public String cartonNo = null;
+        [ORMapping(mtns.CartonInfo.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(mtns.CartonInfo.fn_editor)]
+        public String editor = null;
+        [ORMapping(mtns.CartonInfo.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(mtns.CartonInfo.fn_infoType)]
+        public String infoType = null;
+        [ORMapping(mtns.CartonInfo.fn_infoValue)]
+        public String infoValue = null;
+        [ORMapping(mtns.CartonInfo.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+
+        public bool isWritenBoxId = false;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(mtns.StationCheck))]
+    public class StationCheckInfo
+    {
+        [ORMapping(mtns.StationCheck.fn_checkItemType)]
+        public String checkItemType = null;
+        [ORMapping(mtns.StationCheck.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(mtns.StationCheck.fn_line)]
+        public String line = null;
+        [ORMapping(mtns.StationCheck.fn_station)]
+        public String station = null;
+        [ORMapping(mtns.StationCheck.fn_editor)]
+        public String editor = null;
+        [ORMapping(mtns.StationCheck.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(mtns.StationCheck.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+        [ORMapping(mtns.StationCheck.fn_customer)]
+        public String customer = null;
+        [ORMapping(mtns.StationCheck.fn_family)]
+        public String family = null;
+        [ORMapping(mtns.StationCheck.fn_model)]
+        public String model = null;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(mtns.CheckItemType))]
+    public class CheckItemTypeInfo
+    {
+        [ORMapping(mtns.CheckItemType.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(mtns.CheckItemType.fn_checkModule)]
+        public String checkModule = null;
+        [ORMapping(mtns.CheckItemType.fn_displayName)]
+        public String displayName = null;
+        [ORMapping(mtns.CheckItemType.fn_editor)]
+        public String editor = null;
+        [ORMapping(mtns.CheckItemType.fn_filterModule)]
+        public String filterModule = null;
+        [ORMapping(mtns.CheckItemType.fn_matchModule)]
+        public String matchModule = null;
+        [ORMapping(mtns.CheckItemType.fn_name)]
+        public String name = null;
+        [ORMapping(mtns.CheckItemType.fn_needCommonSave)]
+        public Nullable<bool> needCommonSave = null;//default(bool);
+        //public bool needCommonSave = default(bool);
+        [ORMapping(mtns.CheckItemType.fn_needUniqueCheck)]
+        public Nullable<bool> needUniqueCheck = null;//default(bool);
+        [ORMapping(mtns.CheckItemType.fn_saveModule)]
+        public String saveModule = null;
+        [ORMapping(mtns.CheckItemType.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+        [ORMapping(mtns.CheckItemType.fn_needPartForbidCheck)]
+        public Nullable<bool> needPartForbidCheck = null;//default(bool);
+
+        [ORMapping(mtns.CheckItemType.fn_repairPartType)]
+        public Nullable<bool> repairPartType = null;//default(bool);
+        [ORMapping(mtns.CheckItemType.fn_needDefectComponentCheck)]
+        public Nullable<bool> needDefectComponentCheck = null;//default(bool);
+    }
+
+    [Serializable]
+    [ORMapping(typeof(mtns.Qcratio))]
+    public class QCRatioInfo
+    {
+        [ORMapping(mtns.Qcratio.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(mtns.Qcratio.fn_eoqcratio)]
+        public Int32 eoqcratio = int.MinValue;
+        [ORMapping(mtns.Qcratio.fn_editor)]
+        public String editor = null;
+        [ORMapping(mtns.Qcratio.fn_family)]
+        public String family = null;
+        [ORMapping(mtns.Qcratio.fn_paqcratio)]
+        public Int32 paqcratio = int.MinValue;
+        [ORMapping(mtns.Qcratio.fn_qcratio)]
+        public Int32 qcratio = int.MinValue;
+        [ORMapping(mtns.Qcratio.fn_rpaqcratio)]
+        public Int32 rpaqcratio = int.MinValue;
+        [ORMapping(mtns.Qcratio.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+    /// <summary>
+    /// For AST Chage: ASTType  PartNo  PartSn
+    /// </summary>
+    [Serializable]
+    public class ASTInfo
+    {
+        public string ASTType;
+
+        public string PartNo;
+
+        public string PartSn;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(mtns.IqcCause1))]
+    public class IqcCause1Info
+    {
+        [ORMapping(mtns.IqcCause1.fn_ctLabel)]
+        public String ctLabel = null;
+        [ORMapping(mtns.IqcCause1.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(mtns.IqcCause1.fn_iqcDefect)]
+        public String iqcDefect = null;
+        [ORMapping(mtns.IqcCause1.fn_mpDefect)]
+        public String mpDefect = null;
+        [ORMapping(mtns.IqcCause1.fn_status)]
+        public String status = null;
+        [ORMapping(mtns.IqcCause1.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+        [ORMapping(mtns.IqcCause1.fn_veDefect)]
+        public String veDefect = null;
+        [ORMapping(mtns.IqcCause1.fn_veLabel)]
+        public String veLabel = null;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(mtns.Pcblotcheck))]
+    public class PcblotcheckInfo
+    {
+        [ORMapping(mtns.Pcblotcheck.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(mtns.Pcblotcheck.fn_editor)]
+        public String editor = null;
+        [ORMapping(mtns.Pcblotcheck.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(mtns.Pcblotcheck.fn_lotNo)]
+        public String lotNo = null;
+        [ORMapping(mtns.Pcblotcheck.fn_pcbno)]
+        public String pcbno = null;
+        [ORMapping(mtns.Pcblotcheck.fn_status)]
+        public String status = null;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(mtns.Pcboqcrepair))]
+    public class PcboqcrepairInfo
+    {
+        [ORMapping(Pcboqcrepair.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Pcboqcrepair.fn_editor)]
+        public String editor = null;
+        [ORMapping(Pcboqcrepair.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Pcboqcrepair.fn_lotNo)]
+        public String lotNo = null;
+        [ORMapping(Pcboqcrepair.fn_pcbno)]
+        public String pcbno = null;
+        [ORMapping(Pcboqcrepair.fn_remark)]
+        public String remark = null;
+        [ORMapping(Pcboqcrepair.fn_station)]
+        public String station = null;
+        [ORMapping(Pcboqcrepair.fn_status)]
+        public String status = null;
+        [ORMapping(Pcboqcrepair.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(mtns.Pcboqcrepair_Defectinfo))]
+    public class Pcboqcrepair_DefectinfoInfo
+    {
+        [ORMapping(mtns.Pcboqcrepair_Defectinfo.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(mtns.Pcboqcrepair_Defectinfo.fn_defect)]
+        public String defect = null;
+        [ORMapping(mtns.Pcboqcrepair_Defectinfo.fn_editor)]
+        public String editor = null;
+        [ORMapping(mtns.Pcboqcrepair_Defectinfo.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(mtns.Pcboqcrepair_Defectinfo.fn_pcboqcrepairid)]
+        public Int32 pcboqcrepairid = int.MinValue;
+        [ORMapping(mtns.Pcboqcrepair_Defectinfo.fn_status)]
+        public String status = null;
+    }
+
+
+    [Serializable]
+    [ORMapping(typeof(mtns.Smtline))]
+    public class SMTLineDef
+    {
+        [ORMapping(mtns.Smtline.fn_line)]
+        public string Line = null;                          //与UC确认，该键为主键
+        [ORMapping(mtns.Smtline.fn_obTime)]
+        public decimal ObjectiveTime = decimal.MinValue;    //Decimal(4, 1)
+        [ORMapping(mtns.Smtline.fn_startTime)]
+        public DateTime StartTime = DateTime.MinValue;
+        [ORMapping(mtns.Smtline.fn_endTime)]
+        public DateTime EndTime = DateTime.MinValue;
+        [ORMapping(mtns.Smtline.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(mtns.Smtline.fn_remark)]
+        public string Remark = null;
+        [ORMapping(mtns.Smtline.fn_editor)]
+        public string Editor = null;
+        [ORMapping(mtns.Smtline.fn_cdt)]
+        public DateTime Cdt = DateTime.MinValue;
+        [ORMapping(mtns.Smtline.fn_udt)]
+        public DateTime Udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(mtns.UnitWeightLog))]
+    public class UnitWeightLog
+    {
+        [ORMapping(mtns.UnitWeightLog.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(mtns.UnitWeightLog.fn_editor)]
+        public String editor = null;
+        [ORMapping(mtns.UnitWeightLog.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(mtns.UnitWeightLog.fn_productID)]
+        public String productID = null;
+        [ORMapping(mtns.UnitWeightLog.fn_unitWeight)]
+        public Decimal unitWeight = decimal.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(mtns.Dept))]
+    public class DeptInfo
+    {
+        [ORMapping(mtns.Dept.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(mtns.Dept.fn_dept)]
+        public String dept = null;
+        [ORMapping(mtns.Dept.fn_editor)]
+        public String editor = null;
+        [ORMapping(mtns.Dept.fn_endTime)]
+        public String endTime = null;
+        [ORMapping(mtns.Dept.fn_fisline)]
+        public String fisline = null;
+        [ORMapping(mtns.Dept.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(mtns.Dept.fn_line)]
+        public String line = null;
+        [ORMapping(mtns.Dept.fn_remark)]
+        public String remark = null;
+        [ORMapping(mtns.Dept.fn_section)]
+        public String section = null;
+        [ORMapping(mtns.Dept.fn_startTime)]
+        public String startTime = null;
+        [ORMapping(mtns.Dept.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Fa_Itcndefect_Check))]
+    public class FaItCnDefectCheckInfo
+    {
+        [ORMapping(Fa_Itcndefect_Check.fn_bios)]
+        public String bios = null;
+        [ORMapping(Fa_Itcndefect_Check.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Fa_Itcndefect_Check.fn_code)]
+        public String code = null;
+        [ORMapping(Fa_Itcndefect_Check.fn_editor)]
+        public String editor = null;
+        [ORMapping(Fa_Itcndefect_Check.fn_hddv)]
+        public String hddv = null;
+        [ORMapping(Fa_Itcndefect_Check.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Fa_Itcndefect_Check.fn_mac)]
+        public String mac = null;
+        [ORMapping(Fa_Itcndefect_Check.fn_mbct)]
+        public String mbct = null;
+        [ORMapping(Fa_Itcndefect_Check.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Family_MB))]
+    public class FamilyMbInfo
+    {
+        [ORMapping(Family_MB.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Family_MB.fn_editor)]
+        public String editor = null;
+        [ORMapping(Family_MB.fn_family)]
+        public String family = null;
+        [ORMapping(Family_MB.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Family_MB.fn_mb)]
+        public String mb = null;
+        [ORMapping(Family_MB.fn_remark)]
+        public String remark = null;
+        [ORMapping(Family_MB.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Rctombmaintain))]
+    public class RctombmaintainInfo
+    {
+        [ORMapping(Rctombmaintain.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Rctombmaintain.fn_code)]
+        public String code = null;
+        [ORMapping(Rctombmaintain.fn_editor)]
+        public String editor = null;
+        [ORMapping(Rctombmaintain.fn_family)]
+        public String family = null;
+        [ORMapping(Rctombmaintain.fn_remark)]
+        public String remark = null;
+        [ORMapping(Rctombmaintain.fn_type)]
+        public String type = null;
+        [ORMapping(Rctombmaintain.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    //[Serializable]
+    //[ORMapping(typeof(AlarmSetting))]
+    //public class AlarmSettingInfo
+    //{
+    //    [ORMapping(AlarmSetting.fn_cdt)]
+    //    public DateTime cdt = DateTime.MinValue;
+    //    [ORMapping(AlarmSetting.fn_defectQty)]
+    //    public Int32 defectQty = int.MinValue;
+    //    [ORMapping(AlarmSetting.fn_defectType)]
+    //    public String defectType = null;
+    //    [ORMapping(AlarmSetting.fn_defects)]
+    //    public String defects = null;
+    //    [ORMapping(AlarmSetting.fn_editor)]
+    //    public String editor = null;
+    //    [ORMapping(AlarmSetting.fn_family)]
+    //    public String family = null;
+    //    [ORMapping(AlarmSetting.fn_id)]
+    //    public Int32 id = int.MinValue;
+    //    [ORMapping(AlarmSetting.fn_minQty)]
+    //    public Int32 minQty = int.MinValue;
+    //    [ORMapping(AlarmSetting.fn_period)]
+    //    public Double period = double.MinValue;
+    //    [ORMapping(AlarmSetting.fn_stage)]
+    //    public String stage = null;
+    //    [ORMapping(AlarmSetting.fn_station)]
+    //    public String station = null;
+    //    [ORMapping(AlarmSetting.fn_type)]
+    //    public String type = null;
+    //    [ORMapping(AlarmSetting.fn_udt)]
+    //    public DateTime udt = DateTime.MinValue;
+    //    [ORMapping(AlarmSetting.fn_yieldRate)]
+    //    public Double yieldRate = double.MinValue;
+    //}
+
+    [Serializable]
+    [ORMapping(typeof(Smttime))]
+    public class SmttimeInfo
+    {
+        [ORMapping(Smttime.fn_actTime)]
+        public Decimal actTime = decimal.MinValue;
+        [ORMapping(Smttime.fn_actTime1)]
+        public Decimal actTime1 = decimal.MinValue;
+        [ORMapping(Smttime.fn_actTime2)]
+        public Decimal actTime2 = decimal.MinValue;
+        [ORMapping(Smttime.fn_actTime3)]
+        public Decimal actTime3 = decimal.MinValue;
+        [ORMapping(Smttime.fn_cause)]
+        public String cause = null;
+        [ORMapping(Smttime.fn_cause1)]
+        public String cause1 = null;
+        [ORMapping(Smttime.fn_cause2)]
+        public String cause2 = null;
+        [ORMapping(Smttime.fn_cause3)]
+        public String cause3 = null;
+        [ORMapping(Smttime.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Smttime.fn_date)]
+        public DateTime date = DateTime.MinValue;
+        [ORMapping(Smttime.fn_editor)]
+        public String editor = null;
+        [ORMapping(Smttime.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Smttime.fn_line)]
+        public String line = null;
+        [ORMapping(Smttime.fn_remark)]
+        public String remark = null;
+        [ORMapping(Smttime.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    //[Serializable]
+    //[ORMapping(typeof(Smtline))]
+    //public class SmtlineInfo //请RCTO及以后版本检查弃用此实体类,避免出现ORMapping冲突而报异常.ITC-1361-0189
+    //{
+    //    [ORMapping(Smtline.fn_cdt)]
+    //    public DateTime cdt = DateTime.MinValue;
+    //    [ORMapping(Smtline.fn_editor)]
+    //    public String editor = null;
+    //    [ORMapping(Smtline.fn_endTime)]
+    //    public DateTime endTime = DateTime.MinValue;
+    //    [ORMapping(Smtline.fn_line)]
+    //    public String line = null;
+    //    [ORMapping(Smtline.fn_obTime)]
+    //    public Decimal obTime = decimal.MinValue;
+    //    [ORMapping(Smtline.fn_remark)]
+    //    public String remark = null;
+    //    [ORMapping(Smtline.fn_startTime)]
+    //    public DateTime startTime = DateTime.MinValue;
+    //    [ORMapping(Smtline.fn_udt)]
+    //    public DateTime udt = DateTime.MinValue;
+    //}
+
+    [Serializable]
+    /// <summary>
+    /// Row data define of CombineCOAandDN page
+    /// </summary>
+    public class Srd4CoaAndDn
+    {
+        /// <summary>
+        /// DeliveryNO
+        /// </summary>
+        public string DeliveryNO;
+        /// <summary>
+        /// Model
+        /// </summary>
+        public string Model;
+        /// <summary>
+        /// CustomerPN
+        /// </summary>
+        public string CustomerPN;
+        /// <summary>
+        /// PoNo
+        /// </summary>
+        public string PoNo;
+        /// <summary>
+        /// Date
+        /// </summary>
+        public DateTime ShipDate;
+        /// <summary>
+        /// Qty
+        /// </summary>
+        public int Qty;
+        /// <summary>
+        /// PackedQty
+        /// </summary>
+        public int PackedQty;
+
+        /// <summary>
+        /// 状态
+        /// </summary>
+        public string Status;
+
+        /// <summary>
+        /// Editor
+        /// </summary>
+        public string Editor;
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime Cdt;
+
+        /// <summary>
+        /// 更新时间
+        /// </summary>
+        public DateTime Udt;
+
+        /// <summary>
+        /// Shipment序号
+        /// </summary>
+        public string ShipmentID;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Coareturn))]
+    public class COAReturnInfo
+    {
+        [ORMapping(Coareturn.fn_coasn)]
+        public String coasn = null;
+        [ORMapping(Coareturn.fn_custsn)]
+        public String custsn = null;
+        [ORMapping(Coareturn.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Coareturn.fn_editor)]
+        public String editor = null;
+        [ORMapping(Coareturn.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Coareturn.fn_line)]
+        public String line = null;
+        [ORMapping(Coareturn.fn_originalStatus)]
+        public String originalStatus = null;
+        [ORMapping(Coareturn.fn_status)]
+        public String status = null;
+        [ORMapping(Coareturn.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Smtct))]
+    public class SmtctInfo
+    {
+        [ORMapping(Smtct.fn_ct)]
+        public Decimal ct = decimal.MinValue;
+        [ORMapping(Smtct.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Smtct.fn_editor)]
+        public String editor = null;
+        [ORMapping(Smtct.fn_family)]
+        public String family = null;
+        [ORMapping(Smtct.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Smtct.fn_line)]
+        public String line = null;
+        [ORMapping(Smtct.fn_optRate)]
+        public Double optRate = double.MinValue;
+        [ORMapping(Smtct.fn_remark)]
+        public String remark = null;
+        [ORMapping(Smtct.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Paqcsorting))]
+    public class PaqcsortingInfo
+    {
+        [ORMapping(Paqcsorting.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Paqcsorting.fn_editor)]
+        public String editor = null;
+        [ORMapping(Paqcsorting.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Paqcsorting.fn_line)]
+        public String line = null;
+        [ORMapping(Paqcsorting.fn_previousFailTime)]
+        public DateTime previousFailTime = DateTime.MinValue;
+        [ORMapping(Paqcsorting.fn_station)]
+        public String station = null;
+        [ORMapping(Paqcsorting.fn_status)]
+        public String status = null;
+        [ORMapping(Paqcsorting.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+        [ORMapping(Paqcsorting.fn_remark)]
+        public String remark = null;
+
+        public int PassQty = 0;
+        public int LeastPassQty = 0;
+        public string Descr = string.Empty;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Paqcsorting_Product))]
+    public class PaqcsortingProductInfo
+    {
+        [ORMapping(Paqcsorting_Product.fn_custsn)]
+        public String custsn = null;
+        [ORMapping(Paqcsorting_Product.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Paqcsorting_Product.fn_editor)]
+        public String editor = null;
+        [ORMapping(Paqcsorting_Product.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Paqcsorting_Product.fn_paqcsortingid)]
+        public Int32 paqcsortingid = int.MinValue;
+        [ORMapping(Paqcsorting_Product.fn_status)]
+        public Int32 status = int.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(KeyPartRepair))]
+    public class KeyPartRepairInfo
+    {
+        [ORMapping(KeyPartRepair.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(KeyPartRepair.fn_editor)]
+        public String editor = null;
+        [ORMapping(KeyPartRepair.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(KeyPartRepair.fn_line)]
+        public String line = null;
+        [ORMapping(KeyPartRepair.fn_logID)]
+        public Int32 logID = int.MinValue;
+        [ORMapping(KeyPartRepair.fn_model)]
+        public String model = null;
+        [ORMapping(KeyPartRepair.fn_productID)]
+        public String productID = null;
+        [ORMapping(KeyPartRepair.fn_station)]
+        public String station = null;
+        [ORMapping(KeyPartRepair.fn_status)]
+        public Int32 status = int.MinValue;
+        [ORMapping(KeyPartRepair.fn_testLogID)]
+        public Int32 testLogID = int.MinValue;
+        [ORMapping(KeyPartRepair.fn_type)]
+        public String type = null;
+        [ORMapping(KeyPartRepair.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Pcbrepair_Defectinfo))]
+    public class PcbrepairDefectInfo
+    {
+        [ORMapping(Pcbrepair_Defectinfo.fn__4M_)]
+        public String _4M_ = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_action)]
+        public String action = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_cause)]
+        public String cause = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Pcbrepair_Defectinfo.fn_component)]
+        public String component = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_cover)]
+        public String cover = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_defectCode)]
+        public String defectCode = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_distribution)]
+        public String distribution = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_editor)]
+        public String editor = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Pcbrepair_Defectinfo.fn_isManual)]
+        public Int32 isManual = int.MinValue;
+        [ORMapping(Pcbrepair_Defectinfo.fn_location)]
+        public String location = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_majorPart)]
+        public String majorPart = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_manufacture)]
+        public String manufacture = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_mark)]
+        public String mark = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_mtaid)]
+        public String mtaid = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_newPart)]
+        public String newPart = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_newPartDateCode)]
+        public String newPartDateCode = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_newPartSno)]
+        public String newPartSno = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_obligation)]
+        public String obligation = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_oldPart)]
+        public String oldPart = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_oldPartSno)]
+        public String oldPartSno = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_partType)]
+        public String partType = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_pcarepairid)]
+        public Int32 pcarepairid = int.MinValue;
+        [ORMapping(Pcbrepair_Defectinfo.fn_piastation)]
+        public String piastation = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_remark)]
+        public String remark = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_responsibility)]
+        public String responsibility = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_returnSign)]
+        public String returnSign = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_side)]
+        public String side = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_site)]
+        public String site = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_subDefect)]
+        public String subDefect = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_trackingStatus)]
+        public String trackingStatus = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_type)]
+        public String type = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+        [ORMapping(Pcbrepair_Defectinfo.fn_uncover)]
+        public String uncover = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_vendorCT)]
+        public String vendorCT = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_versionA)]
+        public String versionA = null;
+        [ORMapping(Pcbrepair_Defectinfo.fn_versionB)]
+        public String versionB = null;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Pcb))]
+    public class PcbEntityInfo
+    {
+        [ORMapping(Pcb.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Pcb.fn_custsn)]
+        public String custsn = null;
+        [ORMapping(Pcb.fn_custver)]
+        public String custver = null;
+        [ORMapping(Pcb.fn_cvsn)]
+        public String cvsn = null;
+        [ORMapping(Pcb.fn_dateCode)]
+        public String dateCode = null;
+        [ORMapping(Pcb.fn_ecr)]
+        public String ecr = null;
+        [ORMapping(Pcb.fn_iecver)]
+        public String iecver = null;
+        [ORMapping(Pcb.fn_mac)]
+        public String mac = null;
+        [ORMapping(Pcb.fn_pcbmodelid)]
+        public String pcbmodelid = null;
+        [ORMapping(Pcb.fn_pcbno)]
+        public String pcbno = null;
+        [ORMapping(Pcb.fn_shipMode)]
+        public String shipMode = null;
+        [ORMapping(Pcb.fn_smtmo)]
+        public String smtmo = null;
+        [ORMapping(Pcb.fn_state)]
+        public String state = null;
+        [ORMapping(Pcb.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+        [ORMapping(Pcb.fn_uuid)]
+        public String uuid = null;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Ecoareturn))]
+    public class EcoareturnInfo
+    {
+        [ORMapping(Ecoareturn.fn_custsn)]
+        public String custsn = null;
+        [ORMapping(Ecoareturn.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Ecoareturn.fn_ecoano)]
+        public String ecoano = null;
+        [ORMapping(Ecoareturn.fn_editor)]
+        public String editor = null;
+        [ORMapping(Ecoareturn.fn_groupNo)]
+        public String groupNo = null;
+        [ORMapping(Ecoareturn.fn_line)]
+        public String line = null;
+        [ORMapping(Ecoareturn.fn_message)]
+        public String message = null;
+        [ORMapping(Ecoareturn.fn_partNo)]
+        public String partNo = null;
+        [ORMapping(Ecoareturn.fn_status)]
+        public String status = null;
+        [ORMapping(Ecoareturn.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(DeliveryAttrLog))]
+    public class DeliveryAttrLogInfo
+    {
+        [ORMapping(DeliveryAttrLog.fn_attrName)]
+        public String attrName = null;
+        [ORMapping(DeliveryAttrLog.fn_attrNewValue)]
+        public String attrNewValue = null;
+        [ORMapping(DeliveryAttrLog.fn_attrOldValue)]
+        public String attrOldValue = null;
+        [ORMapping(DeliveryAttrLog.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(DeliveryAttrLog.fn_deliveryNo)]
+        public String deliveryNo = null;
+        [ORMapping(DeliveryAttrLog.fn_descr)]
+        public String descr = null;
+        [ORMapping(DeliveryAttrLog.fn_editor)]
+        public String editor = null;
+        [ORMapping(DeliveryAttrLog.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(DeliveryAttrLog.fn_shipmentNo)]
+        public String shipmentNo = null;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Hp_Wwanlabel))]
+    public class HpWwanlabelInfo
+    {
+        [ORMapping(Hp_Wwanlabel.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Hp_Wwanlabel.fn_descr)]
+        public String descr = null;
+        [ORMapping(Hp_Wwanlabel.fn_editor)]
+        public String editor = null;
+        [ORMapping(Hp_Wwanlabel.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Hp_Wwanlabel.fn_labelESn)]
+        public String labelESn = null;
+        [ORMapping(Hp_Wwanlabel.fn_labelICCID)]
+        public String labelICCID = null;
+        [ORMapping(Hp_Wwanlabel.fn_labelIMEI)]
+        public String labelIMEI = null;
+        [ORMapping(Hp_Wwanlabel.fn_labelMEID)]
+        public String labelMEID = null;
+        [ORMapping(Hp_Wwanlabel.fn_moduleNo)]
+        public String moduleNo = null;
+        [ORMapping(Hp_Wwanlabel.fn_printType)]
+        public String printType = null;
+        [ORMapping(Hp_Wwanlabel.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Pltstandard))]
+    public class PltstandardInfo
+    {
+        [ORMapping(Pltstandard.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Pltstandard.fn_editor)]
+        public String editor = null;
+        [ORMapping(Pltstandard.fn_high)]
+        public Decimal high = decimal.MinValue;
+        [ORMapping(Pltstandard.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Pltstandard.fn_len)]
+        public Decimal len = decimal.MinValue;
+        [ORMapping(Pltstandard.fn_pltno)]
+        public String pltno = null;
+        [ORMapping(Pltstandard.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+        [ORMapping(Pltstandard.fn_wide)]
+        public Decimal wide = decimal.MinValue;
+    }
+    
+    [Serializable]
+    [ORMapping(typeof(Pltspecification))]
+    public class PltspecificationInfo
+    {
+        [ORMapping(Pltspecification.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Pltspecification.fn_descr)]
+        public String descr = null;
+        [ORMapping(Pltspecification.fn_editor)]
+        public String editor = null;
+        [ORMapping(Pltspecification.fn_high)]
+        public Decimal high = decimal.MinValue;
+        [ORMapping(Pltspecification.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Pltspecification.fn_len)]
+        public Decimal len = decimal.MinValue;
+        [ORMapping(Pltspecification.fn_type)]
+        public String type = null;
+        [ORMapping(Pltspecification.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+        [ORMapping(Pltspecification.fn_wide)]
+        public Decimal wide = decimal.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(PalletLog))]
+    public class PalletLogInfo
+    {
+        [ORMapping(PalletLog.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(PalletLog.fn_editor)]
+        public String editor = null;
+        [ORMapping(PalletLog.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(PalletLog.fn_line)]
+        public String line = null;
+        [ORMapping(PalletLog.fn_palletNo)]
+        public String palletNo = null;
+        [ORMapping(PalletLog.fn_station)]
+        public String station = null;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Fai_Info))]
+    public class FaiInfo
+    {
+        [ORMapping(Fai_Info.fn_bat_typ)]
+        public String bat_typ = null;
+        [ORMapping(Fai_Info.fn_bios_typ)]
+        public String bios_typ = null;
+        [ORMapping(Fai_Info.fn_chk_stat)]
+        public String chk_stat = null;
+        [ORMapping(Fai_Info.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Fai_Info.fn_editor)]
+        public String editor = null;
+        [ORMapping(Fai_Info.fn_fdd_sup)]
+        public String fdd_sup = null;
+        [ORMapping(Fai_Info.fn_fin_time)]
+        public DateTime fin_time = DateTime.MinValue;
+        [ORMapping(Fai_Info.fn_hdd_sup)]
+        public String hdd_sup = null;
+        [ORMapping(Fai_Info.fn_hpqpn)]
+        public String hpqpn = null;
+        [ORMapping(Fai_Info.fn_iecpn)]
+        public String iecpn = null;
+        [ORMapping(Fai_Info.fn_imp_record)]
+        public String imp_record = null;
+        [ORMapping(Fai_Info.fn_kbc_ver)]
+        public String kbc_ver = null;
+        [ORMapping(Fai_Info.fn_ng_record)]
+        public String ng_record = null;
+        [ORMapping(Fai_Info.fn_opt_sup)]
+        public String opt_sup = null;
+        [ORMapping(Fai_Info.fn_ram_typ)]
+        public String ram_typ = null;
+        [ORMapping(Fai_Info.fn_rec_time)]
+        public DateTime rec_time = DateTime.MinValue;
+        [ORMapping(Fai_Info.fn_sno)]
+        public String sno = null;
+        [ORMapping(Fai_Info.fn_upc_code)]
+        public String upc_code = null;
+        [ORMapping(Fai_Info.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+        [ORMapping(Fai_Info.fn_vdo_bios)]
+        public String vdo_bios = null;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(Hpweekcode))]
+    public class HpweekcodeInfo
+    {
+        [ORMapping(Hpweekcode.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(Hpweekcode.fn_code)]
+        public String code = null;
+        [ORMapping(Hpweekcode.fn_descr)]
+        public String descr = null;
+        [ORMapping(Hpweekcode.fn_editor)]
+        public String editor = null;
+        [ORMapping(Hpweekcode.fn_id)]
+        public Int32 id = int.MinValue;
+        [ORMapping(Hpweekcode.fn_remark)]
+        public String remark = null;
+        [ORMapping(Hpweekcode.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    #region AssemblyVC table mapping
+    [Serializable]
+    [ORMapping(typeof(mtns.AssemblyVC))]
+    public class AssemblyVCInfo
+    {
+
+        [ORMapping(mtns.AssemblyVC.fn_id)]
+        public Int64 id = Int64.MinValue;
+
+        [ORMapping(mtns.AssemblyVC.fn_family)]
+        public String family = null;
+
+        [ORMapping(mtns.AssemblyVC.fn_partNo)]
+        public String partNo= null;
+
+        [ORMapping(mtns.AssemblyVC.fn_vc)]
+        public String vc = null;
+
+        [ORMapping(mtns.AssemblyVC.fn_combineVC)]
+        public String combineVC = null;
+
+        [ORMapping(mtns.AssemblyVC.fn_combinePartNo)]
+        public String combinePartNo = null;
+
+        [ORMapping(mtns.AssemblyVC.fn_remark)]
+        public string remark = null;      
+
+        [ORMapping(mtns.AssemblyVC.fn_editor)]
+        public String editor = null;
+
+        [ORMapping(mtns.AssemblyVC.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+
+        [ORMapping(mtns.AssemblyVC.fn_udt)]
+        public DateTime udt = DateTime.MinValue;
+    }
+
+    [Serializable]
+    [ORMapping(typeof(DeliveryAttr))]
+    public class DeliveryAttrInfo
+    {
+        [ORMapping(DeliveryAttr.fn_deliveryNo)]
+        public String deliveryNo = null;
+        [ORMapping(DeliveryAttr.fn_attrName)]
+        public String attrName = null;
+        [ORMapping(DeliveryAttr.fn_attrValue)]
+        public String attrValue = null;
+        
+        [ORMapping(DeliveryAttr.fn_editor)]
+        public String editor = null;
+        [ORMapping(DeliveryAttr.fn_cdt)]
+        public DateTime cdt = DateTime.MinValue;
+        [ORMapping(DeliveryAttr.fn_udt)]
+        public DateTime udt = DateTime.MinValue;      
+
+      
+       
+    }
+    #endregion
+}

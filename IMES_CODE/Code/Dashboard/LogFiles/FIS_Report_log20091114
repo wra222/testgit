@@ -1,0 +1,20 @@
+2009-11-14 14:31:53,597 56 DEBUG AuthorityDao - SELECT * FROM [T_SubSystem]
+2009-11-14 14:32:38,207 56 DEBUG AuthorityDao - SELECT * FROM [T_SubSystem]
+2009-11-14 14:33:13,520 56 DEBUG AuthorityDao - SELECT * FROM [T_SubSystem]
+2009-11-14 14:37:06,055 56 DEBUG AuthorityDao - SELECT * FROM [T_SubSystem]
+2009-11-14 14:37:35,352 62 DEBUG com.inventec.portal.manager.AuthorityManager - *-*-strAccountMgrURL=tcp://itc-98079:8070/IAccountManager
+2009-11-14 14:37:35,430 64 DEBUG com.inventec.portal.manager.AuthorityManager - *-*-strPermissionMgrURL=tcp://itc-98079:8070/IPermissionManager
+2009-11-14 14:37:35,430 66 DEBUG com.inventec.portal.manager.AuthorityManager - *-*-strRoleMgrURL=tcp://itc-98079:8070/IRoleManager
+2009-11-14 14:37:35,462 68 DEBUG com.inventec.portal.manager.AuthorityManager - *-*-strSecurityMgrURL=tcp://itc-98079:8070/ISecurityManager
+2009-11-14 14:37:37,852 147 DEBUG com.inventec.portal.manager.AuthorityManager - getPrimaryPermissionsByUserID
+2009-11-14 14:37:37,868 216 DEBUG com.inventec.portal.manager.AuthorityManager - getGroupIDsByUserID
+2009-11-14 14:37:37,883 229 DEBUG com.inventec.portal.manager.AuthorityManager - getGroupIDsByUserID-->strUserDeptLogin=itc;IEC;eB1-2
+2009-11-14 14:37:38,055 240 DEBUG com.inventec.portal.manager.AuthorityManager - userRoleInfos.Length=1
+2009-11-14 14:37:38,227 277 DEBUG com.inventec.portal.manager.AuthorityManager - in getGroupIDsByUserID-->RBPCException2: The account does not exist [Login:itc;IEC;eB1-2 Application:all].
+2009-11-14 14:37:38,227 156 DEBUG com.inventec.portal.manager.AuthorityManager - listGroupIDs.Count=1
+2009-11-14 14:37:38,243 323 DEBUG com.inventec.portal.manager.AuthorityManager - getPrimaryPermissionsByGroupID
+2009-11-14 14:37:38,508 340 DEBUG com.inventec.portal.manager.AuthorityManager - dtPrimaryPermissions.Rows.Count=3
+2009-11-14 14:37:38,508 173 DEBUG com.inventec.portal.manager.AuthorityManager - listPermissionNames[1]User Manager
+2009-11-14 14:37:38,524 173 DEBUG com.inventec.portal.manager.AuthorityManager - listPermissionNames[2]Test Manager
+2009-11-14 14:37:38,524 173 DEBUG com.inventec.portal.manager.AuthorityManager - listPermissionNames[3]picture3
+2009-11-14 14:37:41,196 56 DEBUG AuthorityDao - SELECT * FROM [T_SubSystem]

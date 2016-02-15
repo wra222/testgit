@@ -1,0 +1,1012 @@
+﻿<?xml version="1.0"?>
+<!-- 
+
+    Note: As an alternative to hand editing this file you can use the 
+    web admin tool to configure settings for your application. Use
+    the Website->Asp.Net Configuration option in Visual Studio.
+    A full list of settings and comments can be found in 
+    machine.config.comments usually located in 
+    \Windows\Microsoft.Net\Framework\v2.x\Config 
+-->
+<configuration xmlns="http://schemas.microsoft.com/.NetConfiguration/v2.0">
+  <configSections>
+    <section name="dataConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.DatabaseSettings, Microsoft.Practices.EnterpriseLibrary.Data, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"/>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler,log4net"/>
+    <section name="appConfig" type="MyApp.AppConfig, MyApp"/>
+    <sectionGroup name="common">
+      <section name="logging" type="Common.Logging.ConfigurationSectionHandler, Common.Logging"/>
+    </sectionGroup>
+    <sectionGroup name="system.web.extensions" type="System.Web.Configuration.SystemWebExtensionsSectionGroup, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35">
+      <sectionGroup name="scripting" type="System.Web.Configuration.ScriptingSectionGroup, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35">
+        <section name="scriptResourceHandler" type="System.Web.Configuration.ScriptingScriptResourceHandlerSection, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" allowDefinition="MachineToApplication"/>
+        <sectionGroup name="webServices" type="System.Web.Configuration.ScriptingWebServicesSectionGroup, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35">
+          <section name="jsonSerialization" type="System.Web.Configuration.ScriptingJsonSerializationSection, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" allowDefinition="Everywhere"/>
+          <section name="profileService" type="System.Web.Configuration.ScriptingProfileServiceSection, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" allowDefinition="MachineToApplication"/>
+          <section name="authenticationService" type="System.Web.Configuration.ScriptingAuthenticationServiceSection, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" allowDefinition="MachineToApplication"/>
+          <section name="roleService" type="System.Web.Configuration.ScriptingRoleServiceSection, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" allowDefinition="MachineToApplication"/>
+        </sectionGroup>
+      </sectionGroup>
+    </sectionGroup>
+    <sectionGroup name="ajaxNet">
+      <!--
+                If you are using Microsoft .NET 1.1 please remove the two attributes
+                requirePermission and restartOnExternalChanges, they are only supported
+                with .NET 2.0.
+            -->
+      <section name="ajaxSettings" type="AjaxPro.AjaxSettingsSectionHandler,AjaxPro.2" requirePermission="false" restartOnExternalChanges="true"/>
+    </sectionGroup>
+  </configSections>
+  <common>
+    <logging>
+      <factoryAdapter type="Common.Logging.Simple.ConsoleOutLoggerFactoryAdapter, Common.Logging">
+        <arg key="showLogName" value="true"/>
+        <arg key="showDataTime" value="true"/>
+        <arg key="level" value="DEBUG"/>
+        <arg key="dateTimeFormat" value="HH:mm:ss:fff"/>
+      </factoryAdapter>
+    </logging>
+  </common>
+  <log4net>
+    <appender name="RollingFileAppender" type="log4net.Appender.RollingFileAppender">
+      <file value="./log/logfile"/>
+      <appendToFile value="true"/>
+      <rollingStyle value="Composite"/>
+      <maxSizeRollBackups value="10"/>
+      <maximumFileSize value="1MB"/>
+      <staticLogFileName value="false"/>
+      <datePattern value="yyyy-MM-dd'.log'"/>
+      <lockingModel type="log4net.Appender.FileAppender+MinimalLock"/>
+      <layout type="log4net.Layout.PatternLayout">
+        <param name="ConversionPattern" value="%date %L %level %logger - %message%newline"/>
+      </layout>
+    </appender>
+    <appender name="AspNetTraceAppender" type="log4net.Appender.AspNetTraceAppender">
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%date %level %logger - %message%newline"/>
+      </layout>
+    </appender>
+    <root>
+      <level value="DEBUG"/>
+      <appender-ref ref="RollingFileAppender"/>
+      <appender-ref ref="AspNetTraceAppender"/>
+    </root>
+  </log4net>
+  <ajaxNet>
+    <ajaxSettings>
+      <urlNamespaceMappings useAssemblyQualifiedName="false" allowListOnly="false">
+        <!--
+                    Set the attribute useAssemblyQualifiedName to true to enable
+                    use of assemblies placed in the GAC by using the full assembly
+                    qualified name.
+                
+                    To hide internal knowledge of assemblies, classes and namespace
+                    you can override the name of the virtual http endpoints.
+                    
+                    <add type="Namespace.Class1,Assembly" path="mypath" />
+                -->
+      </urlNamespaceMappings>
+      <jsonConverters includeTypeProperty="true">
+        <!--
+                    This section can be used to add new IJavaScriptConverters to the
+                    Ajax.NET Professional engine. If you want to disable built-in
+                    converters you can use the remove tag.
+            
+                    <remove type="Namespace.Class1,Assembly"/>
+                    <add type="Namespace.Class2,Assembly"/>
+                    
+                    <add type="AjaxPro.BitmapConverter,AjaxPro.2" mimeType="image/jpeg" quality="100"/>
+                -->
+      </jsonConverters>
+      <!--
+                Set the enabled attribute to true to get Stack, TargetSize and Source 
+                information if an exception has been thrown.
+            -->
+      <debug enabled="true"/>
+      <!--
+                This is the default configuration used with Ajax.NET Professional. You
+                can put there your static JavaScript files, or remove the path attribute
+                to completly disable the files.
+            
+                <scriptReplacements>
+                    <file name="prototype" path="~/ajaxpro/prototype.ashx" />
+                    <file name="core" path="~/ajaxpro/core.ashx" />
+                    <file name="converter" path="~/ajaxpro/converter.ashx" />
+                </scriptReplacements>
+            -->
+      <!-- <encryption cryptType="" keyType="" /> -->
+      <!--
+                Set the enabled attribute to true to enable the use of an Ajax.NET Professional
+                token. This will send a token to the client that will be used to identify if the
+                requests comes from the same PC.
+            -->
+      <token enabled="false" sitePassword="password"/>
+      <!--
+                The oldStyle section can be used to enable old styled JavaScript code or
+                functions that are not used any more.
+            
+                <configuration>
+                    <objectExtendPrototype/>
+                    <appCodeQualifiedFullName/>
+                    <allowNumberBooleanAsString/>
+                    <sessionStateDefaultNone/>
+                    <includeMsPrototype/>
+                    <renderDateTimeAsString/>
+                    <noUtcTime/>
+                    <renderJsonCompliant/>
+                    <useSimpleObjectNaming/>
+                </configuration>
+            -->
+    </ajaxSettings>
+  </ajaxNet>
+  <appSettings>
+    <add key="aspnet:MaxHttpCollectionKeys" value="5000" />
+
+    <add key="FileType" value=".txt"/>
+    <!--DataMaintain service address -->
+    <add key="ServiceMaintainAddress" value="127.0.0.1"/>
+    <!--Service Maintain port-->
+    <add key="ServiceMaintainPort" value="8086"/>
+    <!--  template editor service address -->
+    <add key="TemplateServiceAddress" value="127.0.0.1"/>
+    <!-- template editor service port-->
+    <add key="TemplateServicePort" value="8503"/>
+    <!-- template editor service printing room port-->
+    <add key="TSPrintingRoomPort" value="8085"/>
+    <!--RBPC service address -->
+    <add key="RBPCServiceAddress" value="127.0.0.1"/>
+    <!--RBPC service port-->
+    <add key="RBPCServicePort" value="8070"/>
+    <!--RBPC application name-->
+    <add key="RBPCApplication" value="HP_iMES_FA"/>
+
+    <!--Bartender Printer Remoting Service Address-->
+    <add key="BartenderServiceAddress" value="127.0.0.1"/>
+    <!-- Bartender Printer Remoting Service port-->
+    <add key="BartenderServicePort" value="8588"/>
+
+
+    <!--language config value="eng"|"cn" -->
+    <add key="language" value="eng"/>
+    <!--gridview paging text configuration-->
+    <add key="gvExtPaging-NextPages" value="Down"/>
+    <add key="gvExtPaging-PreviousPages" value="Up"/>
+    <add key="gvExtPaging-BeforeIndex" value=""/>
+    <add key="gvExtPaging-AfterIndex" value=""/>
+
+
+    <!-- HP EDITS Service path-->
+    <add key="HPEDITSIP" value="http://10.190.40.68:80/edits.asmx"/>
+    <add key="HPEDITSTEMPIP" value="http://10.190.40.68:8080/edits.asmx"/>
+
+    <add key="DEBUGmode" value="False"/>
+    <!-- CreateXML file RootPath for DEBUG -->
+    <add key="CreateXMLfileRootPath" value="\\10.190.40.68\OUT\"/>
+    <!-- Template  RootPath for DEBUG -->
+    <add key="TEMPLATERootPath" value="\\10.190.40.68\OUT\"/>
+    <!-- CreatePDF file Path for DEBUG -->
+    <add key="CreatePDFfileRootPath" value="\\10.190.40.68\OUT\"/>
+    <add key="CreatePDFfileClientPath" value="C:\FIS\"/>
+
+    <!-- FOP command Path-->
+    <add key="FopCommandPathfile" value="C:\Program Files (x86)\Altova\FOP-0.93\fop"/>
+
+
+
+    <!-- HP EDITS Service path-->
+    <add key="HPEDITSIP" value="http://10.190.40.68:80/edits.asmx"/>
+    <add key="HPEDITSTEMPIP" value="http://10.190.40.68:8080/edits.asmx"/>
+
+    <add key="DEBUGmode" value="False"/>
+    <!-- CreateXML file RootPath for DEBUG -->
+    <add key="CreateXMLfileRootPath" value="\\10.190.40.68\OUT\"/>
+    <!-- Template  RootPath for DEBUG -->
+    <add key="TEMPLATERootPath" value="\\10.190.40.68\OUT\"/>
+    <!-- CreatePDF file Path for DEBUG -->
+    <add key="CreatePDFfileRootPath" value="\\10.190.40.68\OUT\"/>
+    <add key="CreatePDFfileClientPath" value="C:\\FIS\\"/>
+
+    <!-- FOP command Path-->
+    <add key="FopCommandPathfile" value="C:\Program Files (x86)\Altova\FOP-0.93\fop"/>
+
+
+    <!--PrintSetting界面,设置Port的配置数目 -->
+    <add key="PortNumber" value="4"/>
+    <add key="WebDAL" value="com.inventec.imes.SQLServerDAL"/>
+    <!--PAK称重部分是否设置测试数据,需要时请设为true -->
+    <add key="SetWeightForTest" value="true"/>
+    <add key="UnitWeightPath" value="C:\\IMES_HP\\"/>
+    <add key="RCTOWeightPath" value="C:\\IMES_HP\\"/>
+    <add key="UnitWeightPDFPath" value="C:\\IMES_HP\\PrintBat"/>
+    <!-- sound file name setting-->
+    <add key="PassAudioFile" value="success.wav"/>
+    <add key="SpecialPassAudioFile" value="special_success.wav"/>
+    <add key="FailAudioFile" value="ding.wav"/>
+    <add key="DuplicateAudioFile" value="chord.wav"/>
+
+    <!-- bat File Path: bat文件必须放在FTP根目录下-->
+    <add key="ClientBatFilePath" value="C:\\IMES_HP\\PrintBat"/>
+	<add key="ClientBartenderFilePath" value="C:\\IMES_HP\\Bartender"/>
+    <add key="FtpServerIP" value="10.190.50.81"/>
+    <!-- 用于VirtualMO:Auto Download MO功能，配置JobName-->
+    <add key="VirtualMO_JOBNAME" value="MO Upload TO FIS"/>
+    <!-- 用于AFT MVS指定ESOP路径-->
+    <add key="RDS_MVS_ESOP" value="E:\\files"/>
+    <!-- 该FTP用于MoData文件-->
+    <add key="DTSFtpServerIP" value="10.190.50.81"/>
+    <add key="DTSFtpServerPort" value="22"/>
+    <add key="DTSFtpPath" value="E:\DTSFtp"/>
+    <add key="DTSFtpFileName" value="HP_MoData_Upload.dtsx"/>
+    <!--跨域时的基础域名设置，比如：imes.itc.inventec中的itc.inventec-->
+    <add key="DocumentDomain" value=""/>
+    <!--ClearSession界面可以从那些Service中获取Session,如果是多个，之间用|分开，只能从SA,FA,PAK三个中选择配置-->
+    <add key="ClearSessionService" value="RCTO"/>
+    <!--配置几个后台的Service地址和端口号-->
+    <!--SA service address -->
+    <add key="SAAddress" value="127.0.0.1"/>
+    <!--SA service port-->
+    <add key="SAPort" value="8010"/>
+    <!--FA service address -->
+    <add key="FAAddress" value="127.0.0.1"/>
+    <!--FA service port-->
+    <add key="FAPort" value="8010"/>
+    <!--PAK service address -->
+    <add key="PAKAddress" value="127.0.0.1"/>
+    <!--PAK service port-->
+    <add key="PAKPort" value="8010"/>
+    <!--RCTO service address -->
+    <add key="RCTOAddress" value="127.0.0.1"/>
+    <!--RCTO service port-->
+    <add key="RCTOPort" value="8010"/>
+
+    <add key="DockingAddress" value="127.0.0.1"/>
+    <!--PAK service port-->
+    <add key="DockingPort" value="8010"/>
+    
+    <!-- Alarm service address -->
+    <add key="AlarmAddress" value="127.0.0.1"/>
+    <!--Alarm service port-->
+    <add key="AlarmPort" value="8010"/>
+    <!--配置各站要调用那个Service，key是你所需要的BLL对象在Service的配置文件中配置的objectUri，
+
+    也就是WebConstant类中对应的service path Region中配置的字串
+    value可以配置的选择为SA，FA，PAK其中的一个-->
+    <!--整機用此配置-->
+    <!--<add key="IMESService.Common" value="RCTO"/>-->
+    <!--Docking用此配置-->
+    <add key="IMESService.Common" value="SA"/>
+    <!--MBCombineCPU -SA          ProductCombineCPU -FA-->
+    <add key="IMESService.CombineCPU" value="SA"/>
+    <!-- SA -->
+    <add key="IMESService.GenerateSMTMO" value="SA"/>
+    <add key="IMESService._MBLabelPrint" value="SA"/>
+    <add key="IMESService.MBPrintDismantle" value="SA"/>
+    <add key="IMESService.ICTInput" value="SA"/>
+    <add key="IMESService._MACReprint" value="SA"/>
+    <add key="IMESService.PrintComMB" value="SA"/>
+    <add key="IMESService._PCATestStation" value="SA"/>
+    <add key="IMESService._Print1397Label" value="SA"/>
+    <add key="IMESService._PCAShippingLabel" value="SA"/>
+    <add key="IMESService.VGAShippingLabelReprint" value="SA"/>
+    <add key="IMESService._VGAShippingLabel" value="SA"/>
+    <add key="IMESService.PCARepairOutput" value="SA"/>
+    <add key="IMESService.MBReflow" value="SA"/>
+    <add key="IMESService.PCACosmetic" value="SA"/>
+    <add key="IMESService.SwitchBoardLabelPrint" value="SA"/>
+    <add key="IMESService.ChangeMB" value="SA"/>
+    <add key="IMESService.PCAQuery" value="SA"/>
+    <add key="IMESService.ImportDataToTestBoxDataLog" value="SA"/>
+    <add key="IMESService.BGAOutput" value="SA"/>
+    <add key="IMESService.MBBorrowControl" value="SA"/>
+    <add key="IMESService.ProductBorrowControl" value="SA"/>
+    <add key="IMESService.CTBorrowControl" value="SA"/>
+    <add key="IMESService.QueryBorrow" value="SA"/>
+    <add key="IMESService.MBSplit" value ="SA"/>
+    <add key ="IMESService.PCAOQCOutput" value="SA"/>
+
+    <add key ="IMESService.PCAOQCInput" value="SA"/>
+    <add key ="IMESService.CombinePcbinLot" value="SA"/>
+
+
+    <!--Add by Jessica Liu,20120110-->
+    <add key="IMESService.MBCombineCPU" value="SA"/>
+    <!--Add by Jessica Liu,20120724-->
+    <add key="IMESService.RCTOMBChange" value="SA"/>
+
+    <!--add by zhulei-->
+    <add key="IMESService.VGALabelPrint" value="SA"/>
+    <add key="IMESService.PCARepairTest" value="SA"/>
+    <!--Add by itc202017-->
+    <add key="IMESService._PCARepairInput" value="SA"/>
+    <add key="IMESService._SMTDefectInput" value="SA"/>
+    <add key="IMESService.PCARepair" value="SA"/>
+
+    <!-- FA -->
+    <add key="IMESService.FunctionTestForRCTO" value="FA"/>
+    <add key="IMESService.ChangeModel" value="FA"/>
+    <add key="IMESService._ReprintProdId" value="FA"/>
+    <add key="IMESService.TravelCardPrint" value="FA"/>
+    <add key="IMESService._ProIdPrint" value="FA"/>
+    <add key="IMESService._KittingInput" value="FA"/>
+    <add key="IMESService.InitialPartsCollection" value="FA"/>
+    <add key="IMESService.FinalPartsCollection" value="FA"/>
+    <add key="IMESService._BoardInput" value="FA"/>
+    <add key="IMESService.FATestStation" value="FA"/>
+    <add key="IMESService._IMAGEDownloadCheck" value="FA"/>
+    <add key="IMESService.IMAGEOutput" value="FA"/>
+    <add key="IMESService.CombineKPCT" value="FA"/>
+    <add key="IMESService.HDDTest" value="FA"/>
+    <add key="IMESService.CombineLCM" value="FA"/>
+    <add key="IMESService.AdjustMO" value="FA"/>
+    <add key="IMESService.VirtualMo" value="FA"/>
+    <add key="IMESService.FARepair" value="FA"/>
+    <add key="IMESService.GenerateCustomerSN" value="FA"/>
+    <add key="IMESService.OfflinePrintCT" value="FA"/>
+    <add key="IMESService.OQCInput" value="FA"/>
+    <add key="IMESService.OQCOutput" value="FA"/>
+    <add key="IMESService.OQCRepair" value="FA"/>
+    <add key="IMESService.TPCBTPLabel" value="FA"/>
+    <add key="IMESService.FACosmetic" value="FA"/>
+    <add key="IMESService.MBBufferCosmetic" value="FA"/>
+    <add key="IMESService.DismantleFA" value="FA"/>
+    <add key="IMESService.LightGuide" value="FA"/>
+    <add key="IMESService.TPCBCollection" value="FA"/>
+    <add key="IMESService.PilotRunPrint" value="FA"/>
+    <add key="IMESService.KPPrint" value="FA"/>
+    <add key="IMESService.BorrowAndReturn" value="FA"/>
+    <add key="IMESService.SmallPartsLabelPrint" value="FA"/>
+    <add key="IMESService.SmallPartsUpload" value="FA"/>
+    <add key="IMESService.ForceEOQC" value="FA"/>
+    <add key="IMESService.Print2dDoorLabel" value="FA"/>
+    <add key="IMESService.PrintBottomCaseLabel" value="FA"/>
+    <add key="IMESService.RePrintCustsnLabel" value="FA"/>
+    <add key="IMESService.FAQuery" value="FA"/>
+    <!--Add by Jessica Liu,20111102-->
+    <add key="IMESService.ImageDownload" value="FA"/>
+    <!--Add by Jessica Liu,20111122-->
+    <add key="IMESService.OnlineGenerateAST" value="FA"/>
+    <!--Add by Jessica Liu,20111202-->
+    <add key="IMESService.CombineAST" value="FA"/>
+    <!--Add by Jessica Liu,20120314-->
+    <add key="IMESService.PAQCRepair" value="FA"/>
+    <!--Add by Jessica Liu,20120612-->
+    <add key="IMESService.KBCTCheck" value="FA"/>
+
+    <!--Add by itc202017-->
+    <add key="IMESService._AFTMVS" value="FA"/>
+    <add key="IMESService._ChangeKeyParts" value="FA"/>
+    <add key="IMESService._LabelLightGuide" value="FA"/>
+    <add key="IMESService._KPDefectInput" value="FA"/>
+    <add key="IMESService._KPRepair" value="FA"/>
+    <add key="IMESService._LCMRepair" value="FA"/>
+    <add key="IMESService._RepairInfo" value="FA"/>
+    <add key="IMESService._OQCOutput" value="FA"/>
+    <!-- Add by itc200052-->
+    <add key="IMESService._CombineKeyParts" value="FA"/>
+    <add key="IMESService.HPPNLabelforRCTO" value="FA"/>
+    <add key="IMESService.CombineCartonInDNForRCTO" value="PAK"/>
+    
+
+    <!-- Add by zhu lei-->
+    <add key="IMESService.IECLabelPrint" value="FA"/>
+    <add key="IMESService.PCAShippingLabelPrint" value="FA"/>
+    <!--Add by chenpeng,20111102-->
+    <add key="IMESService.PCAMBContact" value="SA"/>
+    <add key="IMESService.PCA" value="FA"/>
+    <add key="IMESService.PIAOutput" value="FA"/>
+    <add key="IMESService.ChangeToEPIAPIA" value="FA"/>
+    <add key="IMESService.SpecialModelForItcnd" value="FA"/>
+    <add key="IMESService.MasterLabelPrint" value="FA"/>
+    <add key="IMESService.PrintInatelICASA" value="FA"/>
+    <add key="IMESService.ScanningList" value="PAK"/>
+    <add key="IMESService.ReturnUsedKeys" value="FA"/>
+    <add key="IMESService.PalletVerifyForRCTO" value="PAK"/>
+    <add key="IMESService.UnpackForRCTO" value="PAK"/>
+
+
+    <!-- PAK -->
+    <add key="IMESService.InitialPVS" value="PAK"/>
+    <add key="IMESService.FinalPVS" value="PAK"/>
+    <add key="IMESService.PVSReprint" value="PAK"/>
+    <add key="IMESService.POData" value="PAK"/>
+    <add key="IMESService.MacPrint" value="PAK"/>
+    <add key="IMESService.JapaneseLabelPrint" value="PAK"/>
+    <add key="IMESService.VirtualCarton" value="PAK"/>
+    <add key="IMESService.VirtualPallet" value="PAK"/>
+    <add key="IMESService.JPNPVS" value="PAK"/>
+    <add key="IMESService._UnitLabel" value="PAK"/>
+    <add key="IMESService._PalletDataCollection" value="PAK"/>
+    <add key="IMESService._PalletDataCollectionTRO" value="PAK"/>
+    <add key="IMESService._PAQCOutput" value="PAK"/>
+    <add key="IMESService._PAQCRepair" value="PAK"/>
+    <add key="IMESService.FRUCartonLabelPrint" value="PAK"/>
+    <add key="IMESService.FGShippingLabel" value="PAK"/>
+    <add key="IMESService.FGShippingLabelTRO" value="PAK"/>
+    <add key="IMESService.CombinePOInCarton" value="PAK"/>
+    <add key="IMESService.UnitWeight" value="PAK"/>
+    <add key="IMESService.ModelWeight" value="PAK"/>
+    <add key="IMESService.FRUWeight" value="PAK"/>
+    <add key="IMESService.FRUWeightShipment" value="PAK"/>
+    <add key="IMESService.FRUGiftLabelPrint" value="PAK"/>
+    <add key="IMESService.FRUShiptoLabelPrint" value="PAK"/>
+    <add key="IMESService.FRUCartonLabelPrintCT" value="PAK"/>
+    <add key="IMESService._FRUIECSNO" value="PAK"/>
+    <add key="IMESService._FRUTravelCard" value="PAK"/>
+    <add key="IMESService.PizzaWeight" value="PAK"/>
+    <add key="IMESService.CartonWeight" value="PAK"/>
+    <add key="IMESService.PalletWeight" value="PAK"/>
+    <add key="IMESService.PrintShiptoCartonLabel" value="PAK"/>
+    <add key="IMESService.PAQCInput" value="PAK"/>
+    <add key="IMESService.Unpack" value="PAK"/>
+    <add key="IMESService.PickCardImpl" value="PAK"/>
+    <add key="IMESService.FinalScan" value="PAK"/>
+    <add key="IMESService.DismantlePalletWeight" value="PAK"/>
+    <add key="IMESService.DTPalletControl" value="PAK"/>
+    <add key="IMESService.PalletCollection" value="PAK"/>
+    <!--Add by 106137-->
+    <add key="IMESService.PACosmeticImpl" value="PAK"/>
+    <!--Add by 104126-->
+    <add key="IMESService.CombineBatteryCT" value="FA"/>
+    <!--Add by Benson at 20110914-->
+    <add key="IMESService.CombinePOInCartonForFRU" value="PAK"/>
+    <!--Add by Jessica Liu,20111013-->
+    <add key="IMESService.AssetTagLabelPrint" value="PAK"/>
+    <!--Add by Jessica Liu,20120717-->
+    <add key="IMESService.PAQCOutputForRCTO" value="PAK"/>
+    
+    <!--Add by Liuqingbiao,20111101-->
+    <add key="IMESService.AssignWHLocation" value="PAK"/>
+    <add key="IMESService.KittingInput" value="FA"/>
+    <add key="IMESService.COARemoval" value="PAK"/>
+    <add key="IMESService.CombinePizza" value="PAK"/>
+    <add key="IMESService.OfflineLabelPrint" value="FA"/>
+    <add key="IMESService.BGAInput" value="SA"/>
+    <!--Add by Jessica Liu,20111020-->
+    <add key="IMESService.SNCheck" value="PAK"/>
+    <!--Add by Jessica Liu,20111031-->
+    <add key="IMESService.BTChange" value="PAK"/>
+    <!--Add by Jessica Liu,20120717-->
+    <add key="IMESService.PAQCOutputForRCTO" value="PAK"/>
+
+    <!--Add by Chen Xu, itc208014-->
+    <add key="IMESService.PodLabelCheck" value="PAK"/>
+    <add key="IMESService.PalletVerify" value="PAK"/>
+    <add key="IMESService.PalletVerifyFDEOnly" value="PAK"/>
+    <add key ="IMESService.PakUnitWeight" value="PAK"/>
+    <add key="IMESService.PNOPLabelPrint" value="FA"/>
+    
+    <!-- added by itc207024 
+    <add key="SmtpMailServer" value="ipc-mx01.ies.inventec"/>
+    <add key="MailFrom" value="Liu.Jing-Ke@itc.inventec"/>
+    <add key="SendMailTimeOut" value="100"/>-->
+    <add key="MaintainReworkEmailList" value="Zhang.Xue-Min@itc.inventec;"/>
+    <add key="RouteManagementControlUrl" value="RouteControl/WorkflowDesignerControl.dll#WorkflowDesignerControl.WorkflowDesignerControl"/>
+    <add key="RouteManagementRemotingUrl" value="tcp://itc-qa5-fis1:8086/IMESService.RouteManagement"/>
+    <add key="RouteActivityListUrl" value="RouteControl/RouteActivityList.txt"/>
+    <add key="StationActivityListUrl" value="RouteControl/StationActivityList.txt"/>
+    <add key="AssemblyListUrl" value="RouteControl/AssemblyList.txt"/>
+
+    <!--Add by Jessica Liu,20120410,ESOP Server-->
+    <add key="RDS_Server" value="http://10.99.183.28/IPC/MP/picture/"/>
+    <!--Add by Jessica Liu,20120716,ESOP Server for PAK-->
+    <add key="RDS_Server_PAK" value="http://10.99.183.28/IPC/MP/picture/"/>
+
+    <!-- add by Dorothy at 20111116 -->
+    <add key="IMESService.PrintContentWarranty" value="PAK"/>
+    <add key="IMESService.PDPALabel01" value="PAK"/>
+    <add key="IMESService.PDPALabel02" value="PAK"/>
+    <add key="IMESService.Pizzakitting" value="PAK"/>
+    <add key="IMESService.ROMEOBattery" value="PAK"/>
+    <add key="IMESService.PAQCSortingObject" value="PAK"/>
+    <add key="IMESService.CombinePoInCartonForRCTO" value="PAK"/>
+
+    <add key="IMESService.LCMDefectInputForRCTO" value="FA"/>
+    <add key="IMESService.TPDLCheckForRCTO" value="FA"/>
+    <add key="IMESService.CombineCOAandDNNewObject" value="PAK"/>
+
+    <add key="IMESService.CombineTPM" value="FA"/>
+
+    <!--Add by itc202017-->
+    <!--<add key="IMESService.Unpack" value="PAK"/>-->
+    <add key="IMESService._UploadShipmentData" value="PAK"/>
+    <add key="IMESService._PoData" value="PAK"/>
+    <add key="IMESService._RCTOWeight" value="PAK"/>
+
+    <!-- add by zhanghe-->
+    <add key="IMESService.ShipToCartonLabel" value="PAK"/>
+    <add key="IMESService.TravelCardPrint2012" value="FA"/>
+    <add key="IMESService.ITCNDCheck" value="FA"/>
+    <add key="IMESService.PrDelete" value="PAK"/>
+    <add key="IMESService.PackingList" value="PAK"/>
+    <add key="IMESService.CNCardReceive" value="PAK"/>
+    <add key="IMESService.GenSMTMO" value="SA"/>
+    <add key="IMESService.ChangeAST" value="FA"/>
+    <add key="IMESService.PCAOQCCosmetic" value="SA"/>
+    <add key="IMESService.TravelCardPrintExcel" value="FA"/>
+    <add key="IMESService.KeyPartsRequirementQuery" value="FA"/>
+    <add key="IMESService.UpdateConsolidate" value="PAK"/>
+    <add key="IMESService.PAQCCosmetic_rcto" value="PAK"/>
+    <add key="IMESService.RCTOLabelPrint" value="PAK"/>
+    <!-- add by 207003 -->
+    <add key="IMESService._CNCardStatusChange" value="PAK"/>
+    <add key="IMESService._COAStatusChange" value="PAK"/>
+    <add key="IMESService._CombineCOAandDN" value="PAK"/>
+    <add key="IMESService._CombineDNPalletforBT" value="PAK"/>
+    <add key="IMESService._UpdateShipDate" value="PAK"/>
+    <add key="IMESService._WHPalletControl" value="PAK"/>
+    <add key="IMESService._FAMBReturn" value="SA"/>
+    <add key="IMESService._COAReturn" value="PAK"/>
+    <!-- add by zhu lei -->
+    <add key="IMESService.PackingPizza" value="PAK"/>
+	<add key="IMESService.CombineCarton_CR" value="PAK"/>
+    <add key="IMESDockingService.ICTInput" value="Docking"/>
+    <add key="IMESDockingService.ChangeModel" value="Docking"/>
+    <!-- Add by itc200052 -->
+    <add key="IMESDockingService._BoardInputForDocking" value="Docking"/>
+    <add key="IMESDockingService.CombinePack" value="Docking"/>
+    <add key="IMESDockingService.OfflineLabelPrint" value="Docking"/>
+
+    <add key="IMESDockingService.CombinePcbInLot" value="Docking"/>
+    
+    <!-- add by itc208014-->
+    <add key="IMESDockingService.PCAOQCOutput" value="Docking"/>
+    <add key="IMESDockingService.PCAOQCInput" value="Docking"/>
+    <!-- add by CHENPENG -->
+    <add key="IMESDockingService.EPIAOutput" value="Docking"/>
+    <add key="IMESDockingService.EPIAInput" value="Docking"/>
+    <add key="IMESDockingService.PalletVerifyDataForDocking" value="Docking"/>
+    <add key="IMESDockingService.UnpackForDocking" value="Docking"/>
+    <add key="IMESDockingService.RegenerateCustSNForDocking" value="Docking"/>
+
+    <!-- add by 207003 -->
+    <add key="IMESDockingService._CooLabel" value="Docking"/>
+    <add key="IMESDockingService._UnpackAllbyDN" value="Docking"/>
+    <!--Jessica Liu-->
+    <add key="IMESDockingService.GenerateCustomerSNForDocking" value="Docking"/>
+    <add key="IMESDockingService.PAQCOutputForDocking" value="Docking"/>
+    <add key="IMESDockingService.REVLabelPrintForDocking" value="Docking"/>
+    <add key="IMESDockingService.OQCRepairForDocking" value="Docking"/>
+    <add key="IMESDockingService.PAQCRepairForDocking" value="Docking"/>
+
+    <!-- add by Dorothy -->
+    <add key="IMESDockingService.CombinePoInCarton" value="Docking"/>
+    <add key="IMESDockingService.PalletWeight" value="Docking"/>
+    <add key="IMESDockingService.PACosmeticForDocking" value="Docking"/>
+
+    <!-- add by itc202017 -->
+    <add key="IMESDockingService.PakUnitWeight" value="Docking"/>
+    <add key="IMESDockingService._UploadShipmentData" value="Docking"/>
+    <add key="IMESDockingService._PoData" value="Docking"/>
+    <add key="IMESDockingService.PCARepair" value="Docking"/>
+    <add key="IMESDockingService._FRUCartonLabel" value="Docking"/>
+
+    <!-- add by Kaisheng -->
+    <add key="IMESDockingService.FATestStation" value="Docking"/>
+    <add key="IMESDockingService._PCATestStation" value="Docking"/>
+
+    <add key="IMESDockingService._MBLabelPrint" value="Docking"/>
+    <add key="IMESDockingService.GenSMTMODocking" value="Docking"/>
+    <add key="IMESDockingService.DismantleForDocking" value="Docking"/>
+    <!-- add by itc202007 -->
+    <add key="IMESDockingService.ProdIdPrintForDocking" value="Docking"/>
+    <add key="IMESDockingService.ShipToLabelPrintForDocking" value="Docking"/>
+    <add key="IMESDockingService.VirtualMoForDocking" value="Docking"/>
+    <add key="IMESDockingService.FARepairForDocking" value="Docking"/>
+    <add key="IMESDockingService.PCAOQCCosmeticForDocking" value="Docking"/>
+
+    <!-- For Alarm -->
+    <add key="IMESAlarmService.CommonImp" value="Alarm"/>
+    <add key="IMESAlarmService.AlarmCriteria" value="Alarm"/>
+    
+    <!-- For ServiceMaintain -->
+    <add key="IMESMaintainService.CommonFunction" value="ServiceMaintain"/>
+    <!-- Edits service -->
+    <add key="EDITS.edits" value="http://10.190.183.28/hpedits/edits.asmx"/>
+	
+	<add key="IMESService.CheckCartonCTForRCTO" value="RCTO"/>
+	<add key="IMESService.MBCTCheck" value="RCTO"/>
+	
+	<add key="IMESService.RemoveKPCT" value="RCTO"/>
+	<add key="IMESService.CombineOfflinePizzaForRCTO" value="RCTO"/>
+	
+	<add key="IMESService.OfflineLcdCtPrint" value="RCTO"/>
+    <add key="IMESService.SKULabelPrintObject" value="FA"/>	
+	<add key="IMESService.OfflinePizzaKittingForRCTO" value="PAK"/>	
+
+    
+    <!--add by viclin-->
+    <add key="IMESService.CreateProductandCombineLCM" value="FA"/>
+    <add key="IMESService.CombineCartonandDNfor146_CommonParts" value="PAK"/>
+    <add key="IMESService.IFRULabelPrint" value="PAK"/>
+    <add key="IMESService.IRULabelPrint" value="PAK"/>
+    
+
+
+	
+	<add key="IMESService.CombineCartonDNfor146MB" value="RCTO"/>
+	<add key="IMESService.CombineCartonPalletFor146" value="RCTO"/>
+	
+	<add key="IMESService.CombinePalletWithoutCartonForFRU" value="RCTO"/>
+	
+	<add key="IMESService.SeaReturn" value="RCTO"/>
+  </appSettings>
+  <system.web>
+    <!-- 
+            Set compilation debug="true" to insert debugging 
+            symbols into the compiled page. Because this 
+            affects performance, set this value to true only 
+            during development.
+        -->
+    <compilation debug="true">
+      <assemblies>
+        <add assembly="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+        <add assembly="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+        <add assembly="System.Data.DataSetExtensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+        <add assembly="System.Xml.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+        <add assembly="System.Runtime.Remoting, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+        <add assembly="System.Transactions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+        <add assembly="System.Management, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A"/>
+        <add assembly="System.Data.OracleClient, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+        <add assembly="System.Configuration.Install, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A"/>
+        <add assembly="System.DirectoryServices, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A"/>
+        <add assembly="System.Web.Abstractions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+        <add assembly="System.Data.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+        <add assembly="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+        <add assembly="System.Data.Services.Client, Version=3.5.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+        <add assembly="System.Data.Services.Design, Version=3.5.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+        <add assembly="System.Data.Entity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+        <add assembly="System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A"/>
+        <!--<add assembly="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71E9BCE111E9429C"/>-->
+        <add assembly="Microsoft.SqlServer.ManagedDTS, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91"/>
+      </assemblies>
+    </compilation>
+    <!--
+            The <authentication> section enables configuration 
+            of the security authentication mode used by 
+            ASP.NET to identify an incoming user. 
+        -->
+    <authentication mode="Windows"/>
+    <!--
+            The <customErrors> section enables configuration 
+            of what to do if/when an unhandled error occurs 
+            during the execution of a request. Specifically, 
+            it enables developers to configure html error pages 
+            to be displayed in place of a error stack trace.
+
+        <customErrors mode="RemoteOnly" defaultRedirect="GenericErrorPage.htm">
+            <error statusCode="403" redirect="NoAccess.htm" />
+            <error statusCode="404" redirect="FileNotFound.htm" />
+        </customErrors>
+        -->
+    <customErrors mode="Off"/>
+    <pages theme="Default">
+      <controls>
+        <add tagPrefix="asp" namespace="System.Web.UI" assembly="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+        <add tagPrefix="asp" namespace="System.Web.UI.WebControls" assembly="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+        <add tagPrefix="iMES" assembly="myControls" namespace="myControls"/>
+        <add tagPrefix="iMES" assembly="waitCover" namespace="waitCover"/>
+        <add tagPrefix="iMES" tagName="ValidatePermission" src="~/CommonControl/ValidatePermission.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbMark" src="~/CommonControl/ComboxMark.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbObligation" src="~/CommonControl/ComboxObligation.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbDNByModel" src="~/CommonControl/ComboxDNByModel.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbDNByBOL" src="~/CommonControl/ComboxDNByBOLNO.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbDistribution" src="~/CommonControl/ComboxDistribution.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbMBCode" src="~/CommonControl/CmbMBCode.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbFamily" src="~/CommonControl/FamilyControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbPdLine" src="~/CommonControl/CmbPdLine.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbSamplea" src="~/CommonControl/CmbSamplea.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbPrintTemplate" src="~/CommonControl/CmbPrintTemplate.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbMO" src="~/CommonControl/MOControl.ascx"/>
+        <add tagPrefix="iMES" tagName="Input" src="~/CommonControl/CommonInputControl.ascx"/>
+        <add tagPrefix="iMES" tagName="MultiInput" src="~/CommonControl/MultiCommonInputControl.ascx"/>
+        <add tagPrefix="iMES" tagName="MbNoInputControl" src="~/CommonControl/MbNoInputControl.ascx"/>
+        <add tagPrefix="iMES" tagName="MBNoInputContrl2" src="~/CommonControl/MBNoInputContrl2.ascx"/>
+        <add tagPrefix="iMES" tagName="Cmb111Level" src="~/CommonControl/Cmb111Level.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbCause" src="~/CommonControl/CmbCauseControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbFloor" src="~/CommonControl/CmbFloor.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbKPType" src="~/CommonControl/CmbKPType.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbChangeKPType" src="~/CommonControl/CmbChangeKPTypeControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbPartType" src="~/CommonControl/CmbPartType.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbPPIDDescription" src="~/CommonControl/CmbPPIDDescription.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbPPIDType" src="~/CommonControl/CmbPPIDType.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbComponent" src="~/CommonControl/ComponentControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbCover" src="~/CommonControl/CmbCoverControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbPartNo" src="~/CommonControl/PartnoControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbDefect" src="~/CommonControl/CmbDefectControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbFAN" src="~/CommonControl/CmbFANControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbPMajorPart" src="~/CommonControl/MajorPartControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbModel" src="~/CommonControl/ModelControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbModelInput" src="~/CommonControl/ModelInputControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbProdIdRange" src="~/CommonControl/ProdIdRangeControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbTrackingStatus" src="~/CommonControl/CmbTrackingStatusControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbUncover" src="~/CommonControl/CmbUncoverControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbVGA" src="~/CommonControl/CmbVGAControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbDCodeType" src="~/CommonControl/DecodeTypeControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbTestStation" src="~/CommonControl/TestStationControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbSubDefect" src="~/CommonControl/SubDefectControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbResponsibility" src="~/CommonControl/ResponsibilityControl.ascx"/>
+        <add tagPrefix="iMES" tagName="Cmb4M" src="~/CommonControl/M4MControl.ascx"/>
+        <add tagPrefix="iMES" tagName="Cmb1397" src="~/CommonControl/Cmb1397Control.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbReturnStation" src="~/CommonControl/CmbReturnStation.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbPallet" src="~/CommonControl/PalletControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbBolno" src="~/CommonControl/BolnoControl.ascx"/>
+        <add tagPrefix="iMES" tagName="InputWithoutQuick" src="~/CommonControl/CommonInputWithoutQuick.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbCPUAssy" src="~/CommonControl/CmbCPUAssyControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbShipment" src="~/CommonControl/CmbShipment.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbTPCBType" src="~/CommonControl/CmbTPCBType.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbKittingCode" src="~/CommonControl/CmbKittingCodeControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbSpecialCode" src="~/CommonControl/CmbSepcial.ascx"/>
+        <!-- add by itc202017-->
+        <add tagPrefix="iMES" tagName="CmbChangeKPType" src="~/CommonControl/CmbChangeKPTypeControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbLightCode" src="~/CommonControl/CmbLightCodeControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbSpecialCode" src="~/CommonControl/CmbSepcial.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbPCARepairMark" src="~/CommonControl/CmbPCARepairMarkControl.ascx"/>
+        <!-- add by zhanghe-->
+        <add tagPrefix="iMES" tagName="CmbException" src="~/CommonControl/CmbException.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbDocTypeForScannig" src="~/CommonControl/CmbDocTypeForScannig.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbDocType" src="~/CommonControl/CmbDocType.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbRegion" src="~/CommonControl/CmbRegion.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbCarrier" src="~/CommonControl/CmbCarrier.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbMBCodeSMTMO" src="~/CommonControl/CmbMBCodeSMTMO.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbMBCodeSMTMODocking" src="~/CommonControl/CmbMBCodeSMTMODocking.ascx"/>
+
+        <add tagPrefix="iMES" tagName="CmbFamilyForDocking" src="~/CommonControl/FamilyControlForDocking.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbModelForDocking" src="~/CommonControl/ModelControlForDocking.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbMOForDocking" src="~/CommonControl/MOControlForDocking.ascx"/>
+
+
+
+        <add tagPrefix="iMES" tagName="CmbFamilyForDocking" src="~/CommonControl/FamilyControlForDocking.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbModelForDocking" src="~/CommonControl/ModelControlForDocking.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbMOForDocking" src="~/CommonControl/MOControlForDocking.ascx"/>
+        <!-- add by kaisheng-->
+        <add tagPrefix="iMES" tagName="CmbDismantleType" src="~/CommonControl/CmbDismantleType.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbPalletType" src="~/CommonControl/CmbPalletType.ascx"/>
+        <!-- add by Dorothy-->
+        <add tagPrefix="iMES" tagName="CmbLabelKittingCode" src="~/CommonControl/CmbLabelKittingCode.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbStationByType" src="~/CommonControl/CmbStationByType.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbDeliveryByModel" src="~/CommonControl/CmbDeliveryListByModel.ascx"/>
+
+        <add tagPrefix="iMES" tagName="CmbCauseItem" src="~/CommonControl/CmbCauseItemControl.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbDeliveryByCarton" src="~/CommonControl/CmbDeliveryListByCarton.ascx"/>
+
+        <!--<add tagPrefix="iMES" tagName="CmbUpLoadFile" src="~/CommonControl/CmbUpLoadFile.ascx" />-->
+        <add tagPrefix="iMESMaintain" tagName="CmbFamilyForMaintain" src="~/CommonControl/DataMaintain/CmbFamilyForMaintain.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMOForMaintain" src="~/CommonControl/DataMaintain/CmbMOForMaintain.ascx"/>
+        <!--<add tagPrefix="iMESMaintain" tagName="CmbPartTypeForMaintain" src="~/CommonControl/DataMaintain/CmbPartTypeForMaintain.ascx"/>-->
+        <!--<add tagPrefix="iMESMaintain" tagName="CmbPartTypeDescForMaintain" src="~/CommonControl/DataMaintain/CmbPartTypeDescForMaintain.ascx"/>-->
+        <add tagPrefix="iMESMaintain" tagName="CmbModelForMaintain" src="~/CommonControl/DataMaintain/CmbModelForMaintain.ascx"/>
+        <!--<add tagPrefix="iMESMaintain" tagName="CblAssemblyCodeForMaintain" src="~/CommonControl/DataMaintain/CblAssemblyCodeForMaintain.ascx"/>-->
+        <add tagPrefix="iMESMaintain" tagName="CmbStationForMaintain" src="~/CommonControl/DataMaintain/CmbStationForMaintain.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbPreStationForMaintain" src="~/CommonControl/DataMaintain/CmbPreStationForMaintain.ascx"/>
+        <!--<add tagPrefix="iMESMaintain" tagName="CmbRegionForMaintain" src="~/CommonControl/DataMaintain/CmbRegionForMaintain.ascx"/>-->
+        <add tagPrefix="iMESMaintain" tagName="CmbShipTypeForMaintain" src="~/CommonControl/DataMaintain/CmbShipTypeForMaintain.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainCheckItemType" src="~/CommonControl/DataMaintain/CmbMaintainCheckItemType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainCheckItem" src="~/CommonControl/DataMaintain/CmbMaintainCheckItem.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainStationByItemCheck" src="~/CommonControl/DataMaintain/CmbMaintainStationByItemCheck.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainCheckType" src="~/CommonControl/DataMaintain/CmbMaintainCheckType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainMode" src="~/CommonControl/DataMaintain/CmbMaintainMode.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainItemType" src="~/CommonControl/DataMaintain/CmbMaintainItemType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainFamily" src="~/CommonControl/DataMaintain/CmbMaintainFamily.ascx"/>
+
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainFamilyAddline" src="~/CommonControl/DataMaintain/CmbMaintainFamilyAddline.ascx"/>
+
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainPartType" src="~/CommonControl/DataMaintain/CmbMaintainPartType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainValueType" src="~/CommonControl/DataMaintain/CmbMaintainValueType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainNeedSave" src="~/CommonControl/DataMaintain/CmbMaintainNeedSave.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainNeedCheck" src="~/CommonControl/DataMaintain/CmbMaintainNeedCheck.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainCheckBit" src="~/CommonControl/DataMaintain/CmbMaintainCheckBit.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainModel" src="~/CommonControl/DataMaintain/CmbMaintainModel.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainModelByFamily" src="~/CommonControl/DataMaintain/CmbMaintainModelByFamily.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainStation" src="~/CommonControl/DataMaintain/CmbMaintainStation.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainPartTypeByCustomer" src="~/CommonControl/DataMaintain/CmbMaintainPartTypeByCustomer.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbCustomer" src="~/CommonControl/DataMaintain/CmbCustomer.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMacRangeStatus" src="~/CommonControl/DataMaintain/CmbMacRangeStatus.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbWarrantyType" src="~/CommonControl/DataMaintain/CmbWarrantyType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbWarrantyCode" src="~/CommonControl/DataMaintain/CmbWarrantyCode.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbWarrantyFormat" src="~/CommonControl/DataMaintain/CmbWarrantyFormat.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainFamilyModelTolerance" src="~/CommonControl/DataMaintain/CmbMaintainFamilyModelTolerance.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainModelModelTolerance" src="~/CommonControl/DataMaintain/CmbMaintainModelModelTolerance.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainFamilyPalletWeight" src="~/CommonControl/DataMaintain/CmbMaintainFamilyPalletWeight.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainProcess" src="~/CommonControl/DataMaintain/CmbMaintainProcess.ascx"/>
+        <add tagPrefix="iMESMaintain" assembly="MaintainTreeViewExt" namespace="MaintainControl"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainFamilyForECRVersion" src="~/CommonControl/DataMaintain/CmbFamilyForECRVersion.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainProcessForModelProcess" src="~/CommonControl/DataMaintain/CmbMaintainProcessForModelProcess.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainStage" src="~/CommonControl/DataMaintain/CmbMaintainStage.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainLine" src="~/CommonControl/DataMaintain/CmbMaintainLine.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainStationPDLineStation" src="~/CommonControl/DataMaintain/CmbMaintainStationPDLineStation.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainFamilyRunInTimeControl" src="~/CommonControl/DataMaintain/CmbMaintainFamilyRunInTimeControl.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CblPalletProcessForMaintain" src="~/CommonControl/DataMaintain/CblPalletProcessForMaintain.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CblPCBProcessForMaintain" src="~/CommonControl/DataMaintain/CblPCBProcessForMaintain.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CblReworkProcessForMaintain" src="~/CommonControl/DataMaintain/CblReworkProcessForMaintain.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainPartCheckSettingValueType" src="~/CommonControl/DataMaintain/CmbMaintainPartCheckSettingValueType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainArea" src="~/CommonControl/DataMaintain/CmbMaintainArea.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainAllTypeFamily" src="~/CommonControl/DataMaintain/CmbMaintainAllTypeFamily.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainPdLine" src="~/CommonControl/DataMaintain/CmbMaintainPdLine.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainStationType" src="~/CommonControl/DataMaintain/CmbMaintainStationType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainStationObject" src="~/CommonControl/DataMaintain/CmbMaintainStationObject.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainLineStage" src="~/CommonControl/DataMaintain/CmbMaintainLineStage.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainPrintInfoBuild" src="~/CommonControl/DataMaintain/CmbMaintainPrintInfoBuild.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainPrintInfoType" src="~/CommonControl/DataMaintain/CmbMaintainPrintInfoType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbAttributeForMaintain" src="~/CommonControl/DataMaintain/CmbAttributeForMaintain.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbKittingCodeType" src="~/CommonControl/DataMaintain/CmbKittingCodeType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbFamily1ForMaintain" src="~/CommonControl/DataMaintain/CmbFamily1ForMaintain.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainVendor" src="~/CommonControl/DataMaintain/CmbMaintainVendor.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainFAFloatLocationFamilyTop" src="~/CommonControl/DataMaintain/CmbMaintainFAFloatLocationFamilyTop.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainFAFloatLocationFamily" src="~/CommonControl/DataMaintain/CmbMaintainFAFloatLocationFamily.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainFAFloatLocationPdLine" src="~/CommonControl/DataMaintain/CmbMaintainFAFloatLocationPdLine.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainPartTypeAttribute" src="~/CommonControl/DataMaintain/CmbMaintainPartTypeAttribute.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainPartTypeSite" src="~/CommonControl/DataMaintain/CmbMaintainPartTypeAttributeSite.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainPartTypeCust" src="~/CommonControl/DataMaintain/CmbMaintainPartTypeAttributeCust.ascx"/>
+
+        <add tagPrefix="iMESMaintain" tagName="CmbMiantainDesc" src="~/CommonControl/DataMaintain/CmbMiantainDesc.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainPartNodeType" src="~/CommonControl/DataMaintain/CmbMaintainPartNodeType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainPartTypeAll" src="~/CommonControl/DataMaintain/CmbMaintainPartTypeAll.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainMBCode" src="~/CommonControl/DataMaintain/CmbMaintainMBCode.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainMBTestCode" src="~/CommonControl/DataMaintain/CmbMaintainMBTestCode.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainStationByStationType" src="~/CommonControl/DataMaintain/CmbMaintainStationByStationType.ascx"/>
+
+        <add tagPrefix="iMESMaintain" tagName="CmbGradeFamilyTopMaintain" src="~/CommonControl/DataMaintain/CmbMaitainGradeFamilyTop.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbGradeMaintain" src="~/CommonControl/DataMaintain/CmbMaintainGrade.ascx"/>
+        <!--add by kaisheng for PAK CHN(TW) Label LightNo 2012/04/28-->
+        <add tagPrefix="iMESMaintain" tagName="CmbLightDescrMaintain" src="~/CommonControl/DataMaintain/CmbMaintainLightDescr.ascx"/>
+        <!--end-->
+        <add tagPrefix="iMESMaintain" tagName="CmbGradeFamilyMaintain" src="~/CommonControl/DataMaintain/CmbMaintainGradeFamily.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbStagePDLine" src="~/CommonControl/DataMaintain/CmbStagePDLine.ascx" />
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainAssetRuleAstType" src="~/CommonControl/DataMaintain/CmbMaintainAssetRuleAstType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainAssetRuleCheckItem" src="~/CommonControl/DataMaintain/CmbMaintainAssetRuleCheckItem.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainAssetRuleCheckStation" src="~/CommonControl/DataMaintain/CmbMaintainAssetRuleCheckStation.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainAssetRuleCheckType" src="~/CommonControl/DataMaintain/CmbMaintainAssetRuleCheckType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbPAKitLocPdLineMaintain" src="~/CommonControl/DataMaintain/CmbMaintainPAKitLocPdLine.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbPAKitLocDescrMaintain" src="~/CommonControl/DataMaintain/CmbMaintainPAKitLocDescr.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbPAKitLocStationMaintain" src="~/CommonControl/DataMaintain/CmbMaintainPAKitLocStation.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbPAKitLocPartNoMaintain" src="~/CommonControl/DataMaintain/CmbMaintainPAKitLocPartNo.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbDescTypeMaintain" src="~/CommonControl/DataMaintain/CmbMaintainDescType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMasterLabelFamilyMaintain" src="~/CommonControl/DataMaintain/CmbMaintainMasterLabelFamily.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMasterLabelFamilyMaintain2" src="~/CommonControl/DataMaintain/CmbMaintainMasterLabelFamily2.ascx"/>
+
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainLightNoKittingType" src="~/CommonControl/DataMaintain/CmbMaintainLightNoKittingType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainLightNoPartType" src="~/CommonControl/DataMaintain/CmbMaintainLightNoPartType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainLightNoPdLine" src="~/CommonControl/DataMaintain/CmbMaintainLightNoPdLine.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainITCNDDefectCheckType" src="~/CommonControl/DataMaintain/CmbMaintainITCNDDefectCheckType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainLightNoStation" src="~/CommonControl/DataMaintain/CmbMaintainLightNoStation.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainRepairInfoType" src="~/CommonControl/DataMaintain/CmbMaintainRepairInfoType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainGradeHPFamily" src="~/CommonControl/DataMaintain/CmbGradeHPFamily.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="SQEReportDefectCode" src="~/CommonControl/DataMaintain/CmbMaitainSQEReportDefectCode.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainLigthStation" src="~/CommonControl/DataMaintain/CmbMaintainLightStation.ascx"/>
+
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainITCNDCode" src="~/CommonControl/DataMaintain/CmbMaintainITCNDDefectWithCode.ascx"/>
+
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainProcessType" src="~/CommonControl/DataMaintain/CmbMaintainProcessType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainFaKittingFamily" src="~/CommonControl/DataMaintain/CmbMaintainFaKittingFamily.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainFamilyForSA" src="~/CommonControl/DataMaintain/CmbMaintainFamilyForSA.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbFamilyForMaintain2" src="~/CommonControl/DataMaintain/CmbFamilyForMaintain2.ascx"/>
+        <!--add by zhanghe-->
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainITCNDCheckSettingCheckType" src="~/CommonControl/DataMaintain/CmbMaintainITCNDCheckSettingCheckType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMBFamily" src="~/CommonControl/DataMaintain/CmbMBFamily.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMBFamily2" src="~/CommonControl/DataMaintain/CmbMBFamily2.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMBCode" src="~/CommonControl/DataMaintain/CmbMBCode.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMBType" src="~/CommonControl/DataMaintain/CmbMBType.ascx"/>
+
+        <add tagPrefix="iMESMaintain" tagName="CmbPdLineForMaintain" src="~/CommonControl/DataMaintain/CmbPdLineForMaintain.ascx"/>
+        <!--add by 207003-->
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainCombineKPSetting" src="~/CommonControl/DataMaintain/CmbMaintainCombineKPSetting.ascx"/>
+        <!-- add by Dorothy-->
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainWC" src="~/CommonControl/DataMaintain/CmbMaintainWC.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainDefect" src="~/CommonControl/DataMaintain/CmbMaintainDefect.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainCause" src="~/CommonControl/DataMaintain/CmbMaintainCause.ascx"/>
+        <!--add by chenpeng-->
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainLineForSMT" src="~/CommonControl/DataMaintain/CmbMaintainLineForSMT.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainFamilyForSMT" src="~/CommonControl/DataMaintain/CmbMaintainFamilyForSMT.ascx"/>
+
+        <!-- add by Jessica Liu-->
+        <add tagPrefix="iMESMaintain" tagName="CmbConstValueType" src="~/CommonControl/DataMaintain/CmbConstValueType.ascx"/>
+
+        <!-- add by itc000052-->
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainDept" src="~/CommonControl/DataMaintain/CmbMaintainDept.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainSection" src="~/CommonControl/DataMaintain/CmbMaintainSection.ascx"/>
+
+        <add tagPrefix="fis" tagName="header" src="~/UserManager/commonaspx/header.ascx"/>
+
+        <add tagPrefix="fis" tagName="footer" src="~/UserManager/commonaspx/footer.ascx"/>
+
+        <add tagPrefix="iMES" tagName="CmbFamilyForAlarm" src="~/CommonControl/Alarm/CmbFamilyForAlarm.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbLineForAlarm" src="~/CommonControl/Alarm/CmbLineForAlarm.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbStationForAlarm" src="~/CommonControl/Alarm/CmbStationForAlarm.ascx"/>
+        <add tagPrefix="iMES" tagName="CmbStatusForAlarm" src="~/CommonControl/Alarm/CmbStatusForAlarm.ascx"/>
+        <add tagPrefix="iMES" tagName="InputNoOtherProcess" src="~/CommonControl/CommonInputNoOtherProcessControl.ascx"/>
+		<add tagPrefix="iMESMaintain" tagName="CmbConstValueTypeForType" src="~/CommonControl/DataMaintain/CmbConstValueTypeForType.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbMaintainPalletSpec" src="~/CommonControl/DataMaintain/CmbMaintainPalletSpec.ascx"/>
+        <add tagPrefix="iMESMaintain" tagName="CmbIECPN" src="~/CommonControl/DataMaintain/CmbIECPN.ascx"/>
+      <!--Vincent merged code from SH 2013-11-26 production code-->
+		  <add tagPrefix="iMES" tagName="CmbConstValueType" src="~/CommonControl/CmbConstValueType.ascx"/>
+	  </controls>
+    </pages>
+    <httpHandlers>
+      <add verb="POST,GET" path="ajaxpro/*.ashx" type="AjaxPro.AjaxHandlerFactory, AjaxPro.2"/>
+      <remove verb="*" path="*.asmx"/>
+      <add verb="*" path="*.asmx" validate="false" type="System.Web.Script.Services.ScriptHandlerFactory, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+      <add verb="*" path="*_AppService.axd" validate="false" type="System.Web.Script.Services.ScriptHandlerFactory, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+      <add verb="GET,HEAD" path="ScriptResource.axd" type="System.Web.Handlers.ScriptResourceHandler, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" validate="false"/>
+    </httpHandlers>
+    <httpModules>
+      <add name="ScriptModule" type="System.Web.Handlers.ScriptModule, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+    </httpModules>
+    <!--mode为Session保存的模式，缺省为InProc(IIS中);timeout为Session超时时间，单位：分钟-->
+    <!--mode="StateServer"表示Session保存在状态服务中，需要启动ASP.NET State Service-->
+    <sessionState mode="InProc" stateConnectionString="tcpip=127.0.0.1:42424" cookieless="false" timeout="20"/>
+    <!--add by xmzh-->
+    <httpRuntime maxRequestLength="10240" executionTimeout="480"/>
+  </system.web>
+  <system.web.extensions>
+    <scripting>
+      <webServices>
+        <!-- Uncomment this line to customize maxJsonLength and add a custom converter -->
+        <jsonSerialization maxJsonLength="5242880">
+          <converters>
+            <!--<add name="ConvertMe" type="Acme.SubAcme.ConvertMeTypeConverter"/>-->
+          </converters>
+        </jsonSerialization>
+        <!-- Uncomment this line to enable the authentication service. Include requireSSL="true" if appropriate. -->
+        <!--
+        <authenticationService enabled="true" requireSSL = "true|false"/>
+        -->
+        <!-- Uncomment these lines to enable the profile service. To allow profile properties to be retrieved
+           and modified in ASP.NET AJAX applications, you need to add each property name to the readAccessProperties and
+           writeAccessProperties attributes. -->
+        <!--
+        <profileService enabled="true"
+                      readAccessProperties="propertyname1,propertyname2"
+                      writeAccessProperties="propertyname1,propertyname2" />
+        -->
+      </webServices>
+      <!-- 
+      <scriptResourceHandler enableCompression="true" enableCaching="true" />
+      -->
+    </scripting>
+  </system.web.extensions>
+  <system.codedom>
+    <compilers>
+      <compiler language="c#;cs;csharp" extension=".cs" warningLevel="4" type="Microsoft.CSharp.CSharpCodeProvider, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <providerOption name="CompilerVersion" value="v3.5"/>
+        <providerOption name="WarnAsError" value="false"/>
+      </compiler>
+      <compiler language="vb;vbs;visualbasic;vbscript" extension=".vb" warningLevel="4" type="Microsoft.VisualBasic.VBCodeProvider, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <providerOption name="CompilerVersion" value="v3.5"/>
+        <providerOption name="OptionInfer" value="true"/>
+        <providerOption name="WarnAsError" value="false"/>
+      </compiler>
+    </compilers>
+  </system.codedom>
+  <!-- 
+        The system.webServer section is required for running ASP.NET AJAX under Internet
+        Information Services 7.0.  It is not necessary for previous version of IIS.
+    -->
+  <system.webServer>
+    <validation validateIntegratedModeConfiguration="false"/>
+    <modules>
+      <remove name="ScriptModule"/>
+      <add name="ScriptModule" preCondition="managedHandler" type="System.Web.Handlers.ScriptModule, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+    </modules>
+    <handlers>
+      <remove name="WebServiceHandlerFactory-Integrated"/>
+      <remove name="ScriptHandlerFactory"/>
+      <remove name="ScriptHandlerFactoryAppServices"/>
+      <remove name="ScriptResource"/>
+      <add name="ScriptHandlerFactory" verb="*" path="*.asmx" preCondition="integratedMode" type="System.Web.Script.Services.ScriptHandlerFactory, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+      <add name="ScriptHandlerFactoryAppServices" verb="*" path="*_AppService.axd" preCondition="integratedMode" type="System.Web.Script.Services.ScriptHandlerFactory, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+      <add name="ScriptResource" preCondition="integratedMode" verb="GET,HEAD" path="ScriptResource.axd" type="System.Web.Handlers.ScriptResourceHandler, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+    </handlers>
+  </system.webServer>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Extensions" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-1.1.0.0" newVersion="3.5.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Extensions.Design" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-1.1.0.0" newVersion="3.5.0.0"/>
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+</configuration>

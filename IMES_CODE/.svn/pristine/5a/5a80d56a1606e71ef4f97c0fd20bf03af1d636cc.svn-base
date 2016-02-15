@@ -1,0 +1,119 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="PizzaKitting" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns:ns1="clr-namespace:IMES.Activity.Special;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind PizzaKitting,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" x:Name="getProduct1" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" InputType="ProductID" />
+	<ns0:CheckAndSetQTime Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="checkAndSetQTime1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" RemainLogDay="2" />
+	<ns0:BlockStation Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" ProcessType="Product" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+	<ns1:PizzaKittingLineCheck Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="pizzaKittingLineCheck1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+	<ns0:CheckBSamModel Customer="{ActivityBind PizzaKitting,Path=Customer}" NotExistException="False" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" ExistException="False" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" x:Name="checkBSamModel1" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" IsStopWF="False" />
+	<IfElseActivity x:Name="ifElseActivity2">
+		<IfElseBranchActivity x:Name="ifPK04andBSAM">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="isPK04andBSAM" />
+			</IfElseBranchActivity.Condition>
+			<ns0:GetConstValue Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="getConstValue1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" ConstValueType="BSamLabelLight" Station="{ActivityBind PizzaKitting,Path=Station}" AddSessionKey="MBCode" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" IsStopWF="True" ConstValueName="LabelCode" />
+			<ns0:GetBOMForWipbuffer Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="getBOMForWipbuffer1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			<ns0:GetWipbuffer Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="getWipbuffer1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			<ns0:DBScope Station="{ActivityBind PizzaKitting,Path=Station}" x:Name="dbScope4" Key="{ActivityBind PizzaKitting,Path=Key}" SessionType="{ActivityBind PizzaKitting,Path=SessionType}">
+				<ns0:UpdatePizzaStatus Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="updatePizzaStatus3" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Status="Pass" Station="{ActivityBind PizzaKitting,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifPKOKandBSAM">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="isPKOKandBSAM" />
+			</IfElseBranchActivity.Condition>
+			<ns0:GetBOM Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="getBOM2" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" ModelFrom="Product" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			<ns0:DBScope Station="{ActivityBind PizzaKitting,Path=Station}" x:Name="dbScope6" Key="{ActivityBind PizzaKitting,Path=Key}" SessionType="{ActivityBind PizzaKitting,Path=SessionType}">
+				<ns0:LightOn Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="lightOn2" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			</ns0:DBScope>
+			<WhileActivity x:Name="whileActivity2">
+				<WhileActivity.Condition>
+					<RuleConditionReference ConditionName="NotComplet" />
+				</WhileActivity.Condition>
+				<SequenceActivity x:Name="sequenceActivity2">
+					<ns0:WaitInput Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="waitInput4" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+					<IfElseActivity x:Name="ifElseActivity1">
+						<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+							<IfElseBranchActivity.Condition>
+								<RuleConditionReference ConditionName="NotComplet" />
+							</IfElseBranchActivity.Condition>
+							<ns0:PartMatch Customer="{ActivityBind PizzaKitting,Path=Customer}" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" x:Name="partMatch2" BindTo="Pizza" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+						</IfElseBranchActivity>
+					</IfElseActivity>
+					<ns0:DBScope Station="{ActivityBind PizzaKitting,Path=Station}" x:Name="dbScope7" Key="{ActivityBind PizzaKitting,Path=Key}" SessionType="{ActivityBind PizzaKitting,Path=SessionType}">
+						<ns0:LightOff Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="lightOff2" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+					</ns0:DBScope>
+				</SequenceActivity>
+			</WhileActivity>
+			<ns0:WaitInput Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="waitInput7" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			<ns0:DBScope Station="{ActivityBind PizzaKitting,Path=Station}" x:Name="dbScope5" Key="{ActivityBind PizzaKitting,Path=Key}" SessionType="{ActivityBind PizzaKitting,Path=SessionType}">
+				<ns0:BindParts Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="bindParts2" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" BindTo="Pizza" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+				<ns0:UpdatePizzaStatus Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="updatePizzaStatus2" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="updateProductStatus3" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Status="Pass" Station="{ActivityBind PizzaKitting,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="writeProductLog3" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			</ns0:DBScope>
+			<IfElseActivity x:Name="ifHasPart" Enabled="False">
+				<IfElseBranchActivity Enabled="False" x:Name="isHasPart">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="HasPart" />
+					</IfElseBranchActivity.Condition>
+					<ns0:WaitInput Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="waitInput2" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+				</IfElseBranchActivity>
+				<IfElseBranchActivity Enabled="False" x:Name="ifElseBranchActivity3" />
+			</IfElseActivity>
+			<ns0:WaitInput Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="waitInput8" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			<ns0:GetConstValue Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="getConstValue3" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" ConstValueType="BSamLabelLight" Station="{ActivityBind PizzaKitting,Path=Station}" AddSessionKey="MBCode" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" IsStopWF="True" ConstValueName="LabelCode" />
+			<ns0:GetBOMForWipbuffer Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="getBOMForWipbuffer2" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			<ns0:GetWipbuffer Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="getWipbuffer2" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			<ns0:CheckWimaxLabelPrint Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="checkWimaxLabelPrint1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			<ns0:CheckWin8LabelPrint Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="checkWin8LabelPrint1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Win8Descr="WIN8 BOX LABEL" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			<ns0:CheckLabelLanguagePrint Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="checkLabelLanguagePrint1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			<ns0:CheckLANOMLabelPrint Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="checkLANOMLabelPrint1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			<ns0:CheckCOOLabelPrint Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="checkCOOLabelPrint2" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			<ns0:Print Customer="{ActivityBind PizzaKitting,Path=Customer}" NotExistException="True" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" x:Name="print2" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifNot">
+			<ns0:GetBOM Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="getBOM1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" ModelFrom="Product" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			<ns0:DBScope Station="{ActivityBind PizzaKitting,Path=Station}" x:Name="dbScope3" Key="{ActivityBind PizzaKitting,Path=Key}" SessionType="{ActivityBind PizzaKitting,Path=SessionType}">
+				<ns0:LightOn Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="lightOn1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			</ns0:DBScope>
+			<WhileActivity x:Name="whileActivity1">
+				<WhileActivity.Condition>
+					<RuleConditionReference ConditionName="NotComplet" />
+				</WhileActivity.Condition>
+				<SequenceActivity x:Name="sequenceActivity1">
+					<ns0:WaitInput Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+					<IfElseActivity x:Name="IfComplete">
+						<IfElseBranchActivity x:Name="NotComplete">
+							<IfElseBranchActivity.Condition>
+								<RuleConditionReference ConditionName="NotComplet" />
+							</IfElseBranchActivity.Condition>
+							<ns0:PartMatch Customer="{ActivityBind PizzaKitting,Path=Customer}" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" x:Name="partMatch1" BindTo="Pizza" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+						</IfElseBranchActivity>
+					</IfElseActivity>
+					<ns0:DBScope Station="{ActivityBind PizzaKitting,Path=Station}" x:Name="dbScope2" Key="{ActivityBind PizzaKitting,Path=Key}" SessionType="{ActivityBind PizzaKitting,Path=SessionType}">
+						<ns0:LightOff Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="lightOff1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+					</ns0:DBScope>
+				</SequenceActivity>
+			</WhileActivity>
+			<ns0:WaitInput Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="waitInput6" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			<ns0:DBScope Station="{ActivityBind PizzaKitting,Path=Station}" x:Name="dbScope1" Key="{ActivityBind PizzaKitting,Path=Key}" SessionType="{ActivityBind PizzaKitting,Path=SessionType}">
+				<ns0:BindParts Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="bindParts1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" BindTo="Pizza" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+				<ns0:UpdatePizzaStatus Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="updatePizzaStatus1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+				<ns0:UpdateProductStatus Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Status="Pass" Station="{ActivityBind PizzaKitting,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			</ns0:DBScope>
+			<ns0:WaitInput Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="waitInput5" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Enabled="False" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+			<IfElseActivity x:Name="ifPKOK2">
+				<IfElseBranchActivity x:Name="isPKOK2">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="IsPKOK" />
+					</IfElseBranchActivity.Condition>
+					<ns0:WaitInput Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="waitInput3" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+					<ns0:CheckCOOLabelPrint Customer="{ActivityBind PizzaKitting,Path=Customer}" x:Name="checkCOOLabelPrint1" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+					<ns0:Print Customer="{ActivityBind PizzaKitting,Path=Customer}" NotExistException="True" SessionType="{ActivityBind PizzaKitting,Path=SessionType}" Editor="{ActivityBind PizzaKitting,Path=Editor}" x:Name="print1" Station="{ActivityBind PizzaKitting,Path=Station}" Line="{ActivityBind PizzaKitting,Path=PdLine}" Key="{ActivityBind PizzaKitting,Path=Key}" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

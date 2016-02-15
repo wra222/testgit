@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.SmartBoard.Filter.dll
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.SmartBoard.Filter.pdb
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.SmartBoard.Filter\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.SmartBoard.Filter\obj\Debug\IMES.CheckItemModule.SmartBoard.Filter.dll
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.SmartBoard.Filter\obj\Debug\IMES.CheckItemModule.SmartBoard.Filter.pdb

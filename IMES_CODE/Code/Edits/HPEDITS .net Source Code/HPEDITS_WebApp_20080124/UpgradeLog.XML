@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="HPEDITS">
+</Property><Property Name="Solution File" Value="D:\mes\svnCqHp\Code\Edits\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\HPEDITS.sln">
+</Property><Property Name="Date" Value="2013年12月3日">
+</Property><Property Name="Time" Value="下午 14:48">
+</Property></Properties><Event ErrorLevel="0" Project="XmlCreator" Source="..\..\XmlCreator\XmlCreator.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="XmlCreator" Source="..\..\XmlCreator\XmlCreator.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="FOPWrap" Source="..\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\FOPWrap.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="FOPWrap" Source="..\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\FOPWrap.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Parser" Source="..\..\Parser\Parser.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Parser" Source="..\..\Parser\Parser.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="HPEDITS.sln" Description="The solution file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="" Source="HPEDITS.sln" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="FOPWrap" Source="..\HPEDITS_ddl_20080124\FOPCommandWrap\FOPWrap\FOPWrap.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Parser" Source="..\..\Parser\Parser.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

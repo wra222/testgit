@@ -1,0 +1,122 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Net.Mail;
+using System.Net;
+
+
+namespace UTL
+{
+    public class SendMail
+    {
+        public static void Send(string mailFrom,
+                                                    string[] mailTo,
+                                                    string mailSubject,
+                                                    string mailBody,
+                                                    string mailServer,
+                                                     Log log)
+        {
+            try
+            {
+                MailMessage mailMsg = new MailMessage();
+
+                if (string.IsNullOrEmpty(mailSubject) || mailTo.Length == 0)
+                    return;
+
+                mailMsg.From = new MailAddress(mailFrom);
+
+                if (mailTo.Length > 0)
+                {
+                    for (int i = 0; i < mailTo.Length; ++i)
+                    {
+                        if (mailTo[i].Trim().Length > 0)
+                        {
+                            mailMsg.To.Add(new MailAddress(mailTo[i]));
+                        }
+                    }
+                }
+
+
+                
+                mailMsg.Subject = mailSubject;
+                mailMsg.Body = mailBody;
+                mailMsg.IsBodyHtml = true;
+
+                SmtpClient client = new SmtpClient(mailServer, 25);
+                if (mailMsg.To.Count > 0)
+                {
+                    client.Send(mailMsg);
+                }
+
+            }
+            catch (Exception e)
+            {
+                log.write(LogType.error, 0, "sendMail", "->", e.StackTrace);
+                log.write(LogType.error, 0, "sendMail", "->", e.Message);
+                
+            }
+        }
+
+        public static void Send(string mailFrom,
+                                                    string[] mailTo,
+                                                    string[] mailCC,
+                                                    string mailSubject,
+                                                    string mailBody,
+                                                    string mailServer,
+                                                     Log log)
+        {
+            try
+            {
+                MailMessage mailMsg = new MailMessage();
+
+                if (string.IsNullOrEmpty(mailSubject) || mailTo.Length == 0)
+                    return;
+
+                mailMsg.From = new MailAddress(mailFrom);
+
+                if (mailTo.Length > 0)
+                {
+                    for (int i = 0; i < mailTo.Length; ++i)
+                    {
+                        if (mailTo[i].Trim().Length > 0)
+                        {
+                            mailMsg.To.Add(new MailAddress(mailTo[i]));
+                        }
+                    }
+                }
+
+
+                if (mailCC.Length > 0)
+                {
+                    for (int i = 0; i < mailCC.Length; ++i)
+                    {
+                        if (mailCC[i].Trim().Length > 0)
+                        {
+                            mailMsg.CC.Add(new MailAddress(mailCC[i]));
+                        }
+                    }
+                }
+
+
+
+                mailMsg.Subject = mailSubject;
+                mailMsg.Body = mailBody;
+                mailMsg.IsBodyHtml = true;
+
+                SmtpClient client = new SmtpClient(mailServer, 25);
+                if (mailMsg.To.Count > 0)
+                {
+                    client.Send(mailMsg);
+                }
+
+            }
+            catch (Exception e)
+            {
+                log.write(LogType.error, 0, "sendMail", "->", e.StackTrace);
+                log.write(LogType.error, 0, "sendMail", "->", e.Message);
+
+            }
+        }
+    }
+}

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cn_btnQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="cn_titleDN" xml:space="preserve">
+    <value>DeliveryNo.</value>
+  </data>
+  <data name="cn_titleShipNo" xml:space="preserve">
+    <value>ShipmentNo.</value>
+  </data>
+  <data name="eng_titleDN" xml:space="preserve">
+    <value>DeliveryNo.</value>
+  </data>
+  <data name="eng_titleShipNo" xml:space="preserve">
+    <value>ShipmentNo.</value>
+  </data>
+  <data name="cn_msgNoRecord" xml:space="preserve">
+    <value>查询不到符合条件的记录！</value>
+  </data>
+  <data name="eng_msgNoRecord" xml:space="preserve">
+    <value>No record!</value>
+  </data>
+  <data name="cn_btnDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="cn_msgConfirmDelete" xml:space="preserve">
+    <value>确认删除此DN： </value>
+  </data>
+  <data name="cn_msgNoRecordSelected" xml:space="preserve">
+    <value>请选择要删除的记录！</value>
+  </data>
+  <data name="eng_btnDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="eng_msgConfirmDelete" xml:space="preserve">
+    <value>Are you sure to delete DN: </value>
+  </data>
+  <data name="eng_msgNoRecordSelected" xml:space="preserve">
+    <value>Please select a record to delete!</value>
+  </data>
+  <data name="cn_msgTooManyRecords" xml:space="preserve">
+    <value>仅显示前1000条查询结果！</value>
+  </data>
+  <data name="eng_msgTooManyRecords" xml:space="preserve">
+    <value>Only 1000 records are displayed!</value>
+  </data>
+  <data name="cn_lblInput" xml:space="preserve">
+    <value>查询条件：</value>
+  </data>
+  <data name="cn_msgDeleteSuccess" xml:space="preserve">
+    <value>删除成功！</value>
+  </data>
+  <data name="cn_titleCarrier" xml:space="preserve">
+    <value>Carrier</value>
+  </data>
+  <data name="cn_titleWaybillNo" xml:space="preserve">
+    <value>WAYBILL_NUMBER</value>
+  </data>
+  <data name="eng_btnQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="eng_lblInput" xml:space="preserve">
+    <value>Input:</value>
+  </data>
+  <data name="eng_msgDeleteSuccess" xml:space="preserve">
+    <value>Delete success!</value>
+  </data>
+  <data name="eng_titleCarrier" xml:space="preserve">
+    <value>Carrier</value>
+  </data>
+  <data name="eng_titleWaybillNo" xml:space="preserve">
+    <value>WAYBILL_NUMBER</value>
+  </data>
+  <data name="cn_msgNoInput" xml:space="preserve">
+    <value>请输入查询条件！</value>
+  </data>
+  <data name="eng_msgNoInput" xml:space="preserve">
+    <value>Please input query condition!</value>
+  </data>
+  <data name="cn_tipInput" xml:space="preserve">
+    <value>（请输入10位Delivery No.、Shipment No. 或者Way Bill No.）</value>
+  </data>
+  <data name="eng_tipInput" xml:space="preserve">
+    <value>(Please input 10-bit Delivery No. or Shipment No. or Way Bill No.)</value>
+  </data>
+  <data name="cn_btnBatchDelete" xml:space="preserve">
+    <value>批量删除</value>
+  </data>
+  <data name="cn_lblDNFile" xml:space="preserve">
+    <value>DN文件：</value>
+  </data>
+  <data name="cn_lblTableTitle" xml:space="preserve">
+    <value>DN List:</value>
+  </data>
+  <data name="cn_lgBatchDelete" xml:space="preserve">
+    <value>批量删除</value>
+  </data>
+  <data name="cn_lgDeleteDN" xml:space="preserve">
+    <value>删除DN</value>
+  </data>
+  <data name="cn_msgAllFailed" xml:space="preserve">
+    <value>文件中未包含要删除的合法DN（需为10位字符串）！</value>
+  </data>
+  <data name="cn_msgBadFileName" xml:space="preserve">
+    <value>请选择一个文本文件！</value>
+  </data>
+  <data name="cn_msgCheckFTP" xml:space="preserve">
+    <value>未能在服务器上找到所需的文件，请检查FTP设置！</value>
+  </data>
+  <data name="cn_msgConfirmBatchDelete" xml:space="preserve">
+    <value>确认批量删除文件中包含的DN？</value>
+  </data>
+  <data name="cn_msgDNFileNotExist" xml:space="preserve">
+    <value>选择的DN列表文件不存在！</value>
+  </data>
+  <data name="cn_msgFailedDN" xml:space="preserve">
+    <value>除以下不合法DN外删除成功（需为10位字符串）：</value>
+  </data>
+  <data name="cn_msgNoData" xml:space="preserve">
+    <value>文件中没有要删除的DN列表！</value>
+  </data>
+  <data name="cn_msgNoFile" xml:space="preserve">
+    <value>请选择包含要删除DN列表的.txt文件！</value>
+  </data>
+  <data name="eng_btnBatchDelete" xml:space="preserve">
+    <value>Batch Delete</value>
+  </data>
+  <data name="eng_lblDNFile" xml:space="preserve">
+    <value>DN File:</value>
+  </data>
+  <data name="eng_lblTableTitle" xml:space="preserve">
+    <value>DN List:</value>
+  </data>
+  <data name="eng_lgBatchDelete" xml:space="preserve">
+    <value>Batch Delete</value>
+  </data>
+  <data name="eng_lgDeleteDN" xml:space="preserve">
+    <value>Delete DN</value>
+  </data>
+  <data name="eng_msgAllFailed" xml:space="preserve">
+    <value>There is no expected DN in the file(should be 10-bits string)!</value>
+  </data>
+  <data name="eng_msgBadFileName" xml:space="preserve">
+    <value>Please select a text file!</value>
+  </data>
+  <data name="eng_msgCheckFTP" xml:space="preserve">
+    <value>Cannot find needed files on server, please check FTP settings!</value>
+  </data>
+  <data name="eng_msgConfirmBatchDelete" xml:space="preserve">
+    <value>Confirm to delete all the DNs contained in the file?</value>
+  </data>
+  <data name="eng_msgDNFileNotExist" xml:space="preserve">
+    <value>Selected DN list file is not exist!</value>
+  </data>
+  <data name="eng_msgFailedDN" xml:space="preserve">
+    <value>Delete success except following DNs, because they are not in expected format (should be 10-bits string):</value>
+  </data>
+  <data name="eng_msgNoData" xml:space="preserve">
+    <value>There is no DN to delete in the file!</value>
+  </data>
+  <data name="eng_msgNoFile" xml:space="preserve">
+    <value>Please select a .txt file contains the DN list to delete!</value>
+  </data>
+</root>

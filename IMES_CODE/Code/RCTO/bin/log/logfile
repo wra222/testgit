@@ -1,0 +1,235 @@
+2016-01-12 13:10:02,575 [9] INFO  IMES.Infrastructure.Utility.Cache.DataChangeMediator [(null)] - Host local IP address: 10.96.53.72
+2016-01-12 13:10:02,633 [9] ERROR IMES.Infrastructure.Utility.Cache.DataChangeMediator [(null)] - IMES.ConsoleHost.vshost
+2016-01-12 13:10:03,183 [9] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteNonQuery SQL Statement:
+DELETE FROM CacheUpdate WHERE CacheServerIP=@CacheServerIP AND AppName=@AppName 
+SQL Parameter:
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:12:07,889 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:12:07,956 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:13:07,970 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:13:07,993 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:14:08,020 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:14:08,041 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:15:08,082 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:15:08,269 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:16:08,549 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:16:08,565 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:17:08,571 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:17:08,587 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:18:08,589 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:18:08,619 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:19:08,636 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:19:08,649 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:20:08,687 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:20:08,687 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:21:08,706 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:21:08,722 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:22:08,748 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:22:08,779 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:23:08,802 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:23:08,818 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:24:08,843 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:24:08,874 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:25:08,906 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:25:08,921 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:26:08,908 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:26:08,926 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:27:08,939 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:27:08,968 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:28:09,033 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:28:09,064 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:29:09,085 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:29:09,101 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:30:09,141 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('BOM','Family','Model','ModelTolerance','ModelWeight','Part') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input
+2016-01-12 13:30:09,219 [14] DEBUG IMES.Infrastructure.Repository._Schema.SqlHelper [(null)] - ExecuteReader SQL Statement:
+SELECT ID,Type,Item,Updated,CacheServerIP,AppName,Cdt,Udt FROM CacheUpdate WHERE Type IN ('DefectCode','DefectInfo','Process','Station','Line','QCRatio') AND Updated=@Updated AND CacheServerIP=@CacheServerIP AND AppName=@AppName  ORDER BY Cdt 
+SQL Parameter:
+ [Name]:@Updated [Value]:False [DBType]:Bit [Direction]:Input
+ [Name]:@CacheServerIP [Value]:10.96.53.72 [DBType]:VarChar [Direction]:Input
+ [Name]:@AppName [Value]:IMES.ConsoleHost.vshost [DBType]:VarChar [Direction]:Input

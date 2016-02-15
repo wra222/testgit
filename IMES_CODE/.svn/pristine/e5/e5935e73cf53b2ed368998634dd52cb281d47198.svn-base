@@ -1,0 +1,14 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="CombineCOAandDNRePrint" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProductLog Customer="{ActivityBind CombineCOAandDNRePrint,Path=Customer}" x:Name="getProductLog1" SessionType="{ActivityBind CombineCOAandDNRePrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNRePrint,Path=Editor}" StationDescr="{x:Null}" Station="{ActivityBind CombineCOAandDNRePrint,Path=Station}" Line="{ActivityBind CombineCOAandDNRePrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNRePrint,Path=Key}" />
+	<IfElseActivity x:Name="IfRePrint">
+		<IfElseBranchActivity x:Name="RePrint">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="RePrint" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind CombineCOAandDNRePrint,Path=Station}" x:Name="dbScope" Key="{ActivityBind CombineCOAandDNRePrint,Path=Key}" SessionType="{ActivityBind CombineCOAandDNRePrint,Path=SessionType}">
+				<ns0:Print Customer="{ActivityBind CombineCOAandDNRePrint,Path=Customer}" x:Name="print1" SessionType="{ActivityBind CombineCOAandDNRePrint,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind CombineCOAandDNRePrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNRePrint,Path=Station}" MOFrom="No" ModelFrom="No" Line="{ActivityBind CombineCOAandDNRePrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNRePrint,Path=Key}" DnFrom="No" />
+				<ns0:WriteRePrintLog Customer="{ActivityBind CombineCOAandDNRePrint,Path=Customer}" x:Name="writeRePrintLog1" SessionType="{ActivityBind CombineCOAandDNRePrint,Path=SessionType}" Editor="{ActivityBind CombineCOAandDNRePrint,Path=Editor}" Station="{ActivityBind CombineCOAandDNRePrint,Path=Station}" Line="{ActivityBind CombineCOAandDNRePrint,Path=PdLine}" Key="{ActivityBind CombineCOAandDNRePrint,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

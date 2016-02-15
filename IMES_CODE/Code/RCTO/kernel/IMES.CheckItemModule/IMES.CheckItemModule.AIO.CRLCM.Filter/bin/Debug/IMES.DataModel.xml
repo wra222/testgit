@@ -1,0 +1,4045 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IMES.DataModel</name>
+    </assembly>
+    <members>
+        <member name="T:IMES.DataModel.MatchedPart">
+            <summary>
+            匹配到的料
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MatchedPart.pn">
+            <summary>
+            刷入料的实际PN,如果是Item,为ItemName
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MatchedPart.sn">
+            <summary>
+            实际刷入的序号
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MatchedPart.partDescr">
+            <summary>
+            刷入料如果是Part才有,如果是CheckItem没有
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MatchedPart.partType">
+            <summary>
+            刷入料如果是Part是PartType,如果是CheckItem是ItemName
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessMaintainInfo.Type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessMaintainInfo.Process">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessMaintainInfo.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessMaintainInfo.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessMaintainInfo.Cdt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessMaintainInfo.Udt">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessStationMaintainInfo.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessStationMaintainInfo.Process">
+            <summary>
+            Model
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessStationMaintainInfo.PreStation">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessStationMaintainInfo.Station">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessStationMaintainInfo.Status">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessStationMaintainInfo.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessStationMaintainInfo.Cdt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkReleaseTypeMaintainInfo.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkReleaseTypeMaintainInfo.Process">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkReleaseTypeMaintainInfo.ReleaseType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkReleaseTypeMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkProcessMaintainInfo.ReworkCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkProcessMaintainInfo.Process">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkProcessMaintainInfo.Editor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkProcessMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkProcessMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PalletProcessMaintainInfo.Customer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PalletProcessMaintainInfo.Process">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PalletProcessMaintainInfo.Editor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PalletProcessMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PalletProcessMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartProcessMaintainInfo.MBFamily">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartProcessMaintainInfo.Process">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartProcessMaintainInfo.PilotRun">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartProcessMaintainInfo.Editor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartProcessMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartProcessMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelProcessMaintainInfo.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelProcessMaintainInfo.RuleType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelProcessMaintainInfo.Model">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelProcessMaintainInfo.Process">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelProcessMaintainInfo.Editor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelProcessMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelProcessMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.StationMaintainInfo.Station">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.StationMaintainInfo.StationType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.StationMaintainInfo.OperationObject">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.StationMaintainInfo.Descr">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.StationMaintainInfo.Editor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.StationMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.StationMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkMaintainInfo.ReworkCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkMaintainInfo.Status">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkMaintainInfo.Editor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.CustomerMaintainInfo.Customer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.CustomerMaintainInfo.Code">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.CustomerMaintainInfo.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBFamilyMaintainInfo.Customer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBFamilyMaintainInfo.Code">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBFamilyMaintainInfo.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAndPartInfoValue.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAndPartInfoValue.MainTableKey">
+            <summary>
+            PartNo
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAndPartInfoValue.Item">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAndPartInfoValue.Content">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAndPartInfoValue.Description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAndPartInfoValue.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAndPartInfoValue.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAndPartInfoValue.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="P:IMES.DataModel.PartQty.Key">
+            <summary>
+            key
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.AlarmQueryCondition">
+            <summary>
+            查询Alarm的条件
+            </summary>
+        </member>
+        <member name="P:IMES.DataModel.AvailableDelivery.Qty">
+            <summary>
+            Delivery 總台數
+            </summary>
+        </member>
+        <member name="P:IMES.DataModel.AvailableDelivery.QtyPerCarton">
+            <summary>
+            此機型滿箱台數
+            </summary>
+        </member>
+        <member name="P:IMES.DataModel.AvailableDelivery.CartonQty">
+            <summary>
+            Carton 需裝台數
+            </summary>
+        </member>
+        <member name="P:IMES.DataModel.AvailableDelivery.RemainQty">
+            <summary>
+            此Delivery未裝台數 
+            </summary>
+        </member>
+        <member name="P:IMES.DataModel.AvailableDelivery.DNCartonQty">
+            <summary>
+            Delivery 總箱數
+            </summary>
+        </member>
+        <member name="P:IMES.DataModel.AvailableDelivery.DNQty">
+            <summary>
+            Delivery 台數
+            </summary>
+        </member>
+        <member name="P:IMES.DataModel.AvailableDelivery.TotalCartonQty">
+            <summary>
+            Pallet  總箱數
+            </summary>
+        </member>
+        <member name="P:IMES.DataModel.AvailableDelivery.ShipmentNo">
+            <summary>
+            Consolidate id,沒有Consolidate Id以DeliveryNo前10碼
+            </summary>
+        </member>
+        <member name="P:IMES.DataModel.AvailableDelivery.PackCategory">
+            <summary>
+            1:散裝
+            2:棧板
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.NeedCheckPart">
+            <summary>
+            需要检查的料
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.NeedCheckPart.alterPartList">
+            <summary>
+            一个partType的一个Group的共用料
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.TPCBDet">
+            <summary>
+            TPCBDet信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBDet.Code">
+            <summary>
+            TPCB
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBDet.Type">
+            <summary>
+            Type
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBDet.PartNo">
+            <summary>
+            PartNo
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBDet.Vendor">
+            <summary>
+            Vendor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBDet.DCode">
+            <summary>
+            DCode
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBDet.Editor">
+            <summary>
+            操作员标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBDet.Cdt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.MB_CODEInfo">
+            <summary>
+            MB_CODE value object
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MB_CODEInfo.id">
+            <summary>
+            MB_CODE Identifier
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MB_CODEInfo.friendlyName">
+            <summary>
+            MB_CODE Friendly Name
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:IMES.DataModel.MB_CODEAndMDLInfo" -->
+        <member name="F:IMES.DataModel.MB_CODEAndMDLInfo.mbCode">
+            <summary>
+            MB_CODE Identifier
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MB_CODEAndMDLInfo.mdl">
+            <summary>
+            MDL
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel._111LevelInfo">
+            <summary>
+            111 Level value object
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel._111LevelInfo.id">
+            <summary>
+            111 Level Identifier
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel._111LevelInfo.friendlyName">
+            <summary>
+            111 Level Friendly Name
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.PdLineInfo">
+            <summary>
+            PdLine value object
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PdLineInfo.id">
+            <summary>
+            PdLine Identifier
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PdLineInfo.friendlyName">
+            <summary>
+            PdLine Friendly Name
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.PrintTemplateInfo">
+            <summary>
+            打印模板信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintTemplateInfo.id">
+            <summary>
+            模板标识，一般为BAT的路径
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintTemplateInfo.friendlyName">
+            <summary>
+            模板的友好名字：比如Travel Card with lattice
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.SMTMOInfo">
+            <summary>
+            SMTMO信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.SMTMOInfo.id">
+            <summary>
+            SMTMO id
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.SMTMOInfo.friendlyName">
+            <summary>
+            SMTMO friendlyName (if exists)
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.SMTMOInfo.MB_CODEId">
+            <summary>
+            MB_CODE id
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.SMTMOInfo.description">
+            <summary>
+            SMTMO description
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.SMTMOInfo._111LevelId">
+            <summary>
+            111阶Id
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.SMTMOInfo.totalMBQty">
+            <summary>
+            total qty
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.SMTMOInfo.printedMBQty">
+            <summary>
+            未打印的qty
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.SMTMOInfo.remark">
+            <summary>
+            remark
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.SMTMOInfo.cdt">
+            <summary>
+            Create Time
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.MOInfo">
+            <summary>
+            MO信息结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOInfo.friendlyName">
+            <summary>
+            MO的友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOInfo.model">
+            <summary>
+            Model name
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOInfo.createDate">
+            <summary>
+            create date
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOInfo.startDate">
+            <summary>
+            start date?
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOInfo.qty">
+            <summary>
+            MO的数量
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOInfo.pqty">
+            <summary>
+            打印数量
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOInfo.PoNo">
+            <summary>
+            綁定Po
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.DocTypeInfo">
+            <summary>
+            文档类型信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DocTypeInfo.id">
+            <summary>
+            文档类型标识符
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DocTypeInfo.friendlyName">
+            <summary>
+            文档类型友好名字
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.TestStationInfo">
+            <summary>
+            测试站信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TestStationInfo.id">
+            <summary>
+            测试站标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TestStationInfo.friendlyName">
+            <summary>
+            测试站友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.FamilyInfo">
+            <summary>
+            Product的Family信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.FamilyInfo.id">
+            <summary>
+            Family标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.FamilyInfo.friendlyName">
+            <summary>
+            Family友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel._1397LevelInfo">
+            <summary>
+            1397阶信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel._1397LevelInfo.id">
+            <summary>
+            1397阶标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel._1397LevelInfo.friendlyName">
+            <summary>
+            1397阶友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.VGAInfo">
+            <summary>
+            VGA信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.VGAInfo.id">
+            <summary>
+            VGA标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.VGAInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.FANInfo">
+            <summary>
+            FAN信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.FANInfo.id">
+            <summary>
+            FAN标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.FANInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.DefectInfo">
+            <summary>
+            Defect信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DefectInfo.id">
+            <summary>
+            Defect标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DefectInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DefectInfo.description">
+            <summary>
+            Defect描述
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.CauseInfo">
+            <summary>
+            Cause信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.CauseInfo.id">
+            <summary>
+            Cause标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.CauseInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="M:IMES.DataModel.CauseInfo.#ctor(System.String,System.String)">
+            <summary>
+            CauseInfo 构造函数
+            </summary>
+            <param name="id">Cause ID</param>
+            <param name="friendlyName">Cause友好名字</param>
+        </member>
+        <member name="T:IMES.DataModel.MajorPartInfo">
+            <summary>
+            MajorPart信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MajorPartInfo.id">
+            <summary>
+            MajorPart标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MajorPartInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="M:IMES.DataModel.MajorPartInfo.#ctor(System.String,System.String)">
+            <summary>
+            MajorPartInfo 构造函数
+            </summary>
+            <param name="id">MajorPart ID</param>
+            <param name="friendlyName">MajorPart友好名字</param>
+        </member>
+        <member name="T:IMES.DataModel.ComponentInfo">
+            <summary>
+            Component信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ComponentInfo.id">
+            <summary>
+            Component标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ComponentInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="M:IMES.DataModel.ComponentInfo.#ctor(System.String,System.String)">
+            <summary>
+            ComponentInfo构造函数
+            </summary>
+            <param name="id">Component ID</param>
+            <param name="friendlyName">Component友好名字</param>
+        </member>
+        <member name="T:IMES.DataModel.ObligationInfo">
+            <summary>
+            Obligation信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ObligationInfo.id">
+            <summary>
+            Obligation标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ObligationInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="M:IMES.DataModel.ObligationInfo.#ctor(System.String,System.String)">
+            <summary>
+            ObligationInfo构造函数
+            </summary>
+            <param name="id">Obligation ID</param>
+            <param name="friendlyName">Obligation友好名字</param>
+        </member>
+        <member name="T:IMES.DataModel.MarkInfo">
+            <summary>
+            Mark信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MarkInfo.id">
+            <summary>
+            Mark标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MarkInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="M:IMES.DataModel.MarkInfo.#ctor(System.String,System.String)">
+            <summary>
+            MarkInfo构造函数
+            </summary>
+            <param name="id">Mark ID</param>
+            <param name="friendlyName">Mark友好名字</param>
+        </member>
+        <member name="T:IMES.DataModel.FloorInfo">
+            <summary>
+            Floor信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.FloorInfo.id">
+            <summary>
+            Floor标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.FloorInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.PPIDTypeInfo">
+            <summary>
+            PPIDType信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PPIDTypeInfo.id">
+            <summary>
+            PPID类型标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PPIDTypeInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.PPIDDescriptionInfo">
+            <summary>
+            PPID描述信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PPIDDescriptionInfo.id">
+            <summary>
+            PPID描述标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PPIDDescriptionInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.PartNoInfo">
+            <summary>
+            Part信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartNoInfo.id">
+            <summary>
+            PartNo
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartNoInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartNoInfo.iecPartNo">
+            <summary>
+            IEC Part Number
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartNoInfo.partTypeId">
+            <summary>
+            Part类型
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartNoInfo.description">
+            <summary>
+            Part描述
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartNoInfo.valueType">
+            <summary>
+            值类型
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartNoInfo.properties">
+            <summary>
+            part扩展属性
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.NameValueInfo">
+            <summary>
+            Name-Value结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.NameValueInfo.Name">
+            <summary>
+            Part描述
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.NameValueInfo.Value">
+            <summary>
+            值类型
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.NameValueDataTypeInfo">
+            <summary>
+            Name-Value-DataType结构 for bartender sp return structure
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.NameValueDataTypeInfo.Name">
+            <summary>
+            Part描述
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.NameValueDataTypeInfo.Value">
+            <summary>
+            值类型
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.NameValueDataTypeInfo.DataType">
+            <summary>
+            資料型態
+            1:Named Data source, 2:TextFile 3:ODBC, 4:OLEDB
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.SubDefectInfo">
+            <summary>
+            Sub-Defect信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.SubDefectInfo.id">
+            <summary>
+            Sub-Defect标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.SubDefectInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.ResponsibilityInfo">
+            <summary>
+            Responsibility信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ResponsibilityInfo.id">
+            <summary>
+            Responsibility标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ResponsibilityInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="M:IMES.DataModel.ResponsibilityInfo.#ctor(System.String,System.String)">
+            <summary>
+            ResponsibilityInfo构造函数
+            </summary>
+            <param name="id">Responsibility ID</param>
+            <param name="friendlyName">Responsibility友好名字</param>
+        </member>
+        <member name="T:IMES.DataModel._4MInfo">
+            <summary>
+            4M信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel._4MInfo.id">
+            <summary>
+            4M标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel._4MInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="M:IMES.DataModel._4MInfo.#ctor(System.String,System.String)">
+            <summary>
+            4MInfo构造函数
+            </summary>
+            <param name="id">4M ID</param>
+            <param name="friendlyName">4M友好名字</param>
+        </member>
+        <member name="T:IMES.DataModel.CoverInfo">
+            <summary>
+            Cover信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.CoverInfo.id">
+            <summary>
+            Cover标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.CoverInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="M:IMES.DataModel.CoverInfo.#ctor(System.String,System.String)">
+            <summary>
+            CoverInfo构造函数
+            </summary>
+            <param name="id">Cover ID</param>
+            <param name="friendlyName">Cover友好名字</param>
+        </member>
+        <member name="T:IMES.DataModel.UncoverInfo">
+            <summary>
+            Uncover信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.UncoverInfo.id">
+            <summary>
+            Uncover标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.UncoverInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="M:IMES.DataModel.UncoverInfo.#ctor(System.String,System.String)">
+            <summary>
+            UncoverInfo构造函数
+            </summary>
+            <param name="id">Uncover ID</param>
+            <param name="friendlyName">Uncover友好名字</param>
+        </member>
+        <member name="T:IMES.DataModel.TrackingStatusInfo">
+            <summary>
+            Tracking Status信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TrackingStatusInfo.id">
+            <summary>
+            Tracking Status标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TrackingStatusInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="M:IMES.DataModel.TrackingStatusInfo.#ctor(System.String,System.String)">
+            <summary>
+            TrackingStatusInfo构造函数
+            </summary>
+            <param name="id">TrackingStatus ID</param>
+            <param name="friendlyName">TrackingStatus友好名字</param>
+        </member>
+        <member name="T:IMES.DataModel.DistributionInfo">
+            <summary>
+            Distribution信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DistributionInfo.id">
+            <summary>
+            Distribution标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DistributionInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="M:IMES.DataModel.DistributionInfo.#ctor(System.String,System.String)">
+            <summary>
+            DistributionInfo构造函数
+            </summary>
+            <param name="id">Distribution ID</param>
+            <param name="friendlyName">Distribution友好名字</param>
+        </member>
+        <member name="T:IMES.DataModel.ModelInfo">
+            <summary>
+            Model信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfo.id">
+            <summary>
+            Model标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.ProdIdRangeInfo">
+            <summary>
+            ProdIdRange信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProdIdRangeInfo.startId">
+            <summary>
+            起始ID
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProdIdRangeInfo.endId">
+            <summary>
+            结束ID
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.KPTypeInfo">
+            <summary>
+            KP类型信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KPTypeInfo.id">
+            <summary>
+            KP类型标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KPTypeInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.DNInfo">
+            <summary>
+            DN信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DNInfo.id">
+            <summary>
+            DN标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DNInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.BOLNoInfo">
+            <summary>
+            BOLNo信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BOLNoInfo.id">
+            <summary>
+            BOLNo标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BOLNoInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.PalletInfo">
+            <summary>
+            Pallet信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PalletInfo.id">
+            <summary>
+            Pallet标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PalletInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.CheckItemInfo">
+            <summary>
+            CheckItem信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.CheckItemInfo.id">
+            <summary>
+            CheckItem标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.CheckItemInfo.qty">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.CheckItemInfo.scannedQty">
+            <summary>
+            扫过的数量
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.RepairInfo">
+            <summary>
+            Repair-Defect信息，请参考Repair_Defect_Info表
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.id">
+            <summary>
+            Repair Defect标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.pdLine">
+            <summary>
+            Product Line
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.testStation">
+            <summary>
+            测试站标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.testStationDesc">
+            <summary>
+            测试站
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.repairID">
+            <summary>
+            Repair标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.defectCodeID">
+            <summary>
+            Defect Code标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.defectCodeDesc">
+            <summary>
+            Defect
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.cause">
+            <summary>
+            Cause
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.causeDesc">
+            <summary>
+            cause description
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.obligation">
+            <summary>
+            obligation
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.component">
+            <summary>
+            component
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.site">
+            <summary>
+            site
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.majorPart">
+            <summary>
+            major part
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.remark">
+            <summary>
+            remark
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.vendorCT">
+            <summary>
+            vendorCT
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.partType">
+            <summary>
+            part type
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.oldPart">
+            <summary>
+            old part
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.oldPartSno">
+            <summary>
+            old part sno
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.newPart">
+            <summary>
+            new part
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.newPartSno">
+            <summary>
+            new part sno
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.manufacture">
+            <summary>
+            manufacture
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.versionA">
+            <summary>
+            version A
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.versionB">
+            <summary>
+            version B
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.returnSign">
+            <summary>
+            return sign
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.mark">
+            <summary>
+            mark
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.subDefect">
+            <summary>
+            sub-defect
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.piaStation">
+            <summary>
+            pia-station
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.distribution">
+            <summary>
+            distribution
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo._4M">
+            <summary>
+            4M
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.responsibility">
+            <summary>
+            responsibility
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.action">
+            <summary>
+            action
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.cover">
+            <summary>
+            cover
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.uncover">
+            <summary>
+            uncover
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.trackingStatus">
+            <summary>
+            tracking status
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.isManual">
+            <summary>
+            is manual
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.mtaID">
+            <summary>
+            MTA ID
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.editor">
+            <summary>
+            operator
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.cdt">
+            <summary>
+            create date
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.udt">
+            <summary>
+            update date
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.newPartDateCode">
+            <summary>
+            新Part日期码
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.location">
+            <summary>
+            location
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.side">
+            <summary>
+            side
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RepairInfo.returnStation">
+            <summary>
+            returnStation
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.OperatorInfo">
+            <summary>
+            操作员信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.OperatorInfo.lineId">
+            <summary>
+            Line标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.OperatorInfo.editor">
+            <summary>
+            操作员标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.OperatorInfo.clientIP">
+            <summary>
+            客户端IP
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.OperatorInfo.wc">
+            <summary>
+            站标识
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.MBInfo">
+            <summary>
+            MB信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBInfo.id">
+            <summary>
+            MB SNO
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBInfo._111LevelId">
+            <summary>
+            111阶
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBInfo.MB_CODEId">
+            <summary>
+            MB CODE
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBInfo.SMTMOId">
+            <summary>
+            SMT MO
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBInfo.dateCode">
+            <summary>
+            DATE CODE
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBInfo.custVersion">
+            <summary>
+            Cust Version
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBInfo.iecVersion">
+            <summary>
+            IECVersion
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBInfo.family">
+            <summary>
+            Family
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBInfo.testStation">
+            <summary>
+            Test Station: 根据MB SN读出的不良数据取得
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBInfo.ecr">
+            <summary>
+            ecr
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBInfo.line">
+            <summary>
+            line
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBInfo.lineDesc">
+            <summary>
+            lineDesc
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBInfo.mac">
+            <summary>
+            mac
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MBInfo.properties">
+            <summary>
+            properties
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.ProductInfo">
+            <summary>
+            产品信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProductInfo.id">
+            <summary>
+            ProdId
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProductInfo.modelId">
+            <summary>
+            Model
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProductInfo.familyId">
+            <summary>
+            Family
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProductInfo.MOId">
+            <summary>
+            MO
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProductInfo.customSN">
+            <summary>
+            Custom SNO
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProductInfo.cvSN">
+            <summary>
+            cv SN
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProductInfo.pizzaId">
+            <summary>
+            pizza id
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.ProductStatusInfo">
+            <summary>
+            Product状态信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProductStatusInfo.productId">
+            <summary>
+            Product标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProductStatusInfo.pdLine">
+            <summary>
+            Product Line
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProductStatusInfo.status">
+            <summary>
+            状态标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProductStatusInfo.station">
+            <summary>
+            站标识
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.PartTypeInfo">
+            <summary>
+            PartType value object
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeInfo.id">
+            <summary>
+            PartType Identifier
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeInfo.friendlyName">
+            <summary>
+            PartType Friendly Name
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.QCStatisticInfo">
+            <summary>
+            QCStatistic value object
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.QCStatisticInfo.line">
+            <summary>
+            PDLine
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.QCStatisticInfo.modelId">
+            <summary>
+            Model Identifier
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.QCStatisticInfo.input">
+            <summary>
+            Input
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.QCStatisticInfo.noCheck">
+            <summary>
+            noCheck
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.QCStatisticInfo.piaIn">
+            <summary>
+            PIA IN
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.QCStatisticInfo.epiaIn">
+            <summary>
+            ePIA IN
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.QCStatisticInfo.paqcIn">
+            <summary>
+            PAQC IN
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.QCStatisticInfo.piaPass">
+            <summary>
+            PIA PASS
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.QCStatisticInfo.epiaPass">
+            <summary>
+            ePIA PASS
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.QCStatisticInfo.paqcPass">
+            <summary>
+            PAQC PASS
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.QCStatisticInfo.piaError">
+            <summary>
+            PIA ERROR
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.QCStatisticInfo.epiaError">
+            <summary>
+            ePIA ERROR
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.QCStatisticInfo.paqcError">
+            <summary>
+            PAQC ERROR
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.pUnit">
+            <summary>
+            Bom Item 信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.pUnit.sn">
+            <summary>
+            已扫描的sn
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.pUnit.pn">
+            <summary>
+            已扫描的pn
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.pUnit.valueType">
+            <summary>
+            值类型
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.BomItemInfo">
+            <summary>
+            Bom Item 信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BomItemInfo.parts">
+            <summary>
+            Part代用料列表
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BomItemInfo.description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BomItemInfo.type">
+            <summary>
+            Type(CheckItemType)
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BomItemInfo.tp">
+            <summary>
+            BomNodeType for UI
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BomItemInfo.qty">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BomItemInfo.scannedQty">
+            <summary>
+            已扫描的数量
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BomItemInfo.collectionData">
+            <summary>
+            收集数据
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BomItemInfo.PartNoItem">
+            <summary>
+            UI 表格PartNo栏位显示内容
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BomItemInfo.GUID">
+            <summary>
+            FlatBOMItem GUID
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.DCodeInfo">
+            <summary>
+            DCODE信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DCodeInfo.id">
+            <summary>
+            DCODE标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DCodeInfo.friendlyName">
+            <summary>
+            友好名字(没有时实现请等同为id)
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.PrintItem">
+            <summary>
+            打印Item
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintItem.PrintMode">
+            <summary>
+            打印方式：0,Bat方式; 1,模板方式;
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintItem.RuleMode">
+            <summary>
+            获取打印模板的方式：0,By MO; 1,By PO; 2,Part
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintItem.LabelType">
+            <summary>
+            模板类型对应PrintTemplate表的LabelType
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintItem.TemplateName">
+            <summary>
+            模板名称对应PrintTemplate表的TemplateName
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintItem.Piece">
+            <summary>
+            模板名称对应PrintTemplate表的Piece
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintItem.SpName">
+            <summary>
+            模板名称对应PrintTemplate表的SpName
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintItem.ParameterKeys">
+            <summary>
+            模板名称对应PrintTemplate表的SpName定义的参数(bat)
+            或模板名称对应模板定义的参数(模板)
+            ParameterKeys的Key必须写成SpName或模板定义的参数名称
+            ParameterValues的Value必须写成SpName或模板定义的参数的值
+            ParameterKeys必须和ParameterValues的顺序保持一致
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintItem.ParameterValues">
+            <summary>
+            模板名称对应PrintTemplate表的SpName定义的参数(bat)
+            或模板名称对应模板定义的参数(模板)
+            ParameterKeys的Key必须写成SpName或模板定义的参数名称
+            ParameterValues的Value必须写成SpName或模板定义的参数的值
+            ParameterKeys必须和ParameterValues的顺序保持一致
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintItem.OffsetX">
+            <summary>
+            页面PrintSetting设置的X偏移量
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintItem.OffsetY">
+            <summary>
+            页面PrintSetting设置的Y偏移量
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintItem.PrinterPort">
+            <summary>
+            页面PrintSetting设置的打印机和端口
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintItem.dpi">
+            <summary>
+            页面设置DPI
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintItem.BatPiece">
+            <summary>
+            Bat要打印的份数,用来接受界面输入的相同标签要打印的份数。
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintItem.Rotate180">
+            <summary>
+            旋转180度
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintItem.Layout">
+            <summary>
+            横打还是竖打
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.ModelPassQty">
+            <summary>
+            for 030 Query
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelPassQty.model">
+            <summary>
+            model
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelPassQty.qty">
+            <summary>
+            通过数量
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Rework.ReworkCode">
+            <summary>
+            Rework代码
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Rework.Status">
+            <summary>
+            Rework状态
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Rework.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Rework.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Rework.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="P:IMES.DataModel.Rework.ReworkCodeProperty">
+            <summary>
+            Rework代码
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.ReworkObj">
+            <summary>
+            ReworkObj对象
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkObj.ReworkCode">
+            <summary>
+            Rework代码
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkObj.Status">
+            <summary>
+            Rework状态
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkObj.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkObj.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkObj.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="P:IMES.DataModel.ReworkObj.ReworkCodeProperty">
+            <summary>
+            Rework代码
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.ReworkExt">
+            <summary>
+            ReworkExt对象
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkExt.ReworkCode">
+            <summary>
+            Rework代码
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkExt.Qty">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkExt.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkExt.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkExt.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkExt.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkExt.Process">
+            <summary>
+            Process
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.ProcessStationInfo">
+            <summary>
+            ProcessStationInfo结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessStationInfo.PreStation">
+            <summary>
+            PreStation
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessStationInfo.PreStationDescr">
+            <summary>
+            PreStation描述
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessStationInfo.Station">
+            <summary>
+            Station
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessStationInfo.StationDescr">
+            <summary>
+            Station描述
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProcessStationInfo.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.ProductStatus">
+            <summary>
+            ProductStatus结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProductStatus.ProductId">
+            <summary>
+            Product ID
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProductStatus.Station">
+            <summary>
+            Station名字
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ProductStatus.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.ShipmentInfo">
+            <summary>
+            ShipmentInfo结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ShipmentInfo.id">
+            <summary>
+            Shipment Identifier
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ShipmentInfo.friendlyName">
+            <summary>
+            Shipment Friendly Name
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.PartNoDescrInfo">
+            <summary>
+            PartNoDescrInfo结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartNoDescrInfo.partNo">
+            <summary>
+            PartNo
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartNoDescrInfo.descr">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartNoDescrInfo.generatedPartNo">
+            <summary>
+            产生的PartNo
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.DnShiptoInfo">
+            <summary>
+            DnShiptoInfo结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DnShiptoInfo.dn">
+            <summary>
+            dn
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DnShiptoInfo.shipmentNo">
+            <summary>
+            Shipment编号
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DnShiptoInfo.poNo">
+            <summary>
+            PO编号
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DnShiptoInfo.model">
+            <summary>
+            Model
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DnShiptoInfo.shipDate">
+            <summary>
+            Ship日期
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DnShiptoInfo.qty">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DnShiptoInfo.status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.PalletShiptoInfo">
+            <summary>
+            PalletShiptoInfo结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PalletShiptoInfo.palletNo">
+            <summary>
+            Pallet编号
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PalletShiptoInfo.ucc">
+            <summary>
+            ucc
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PalletShiptoInfo.deliveryQty">
+            <summary>
+            deliveryQty
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.LightBomInfo">
+            <summary>
+            Light Bom 信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LightBomInfo.code">
+            <summary>
+            code
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LightBomInfo.partNo">
+            <summary>
+            part编号
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LightBomInfo.type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LightBomInfo.lightNo">
+            <summary>
+            lights编号
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LightBomInfo.scan">
+            <summary>
+            scan
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.KittingCodeInfo">
+            <summary>
+            KittingCodeInfo结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingCodeInfo.id">
+            <summary>
+            KittingCode Identifier
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingCodeInfo.friendlyName">
+            <summary>
+            KittingCode Friendly Name
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.BorrowLog">
+            <summary>
+            BorrowLog结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BorrowLog.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BorrowLog.Sn">
+            <summary>
+            Sn
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BorrowLog.Model">
+            <summary>
+            Model
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BorrowLog.Borrower">
+            <summary>
+            Borrower借入者
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BorrowLog.Lender">
+            <summary>
+            Lender借出者
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BorrowLog.Returner">
+            <summary>
+            Returner归还者
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BorrowLog.Acceptor">
+            <summary>
+            Acceptor接收者
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BorrowLog.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BorrowLog.Bdate">
+            <summary>
+            起借时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.BorrowLog.Rdate">
+            <summary>
+            归还时间
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.WipBuffer">
+            <summary>
+            WipBuffer结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.Code">
+            <summary>
+            Code
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.PartNo">
+            <summary>
+            PartNo
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.Tp">
+            <summary>
+            Tp
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.LightNo">
+            <summary>
+            LightNo
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.Picture">
+            <summary>
+            图片
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.Qty">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.Sub">
+            <summary>
+            Sub
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.Safety_Stock">
+            <summary>
+            安全库存
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.Max_Stock">
+            <summary>
+            最大库存
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.Remark">
+            <summary>
+            注解
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.Station">
+            <summary>
+            Station
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.KittingType">
+            <summary>
+            KittingType
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WipBuffer.Line">
+            <summary>
+            Line
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.KittingCode">
+            <summary>
+            KittingCode结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingCode.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingCode.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingCode.Descr">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingCode.Remark">
+            <summary>
+            注解
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingCode.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingCode.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingCode.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.SMALLPartsUploadInfo">
+            <summary>
+            SMALLPartsUploadInfo结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.SMALLPartsUploadInfo.tsbPN">
+            <summary>
+            TSB PN
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.SMALLPartsUploadInfo.iecPN">
+            <summary>
+            IEC PN
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.SMALLPartsUploadInfo.cdt">
+            <summary>
+            Create Time
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.SMALLPartsUploadInfo.editor">
+            <summary>
+            editor
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.LineStation">
+            <summary>
+            LineStation结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LineStation.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LineStation.Line">
+            <summary>
+            Line
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LineStation.Station">
+            <summary>
+            Station
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LineStation.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LineStation.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LineStation.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LineStation.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.ReworkReleaseType">
+            <summary>
+            ReworkRelease结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkReleaseType.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkReleaseType.Process">
+            <summary>
+            Process
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkReleaseType.ReleaseType">
+            <summary>
+            Release类型
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ReworkReleaseType.Cdt">
+            <summary>
+            Cdt时间
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.AreaDef">
+            <summary>
+            区域定义
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AreaDef.Area">
+            <summary>
+            区域
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.TraceStdInfo">
+            <summary>
+            TraceStd结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TraceStdInfo.Id">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TraceStdInfo.Family">
+            <summary>
+            Family
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TraceStdInfo.Area">
+            <summary>
+            区域
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TraceStdInfo.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TraceStdInfo.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TraceStdInfo.Cdt">
+            <summary>
+            Cdt时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TraceStdInfo.Udt">
+            <summary>
+            Udt时间
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.WLBTDescr">
+            <summary>
+            WLBTDescr结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WLBTDescr.Id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WLBTDescr.Code">
+            <summary>
+            代码
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WLBTDescr.Tp">
+            <summary>
+            种类
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WLBTDescr.TpDescr">
+            <summary>
+            种类描述
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WLBTDescr.Descr">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WLBTDescr.Site">
+            <summary>
+            站点
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WLBTDescr.Editor">
+            <summary>
+            建立人/修改人
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WLBTDescr.Cdt">
+            <summary>
+            建立时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.WLBTDescr.Udt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.PCodeLabelType">
+            <summary>
+            PCode_LabelType结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PCodeLabelType.PCode">
+            <summary>
+            PCode
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PCodeLabelType.LabelType">
+            <summary>
+            Label种类
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.LabelRule">
+            <summary>
+            Label规则
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRule.RuleID">
+            <summary>
+            Identity
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRule.TemplateName">
+            <summary>
+            Template名称
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.LabelRuleSet">
+            <summary>
+            Label规则集合
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleSet.ID">
+            <summary>
+            Identity
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleSet.RuleID">
+            <summary>
+            Rule Identity
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleSet.AttributeName">
+            <summary>
+            属性名称
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleSet.AttributeValue">
+            <summary>
+            属性值
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleSet.Mode">
+            <summary>
+            模式
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleSet.Editor">
+            <summary>
+            创建者/修改者
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleSet.Cdt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleSet.Udt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.DefectCodeInfo">
+            <summary>
+            DefectCodeInfo相关的信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DefectCodeInfo.Defect">
+            <summary>
+            Defect
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DefectCodeInfo.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DefectCodeInfo.Descr">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DefectCodeInfo.Editor">
+            <summary>
+            创建者/修改者
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DefectCodeInfo.Cdt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DefectCodeInfo.Udt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DefectCodeInfo.engDescr">
+            <summary>
+            English描述
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.FaStationInfo.Line">
+            <summary>
+            Line
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.FaStationInfo.Station">
+            <summary>
+            Station
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.FaStationInfo.OptCode">
+            <summary>
+            OptCode
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.FaStationInfo.OptName">
+            <summary>
+            OptName
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.FaStationInfo.Remark">
+            <summary>
+            Remark
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.FaStationInfo.Editor">
+            <summary>
+            创建者/修改者
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.FaStationInfo.Cdt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.FaStationInfo.Udt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.FaStationInfo.ID">
+            <summary>
+            Identity
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.TagID">
+            <summary>
+            Tag ID
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.TagTP">
+            <summary>
+            Tag TP
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.GateWayIP">
+            <summary>
+            GateWay IP
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.GateWayPort">
+            <summary>
+            GateWay Port
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.RackID">
+            <summary>
+            Rack ID
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.ConfigedLEDStatus">
+            <summary>
+            Configed LED Status
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.ConfigedLEDBlock">
+            <summary>
+            Configed LED Block
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.ConfigedDate">
+            <summary>
+            Configed Date
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.Comm">
+            <summary>
+            Comm
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.RunningLEDStatus">
+            <summary>
+            Running LED Status
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.RunningLEDBlock">
+            <summary>
+            Running LED Block
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.RunningDate">
+            <summary>
+            Running Date
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.LEDValues">
+            <summary>
+            LED Values
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.TagDescr">
+            <summary>
+            Tag Description
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.Editor">
+            <summary>
+            创建者/修改者
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.Cdt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.KittingLocationInfo.Udt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.LabelKittingCode">
+            <summary>
+            LabelKittingCode结构
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PalletCapacityInfo.PalletNo">
+            <summary>
+            PalletNo
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PalletCapacityInfo.TotalQty">
+            <summary>
+            TotalQty
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PalletCapacityInfo.OKQty">
+            <summary>
+            OKQty
+            </summary>
+        </member>
+        <member name="P:IMES.DataModel.PalletCapacityInfo.DiffQty">
+            <summary>
+            DiffQty（DiffQty = TotalQty - OKQty）
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.MbCodeAndMdlInfo">
+            <summary>
+            b.InfoValue as [MB Code], c.InfoValue as [MDL],b.InfoValue + ' ' + c.InfoValue as [DisplayName]
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.ASTInfo">
+            <summary>
+            For AST Chage: ASTType  PartNo  PartSn
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Srd4CoaAndDn.DeliveryNO">
+            <summary>
+            DeliveryNO
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Srd4CoaAndDn.Model">
+            <summary>
+            Model
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Srd4CoaAndDn.CustomerPN">
+            <summary>
+            CustomerPN
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Srd4CoaAndDn.PoNo">
+            <summary>
+            PoNo
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Srd4CoaAndDn.ShipDate">
+            <summary>
+            Date
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Srd4CoaAndDn.Qty">
+            <summary>
+            Qty
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Srd4CoaAndDn.PackedQty">
+            <summary>
+            PackedQty
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Srd4CoaAndDn.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Srd4CoaAndDn.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Srd4CoaAndDn.Cdt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Srd4CoaAndDn.Udt">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.Srd4CoaAndDn.ShipmentID">
+            <summary>
+            Shipment序号
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.PalletCollectionUI">
+            <summary>
+            UI要使用的PalletCollection信息
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.AttributeInfo">
+            <summary>
+            Attribute Information
+            </summary>
+        </member>
+        <member name="P:IMES.DataModel.AttributeInfo.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:IMES.DataModel.AttributeInfo.Value">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.DNForUI">
+            <summary>
+            页面要使用的DN对象
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DNForUI.DeliveryNo">
+            <summary>
+            DN序号
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DNForUI.ShipmentID">
+            <summary>
+            Shipment序号
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DNForUI.PoNo">
+            <summary>
+            PoNo
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DNForUI.ModelName">
+            <summary>
+            ModelName
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DNForUI.ShipDate">
+            <summary>
+            出货日期
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DNForUI.Qty">
+            <summary>
+            DN包含的机器数量
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DNForUI.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DNForUI.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DNForUI.DeliveryInfo">
+            <summary>
+            Delivery扩展属性
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DNForUI.Cdt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DNForUI.Udt">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.DNForUI.ShipWay">
+            <summary>
+            DN ShipWay
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelTypeMaintainInfo.LabelType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelTypeMaintainInfo.PrintMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelTypeMaintainInfo.RuleMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelTypeMaintainInfo.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelTypeMaintainInfo.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelTypeMaintainInfo.Cdt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintTemplateMaintainInfo.TemplateName">
+            <summary>
+            TemplateName
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintTemplateMaintainInfo.LabelType">
+            <summary>
+            LabelType
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintTemplateMaintainInfo.Piece">
+            <summary>
+            Piece
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintTemplateMaintainInfo.SpName">
+            <summary>
+            SpName
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintTemplateMaintainInfo.Layout">
+            <summary>
+            Layout
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintTemplateMaintainInfo.Description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintTemplateMaintainInfo.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PrintTemplateMaintainInfo.Cdt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleSetMaintainInfo.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleSetMaintainInfo.RuleID">
+            <summary>
+            RuleID
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleSetMaintainInfo.AttributeName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleSetMaintainInfo.AttributeValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleSetMaintainInfo.Mode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleSetMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleSetMaintainInfo.Editor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleSetMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleMaintainInfo.RuleID">
+            <summary>
+            RuleID
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.LabelRuleMaintainInfo.TemplateName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PCodeLabelTypeMaintainInfo.PCode">
+            <summary>
+            PCode
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PCodeLabelTypeMaintainInfo.LabelType">
+            <summary>
+            LabelType
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.CartonSSCC">
+            <summary>
+            CartonSSCC信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.CartonSSCC.CartonSN">
+            <summary>
+            CartonSN
+            Identity
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.CartonSSCC.SSCC">
+            <summary>
+            SSCC
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.CartonSSCC.Editor">
+            <summary>
+            操作员标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.CartonSSCC.Cdt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.StationDescrQty">
+            <summary>
+            UI要使用的StationDescrQty信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelMaintainInfo.Family">
+            <summary>
+            DN序号
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelMaintainInfo.Model">
+            <summary>
+            DN序号
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelMaintainInfo.CustPN">
+            <summary>
+            Shipment序号
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelMaintainInfo.Region">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelMaintainInfo.ShipType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelMaintainInfo.Status">
+            <summary>
+            出货日期
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelMaintainInfo.OsCode">
+            <summary>
+            OSCode
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelMaintainInfo.OSDesc">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelMaintainInfo.Price">
+            <summary>
+            Price
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelMaintainInfo.BomApproveDate">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelMaintainInfo.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelMaintainInfo.Cdt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoMaintainInfo.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoMaintainInfo.Model">
+            <summary>
+            Model
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoMaintainInfo.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoMaintainInfo.Value">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoMaintainInfo.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoNameMaintainInfo.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoNameMaintainInfo.Region">
+            <summary>
+            Model
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoNameMaintainInfo.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoNameMaintainInfo.Descr">
+            <summary>
+            Descr
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoNameMaintainInfo.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoNameMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoNameMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoNameAndModelInfoValueMaintainInfo.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoNameAndModelInfoValueMaintainInfo.Model">
+            <summary>
+            Model
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoNameAndModelInfoValueMaintainInfo.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoNameAndModelInfoValueMaintainInfo.Value">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoNameAndModelInfoValueMaintainInfo.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoNameAndModelInfoValueMaintainInfo.Description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoNameAndModelInfoValueMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ModelInfoNameAndModelInfoValueMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ShipTypeMaintainInfo.ShipType">
+            <summary>
+            ShipType
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ShipTypeMaintainInfo.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ShipTypeMaintainInfo.Description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ShipTypeMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.ShipTypeMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.TbProductPlan">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.ProductPlanInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.ProductPlanLog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.MOPlanInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartMaintainInfo.PartNo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartMaintainInfo.Descr">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartMaintainInfo.PartType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartMaintainInfo.CustPartNo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartMaintainInfo.Flag">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartMaintainInfo.AutoDL">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartMaintainInfo.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartMaintainInfo.Descr2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartMaintainInfo.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartMaintainInfo.Cdt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartInfoMaintainInfo.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartInfoMaintainInfo.PartNo">
+            <summary>
+            PartNo
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartInfoMaintainInfo.InfoType">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartInfoMaintainInfo.InfoValue">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartInfoMaintainInfo.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartInfoMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartInfoMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AssemblyCodeMaintainInfo.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AssemblyCodeMaintainInfo.PartNo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AssemblyCodeMaintainInfo.Family">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AssemblyCodeMaintainInfo.Region">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AssemblyCodeMaintainInfo.Model">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AssemblyCodeMaintainInfo.AssemblyCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AssemblyCodeMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AssemblyCodeMaintainInfo.Editor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AssemblyCodeMaintainInfo.Udt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AssemblyCodeInfoMaintainInfo.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AssemblyCodeInfoMaintainInfo.AssemblyCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AssemblyCodeInfoMaintainInfo.InfoType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AssemblyCodeInfoMaintainInfo.InfoValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AssemblyCodeInfoMaintainInfo.Editor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AssemblyCodeInfoMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AssemblyCodeInfoMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAttributeAndPartInfoValueMaintainInfo.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAttributeAndPartInfoValueMaintainInfo.MainTableKey">
+            <summary>
+            PartNo
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAttributeAndPartInfoValueMaintainInfo.Item">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAttributeAndPartInfoValueMaintainInfo.Content">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAttributeAndPartInfoValueMaintainInfo.Description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAttributeAndPartInfoValueMaintainInfo.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAttributeAndPartInfoValueMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAttributeAndPartInfoValueMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeMaintainInfo.PartType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeMaintainInfo.PartTypeGroup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeMaintainInfo.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeDescMaintainInfo.ID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeDescMaintainInfo.PartType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeDescMaintainInfo.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAttributeMaintainInfo.PartType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAttributeMaintainInfo.Code">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAttributeMaintainInfo.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAttributeMaintainInfo.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAttributeMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeAttributeMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeMappingMaintainInfo.ID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeMappingMaintainInfo.SAPType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeMappingMaintainInfo.FISType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeMappingMaintainInfo.Editor">
+            <summary>
+            Editor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeMappingMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartTypeMappingMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RegionMaintainInfo.Region">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RegionMaintainInfo.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RegionMaintainInfo.Editor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RegionMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.RegionMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.VCodeInfo">
+            <summary>
+            TPCB_Maintain信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.VCodeInfo.id">
+            <summary>
+            自增id标识 (PK)
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.VCodeInfo.tpcb">
+            <summary>
+            TPCB
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.VCodeInfo.tp">
+            <summary>
+            TouchPad
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.VCodeInfo.vcode">
+            <summary>
+            VCode
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.VCodeInfo.Editor">
+            <summary>
+            操作员标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.VCodeInfo.Cdt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.DNPalletQty">
+            <summary>
+            UI要使用的DNPallet信息
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.BSamLocationQueryType">
+            <summary>
+               All    全部
+               Empty 空庫位
+               Partial 未滿庫位
+               Full 滿庫位
+               Occupy 使用中的庫位
+               Hold 禁用庫位
+               HoldIn 禁用入庫庫位
+               HoldOut 禁用出庫庫位
+               Model By機型查詢
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AlarmInfo._stage">
+            <summary>
+            SA/FA
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AlarmInfo._startTime">
+            <summary>
+            被搜索的TestLog的创建时间范围
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AlarmInfo._alarmSettingId">
+            <summary>
+            因哪条报警标准而报警
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AlarmInfo._defect">
+            <summary>
+            超过次数限制的Defect
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AlarmInfo._reasonCode">
+            <summary>
+            ALM1:良率超标 ALM2:相同不良超标
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AlarmInfo._status">
+            <summary>
+            Created;Skip;Hold;Action;Releas
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AlarmInfo._cdt">
+            <summary>
+            Alarm记录的创建时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AlarmInfo._holdModel">
+            <summary>
+            被Hold的多个Family或Model，每个Family或Model后都有','，"All"代表所有Family都要被Hold
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AlarmInfo._holdLine">
+            <summary>
+            被Hold的多个Line，每个Line后都有','，"All"代表所有Line都要被Hold
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AlarmInfo._holdStation">
+            <summary>
+            被Hold的多个Station，每个Station后都有','，"All"代表所有Station都要被Hold
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.AlarmInfo._remark">
+            <summary>
+            新输Remark会追加到已有数据之后
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartForbiddenMaintainInfo.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartForbiddenMaintainInfo.Family">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartForbiddenMaintainInfo.Model">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartForbiddenMaintainInfo.Descr">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartForbiddenMaintainInfo.PartNo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartForbiddenMaintainInfo.AssemblyCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartForbiddenMaintainInfo.Status">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartForbiddenMaintainInfo.Cdt">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartForbiddenMaintainInfo.Udt">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.PartForbiddenMaintainInfo.Editor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.TPCBInfo">
+            <summary>
+            TPCB信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBInfo.ID">
+            <summary>
+            Identity
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBInfo.Family">
+            <summary>
+            Family
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBInfo.PdLine">
+            <summary>
+            PdLine
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBInfo.Type">
+            <summary>
+            Type
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBInfo.PartNo">
+            <summary>
+            PartNo
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBInfo.Vendor">
+            <summary>
+            Vendor
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBInfo.DCode">
+            <summary>
+            DCode
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBInfo.Editor">
+            <summary>
+            操作员标识
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBInfo.Cdt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.TPCBInfo.Udt">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.TbProductStatus">
+            <summary>
+             for SQL PVT Table 需要設定property  Order跟DB 一致
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.StandardWeight">
+            <summary>
+            Model的标准重量和误差，For UI使用
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.DNPalletWeight">
+            <summary>
+            UI要使用的DNPalletWeight信息
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOMaintainInfo.MO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOMaintainInfo.Plant">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOMaintainInfo.Model">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOMaintainInfo.CreateDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOMaintainInfo.StartDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOMaintainInfo.Qty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOMaintainInfo.SAPQty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOMaintainInfo.SAPStatus">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOMaintainInfo.Print_Qty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOMaintainInfo.Status">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOMaintainInfo.Cdt">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOBOMMaintainInfo.ID">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOBOMMaintainInfo.MO">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOBOMMaintainInfo.PartNo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOBOMMaintainInfo.AssemblyCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOBOMMaintainInfo.Qty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOBOMMaintainInfo.Group">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOBOMMaintainInfo.Deviation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOBOMMaintainInfo.Action">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOBOMMaintainInfo.Editor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOBOMMaintainInfo.Cdt">
+            <summary>
+            Cdt
+            </summary>
+        </member>
+        <member name="F:IMES.DataModel.MOBOMMaintainInfo.Udt">
+            <summary>
+            Udt
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.DNQueryCondition">
+            <summary>
+            查询DN的条件
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.MatchedPartOrCheckItem">
+            <summary>
+            UI使用的Match到的料或CheckI特卖
+            </summary>
+        </member>
+        <member name="T:IMES.DataModel.DTPallet">
+            <summary>
+            UI要使用的DTPallet信息
+            </summary>
+        </member>
+    </members>
+</doc>

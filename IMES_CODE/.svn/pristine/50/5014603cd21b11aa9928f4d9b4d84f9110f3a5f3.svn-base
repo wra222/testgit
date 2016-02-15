@@ -1,0 +1,522 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="eng_btnCanCel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="eng_btnClose" xml:space="preserve">
+    <value>Close Box</value>
+  </data>
+  <data name="eng_btnOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="eng_btnPrtSet" xml:space="preserve">
+    <value>Print Setting</value>
+  </data>
+  <data name="eng_colNoLow" xml:space="preserve">
+    <value>No.</value>
+  </data>
+  <data name="eng_lblColCollectionData" xml:space="preserve">
+    <value>Collection Data</value>
+  </data>
+  <data name="eng_lblColPartDescr" xml:space="preserve">
+    <value>Part Description</value>
+  </data>
+  <data name="eng_lblColPartNo" xml:space="preserve">
+    <value>Part No/Item Name</value>
+  </data>
+  <data name="eng_lblColPartType" xml:space="preserve">
+    <value>Part Type</value>
+  </data>
+  <data name="eng_lblColPQty" xml:space="preserve">
+    <value>PQty</value>
+  </data>
+  <data name="eng_lblColQty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="eng_lblColTitle" xml:space="preserve">
+    <value>View Collection Data</value>
+  </data>
+  <data name="eng_lblDataEntry" xml:space="preserve">
+    <value>Data Entry:</value>
+  </data>
+  <data name="eng_lblLabelType" xml:space="preserve">
+    <value>Label Type</value>
+  </data>
+  <data name="eng_lblMBCode" xml:space="preserve">
+    <value>MB Code:</value>
+  </data>
+  <data name="eng_lblPartNo" xml:space="preserve">
+    <value>Part No:</value>
+  </data>
+  <data name="eng_lblPdline" xml:space="preserve">
+    <value>PdLine:</value>
+  </data>
+  <data name="eng_lblPQty" xml:space="preserve">
+    <value>PQty:</value>
+  </data>
+  <data name="eng_lblPrinter" xml:space="preserve">
+    <value>Printer/Port</value>
+  </data>
+  <data name="eng_lblPrtTem" xml:space="preserve">
+    <value>Print Template:</value>
+  </data>
+  <data name="eng_lblQty" xml:space="preserve">
+    <value>Qty:</value>
+  </data>
+  <data name="eng_lblSubPartNo" xml:space="preserve">
+    <value>Current Part:</value>
+  </data>
+  <data name="eng_lblSubPartNoColum" xml:space="preserve">
+    <value>Part No</value>
+  </data>
+  <data name="eng_lblSubSubstitute" xml:space="preserve">
+    <value>Substitution:</value>
+  </data>
+  <data name="eng_lblSubTitle" xml:space="preserve">
+    <value>View Part Substitution</value>
+  </data>
+  <data name="eng_lblTitle" xml:space="preserve">
+    <value>Label Print Setting For WC:</value>
+  </data>
+  <data name="eng_lblX" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="eng_lblY" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="eng_titbErrMessage" xml:space="preserve">
+    <value>Message Box</value>
+  </data>
+  <data name="cn_btnCanCel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="cn_btnClose" xml:space="preserve">
+    <value>Close Box</value>
+  </data>
+  <data name="cn_btnOK" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="cn_btnPrtSet" xml:space="preserve">
+    <value>列印设定</value>
+  </data>
+  <data name="cn_colNoLow" xml:space="preserve">
+    <value>No.</value>
+  </data>
+  <data name="cn_lblColCollectionData" xml:space="preserve">
+    <value>Collection Data</value>
+  </data>
+  <data name="cn_lblColPartDescr" xml:space="preserve">
+    <value>Part Description</value>
+  </data>
+  <data name="cn_lblColPartNo" xml:space="preserve">
+    <value>Part No./Item Name</value>
+  </data>
+  <data name="cn_lblColPartType" xml:space="preserve">
+    <value>Parts Type</value>
+  </data>
+  <data name="cn_lblColPQty" xml:space="preserve">
+    <value>PQty</value>
+  </data>
+  <data name="cn_lblColQty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="cn_lblColTitle" xml:space="preserve">
+    <value>Collection Data</value>
+  </data>
+  <data name="cn_lblDataEntry" xml:space="preserve">
+    <value>Data Entry:</value>
+  </data>
+  <data name="cn_lblLabelType" xml:space="preserve">
+    <value>Label Type</value>
+  </data>
+  <data name="cn_lblMBCode" xml:space="preserve">
+    <value>MB Code:</value>
+  </data>
+  <data name="cn_lblPartNo" xml:space="preserve">
+    <value>Part No:</value>
+  </data>
+  <data name="cn_lblPdline" xml:space="preserve">
+    <value>线别:</value>
+  </data>
+  <data name="cn_lblPQty" xml:space="preserve">
+    <value>PQty:</value>
+  </data>
+  <data name="cn_lblPrinter" xml:space="preserve">
+    <value>Printer/Port</value>
+  </data>
+  <data name="cn_lblPrtTem" xml:space="preserve">
+    <value>Print Template:</value>
+  </data>
+  <data name="cn_lblQty" xml:space="preserve">
+    <value>Qty:</value>
+  </data>
+  <data name="cn_lblSubPartNo" xml:space="preserve">
+    <value>Current Part:</value>
+  </data>
+  <data name="cn_lblSubPartNoColum" xml:space="preserve">
+    <value>Part No</value>
+  </data>
+  <data name="cn_lblSubSubstitute" xml:space="preserve">
+    <value>Substitution:</value>
+  </data>
+  <data name="cn_lblSubTitle" xml:space="preserve">
+    <value>View Part Substitution</value>
+  </data>
+  <data name="cn_lblTitle" xml:space="preserve">
+    <value>Label Print Setting For WC:</value>
+  </data>
+  <data name="cn_lblX" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="cn_lblY" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="cn_titbErrMessage" xml:space="preserve">
+    <value>Message Box</value>
+  </data>
+  <data name="cn_lblSubPartDescrColum" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="eng_lblSubPartDescrColum" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="cn_lblMode" xml:space="preserve">
+    <value>Print Mode</value>
+  </data>
+  <data name="cn_lblSettingTip1" xml:space="preserve">
+    <value>如果使用BAT列印方式,必须选择要使用的BAT文件以及打印机端口!</value>
+  </data>
+  <data name="cn_lblSettingTip2" xml:space="preserve">
+    <value>如果使用模板列印方式,模板由系统自动匹配,只需选择打印机和偏移量!</value>
+  </data>
+  <data name="cn_lblTemplate" xml:space="preserve">
+    <value>Template/BAT</value>
+  </data>
+  <data name="eng_lblMode" xml:space="preserve">
+    <value>Print Mode</value>
+  </data>
+  <data name="eng_lblSettingTip1" xml:space="preserve">
+    <value>如果使用BAT列印方式,必须选择要使用的BAT文件以及打印机端口!</value>
+  </data>
+  <data name="eng_lblSettingTip2" xml:space="preserve">
+    <value>如果使用模板列印方式,模板由系统自动匹配,只需选择打印机和偏移量!</value>
+  </data>
+  <data name="eng_lblTemplate" xml:space="preserve">
+    <value>Template/BAT</value>
+  </data>
+  <data name="cn_BtnDownloadBat" xml:space="preserve">
+    <value>下载所有的打印批次档文件</value>
+  </data>
+  <data name="eng_BtnDownloadBat" xml:space="preserve">
+    <value>Download All Print Batch Files</value>
+  </data>
+  <data name="cn_btnClearSession" xml:space="preserve">
+    <value>Clear Session</value>
+  </data>
+  <data name="cn_ClearSuc" xml:space="preserve">
+    <value>成功清除！</value>
+  </data>
+  <data name="cn_colCDT" xml:space="preserve">
+    <value>Create Date</value>
+  </data>
+  <data name="cn_colline" xml:space="preserve">
+    <value>PdLine</value>
+  </data>
+  <data name="cn_colMBSN" xml:space="preserve">
+    <value>MBSN</value>
+  </data>
+  <data name="cn_colOperator" xml:space="preserve">
+    <value>Operator</value>
+  </data>
+  <data name="cn_colStation" xml:space="preserve">
+    <value>Station</value>
+  </data>
+  <data name="cn_ConfirmCS" xml:space="preserve">
+    <value>确定清除此session?</value>
+  </data>
+  <data name="cn_lblCommon" xml:space="preserve">
+    <value>Common</value>
+  </data>
+  <data name="cn_lblMB" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="cn_lblProduct" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="cn_lblSessKey" xml:space="preserve">
+    <value>Session Key:</value>
+  </data>
+  <data name="cn_NoSesToClear" xml:space="preserve">
+    <value>请先选定一个session!</value>
+  </data>
+  <data name="eng_btnClearSession" xml:space="preserve">
+    <value>Clear Session</value>
+  </data>
+  <data name="eng_ClearSuc" xml:space="preserve">
+    <value>clear session successfully!</value>
+  </data>
+  <data name="eng_colCDT" xml:space="preserve">
+    <value>Create Date</value>
+  </data>
+  <data name="eng_colline" xml:space="preserve">
+    <value>PdLine</value>
+  </data>
+  <data name="eng_colMBSN" xml:space="preserve">
+    <value>MBSN</value>
+  </data>
+  <data name="eng_colOperator" xml:space="preserve">
+    <value>Operator</value>
+  </data>
+  <data name="eng_colStation" xml:space="preserve">
+    <value>Station</value>
+  </data>
+  <data name="eng_ConfirmCS" xml:space="preserve">
+    <value>Are you sure to clear this session?</value>
+  </data>
+  <data name="eng_lblCommon" xml:space="preserve">
+    <value>Common</value>
+  </data>
+  <data name="eng_lblMB" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="eng_lblProduct" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="eng_lblSessKey" xml:space="preserve">
+    <value>Session Key:</value>
+  </data>
+  <data name="eng_NoSesToClear" xml:space="preserve">
+    <value>Plese select a session first!</value>
+  </data>
+  <data name="cn_NoDescWCExist" xml:space="preserve">
+    <value>存在无描述的站号:</value>
+  </data>
+  <data name="eng_NoDescWCExist" xml:space="preserve">
+    <value>Station without description exist:</value>
+  </data>
+  <data name="cn_lblReason" xml:space="preserve">
+    <value>原因:</value>
+  </data>
+  <data name="eng_lblReason" xml:space="preserve">
+    <value>Reason:</value>
+  </data>
+  <data name="cn_colService" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="eng_colService" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="cn_lblDateCode" xml:space="preserve">
+    <value>Date Code:</value>
+  </data>
+  <data name="cn_lblECR" xml:space="preserve">
+    <value>ECR:</value>
+  </data>
+  <data name="cn_lblMBSno" xml:space="preserve">
+    <value>MB Sno:</value>
+  </data>
+  <data name="eng_lblDateCode" xml:space="preserve">
+    <value>Date Code:</value>
+  </data>
+  <data name="eng_lblECR" xml:space="preserve">
+    <value>ECR:</value>
+  </data>
+  <data name="eng_lblMBSno" xml:space="preserve">
+    <value>MB Sno:</value>
+  </data>
+  <data name="cn_btnClearCache" xml:space="preserve">
+    <value>Reload Cache</value>
+  </data>
+  <data name="cn_btnUpdateCache" xml:space="preserve">
+    <value>Update Cache</value>
+  </data>
+  <data name="eng_btnClearCache" xml:space="preserve">
+    <value>Reload Cache</value>
+  </data>
+  <data name="eng_btnUpdateCache" xml:space="preserve">
+    <value>Update Cache</value>
+  </data>
+  <data name="cn_btnDismantle" xml:space="preserve">
+    <value>Dismantle</value>
+  </data>
+  <data name="eng_btnDismantle" xml:space="preserve">
+    <value>Dismantle</value>
+  </data>
+  <data name="cn_btnSave" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="cn_lblCustVer" xml:space="preserve">
+    <value>Cust Version:</value>
+  </data>
+  <data name="cn_lblIECVer" xml:space="preserve">
+    <value>IEC Version:</value>
+  </data>
+  <data name="eng_btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="eng_lblCustVer" xml:space="preserve">
+    <value>Cust Version:</value>
+  </data>
+  <data name="eng_lblIECVer" xml:space="preserve">
+    <value>IEC Version:</value>
+  </data>
+  <data name="cn_lblColValueType" xml:space="preserve">
+    <value>Value Type</value>
+  </data>
+  <data name="eng_lblColValueType" xml:space="preserve">
+    <value>Value Type</value>
+  </data>
+  <data name="cn_ReloadPage" xml:space="preserve">
+    <value>刷新页面</value>
+  </data>
+  <data name="eng_ReloadPage" xml:space="preserve">
+    <value>Reload Page</value>
+  </data>
+  <data name="cn_btnUnpack" xml:space="preserve">
+    <value>Unpack</value>
+  </data>
+  <data name="eng_btnUnpack" xml:space="preserve">
+    <value>Unpack</value>
+  </data>
+  <data name="cn_btnReprint" xml:space="preserve">
+    <value>重印</value>
+  </data>
+  <data name="eng_btnReprint" xml:space="preserve">
+    <value>Reprint</value>
+  </data>
+  <data name="cn_LabelDownloadAlert" xml:space="preserve">
+    <value>不要手动关闭下载bat的DOS窗口，否则将会导致打印标签错误。</value>
+  </data>
+  <data name="eng_LabelDownloadAlert" xml:space="preserve">
+    <value>Don't manaully close DOS Window for download bat,it will cause print label error!</value>
+  </data>
+  <data name="cn_LabelGoToDownloadBatPage" xml:space="preserve">
+    <value>BAT下载功能已被移到DownloadBat页面</value>
+  </data>
+  <data name="eng_LabelGoToDownloadBatPage" xml:space="preserve">
+    <value>Download bat function has been moved to DownloadBat page</value>
+  </data>
+  <data name="cn_btnRefreshPartMatch" xml:space="preserve">
+    <value>Refresh PartMatch</value>
+  </data>
+  <data name="eng_btnRefreshPartMatch" xml:space="preserve">
+    <value>Refresh PartMatch</value>
+  </data>
+</root>

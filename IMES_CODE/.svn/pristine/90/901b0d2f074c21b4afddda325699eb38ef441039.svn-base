@@ -1,0 +1,134 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <title>Test</title>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="IMESUti.Message.js"></script>
+		<script type="text/javascript" src="json2.js"></script>
+        <script type="text/javascript">
+			var message=IMESUti.Message;
+            function appendMessage(message) {
+                $('body').append(message);
+            }   
+            function disconnectWebSocket() {
+                message.DisconnectWS();
+            }           
+
+            window.onload = function () {
+                //$('#messageInput').attr("disabled", "disabled");
+                //$('#sendButton').attr("disabled", "disabled");
+                $('#disconnectButton').attr("disabled", "disabled");
+				//if (typeof (JSON) == 'undefined') 
+				//{ 
+				//	$('script').append($("<script type='text/javascript' src='json2.js'>"));
+				//} 				
+        }	
+		
+		function Subscribe()
+		{
+			var subject = document.getElementById('SubjectInput').value;
+			message.Subscribe('ws://10.96.183.193:2012/',subject,
+					OnSentFunction,
+					OnMessageFunction, 
+					OnOpenFunction, 
+					onCloseFunction,
+					onErrorFunction);		
+		}
+		
+		function OnSentFunction(wsUrl,sendData, subject)
+		{
+			appendMessage('@ Subject:' + subject + ' Subscribe :' + sendData +' <br/>');
+		}
+		
+		function OnMessageFunction(rawData,context)
+		{
+			appendMessage("# Received Raw:" + rawData + "<br />");
+			if (typeof (context) === 'object')
+			{
+				var data =JSON.stringify(context);	
+				appendMessage("# Context:" + data+ "<br />");
+			}
+			else
+			{			
+			 appendMessage("# Context:" + context+ "<br />");
+			}
+		}
+		
+		function OnOpenFunction()
+		{
+		  appendMessage('* Connection open<br/>');
+                    //$('#messageInput').attr("disabled", "");
+                    //$('#sendButton').attr("disabled", "");
+                    //$('#connectButton').attr("disabled", "disabled");
+                    $('#disconnectButton').attr("disabled", "");
+		}
+		
+		function onCloseFunction()
+		{
+		appendMessage('* Connection closed<br/>');
+                    //$('#messageInput').attr("disabled", "disabled");
+                    //$('#sendButton').attr("disabled", "disabled");
+                    //$('#connectButton').attr("disabled", "");
+                    $('#disconnectButton').attr("disabled", "disabled");
+		}
+		
+		function onErrorFunction(evt)
+		{
+		  appendMessage('* WebSocket Error '+ evt+'<br/>');                  
+		}
+		
+		function Publish()
+		{
+			var dataStr = document.getElementById('messageInput').value;
+			var data=null;
+			try{
+			   data=JSON.parse(dataStr);
+			}
+			catch(e)
+			{
+			
+			}
+			if (data ==null)
+			{
+			  data =dataStr;
+			}
+			var subject = document.getElementById('SubjectInput').value;
+			message.Publish('http://10.96.183.193:8989/test',
+							subject,
+			                data,PublishOK, PublishError);
+		}
+		
+		function PublishOK(url,subject, sentData, responseText)
+		{
+			if (typeof (sentData) === 'object')
+			{
+				var data =JSON.stringify(sentData);
+				appendMessage("->Publish Message:" +data+'<br/>');
+			}
+			else
+			{
+				appendMessage("->Publish Message:" +sentData+'<br/>');
+			}
+			appendMessage("<- Get Http Server Reply " + responseText + "<br />");
+		}
+		
+		function PublishError(url,subject, sentData,status)
+		{
+			appendMessage("->Publish Message:" +sentData+'<br/>');
+			appendMessage("<- Get Http Server Status:" + status + "<br />");
+		}
+    
+    </script>
+    </head>
+    <body>
+        <!--<input type="button" id="connectButton" value="Connect" onclick="connectWebSocket()"/>--> 
+		<input type="button" id="disconnectButton" value="Disconnect" onclick="disconnectWebSocket()"/> 
+		<input type="button" id="sendButton" value="Subscribe" onclick="Subscribe()"/> 
+		<input type="button" id="sendHttpButton" value="Publish" onclick="Publish()"/> <br/>
+		<br/> 		
+		Subject:<input type="text"  size="150" id="SubjectInput" Value='A-Line' /> <br/>
+        <br/> 		
+		Message:<input type="text"  size="150" id="messageInput" Value='{"PartNo":"P12344","Model":"Test","CustSN":"test1234"}' /> <br/><br/>
+		<br />
+    </body>
+</html>

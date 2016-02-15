@@ -1,0 +1,49 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="_ITCNDCheck" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:ns1="clr-namespace:IMES.Activity.CQ;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProductByInput Customer="{ActivityBind _ITCNDCheck,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" Station="{ActivityBind _ITCNDCheck,Path=Station}" x:Name="getProductByInput1" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" IsStopWF="Stop" InputType="ProductIDOrCustSN" />
+	<ns0:BlockStation Customer="{ActivityBind _ITCNDCheck,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" ProcessType="Product" Station="{ActivityBind _ITCNDCheck,Path=Station}" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" />
+	<ns0:CheckAndSetQTime Customer="{ActivityBind _ITCNDCheck,Path=Customer}" x:Name="checkAndSetQTime1" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" Station="{ActivityBind _ITCNDCheck,Path=Station}" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" RemainLogDay="2" />
+	<ns0:CheckImageDownLoadStation Customer="{ActivityBind _ITCNDCheck,Path=Customer}" x:Name="checkImageDownLoadStation1" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" NoNeedOSImageThrowError="True" CheckDefaultDLStation="6A~67" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" IsGetQCPIAStatus="False" EAPIAOutStation="6A" Station="{ActivityBind _ITCNDCheck,Path=Station}" CheckLatestImageLog="True" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" ImageDownLoadStation="66" />
+	<ns0:DBScope Station="{ActivityBind _ITCNDCheck,Path=Station}" x:Name="dbScope3" Key="{ActivityBind _ITCNDCheck,Path=Key}" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}">
+		<ns0:ITCNDCheckProduct Customer="{ActivityBind _ITCNDCheck,Path=Customer}" x:Name="itcndCheckProduct1" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" Station="{ActivityBind _ITCNDCheck,Path=Station}" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" />
+		<ns0:ITCNDCheckItem Customer="{ActivityBind _ITCNDCheck,Path=Customer}" x:Name="itcndCheckItem1" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" NotMatchThrowError="False" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" NoCheckItemThrowError="True" Station="{ActivityBind _ITCNDCheck,Path=Station}" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" />
+		<ns1:CheckBatteryAndProductInfo Customer="{ActivityBind _ITCNDCheck,Path=Customer}" x:Name="checkBatteryAndProductInfo1" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" CheckBatteryLog="66" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" CheckMACaddr1InfoType="MAC_ADDR1" Station="{ActivityBind _ITCNDCheck,Path=Station}" CheckBatteryInfoType="BATW" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" />
+		<IfElseActivity x:Name="ifElseActivity1">
+			<IfElseBranchActivity x:Name="PASS">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="PassOrFail" />
+				</IfElseBranchActivity.Condition>
+				<ns0:UpdateProductStatus Customer="{ActivityBind _ITCNDCheck,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" Status="Pass" Station="67" IsReturnStatoin="False" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind _ITCNDCheck,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" Station="67" Status="Pass" IsSingle="True" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" />
+				<ns0:CheckBOMForWWAN Customer="{ActivityBind _ITCNDCheck,Path=Customer}" x:Name="checkBOMForWWAN1" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" Station="{ActivityBind _ITCNDCheck,Path=Station}" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" />
+				<ns0:RemoveProductInfoByProdIdAndType Customer="{ActivityBind _ITCNDCheck,Path=Customer}" x:Name="removeProductInfoByProdIdAndType1" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" Station="{ActivityBind _ITCNDCheck,Path=Station}" InfoType="IMGCL" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" />
+				<ns0:RemoveProductInfoByProdIdAndType Customer="{ActivityBind _ITCNDCheck,Path=Customer}" x:Name="removeProductInfoByProdIdAndType2" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" Station="{ActivityBind _ITCNDCheck,Path=Station}" InfoType="2PPCL" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity2">
+					<IfElseBranchActivity x:Name="Exist">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="Exist" />
+						</IfElseBranchActivity.Condition>
+						<ns0:WritePrintLog Customer="{ActivityBind _ITCNDCheck,Path=Customer}" x:Name="writePrintLog1" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" Station="{ActivityBind _ITCNDCheck,Path=Station}" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity Enabled="False" x:Name="noExist" />
+				</IfElseActivity>
+			</IfElseBranchActivity>
+			<IfElseBranchActivity Enabled="False" x:Name="ifElseBranchActivity2">
+				<ns0:DBScope Station="{ActivityBind _ITCNDCheck,Path=Station}" x:Name="dbScope1" Key="{ActivityBind _ITCNDCheck,Path=Key}" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}">
+					<ns0:UpdateProductStatus Customer="{ActivityBind _ITCNDCheck,Path=Customer}" x:Name="updateProductStatus2" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" Status="Fail" Station="67" IsReturnStatoin="False" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" />
+					<ns0:WriteProductLog Customer="{ActivityBind _ITCNDCheck,Path=Customer}" x:Name="writeProductLog3" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" Station="79" Status="Fail" IsSingle="True" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" />
+				</ns0:DBScope>
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+	<IfElseActivity x:Name="ifElseActivity3">
+		<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="Exist" />
+			</IfElseBranchActivity.Condition>
+						<ns0:Print Customer="{ActivityBind _ITCNDCheck,Path=Customer}" NotExistException="True" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" x:Name="print2" Station="{ActivityBind _ITCNDCheck,Path=Station}" MOFrom="No" ModelFrom="No" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" DnFrom="No" />
+		</IfElseBranchActivity>
+		<IfElseBranchActivity Enabled="False" x:Name="ifElseBranchActivity3" />
+	</IfElseActivity>
+	<ns0:CheckBSamModel Customer="{ActivityBind _ITCNDCheck,Path=Customer}" NotExistException="False" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" ExistException="False" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" Station="{ActivityBind _ITCNDCheck,Path=Station}" x:Name="checkBSamModel1" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" IsStopWF="False" />
+	<ns0:CheckShipDateAndSetMsg Customer="{ActivityBind _ITCNDCheck,Path=Customer}" x:Name="checkShipDateAndSetMsg1" SessionType="{ActivityBind _ITCNDCheck,Path=SessionType}" Editor="{ActivityBind _ITCNDCheck,Path=Editor}" Station="{ActivityBind _ITCNDCheck,Path=Station}" Line="{ActivityBind _ITCNDCheck,Path=PdLine}" Key="{ActivityBind _ITCNDCheck,Path=Key}" IsThrowException="False" />
+</ns0:BaseFlow>

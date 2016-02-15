@@ -1,0 +1,86 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IMES.Infrastructure.FisObjectBase;
+
+namespace IMES.FisObject.Common.Part
+{
+    /// <summary>
+    /// Part类型
+    /// </summary>
+    public class PartType: FisObjectBase
+    {
+        private string _partType;
+        private string _partTypeGroup;
+        private string _editor;
+        private DateTime _cdt;
+        private DateTime _udt;
+
+        /// <summary>
+        /// 默认构造函数
+        /// </summary>
+        public PartType(string partType, string partTypeGroup, string editor, DateTime cdt, DateTime udt)
+        {
+            _partType = partType;
+            _partTypeGroup = partTypeGroup;
+            _editor = editor;
+            _cdt = cdt;
+            _udt = udt;
+
+            this._tracker.MarkAsAdded(this);
+        }
+
+        /// <summary>
+        /// Part 类型名
+        /// </summary>
+        public string PartTypeName
+        {
+            get { return _partType; }
+        }
+
+        /// <summary>
+        /// Part大类别
+        /// </summary>
+        public string PartTypeGroup
+        {
+            get { return _partTypeGroup; }
+        }
+
+        /// <summary>
+        /// Editor
+        /// </summary>
+        public string Editor
+        {
+            get { return _editor; }
+        }
+
+        /// <summary>
+        /// Cdt
+        /// </summary>
+        public DateTime Cdt
+        {
+            get { return _cdt; }
+        }
+
+        /// <summary>
+        /// Udt
+        /// </summary>
+        public DateTime Udt
+        {
+            get { return _udt; }
+        }
+
+        #region Overrides of FisObjectBase
+
+        /// <summary>
+        /// 对象标示key, 在同类型FisObject范围内唯一
+        /// </summary>
+        public override object Key
+        {
+            get { return _partType; }
+        }
+
+        #endregion
+    }
+}

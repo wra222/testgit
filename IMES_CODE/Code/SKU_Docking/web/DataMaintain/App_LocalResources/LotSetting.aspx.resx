@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cn_btnAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="cn_btnDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="cn_btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="cn_lblCode" xml:space="preserve">
+    <value>Code:</value>
+  </data>
+  <data name="cn_lblDescr" xml:space="preserve">
+    <value>Descr:</value>
+  </data>
+  <data name="cn_lblList" xml:space="preserve">
+    <value>Lot Setting List:</value>
+  </data>
+  <data name="cn_lstItemCdt" xml:space="preserve">
+    <value>Cdt</value>
+  </data>
+  <data name="cn_lstItemEditor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="cn_lstItemCode" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="cn_lstItemDes" xml:space="preserve">
+    <value>Fail Qty</value>
+  </data>
+  <data name="cn_lstItemUdt" xml:space="preserve">
+    <value>Udt</value>
+  </data>
+  <data name="eng_btnAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="eng_btnDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="eng_btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="eng_lblCode" xml:space="preserve">
+    <value>Code:</value>
+  </data>
+  <data name="eng_lblDescr" xml:space="preserve">
+    <value>Descr:</value>
+  </data>
+  <data name="eng_lblList" xml:space="preserve">
+    <value>Lot Setting List:</value>
+  </data>
+  <data name="eng_lstItemCdt" xml:space="preserve">
+    <value>Cdt</value>
+  </data>
+  <data name="eng_lstItemEditor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="eng_lstItemCode" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="eng_lstItemDes" xml:space="preserve">
+    <value>Fail Qty</value>
+  </data>
+  <data name="eng_lstItemUdt" xml:space="preserve">
+    <value>Udt</value>
+  </data>
+  <data name="cn_pmtMessage1" xml:space="preserve">
+    <value>列表中找不到与Code栏位匹配的项</value>
+  </data>
+  <data name="cn_pmtMessage3" xml:space="preserve">
+    <value>请先选择一条记录</value>
+  </data>
+  <data name="cn_pmtMessageDelete" xml:space="preserve">
+    <value>确定要删除这条记录么？</value>
+  </data>
+  <data name="cn_pmtMessageSelectIsHold" xml:space="preserve">
+    <value>请选择[Is Hold]</value>
+  </data>
+  <data name="cn_pmtMessageNeedCode" xml:space="preserve">
+    <value>请选择[line] </value>
+  </data>
+  <data name="eng_pmtMessage2" xml:space="preserve">
+    <value>Can't find the matching [Code] </value>
+  </data>
+  <data name="eng_pmtMessage3" xml:space="preserve">
+    <value>Please choose an item</value>
+  </data>
+  <data name="eng_pmtMessageDelete" xml:space="preserve">
+    <value>Do you really want to delete this item?</value>
+  </data>
+  <data name="eng_pmtMessageSelectIsHold" xml:space="preserve">
+    <value>Please select [Is Hold]</value>
+  </data>
+  <data name="eng_pmtMessageNeedCode" xml:space="preserve">
+    <value>Please select Line!</value>
+  </data>
+  <data name="cn_lblIsHold" xml:space="preserve">
+    <value>Is Hold:</value>
+  </data>
+  <data name="cn_lstItemIsHold" xml:space="preserve">
+    <value>Lot Qty</value>
+  </data>
+  <data name="eng_lblIsHold" xml:space="preserve">
+    <value>Is Hold:</value>
+  </data>
+  <data name="eng_lstItemIsHold" xml:space="preserve">
+    <value>Lot Qty</value>
+  </data>
+  <data name="cn_pmtMessage2" xml:space="preserve">
+    <value>不存在查询的[Label Kitting Code]</value>
+  </data>
+  <data name="eng_pmtMessage1" xml:space="preserve">
+    <value>Can't find matching [Label Kitting Code] in list!</value>
+  </data>
+  <data name="cn_pmtMessageCodeOverLength" xml:space="preserve">
+    <value>[Code]最多20个字符</value>
+  </data>
+  <data name="cn_pmtMessageDescrOverLength" xml:space="preserve">
+    <value>[Code]最多200个字符</value>
+  </data>
+  <data name="eng_pmtMessageCodeOverLength" xml:space="preserve">
+    <value>[Code] cannot exceed 20 characters</value>
+  </data>
+  <data name="eng_pmtMessageDescrOverLength" xml:space="preserve">
+    <value>[Code] cannot exceed 200 characters</value>
+  </data>
+  <data name="cn_dCode" xml:space="preserve">
+    <value>Line:</value>
+  </data>
+  <data name="cn_lblFailQty" xml:space="preserve">
+    <value>Fail Qty:</value>
+  </data>
+  <data name="cn_lblLine" xml:space="preserve">
+    <value>Line:</value>
+  </data>
+  <data name="cn_lblPassQty" xml:space="preserve">
+    <value>Lot Qty:</value>
+  </data>
+  <data name="eng_dCode" xml:space="preserve">
+    <value>Line:</value>
+  </data>
+  <data name="eng_lblFailQty" xml:space="preserve">
+    <value>Fail Qty:</value>
+  </data>
+  <data name="eng_lblLine" xml:space="preserve">
+    <value>Line:</value>
+  </data>
+  <data name="eng_lblPassQty" xml:space="preserve">
+    <value>Lot Qty:</value>
+  </data>
+  <data name="cn_pmtMessageFailQty" xml:space="preserve">
+    <value>请输入正确Fail Qty 数据，它要大于等于零！</value>
+  </data>
+  <data name="cn_pmtMessagePassQty" xml:space="preserve">
+    <value>请输入正确Lot Qty 数据，它要大于零！</value>
+  </data>
+  <data name="eng_pmtMessageFailQty" xml:space="preserve">
+    <value>Please input right Fail Qty data, it must be larger than or equal to zero!</value>
+  </data>
+  <data name="eng_pmtMessagePassQty" xml:space="preserve">
+    <value>Please input right Lot Qty data, it must be larger than zero!</value>
+  </data>
+  <data name="cn_pmtMessageDataBoth" xml:space="preserve">
+    <value>数据已经存在!请重新输入</value>
+  </data>
+  <data name="eng_pmtMessageDataBoth" xml:space="preserve">
+    <value>Data exist, please input again!</value>
+  </data>
+  <data name="cn_lblCheckQty" xml:space="preserve">
+    <value>Check Qty:</value>
+  </data>
+  <data name="cn_lstItemCheckQty" xml:space="preserve">
+    <value>Check Qty</value>
+  </data>
+  <data name="cn_pmtMessageCheckQty" xml:space="preserve">
+    <value>请输入正确Check Qty 数据，它要介于1和Lot Qty之间！</value>
+  </data>
+  <data name="eng_lblCheckQty" xml:space="preserve">
+    <value>Check Qty:</value>
+  </data>
+  <data name="eng_lstItemCheckQty" xml:space="preserve">
+    <value>Check Qty</value>
+  </data>
+  <data name="eng_pmtMessageCheckQty" xml:space="preserve">
+    <value>Please input right Check Qty data, it must be between 1 and Lot Qty!</value>
+  </data>
+  <data name="cn_lblType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="eng_lblType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="cn_lstItemType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="eng_lstItemType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+</root>

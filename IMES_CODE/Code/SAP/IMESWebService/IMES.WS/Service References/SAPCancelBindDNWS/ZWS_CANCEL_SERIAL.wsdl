@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="urn:sap-com:document:sap:soap:functions:mc-style" xmlns:n0="urn:sap-com:document:sap:rfc:functions" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns:tns="urn:sap-com:document:sap:rfc:functions" attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+      <xsd:simpleType name="char1">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char17">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="17" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char25">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="25" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char255">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="255" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char4">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="urn:sap-com:document:sap:soap:functions:mc-style">
+      <xsd:import namespace="urn:sap-com:document:sap:rfc:functions" />
+      <xsd:complexType name="ZwsCancelSnInLine">
+        <xsd:sequence>
+          <xsd:element name="Serialnumber" type="n0:char17" />
+          <xsd:element name="Plant" type="n0:char4" />
+          <xsd:element name="Id" type="n0:char10" />
+          <xsd:element name="Remark1" type="n0:char25" />
+          <xsd:element name="Remark2" type="n0:char25" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZwsCancelSnOutLine">
+        <xsd:sequence>
+          <xsd:element name="Serialnumber" type="n0:char17" />
+          <xsd:element name="Plant" type="n0:char4" />
+          <xsd:element name="Id" type="n0:char10" />
+          <xsd:element name="Result" type="n0:char1" />
+          <xsd:element name="Errortext" type="n0:char255" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZwsCancelSnInTab">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZwsCancelSnInLine" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZwsCancelSnOutTab">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZwsCancelSnOutLine" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ZwsCancelSerial">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="In" type="tns:ZwsCancelSnInTab" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZwsCancelSerialResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Out" type="tns:ZwsCancelSnOutTab" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ZwsCancelSerial">
+    <wsdl:part name="parameters" element="tns:ZwsCancelSerial" />
+  </wsdl:message>
+  <wsdl:message name="ZwsCancelSerialResponse">
+    <wsdl:part name="parameters" element="tns:ZwsCancelSerialResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ZWS_CANCEL_SERIAL">
+    <wsdl:operation name="ZwsCancelSerial">
+      <wsdl:input message="tns:ZwsCancelSerial" />
+      <wsdl:output message="tns:ZwsCancelSerialResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ZWS_CANCEL_SERIALSoapBinding" type="tns:ZWS_CANCEL_SERIAL">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ZwsCancelSerial">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ZWS_CANCEL_SERIALService">
+    <wsdl:port name="ZWS_CANCEL_SERIALSoapBinding" binding="tns:ZWS_CANCEL_SERIALSoapBinding">
+      <soap:address location="http://xidqdb.iec.inventec.com:8000/sap/bc/srt/rfc/sap/ZWS_CANCEL_SERIAL?sap-client=001" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

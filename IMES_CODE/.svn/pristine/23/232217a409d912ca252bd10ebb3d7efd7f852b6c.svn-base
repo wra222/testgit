@@ -1,0 +1,17 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="Workflow1" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<SynchronizationScopeActivity x:Name="synchronizationScopeActivity1" SynchronizationHandles="UpdateSMTMOSequence">
+		<ns0:AcquireSMTMOSection Customer="{ActivityBind Workflow1,Path=Customer}" x:Name="acquireSMTMOSection1" SessionType="{ActivityBind Workflow1,Path=SessionType}" Editor="{ActivityBind Workflow1,Path=Editor}" SessionId="00000000-0000-0000-0000-000000000000" Station="{ActivityBind Workflow1,Path=Station}" Line="{ActivityBind Workflow1,Path=PdLine}" Key="{ActivityBind Workflow1,Path=Key}" />
+	</SynchronizationScopeActivity>
+	<ns0:WaitInput Customer="{ActivityBind Workflow1,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind Workflow1,Path=SessionType}" Editor="{ActivityBind Workflow1,Path=Editor}" Station="{ActivityBind Workflow1,Path=Station}" Line="{ActivityBind Workflow1,Path=PdLine}" Key="{ActivityBind Workflow1,Path=Key}" />
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="isCreate" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind Workflow1,Path=Station}" x:Name="dbScope1" Key="{ActivityBind Workflow1,Path=Key}" SessionType="{ActivityBind Workflow1,Path=SessionType}">
+				<ns0:GenerateSMTMO Customer="{ActivityBind Workflow1,Path=Customer}" x:Name="generateSMTMO1" SessionType="{ActivityBind Workflow1,Path=SessionType}" Editor="{ActivityBind Workflow1,Path=Editor}" Station="{ActivityBind Workflow1,Path=Station}" Line="{ActivityBind Workflow1,Path=PdLine}" Key="{ActivityBind Workflow1,Path=Key}" />
+				<ns0:WritePrintLog Customer="{ActivityBind Workflow1,Path=Customer}" LogType="SMTMO" SessionType="{ActivityBind Workflow1,Path=SessionType}" Editor="{ActivityBind Workflow1,Path=Editor}" Station="{ActivityBind Workflow1,Path=Station}" x:Name="writePrintLog1" Line="{ActivityBind Workflow1,Path=PdLine}" Key="{ActivityBind Workflow1,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

@@ -1,0 +1,35 @@
+﻿.iMes_div_MainTainEdit
+{
+    border: thin solid Black; 
+    background-color: #99CDFF;
+    margin:0 0 20 0;
+    
+}
+.iMes_div_MainTainContainer
+{
+	 width: 95%; 
+	 border: solid 0px red; 
+	 margin: 0 auto;
+
+} 
+
+.iMes_div_MainTainDiv1
+{
+	 margin-top:4px;
+	 margin-bottom:4px;
+} 
+
+.iMes_div_MainTainListLable
+{
+	 width: 200px;
+	 padding-left:2px;
+} 
+  
+  .iMes_div_MainTainContainer_
+{
+	 width: 95%; 
+	 border: solid 0px red; 
+	 margin: 0 auto;
+	 background-color: #D2D2D2;
+} 
+ 

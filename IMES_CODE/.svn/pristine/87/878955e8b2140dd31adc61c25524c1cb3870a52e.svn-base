@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+body { margin: 0px;border:0px;background-color: white; }
+
+table {width:100%;font:normal normal normal 9pt Verdana;border-collapse:collapse;border:0 outset;}
+table.title { background-color: rgb(156,192,248);width:100%;height:22px;font:normal normal bold 9pt Verdana;border-collapse:collapse;border:1 outset;}
+table.thead { background-image: url('../../images/tHead.jpg');width:100%;height:25px;font: normal  normal bold 9pt "Verdana" ;color:white; }
+
+*html legend {margin: -10px 0 0 0;position:relative;font-size:12pt;} 
+button {font:normal normal normal 9pt Verdana;client-left:2cm;width:60px;height:22px;cursor:hand}
+TD {border-color:lightslategray}
+
+.title { background-color: rgb(147,190,225);height:22px;font:normal normal bold 9pt Verdana;width:100%;}
+.content{ background-color: rgb(231,240,247);width:100%;font:normal normal normal 9pt Verdana;border-collapse:collapse }
+
+.bgBody{background-color: rgb(147,191,218);}
+
+
+.tipFont{color:red;font-size:13pt;}
+.tipFont1{color:red;font-size:9pt;}
+.wizardTip{background-color: rgb(255,255,255);}
+.wizardContent{margin-left:50px;margin-top:50px;width:100%;margin-right:50px;}
+.wizardContent1{margin-left:50px;margin-top:20px;width:100%;margin-right:50px;}
+.propertyDialogContent{height:270px;padding-top:10px;padding-left: 20px; padding-right: 20px;border:1 solid rgb(84,119,147);}
+.propertyDialogButton{float:right;margin-top: 10px;}
+.inputStyle{width:200px;}
+fieldset{position:relative; top:6px;width:100%;background-color: rgb(147,191,218);  margin-left:10px; margin-right:10px;padding-bottom:1pt;padding-left:5pt;padding-right:5pt;}
+.dialogBody{margin: 5px;background-color: rgb(147,191,218);}
+.inputTitle{font-weight: normal;}
+.propertyDialog {margin-left: 20px; margin-right: 20px;margin-top:10px;}
+.propertyDialogContent1{padding-top:10px;padding-left: 10px; border:1 solid rgb(84,119,147);}
+

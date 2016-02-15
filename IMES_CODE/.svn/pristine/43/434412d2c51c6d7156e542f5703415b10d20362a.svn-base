@@ -1,0 +1,3733 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using IMES.FisObject.Common.Misc;
+using IMES.DataModel;
+using System.Reflection;
+using System.Data.SqlClient;
+using System.Data;
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+using IMES.Infrastructure.FisObjectBase;
+using IMES.Infrastructure.Utility;
+using IMES.Infrastructure.UnitOfWork;
+using IMES.FisObject.Common.Repair;
+using IMES.Infrastructure.Repository._Metas;
+using mtns = IMES.Infrastructure.Repository._Metas;
+
+namespace IMES.Infrastructure.Repository.Common
+{
+    public class Misc : IAggregateRoot
+    {
+        public object Key 
+        {
+            get { throw new NotImplementedException("Normal"); }
+        }
+        public GlobalKey GKey 
+        {
+            get { throw new NotImplementedException("Normal"); }
+        }
+        public bool IsDirty 
+        {
+            get { throw new NotImplementedException("Normal"); }
+            set { throw new NotImplementedException("Normal"); } 
+        }
+        public void Clean()
+        {
+            { throw new NotImplementedException("Normal"); }
+        }
+    }
+
+    /// <summary>
+    /// 数据访问与持久化类: 杂项
+    /// </summary>
+    public class MiscRepository : BaseRepository<Misc>, IMiscRepository, ICache
+    {
+        private static mtns::GetValueClass g = new mtns::GetValueClass();
+
+        #region Overrides of BaseRepository<Misc>
+        protected override void PersistNewItem(Misc item)
+        {
+            throw new NotImplementedException("Normal");
+        }
+        protected override void PersistUpdatedItem(Misc item)
+        {
+            throw new NotImplementedException("Normal");
+        }
+        protected override void PersistDeletedItem(Misc item)
+        {
+            throw new NotImplementedException("Normal");
+        }
+        #endregion
+
+        #region IMiscRepository Members
+
+        //public IList<DocTypeInfo> GetDocTypeList()
+        //{
+        //    throw new NotImplementedException("Old");//????
+        //}
+
+        public IList<FloorInfo> GetFloorList()
+        {
+            try
+            {
+                //DM2(二楼)/DM(三楼)
+                //DB里无设置
+                IList<FloorInfo> ret = new List<FloorInfo>();
+
+                FloorInfo fi2 = new FloorInfo();
+                fi2.id = "DM2";
+                fi2.friendlyName = "2nd Floor";
+                ret.Add(fi2);
+
+                FloorInfo fi3 = new FloorInfo();
+                fi3.id = "DM";
+                fi3.friendlyName = "3rd Floor";
+                ret.Add(fi3);
+
+                return ret;
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Get QCStatus Statistics
+        /// </summary>
+        /// <param name="pdLine"></param>
+        /// <returns></returns>
+        public IList<QCStatisticInfo> GetQCStatisticList(string pdLine, string type)
+        {
+            try
+            {
+                IList<QCStatisticInfo> ret = new List<QCStatisticInfo>();
+
+                //select Model,count(1) ,  
+                //sum(case t1.Status when '1' then 1 else 0 end) as notcheck,
+                //sum(case t1.Status when '5' then 1 else 0 end) as piaIN,
+                //sum(case t1.Status when '2' then 1 else 0 end) as epiaIN,
+                //sum(case t1.Status when '6' then 1 else 0 end) as pia,
+                //sum(case t1.Status when '3' then 1 else 0 end) as epia,
+                //sum(case t1.Status when '7' then 1 else 0 end) as piaerror,
+                //sum(case t1.Status when '4' then 1 else 0 end) as epiaerror
+                //from QCStatus t1 (nolock) JOIN ProductStatus t2 (nolock) 
+                //ON t1.ProductID=t2.ProductID 
+                //where t1.Cdt> convert(char(10),getdate(),121) and t2.Line=pdline#
+                //group by Model
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = new _Schema.SQLContext();
+                        sqlCtx.Sentence = "SELECT t1.{0},COUNT(1)," +
+                                            "SUM(CASE t1.{1} WHEN '1' THEN 1 ELSE 0 END) AS notcheck," +
+                                            "SUM(CASE t1.{1} WHEN '5' THEN 1 ELSE 0 END) AS piaIN," +
+                                            "SUM(CASE t1.{1} WHEN '2' THEN 1 ELSE 0 END) AS epiaIN," +
+                                            "SUM(CASE t1.{1} WHEN '8' THEN 1 ELSE 0 END) AS paqcIN," +
+                                            "SUM(CASE t1.{1} WHEN '6' THEN 1 ELSE 0 END) AS pia," +
+                                            "SUM(CASE t1.{1} WHEN '3' THEN 1 ELSE 0 END) AS epia," +
+                                            "SUM(CASE t1.{1} WHEN '9' THEN 1 ELSE 0 END) AS paqc," +
+                                            "SUM(CASE t1.{1} WHEN '7' THEN 1 ELSE 0 END) AS piaerror," +
+                                            "SUM(CASE t1.{1} WHEN '4' THEN 1 ELSE 0 END) AS epiaerror," +
+                                            "SUM(CASE t1.{1} WHEN 'A' THEN 1 ELSE 0 END) AS paqcerror, t1.{5} " + //,t2.{7} " +
+                                            "FROM {2} t1 (NOLOCK) " + //JOIN {3} t2 (NOLOCK) " +
+                                            //"ON t1.{4}=t2.{5} " +
+                                            //"WHERE t1.{6}> CONVERT(CHAR(10),@{6},121) AND t1.{8}=@{8} " +
+                                            "WHERE t1.{4}> CONVERT(CHAR(10),@{4},121) AND t1.{6}=@{6} " +
+                                            //"GROUP BY t2.{7}, t1.{0} ";
+                                            "GROUP BY t1.{5}, t1.{0} ";
+
+                        sqlCtx.Sentence = string.Format(sqlCtx.Sentence, _Schema.QCStatus.fn_Model,
+                                                                        _Schema.QCStatus.fn_Status,
+                                                                        typeof(_Schema.QCStatus).Name,
+                                                                        //typeof(_Schema.ProductStatus).Name,
+                                                                        _Schema.QCStatus.fn_ProductID,
+                                                                        //_Schema.ProductStatus.fn_ProductID,
+                                                                        _Schema.QCStatus.fn_Cdt,
+                                                                        //_Schema.ProductStatus.fn_Line,
+                                                                        _Schema.QCStatus.fn_Line,
+                                                                        _Schema.QCStatus.fn_Tp);
+
+                        sqlCtx.Params.Add(_Schema.QCStatus.fn_Cdt, new SqlParameter("@" + _Schema.QCStatus.fn_Cdt, SqlDbType.DateTime));
+                        //sqlCtx.Params.Add(_Schema.ProductStatus.fn_Line, new SqlParameter("@" + _Schema.ProductStatus.fn_Line, SqlDbType.Char));
+                        sqlCtx.Params.Add(_Schema.QCStatus.fn_Line, new SqlParameter("@" + _Schema.QCStatus.fn_Line, SqlDbType.Char));
+                        sqlCtx.Params.Add(_Schema.QCStatus.fn_Tp, new SqlParameter("@" + _Schema.QCStatus.fn_Tp, SqlDbType.Char));
+                        _Schema.Func.InsertIntoCache(MethodBase.GetCurrentMethod().MetadataToken, sqlCtx);
+                    }
+                }
+                sqlCtx.Params[_Schema.QCStatus.fn_Cdt].Value = _Schema.SqlHelper.GetDateTime();
+                //sqlCtx.Params[_Schema.ProductStatus.fn_Line].Value = pdLine;
+                sqlCtx.Params[_Schema.QCStatus.fn_Line].Value = pdLine;
+                sqlCtx.Params[_Schema.QCStatus.fn_Tp].Value = type;
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()))
+                {
+                    while (sqlR != null && sqlR.Read())
+                    {
+                        QCStatisticInfo item = new QCStatisticInfo();
+                        item.modelId = GetValue_Str(sqlR, 0);
+                        item.input = GetValue_Int32(sqlR, 1);
+                        item.noCheck = GetValue_Int32(sqlR, 2);
+                        item.piaIn = GetValue_Int32(sqlR, 3);
+                        item.epiaIn = GetValue_Int32(sqlR, 4);
+                        item.paqcIn = GetValue_Int32(sqlR, 5);
+                        item.piaPass = GetValue_Int32(sqlR, 6);
+                        item.epiaPass = GetValue_Int32(sqlR, 7);
+                        item.paqcPass = GetValue_Int32(sqlR, 8);
+                        item.piaError = GetValue_Int32(sqlR, 9);
+                        item.epiaError = GetValue_Int32(sqlR, 10);
+                        item.paqcError = GetValue_Int32(sqlR, 11);
+                        item.line = GetValue_Str(sqlR, 12);
+                        ret.Add(item);
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        //public IList<DCodeInfo> GetDCodeList()
+        //{
+        //    
+        //}
+
+        public string GetFisErrorCode(string errCode, string lang)
+        {
+            try
+            {
+                string ret = null;
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.ErrorMessage cond = new _Schema.ErrorMessage();
+                        cond.Code = errCode;
+                        cond.LanguageCode = lang;
+                        sqlCtx = _Schema.Func.GetConditionedSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.ErrorMessage), cond, null, null);
+                    }
+                }
+                sqlCtx.Params[_Schema.ErrorMessage.fn_Code].Value = errCode;
+                sqlCtx.Params[_Schema.ErrorMessage.fn_LanguageCode].Value = lang;
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()))
+                {
+                    if (sqlR != null && sqlR.Read())
+                    {
+                        ret = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.ErrorMessage.fn_Message]);
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        #region CACHE_UPDATE
+
+        //public CacheUpdateInfo[] GetAllCacheUpdate(string IP, string appName)
+        //{
+        //    try
+        //    {
+        //        IList<CacheUpdateInfo> ret = new List<CacheUpdateInfo>();
+
+        //        _Schema.SQLContext sqlCtx = null;
+        //        lock (MethodBase.GetCurrentMethod())
+        //        {
+        //            if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+        //            {
+        //                _Schema.CacheUpdate cond = new _Schema.CacheUpdate();
+        //                cond.Updated = true;
+        //                cond.CacheServerIP = IP;
+        //                cond.AppName = appName;
+        //                sqlCtx = _Schema.Func.GetConditionedSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.CacheUpdate), cond, null, null);
+
+        //                sqlCtx.Params[_Schema.CacheUpdate.fn_Updated].Value = false;
+
+        //                sqlCtx.Sentence = sqlCtx.Sentence + string.Format(_Schema.Func.OrderBy, _Schema.CacheUpdate.fn_Cdt);
+        //            }
+        //        }
+        //        sqlCtx.Params[_Schema.CacheUpdate.fn_CacheServerIP].Value = IP;
+        //        sqlCtx.Params[_Schema.CacheUpdate.fn_AppName].Value = appName;
+        //        using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()))
+        //        {
+        //            while (sqlR != null && sqlR.Read())
+        //            {
+        //                CacheUpdateInfo item = new CacheUpdateInfo();
+        //                item.CacheServerIP = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.CacheUpdate.fn_CacheServerIP]);
+        //                item.Cdt = GetValue_DateTime(sqlR, sqlCtx.Indexes[_Schema.CacheUpdate.fn_Cdt]);
+        //                item.ID = GetValue_Int32(sqlR, sqlCtx.Indexes[_Schema.CacheUpdate.fn_ID]);
+        //                item.Item = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.CacheUpdate.fn_Item]);
+        //                item.Type = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.CacheUpdate.fn_Type]);
+        //                item.Udt = GetValue_DateTime(sqlR, sqlCtx.Indexes[_Schema.CacheUpdate.fn_Udt]);
+        //                item.Updated = GetValue_Bit(sqlR, sqlCtx.Indexes[_Schema.CacheUpdate.fn_Updated]);
+        //                item.AppName = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.CacheUpdate.fn_AppName]);
+        //                ret.Add(item);
+        //            }
+        //        }
+        //        return ret.ToArray();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
+
+        public CacheUpdateInfo[] GetAllCacheUpdate(string IP, string appName, string[] types)
+        {
+            try
+            {
+                IList<CacheUpdateInfo> ret = new List<CacheUpdateInfo>();
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.CacheUpdate cond = new _Schema.CacheUpdate();
+                        cond.Updated = true;
+                        cond.CacheServerIP = IP;
+                        cond.AppName = appName;
+
+                        _Schema.CacheUpdate cond2 = new _Schema.CacheUpdate();
+                        cond2.Type = "[INSET]";
+
+                        sqlCtx = _Schema.Func.GetConditionedSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.CacheUpdate), cond, null, cond2);
+
+                        sqlCtx.Params[_Schema.CacheUpdate.fn_Updated].Value = false;
+
+                        sqlCtx.Sentence = sqlCtx.Sentence + string.Format(_Schema.Func.OrderBy, _Schema.CacheUpdate.fn_Cdt);
+                    }
+                }
+                sqlCtx.Params[_Schema.CacheUpdate.fn_CacheServerIP].Value = IP;
+                sqlCtx.Params[_Schema.CacheUpdate.fn_AppName].Value = appName;
+
+                string Sentence = sqlCtx.Sentence.Replace(g.DecInSet(mtns.CacheUpdate.fn_type), g.ConvertInSet(types));
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()))
+                {
+                    while (sqlR != null && sqlR.Read())
+                    {
+                        CacheUpdateInfo item = new CacheUpdateInfo();
+                        item.CacheServerIP = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.CacheUpdate.fn_CacheServerIP]);
+                        item.Cdt = GetValue_DateTime(sqlR, sqlCtx.Indexes[_Schema.CacheUpdate.fn_Cdt]);
+                        item.ID = GetValue_Int32(sqlR, sqlCtx.Indexes[_Schema.CacheUpdate.fn_ID]);
+                        item.Item = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.CacheUpdate.fn_Item]);
+                        item.Type = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.CacheUpdate.fn_Type]);
+                        item.Udt = GetValue_DateTime(sqlR, sqlCtx.Indexes[_Schema.CacheUpdate.fn_Udt]);
+                        item.Updated = GetValue_Bit(sqlR, sqlCtx.Indexes[_Schema.CacheUpdate.fn_Updated]);
+                        item.AppName = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.CacheUpdate.fn_AppName]);
+                        ret.Add(item);
+                    }
+                }
+                return ret.ToArray();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void AddCacheUpdate(CacheUpdateInfo cacheUpdateInfo)
+        {
+            try
+            {
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = _Schema.Func.GetAquireIdInsert(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.CacheUpdate));
+                    }
+                }
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Params[_Schema.CacheUpdate.fn_CacheServerIP].Value = cacheUpdateInfo.CacheServerIP;
+                sqlCtx.Params[_Schema.CacheUpdate.fn_Cdt].Value = cmDt;
+                sqlCtx.Params[_Schema.CacheUpdate.fn_Item].Value = cacheUpdateInfo.Item;
+                sqlCtx.Params[_Schema.CacheUpdate.fn_Type].Value = cacheUpdateInfo.Type;
+                sqlCtx.Params[_Schema.CacheUpdate.fn_Udt].Value = cmDt;
+                sqlCtx.Params[_Schema.CacheUpdate.fn_Updated].Value = cacheUpdateInfo.Updated;
+                sqlCtx.Params[_Schema.CacheUpdate.fn_AppName].Value = cacheUpdateInfo.AppName;
+                cacheUpdateInfo.ID = Convert.ToInt32(_Schema.SqlHelper.ExecuteScalar(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public int DeleteCacheUpdate(CacheUpdateInfo cacheUpdateInfo)
+        {
+            try
+            {
+                //IList<CacheUpdateInfo> ret = new List<CacheUpdateInfo>();
+
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.CacheUpdate cond = new _Schema.CacheUpdate();
+                        cond.ID = cacheUpdateInfo.ID;
+                        cond.Updated = true;
+                        sqlCtx = _Schema.Func.GetConditionedUpdate(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.CacheUpdate), new List<string>() { _Schema.CacheUpdate.fn_Updated/*, _Schema.CacheUpdate.fn_CacheServerIP*/ }, null, null, null, cond, null, null, null, null, null, null, null);
+                        sqlCtx.Params[_Schema.CacheUpdate.fn_Updated].Value = false;
+                        sqlCtx.Params[_Schema.Func.DecSV(_Schema.CacheUpdate.fn_Updated)].Value = true;
+                    }
+                }
+                sqlCtx.Params[_Schema.CacheUpdate.fn_ID].Value = cacheUpdateInfo.ID;
+                //sqlCtx.Params[_Schema.Func.DecSV(_Schema.CacheUpdate.fn_CacheServerIP)].Value = cacheUpdateInfo.CacheServerIP;
+                sqlCtx.Params[_Schema.Func.DecSV(_Schema.CacheUpdate.fn_Udt)].Value = cmDt;
+                return _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public int DeleteCacheUpdateForSoloTypes(CacheUpdateInfo condition, string[] types)
+        {
+            try
+            {
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                mtns::SQLContextNew sqlCtx = null;
+                lock (mthObj)
+                {
+                    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    {
+                        mtns::CacheUpdate cond = new mtns::CacheUpdate();
+                        cond.updated = true;
+                        cond.appName = condition.AppName;
+                        cond.cacheServerIP = condition.CacheServerIP;
+
+                        mtns::CacheUpdate cond2 = new mtns::CacheUpdate();
+                        cond2.cdt = condition.Cdt;
+
+                        mtns::CacheUpdate cond3 = new mtns::CacheUpdate();
+                        cond3.type = "[INSET]";
+
+                        mtns::CacheUpdate setv = new mtns::CacheUpdate();
+                        setv.updated = true;
+                        setv.udt = DateTime.Now;
+
+                        sqlCtx = mtns::FuncNew.GetConditionedUpdate<mtns::CacheUpdate>(tk, new SetValueCollection<CacheUpdate>(new CommonSetValue<CacheUpdate>(setv)), new mtns::ConditionCollection<mtns::CacheUpdate>(
+                            new mtns::EqualCondition<mtns::CacheUpdate>(cond),
+                            new mtns::SmallerOrEqualCondition<mtns::CacheUpdate>(cond2),
+                            new mtns::InSetCondition<mtns::CacheUpdate>(cond3)));
+
+                        sqlCtx.Param(_Metas.CacheUpdate.fn_updated).Value = false;
+                        sqlCtx.Param(g.DecSV(_Metas.CacheUpdate.fn_updated)).Value = true;
+                    }
+                }
+                sqlCtx.Param(_Metas.CacheUpdate.fn_appName).Value = condition.AppName;
+                sqlCtx.Param(_Metas.CacheUpdate.fn_cacheServerIP).Value = condition.CacheServerIP;
+                sqlCtx.Param(g.DecSE(_Metas.CacheUpdate.fn_cdt)).Value = condition.Cdt;
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Param(g.DecSV(_Metas.CacheUpdate.fn_udt)).Value = cmDt;
+
+                string Sentence = sqlCtx.Sentence.Replace(g.DecInSet(mtns.CacheUpdate.fn_type), g.ConvertInSet(types));
+
+                return _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, Sentence, sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void DeleteCacheUpdateByIPAddressAndAppName(string IP, string appName)
+        {
+            try
+            {
+                IList<CacheUpdateInfo> ret = new List<CacheUpdateInfo>();
+
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.CacheUpdate cond = new _Schema.CacheUpdate();
+                        cond.CacheServerIP = IP;
+                        cond.AppName = appName;
+                        //cond.Updated = true;
+                        //sqlCtx = _Schema.Func.GetConditionedUpdate(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.CacheUpdate), new List<string>() { _Schema.CacheUpdate.fn_Updated }, null, null, null, cond, null, null, null, null, null, null, null);
+                        sqlCtx = _Schema.Func.GetConditionedDelete(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.CacheUpdate), cond, null, null);
+                        //sqlCtx.Params[_Schema.CacheUpdate.fn_Updated].Value = false;
+                        //sqlCtx.Params[_Schema.Func.DecSV(_Schema.CacheUpdate.fn_Updated)].Value = true;
+                    }
+                }
+                sqlCtx.Params[_Schema.CacheUpdate.fn_CacheServerIP].Value = IP;
+                sqlCtx.Params[_Schema.CacheUpdate.fn_AppName].Value = appName;
+                //sqlCtx.Params[_Schema.Func.DecSV(_Schema.CacheUpdate.fn_Udt)].Value = cmDt;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        #endregion
+
+        public CustomerInfo GetCustomerInfo(string customerId)
+        {
+            try
+            {
+                CustomerInfo ret = null;
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.Customer cond = new _Schema.Customer();
+                        cond.customer = customerId;
+                        sqlCtx = _Schema.Func.GetConditionedSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.Customer), cond, null, null);
+                    }
+                }
+                sqlCtx.Params[_Schema.Customer.fn_customer].Value = customerId;
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()))
+                {
+                    if (sqlR != null && sqlR.Read())
+                    {
+                        ret = new CustomerInfo();
+                        ret.Code = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Customer.fn_Code]);
+                        ret.customer = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Customer.fn_customer]);
+                        ret.Description = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Customer.fn_Description]);
+                        ret.Plant = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Customer.fn_Plant]);
+                    }
+                }
+                return ret;
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<CustomerInfo> GetCustomerList()
+        {
+            try
+            {
+                IList<CustomerInfo> ret = new List<CustomerInfo>();
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = _Schema.Func.GetCommonSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.Customer));
+
+                        sqlCtx.Sentence = sqlCtx.Sentence + string.Format(_Schema.Func.OrderBy, _Schema.Customer.fn_customer);
+                    }
+                }
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, sqlCtx.Sentence, null))
+                {
+                    while (sqlR != null && sqlR.Read())
+                    {
+                        CustomerInfo item = new CustomerInfo();
+                        item.Code = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Customer.fn_Code]);
+                        item.customer = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Customer.fn_customer]);
+                        item.Description = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Customer.fn_Description]);
+                        item.Plant = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Customer.fn_Plant]);
+                        ret.Add(item);
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void GetAlarmInfo(string sn, string family, string model, string station, string pdline, string defect)
+        {
+            try
+            {
+                SqlParameter[] paramsArray = new SqlParameter[6];
+
+                paramsArray[0] = new SqlParameter("@Sn", SqlDbType.VarChar);
+                paramsArray[0].Value = sn;
+                paramsArray[1] = new SqlParameter("@Family", SqlDbType.VarChar);
+                paramsArray[1].Value = family;
+                paramsArray[2] = new SqlParameter("@Model", SqlDbType.VarChar);
+                paramsArray[2].Value = model;
+                paramsArray[3] = new SqlParameter("@Station", SqlDbType.VarChar);
+                paramsArray[3].Value = station;
+                paramsArray[4] = new SqlParameter("@PdLine", SqlDbType.VarChar);
+                paramsArray[4].Value = pdline;
+                paramsArray[5] = new SqlParameter("@Defect", SqlDbType.VarChar);
+                paramsArray[5].Value = defect;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData, CommandType.StoredProcedure, "usp_GetAlarmInfo", paramsArray);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void GetAlarmInfoBatch(string sn, string family, string model, string station, string pdline, string[] defectList)
+        {
+            try
+            {
+                SqlParameter[] paramsArray = new SqlParameter[6];
+
+                paramsArray[0] = new SqlParameter("@Sn", SqlDbType.VarChar);
+                paramsArray[0].Value = sn;
+                paramsArray[1] = new SqlParameter("@Family", SqlDbType.VarChar);
+                paramsArray[1].Value = family;
+                paramsArray[2] = new SqlParameter("@Model", SqlDbType.VarChar);
+                paramsArray[2].Value = model;
+                paramsArray[3] = new SqlParameter("@Station", SqlDbType.VarChar);
+                paramsArray[3].Value = station;
+                paramsArray[4] = new SqlParameter("@PdLine", SqlDbType.VarChar);
+                paramsArray[4].Value = pdline;
+                paramsArray[5] = new SqlParameter("@DefectList", SqlDbType.VarChar);
+                paramsArray[5].Value = (defectList != null ? string.Join(",", defectList) : null);
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData, CommandType.StoredProcedure, "usp_GetAlarmInfoBatch", paramsArray);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void GenerateVirtualMoBOM(string model, int limitCount, string mo)
+        {
+            try
+            {
+                SqlParameter[] paramsArray = new SqlParameter[3];
+
+                paramsArray[0] = new SqlParameter("@model", SqlDbType.VarChar);
+                paramsArray[0].Value = model;
+                paramsArray[1] = new SqlParameter("@limitCount", SqlDbType.Int);
+                paramsArray[1].Value = limitCount;
+                paramsArray[2] = new SqlParameter("@mo", SqlDbType.VarChar);
+                paramsArray[2].Value = mo;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData, CommandType.StoredProcedure, "GenerateVirtualMoBOM", paramsArray);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void SaveModelBOMAs(string oldCode, string newCode, string editor)
+        {
+            try
+            {
+                SqlParameter[] paramsArray = new SqlParameter[3];
+
+                paramsArray[0] = new SqlParameter("@oldCode", SqlDbType.VarChar);
+                paramsArray[0].Value = oldCode;
+                paramsArray[1] = new SqlParameter("@newCode", SqlDbType.VarChar);
+                paramsArray[1].Value = newCode;
+                paramsArray[2] = new SqlParameter("@editor", SqlDbType.VarChar);
+                paramsArray[2].Value = editor;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_BOM, CommandType.StoredProcedure, "SaveModelBOMAs", paramsArray);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void AddReturnRepair(ReturnRepair item)
+        {
+            try
+            {
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = _Schema.Func.GetAquireIdInsert(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.ReturnRepair));
+                    }
+                }
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Params[_Schema.ReturnRepair.fn_Cdt].Value = cmDt;
+                //sqlCtx.Params[_Schema.ReturnRepair.fn_ID].Value = item.ID;
+                sqlCtx.Params[_Schema.ReturnRepair.fn_PCBRepairID].Value = item.PCBRepairID;
+                sqlCtx.Params[_Schema.ReturnRepair.fn_ProductRepairDefectID].Value = item.ProductRepairDefectID;
+                sqlCtx.Params[_Schema.ReturnRepair.fn_ProductRepairID].Value = item.ProductRepairID;
+                item.ID = Convert.ToInt32(_Schema.SqlHelper.ExecuteScalar(_Schema.SqlHelper.ConnectionString_PCA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void TransferIMESPCAToFISOnLine(string pcbno, string wc)
+        {
+            try
+            {
+                SqlParameter[] paramsArray = new SqlParameter[2];
+
+                paramsArray[0] = new SqlParameter("@pcbno", SqlDbType.VarChar);
+                paramsArray[0].Value = pcbno;
+                paramsArray[1] = new SqlParameter("@wc", SqlDbType.VarChar);
+                paramsArray[1].Value = wc;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_PCA, CommandType.StoredProcedure, "TransferIMESPCAToFISOnLine", paramsArray);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void UpdateOldSysStatus(string pcbno)
+        {
+            try
+            {
+                SqlParameter[] paramsArray = new SqlParameter[1];
+
+                paramsArray[0] = new SqlParameter("@pcbno", SqlDbType.VarChar);
+                paramsArray[0].Value = pcbno;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_PCA, CommandType.StoredProcedure, "UpdateOldSysStatus", paramsArray);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void PrintLabel_TouchPadTPCBLabel(string tpcb, string touchpad, string vcode)
+        {
+            try
+            {
+                SqlParameter[] paramsArray = new SqlParameter[3];
+
+                paramsArray[0] = new SqlParameter("@TPCB", SqlDbType.VarChar);
+                paramsArray[0].Value = tpcb;
+                paramsArray[1] = new SqlParameter("@TouchPad", SqlDbType.VarChar);
+                paramsArray[1].Value = touchpad;
+                paramsArray[2] = new SqlParameter("@VCode", SqlDbType.VarChar);
+                paramsArray[2].Value = vcode;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData, CommandType.StoredProcedure, "op_PrintLabel_TouchPadTPCBLabel", paramsArray);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<PilotRunPrintInfo> GetPilotRunPrintInfoListByModel(string model)
+        {
+            //SELECT a.Family, a.Build, a.SKU, a.Type, a.Descr
+            //FROM PilotRunPrintInfo a, PilotRunPrintType b
+            //WHERE Model = @Model AND a.Type = b.Type
+            //ORDER BY b.ID
+            try
+            {
+                IList<PilotRunPrintInfo> ret = new List<PilotRunPrintInfo>();
+
+                _Schema.SQLContext sqlCtx = null;
+                _Schema.TableAndFields tf1 = null;
+                _Schema.TableAndFields tf2 = null;
+                _Schema.TableAndFields[] tblAndFldsesArray = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx, out tblAndFldsesArray))
+                    {
+                        tf1 = new _Schema.TableAndFields();
+                        tf1.Table = typeof(_Schema.PilotRunPrintInfo);
+                        _Schema.PilotRunPrintInfo cond = new _Schema.PilotRunPrintInfo();
+                        cond.Model = model;
+                        tf1.equalcond = cond;
+
+                        tf2 = new _Schema.TableAndFields();
+                        tf2.Table = typeof(_Schema.PilotRunPrintType);
+                        tf2.ToGetFieldNames = null;
+
+                        List<_Schema.TableConnectionItem> tblCnntIs = new List<_Schema.TableConnectionItem>();
+                        _Schema.TableConnectionItem tc1 = new _Schema.TableConnectionItem(tf1, _Schema.PilotRunPrintInfo.fn_Type, tf2, _Schema.PilotRunPrintType.fn_Type);
+                        tblCnntIs.Add(tc1);
+
+                        _Schema.TableConnectionCollection tblCnnts = new _Schema.TableConnectionCollection(tblCnntIs.ToArray());
+
+                        tblAndFldsesArray = new _Schema.TableAndFields[] { tf1, tf2 };
+
+                        sqlCtx = _Schema.Func.GetConditionedJoinedSelect(MethodBase.GetCurrentMethod().MetadataToken, null, ref tblAndFldsesArray, tblCnnts);
+
+                        sqlCtx.Sentence = sqlCtx.Sentence + string.Format(_Schema.Func.OrderBy, _Schema.Func.DecAliasInner(tf2.alias, _Schema.PilotRunPrintType.fn_ID));
+                    }
+                }
+                tf1 = tblAndFldsesArray[0];
+                tf2 = tblAndFldsesArray[1];
+
+                sqlCtx.Params[_Schema.Func.DecAlias(tf1.alias, _Schema.PilotRunPrintInfo.fn_Model)].Value = model;
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()))
+                {
+                    while (sqlR != null && sqlR.Read())
+                    {
+                        PilotRunPrintInfo item = new PilotRunPrintInfo();
+                        item.ID = GetValue_Int32(sqlR, sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias, _Schema.PilotRunPrintInfo.fn_ID)]);
+                        item.Build = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias, _Schema.PilotRunPrintInfo.fn_Build)]);
+                        item.Cdt = GetValue_DateTime(sqlR, sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias, _Schema.PilotRunPrintInfo.fn_Cdt)]);
+                        item.Descr = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias, _Schema.PilotRunPrintInfo.fn_Descr)]);
+                        item.Editor = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias, _Schema.PilotRunPrintInfo.fn_Editor)]);
+                        item.Family = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias, _Schema.PilotRunPrintInfo.fn_Family)]);
+                        item.Model = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias, _Schema.PilotRunPrintInfo.fn_Model)]);
+                        item.SKU = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias, _Schema.PilotRunPrintInfo.fn_SKU)]);
+                        item.Type = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias, _Schema.PilotRunPrintInfo.fn_Type)]);
+                        item.Udt = GetValue_DateTime(sqlR, sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias, _Schema.PilotRunPrintInfo.fn_Udt)]);
+                        ret.Add(item);
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        //public void ImesToFis(string keyid, string pcode, string no1, string no2)
+        //{
+        //    try
+        //    {
+        //        throw new NotImplementedException("Old");
+        //        //SqlParameter[] paramsArray = new SqlParameter[4];
+        //        //paramsArray[0] = new SqlParameter("@keyid", SqlDbType.VarChar);
+        //        //paramsArray[0].Value = keyid;
+        //        //paramsArray[1] = new SqlParameter("@pcode", SqlDbType.Char);
+        //        //paramsArray[1].Value = pcode;
+        //        //paramsArray[2] = new SqlParameter("@no1", SqlDbType.VarChar);
+        //        //paramsArray[2].Value = no1;
+        //        //paramsArray[3] = new SqlParameter("@no2", SqlDbType.VarChar);
+        //        //paramsArray[3].Value = no2;
+        //        //_Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_Remote, CommandType.StoredProcedure, "DataMigration_iMESToFIS", paramsArray);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
+
+        public IList<string> getAllFieldNameInTable(string catalogName, string strTableName)
+        {
+            //
+            try
+            {
+                IList<string> ret = new List<string>();
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = new _Schema.SQLContext();
+                        sqlCtx.Sentence = "SELECT t2.name FROM {0}..sysobjects t1, {0}..syscolumns t2 WHERE t1.id=t2.id and t1.name=@TBL_NAME";
+
+                        sqlCtx.Sentence = string.Format(sqlCtx.Sentence, catalogName);
+
+                        sqlCtx.Params.Add("@TBL_NAME", new SqlParameter("@TBL_NAME", SqlDbType.VarChar));
+
+                        _Schema.Func.InsertIntoCache(MethodBase.GetCurrentMethod().MetadataToken, sqlCtx);
+                    }
+                }
+                sqlCtx.Params["@TBL_NAME"].Value = strTableName;
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(string.Format(_Schema.SqlHelper.ConnectionString, catalogName), CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()))
+                {
+                    if (sqlR != null)
+                    {
+                        while (sqlR.Read())
+                        {
+                            string item = GetValue_Str(sqlR, 0);
+                            ret.Add(item);
+                        }
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void AddAlarmSetting(AlarmSettingInfo item)
+        {
+            try
+            {
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                lock (mthObj)
+                {
+                    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    {
+                        sqlCtx = FuncNew.GetAquireIdInsert<mtns::AlarmSetting>(tk);
+                    }
+                }
+                sqlCtx = FuncNew.SetColumnFromField<mtns::AlarmSetting, AlarmSettingInfo>(sqlCtx, item);
+
+                object lifecycle = null;
+                if (item.lifeCycle == int.MinValue)
+                    lifecycle = DBNull.Value;
+                else if (item.lifeCycle == 0)
+                    lifecycle = false;
+                else
+                    lifecycle = true;
+                sqlCtx.Param(mtns::AlarmSetting.fn_lifeCycle).Value = lifecycle;
+
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Param(mtns::AlarmSetting.fn_cdt).Value = cmDt;
+                sqlCtx.Param(mtns::AlarmSetting.fn_udt).Value = cmDt;
+
+                item.Id = _Schema.SqlHelper.ExecuteScalarForAquireIdInsert(_Schema.SqlHelper.ConnectionString_PCA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<AlarmSettingInfo> GetAlarmSettings(AlarmSettingInfo eqCondition, AlarmSettingInfo neqCondition)
+        {
+            try
+            {
+                IList<AlarmSettingInfo> ret = null;
+
+                if (eqCondition == null)
+                    eqCondition = new AlarmSettingInfo();
+                if (neqCondition == null)
+                    neqCondition = new AlarmSettingInfo();
+
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                //    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                //    {
+
+                _Metas.AlarmSetting cond = FuncNew.SetColumnFromField<_Metas.AlarmSetting, AlarmSettingInfo>(eqCondition);
+
+                if (eqCondition.lifeCycle != int.MinValue)
+                    cond.lifeCycle = true;
+                
+                _Metas.AlarmSetting cond2 = FuncNew.SetColumnFromField<_Metas.AlarmSetting, AlarmSettingInfo>(neqCondition);
+
+                if (neqCondition.lifeCycle != int.MinValue)
+                    cond2.lifeCycle = true;
+
+
+                sqlCtx = FuncNew.GetConditionedSelect<_Metas.AlarmSetting>(null, null, new ConditionCollection<_Metas.AlarmSetting>(new EqualCondition<_Metas.AlarmSetting>(cond), new NotEqualCondition<_Metas.AlarmSetting>(cond2)), _Metas.AlarmSetting.fn_family, _Metas.AlarmSetting.fn_type, _Metas.AlarmSetting.fn_station, _Metas.AlarmSetting.fn_defectType);
+                var sqlCtx2 = FuncNew.GetConditionedSelect<_Metas.AlarmSetting>(null, new string[] { _Metas.AlarmSetting.fn_id }, new ConditionCollection<_Metas.AlarmSetting>(new NotEqualCondition<_Metas.AlarmSetting>(cond2)));
+
+                //    }
+                //}
+                sqlCtx = FuncNew.SetColumnFromField<_Metas.AlarmSetting, AlarmSettingInfo>(sqlCtx, eqCondition);
+
+                if (eqCondition.lifeCycle != int.MinValue)
+                {
+                    object lifecycle = null;
+                    if (eqCondition.lifeCycle == 0)
+                        lifecycle = false;
+                    else
+                        lifecycle = true;
+                    sqlCtx.Param(mtns::AlarmSetting.fn_lifeCycle).Value = lifecycle;
+                }
+
+                sqlCtx2 = FuncNew.SetColumnFromField<_Metas.AlarmSetting, AlarmSettingInfo>(sqlCtx2, neqCondition);
+
+                if (neqCondition.lifeCycle != int.MinValue)
+                {
+                    object lifecycle = null;
+                    if (neqCondition.lifeCycle == 0)
+                        lifecycle = false;
+                    else
+                        lifecycle = true;
+                    sqlCtx2.Param(mtns::AlarmSetting.fn_lifeCycle).Value = lifecycle;
+                }
+
+                sqlCtx.OverrideParams(sqlCtx2);
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_PCA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params))
+                {
+                    ret = mtns::FuncNew.SetFieldFromColumn<mtns::AlarmSetting, AlarmSettingInfo, AlarmSettingInfo>(ret, sqlR, sqlCtx);
+                }
+
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void UpdateAlarmSetting(AlarmSettingInfo setValue, AlarmSettingInfo condition)
+        {
+            try
+            {
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                mtns::SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                //    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                //    {
+                mtns::AlarmSetting cond = mtns::FuncNew.SetColumnFromField<mtns::AlarmSetting, AlarmSettingInfo>(condition);
+
+                if (condition.lifeCycle != int.MinValue)
+                    cond.lifeCycle = true;
+
+                mtns::AlarmSetting setv = mtns::FuncNew.SetColumnFromField<mtns::AlarmSetting, AlarmSettingInfo>(setValue);
+                setv.udt = DateTime.Now;
+
+                if (setValue.lifeCycle != int.MinValue)
+                    setv.lifeCycle = true;
+
+                sqlCtx = mtns::FuncNew.GetConditionedUpdate<mtns::AlarmSetting>(new mtns::SetValueCollection<mtns::AlarmSetting>(new mtns::CommonSetValue<mtns::AlarmSetting>(setv)), new mtns::ConditionCollection<mtns::AlarmSetting>(new mtns::EqualCondition<mtns::AlarmSetting>(cond)));
+                //    }
+                //}
+                sqlCtx = mtns::FuncNew.SetColumnFromField<mtns::AlarmSetting, AlarmSettingInfo>(sqlCtx, condition);
+
+                if (condition.lifeCycle != int.MinValue)
+                {
+                    object lifecycle = null;
+                    if (condition.lifeCycle == 0)
+                        lifecycle = false;
+                    else
+                        lifecycle = true;
+                    sqlCtx.Param(mtns::AlarmSetting.fn_lifeCycle).Value = lifecycle;
+                }
+
+                sqlCtx = mtns::FuncNew.SetColumnFromField<mtns::AlarmSetting, AlarmSettingInfo>(sqlCtx, setValue, true);
+
+                if (setValue.lifeCycle != int.MinValue)
+                {
+                    object lifecycle = null;
+                    if (setValue.lifeCycle == 0)
+                        lifecycle = false;
+                    else
+                        lifecycle = true;
+                    sqlCtx.Param(g.DecSV(mtns::AlarmSetting.fn_lifeCycle)).Value = lifecycle;
+                }
+
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Param(g.DecSV(mtns::AlarmSetting.fn_udt)).Value = cmDt;
+
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_PCA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void UpdateAlarmInfo(AlarmInfo setValue, AlarmInfo condition)
+        {
+            try
+            {
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                mtns::SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                //    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                //    {
+                mtns::Alarm cond = mtns::FuncNew.SetColumnFromField<mtns::Alarm, AlarmInfo>(condition);
+                mtns::Alarm setv = mtns::FuncNew.SetColumnFromField<mtns::Alarm, AlarmInfo>(setValue);
+                //setv.udt = DateTime.Now;
+
+                sqlCtx = mtns::FuncNew.GetConditionedUpdate<mtns::Alarm>(new mtns::SetValueCollection<mtns::Alarm>(new mtns::CommonSetValue<mtns::Alarm>(setv)), new mtns::ConditionCollection<mtns::Alarm>(new mtns::EqualCondition<mtns::Alarm>(cond)));
+                //    }
+                //}
+                sqlCtx = mtns::FuncNew.SetColumnFromField<mtns::Alarm, AlarmInfo>(sqlCtx, condition);
+                sqlCtx = mtns::FuncNew.SetColumnFromField<mtns::Alarm, AlarmInfo>(sqlCtx, setValue, true);
+                //DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                //sqlCtx.Param(g.DecSV(mtns::Alarm.fn_udt)).Value = cmDt;
+
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_PCA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<AlarmInfo> GetAlarmInfoByConditions(AlarmQueryCondition condition)
+        {
+            try
+            {
+                IList<AlarmInfo> ret = null;
+
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                mtns::SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                //    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                //    {
+                mtns::Alarm cond = new mtns::Alarm();
+                mtns::Alarm cond2 = new mtns::Alarm();
+                mtns::Alarm cond3 = new mtns::Alarm();
+                if (condition != null)
+                {
+                    if (!string.IsNullOrEmpty(condition.Family))
+                        cond.family = condition.Family;
+                    if (!string.IsNullOrEmpty(condition.Line))
+                        cond.line = condition.Line;
+                    if (!string.IsNullOrEmpty(condition.Station))
+                        cond.station = condition.Station;
+                    if (!string.IsNullOrEmpty(condition.Status))
+                        cond.status = condition.Status;
+
+                    if (condition.SkipHoldTimeFrom != DateTime.MinValue)
+                        cond2.skipHoldTime = condition.SkipHoldTimeFrom;
+                    if (condition.ReleaseTimeFrom != DateTime.MinValue)
+                        cond2.releaseTime = condition.ReleaseTimeFrom;
+                    if (condition.AlarmTimeFrom != DateTime.MinValue)
+                        cond2.cdt = condition.AlarmTimeFrom;
+
+                    if (condition.SkipHoldTimeTo != DateTime.MinValue)
+                        cond3.skipHoldTime = condition.SkipHoldTimeTo;
+                    if (condition.ReleaseTimeTo != DateTime.MinValue)
+                        cond3.releaseTime = condition.ReleaseTimeTo;
+                    if (condition.AlarmTimeTo != DateTime.MinValue)
+                        cond3.cdt = condition.AlarmTimeTo;
+                }
+                sqlCtx = mtns::FuncNew.GetConditionedSelect<mtns::Alarm>(null, null, new mtns::ConditionCollection<mtns::Alarm>(
+                    new mtns::EqualCondition<mtns::Alarm>(cond),
+                    new mtns::GreaterOrEqualCondition<mtns::Alarm>(cond2),
+                    new mtns::SmallerOrEqualCondition<mtns::Alarm>(cond3)), mtns::Alarm.fn_cdt);
+                //    }
+                //}
+                if (condition != null)
+                {
+                    if (!string.IsNullOrEmpty(condition.Family))
+                        sqlCtx.Param(_Metas.Alarm.fn_family).Value = condition.Family;
+                    if (!string.IsNullOrEmpty(condition.Line))
+                        sqlCtx.Param(_Metas.Alarm.fn_line).Value = condition.Line;
+                    if (!string.IsNullOrEmpty(condition.Station))
+                        sqlCtx.Param(_Metas.Alarm.fn_station).Value = condition.Station;
+                    if (!string.IsNullOrEmpty(condition.Status))
+                        sqlCtx.Param(_Metas.Alarm.fn_status).Value = condition.Status;
+
+                    if (condition.SkipHoldTimeFrom != DateTime.MinValue)
+                        sqlCtx.Param(g.DecGE(_Metas.Alarm.fn_skipHoldTime)).Value = condition.SkipHoldTimeFrom;
+                    if (condition.ReleaseTimeFrom != DateTime.MinValue)
+                        sqlCtx.Param(g.DecGE(_Metas.Alarm.fn_releaseTime)).Value = condition.ReleaseTimeFrom;
+                    if (condition.AlarmTimeFrom != DateTime.MinValue)
+                        sqlCtx.Param(g.DecGE(_Metas.Alarm.fn_cdt)).Value = condition.AlarmTimeFrom;
+
+                    if (condition.SkipHoldTimeTo != DateTime.MinValue)
+                        sqlCtx.Param(g.DecSE(_Metas.Alarm.fn_skipHoldTime)).Value = condition.SkipHoldTimeTo;
+                    if (condition.ReleaseTimeTo != DateTime.MinValue)
+                        sqlCtx.Param(g.DecSE(_Metas.Alarm.fn_releaseTime)).Value = condition.ReleaseTimeTo;
+                    if (condition.AlarmTimeTo != DateTime.MinValue)
+                        sqlCtx.Param(g.DecSE(_Metas.Alarm.fn_cdt)).Value = condition.AlarmTimeTo;
+                }
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_PCA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params))
+                {
+                    ret = mtns::FuncNew.SetFieldFromColumn<mtns::Alarm, AlarmInfo, AlarmInfo>(ret, sqlR, sqlCtx);
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<AlarmInfo> GetAlarmInfoList(string status)
+        {
+            try
+            {
+                IList<AlarmInfo> ret = null;
+
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                mtns::SQLContextNew sqlCtx = null;
+                lock (mthObj)
+                {
+                    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    {
+                        mtns::Alarm cond = new mtns::Alarm();
+                        cond.status = status;
+                        sqlCtx = mtns::FuncNew.GetConditionedSelect<mtns::Alarm>(tk, null, null, new mtns::ConditionCollection<mtns::Alarm>(new mtns::EqualCondition<mtns::Alarm>(cond)), mtns::Alarm.fn_cdt);
+                    }
+                }
+                sqlCtx.Param(_Metas.Alarm.fn_status).Value = status;
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_PCA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params))
+                {
+                    ret = mtns::FuncNew.SetFieldFromColumn<mtns::Alarm, AlarmInfo, AlarmInfo>(ret, sqlR, sqlCtx);
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<AlarmInfo> GetAlarmInfoList(string status, int daysCount)
+        {
+            try
+            {
+                IList<AlarmInfo> ret = null;
+
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                mtns::SQLContextNew sqlCtx = null;
+                lock (mthObj)
+                {
+                    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    {
+                        mtns::Alarm cond = new mtns::Alarm();
+                        cond.status = status;
+
+                        mtns::Alarm cond2 = new mtns::Alarm();
+                        cond2.cdt = DateTime.Now;
+
+                        sqlCtx = mtns::FuncNew.GetConditionedSelect<mtns::Alarm>(tk, null, null, new mtns::ConditionCollection<mtns::Alarm>(
+                            new mtns::EqualCondition<mtns::Alarm>(cond),
+                            new mtns::BetweenCondition<mtns::Alarm>(cond2)), mtns::Alarm.fn_cdt);
+                    }
+                }
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Param(_Metas.Alarm.fn_status).Value = status;
+                sqlCtx.Param(g.DecBeg(_Metas.Alarm.fn_cdt)).Value = cmDt.AddDays(-daysCount);
+                sqlCtx.Param(g.DecEnd(_Metas.Alarm.fn_cdt)).Value = cmDt;
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_PCA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params))
+                {
+                    ret = mtns::FuncNew.SetFieldFromColumn<mtns::Alarm, AlarmInfo, AlarmInfo>(ret, sqlR, sqlCtx);
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<AlarmInfo> GetAlarmInfoList(AlarmInfo condition)
+        {
+            try
+            {
+                IList<AlarmInfo> ret = null;
+
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                mtns::SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                //    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                //    {
+                mtns::Alarm cond = mtns::FuncNew.SetColumnFromField<mtns::Alarm, AlarmInfo>(condition);
+                sqlCtx = mtns::FuncNew.GetConditionedSelect<mtns::Alarm>(null, null, new mtns::ConditionCollection<mtns::Alarm>(new mtns::EqualCondition<mtns::Alarm>(cond)), mtns::Alarm.fn_id);
+                //    }
+                //}
+                sqlCtx = mtns::FuncNew.SetColumnFromField<mtns::Alarm, AlarmInfo>(sqlCtx, condition);
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_PCA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params))
+                {
+                    ret = mtns::FuncNew.SetFieldFromColumn<mtns::Alarm, AlarmInfo, AlarmInfo>(ret, sqlR, sqlCtx);
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<AlarmInfo> GetAlarmInfoList(AlarmInfo condition, DateTime startTime, DateTime endTime)
+        {
+            try
+            {
+                if (condition == null)
+                    condition = new AlarmInfo();
+
+                IList<AlarmInfo> ret = null;
+
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                mtns::SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                //    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                //    {
+                mtns::Alarm cond = mtns::FuncNew.SetColumnFromField<mtns::Alarm, AlarmInfo>(condition);
+                mtns::Alarm condBeg = new Alarm();
+                condBeg.cdt = startTime;
+                mtns::Alarm condEnd = new Alarm();
+                condEnd.cdt = endTime;
+
+                sqlCtx = mtns::FuncNew.GetConditionedSelect<mtns::Alarm>(null, null, new mtns::ConditionCollection<mtns::Alarm>(
+                    new mtns::EqualCondition<mtns::Alarm>(cond),
+                    new mtns::GreaterOrEqualCondition<mtns::Alarm>(condBeg),
+                    new mtns::SmallerOrEqualCondition<mtns::Alarm>(condEnd)), mtns::Alarm.fn_id);
+                //    }
+                //}
+                sqlCtx = mtns::FuncNew.SetColumnFromField<mtns::Alarm, AlarmInfo>(sqlCtx, condition);
+                sqlCtx.Param(g.DecGE(_Metas.Alarm.fn_cdt)).Value = startTime;
+                sqlCtx.Param(g.DecSE(_Metas.Alarm.fn_cdt)).Value = endTime;
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_PCA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params))
+                {
+                    ret = mtns::FuncNew.SetFieldFromColumn<mtns::Alarm, AlarmInfo, AlarmInfo>(ret, sqlR, sqlCtx);
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<FaiInfo> GetFaiInfoByLikes(DateTime finTime, string iecpnPrefix, string hpqpnPrefix, string snoPrefix)
+        {
+            try
+            {
+                IList<FaiInfo> ret = null;
+
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                mtns::SQLContextNew sqlCtx = null;
+                lock (mthObj)
+                {
+                    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    {
+                        mtns::Fai_Info cond = new mtns::Fai_Info();
+                        cond.fin_time = finTime;
+
+                        mtns::Fai_Info cond2 = new mtns::Fai_Info();
+                        cond2.iecpn = iecpnPrefix + "%";
+                        cond2.hpqpn = hpqpnPrefix + "%";
+                        cond2.sno = snoPrefix + "%";
+
+                        sqlCtx = mtns::FuncNew.GetConditionedSelect<mtns::Fai_Info>(tk, null, null, new mtns::ConditionCollection<mtns::Fai_Info>(
+                            new mtns::GreaterOrEqualCondition<mtns::Fai_Info>(cond),
+                            new mtns::LikeCondition<mtns::Fai_Info>(cond2)), mtns::Fai_Info.fn_cdt);
+                    }
+                }
+                sqlCtx.Param(g.DecGE(_Metas.Fai_Info.fn_fin_time)).Value = finTime;
+                sqlCtx.Param(_Metas.Fai_Info.fn_iecpn).Value = iecpnPrefix + "%";
+                sqlCtx.Param(_Metas.Fai_Info.fn_hpqpn).Value = hpqpnPrefix + "%";
+                sqlCtx.Param(_Metas.Fai_Info.fn_sno).Value = snoPrefix + "%";
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params))
+                {
+                    ret = mtns::FuncNew.SetFieldFromColumn<mtns::Fai_Info, FaiInfo, FaiInfo>(ret, sqlR, sqlCtx);
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void AddFaiInfo(FaiInfo item)
+        {
+            try
+            {
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                lock (mthObj)
+                {
+                    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    {
+                        sqlCtx = FuncNew.GetCommonInsert<mtns::Fai_Info>(tk);
+                    }
+                }
+                sqlCtx = FuncNew.SetColumnFromField<mtns::Fai_Info, FaiInfo>(sqlCtx, item);
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Param(mtns::Fai_Info.fn_cdt).Value = cmDt;
+                sqlCtx.Param(mtns::Fai_Info.fn_udt).Value = cmDt;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void ModifyFaiInfo(FaiInfo setValue, FaiInfo condition)
+        {
+            try
+            {
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                mtns::SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                //    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                //    {
+                mtns::Fai_Info cond = mtns::FuncNew.SetColumnFromField<mtns::Fai_Info, FaiInfo>(condition);
+                mtns::Fai_Info setv = mtns::FuncNew.SetColumnFromField<mtns::Fai_Info, FaiInfo>(setValue);
+                setv.udt = DateTime.Now;
+
+                sqlCtx = mtns::FuncNew.GetConditionedUpdate<mtns::Fai_Info>(new mtns::SetValueCollection<mtns::Fai_Info>(new mtns::CommonSetValue<mtns::Fai_Info>(setv)), new mtns::ConditionCollection<mtns::Fai_Info>(new mtns::EqualCondition<mtns::Fai_Info>(cond)));
+                //    }
+                //}
+                sqlCtx = mtns::FuncNew.SetColumnFromField<mtns::Fai_Info, FaiInfo>(sqlCtx, condition);
+                sqlCtx = mtns::FuncNew.SetColumnFromField<mtns::Fai_Info, FaiInfo>(sqlCtx, setValue, true);
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Param(g.DecSV(mtns::Fai_Info.fn_udt)).Value = cmDt;
+
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<FaiInfo> GetFaiInfoList(FaiInfo condition)
+        {
+            try
+            {
+                IList<FaiInfo> ret = null;
+
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                mtns::SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                //    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                //    {
+                mtns::Fai_Info cond = mtns::FuncNew.SetColumnFromField<mtns::Fai_Info, FaiInfo>(condition);
+                sqlCtx = mtns::FuncNew.GetConditionedSelect<mtns::Fai_Info>(null, null, new mtns::ConditionCollection<mtns::Fai_Info>(new mtns::EqualCondition<mtns::Fai_Info>(cond)), mtns::Fai_Info.fn_iecpn);
+                //    }
+                //}
+                sqlCtx = mtns::FuncNew.SetColumnFromField<mtns::Fai_Info, FaiInfo>(sqlCtx, condition);
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params))
+                {
+                    ret = mtns::FuncNew.SetFieldFromColumn<mtns::Fai_Info, FaiInfo, FaiInfo>(ret, sqlR, sqlCtx);
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void RemoveFaiInfoList(FaiInfo condition)
+        {
+            try
+            {
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                //    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                //    {
+                mtns::Fai_Info cond = FuncNew.SetColumnFromField<mtns::Fai_Info, FaiInfo>(condition);
+                sqlCtx = FuncNew.GetConditionedDelete<mtns::Fai_Info>(new ConditionCollection<mtns::Fai_Info>(new EqualCondition<mtns::Fai_Info>(cond)));
+                //    }
+                //}
+                sqlCtx = FuncNew.SetColumnFromField<mtns::Fai_Info, FaiInfo>(sqlCtx, condition);
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void AddDOAMBListInfo(DOAMBListInfo item)
+        {
+            try
+            {
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                lock (mthObj)
+                {
+                    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    {
+                        sqlCtx = FuncNew.GetCommonInsert<mtns::DOAMBList>(tk);
+                    }
+                }
+                sqlCtx = FuncNew.SetColumnFromField<mtns::DOAMBList, DOAMBListInfo>(sqlCtx, item);
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Param(mtns::DOAMBList.fn_cdt).Value = cmDt;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        #endregion
+
+        #region ICache Members
+
+        public bool IsCached()
+        {
+            return false;
+            //return DataChangeMediator.CheckCacheSwitchOpen(DataChangeMediator.CacheSwitchType.Misc);
+        }
+
+        public void ProcessItem(CacheUpdateInfo item)
+        {
+
+        }
+
+        #endregion
+
+        #region . Defered  .
+
+        public void GetAlarmInfoDefered(IUnitOfWork uow, string sn, string family, string model, string station, string pdline, string defect)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), sn, family, model, station, pdline, defect);
+        }
+
+        public void GetAlarmInfoBatchDefered(IUnitOfWork uow, string sn, string family, string model, string station, string pdline, string[] defectList)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), sn, family, model, station, pdline, defectList);
+        }
+
+        public void DeleteCacheUpdateDefered(IUnitOfWork uow, CacheUpdateInfo cacheUpdateInfo)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), cacheUpdateInfo);
+        }
+
+        public void GenerateVirtualMoBOMDefered(IUnitOfWork uow, string model, int limitCount, string mo)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), model, limitCount, mo);
+        }
+
+        public void SaveModelBOMAsDefered(IUnitOfWork uow, string oldCode, string newCode, string editor)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), oldCode, newCode, editor);
+        }
+
+        public void AddReturnRepairDefered(IUnitOfWork uow, ReturnRepair item)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), item);
+        }
+
+        public void TransferIMESPCAToFISOnLineDefered(IUnitOfWork uow, string pcbno, string wc)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), pcbno, wc);
+        }
+
+        public void UpdateOldSysStatusDefered(IUnitOfWork uow, string pcbno)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), pcbno);
+        }
+
+        public void PrintLabel_TouchPadTPCBLabelDefered(IUnitOfWork uow, string tpcb, string touchpad, string vcode)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), tpcb, touchpad, vcode);
+        }
+
+        public void ImesToFisDefered(IUnitOfWork uow, string keyid, string pcode, string no1, string no2)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), keyid, pcode, no1, no2);
+        }
+
+        public void AddAlarmSettingDefered(IUnitOfWork uow, AlarmSettingInfo item)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), item);
+        }
+
+        public void UpdateAlarmSettingDefered(IUnitOfWork uow, AlarmSettingInfo setValue, AlarmSettingInfo condition)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), setValue, condition);
+        }
+
+        public void UpdateAlarmInfoDefered(IUnitOfWork uow, AlarmInfo setValue, AlarmInfo condition)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), setValue, condition);
+        }
+
+        public void AddFaiInfoDefered(IUnitOfWork uow, FaiInfo item)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), item);
+        }
+
+        public void ModifyFaiInfoDefered(IUnitOfWork uow, FaiInfo setValue, FaiInfo condition)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), setValue, condition);
+        }
+
+        public void RemoveFaiInfoListDefered(IUnitOfWork uow, FaiInfo condition)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), condition);
+        }
+
+        public void AddDOAMBListInfoDefered(IUnitOfWork uow, DOAMBListInfo item)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), item);
+        }
+
+        #endregion
+
+        #region For Maintain
+
+        public IList<Rework> GetReworkList()
+        {
+            try
+            {
+                IList<Rework> ret = new List<Rework>();
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = _Schema.Func.GetCommonSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.Rework));
+                    }
+                }
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, null))
+                {
+                    while (sqlR != null && sqlR.Read())
+                    {
+                        Rework item = new Rework();
+                        item.Cdt = GetValue_DateTime(sqlR, sqlCtx.Indexes[_Schema.Rework.fn_Cdt]);
+                        item.Editor = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Rework.fn_Editor]);
+                        item.ReworkCode = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Rework.fn_ReworkCode]);
+                        item.Status = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.Rework.fn_Status]);
+                        item.Udt = GetValue_DateTime(sqlR, sqlCtx.Indexes[_Schema.Rework.fn_Udt]);
+                        ret.Add(item);
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<string[]> GetCSIPLFromCacheUpdateServer()
+        {
+            try
+            {
+                IList<string[]> ret = new List<string[]>();
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = _Schema.Func.GetCommonSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.CacheUpdateServer));
+                    }
+                }
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, sqlCtx.Sentence, null))
+                {
+                    while (sqlR != null && sqlR.Read())
+                    {
+                        string[] item = new string[2];
+                        item[0] = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.CacheUpdateServer.fn_ServerIP]);
+                        item[1] = GetValue_Str(sqlR, sqlCtx.Indexes[_Schema.CacheUpdateServer.fn_AppName]);
+                        ret.Add(item);
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void GenerateVirtualMoBOMForMaintain(string model, int limitCount, string mo)
+        {
+            try
+            {
+                SqlParameter[] paramsArray = new SqlParameter[3];
+
+                paramsArray[0] = new SqlParameter("@model", SqlDbType.VarChar);
+                paramsArray[0].Value = model;
+                paramsArray[1] = new SqlParameter("@limitCount", SqlDbType.Int);
+                paramsArray[1].Value = limitCount;
+                paramsArray[2] = new SqlParameter("@moList", SqlDbType.VarChar);
+                paramsArray[2].Value = mo;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData, CommandType.StoredProcedure, "GenerateVirtualMoBOMForMaintain", paramsArray);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public DataTable GetBuildList()
+        {
+            // SELECT Build FROM PilotRunPrintBuild ORDER BY Build
+            try
+            {
+                DataTable ret = null;
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = _Schema.Func.GetConditionedFuncSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintBuild), null, new List<string>() { _Schema.PilotRunPrintBuild.fn_Build }, null, null, null, null, null, null, null, null);
+
+                        sqlCtx.Sentence = sqlCtx.Sentence + string.Format(_Schema.Func.OrderBy, _Schema.PilotRunPrintBuild.fn_Build);
+                    }
+                }
+                ret = _Schema.SqlHelper.ExecuteDataFill(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, null);
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void AddBuild(string build, string editor)
+        {
+            // IF NOT EXISTS(SELECT * FROM PilotRunPrintBuild WHERE Build = @Build)
+            //         INSERT INTO [PilotRunPrintBuild]([Build],[Editor],[Cdt])
+            //                  VALUES(@Build, @Editor, GETDATE())
+            try
+            {
+                SqlTransactionManager.Begin();
+
+                if (!PeekAddBuild(build))
+                    AddBuild_Inner(build, editor);
+
+                SqlTransactionManager.Commit();
+            }
+            catch (Exception)
+            {
+                SqlTransactionManager.Rollback();
+                throw;
+            }
+            finally
+            {
+                SqlTransactionManager.Dispose();
+                SqlTransactionManager.End();
+            }
+        }
+
+        private bool PeekAddBuild(string build)
+        {
+            SqlDataReader sqlR = null;
+            try
+            {
+                bool ret = false;
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.PilotRunPrintBuild cond = new _Schema.PilotRunPrintBuild();
+                        cond.Build = build;
+                        sqlCtx = _Schema.Func.GetConditionedFuncSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintBuild), "COUNT", new List<string>() { _Schema.PilotRunPrintBuild.fn_Build }, cond, null, null, null, null, null, null, null);
+
+                        sqlCtx.Sentence = sqlCtx.Sentence.Replace("WHERE", "WITH (UPDLOCK) WHERE");
+                    }
+                }
+                sqlCtx.Params[_Schema.PilotRunPrintBuild.fn_Build].Value = build;
+                sqlR = _Schema.SqlHelper.ExecuteReader_OnTrans(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>());
+                if (sqlR != null && sqlR.Read())
+                {
+                    int cnt = GetValue_Int32(sqlR, sqlCtx.Indexes["COUNT"]);
+                    ret = cnt > 0 ? true : false;
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (sqlR != null)
+                {
+                    sqlR.Close();
+                }
+            }
+        }
+
+        private void AddBuild_Inner(string build, string editor)
+        {
+            try
+            {
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = _Schema.Func.GetCommonInsert(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintBuild));
+                    }
+                }
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Params[_Schema.PilotRunPrintBuild.fn_Build].Value = build;
+                sqlCtx.Params[_Schema.PilotRunPrintBuild.fn_Cdt].Value = cmDt;
+                sqlCtx.Params[_Schema.PilotRunPrintBuild.fn_Editor].Value = editor;
+                _Schema.SqlHelper.ExecuteScalar(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool IsBuildInUse(string build)
+        {
+            // IF EXISTS(SELECT * FROM [PilotRunPrintInfo] where [Build]= 'Build')
+            try
+            {
+                bool ret = false;
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.PilotRunPrintInfo cond = new _Schema.PilotRunPrintInfo();
+                        cond.Build = build;
+                        sqlCtx = _Schema.Func.GetConditionedFuncSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintInfo), "COUNT", new List<string>() { _Schema.PilotRunPrintInfo.fn_ID }, cond, null, null, null, null, null, null, null);
+                    }
+                }
+                sqlCtx.Params[_Schema.PilotRunPrintInfo.fn_Build].Value = build;
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()))
+                {
+                    if (sqlR != null && sqlR.Read())
+                    {
+                        int cnt = GetValue_Int32(sqlR, sqlCtx.Indexes["COUNT"]);
+                        ret = cnt > 0 ? true : false;
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void DeleteBuild(string build)
+        {
+            // DELETE FROM PilotRunPrintBuild WHERE Build = @Build
+            try
+            {
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.PilotRunPrintBuild cond = new _Schema.PilotRunPrintBuild();
+                        cond.Build = build;
+                        sqlCtx = _Schema.Func.GetConditionedDelete(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintBuild), cond, null, null);
+                    }
+                }
+                sqlCtx.Params[_Schema.PilotRunPrintBuild.fn_Build].Value = build;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public DataTable GetPrintTypeList()
+        {
+            // SELECT [Type] FROM PilotRunPrintType ORDER BY [Type]
+            try
+            {
+                DataTable ret = null;
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = _Schema.Func.GetConditionedFuncSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintType), null, new List<string>() { _Schema.PilotRunPrintType.fn_Type }, null, null, null, null, null, null, null, null);
+
+                        sqlCtx.Sentence = sqlCtx.Sentence + string.Format(_Schema.Func.OrderBy, _Schema.PilotRunPrintType.fn_Type);
+                    }
+                }
+                ret = _Schema.SqlHelper.ExecuteDataFill(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, null);
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void AddPrintType(string type)
+        {
+            // IF NOT EXISTS(SELECT * FROM PilotRunPrintType WHERE Type = @Type)
+            //          INSERT INTO PilotRunPrintType([Type]) VALUES (@Type)
+            try
+            {
+                SqlTransactionManager.Begin();
+
+                if (!PeekAddPrintType(type))
+                    AddPrintType_Inner(type);
+
+                SqlTransactionManager.Commit();
+            }
+            catch (Exception)
+            {
+                SqlTransactionManager.Rollback();
+                throw;
+            }
+            finally
+            {
+                SqlTransactionManager.Dispose();
+                SqlTransactionManager.End();
+            }
+
+        }
+
+        private bool PeekAddPrintType(string type)
+        {
+            SqlDataReader sqlR = null;
+            try
+            {
+                bool ret = false;
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.PilotRunPrintType cond = new _Schema.PilotRunPrintType();
+                        cond.Type = type;
+                        sqlCtx = _Schema.Func.GetConditionedFuncSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintType), "COUNT", new List<string>() { _Schema.PilotRunPrintType.fn_Type }, cond, null, null, null, null, null, null, null);
+
+                        sqlCtx.Sentence = sqlCtx.Sentence.Replace("WHERE", "WITH (UPDLOCK) WHERE");
+                    }
+                }
+                sqlCtx.Params[_Schema.PilotRunPrintType.fn_Type].Value = type;
+                sqlR = _Schema.SqlHelper.ExecuteReader_OnTrans(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>());
+                if (sqlR != null && sqlR.Read())
+                {
+                    int cnt = GetValue_Int32(sqlR, sqlCtx.Indexes["COUNT"]);
+                    ret = cnt > 0 ? true : false;
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (sqlR != null)
+                {
+                    sqlR.Close();
+                }
+            }
+        }
+
+        private void AddPrintType_Inner(string type)
+        {
+            try
+            {
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = _Schema.Func.GetAquireIdInsert(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintType));
+                    }
+                }
+                sqlCtx.Params[_Schema.PilotRunPrintType.fn_Type].Value = type;
+                int id = Convert.ToInt32(_Schema.SqlHelper.ExecuteScalar(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool IsPrintTypeInUse(string type)
+        {
+            // IF EXISTS( SELECT *  FROM [PilotRunPrintInfo] WHERE [Type]='type')
+            try
+            {
+                bool ret = false;
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.PilotRunPrintInfo cond = new _Schema.PilotRunPrintInfo();
+                        cond.Type = type;
+                        sqlCtx = _Schema.Func.GetConditionedFuncSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintInfo), "COUNT", new List<string>() { _Schema.PilotRunPrintInfo.fn_ID }, cond, null, null, null, null, null, null, null);
+                    }
+                }
+                sqlCtx.Params[_Schema.PilotRunPrintInfo.fn_Type].Value = type;
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()))
+                {
+                    if (sqlR != null && sqlR.Read())
+                    {
+                        int cnt = GetValue_Int32(sqlR, sqlCtx.Indexes["COUNT"]);
+                        ret = cnt > 0 ? true : false;
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void DeletePrintType(string type)
+        {
+            // DELETE FROM PilotRunPrintType WHERE Type = @Type
+            try
+            {
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.PilotRunPrintType cond = new _Schema.PilotRunPrintType();
+                        cond.Type = type;
+                        sqlCtx = _Schema.Func.GetConditionedDelete(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintType), cond, null, null);
+                    }
+                }
+                sqlCtx.Params[_Schema.PilotRunPrintType.fn_Type].Value = type;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool IsBuildExist(string build)
+        {
+            // IF EXISTS( SELECT *  FROM [PilotRunPrintBuild] WHERE [Build]='Build')
+            try
+            {
+                bool ret = false;
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.PilotRunPrintBuild cond = new _Schema.PilotRunPrintBuild();
+                        cond.Build = build;
+                        sqlCtx = _Schema.Func.GetConditionedFuncSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintBuild), "COUNT", new List<string>() { _Schema.PilotRunPrintBuild.fn_Build }, cond, null, null, null, null, null, null, null);
+                    }
+                }
+                sqlCtx.Params[_Schema.PilotRunPrintBuild.fn_Build].Value = build;
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()))
+                {
+                    if (sqlR != null && sqlR.Read())
+                    {
+                        int cnt = GetValue_Int32(sqlR, sqlCtx.Indexes["COUNT"]);
+                        ret = cnt > 0 ? true : false;
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool IsPrintTypeExist(string Type)
+        {
+            // IF EXISTS( SELECT * FROM [PilotRunPrintType] WHERE [Type]='Type')
+            try
+            {
+                bool ret = false;
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.PilotRunPrintType cond = new _Schema.PilotRunPrintType();
+                        cond.Type = Type;
+                        sqlCtx = _Schema.Func.GetConditionedFuncSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintType), "COUNT", new List<string>() { _Schema.PilotRunPrintType.fn_ID }, cond, null, null, null, null, null, null, null);
+                    }
+                }
+                sqlCtx.Params[_Schema.PilotRunPrintType.fn_Type].Value = Type;
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()))
+                {
+                    if (sqlR != null && sqlR.Read())
+                    {
+                        int cnt = GetValue_Int32(sqlR, sqlCtx.Indexes["COUNT"]);
+                        ret = cnt > 0 ? true : false;
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void BSUpdate(string family, string build, string sku, string model, string editor)
+        {
+            // UPDATE PilotRunPrintInfo SET Family = @Family, Build = @Build, SKU = @SKU, Editor = @Editor, Udt = GETDATE() WHERE Model = @Model
+            try
+            {
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.PilotRunPrintInfo cond = new _Schema.PilotRunPrintInfo();
+                        cond.Model = model;
+                        sqlCtx = _Schema.Func.GetConditionedUpdate(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintInfo), new List<string>(){_Schema.PilotRunPrintInfo.fn_Family,_Schema.PilotRunPrintInfo.fn_Build,_Schema.PilotRunPrintInfo.fn_SKU,_Schema.PilotRunPrintInfo.fn_Editor}, null, null, null, cond, null, null, null, null, null, null, null);
+                    }
+                }
+                sqlCtx.Params[_Schema.PilotRunPrintInfo.fn_Model].Value = model;
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Params[_Schema.Func.DecSV(_Schema.PilotRunPrintInfo.fn_Family)].Value = family;
+                sqlCtx.Params[_Schema.Func.DecSV(_Schema.PilotRunPrintInfo.fn_Build)].Value = build;
+                sqlCtx.Params[_Schema.Func.DecSV(_Schema.PilotRunPrintInfo.fn_SKU)].Value = sku;
+                sqlCtx.Params[_Schema.Func.DecSV(_Schema.PilotRunPrintInfo.fn_Editor)].Value = editor;
+                sqlCtx.Params[_Schema.Func.DecSV(_Schema.PilotRunPrintInfo.fn_Udt)].Value = cmDt;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public DataTable GetPrintInfoList(string model)
+        {
+            // SELECT a.Family, a.Model, a.Build, a.SKU, a.[Type], a.Descr as [Description], a.Editor, a.Cdt, a.Udt, a.ID 
+            //          FROM PilotRunPrintInfo a, PilotRunPrintType b
+            //          WHERE a.Model = @Model AND a.Type = b.Type ORDER BY b.ID
+            try
+            {
+                DataTable ret = null;
+
+                _Schema.SQLContext sqlCtx = null;
+                _Schema.TableAndFields tf1 = null;
+                _Schema.TableAndFields tf2 = null;
+                _Schema.TableAndFields[] tblAndFldsesArray = null;
+
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx, out tblAndFldsesArray))
+                    {
+                        tf1 = new _Schema.TableAndFields();
+                        tf1.Table = typeof(_Schema.PilotRunPrintInfo);
+                        _Schema.PilotRunPrintInfo cond = new _Schema.PilotRunPrintInfo();
+                        cond.Model = model;
+                        tf1.equalcond = cond;
+                        tf1.ToGetFieldNames.Add(_Schema.PilotRunPrintInfo.fn_Family);
+                        tf1.ToGetFieldNames.Add(_Schema.PilotRunPrintInfo.fn_Model);
+                        tf1.ToGetFieldNames.Add(_Schema.PilotRunPrintInfo.fn_Build);
+                        tf1.ToGetFieldNames.Add(_Schema.PilotRunPrintInfo.fn_SKU);
+                        tf1.ToGetFieldNames.Add(_Schema.PilotRunPrintInfo.fn_Type);
+                        tf1.ToGetFieldNames.Add(_Schema.PilotRunPrintInfo.fn_Descr);
+                        tf1.ToGetFieldNames.Add(_Schema.PilotRunPrintInfo.fn_Editor);
+                        tf1.ToGetFieldNames.Add(_Schema.PilotRunPrintInfo.fn_Cdt);
+                        tf1.ToGetFieldNames.Add(_Schema.PilotRunPrintInfo.fn_Udt);
+                        tf1.ToGetFieldNames.Add(_Schema.PilotRunPrintInfo.fn_ID);
+
+                        tf2 = new _Schema.TableAndFields();
+                        tf2.Table = typeof(_Schema.PilotRunPrintType);
+                        tf2.ToGetFieldNames = null;
+
+                        List<_Schema.TableConnectionItem> tblCnntIs = new List<_Schema.TableConnectionItem>();
+                        _Schema.TableConnectionItem tc1 = new _Schema.TableConnectionItem(tf1, _Schema.PilotRunPrintInfo.fn_Type, tf2, _Schema.PilotRunPrintType.fn_Type);
+                        tblCnntIs.Add(tc1);
+
+                        _Schema.TableConnectionCollection tblCnnts = new _Schema.TableConnectionCollection(tblCnntIs.ToArray());
+
+                        tblAndFldsesArray = new _Schema.TableAndFields[] { tf1, tf2 };
+                        sqlCtx = _Schema.Func.GetConditionedJoinedSelect(MethodBase.GetCurrentMethod().MetadataToken, null, ref tblAndFldsesArray, tblCnnts);
+
+                        sqlCtx.Sentence = sqlCtx.Sentence + string.Format( _Schema.Func.OrderBy, _Schema.PilotRunPrintType.fn_ID); 
+                    }
+                }
+                tf1 = tblAndFldsesArray[0];
+                tf2 = tblAndFldsesArray[1];
+
+                sqlCtx.Params[_Schema.Func.DecAlias(tf1.alias, _Schema.PilotRunPrintInfo.fn_Model)].Value = model;
+
+                ret = _Schema.SqlHelper.ExecuteDataFill(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>());
+                ret = _Schema.Func.SortColumns(ret, new int[] { sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias,_Schema.PilotRunPrintInfo.fn_Family)],
+                                                                sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias,_Schema.PilotRunPrintInfo.fn_Model)],
+                                                                sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias,_Schema.PilotRunPrintInfo.fn_Build)],
+                                                                sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias,_Schema.PilotRunPrintInfo.fn_SKU)],
+                                                                sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias,_Schema.PilotRunPrintInfo.fn_Type)],
+                                                                sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias,_Schema.PilotRunPrintInfo.fn_Descr)],
+                                                                sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias,_Schema.PilotRunPrintInfo.fn_Editor)],
+                                                                sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias,_Schema.PilotRunPrintInfo.fn_Cdt)],
+                                                                sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias,_Schema.PilotRunPrintInfo.fn_Udt)],
+                                                                sqlCtx.Indexes[_Schema.Func.DecAlias(tf1.alias,_Schema.PilotRunPrintInfo.fn_ID)]
+                                                                });
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool IsExistPrintInfo(string model, string type)
+        {
+            // IF EXISTS(SELECT * FROM PilotRunPrintInfo WHERE Model = @Model AND Type = @Type)
+            try
+            {
+                bool ret = false;
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.PilotRunPrintInfo cond = new _Schema.PilotRunPrintInfo();
+                        cond.Model = model;
+                        cond.Type = type;
+                        sqlCtx = _Schema.Func.GetConditionedFuncSelect(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintInfo), "COUNT", new List<string>() { _Schema.PilotRunPrintType.fn_ID }, cond, null, null, null, null, null, null, null);
+                    }
+                }
+                sqlCtx.Params[_Schema.PilotRunPrintInfo.fn_Model].Value = model;
+                sqlCtx.Params[_Schema.PilotRunPrintInfo.fn_Type].Value = type;
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()))
+                {
+                    if (sqlR != null && sqlR.Read())
+                    {
+                        int cnt = GetValue_Int32(sqlR, sqlCtx.Indexes["COUNT"]);
+                        ret = cnt > 0 ? true : false;
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void UpdatePrintInfo(int id, string description, string editor)
+        {
+            // UPDATE PilotRunPrintInfo SET Descr = @Description, Editor = @Editor, Udt = GETDATE() WHERE ID=id
+            try
+            {
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        _Schema.PilotRunPrintInfo cond = new _Schema.PilotRunPrintInfo();
+                        cond.ID = id;
+                        sqlCtx = _Schema.Func.GetConditionedUpdate(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintInfo), new List<string>() { _Schema.PilotRunPrintInfo.fn_Descr, _Schema.PilotRunPrintInfo.fn_Editor }, null, null, null, cond, null, null, null, null, null, null, null);
+                    }
+                }
+                sqlCtx.Params[_Schema.PilotRunPrintInfo.fn_ID].Value = id;
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Params[_Schema.Func.DecSV(_Schema.PilotRunPrintInfo.fn_Descr)].Value = description;
+                sqlCtx.Params[_Schema.Func.DecSV(_Schema.PilotRunPrintInfo.fn_Editor)].Value = editor;
+                sqlCtx.Params[_Schema.Func.DecSV(_Schema.PilotRunPrintInfo.fn_Udt)].Value = cmDt;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void AddPrintInfo(PilotRunPrintInfo item)
+        {
+            // INSERT INTO [PilotRunPrintInfo]([Family],[Model],[Build],[SKU],[Type],[Descr],[Editor],[Cdt],[Udt])
+            // VALUES (@Family, @Model, @Build, @SKU, @Type, @Description, @Editor, GETDATE(), GETDATE())
+            try
+            {
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = _Schema.Func.GetAquireIdInsert(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintInfo));
+                    }
+                }
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Params[_Schema.PilotRunPrintInfo.fn_Family].Value = item.Family;
+                sqlCtx.Params[_Schema.PilotRunPrintInfo.fn_Model].Value = item.Model;
+                sqlCtx.Params[_Schema.PilotRunPrintInfo.fn_Build].Value = item.Build;
+                sqlCtx.Params[_Schema.PilotRunPrintInfo.fn_SKU].Value = item.SKU;
+                sqlCtx.Params[_Schema.PilotRunPrintInfo.fn_Type].Value = item.Type;
+                sqlCtx.Params[_Schema.PilotRunPrintInfo.fn_Descr].Value = item.Descr;
+                sqlCtx.Params[_Schema.PilotRunPrintInfo.fn_Editor].Value = item.Editor;
+                sqlCtx.Params[_Schema.PilotRunPrintInfo.fn_Cdt].Value = cmDt;
+                sqlCtx.Params[_Schema.PilotRunPrintInfo.fn_Udt].Value = cmDt;
+                item.ID = Convert.ToInt32(_Schema.SqlHelper.ExecuteScalar(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void DeletePrintInfo(int id)
+        {
+            // DELETE FROM PilotRunPrintInfo WHERE ID=id
+            try
+            {
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = _Schema.Func.GetCommonDelete(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.PilotRunPrintInfo));
+                    }
+                }
+                sqlCtx.Params[_Schema.PilotRunPrintInfo.fn_ID].Value = id;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void AddCustomer(CustomerInfo item)
+        {
+            try
+            {
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = _Schema.Func.GetCommonInsert(MethodBase.GetCurrentMethod().MetadataToken, typeof(_Schema.Customer));
+                    }
+                }
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Params[_Schema.Customer.fn_Code].Value = item.Code;
+                sqlCtx.Params[_Schema.Customer.fn_customer].Value = item.customer;
+                sqlCtx.Params[_Schema.Customer.fn_Description].Value = item.Description;
+                sqlCtx.Params[_Schema.Customer.fn_Plant].Value = item.Plant;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        #region . Defered  .
+
+        public void GenerateVirtualMoBOMForMaintainDefered(IUnitOfWork uow, string model, int limitCount, string mo)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), model, limitCount, mo);
+        }
+
+        public void AddBuildDefered(IUnitOfWork uow, string build, string editor)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), build, editor);
+        }
+
+        public void DeleteBuildDefered(IUnitOfWork uow, string build)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), build);
+        }
+
+        public void AddPrintTypeDefered(IUnitOfWork uow, string type)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), type);
+        }
+
+        public void DeletePrintTypeDefered(IUnitOfWork uow, string type)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), type);
+        }
+
+        public void BSUpdateDefered(IUnitOfWork uow, string family, string build, string sku, string model, string editor)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(),family, build, sku, model, editor);
+        }
+
+        public void UpdatePrintInfoDefered(IUnitOfWork uow, int id, string description, string editor)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), id, description, editor);
+        }
+
+        public void AddPrintInfoDefered(IUnitOfWork uow, PilotRunPrintInfo item)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), item);
+        }
+
+        public void DeletePrintInfoDefered(IUnitOfWork uow, int id)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), id);
+        }
+
+        public void AddCustomerDefered(IUnitOfWork uow, CustomerInfo item)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), item);
+        }
+
+        #endregion
+
+        #endregion
+
+        public IList<QCStatisticInfo> GetQCStatisticList(string pdLine)
+        {
+            try
+            {
+                IList<QCStatisticInfo> ret = new List<QCStatisticInfo>();
+
+                 //SELECT DISTINCT(Model),COUNT(*),  
+                 //SUM(CASE Status WHEN '1' THEN 1 ELSE 0 END) AS notcheck,
+                 //SUM(CASE Status WHEN '5' THEN 1 ELSE 0 END) AS piaIN,
+                 //SUM(CASE Status WHEN '2' THEN 1 ELSE 0 END) AS epiaIN,
+                 //SUM(CASE Status WHEN '6' THEN 1 ELSE 0 END) AS pia,
+                 //SUM(CASE Status WHEN '3' THEN 1 ELSE 0 END) AS epia,
+                 //SUM(CASE Status WHEN '7' THEN 1 ELSE 0 END) AS piaerror,
+                 //SUM(CASE Status WHEN '4' THEN 1 ELSE 0 END) AS epiaerror
+                 //FROM QCStatus (NOLOCK) 
+                 //WHERE Cdt> CONVERT(CHAR(10),GETDATE(),121) AND Line=@Line
+                 //GROUP BY Model
+
+                _Schema.SQLContext sqlCtx = null;
+                lock (MethodBase.GetCurrentMethod())
+                {
+                    if (!_Schema.Func.PeerTheSQL(MethodBase.GetCurrentMethod().MetadataToken, out sqlCtx))
+                    {
+                        sqlCtx = new _Schema.SQLContext();
+                        sqlCtx.Sentence = "SELECT DISTINCT({1}),COUNT(*)," +
+                                            "SUM(CASE {2} WHEN '1' THEN 1 ELSE 0 END) AS notcheck," +
+                                            "SUM(CASE {2} WHEN '5' THEN 1 ELSE 0 END) AS piaIN," +
+                                            "SUM(CASE {2} WHEN '2' THEN 1 ELSE 0 END) AS epiaIN," +
+                                            "SUM(CASE {2} WHEN '6' THEN 1 ELSE 0 END) AS pia," +
+                                            "SUM(CASE {2} WHEN '3' THEN 1 ELSE 0 END) AS epia," +
+                                            "SUM(CASE {2} WHEN '7' THEN 1 ELSE 0 END) AS piaerror," +
+                                            "SUM(CASE {2} WHEN '4' THEN 1 ELSE 0 END) AS epiaerror " +
+                                            "FROM {0} (NOLOCK) " +
+                                            "WHERE {3}> CONVERT(CHAR(10),@{3},121) AND {4}=@{4} " +
+                                            "GROUP BY {1} ";
+
+                        sqlCtx.Sentence = string.Format(sqlCtx.Sentence,typeof(_Schema.QCStatus).Name,
+                                                                        _Schema.QCStatus.fn_Model,
+                                                                        _Schema.QCStatus.fn_Status,
+                                                                        _Schema.QCStatus.fn_Cdt,
+                                                                        _Schema.QCStatus.fn_Line);
+
+                        sqlCtx.Params.Add(_Schema.QCStatus.fn_Cdt, new SqlParameter("@" + _Schema.QCStatus.fn_Cdt, SqlDbType.DateTime));
+                         sqlCtx.Params.Add(_Schema.QCStatus.fn_Line, new SqlParameter("@" + _Schema.QCStatus.fn_Line, SqlDbType.Char));
+                        _Schema.Func.InsertIntoCache(MethodBase.GetCurrentMethod().MetadataToken, sqlCtx);
+                    }
+                }
+                sqlCtx.Params[_Schema.QCStatus.fn_Cdt].Value = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Params[_Schema.QCStatus.fn_Line].Value = pdLine;
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_FA, CommandType.Text, sqlCtx.Sentence, sqlCtx.Params.Values.ToArray<SqlParameter>()))
+                {
+                    while (sqlR != null && sqlR.Read())
+                    {
+                        QCStatisticInfo item = new QCStatisticInfo();
+                        item.modelId = GetValue_Str(sqlR, 0);
+                        item.input = GetValue_Int32(sqlR, 1);
+                        item.noCheck = GetValue_Int32(sqlR, 2);
+                        item.piaIn = GetValue_Int32(sqlR, 3);
+                        item.epiaIn = GetValue_Int32(sqlR, 4);
+                        item.piaPass = GetValue_Int32(sqlR, 5);
+                        item.epiaPass = GetValue_Int32(sqlR, 6);
+                        item.piaError = GetValue_Int32(sqlR, 7);
+                        item.epiaError = GetValue_Int32(sqlR, 8);
+                        ret.Add(item);
+                    }
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+       #region EnergyLabel and IndonesiaLabel
+        public void InsertEnergyLabel(EnergyLabelInfo item){
+            try
+            {
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                _Metas.SQLContextNew sqlCtx = null;
+                
+                lock (mthObj)
+                {
+                    if (!_Metas.SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    {
+                        sqlCtx = _Metas.FuncNew.GetAquireIdInsert<_Metas.EnergyLabel>(tk);
+
+                    }
+                }
+                sqlCtx = _Metas.FuncNew.SetColumnFromField<_Metas.EnergyLabel, EnergyLabelInfo>(sqlCtx, item);
+
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                  CommandType.Text,
+                                                                                  sqlCtx.Sentence,
+                                                                                  sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void UpdateEnergyLabel(EnergyLabelInfo item)
+        {
+            try
+            {
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                _Metas.SQLContextNew sqlCtx = null;            
+
+                lock (mthObj)
+                {
+                    //if (!_Metas.SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    //{
+                        _Metas.EnergyLabel cond = new _Metas.EnergyLabel();
+                        cond.id = item.id;
+                        _Metas.EnergyLabel setv = _Metas.FuncNew.SetColumnFromField<_Metas.EnergyLabel, EnergyLabelInfo>(item, _Metas.EnergyLabel.fn_id);
+                        setv.udt = DateTime.Now;
+
+                        sqlCtx = _Metas.FuncNew.GetConditionedUpdate<_Metas.EnergyLabel>(
+                                                                                                           new _Metas.SetValueCollection<_Metas.EnergyLabel>(new _Metas.CommonSetValue<_Metas.EnergyLabel>(setv)),
+                                                                                                           new _Metas.ConditionCollection<_Metas.EnergyLabel>(new _Metas.EqualCondition<_Metas.EnergyLabel>(cond)));
+                    //}
+                }
+
+                sqlCtx.Param(_Metas.EnergyLabel.fn_id).Value = item.id;
+
+                sqlCtx = _Metas.FuncNew.SetColumnFromField<_Metas.EnergyLabel, EnergyLabelInfo>(sqlCtx, item, true);
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Param(g.DecSV(_Metas.EnergyLabel.fn_udt)).Value = cmDt;
+
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_PAK,
+                                                                                 CommandType.Text,
+                                                                                 sqlCtx.Sentence,
+                                                                                 sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void DeleteEnergyLabel(int id)
+        {
+            try
+            {
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                lock (mthObj)
+                {
+                    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    {
+                        _Metas.EnergyLabel cond = new _Metas.EnergyLabel();
+                        cond.id = id;
+
+                        sqlCtx = FuncNew.GetConditionedDelete<_Metas.EnergyLabel>(tk, new ConditionCollection<_Metas.EnergyLabel>(new EqualCondition<_Metas.EnergyLabel>(cond)));
+                    }
+                }
+
+                sqlCtx.Param(_Metas.EnergyLabel.fn_id).Value = id;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                               CommandType.Text,
+                                                                               sqlCtx.Sentence,
+                                                                               sqlCtx.Params);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public IList<EnergyLabelInfo> GetEnergyLabel(EnergyLabelInfo condition)
+        {
+            try
+            {
+                IList<EnergyLabelInfo> ret = new List<EnergyLabelInfo>();
+
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                _Metas.SQLContextNew sqlCtx = null;
+                lock (mthObj)
+                {
+                    _Metas.EnergyLabel cond = _Metas.FuncNew.SetColumnFromField<_Metas.EnergyLabel, EnergyLabelInfo>(condition);
+                    sqlCtx = _Metas.FuncNew.GetConditionedSelect<_Metas.EnergyLabel>(null, null,
+                                                                                                       new _Metas.ConditionCollection<_Metas.EnergyLabel>(new _Metas.EqualCondition<_Metas.EnergyLabel>(cond)),
+                                                                                                       _Metas.EnergyLabel.fn_family);
+
+                }
+
+                sqlCtx = _Metas.FuncNew.SetColumnFromField<_Metas.EnergyLabel, EnergyLabelInfo>(sqlCtx, condition);
+
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_PAK,
+                                                                                                                     CommandType.Text,
+                                                                                                                     sqlCtx.Sentence,
+                                                                                                                     sqlCtx.Params))
+                {
+                    ret = _Metas.FuncNew.SetFieldFromColumn<_Metas.EnergyLabel, EnergyLabelInfo, EnergyLabelInfo>(ret, sqlR, sqlCtx);
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void InsertIndonesiaLabel(IndonesiaLabelInfo item)
+        {
+            try
+            {
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                _Metas.SQLContextNew sqlCtx = null;
+
+                lock (mthObj)
+                {
+                    if (!_Metas.SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    {
+                        sqlCtx = _Metas.FuncNew.GetAquireIdInsert<_Metas.IndonesiaLabel>(tk);
+
+                    }
+                }
+                sqlCtx = _Metas.FuncNew.SetColumnFromField<_Metas.IndonesiaLabel, IndonesiaLabelInfo>(sqlCtx, item);
+
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                  CommandType.Text,
+                                                                                  sqlCtx.Sentence,
+                                                                                  sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void UpdateIndonesiaLabel(IndonesiaLabelInfo item)
+        {
+            try
+            {
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                _Metas.SQLContextNew sqlCtx = null;               
+
+                lock (mthObj)
+                {
+                    //if (!_Metas.SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    //{
+                        _Metas.IndonesiaLabel cond = new _Metas.IndonesiaLabel();
+                        cond.id = item.id;
+                        _Metas.IndonesiaLabel setv = _Metas.FuncNew.SetColumnFromField<_Metas.IndonesiaLabel, IndonesiaLabelInfo>(item, _Metas.IndonesiaLabel.fn_id);
+                        setv.udt = DateTime.Now;
+
+                        sqlCtx = _Metas.FuncNew.GetConditionedUpdate<_Metas.IndonesiaLabel>(
+                                                                                                           new _Metas.SetValueCollection<_Metas.IndonesiaLabel>(new _Metas.CommonSetValue<_Metas.IndonesiaLabel>(setv)),
+                                                                                                           new _Metas.ConditionCollection<_Metas.IndonesiaLabel>(new _Metas.EqualCondition<_Metas.IndonesiaLabel>(cond)));
+                    //}
+                }
+
+                sqlCtx.Param(_Metas.IndonesiaLabel.fn_id).Value = item.id;
+
+                sqlCtx = _Metas.FuncNew.SetColumnFromField<_Metas.IndonesiaLabel, IndonesiaLabelInfo>(sqlCtx, item, true);
+                DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                sqlCtx.Param(g.DecSV(_Metas.IndonesiaLabel.fn_udt)).Value = cmDt;
+
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_PAK,
+                                                                                 CommandType.Text,
+                                                                                 sqlCtx.Sentence,
+                                                                                 sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void DeleteIndonesiaLabel(int id)
+        {
+            try
+            {
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                lock (mthObj)
+                {
+                    if (!SQLCache.PeerTheSQL(tk, out sqlCtx))
+                    {
+                        _Metas.IndonesiaLabel cond = new _Metas.IndonesiaLabel();
+                        cond.id = id;
+
+                        sqlCtx = FuncNew.GetConditionedDelete<_Metas.IndonesiaLabel>(tk, new ConditionCollection<_Metas.IndonesiaLabel>(new EqualCondition<_Metas.IndonesiaLabel>(cond)));
+                    }
+                }
+
+                sqlCtx.Param(_Metas.IndonesiaLabel.fn_id).Value = id;
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                               CommandType.Text,
+                                                                               sqlCtx.Sentence,
+                                                                               sqlCtx.Params);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public IList<IndonesiaLabelInfo> GetIndonesiaLabel(IndonesiaLabelInfo condition)
+        {
+            try
+            {
+
+                IList<IndonesiaLabelInfo> ret = new List<IndonesiaLabelInfo>();
+
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                int tk = mthObj.MetadataToken;
+                _Metas.SQLContextNew sqlCtx = null;
+                lock (mthObj)
+                {
+                    _Metas.IndonesiaLabel cond = _Metas.FuncNew.SetColumnFromField<_Metas.IndonesiaLabel, IndonesiaLabelInfo>(condition);
+                    sqlCtx = _Metas.FuncNew.GetConditionedSelect<_Metas.IndonesiaLabel>(null, null,
+                                                                                                       new _Metas.ConditionCollection<_Metas.IndonesiaLabel>(new _Metas.EqualCondition<_Metas.IndonesiaLabel>(cond)),
+                                                                                                       _Metas.IndonesiaLabel.fn_sku);
+
+                }
+
+                sqlCtx = _Metas.FuncNew.SetColumnFromField<_Metas.IndonesiaLabel, IndonesiaLabelInfo>(sqlCtx, condition);
+
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_PAK,
+                                                                                                                     CommandType.Text,
+                                                                                                                     sqlCtx.Sentence,
+                                                                                                                     sqlCtx.Params))
+                {
+                    ret = _Metas.FuncNew.SetFieldFromColumn<_Metas.IndonesiaLabel, IndonesiaLabelInfo, IndonesiaLabelInfo>(ret, sqlR, sqlCtx);
+                }
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+      #endregion
+
+        #region common get/insert/update/delete
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="R"></typeparam>
+        /// <param name="condition"></param>
+        /// <param name="isAndCondition"></param>
+        /// <returns></returns>
+        public IList<R> GetDataByCondition<T, R>(R condition, bool isAndCondition)
+            where T : class
+            where R : class
+        {
+            try
+            {
+                IList<R> ret = new List<R>();
+
+                SQLContextNew sqlCtx = null;
+
+                T cond = FuncNew.SetColumnFromField<T, R>(condition);
+                ConditionCollection<T> conditionList = new ConditionCollection<T>(isAndCondition);
+                conditionList.Add(new EqualCondition<T>(cond));
+                sqlCtx = FuncNew.GetConditionedSelect<T>(null, null,
+                                                                                   conditionList);
+
+
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text,
+                                                                                                                             sqlCtx.Sentence,
+                                                                                                                             sqlCtx.Params))
+                {
+
+                    ret = FuncNew.SetFieldFromColumn<T, R, R>(ret, sqlR, sqlCtx);
+                }
+
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// select * from table
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="R"></typeparam>
+        /// <param name="condition"></param>
+        /// <returns></returns>
+        public IList<R> GetData<T, R>(R condition)
+            where T : class
+            where R : class
+        {
+            try
+            {
+                IList<R> ret = new List<R>();
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+
+                    T cond = FuncNew.SetColumnFromField<T, R>(condition);
+
+                    sqlCtx = FuncNew.GetConditionedSelect<T>(null, null,
+                                                                                       new ConditionCollection<T>(new EqualCondition<T>(cond)));
+
+
+                //}
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text,
+                                                                                                                             sqlCtx.Sentence,
+                                                                                                                             sqlCtx.Params))
+                {
+
+                    ret = FuncNew.SetFieldFromColumn<T, R, R>(ret, sqlR, sqlCtx);
+                }
+
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        /// <summary>
+        /// Select field1, field2 from table
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="R"></typeparam>
+        /// <param name="condition">條件</param>
+        /// <param name="columnNames">列舉Table column name</param>
+        /// <returns></returns>
+        public IList<R> GetData<T, R>(R condition, params string[] columnNames)
+            where T : class
+            where R : class
+        {
+            try
+            {
+                IList<R> ret = new List<R>();
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+
+                    T cond = FuncNew.SetColumnFromField<T, R>(condition);
+
+                    sqlCtx = FuncNew.GetConditionedSelect<T>(null, columnNames,
+                                                                                       new ConditionCollection<T>(new EqualCondition<T>(cond)));
+
+
+                //}
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text,
+                                                                                                                             sqlCtx.Sentence,
+                                                                                                                             sqlCtx.Params))
+                {
+
+                    ret = FuncNew.SetFieldFromColumn<T, R, R>(ret, sqlR, sqlCtx);
+                }
+
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// select distinct/count/sum field from table
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="R"></typeparam>
+        /// <param name="condition"></param>
+        /// <param name="sqlFunction">null/distinct/count/sum</param>
+        /// <param name="columnNames"></param>
+        /// <returns></returns>
+        public IList<R> GetData<T, R>(R condition, string sqlFunction, string[] columnNames)
+            where T : class
+            where R : class
+        {
+            try
+            {
+                IList<R> ret = new List<R>();
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+
+                    T cond = FuncNew.SetColumnFromField<T, R>(condition);
+
+                    sqlCtx = FuncNew.GetConditionedSelect<T>(sqlFunction, columnNames,
+                                                                                       new ConditionCollection<T>(new EqualCondition<T>(cond)));
+
+
+                //}
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text,
+                                                                                                                             sqlCtx.Sentence,
+                                                                                                                             sqlCtx.Params))
+                {
+
+                    ret = FuncNew.SetFieldFromColumn<T, R, R>(ret, sqlR, sqlCtx);
+                }
+
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<R> GetDataByList<T, R>(R inSetCondition, string columnName, IList<string> inputList)
+            where T : class
+            where R : class
+        {
+            try
+            {
+                IList<R> ret = new List<R>();
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+
+                    T cond = FuncNew.SetColumnFromField<T, R>(inSetCondition);
+
+                    sqlCtx = FuncNew.GetConditionedSelect<T>(null, null,
+                                                                                       new ConditionCollection<T>(new InSetCondition<T>(cond)));
+
+
+                //}
+
+                string Sentence = sqlCtx.Sentence.Replace(g.DecInSet(columnName), g.ConvertInSet(inputList));
+                
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text,
+                                                                                                                             Sentence,
+                                                                                                                             sqlCtx.Params))
+                {
+
+                    ret = FuncNew.SetFieldFromColumn<T, R, R>(ret, sqlR, sqlCtx);
+                }
+
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<R> GetDataByList<T, R>(R condition, R inSetCondition, string columnName, IList<string> inputList)
+            where T : class
+            where R : class
+        {
+            try
+            {
+                IList<R> ret = new List<R>();
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+
+                    T inCond = FuncNew.SetColumnFromField<T, R>(inSetCondition);
+                    T cond = FuncNew.SetColumnFromField<T, R>(condition);
+                    sqlCtx = FuncNew.GetConditionedSelect<T>(null, null,
+                                                                                       new ConditionCollection<T>(new InSetCondition<T>(inCond),
+                                                                                                                                 new EqualCondition<T>(cond) ));
+
+
+                //}
+
+                string Sentence = sqlCtx.Sentence.Replace(g.DecInSet(columnName), g.ConvertInSet(inputList));
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text,
+                                                                                                                             Sentence,
+                                                                                                                             sqlCtx.Params))
+                {
+
+                    ret = FuncNew.SetFieldFromColumn<T, R, R>(ret, sqlR, sqlCtx);
+                }
+
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<R> GetDataByBetween<T, R>(R condition, R betweenCondition, string betweenColumnName, string beginValue, string endValue)
+            where T : class
+            where R : class
+        {
+            try
+            {
+                IList<R> ret = new List<R>();
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+
+                    T cond = FuncNew.SetColumnFromField<T, R>(condition);
+                    T between = FuncNew.SetColumnFromField<T, R>(betweenCondition);
+
+
+                    sqlCtx = FuncNew.GetConditionedSelect<T>(null, null,
+                                                                                       new ConditionCollection<T>(new EqualCondition<T>(cond),
+                                                                                       new BetweenCondition<T>(between)));
+
+                //}
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+                sqlCtx.Param(g.DecBeg(betweenColumnName)).Value = beginValue;
+                sqlCtx.Param(g.DecEnd(betweenColumnName)).Value = endValue;
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text,
+                                                                                                                             sqlCtx.Sentence,
+                                                                                                                             sqlCtx.Params))
+                {
+
+                    ret = FuncNew.SetFieldFromColumn<T, R, R>(ret, sqlR, sqlCtx);
+                }
+
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<R> GetDataByBetween<T, R>(R condition, R betweenCondition, string betweenColumnName, int beginValue, int endValue)
+            where T : class
+            where R : class
+        {
+            try
+            {
+                IList<R> ret = new List<R>();
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+
+                    T cond = FuncNew.SetColumnFromField<T, R>(condition);
+                    T between = FuncNew.SetColumnFromField<T, R>(betweenCondition);
+
+
+                    sqlCtx = FuncNew.GetConditionedSelect<T>(null, null,
+                                                                                       new ConditionCollection<T>(new EqualCondition<T>(cond),
+                                                                                       new BetweenCondition<T>(between)));
+
+                //}
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+                sqlCtx.Param(g.DecBeg(betweenColumnName)).Value = beginValue;
+                sqlCtx.Param(g.DecEnd(betweenColumnName)).Value = endValue;
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text,
+                                                                                                                             sqlCtx.Sentence,
+                                                                                                                             sqlCtx.Params))
+                {
+
+                    ret = FuncNew.SetFieldFromColumn<T, R, R>(ret, sqlR, sqlCtx);
+                }
+
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<R> GetDataByBetween<T, R>(R condition, R betweenCondition, string betweenColumnName, DateTime beginValue, DateTime endValue)
+            where T : class
+            where R : class
+        {
+            try
+            {
+                IList<R> ret = new List<R>();
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+
+                    T cond = FuncNew.SetColumnFromField<T, R>(condition);
+                    T between = FuncNew.SetColumnFromField<T, R>(betweenCondition);
+
+
+                    sqlCtx = FuncNew.GetConditionedSelect<T>(null, null,
+                                                                                       new ConditionCollection<T>(new EqualCondition<T>(cond),
+                                                                                       new BetweenCondition<T>(between)));
+
+                //}
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+                sqlCtx.Param(g.DecBeg(betweenColumnName)).Value = beginValue;
+                sqlCtx.Param(g.DecEnd(betweenColumnName)).Value = endValue;
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text,
+                                                                                                                             sqlCtx.Sentence,
+                                                                                                                             sqlCtx.Params))
+                {
+
+                    ret = FuncNew.SetFieldFromColumn<T, R, R>(ret, sqlR, sqlCtx);
+                }
+
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        public IList<R> GetDataByBetween<T, R>(R condition, R inSetCondition, string columnName, IList<string> inputList, R betweenCondition, string betweenColumnName, DateTime beginValue, DateTime endValue)
+            where T : class
+            where R : class
+        {
+            try
+            {
+                IList<R> ret = new List<R>();
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                    T inSetcond = FuncNew.SetColumnFromField<T, R>(inSetCondition);
+                    T cond = FuncNew.SetColumnFromField<T, R>(condition);
+                    T between = FuncNew.SetColumnFromField<T, R>(betweenCondition);
+
+
+                    sqlCtx = FuncNew.GetConditionedSelect<T>(null, null,
+                                                                                       new ConditionCollection<T>(new EqualCondition<T>(cond),
+                                                                                       new BetweenCondition<T>(between),
+                                                                                       new InSetCondition<T>(inSetcond)));
+
+                //}
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+                sqlCtx.Param(g.DecBeg(betweenColumnName)).Value = beginValue;
+                sqlCtx.Param(g.DecEnd(betweenColumnName)).Value = endValue;
+
+                string Sentence = sqlCtx.Sentence.Replace(g.DecInSet(columnName), g.ConvertInSet(inputList));
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text,
+                                                                                                                            Sentence,
+                                                                                                                             sqlCtx.Params))
+                {
+
+                    ret = FuncNew.SetFieldFromColumn<T, R, R>(ret, sqlR, sqlCtx);
+                }
+
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        public int GetDataCount<T, R>(R condition, string columnName)
+            where T : class
+            where R : class
+        {
+            try
+            {
+                int ret = 0;
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+
+                    T cond = FuncNew.SetColumnFromField<T, R>(condition);
+
+                    sqlCtx = FuncNew.GetConditionedSelect<T>("Count", new string[] { columnName },
+                                                                                       new ConditionCollection<T>(new EqualCondition<T>(cond)));
+
+
+                //}
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text,
+                                                                                                                             sqlCtx.Sentence,
+                                                                                                                             sqlCtx.Params))
+                {
+                    if (sqlR != null && sqlR.Read())
+                    {
+                        ret = sqlR.GetInt32(0);  //FuncNew.SetFieldFromColumn<T, R, R>(ret, sqlR, sqlCtx);
+                    }
+                }
+
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public int GetDataSum<T, R>(R condition, string columnName)
+            where T : class
+            where R : class
+        {
+            try
+            {
+                int ret = 0;
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+
+                    T cond = FuncNew.SetColumnFromField<T, R>(condition);
+
+                    sqlCtx = FuncNew.GetConditionedSelect<T>("Sum", new string[] { columnName },
+                                                                                       new ConditionCollection<T>(new EqualCondition<T>(cond)));
+
+
+                //}
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text,
+                                                                                                                             sqlCtx.Sentence,
+                                                                                                                             sqlCtx.Params))
+                {
+                    if (sqlR != null && sqlR.Read())
+                    {
+                        ret = sqlR.GetInt32(0);  //FuncNew.SetFieldFromColumn<T, R, R>(ret, sqlR, sqlCtx);
+                    }
+                }
+
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public int GetDataCountDistinct<T, R>(R condition, string columnName)
+            where T : class
+            where R : class
+        {
+            try
+            {
+                int ret = 0;
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+
+                    T cond = FuncNew.SetColumnFromField<T, R>(condition);
+
+                    sqlCtx = FuncNew.GetConditionedSelect<T>("Count ", new string[] { columnName },
+                                                                                       new ConditionCollection<T>(new EqualCondition<T>(cond)));
+
+
+                //}
+
+                int index = sqlCtx.Sentence.IndexOf(columnName);
+                sqlCtx.Sentence = sqlCtx.Sentence.Insert(index, "Distinct ");
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text,
+                                                                                                                             sqlCtx.Sentence,
+                                                                                                                             sqlCtx.Params))
+                {
+                    if (sqlR != null && sqlR.Read())
+                    {
+                        ret = sqlR.GetInt32(0);  //FuncNew.SetFieldFromColumn<T, R, R>(ret, sqlR, sqlCtx);
+                    }
+                }
+
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        public IList<R1> GetDataDistinct<T, R, R1>(R condition, string columnName)
+            where T : class
+            where R : class
+        {
+            try
+            {
+                IList<R1> ret = new List<R1>();
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+
+                    T cond = FuncNew.SetColumnFromField<T, R>(condition);
+
+                    sqlCtx = FuncNew.GetConditionedSelect<T>("Distinct ", new string[] { columnName },
+                                                                                       new ConditionCollection<T>(new EqualCondition<T>(cond)));
+
+
+                //}
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                             CommandType.Text,
+                                                                                                                             sqlCtx.Sentence,
+                                                                                                                             sqlCtx.Params))
+                {
+                    while (sqlR != null && sqlR.Read())
+                    {
+                        ret.Add((R1)sqlR.GetValue(0));  //FuncNew.SetFieldFromColumn<T, R, R>(ret, sqlR, sqlCtx);
+                    }
+                }
+
+                return ret;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        /// <summary>
+        /// Update table set filed where ID=@ID
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="R"></typeparam>
+        /// <param name="condition"></param>
+        /// <param name="value"></param>
+        public void UpdateDataByID<T, R>(R condition, R value)
+            where T : class, new()
+            where R : class
+        {
+            try
+            {
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+
+                    T cond = FuncNew.SetColumnFromField<T, R>(condition);
+
+                    T setv = FuncNew.SetColumnFromField<T, R>(value, "ID");
+
+                    sqlCtx = FuncNew.GetConditionedUpdate<T>(new SetValueCollection<T>(new CommonSetValue<T>(setv)),
+                                                                                                                   new ConditionCollection<T>(new EqualCondition<T>(cond)));
+
+                //}
+
+
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, value, true);
+                string udtName = g.DecSV("Udt");
+                if (sqlCtx.ParamKeys.Contains(udtName))
+                {
+                    DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                    sqlCtx.Param(g.DecSV("Udt")).Value = cmDt;
+                }
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                 CommandType.Text,
+                                                                                 sqlCtx.Sentence,
+                                                                                 sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        /// <summary>
+        /// Update table set field=value where condition
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="R"></typeparam>
+        /// <param name="condition"></param>
+        /// <param name="value"></param>
+        /// <param name="excludeColumnNames"></param>
+        public void UpdateData<T, R>(R condition, R value, params string[] excludeColumnNames)
+            where T : class, new()
+            where R : class
+        {
+            try
+            {
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                // int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                    T cond = FuncNew.SetColumnFromField<T, R>(condition);
+                    T setv = FuncNew.SetColumnFromField<T, R>(value, excludeColumnNames);
+                    sqlCtx = FuncNew.GetConditionedUpdate<T>(new SetValueCollection<T>(new CommonSetValue<T>(setv)),
+                                                                                                                   new ConditionCollection<T>(new EqualCondition<T>(cond)));
+                //}
+
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, value, true);
+                string udtName = g.DecSV("Udt");
+                if (sqlCtx.ParamKeys.Contains(udtName))
+                {
+                    DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                    sqlCtx.Param(g.DecSV("Udt")).Value = cmDt;
+                }
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                 CommandType.Text,
+                                                                                 sqlCtx.Sentence,
+                                                                                 sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void UpdatDataByList<T, R>(R condition, R inSetCondition, string columnName, IList<string> inputList, R value)
+            where T : class, new()
+            where R : class
+        {
+            try
+            {
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                // int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                     T inCond = FuncNew.SetColumnFromField<T, R>(inSetCondition);
+                    T cond = FuncNew.SetColumnFromField<T, R>(condition);
+                    T setv = FuncNew.SetColumnFromField<T, R>(value, columnName);
+                    sqlCtx = FuncNew.GetConditionedUpdate<T>(new SetValueCollection<T>(new CommonSetValue<T>(setv)),
+                                                                                                                   new ConditionCollection<T>(new EqualCondition<T>(cond),
+                                                                                                                   new InSetCondition<T>(inCond)));
+                //}          
+
+                string Sentence = sqlCtx.Sentence.Replace(g.DecInSet(columnName), g.ConvertInSet(inputList));
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, value, true);
+                string udtName = g.DecSV("Udt");
+                if (sqlCtx.ParamKeys.Contains(udtName))
+                {
+                    DateTime cmDt = _Schema.SqlHelper.GetDateTime();
+                    sqlCtx.Param(g.DecSV("Udt")).Value = cmDt;
+                }
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                 CommandType.Text,
+                                                                                 Sentence,
+                                                                                 sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        /// <summary>
+        /// insert no ID field with identity type
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="R"></typeparam>
+        /// <param name="item"></param>
+        public void InsertData<T, R>(R item)
+            where T : class, new()
+            where R : class
+        {
+            try
+            {
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+               // {
+
+                    sqlCtx = FuncNew.GetCommonInsert<T>();
+
+               // }
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, item);
+
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                  CommandType.Text,
+                                                                                  sqlCtx.Sentence,
+                                                                                  sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        /// <summary>
+        /// insert ID field with identity type
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="R"></typeparam>
+        /// <param name="item"></param>
+        public void InsertDataWithID<T, R>(R item)
+            where T : class, new()
+            where R : class
+        {
+            try
+            {
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                //int tk = mthObj.MetadataToken;
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+                    sqlCtx = FuncNew.GetAquireIdInsert<T>();
+                //}
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, item);
+
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                  CommandType.Text,
+                                                                                  sqlCtx.Sentence,
+                                                                                  sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public int InsertDataAndGetID<T, R>(R item)
+            where T : class, new()
+            where R : class
+        {
+            try
+            {
+
+                SQLContextNew sqlCtx = FuncNew.GetAquireIdInsert<T>();
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, item);
+
+                return _Schema.SqlHelper.ExecuteScalarForAquireIdInsert(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                 CommandType.Text,
+                                                                                 sqlCtx.Sentence,
+                                                                                 sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public long InsertDataAndGetLongID<T, R>(R item)
+            where T : class, new()
+            where R : class
+        {
+            try
+            {
+                SQLContextNew sqlCtx = FuncNew.GetAquireIdInsert<T>();
+
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, item);
+
+                return _Schema.SqlHelper.ExecuteScalarForAquireLongIdInsert(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                 CommandType.Text,
+                                                                                 sqlCtx.Sentence,
+                                                                                 sqlCtx.Params);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// delete by condition
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="R"></typeparam>
+        /// <param name="condition"></param>
+        public void DeleteData<T, R>(R condition)
+            where T : class, new()
+            where R : class
+        {
+            try
+            {
+                //MethodBase mthObj = MethodBase.GetCurrentMethod();
+                SQLContextNew sqlCtx = null;
+                //lock (mthObj)
+                //{
+
+                    T cond = FuncNew.SetColumnFromField<T, R>(condition);
+
+                    sqlCtx = FuncNew.GetConditionedDelete<T>(new ConditionCollection<T>(new EqualCondition<T>(cond)));
+
+                //}
+
+                sqlCtx = FuncNew.SetColumnFromField<T, R>(sqlCtx, condition);
+                _Schema.SqlHelper.ExecuteNonQuery(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                               CommandType.Text,
+                                                                               sqlCtx.Sentence,
+                                                                               sqlCtx.Params);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void UpdateDataByIDDefered<T, R>(IUnitOfWork uow, R condition, R value)
+            where T : class, new()
+            where R : class
+        {
+            //AddOneInvokeGenericBody(uow, MethodBase.GetCurrentMethod(), new Type[] { typeof(T), typeof(R) }, condition, value);
+            Action deferAction = () => { UpdateDataByID<T, R>(condition, value); };
+            AddOneInvokeBody(uow,deferAction);
+        }
+        public void UpdateDataDefered<T, R>(IUnitOfWork uow, R condition, R value, params string[] excludeColumnNames)
+            where T : class, new()
+            where R : class
+        {
+            //AddOneInvokeGenericBody(uow, MethodBase.GetCurrentMethod(), new Type[] { typeof(T), typeof(R) }, condition, value, excludeColumnNames);
+            Action deferAction = () => { UpdateData<T, R>(condition, value); };
+            AddOneInvokeBody(uow, deferAction);
+        }
+
+        public void UpdatDataByListDefered<T, R>(IUnitOfWork uow, R condition, R inSetCondition, string columnName, IList<string> inputList, R value)
+            where T : class, new()
+            where R : class
+        {
+            //AddOneInvokeGenericBody(uow, MethodBase.GetCurrentMethod(), new Type[] { typeof(T), typeof(R) }, condition, inSetCondition, columnName, inputList, value);
+            Action deferAction = () => { UpdatDataByList<T, R>(condition, inSetCondition, columnName, inputList,value); };
+            AddOneInvokeBody(uow, deferAction);
+        }
+
+        public void InsertDataDefered<T, R>(IUnitOfWork uow, R item)
+            where T : class, new()
+            where R : class
+        {
+           // AddOneInvokeGenericBody(uow, MethodBase.GetCurrentMethod(), new Type[] { typeof(T), typeof(R) }, item);
+            Action deferAction = () => { InsertData<T, R>(item); };
+            AddOneInvokeBody(uow, deferAction);
+        }
+        public void InsertDataWithIDDefered<T, R>(IUnitOfWork uow, R item)
+            where T : class, new()
+            where R : class
+        {
+            //AddOneInvokeGenericBody(uow, MethodBase.GetCurrentMethod(), new Type[] { typeof(T), typeof(R) }, item);
+            Action deferAction = () => { InsertDataWithID<T, R>(item); };
+            AddOneInvokeBody(uow, deferAction);
+        }
+        public void DeleteDataDefered<T, R>(IUnitOfWork uow, R condition)
+            where T : class, new()
+            where R : class
+        {
+            //AddOneInvokeGenericBody(uow, MethodBase.GetCurrentMethod(), new Type[] { typeof(T), typeof(R) }, condition);
+            Action deferAction = () => { DeleteData<T, R>(condition); };
+            AddOneInvokeBody(uow, deferAction);
+        }
+        #endregion
+
+        #region Repair DefectComponent
+        public void InsertDefectComponentAndLog(DefectComponentInfo dcInfo, string logActionName, string logRemark)
+        {
+            try
+            {
+                long id = 0;
+                MethodBase mthObj = MethodBase.GetCurrentMethod();
+                SQLContextNew sqlCtx = null;
+                lock (mthObj)
+                {
+                    sqlCtx = FuncNew.GetAquireIdInsert<DefectComponent>();
+                }
+                sqlCtx = FuncNew.SetColumnFromField<DefectComponent, DefectComponentInfo>(sqlCtx, dcInfo);
+
+                using (SqlDataReader sqlR = _Schema.SqlHelper.ExecuteReader_OnTrans(_Schema.SqlHelper.ConnectionString_GetData,
+                                                                                                                                    CommandType.Text,
+                                                                                                                                      sqlCtx.Sentence,
+                                                                                                                                       sqlCtx.Params))
+                {
+                    while (sqlR != null && sqlR.Read())
+                    {
+                        id = long.Parse( sqlR.GetValue(0).ToString());
+                    }
+                }
+
+                DateTime now = DateTime.Now;
+                DefectComponentLogInfo log = new DefectComponentLogInfo
+                {
+                    ActionName = logActionName,
+                    BatchID = dcInfo.BatchID,
+                    Cdt = now,
+                    Comment = dcInfo.Comment,
+                    ComponentID = id,
+                    Customer = dcInfo.Customer,
+                    DefectCode = dcInfo.DefectCode,
+                    DefectDescr = dcInfo.DefectDescr,
+                    Family = dcInfo.Family,
+                    Model = dcInfo.Model,
+                    Editor = dcInfo.Editor,
+                    PartSn = dcInfo.PartSn,
+                    RepairID = dcInfo.RepairID,
+                    ReturnLine = dcInfo.ReturnLine,
+                    Remark = logRemark,
+                    Status = dcInfo.Status
+                };
+
+                InsertDataWithID<DefectComponentLog, DefectComponentLogInfo>(log);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void InsertDefectComponentAndLogDefered(IUnitOfWork uow, DefectComponentInfo dcInfo, string logActionName, string logRemark)
+        {
+            AddOneInvokeBody(uow, MethodBase.GetCurrentMethod(), dcInfo, logActionName, logRemark);
+        }
+
+        #endregion
+    }
+}

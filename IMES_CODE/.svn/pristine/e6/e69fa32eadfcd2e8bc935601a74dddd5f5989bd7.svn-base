@@ -1,0 +1,9 @@
+<ns0:BaseFlow Customer="{p1:Null}" x:Name="PCAOQCCollection" SessionType="0" Editor="" Station="" CurrentFlowSession="{x:Null}" Key="" PdLine="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetMB Customer="{ActivityBind PCAOQCCollection,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind PCAOQCCollection,Path=SessionType}" Editor="{ActivityBind PCAOQCCollection,Path=Editor}" Station="{ActivityBind PCAOQCCollection,Path=Station}" MBSnSessionKey="" x:Name="getMB1" Line="{ActivityBind PCAOQCCollection,Path=PdLine}" Key="{ActivityBind PCAOQCCollection,Path=Key}" />
+	
+	<ns0:WaitInput Customer="{ActivityBind PCAOQCCollection,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind PCAOQCCollection,Path=SessionType}" Editor="{ActivityBind PCAOQCCollection,Path=Editor}" Station="{ActivityBind PCAOQCCollection,Path=Station}" Line="{ActivityBind PCAOQCCollection,Path=PdLine}" Key="{ActivityBind PCAOQCCollection,Path=Key}" />
+		<ns0:DBScope Station="{ActivityBind PCAOQCCollection,Path=Station}" x:Name="dbScope2" Key="{ActivityBind PCAOQCCollection,Path=Key}" SessionType="{ActivityBind PCAOQCCollection,Path=SessionType}">
+				
+				<ns0:WritePCBTestLog Customer="{ActivityBind PCAOQCCollection,Path=Customer}" x:Name="writePCBTestLog2" SessionType="{ActivityBind PCAOQCCollection,Path=SessionType}" Editor="{ActivityBind PCAOQCCollection,Path=Editor}" Station="{ActivityBind PCAOQCCollection,Path=Station}" Line="{ActivityBind PCAOQCCollection,Path=PdLine}" Key="{ActivityBind PCAOQCCollection,Path=Key}" />
+			</ns0:DBScope>
+</ns0:BaseFlow>

@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Infrastructure.Session.dll
+E:\IMES_CODE\Code\SKU_Docking\bin\IMES.Infrastructure.Session.pdb
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Infrastructure.Session\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Infrastructure.Session\obj\Debug\IMES.Infrastructure.Session.dll
+E:\IMES_CODE\Code\SKU_Docking\kernel\IMES.Infrastructure.Session\obj\Debug\IMES.Infrastructure.Session.pdb

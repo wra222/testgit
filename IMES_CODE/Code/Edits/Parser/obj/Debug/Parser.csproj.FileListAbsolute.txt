@@ -1,0 +1,7 @@
+E:\IMES_CODE\Code\Edits\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+E:\IMES_CODE\Code\Edits\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+E:\IMES_CODE\Code\Edits\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+E:\IMES_CODE\Code\Edits\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+E:\IMES_CODE\Code\Edits\Parser\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\Edits\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+E:\IMES_CODE\Code\Edits\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb

@@ -1,0 +1,88 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="_021BoardInput" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind _021BoardInput,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" Station="{ActivityBind _021BoardInput,Path=Station}" x:Name="getProductByProdIDorCUSTSN1" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" InputType="ProductID" />
+	<ns0:BlockStation Customer="{ActivityBind _021BoardInput,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" ProcessType="Product" Station="{ActivityBind _021BoardInput,Path=Station}" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+	<ns0:GetBOM Customer="{ActivityBind _021BoardInput,Path=Customer}" x:Name="getBOM1" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" Station="{ActivityBind _021BoardInput,Path=Station}" ModelFrom="Product" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="ifComplete" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind _021BoardInput,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" Station="{ActivityBind _021BoardInput,Path=Station}" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+			<IfElseActivity x:Name="ifElseActivity1">
+				<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="ifComplete" />
+					</IfElseBranchActivity.Condition>
+					<ns0:PartMatch Customer="{ActivityBind _021BoardInput,Path=Customer}" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" Station="{ActivityBind _021BoardInput,Path=Station}" x:Name="partMatch1" BindTo="Product" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+					<IfElseActivity x:Name="ifElseActivity2" Enabled="False">
+						<IfElseBranchActivity Enabled="False" x:Name="ifElseBranchActivity2">
+							<IfElseBranchActivity.Condition>
+								<RuleConditionReference ConditionName="noPartMatch" />
+							</IfElseBranchActivity.Condition>
+						</IfElseBranchActivity>
+					</IfElseActivity>
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<IfElseActivity x:Name="ifElseActivity4" Enabled="False">
+		<IfElseBranchActivity x:Name="ifElseBranchActivity4">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="IsGenNewCustSN" />
+			</IfElseBranchActivity.Condition>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<ns0:DBScope Station="{ActivityBind _021BoardInput,Path=Station}" x:Name="dbScope1" Key="{ActivityBind _021BoardInput,Path=Key}" SessionType="{ActivityBind _021BoardInput,Path=SessionType}">
+		<IfElseActivity x:Name="ifElseActivity6">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity8">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="isMB" />
+				</IfElseBranchActivity.Condition>
+				<ns0:CheckMBCTExist Customer="{ActivityBind _021BoardInput,Path=Customer}" x:Name="checkMBCTExist1" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" Station="{ActivityBind _021BoardInput,Path=Station}" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+				<ns0:GetDCodeForShipping Customer="{ActivityBind _021BoardInput,Path=Customer}" x:Name="getDCodeForShipping1" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" Station="{ActivityBind _021BoardInput,Path=Station}" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity5">
+					<IfElseBranchActivity x:Name="ifElseBranchActivity5">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="IsTrue" />
+						</IfElseBranchActivity.Condition>
+						<ns0:AcquireMBCT Customer="{ActivityBind _021BoardInput,Path=Customer}" MustGenerate="True" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" Station="{ActivityBind _021BoardInput,Path=Station}" x:Name="acquireMBCT1" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+						<ns0:BindParts Customer="{ActivityBind _021BoardInput,Path=Customer}" x:Name="bindProductParts1" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" Station="{ActivityBind _021BoardInput,Path=Station}" BindTo="Product" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+						<ns0:UpdateMBForShipping Customer="{ActivityBind _021BoardInput,Path=Customer}" x:Name="updateMBForShipping1" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" Station="{ActivityBind _021BoardInput,Path=Station}" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="ifElseBranchActivity6">
+						<ns0:BindParts Customer="{ActivityBind _021BoardInput,Path=Customer}" x:Name="bindParts1" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" Station="{ActivityBind _021BoardInput,Path=Station}" BindTo="Product" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+						<ns0:UpdateMBForDCode Customer="{ActivityBind _021BoardInput,Path=Customer}" x:Name="updateMBForDCode1" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" Station="{ActivityBind _021BoardInput,Path=Station}" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+				<ns0:UpdateMBStatus Customer="{ActivityBind _021BoardInput,Path=Customer}" ManualStation="{x:Null}" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" x:Name="updateMBStatus1" Editor="{ActivityBind _021BoardInput,Path=Editor}" IsPass="Pass" Station="32" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+				<ns0:WriteMBLog Customer="{ActivityBind _021BoardInput,Path=Customer}" LineSuffix="{x:Null}" ManualStation="{x:Null}" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" x:Name="writeMBLog1" Editor="{ActivityBind _021BoardInput,Path=Editor}" IsPass="True" Station="30" IsSingle="True" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+				<ns0:WriteProductInfo Customer="{ActivityBind _021BoardInput,Path=Customer}" x:Name="writeProductInfo1" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" InfoValueSessionKey="{x:Null}" Station="{ActivityBind _021BoardInput,Path=Station}" InfoType="{x:Null}" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ifElseBranchActivity9">
+				<ns0:BindParts Customer="{ActivityBind _021BoardInput,Path=Customer}" x:Name="bindParts2" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" Station="{ActivityBind _021BoardInput,Path=Station}" BindTo="Product" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+		<ns0:CheckMBMatch Customer="{ActivityBind _021BoardInput,Path=Customer}" x:Name="checkMBMatch1" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" Enabled="False" Station="{ActivityBind _021BoardInput,Path=Station}" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+		<ns0:UpdateProductStatus Customer="{ActivityBind _021BoardInput,Path=Customer}" x:Name="updateProductStatus1" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" Status="Pass" Station="{ActivityBind _021BoardInput,Path=Station}" IsReturnStatoin="False" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+		<ns0:WriteProductLog Customer="{ActivityBind _021BoardInput,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" Station="{ActivityBind _021BoardInput,Path=Station}" Status="Pass" IsSingle="True" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+		<ns0:WriteProductAttr Customer="{ActivityBind _021BoardInput,Path=Customer}" x:Name="WirteProductAttr" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" AttributeValue="{ActivityBind _021BoardInput,Path=PdLine}" Station="{ActivityBind _021BoardInput,Path=Station}" DescrOfProductAttrLog="Line in 40" AttributeName="StartLine" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+		<IfElseActivity x:Name="ifElseActivity3">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity3">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="isMB" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WritePrintLog Customer="{ActivityBind _021BoardInput,Path=Customer}" x:Name="writePrintLog1" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" Editor="{ActivityBind _021BoardInput,Path=Editor}" Station="{ActivityBind _021BoardInput,Path=Station}" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity7">
+					<IfElseBranchActivity x:Name="ifElseBranchActivity10">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="needprintflag" />
+						</IfElseBranchActivity.Condition>
+						<ns0:Print Customer="{ActivityBind _021BoardInput,Path=Customer}" NotExistException="True" SessionType="{ActivityBind _021BoardInput,Path=SessionType}" PartNoFrom="MB_Model" Editor="{ActivityBind _021BoardInput,Path=Editor}" x:Name="print1" Station="{ActivityBind _021BoardInput,Path=Station}" MOFrom="MB" ModelFrom="MB_Model" Line="{ActivityBind _021BoardInput,Path=PdLine}" Key="{ActivityBind _021BoardInput,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="ifElseBranchActivity11" />
+				</IfElseActivity>
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ifElseBranchActivity7" />
+		</IfElseActivity>
+	</ns0:DBScope>
+</ns0:BaseFlow>

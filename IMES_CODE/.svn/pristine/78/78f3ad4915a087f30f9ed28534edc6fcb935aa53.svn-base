@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by charles (HYTech) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="BOXES">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="BOX" type="BoxType" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="UDFType">
+		<xs:sequence>
+			<xs:element name="KEY" type="xs:string"/>
+			<xs:element name="VALUE" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BoxType">
+		<xs:sequence>
+			<xs:element name="WAYBILL_NUMBER" type="xs:string"/>
+			<xs:element name="MASTER_WAYBILL_NUMBER" type="xs:string"/>
+			<xs:element name="BOX_ID" type="xs:string"/>
+			<xs:element name="SHIP_REF" type="xs:string"/>
+			<xs:element name="TRACK_NO_PARCEL" type="xs:string"/>
+			<xs:element name="INTL_CARRIER" type="xs:string"/>
+			<xs:element name="REG_CARRIER" type="xs:string"/>
+			<xs:element name="DUTY_CODE" type="xs:string"/>
+			<xs:element name="SUB_REGION" type="xs:string"/>
+			<xs:element name="DEST_CODE" type="xs:string"/>
+			<xs:element name="SHIP_FROM_ID" type="xs:string"/>
+			<xs:element name="BOX_SEQUENCE" type="xs:string"/>
+			<xs:element name="HAWB_BOX_QTY" type="xs:string"/>
+			<xs:element name="BOX_UNIT_QTY" type="xs:string"/>
+			<xs:element name="HAWB_UNIT_QTY" type="xs:string"/>
+			<xs:element name="BOX_PACKID_QTY" type="xs:string"/>
+			<xs:element name="SHIP_FROM_NAME" type="xs:string"/>
+			<xs:element name="SHIP_FROM_NAME_2" type="xs:string"/>
+			<xs:element name="SHIP_FROM_NAME_3" type="xs:string"/>
+			<xs:element name="SHIP_FROM_STREET" type="xs:string"/>
+			<xs:element name="SHIP_FROM_STREET_2" type="xs:string"/>
+			<xs:element name="SHIP_FROM_CITY" type="xs:string"/>
+			<xs:element name="SHIP_FROM_STATE" type="xs:string"/>
+			<xs:element name="SHIP_FROM_ZIP" type="xs:string"/>
+			<xs:element name="SHIP_FROM_COUNTRY_CODE" type="xs:string"/>
+			<xs:element name="SHIP_FROM_COUNTRY_NAME" type="xs:string"/>
+			<xs:element name="SHIP_FROM_CONTACT" type="xs:string"/>
+			<xs:element name="SHIP_FROM_TELEPHONE" type="xs:string"/>
+			<xs:element name="SHIP_TO_ID" type="xs:string"/>
+			<xs:element name="SHIP_TO_NAME" type="xs:string"/>
+			<xs:element name="SHIP_TO_NAME_2" type="xs:string"/>
+			<xs:element name="SHIP_TO_NAME_3" type="xs:string"/>
+			<xs:element name="SHIP_TO_STREET" type="xs:string"/>
+			<xs:element name="SHIP_TO_STREET_2" type="xs:string"/>
+			<xs:element name="SHIP_TO_CITY" type="xs:string"/>
+			<xs:element name="SHIP_TO_STATE" type="xs:string"/>
+			<xs:element name="SHIP_TO_ZIP" type="xs:string"/>
+			<xs:element name="SHIP_TO_COUNTRY_CODE" type="xs:string"/>
+			<xs:element name="SHIP_TO_COUNTRY_NAME" type="xs:string"/>
+			<xs:element name="SHIP_TO_CONTACT" type="xs:string"/>
+			<xs:element name="SHIP_TO_TELEPHONE" type="xs:string"/>
+			<xs:element name="SHIP_VIA_ID" type="xs:string"/>
+			<xs:element name="SHIP_VIA_NAME" type="xs:string"/>
+			<xs:element name="SHIP_VIA_NAME_2" type="xs:string"/>
+			<xs:element name="SHIP_VIA_NAME_3" type="xs:string"/>
+			<xs:element name="SHIP_VIA_STREET" type="xs:string"/>
+			<xs:element name="SHIP_VIA_STREET_2" type="xs:string"/>
+			<xs:element name="SHIP_VIA_CITY" type="xs:string"/>
+			<xs:element name="SHIP_VIA_STATE" type="xs:string"/>
+			<xs:element name="SHIP_VIA_ZIP" type="xs:string"/>
+			<xs:element name="SHIP_VIA_COUNTRY_CODE" type="xs:string"/>
+			<xs:element name="SHIP_VIA_COUNTRY_NAME" type="xs:string"/>
+			<xs:element name="SHIP_VIA_CONTACT" type="xs:string"/>
+			<xs:element name="SHIP_VIA_TELEPHONE" type="xs:string"/>
+			<xs:element name="RETURN_TO_ID" type="xs:string"/>
+			<xs:element name="RETURN_TO_NAME" type="xs:string"/>
+			<xs:element name="RETURN_TO_NAME_2" type="xs:string"/>
+			<xs:element name="RETURN_TO_NAME_3" type="xs:string"/>
+			<xs:element name="RETURN_TO_STREET" type="xs:string"/>
+			<xs:element name="RETURN_TO_STREET_2" type="xs:string"/>
+			<xs:element name="RETURN_TO_CITY" type="xs:string"/>
+			<xs:element name="RETURN_TO_STATE" type="xs:string"/>
+			<xs:element name="RETURN_TO_ZIP" type="xs:string"/>
+			<xs:element name="RETURN_TO_COUNTRY_CODE" type="xs:string"/>
+			<xs:element name="RETURN_TO_COUNTRY_NAME" type="xs:string"/>
+			<xs:element name="RETURN_TO_TELEPHONE" type="xs:string"/>
+			<xs:element name="TRANS_SERV_LEVEL" type="xs:string"/>
+			<xs:element name="SHIP_MODE" type="xs:string"/>
+			<xs:element name="PROD_TYPE" type="xs:string"/>
+			<xs:element name="UDF_HEADER" type="UDFType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="UDF_DETAIL" type="UDFType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="UDF_BOX" type="UDFType" minOccurs="0" maxOccurs="unbounded"/>
+			
+			<xs:element name="HP_PN" type="xs:string"/>
+			<xs:element name="PROD_DESC_BASE" type="xs:string"/>
+			<xs:element name="HP_Cust_PN" type="xs:string"/>
+			<xs:element name="PACK_ID" type="xs:string"/>
+			<xs:element name="HP_SO" type="xs:string"/>
+			<xs:element name="CUST_SO_NUM" type="xs:string"/>
+			<xs:element name="CUST_PO" type="xs:string"/>
+			<xs:element name="CUST_ORD_REF" type="xs:string"/>
+			<xs:element name="DEPARTMENT_CODE" type="xs:string"/>
+			<xs:element name="WAREHOUSE_CODE" type="xs:string"/>
+			<xs:element name="PACK_ID_BOX_QTY" type="xs:double"/>
+			<xs:element name="PACK_ID_UNIT_QTY" type="xs:double"/>
+			<xs:element name="PACK_ID_LINE_ITEM_BOX_QTY" type="xs:double"/>
+			<xs:element name="PACK_ID_LINE_ITEM_BOX_UNIT_QTY" type="xs:double"/>
+			<xs:element name="SERIAL_NUM" type="xs:string" maxOccurs="unbounded"/>
+			<xs:element name="LABEL_INSTR_HEAD" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="CONFIG_ID_NUMBER" type="xs:string"/>
+			
+			<xs:element name="PACK_ID_LINE_ITEM" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="HP_PN" type="xs:string"/>
+						<xs:element name="PROD_DESC_BASE" type="xs:string"/>
+						<xs:element name="HP_Cust_PN" type="xs:string"/>
+						<xs:element name="PACK_ID" type="xs:string"/>
+						<xs:element name="HP_SO" type="xs:string"/>
+						<xs:element name="CUST_SO_NUM" type="xs:string"/>
+						<xs:element name="CUST_PO" type="xs:string"/>
+						<xs:element name="CUST_ORD_REF" type="xs:string"/>
+						<xs:element name="DEPARTMENT_CODE" type="xs:string"/>
+						<xs:element name="WAREHOUSE_CODE" type="xs:string"/>
+						<xs:element name="PACK_ID_BOX_QTY" type="xs:double"/>
+						<xs:element name="PACK_ID_UNIT_QTY" type="xs:double"/>
+						<xs:element name="PACK_ID_LINE_ITEM_BOX_QTY" type="xs:double"/>
+						<xs:element name="PACK_ID_LINE_ITEM_BOX_UNIT_QTY" type="xs:double"/>
+						<xs:element name="CONFIG_ID_NUMBER" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

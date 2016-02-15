@@ -1,0 +1,143 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace IMES.Infrastructure.Util
+{
+    public static  class GlobalConstName
+    { 
+        public static readonly string DotStr = ".";
+        public static readonly char DotChar = '.';
+        public static readonly string UnderScoreStr = "_";
+        public static readonly char UnderScoreChar = '_';
+        public static readonly string ArrowStr = "->";
+        public static readonly string CommaStr = ",";
+        public static readonly char CommaChar = ',';
+        public static readonly string SlashStr = "/";
+        public static readonly char TildeChar = '~';
+        public static readonly string TildeStr = "~";
+        public static readonly char AtChar = '@';
+        public static readonly string AtStr = "@";
+        public static readonly char StarChar = '*';
+        public static readonly string StarStr = "*";
+        public static readonly char HashChar = '#';
+        public static readonly string HashStr = "#";
+        public static readonly char DashChar = '-';
+        public static readonly string DashStr = "-";
+        public static readonly char AndChar = '&';
+        public static readonly string AndStr = "&";
+        public static readonly char BarChar = '|';
+        public static readonly string BarStr = "|";
+        public static readonly char ColonChar = ':';
+        public static readonly string ColonStr = ":";
+        public static readonly char SemiColonChar = ';';
+        public static readonly string SemiColonStr = ";";
+
+        public static class RegEx
+        {
+            public static readonly string GroupNamePattern = @"\(\?<(?<name>.+?)>.+?\)";
+            public static readonly string GroupName = "name";
+            public static readonly string CT = "CT";
+        }
+
+        public static class PartInfo
+        {
+            public static readonly string VCODE = "VCODE";
+            public static readonly string VC = "VC";
+            public static readonly string RDESC = "RDESC";
+            public static readonly string VendorCode="VendorCode";
+        }
+
+        public static class LogFormat
+        {
+            public static readonly string Begin = "BEGIN: {0}()";
+            public static readonly string End= "END: {0}()";
+        }
+
+        public static class ResolveValue
+        {
+            public static readonly string PRODUCT = "PRODUCT";
+            public static readonly string PRODUCTINFO = "PRODUCTINFO";
+            public static readonly string PRODUCTATTR = "PRODUCTATTR";
+
+            public static readonly string PCB = "PCB";
+            public static readonly string PCBINFO = "PCBINFO";
+
+            public static readonly string FAMILY = "FAMILY";
+            public static readonly string FAMILYINFO = "FAMILYINFO";
+
+            public static readonly string MODEL = "MODEL";
+            public static readonly string MODELINFO = "MODELINFO";
+
+            public static readonly string PART = "PART";
+            public static readonly string PARTINFO = "PARTINFO";
+
+            public static readonly string DELIVERY = "DELIVERY";
+            public static readonly string DELIVERYINFO = "DELIVERYINFO";
+
+            //for HTC add ImgOSVer
+            public static readonly string IMGOSVER = "IMGOSVER";
+
+            public static readonly string SESSION = "SESSION";
+
+            public static readonly string DATETIME = "DATETIME";
+            public static readonly string CONSTANT = "CONSTANT";
+
+        }
+
+        public static class Letter
+        {
+            public static readonly string Y = "Y";
+            public static readonly string N = "N";
+        }
+
+        public static class BomNodeType
+        {
+            public static readonly string P1 = "P1";
+            public static readonly string PL = "PL";
+            public static readonly string KP = "KP";
+            public static readonly string MB = "MB";
+            public static readonly string C1 = "C1";
+            public static readonly string C2 = "C2";
+            public static readonly string C3 = "C3";
+            public static readonly string C4 = "C4";
+            public static readonly string PS = "PS";
+            public static readonly string AT = "AT";
+        }
+
+        public static class FisObject
+        {
+            public static readonly string MB = "MB";
+
+        }
+
+        public static class ConstValue
+        {
+            public static readonly string CheckAllowPCBLogByFamily = "CheckAllowPCBLogByFamily";
+            public static readonly string CTMatchRule="CTMatchRule";
+            public static readonly string CTCheckRule="CTCheckRule";
+			public static readonly string OverTestKPCountLimit = "OverTestKPCountLimit";
+            public static readonly string ProcReg = "ProcReg";
+        }
+
+        public static class ConstValueType
+        {            
+            public static readonly string JudgeMBReworkStationList = "JudgeMBReworkStationList";
+        }
+
+        public static class SysSetting
+        {
+			public static readonly string OverTestKPCountLimit="OverTestKPCountLimit";
+            public static readonly string PickCardNoneBulkProcRegNameList = "PickCardNoneBulkProcRegNameList";
+        }
+
+        public static class NormalStatus
+        {
+            public static readonly string Active = "Active";
+            public static readonly string Hold = "Hold";
+            public static readonly string Release = "Release";
+            public static readonly string Created = "Create";
+        }
+    }
+}

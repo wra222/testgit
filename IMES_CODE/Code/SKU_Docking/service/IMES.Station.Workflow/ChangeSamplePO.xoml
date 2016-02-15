@@ -1,0 +1,18 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="ChangeSamplePO" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProduct Customer="{ActivityBind ChangeSamplePO,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind ChangeSamplePO,Path=SessionType}" Editor="{ActivityBind ChangeSamplePO,Path=Editor}" AddObjectWithSessionKey="{x:Null}" Station="{ActivityBind ChangeSamplePO,Path=Station}" x:Name="getProduct1" Line="{ActivityBind ChangeSamplePO,Path=PdLine}" Key="{ActivityBind ChangeSamplePO,Path=Key}" InputType="ProductIDOrCustSN" />
+	<ns0:CheckChangePo Customer="{ActivityBind ChangeSamplePO,Path=Customer}" x:Name="checkChangePo1" SessionType="{ActivityBind ChangeSamplePO,Path=SessionType}" Editor="{ActivityBind ChangeSamplePO,Path=Editor}" Station="{ActivityBind ChangeSamplePO,Path=Station}" Line="{ActivityBind ChangeSamplePO,Path=PdLine}" Key="{ActivityBind ChangeSamplePO,Path=Key}" IsStopWF="True" InputType="SourceProduct" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="checkProd2" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind ChangeSamplePO,Path=Customer}" x:Name="waitInput2" SessionType="{ActivityBind ChangeSamplePO,Path=SessionType}" Editor="{ActivityBind ChangeSamplePO,Path=Editor}" Station="{ActivityBind ChangeSamplePO,Path=Station}" Line="{ActivityBind ChangeSamplePO,Path=PdLine}" Key="{ActivityBind ChangeSamplePO,Path=Key}" />
+			<ns0:GetProductByInput Customer="{ActivityBind ChangeSamplePO,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind ChangeSamplePO,Path=SessionType}" Editor="{ActivityBind ChangeSamplePO,Path=Editor}" Station="{ActivityBind ChangeSamplePO,Path=Station}" x:Name="getProductByInput1" Line="{ActivityBind ChangeSamplePO,Path=PdLine}" Key="{ActivityBind ChangeSamplePO,Path=Key}" IsStopWF="NotStop" InputType="ProductIDOrCustSN" />
+			<ns0:CheckChangePo Customer="{ActivityBind ChangeSamplePO,Path=Customer}" x:Name="checkChangePo2" SessionType="{ActivityBind ChangeSamplePO,Path=SessionType}" Editor="{ActivityBind ChangeSamplePO,Path=Editor}" Station="{ActivityBind ChangeSamplePO,Path=Station}" Line="{ActivityBind ChangeSamplePO,Path=PdLine}" Key="{ActivityBind ChangeSamplePO,Path=Key}" IsStopWF="False" InputType="DestProduct" />
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:WaitInput Customer="{ActivityBind ChangeSamplePO,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind ChangeSamplePO,Path=SessionType}" Editor="{ActivityBind ChangeSamplePO,Path=Editor}" Station="{ActivityBind ChangeSamplePO,Path=Station}" Line="{ActivityBind ChangeSamplePO,Path=PdLine}" Key="{ActivityBind ChangeSamplePO,Path=Key}" />
+	<ns0:DBScope Station="{ActivityBind ChangeSamplePO,Path=Station}" x:Name="dbScope1" Key="{ActivityBind ChangeSamplePO,Path=Key}" SessionType="{ActivityBind ChangeSamplePO,Path=SessionType}">
+		<ns0:ChangePo Customer="{ActivityBind ChangeSamplePO,Path=Customer}" x:Name="changePo1" SessionType="{ActivityBind ChangeSamplePO,Path=SessionType}" Editor="{ActivityBind ChangeSamplePO,Path=Editor}" Station="{ActivityBind ChangeSamplePO,Path=Station}" Line="{ActivityBind ChangeSamplePO,Path=PdLine}" Key="{ActivityBind ChangeSamplePO,Path=Key}" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

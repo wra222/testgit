@@ -1,0 +1,14 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="COOLabelRePrint" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetProductLog Customer="{ActivityBind COOLabelRePrint,Path=Customer}" x:Name="getProductLog1" SessionType="{ActivityBind COOLabelRePrint,Path=SessionType}" Editor="{ActivityBind COOLabelRePrint,Path=Editor}" StationDescr="{x:Null}" Station="{ActivityBind COOLabelRePrint,Path=Station}" Line="{ActivityBind COOLabelRePrint,Path=PdLine}" Key="{ActivityBind COOLabelRePrint,Path=Key}" />
+	<IfElseActivity x:Name="IfRePrint">
+		<IfElseBranchActivity x:Name="RePrint">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="rePrint" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind COOLabelRePrint,Path=Station}" x:Name="dbScope" Key="{ActivityBind COOLabelRePrint,Path=Key}" SessionType="{ActivityBind COOLabelRePrint,Path=SessionType}">
+				<ns0:Print Customer="{ActivityBind COOLabelRePrint,Path=Customer}" x:Name="print1" SessionType="{ActivityBind COOLabelRePrint,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind COOLabelRePrint,Path=Editor}" Station="{ActivityBind COOLabelRePrint,Path=Station}" MOFrom="No" ModelFrom="No" Line="{ActivityBind COOLabelRePrint,Path=PdLine}" Key="{ActivityBind COOLabelRePrint,Path=Key}" DnFrom="No" />
+				<ns0:WriteRePrintLog Customer="{ActivityBind COOLabelRePrint,Path=Customer}" x:Name="writeRePrintLog1" SessionType="{ActivityBind COOLabelRePrint,Path=SessionType}" Editor="{ActivityBind COOLabelRePrint,Path=Editor}" Station="{ActivityBind COOLabelRePrint,Path=Station}" Line="{ActivityBind COOLabelRePrint,Path=PdLine}" Key="{ActivityBind COOLabelRePrint,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

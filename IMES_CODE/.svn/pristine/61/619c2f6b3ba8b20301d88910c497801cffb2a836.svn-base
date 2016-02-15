@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+
+  <configSections>
+
+    <section name="log4net" type="System.Configuration.IgnoreSectionHandler" />
+
+
+  </configSections>
+
+  <connectionStrings>
+
+    <add name="OnlineDBServer" connectionString="Data Source=10.96.183.192;Initial Catalog={0};Persist Security Info=True;User ID=sa;Password=icc=123;Max Pool Size=100;Min Pool Size=1" providerName="" />
+    <add name="HistoryDBServer" connectionString="Data Source=10.96.183.192;Initial Catalog={0};Persist Security Info=True;User ID=sa;Password=icc=123;Max Pool Size=100;Min Pool Size=1" providerName="" />
+
+  </connectionStrings>
+
+  <log4net>
+    <appender name="RollingLogFileAppender" type="log4net.Appender.RollingFileAppender">
+      <file value="./log/logfile" />
+      <appendToFile value="true" />
+      <rollingStyle value="Composite" />
+      <datePattern value="yyyy-MM-dd'.log'" />
+      <maxSizeRollBackups value="-1" />
+      <maximumFileSize value="1MB" />
+      <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+      </layout>
+    </appender>
+    <root>
+      <level value="ERROR" />
+      <appender-ref ref="RollingLogFileAppender" />
+    </root>
+  </log4net>
+
+  <system.runtime.remoting>
+    <application>
+      <service>
+        <wellknown mode="Singleton" type="UPH.Implementation.UPH_ALL,UPH.Implementation" objectUri="IUPH_ALL" />
+        <wellknown mode="Singleton" type="UPH.Implementation.UPH,UPH.Implementation" objectUri="hjy" />
+
+      </service>
+      <channels>
+        <channel ref="tcp" port="8888" />
+      </channels>
+    </application>
+  </system.runtime.remoting>
+
+  <appSettings>
+
+
+
+
+    <!--Sevice Name-->
+    <add key="ServiceName" value="UPH.HP.Query.Service" />
+
+    <!--DB Catalogs-->
+
+    <add key="DB_CFG" value="HPIMES" />
+
+
+    <!--History DB Catelogs 允許設多個以,或是;分隔如BK2011,BK2012,...   -->
+    <add key="DB_HISTORY" value="HPIMES;HPIMES_RPT"/>
+    <!--Language of Error Message ["ENG,CHS,CHT,CZE,ESP"]-->
+    <add key="ERROR_LAN" value="ENG,CHT" />
+    <add key ="RDS_Server" value="http://5b3f-mp-sql/IPC/mp/Picture/FA/" />
+    <!--SQL Command TimeOut default is 30 seconds-->
+    <add key ="SQLCmdTimeOut" value="600" />
+    <add key ="DockingDBKeyWord" value="HPDocking" />
+
+  </appSettings>
+</configuration>

@@ -1,0 +1,49 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="OnlineGenerateASTPrint" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:CheckGenerateAST Customer="{ActivityBind OnlineGenerateASTPrint,Path=Customer}" x:Name="checkGenerateAST1" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}" Editor="{ActivityBind OnlineGenerateASTPrint,Path=Editor}" Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" Line="{ActivityBind OnlineGenerateASTPrint,Path=PdLine}" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" />
+	<IfElseActivity x:Name="ifElseActivity3">
+		<IfElseBranchActivity x:Name="ifElseBranchActivity4">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="CheckGenerateAST" />
+			</IfElseBranchActivity.Condition>
+			<IfElseActivity x:Name="ifElseActivity1">
+				<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="IsCDSI" />
+					</IfElseBranchActivity.Condition>
+					<ns0:DBScope Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" x:Name="dbScope2" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}">
+						<ns0:CombineAndPrintAST Customer="{ActivityBind OnlineGenerateASTPrint,Path=Customer}" x:Name="combineAndPrintAST1" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}" Editor="{ActivityBind OnlineGenerateASTPrint,Path=Editor}" Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" Line="{ActivityBind OnlineGenerateASTPrint,Path=PdLine}" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" />
+					</ns0:DBScope>
+				</IfElseBranchActivity>
+				<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+					<ns0:GenerateAST Customer="{ActivityBind OnlineGenerateASTPrint,Path=Customer}" x:Name="generateAST1" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}" Editor="{ActivityBind OnlineGenerateASTPrint,Path=Editor}" Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" Line="{ActivityBind OnlineGenerateASTPrint,Path=PdLine}" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" />
+					<ns0:DBScope Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" x:Name="dbScope3" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}">
+						<ns0:BindAST Customer="{ActivityBind OnlineGenerateASTPrint,Path=Customer}" x:Name="bindAST1" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}" Editor="{ActivityBind OnlineGenerateASTPrint,Path=Editor}" Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" Line="{ActivityBind OnlineGenerateASTPrint,Path=PdLine}" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" />
+					</ns0:DBScope>
+				</IfElseBranchActivity>
+			</IfElseActivity>
+			<ns0:DBScope Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" x:Name="dbScope1" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}">
+				<ns0:CheckASTPrint Customer="{ActivityBind OnlineGenerateASTPrint,Path=Customer}" x:Name="checkASTPrint1" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}" Editor="{ActivityBind OnlineGenerateASTPrint,Path=Editor}" Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" Line="{ActivityBind OnlineGenerateASTPrint,Path=PdLine}" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind OnlineGenerateASTPrint,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}" Editor="{ActivityBind OnlineGenerateASTPrint,Path=Editor}" Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" Status="Pass" IsSingle="True" Line="{x:Null}" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" />
+				<ns0:WritePrintLog Customer="{ActivityBind OnlineGenerateASTPrint,Path=Customer}" x:Name="writePrintLog1" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}" Editor="{ActivityBind OnlineGenerateASTPrint,Path=Editor}" Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" Line="{ActivityBind OnlineGenerateASTPrint,Path=PdLine}" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity2">
+					<IfElseBranchActivity x:Name="ifElseBranchActivity3">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="TwoASTGetAST2" />
+						</IfElseBranchActivity.Condition>
+						<ns0:GetAST2Info Customer="{ActivityBind OnlineGenerateASTPrint,Path=Customer}" x:Name="getAST2Info1" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}" Editor="{ActivityBind OnlineGenerateASTPrint,Path=Editor}" Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" Line="{ActivityBind OnlineGenerateASTPrint,Path=PdLine}" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" />
+						<ns0:WritePrintLog Customer="{ActivityBind OnlineGenerateASTPrint,Path=Customer}" x:Name="writePrintLog2" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}" Editor="{ActivityBind OnlineGenerateASTPrint,Path=Editor}" Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" Line="{ActivityBind OnlineGenerateASTPrint,Path=PdLine}" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+				<ns0:Print Customer="{ActivityBind OnlineGenerateASTPrint,Path=Customer}" x:Name="print1" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind OnlineGenerateASTPrint,Path=Editor}" Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" MOFrom="Product" ModelFrom="No" Line="{ActivityBind OnlineGenerateASTPrint,Path=PdLine}" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" DnFrom="No" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseBranchActivity5">
+			<ns0:DBScope Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" x:Name="dbScope4" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}">
+				<ns0:GetNullPrintInfo Customer="{ActivityBind OnlineGenerateASTPrint,Path=Customer}" x:Name="getNullPrintInfo1" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}" Editor="{ActivityBind OnlineGenerateASTPrint,Path=Editor}" Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" Line="{ActivityBind OnlineGenerateASTPrint,Path=PdLine}" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" />
+				<ns0:WriteProductLog Customer="{ActivityBind OnlineGenerateASTPrint,Path=Customer}" x:Name="writeProductLog2" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}" Editor="{ActivityBind OnlineGenerateASTPrint,Path=Editor}" Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" Status="Pass" IsSingle="True" Line="" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" />
+				<ns0:WritePrintLog Customer="{ActivityBind OnlineGenerateASTPrint,Path=Customer}" x:Name="writePrintLog3" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}" Editor="{ActivityBind OnlineGenerateASTPrint,Path=Editor}" Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" Line="{ActivityBind OnlineGenerateASTPrint,Path=PdLine}" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" />
+				<ns0:Print Customer="{ActivityBind OnlineGenerateASTPrint,Path=Customer}" x:Name="print2" SessionType="{ActivityBind OnlineGenerateASTPrint,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind OnlineGenerateASTPrint,Path=Editor}" Station="{ActivityBind OnlineGenerateASTPrint,Path=Station}" MOFrom="Product" ModelFrom="No" Line="{ActivityBind OnlineGenerateASTPrint,Path=PdLine}" Key="{ActivityBind OnlineGenerateASTPrint,Path=Key}" DnFrom="No" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>

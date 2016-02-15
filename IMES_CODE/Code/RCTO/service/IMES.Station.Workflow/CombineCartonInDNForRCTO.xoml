@@ -1,0 +1,16 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="CombineCartonInDNForRCTO" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplet" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:BlockStation Customer="{ActivityBind CombineCartonInDNForRCTO,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind CombineCartonInDNForRCTO,Path=SessionType}" Editor="{ActivityBind CombineCartonInDNForRCTO,Path=Editor}" ProcessType="Product" Enabled="False" Station="{ActivityBind CombineCartonInDNForRCTO,Path=Station}" Line="{ActivityBind CombineCartonInDNForRCTO,Path=PdLine}" Key="{ActivityBind CombineCartonInDNForRCTO,Path=Key}" IsStopWF="NotStop" />
+			<ns0:WaitInput Customer="{ActivityBind CombineCartonInDNForRCTO,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind CombineCartonInDNForRCTO,Path=SessionType}" Editor="{ActivityBind CombineCartonInDNForRCTO,Path=Editor}" Station="{ActivityBind CombineCartonInDNForRCTO,Path=Station}" Line="{ActivityBind CombineCartonInDNForRCTO,Path=PdLine}" Key="{ActivityBind CombineCartonInDNForRCTO,Path=Key}" />
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:DBScope Station="{ActivityBind CombineCartonInDNForRCTO,Path=Station}" x:Name="dbScope1" Key="{ActivityBind CombineCartonInDNForRCTO,Path=Key}" SessionType="{ActivityBind CombineCartonInDNForRCTO,Path=SessionType}">
+		<ns0:UpdateProductListStatusByProIDs Customer="{ActivityBind CombineCartonInDNForRCTO,Path=Customer}" x:Name="updateProductListStatusByProIDs1" SessionType="{ActivityBind CombineCartonInDNForRCTO,Path=SessionType}" Editor="{ActivityBind CombineCartonInDNForRCTO,Path=Editor}" Station="{ActivityBind CombineCartonInDNForRCTO,Path=Station}" Status="Pass" Line="{ActivityBind CombineCartonInDNForRCTO,Path=PdLine}" Key="{ActivityBind CombineCartonInDNForRCTO,Path=Key}" />
+		<ns0:WriteProductLog Customer="{ActivityBind CombineCartonInDNForRCTO,Path=Customer}" x:Name="writeProductLog1" SessionType="{ActivityBind CombineCartonInDNForRCTO,Path=SessionType}" Editor="{ActivityBind CombineCartonInDNForRCTO,Path=Editor}" Station="{ActivityBind CombineCartonInDNForRCTO,Path=Station}" Status="Pass" IsSingle="False" Line="{ActivityBind CombineCartonInDNForRCTO,Path=PdLine}" Key="{ActivityBind CombineCartonInDNForRCTO,Path=Key}" />
+	</ns0:DBScope>
+	<ns0:Print Customer="{ActivityBind CombineCartonInDNForRCTO,Path=Customer}" x:Name="print1" SessionType="{ActivityBind CombineCartonInDNForRCTO,Path=SessionType}" PartNoFrom="No" Editor="{ActivityBind CombineCartonInDNForRCTO,Path=Editor}" Station="{ActivityBind CombineCartonInDNForRCTO,Path=Station}" MOFrom="No" ModelFrom="No" Line="{ActivityBind CombineCartonInDNForRCTO,Path=PdLine}" Key="{ActivityBind CombineCartonInDNForRCTO,Path=Key}" DnFrom="No" />
+</ns0:BaseFlow>

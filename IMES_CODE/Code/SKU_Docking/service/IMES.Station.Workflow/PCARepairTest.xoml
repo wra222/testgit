@@ -1,0 +1,57 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="PCARepairTest" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetMB Customer="{ActivityBind PCARepairTest,Path=Customer}" NotExistException="{x:Null}" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" Editor="{ActivityBind PCARepairTest,Path=Editor}" Station="{ActivityBind PCARepairTest,Path=Station}" MBSnSessionKey="{x:Null}" x:Name="getMB1" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+	<ns0:CheckMBPass Customer="{ActivityBind PCARepairTest,Path=Customer}" x:Name="checkMBPass1" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" Editor="{ActivityBind PCARepairTest,Path=Editor}" Station="{ActivityBind PCARepairTest,Path=Station}" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="IsWhile" />
+		</WhileActivity.Condition>
+		<IfElseActivity x:Name="ifElseActivity3">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity5">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="IsWhile" />
+				</IfElseBranchActivity.Condition>
+				<ns0:WaitInput Customer="{ActivityBind PCARepairTest,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" Editor="{ActivityBind PCARepairTest,Path=Editor}" Station="{ActivityBind PCARepairTest,Path=Station}" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+				<ns0:CheckInputPass Customer="{ActivityBind PCARepairTest,Path=Customer}" x:Name="checkInputPass1" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" Editor="{ActivityBind PCARepairTest,Path=Editor}" Station="{ActivityBind PCARepairTest,Path=Station}" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</WhileActivity>
+	<ns0:DBScope Station="{ActivityBind PCARepairTest,Path=Station}" x:Name="dbScope1" Key="{ActivityBind PCARepairTest,Path=Key}" SessionType="{ActivityBind PCARepairTest,Path=SessionType}">
+		<IfElseActivity x:Name="ifElseActivity2">
+			<IfElseBranchActivity x:Name="ifElseBranchActivity3">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="Is9999" />
+				</IfElseBranchActivity.Condition>
+				<ns0:BlockStation Customer="{ActivityBind PCARepairTest,Path=Customer}" x:Name="blockStation1" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" Editor="{ActivityBind PCARepairTest,Path=Editor}" ProcessType="MB" Station="24" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity1">
+					<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="IsTrue" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateMBStatus Customer="{ActivityBind PCARepairTest,Path=Customer}" ManualStation="{x:Null}" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" x:Name="updateMBStatus1" Editor="{ActivityBind PCARepairTest,Path=Editor}" IsPass="Pass" Station="24" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+						<ns0:WriteMBLog Customer="{ActivityBind PCARepairTest,Path=Customer}" LineSuffix="{x:Null}" ManualStation="{x:Null}" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" x:Name="writeMBLog1" Editor="{ActivityBind PCARepairTest,Path=Editor}" IsPass="True" Station="24" IsSingle="True" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+						<ns0:WriteMBLog Customer="{ActivityBind PCARepairTest,Path=Customer}" LineSuffix="{x:Null}" ManualStation="{x:Null}" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" x:Name="writeMBLog2" Editor="{ActivityBind PCARepairTest,Path=Editor}" IsPass="True" Station="S9" IsSingle="True" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+						<ns0:UpdateRptPcaRep Customer="{ActivityBind PCARepairTest,Path=Customer}" x:Name="updateRptPcaRep1" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" Editor="{ActivityBind PCARepairTest,Path=Editor}" Station="{ActivityBind PCARepairTest,Path=Station}" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+					</IfElseBranchActivity>
+					<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="IsFalse" />
+						</IfElseBranchActivity.Condition>
+						<ns0:UpdateMBStatus Customer="{ActivityBind PCARepairTest,Path=Customer}" ManualStation="{x:Null}" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" x:Name="updateMBStatus2" Editor="{ActivityBind PCARepairTest,Path=Editor}" IsPass="Fail" Station="S9" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+						<ns0:WriteMBLog Customer="{ActivityBind PCARepairTest,Path=Customer}" LineSuffix="{x:Null}" ManualStation="{x:Null}" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" x:Name="writeMBLog3" Editor="{ActivityBind PCARepairTest,Path=Editor}" IsPass="False" Station="S9" IsSingle="True" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+						<ns0:WritePCBTestLog Customer="{ActivityBind PCARepairTest,Path=Customer}" x:Name="writePCBTestLog1" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" Editor="{ActivityBind PCARepairTest,Path=Editor}" Station="S9" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+						<ns0:UpdateMTAMark Customer="{ActivityBind PCARepairTest,Path=Customer}" x:Name="updateMTAMark1" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" Editor="{ActivityBind PCARepairTest,Path=Editor}" Station="{ActivityBind PCARepairTest,Path=Station}" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</IfElseBranchActivity>
+			<IfElseBranchActivity x:Name="ifElseBranchActivity4">
+				<IfElseBranchActivity.Condition>
+					<RuleConditionReference ConditionName="Is6666" />
+				</IfElseBranchActivity.Condition>
+				<ns0:BlockStation Customer="{ActivityBind PCARepairTest,Path=Customer}" x:Name="blockStation2" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" Editor="{ActivityBind PCARepairTest,Path=Editor}" ProcessType="MB" Station="28" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+				<ns0:UpdateMBStatus Customer="{ActivityBind PCARepairTest,Path=Customer}" ManualStation="{x:Null}" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" x:Name="updateMBStatus3" Editor="{ActivityBind PCARepairTest,Path=Editor}" IsPass="Pass" Station="28" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+				<ns0:WriteMBLog Customer="{ActivityBind PCARepairTest,Path=Customer}" LineSuffix="{x:Null}" ManualStation="{x:Null}" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" x:Name="writeMBLog4" Editor="{ActivityBind PCARepairTest,Path=Editor}" IsPass="True" Station="28" IsSingle="True" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+				<ns0:UpdateRptPcaRep Customer="{ActivityBind PCARepairTest,Path=Customer}" x:Name="updateRptPcaRep2" SessionType="{ActivityBind PCARepairTest,Path=SessionType}" Editor="{ActivityBind PCARepairTest,Path=Editor}" Station="{ActivityBind PCARepairTest,Path=Station}" Line="{ActivityBind PCARepairTest,Path=PdLine}" Key="{ActivityBind PCARepairTest,Path=Key}" />
+			</IfElseBranchActivity>
+		</IfElseActivity>
+	</ns0:DBScope>
+</ns0:BaseFlow>

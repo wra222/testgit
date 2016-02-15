@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.Thermal.Filter.dll
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.Thermal.Filter.pdb
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.Thermal.Filter\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.Thermal.Filter\obj\Debug\IMES.CheckItemModule.Thermal.Filter.dll
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.Thermal.Filter\obj\Debug\IMES.CheckItemModule.Thermal.Filter.pdb

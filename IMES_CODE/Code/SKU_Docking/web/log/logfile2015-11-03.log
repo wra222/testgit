@@ -1,0 +1,269 @@
+2015-11-03 10:56:48,977 72 INFO ASP.global_asax - BEGIN: Application_Start()
+2015-11-03 10:56:49,008 75 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-3-130909929922384535
+2015-11-03 10:56:49,008 76 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 10:56:49,008 77 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 10:56:49,024 85 INFO ASP.global_asax - END: Application_Start()
+2015-11-03 10:56:49,024 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 10:56:49,039 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-3-130909929922384535
+2015-11-03 10:56:49,039 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 10:56:49,039 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 10:56:49,039 24 INFO ASP.global_asax - END: Init()
+2015-11-03 10:58:10,365 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 10:58:10,380 42 DEBUG MasterPage - Path:~/PAK/CollectTabletPakPart.aspx IsPostBack:False SessionId: UserId:
+2015-11-03 10:58:10,583 82 ERROR MasterPage - Page_Init
+System.Threading.ThreadAbortException: 執行緒已經中止。
+   於 System.Threading.Thread.AbortInternal()
+   於 System.Threading.Thread.Abort(Object stateInfo)
+   於 System.Web.HttpResponse.End()
+   於 System.Web.HttpServerUtility.Transfer(String path, Boolean preserveForm)
+   於 System.Web.HttpServerUtility.Transfer(String path)
+   於 MasterPage.Page_Init(Object sender, EventArgs e) 於 e:\IMES_CODE\Code\SKU_Docking\web\MasterPage.master.cs: 行 60
+2015-11-03 10:58:10,599 86 INFO MasterPage - END: Page_Init()
+2015-11-03 10:58:10,864 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 10:58:10,864 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-3-130909929922384535
+2015-11-03 10:58:10,864 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 10:58:10,880 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 10:58:10,880 24 INFO ASP.global_asax - END: Init()
+2015-11-03 10:58:10,973 119 INFO ASP.global_asax - BEGIN: Application_Error()
+2015-11-03 10:58:10,989 123 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-3-130909929922384535
+2015-11-03 10:58:10,989 124 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 10:58:10,989 125 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 10:58:11,004 127 ERROR ASP.global_asax - System.Web.HttpException: 檔案不存在。
+   於 System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   於 System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context)
+   於 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   於 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   於 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-11-03 10:58:11,004 136 INFO ASP.global_asax - END: Application_Error()
+2015-11-03 11:21:40,299 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 11:21:40,345 42 DEBUG MasterPage - Path:~/PAK/CollectTabletPakPart.aspx IsPostBack:False SessionId: UserId:
+2015-11-03 11:21:40,377 86 INFO MasterPage - END: Page_Init()
+2015-11-03 11:21:44,542 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 11:21:44,557 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-3-130909929922384535
+2015-11-03 11:21:44,557 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 11:21:44,573 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 11:21:44,573 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 11:21:44,573 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-3-130909929922384535
+2015-11-03 11:21:44,589 24 INFO ASP.global_asax - END: Init()
+2015-11-03 11:21:44,589 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 11:21:44,604 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 11:21:44,604 24 INFO ASP.global_asax - END: Init()
+2015-11-03 11:24:24,353 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 11:24:24,369 42 DEBUG MasterPage - Path:~/PAK/CollectTabletPakPart.aspx IsPostBack:False SessionId: UserId:dyh
+2015-11-03 11:24:24,384 86 INFO MasterPage - END: Page_Init()
+2015-11-03 11:24:25,898 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 11:24:25,898 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-3-130909929922384535
+2015-11-03 11:24:25,913 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 11:24:25,913 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 11:24:25,929 24 INFO ASP.global_asax - END: Init()
+2015-11-03 11:24:38,225 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 11:24:38,256 42 DEBUG MasterPage - Path:~/PAK/CollectTabletPakPart.aspx IsPostBack:False SessionId: UserId:dyh
+2015-11-03 11:24:38,271 86 INFO MasterPage - END: Page_Init()
+2015-11-03 11:24:38,318 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 11:24:38,334 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-3-130909929922384535
+2015-11-03 11:24:38,334 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 11:24:38,349 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 11:24:38,349 24 INFO ASP.global_asax - END: Init()
+2015-11-03 11:29:59,904 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 11:29:59,920 42 DEBUG MasterPage - Path:~/PAK/CollectTabletPakPart.aspx IsPostBack:True SessionId: UserId:dyh
+2015-11-03 11:29:59,936 86 INFO MasterPage - END: Page_Init()
+2015-11-03 13:30:19,017 95 INFO ASP.global_asax - BEGIN: Application_End()
+2015-11-03 13:30:19,273 99 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-3-130909929922384535
+2015-11-03 13:30:19,282 100 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 13:30:19,300 101 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 13:30:19,309 109 INFO ASP.global_asax - END: Application_End()
+2015-11-03 14:41:57,408 72 INFO ASP.global_asax - BEGIN: Application_Start()
+2015-11-03 14:41:57,627 75 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-1-130910064865152797
+2015-11-03 14:41:57,642 76 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 14:41:57,642 77 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 14:41:57,658 85 INFO ASP.global_asax - END: Application_Start()
+2015-11-03 14:41:57,814 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 14:41:57,845 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-1-130910064865152797
+2015-11-03 14:41:57,845 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 14:41:57,861 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 14:41:57,861 24 INFO ASP.global_asax - END: Init()
+2015-11-03 14:42:57,006 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 14:42:57,334 42 DEBUG MasterPage - Path:~/PAK/CollectTabletPakPart.aspx IsPostBack:False SessionId: UserId:
+2015-11-03 14:42:57,350 86 INFO MasterPage - END: Page_Init()
+2015-11-03 14:43:12,351 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 14:43:12,362 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-1-130910064865152797
+2015-11-03 14:43:12,372 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 14:43:12,382 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 14:43:12,389 24 INFO ASP.global_asax - END: Init()
+2015-11-03 14:43:12,815 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 14:43:12,828 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-1-130910064865152797
+2015-11-03 14:43:12,838 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 14:43:12,844 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 14:43:12,849 24 INFO ASP.global_asax - END: Init()
+2015-11-03 14:46:15,169 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 14:46:15,200 42 DEBUG MasterPage - Path:~/PAK/CollectTabletPakPart.aspx IsPostBack:False SessionId: UserId:
+2015-11-03 14:46:15,215 86 INFO MasterPage - END: Page_Init()
+2015-11-03 14:46:17,321 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 14:46:17,321 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 14:46:17,321 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-1-130910064865152797
+2015-11-03 14:46:17,337 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-1-130910064865152797
+2015-11-03 14:46:17,337 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 14:46:17,353 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 14:46:17,353 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 14:46:17,368 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 14:46:17,368 24 INFO ASP.global_asax - END: Init()
+2015-11-03 14:46:17,384 24 INFO ASP.global_asax - END: Init()
+2015-11-03 14:48:47,696 95 INFO ASP.global_asax - BEGIN: Application_End()
+2015-11-03 14:48:47,696 99 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-1-130910064865152797
+2015-11-03 14:48:47,711 100 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 14:48:47,711 101 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 14:48:47,711 109 INFO ASP.global_asax - END: Application_End()
+2015-11-03 15:01:12,752 72 INFO ASP.global_asax - BEGIN: Application_Start()
+2015-11-03 15:01:12,784 75 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-2-130910076710525360
+2015-11-03 15:01:12,784 76 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 15:01:12,784 77 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 15:01:12,799 85 INFO ASP.global_asax - END: Application_Start()
+2015-11-03 15:01:12,799 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 15:01:12,815 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-2-130910076710525360
+2015-11-03 15:01:12,815 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 15:01:12,815 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 15:01:12,830 24 INFO ASP.global_asax - END: Init()
+2015-11-03 15:01:13,236 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:01:13,252 42 DEBUG MasterPage - Path:~/PAK/CollectTabletPakPart.aspx IsPostBack:False SessionId: UserId:
+2015-11-03 15:01:13,267 86 INFO MasterPage - END: Page_Init()
+2015-11-03 15:01:15,935 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 15:01:15,950 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 15:01:15,950 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-2-130910076710525360
+2015-11-03 15:01:15,950 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-2-130910076710525360
+2015-11-03 15:01:15,966 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 15:01:15,982 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 15:01:15,966 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 15:01:15,997 24 INFO ASP.global_asax - END: Init()
+2015-11-03 15:01:15,997 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 15:01:16,013 24 INFO ASP.global_asax - END: Init()
+2015-11-03 15:06:57,670 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:06:57,701 42 DEBUG MasterPage - Path:~/PAK/CollectTabletPakPart.aspx IsPostBack:False SessionId: UserId:dyh
+2015-11-03 15:06:57,717 86 INFO MasterPage - END: Page_Init()
+2015-11-03 15:06:59,589 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 15:06:59,589 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-2-130910076710525360
+2015-11-03 15:06:59,604 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 15:06:59,604 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 15:06:59,604 24 INFO ASP.global_asax - END: Init()
+2015-11-03 15:18:18,059 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:18:18,075 42 DEBUG MasterPage - Path:~/PAK/CollectTabletPakPart.aspx IsPostBack:False SessionId: UserId:dyh
+2015-11-03 15:18:18,106 86 INFO MasterPage - END: Page_Init()
+2015-11-03 15:18:18,137 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 15:18:18,153 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-2-130910076710525360
+2015-11-03 15:18:18,168 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 15:18:18,168 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 15:18:18,168 24 INFO ASP.global_asax - END: Init()
+2015-11-03 15:21:54,360 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:21:54,360 42 DEBUG MasterPage - Path:~/FA/ChangeKeyParts.aspx IsPostBack:False SessionId: UserId:
+2015-11-03 15:21:54,376 86 INFO MasterPage - END: Page_Init()
+2015-11-03 15:21:58,587 119 INFO ASP.global_asax - BEGIN: Application_Error()
+2015-11-03 15:21:58,603 123 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-2-130910076710525360
+2015-11-03 15:21:58,619 124 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 15:21:58,619 125 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 15:21:58,634 127 ERROR ASP.global_asax - System.Web.HttpUnhandledException: 已發生類型 'System.Web.HttpUnhandledException' 的例外狀況。 ---> System.Net.Sockets.SocketException: 無法連線，因為目標電腦拒絕連線。 127.0.0.1:8018
+
+Server stack trace: 
+   於 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   於 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   於 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket(EndPoint ipEndPoint)
+   於 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket()
+   於 System.Runtime.Remoting.Channels.RemoteConnection.GetSocket()
+   於 System.Runtime.Remoting.Channels.SocketCache.GetSocket(String machinePortAndSid, Boolean openNew)
+   於 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.SendRequestWithRetry(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream)
+   於 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.ProcessMessage(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream, ITransportHeaders& responseHeaders, Stream& responseStream)
+   於 System.Runtime.Remoting.Channels.BinaryClientFormatterSink.SyncProcessMessage(IMessage msg)
+
+Exception rethrown at [0]: 
+   於 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   於 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   於 IMES.Station.Interface.CommonIntf.IChangeKPType.GetChangeKPTypeList()
+   於 CommonControl_CmbChangeKPTypeControl.initDropReason() 於 e:\IMES_CODE\Code\SKU_Docking\web\CommonControl\CmbChangeKPTypeControl.ascx.cs: 行 191
+   於 CommonControl_CmbChangeKPTypeControl.Page_Load(Object sender, EventArgs e) 於 e:\IMES_CODE\Code\SKU_Docking\web\CommonControl\CmbChangeKPTypeControl.ascx.cs: 行 72
+   於 System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr fp, Object o, Object t, EventArgs e)
+   於 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   於 System.Web.UI.Control.OnLoad(EventArgs e)
+   於 System.Web.UI.Control.LoadRecursive()
+   於 System.Web.UI.Control.LoadRecursive()
+   於 System.Web.UI.Control.LoadRecursive()
+   於 System.Web.UI.Control.LoadRecursive()
+   於 System.Web.UI.Control.LoadRecursive()
+   於 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   --- 內部例外狀況堆疊追蹤的結尾 ---
+   於 System.Web.UI.Page.HandleError(Exception e)
+   於 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   於 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   於 System.Web.UI.Page.ProcessRequest()
+   於 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   於 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   於 ASP.fa_changekeyparts_aspx.ProcessRequest(HttpContext context) 於 c:\Users\ICC112589.IES\AppData\Local\Temp\Temporary ASP.NET Files\web\1e442af7\13030d23\App_Web_oogh5sco.6.cs: 行 0
+   於 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   於 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-11-03 15:21:58,743 136 INFO ASP.global_asax - END: Application_Error()
+2015-11-03 15:22:45,627 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:22:45,643 42 DEBUG MasterPage - Path:~/FA/ChangeKeyParts.aspx IsPostBack:False SessionId: UserId:
+2015-11-03 15:22:45,659 86 INFO MasterPage - END: Page_Init()
+2015-11-03 15:22:45,893 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 15:22:45,893 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 15:22:45,908 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-2-130910076710525360
+2015-11-03 15:22:45,924 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-2-130910076710525360
+2015-11-03 15:22:45,924 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 15:22:45,939 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 15:22:45,939 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 15:22:45,939 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 15:22:45,955 24 INFO ASP.global_asax - END: Init()
+2015-11-03 15:22:45,955 24 INFO ASP.global_asax - END: Init()
+2015-11-03 15:22:51,009 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:22:51,025 42 DEBUG MasterPage - Path:~/FA/ChangeKeyParts.aspx IsPostBack:True SessionId: UserId:
+2015-11-03 15:22:51,025 86 INFO MasterPage - END: Page_Init()
+2015-11-03 15:22:57,437 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:22:57,452 42 DEBUG MasterPage - Path:~/FA/ChangeKeyParts.aspx IsPostBack:True SessionId: UserId:
+2015-11-03 15:22:57,452 86 INFO MasterPage - END: Page_Init()
+2015-11-03 15:28:09,417 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:28:09,433 42 DEBUG MasterPage - Path:~/FA/CollectTabletFaPart.aspx IsPostBack:False SessionId: UserId:
+2015-11-03 15:28:09,448 86 INFO MasterPage - END: Page_Init()
+2015-11-03 15:28:09,713 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 15:28:09,729 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-2-130910076710525360
+2015-11-03 15:28:09,729 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 15:28:09,745 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 15:28:09,760 24 INFO ASP.global_asax - END: Init()
+2015-11-03 15:28:16,109 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:28:16,141 42 DEBUG MasterPage - Path:~/FA/CollectTabletFaPart.aspx IsPostBack:True SessionId: UserId:
+2015-11-03 15:28:16,156 86 INFO MasterPage - END: Page_Init()
+2015-11-03 15:34:24,907 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:34:24,938 42 DEBUG MasterPage - Path:~/FA/CollectTabletFaPart.aspx IsPostBack:False SessionId: UserId:dyh
+2015-11-03 15:34:24,938 86 INFO MasterPage - END: Page_Init()
+2015-11-03 15:34:25,266 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 15:34:25,281 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-2-130910076710525360
+2015-11-03 15:34:25,281 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 15:34:25,297 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 15:34:25,297 24 INFO ASP.global_asax - END: Init()
+2015-11-03 15:34:30,601 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:34:30,601 42 DEBUG MasterPage - Path:~/FA/CollectTabletFaPart.aspx IsPostBack:True SessionId: UserId:dyh
+2015-11-03 15:34:30,617 86 INFO MasterPage - END: Page_Init()
+2015-11-03 15:35:21,023 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:35:21,023 42 DEBUG MasterPage - Path:~/FA/CollectTabletFaPart.aspx IsPostBack:False SessionId: UserId:dyh
+2015-11-03 15:35:21,038 86 INFO MasterPage - END: Page_Init()
+2015-11-03 15:35:21,069 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 15:35:21,069 11 INFO ASP.global_asax - BEGIN: Init()
+2015-11-03 15:35:21,085 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-2-130910076710525360
+2015-11-03 15:35:21,085 14 DEBUG ASP.global_asax - Current AppDomainId:7d1d7906-2-130910076710525360
+2015-11-03 15:35:21,101 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 15:35:21,116 15 DEBUG ASP.global_asax - Current AppDomainAppPath:E:\IMES_CODE\Code\SKU_Docking\web\
+2015-11-03 15:35:21,116 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 15:35:21,116 16 DEBUG ASP.global_asax - Current AppDomainAppId:7d1d7906
+2015-11-03 15:35:21,132 24 INFO ASP.global_asax - END: Init()
+2015-11-03 15:35:21,132 24 INFO ASP.global_asax - END: Init()
+2015-11-03 15:35:24,845 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:35:24,845 42 DEBUG MasterPage - Path:~/FA/CollectTabletFaPart.aspx IsPostBack:True SessionId: UserId:dyh
+2015-11-03 15:35:24,860 86 INFO MasterPage - END: Page_Init()
+2015-11-03 15:35:47,683 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:35:47,683 42 DEBUG MasterPage - Path:~/FA/CollectTabletFaPart.aspx IsPostBack:False SessionId: UserId:dyh
+2015-11-03 15:35:47,699 86 INFO MasterPage - END: Page_Init()
+2015-11-03 15:35:58,478 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:35:58,494 42 DEBUG MasterPage - Path:~/FA/CollectTabletFaPart.aspx IsPostBack:False SessionId: UserId:dyh
+2015-11-03 15:35:58,494 86 INFO MasterPage - END: Page_Init()
+2015-11-03 15:36:20,366 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:36:20,382 42 DEBUG MasterPage - Path:~/FA/CollectTabletFaPart.aspx IsPostBack:True SessionId: UserId:dyh
+2015-11-03 15:36:20,397 86 INFO MasterPage - END: Page_Init()
+2015-11-03 15:36:26,450 37 INFO MasterPage - BEGIN: Page_Init()
+2015-11-03 15:36:26,450 42 DEBUG MasterPage - Path:~/FA/CollectTabletFaPart.aspx IsPostBack:False SessionId: UserId:dyh
+2015-11-03 15:36:26,450 86 INFO MasterPage - END: Page_Init()

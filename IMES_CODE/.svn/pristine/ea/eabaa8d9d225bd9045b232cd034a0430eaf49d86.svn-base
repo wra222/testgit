@@ -1,0 +1,150 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace IMES.Infrastructure.Util
+{
+    public static  class GlobalConstName
+    { 
+        public  const string DotStr = ".";
+        public  const char DotChar = '.';
+        public  const string UnderScoreStr = "_";
+        public  const char UnderScoreChar = '_';
+        public  const string ArrowStr = "->";
+        public  const string CommaStr = ",";
+        public  const char CommaChar = ',';
+        public  const string SlashStr = "/";
+        public const char SlashChar = '/';
+        public  const char TildeChar = '~';
+        public  const string TildeStr = "~";
+        public  const char AtChar = '@';
+        public  const string AtStr = "@";
+        public  const char StarChar = '*';
+        public  const string StarStr = "*";
+        public  const char HashChar = '#';
+        public  const string HashStr = "#";
+        public  const char DashChar = '-';
+        public  const string DashStr = "-";
+        public  const char AndChar = '&';
+        public  const string AndStr = "&";
+        public  const char BarChar = '|';
+        public  const string BarStr = "|";
+        public  const char ColonChar = ':';
+        public  const string ColonStr = ":";
+        public  const char SemiColonChar = ';';
+        public  const string SemiColonStr = ";";
+
+        public static class RegEx
+        {
+            public  const string GroupNamePattern = @"\(\?<(?<name>.+?)>.+?\)";
+            public  const string GroupName = "name";
+            public  const string CT = "CT";
+        }
+
+        public static class PartInfo
+        {
+            public  const string VCODE = "VCODE";
+            public  const string VC = "VC";
+            public  const string RDESC = "RDESC";
+            public  const string VendorCode="VendorCode";
+            public const string MBCode = "MB";  //MBCode
+        }
+
+        public static class LogFormat
+        {
+            public  const string Begin = "BEGIN: {0}()";
+            public  const string End= "END: {0}()";
+        }
+
+        public static class ResolveValue
+        {
+            public  const string PRODUCT = "PRODUCT";
+            public  const string PRODUCTINFO = "PRODUCTINFO";
+            public  const string PRODUCTATTR = "PRODUCTATTR";
+
+            public  const string PCB = "PCB";
+            public  const string PCBINFO = "PCBINFO";
+            public const string PCBATTR = "PCBATTR";
+
+            public  const string FAMILY = "FAMILY";
+            public  const string FAMILYINFO = "FAMILYINFO";
+
+            public  const string MODEL = "MODEL";
+            public  const string MODELINFO = "MODELINFO";
+
+            public  const string PART = "PART";
+            public  const string PARTINFO = "PARTINFO";
+
+            public  const string DELIVERY = "DELIVERY";
+            public  const string DELIVERYINFO = "DELIVERYINFO";
+
+            public const string TESTLOG = "TESTLOG";
+
+            public const string BOM = "BOM";
+
+            //for HTC add ImgOSVer
+            public  const string IMGOSVER = "IMGOSVER";
+
+            public  const string SESSION = "SESSION";
+
+            public  const string DATETIME = "DATETIME";
+            public  const string CONSTANT = "CONSTANT";
+
+        }
+
+        public static class Letter
+        {
+            public  const string Y = "Y";
+            public  const string N = "N";
+        }
+
+        public static class BomNodeType
+        {
+            public  const string P1 = "P1";
+            public  const string PL = "PL";
+            public  const string KP = "KP";
+            public  const string MB = "MB";
+            public  const string C1 = "C1";
+            public  const string C2 = "C2";
+            public  const string C3 = "C3";
+            public  const string C4 = "C4";
+            public  const string PS = "PS";
+            public  const string AT = "AT";
+        }
+
+        public static class FisObject
+        {
+            public  const string MB = "MB";
+
+        }
+
+        public static class ConstValue
+        {
+            public  const string CheckAllowPCBLogByFamily = "CheckAllowPCBLogByFamily";
+            public  const string CTMatchRule="CTMatchRule";
+            public  const string CTCheckRule="CTCheckRule";
+			public  const string OverTestKPCountLimit = "OverTestKPCountLimit";
+            public  const string ProcReg = "ProcReg";
+        }
+
+        public static class ConstValueType
+        {            
+            public  const string JudgeMBReworkStationList = "JudgeMBReworkStationList";
+        }
+
+        public static class SysSetting
+        {
+			public  const string OverTestKPCountLimit="OverTestKPCountLimit";
+            public  const string PickCardNoneBulkProcRegNameList = "PickCardNoneBulkProcRegNameList";
+        }
+
+        public static class NormalStatus
+        {
+            public  const string Active = "Active";
+            public  const string Hold = "Hold";
+            public  const string Release = "Release";
+            public  const string Created = "Create";
+        }
+    }
+}

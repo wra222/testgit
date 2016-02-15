@@ -1,0 +1,136 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using IMES.CheckItemModule.Interface;
+using IMES.FisObject.Common.FisBOM;
+using IMES.FisObject.Common.Part;
+using IMES.CheckItemModule.Utility;
+
+
+namespace IMES.CheckItemModule.RomeoBattery.Filter
+{
+
+    [Export(typeof(IFilterModule))]
+    [ExportMetadata("ProgramName", "IMES.CheckItemModule.RomeoBattery.Filter.dll")]
+    class Filter : IFilterModule
+    {
+        private const string CheckItemType = "RomeoBattery";
+
+        /// <summary>
+        /// Model -> C4 -> P1 -> KP(P1阶Pn是料的真实Pn)
+        /// </summary>
+        /// <param name="hierarchicalBom"></param>
+        /// <param name="station"></param>
+        /// <param name="mainObject"></param>
+        /// <returns></returns>
+        public object FilterBOM(object hierarchicalBom, string station, object mainObject)
+        {
+            IFlatBOM ret = null;
+            IList<IFlatBOMItem> flatBOMItems = new List<IFlatBOMItem>();
+            if (hierarchicalBom == null)
+            {
+                throw new ArgumentNullException();
+            }
+            try
+            {
+                var hBom = (IHierarchicalBOM) hierarchicalBom;
+                IList<KPVendorCode> kpVCList = new List<KPVendorCode>();
+                IList<IBOMNode> c4Nodes = hBom.GetFirstLevelNodesByNodeType("C4");
+                foreach (IBOMNode c4Node in c4Nodes)
+                {
+                    if (c4Node == null)
+                    {
+                        continue;
+                    }
+                    foreach (IBOMNode c4Child in c4Node.Children)
+                    {
+                        if (c4Child != null 
+                            && c4Child.Part != null
+                            && string.Compare(c4Child.Part.BOMNodeType.Trim(), "P1") == 0)
+                        {
+                            IBOMNode p1Node = c4Child;
+                            string vendorCode = GetVendorCode(p1Node);
+                            if (!string.IsNullOrEmpty(vendorCode))
+                            {
+
+                                kpVCList.Add(new KPVendorCode
+                                {
+                                    PartNo = p1Node.Part.PN,
+                                    VendorCode = vendorCode
+                                });
+                                //p1Node.Part.AddAttribute(new PartInfo(
+                                //    0,
+                                //    p1Node.Part.PN,
+                                //    "VendorCode",
+                                //    vendorCode,
+                                //    string.Empty,
+                                //    DateTime.Now,
+                                //    DateTime.Now));
+
+                                IFlatBOMItem item = new FlatBOMItem(
+                                    (p1Node.Qty * c4Node.Qty),
+                                    CheckItemType,
+                                    new List<IPart>(){p1Node.Part}
+                                    );
+                                item.Tag = kpVCList;
+                                item.PartNoItem = p1Node.Part.PN;
+                                item.Descr = p1Node.Part.Descr;
+                                item.Tp = CheckItemType;
+                                item.Model = hBom.Model;
+                                flatBOMItems.Add(item);
+                            }
+                        }
+                    }
+                }
+                if (flatBOMItems.Count > 0)
+                {
+                    ret = new FlatBOM(flatBOMItems);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return ret;
+        }
+
+        string GetVendorCode(IBOMNode p1Node)
+        {
+            string vcString = string.Empty;
+            if (p1Node == null || p1Node.Children == null)
+            {
+                return null;
+            }
+
+            foreach (IBOMNode node in p1Node.Children)
+            {
+                if (node.Part == null)
+                {
+                }
+                else
+                {
+                    if (string.Compare(node.Part.BOMNodeType, "KP" ) == 0)
+                    {
+                        string vc = node.Part.GetAttribute("VendorCode");
+                        if (!string.IsNullOrEmpty(vc))
+                        {
+                            if (vcString == string.Empty)
+                            {
+                                vcString = vc;
+                            }
+                            else
+                            {
+                                if (!vcString.Contains(vc))
+                                {
+                                    vcString = vcString + "," + vc;
+                                }
+                            }
+                        }
+                    }                                        
+                }
+            }
+            return vcString;
+        }
+    }
+}

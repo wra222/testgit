@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>英业达流水线</title>
+     <link rel="stylesheet" href="../../css/wip.css" media="all" />
+     <script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+     <style>
+         .xxx{background:red;}
+     </style>
+     <script type="text/javascript">
+         $(document).ready(function() {
+             var index = 0;
+             setInterval(function() {
+                 if (index < 4) {
+                     $(".firstRow .dynamicIMG").css({ 'display': 'block', left: index * 20 + 'px' });
+                     $(".thirdRow .dynamicIMG").css({ 'display': 'block', left: (60 - index * 20) + 'px' });
+                     $(".fourRow .dynamicIMG").css({ 'display': 'block', left: index * 20 + 'px' });
+                     $(".fiveRow .dynamicIMG").css({ 'display': 'block', left: (60 - index * 20) + 'px' });
+
+                     $(".stationQty").text(index * 20);
+                     $(".downLink").css({ 'display': 'block', top: index * 20 + 'px' });
+
+                     ++index;
+                 }
+                 else {
+                     $(".firstRow .dynamicIMG").addClass({ left: '0px' });
+                     $(".thirdRow .dynamicIMG").css({ 'display': 'block', right: '0px' });
+                     $(".fourRow .dynamicIMG").addClass({ left: '0px' });
+                     $(".fiveRow .dynamicIMG").css({ 'display': 'block', right: '0px' });
+                     $(".downLink").css({ top: '20px' });
+                     index = 0
+                 }
+
+             }, 1000)
+
+
+//             var eee = -1
+//             setInterval(function() {
+//                 eee = eee + 1
+//                 $(".station").eq(eee).addClass("xxx").siblings().removeClass("xxx");
+//                // $(".stationLogo p").eq(eee).removeClass("xxx");
+
+//                 if (eee == 22) {
+//                     eee = -1;
+//                     $(".station").eq(eee).addClass("xxx").siblings().removeClass("xxx");
+//                   
+//                 }
+//             }, 1000)
+
+
+
+         })
+ 
+ 
+</script>
+</head>
+<body>
+        <div class="firstRow">
+                 <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> 
+                       <p>36 站(FAKitting)</p>
+                      </a>
+                    </div>
+                </div>
+                <div class="station">
+                    <div class="stationQty"></div>
+                    <img class="line" src="../../webroot/images/line.png" />
+                    <img class="dynamicIMG" src="../../webroot/images/dynamic.gif" />
+                </div>
+                
+                
+                <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  />  
+                      <p>37 站(CPU)</p></a>
+                    </div>
+                </div>
+                <div class="station">
+                    <div class="stationQty"></div>
+                     <img class="line" src="../../webroot/images/line.png" />
+                    <img class="dynamicIMG" src="../../webroot/images/dynamic.gif" />
+                </div>
+                
+                <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> <p>39 站(HDD)</p> </a>
+                    </div>
+                </div>
+                <div class="station">
+                    <div class="stationQty"></div>
+                      <img class="line" src="../../webroot/images/line.png" />
+                    <img class="dynamicIMG" src="../../webroot/images/dynamic.gif" />
+                </div>
+                <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> <p>3A 站(KB)</p> </a>
+                    </div>
+                </div>
+                <div class="station">
+                    <div class="stationQty"></div>
+                      <img class="line" src="../../webroot/images/line.png" />
+                    <img class="dynamicIMG" src="../../webroot/images/dynamic.gif" />
+                </div>
+                
+                <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> <p>3B 站(LCM)</p> </a>
+                    </div>
+                </div>
+                <div class="station">
+                    <div class="stationQty"></div>
+                      <img class="line" src="../../webroot/images/line.png" />
+                    <img class="dynamicIMG" src="../../webroot/images/dynamic.gif" />
+                </div>
+
+                <div id="linkLine">
+                    <img class="linkLine" src="../../webroot/images/linkLine.png" />
+				    <img class="downLink" src="../../webroot/images/down.gif" />
+               </div>     </div>
+
+     <div class="thirdRow">
+               
+               <div class="station">
+                    <div class="stationQty"></div>
+                      <img class="line" src="../../webroot/images/line.png" />
+                     <img class="dynamicIMG" src="../../webroot/images/left.gif" />
+                </div>
+                
+                  <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> <p>40 站(MB)</p> </a>
+                    </div>
+                </div>
+                <div class="station">
+                    <div class="stationQty"></div>
+                      <img class="line" src="../../webroot/images/line.png" />
+                     <img class="dynamicIMG" src="../../webroot/images/left.gif" />
+                </div>
+                
+                  <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> <p>3C 站(TPM)</p> </a>
+                    </div>
+                </div>
+                <div class="station">
+                    <div class="stationQty"></div>
+                      <img class="line" src="../../webroot/images/line.png" />
+                      <img class="dynamicIMG" src="../../webroot/images/left.gif" />
+                </div>
+                
+                 <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> <p>59 站(SN)</p> </a>
+                    </div>
+                </div>
+               <div class="station">
+                    <div class="stationQty"></div>
+                      <img class="line" src="../../webroot/images/line.png" />
+                    <img class="dynamicIMG" src="../../webroot/images/left.gif" />
+                </div>
+                
+                 <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> <p>50 站(TPM)</p> </a>
+                    </div>
+                </div>
+                <div class="station">
+                    <div class="stationQty"></div>
+                      <img class="line" src="../../webroot/images/line.png" />
+                    <img class="dynamicIMG" src="../../webroot/images/left.gif" />
+                </div>
+                
+                
+                <div class="station">
+                    <div class='stationLogo'>
+                     <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> <p>67 站(Itcndet)</p> </a>
+                    </div>
+                </div>
+                
+                <div id="SecondlinkLine">
+                    <img class="linkLine" src="../../webroot/images/down.png" />
+				    <img class="downLink" src="../../webroot/images/down.gif" />
+               </div>
+               
+                
+           </div>
+      
+     <div class="fourRow">
+           <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> 
+                       <p>69 站(外观)</p>
+                      </a>
+                    </div>
+          </div>
+          <div class="station">
+                    <div class="stationQty"></div>
+                    <img class="line" src="../../webroot/images/line.png" />
+                    <img class="dynamicIMG" src="../../webroot/images/dynamic.gif" />
+           </div>
+           <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> 
+                       <p>77 站(Label1)</p>
+                      </a>
+                    </div>
+          </div>
+          <div class="station">
+                    <div class="stationQty"></div>
+                    <img class="line" src="../../webroot/images/line.png" />
+                    <img class="dynamicIMG" src="../../webroot/images/dynamic.gif" />
+           </div>
+           <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> 
+                       <p>78 站(Label2)</p>
+                      </a>
+                    </div>
+          </div>
+          <div class="station">
+                    <div class="stationQty"></div>
+                    <img class="line" src="../../webroot/images/line.png" />
+                    <img class="dynamicIMG" src="../../webroot/images/dynamic.gif" />
+           </div>
+            <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> 
+                       <p>81 站(COA)</p>
+                      </a>
+                    </div>
+          </div>
+          <div class="station">
+                    <div class="stationQty"></div>
+                    <img class="line" src="../../webroot/images/line.png" />
+                    <img class="dynamicIMG" src="../../webroot/images/dynamic.gif" />
+           </div>
+           <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> 
+                       <p>8E 站(ESOP)</p>
+                      </a>
+                    </div>
+          </div>
+          <div class="station">
+                    <div class="stationQty"></div>
+                    <img class="line" src="../../webroot/images/line.png" />
+                    <img class="dynamicIMG" src="../../webroot/images/dynamic.gif" />
+           </div>
+            <div id="fivelinkLine">
+                    <img class="linkLine" src="../../webroot/images/linkLine.png" />
+				    <img class="downLink" src="../../webroot/images/down.gif" />
+             </div>
+     
+     </div>  
+     <div class="fiveRow"> 
+     
+               <div class="station">
+                    <div class="stationQty"></div>
+                      <img class="line" src="../../webroot/images/line.png" />
+                     <img class="dynamicIMG" src="../../webroot/images/left.gif" />
+                </div>
+                
+                  <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> <p>68 站(SN Check)</p> </a>
+                    </div>
+                </div>
+                
+                  <div class="station">
+                    <div class="stationQty"></div>
+                      <img class="line" src="../../webroot/images/line.png" />
+                     <img class="dynamicIMG" src="../../webroot/images/left.gif" />
+                </div>
+                
+                  <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> <p>PKOK 站(KITTING)</p> </a>
+                    </div>
+                </div>
+                 <div class="station">
+                    <div class="stationQty"></div>
+                      <img class="line" src="../../webroot/images/line.png" />
+                     <img class="dynamicIMG" src="../../webroot/images/left.gif" />
+                </div>
+                
+                  <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> <p>8C 站(CombinePizza)</p> </a>
+                    </div>
+                </div>
+                 <div class="station">
+                    <div class="stationQty"></div>
+                      <img class="line" src="../../webroot/images/line.png" />
+                     <img class="dynamicIMG" src="../../webroot/images/left.gif" />
+                </div>
+                <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> <p>91 站(PD PA1)</p> </a>
+                    </div>
+                </div>
+                 <div class="station">
+                    <div class="stationQty"></div>
+                      <img class="line" src="../../webroot/images/line.png" />
+                     <img class="dynamicIMG" src="../../webroot/images/left.gif" />
+                </div>
+                <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> <p>92 站(PD PA2)</p> </a>
+                    </div>
+                </div>
+                   <div id="sixlinkLine">
+                    <img class="linkLine" src="../../webroot/images/down.png" />
+				    <img class="downLink" src="../../webroot/images/down.gif" />
+               </div>
+               
+     </div>       
+              <div class="sixRow">
+         <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> 
+                       <p>95 站(ShipTo)</p>
+                      </a>
+                    </div>
+          </div>
+          <div class="station">
+                    <div class="stationQty"></div>
+                    <img class="line" src="../../webroot/images/line.png" />
+                    <img class="dynamicIMG" src="../../webroot/images/dynamic.gif" />
+           </div>
+           <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> 
+                       <p>85 站(称重)</p>
+                      </a>
+                    </div>
+          </div>
+          <div class="station">
+                    <div class="stationQty"></div>
+                    <img class="line" src="../../webroot/images/line.png" />
+                    <img class="dynamicIMG" src="../../webroot/images/dynamic.gif" />
+           </div>
+           <div class="station">
+                    <div class='stationLogo'>
+                      <a href="#" ><img src="../../webroot/images/chengpinchangku.png"  /> 
+                       <p>9A 站(栈板标签)</p>
+                      </a>
+                    </div>
+          </div>
+          <div class="station">
+                    <div class="stationQty"></div>
+                    <img class="line" src="../../webroot/images/line.png" />
+                    <img class="dynamicIMG" src="../../webroot/images/dynamic.gif" />
+           </div>
+    </div>
+
+
+</body>
+</html>

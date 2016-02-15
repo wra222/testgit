@@ -1,0 +1,25 @@
+<script language="JavaScript" SRC="calendar_ML.js"></script>
+
+<public:property put=fnPutDay                  get=fnGetDay                name="day">
+<public:property put=fnPutMonth                get=fnGetMonth              name="month">
+<public:property put=fnPutYear                 get=fnGetYear               name="year">
+<public:property put=fnPutMonthLength          get=fnGetMonthLength        name="monthLength">
+<public:property put=fnPutDayLength            get=fnGetDayLength          name="dayLength">
+<public:property put=fnPutFirstDay             get=fnGetFirstDay           name="firstDay">
+<public:property put=fnPutGridCellEffect       get=fnGetGridCellEffect     name="gridCellEffect">
+<public:property put=fnPutGridLinesColor       get=fnGetGridLinesColor     name="gridLinesColor">
+<public:property put=fnPutShowDateSelectors    get=fnGetShowDateSelectors  name="showDateSelectors">
+<public:property put=fnPutShowDays             get=fnGetShowDays           name="showDays">
+<public:property put=fnPutShowTitle            get=fnGetShowTitle          name="showTitle">
+<public:property put=fnPutShowVerticalGrid     get=fnGetShowVerticalGrid   name="showVerticalGrid">
+<public:property put=fnPutShowHorizontalGrid   get=fnGetShowHorizontalGrid name="showHorizontalGrid">
+<public:property put=fnPutValue                get=fnGetValue              name="value">
+<public:property put=fnPutValueIsNull          get=fnGetValueIsNull        name="valueIsNull">
+<public:property put=fnPutReadOnly             get=fnGetReadOnly           name="readOnly">
+<!--Risun Add below, for multi language. 2001.7.19.-->
+<public:property put=fnPutLanguage             get=fnGetLanguage           name="language">
+
+<public:event id="onChange"         name="onchange">
+<public:event id="onPropertyChange" name="onpropertychange">
+<public:event id="onError"          name="onerror">
+

@@ -1,0 +1,5 @@
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.SecondPizzaID.Filter.dll
+E:\IMES_CODE\Code\RCTO\bin\IMES.CheckItemModule.SecondPizzaID.Filter.pdb
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.SecondPizzaID.Filter\obj\Debug\ResolveAssemblyReference.cache
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.SecondPizzaID.Filter\obj\Debug\IMES.CheckItemModule.SecondPizzaID.Filter.dll
+E:\IMES_CODE\Code\RCTO\kernel\IMES.CheckItemModule\IMES.CheckItemModule.SecondPizzaID.Filter\obj\Debug\IMES.CheckItemModule.SecondPizzaID.Filter.pdb

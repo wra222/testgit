@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPH.ConsoleHost", "UPH.ConsoleHost\UPH.ConsoleHost.csproj", "{871B7F9E-8AAE-438E-BFB7-6489144C1C45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPH.DB", "UPH.DB\UPH.DB.csproj", "{ED500CC0-FBA4-492E-8DB9-87B10396BA96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPH.Entity.Infrastructure", "UPH.Entity.Infrastructure\UPH.Entity.Infrastructure.csproj", "{DE75D50C-440D-4964-B372-9CD1C1AA83D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPH.Entity.Repository.Meta", "UPH.Entity.Repository.Meta\UPH.Entity.Repository.Meta.csproj", "{17FA6385-0D6A-4563-AD12-A2285125374B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPH.Interface", "UPH.Interface\UPH.Interface.csproj", "{BA62417B-43D2-4360-9BF8-3A3F6C401D90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPH.Implementation", "UPH.Implementation\UPH.Implementation.csproj", "{ECBB151A-FBFB-4212-872C-ADE562547E9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPH.Service", "UPH.Service\UPH.Service.csproj", "{49EEFEA8-6F29-4D16-9A00-37C8905A9183}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{871B7F9E-8AAE-438E-BFB7-6489144C1C45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{871B7F9E-8AAE-438E-BFB7-6489144C1C45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{871B7F9E-8AAE-438E-BFB7-6489144C1C45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{871B7F9E-8AAE-438E-BFB7-6489144C1C45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED500CC0-FBA4-492E-8DB9-87B10396BA96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED500CC0-FBA4-492E-8DB9-87B10396BA96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED500CC0-FBA4-492E-8DB9-87B10396BA96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED500CC0-FBA4-492E-8DB9-87B10396BA96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE75D50C-440D-4964-B372-9CD1C1AA83D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE75D50C-440D-4964-B372-9CD1C1AA83D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE75D50C-440D-4964-B372-9CD1C1AA83D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE75D50C-440D-4964-B372-9CD1C1AA83D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17FA6385-0D6A-4563-AD12-A2285125374B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17FA6385-0D6A-4563-AD12-A2285125374B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17FA6385-0D6A-4563-AD12-A2285125374B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17FA6385-0D6A-4563-AD12-A2285125374B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA62417B-43D2-4360-9BF8-3A3F6C401D90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA62417B-43D2-4360-9BF8-3A3F6C401D90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA62417B-43D2-4360-9BF8-3A3F6C401D90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA62417B-43D2-4360-9BF8-3A3F6C401D90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECBB151A-FBFB-4212-872C-ADE562547E9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECBB151A-FBFB-4212-872C-ADE562547E9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECBB151A-FBFB-4212-872C-ADE562547E9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECBB151A-FBFB-4212-872C-ADE562547E9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49EEFEA8-6F29-4D16-9A00-37C8905A9183}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49EEFEA8-6F29-4D16-9A00-37C8905A9183}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49EEFEA8-6F29-4D16-9A00-37C8905A9183}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49EEFEA8-6F29-4D16-9A00-37C8905A9183}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

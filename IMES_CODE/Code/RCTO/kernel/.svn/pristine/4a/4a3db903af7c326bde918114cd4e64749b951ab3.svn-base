@@ -1,0 +1,93 @@
+﻿// INVENTEC corporation (c)2009 all rights reserved. 
+// Description: 
+//                         
+// Update: 
+//          Date                          Reason                            Name                        
+// ==========   =======================      ============
+// 2014-05-20                         Create                         Vincent 
+// Known issues:
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using IMES.CheckItemModule.Interface;
+using IMES.FisObject.Common.FisBOM;
+using IMES.FisObject.Common.Part;
+using System.ComponentModel.Composition;
+using IMES.Infrastructure;
+using IMES.FisObject.FA.Product;
+using IMES.Infrastructure.FisObjectRepositoryFramework;
+using IMES.DataModel;
+using IMES.FisObject.Common.PrintLog;
+using IMES.FisObject.PAK.DN;
+using System.Text.RegularExpressions;
+using IMES.CheckItemModule.Utility;
+
+namespace IMES.CheckItemModule.CQ.ProcutIDCRC.Filter
+{
+    [Export(typeof(IFilterModule))]
+    [ExportMetadata("ProgramName", "IMES.CheckItemModule.CQ.ProcutIDCRC.Filter.dll")]
+    public class Filter : IFilterModule
+    {
+        private int qty = 1;
+        private string part_check_type = "ProcutIDCRC";
+
+        public object FilterBOM(object hierarchical_bom, string station, object main_object)
+        {
+            IList<IFlatBOMItem> flat_bom_items = new List<IFlatBOMItem>(); 
+            IFlatBOM ret = null;
+            try
+            {
+                IProduct product = Uti.GetProduct(main_object, part_check_type);
+                bool needCheckCRC= Uti.CheckModelByProcReg(product.Model, new List<string>{"SKU"});
+                if (needCheckCRC)
+                {
+                    string virtualPN = "ProductID" + "/" + product.ProId;
+                    string descr = "Check ProductID CRC";
+                    IPart part = new Part()
+                    {
+                        PN = virtualPN,      //PN要跟 flat_bom_item.PartNoItem值一樣                  
+                        CustPn = "",
+                        Remark = "",
+                        Descr = descr,
+                        Descr2 = "",
+                        Type = part_check_type,
+                        Udt = DateTime.Now,
+                        Cdt = DateTime.Now
+                    };
+                    var flat_bom_item = new FlatBOMItem(qty, part_check_type, new List<IPart>() { part });
+                    flat_bom_item.PartNoItem = virtualPN;
+                    flat_bom_item.Tp = part_check_type;
+                    flat_bom_item.Descr = descr;
+                    flat_bom_item.ValueType = getCRC(product.ProId) + product.ProId; //存放Part match時檢查的值
+                    flat_bom_items.Add(flat_bom_item);
+                }
+
+                if (flat_bom_items.Count > 0)
+                {
+                    ret = new FlatBOM(flat_bom_items);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return ret;
+        }
+
+        private string getCRC(string orig)
+        {
+            string sequence = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            int sum = 0;
+            foreach (char c in orig.ToUpper())
+            {
+                int pos = sequence.IndexOf(c);
+                sum += pos >= 0 ? pos : 36;
+            }
+            sum %= 16;
+            return sequence[sum].ToString();
+        }     
+       
+    }
+}

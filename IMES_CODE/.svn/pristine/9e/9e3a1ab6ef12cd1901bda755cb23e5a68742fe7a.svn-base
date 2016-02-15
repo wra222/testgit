@@ -1,0 +1,34 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="CombineKPCT" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" SessionType="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:GetPartSN Customer="{ActivityBind CombineKPCT,Path=Customer}" x:Name="getPartSN1" Editor="{ActivityBind CombineKPCT,Path=Editor}" Station="{ActivityBind CombineKPCT,Path=Station}" SessionType="{ActivityBind CombineKPCT,Path=SessionType}" Line="{ActivityBind CombineKPCT,Path=PdLine}" Key="{ActivityBind CombineKPCT,Path=Key}" />
+	<ns0:CheckPartSN Customer="{ActivityBind CombineKPCT,Path=Customer}" x:Name="checkPartSN1" Editor="{ActivityBind CombineKPCT,Path=Editor}" Station="{ActivityBind CombineKPCT,Path=Station}" SessionType="{ActivityBind CombineKPCT,Path=SessionType}" Line="{ActivityBind CombineKPCT,Path=PdLine}" Key="{ActivityBind CombineKPCT,Path=Key}" />
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="NotComplete" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<ns0:WaitInput Customer="{ActivityBind CombineKPCT,Path=Customer}" x:Name="waitInput1" Editor="{ActivityBind CombineKPCT,Path=Editor}" Station="{ActivityBind CombineKPCT,Path=Station}" SessionType="{ActivityBind CombineKPCT,Path=SessionType}" Line="{ActivityBind CombineKPCT,Path=PdLine}" Key="{ActivityBind CombineKPCT,Path=Key}" />
+			<IfElseActivity x:Name="ifElseActivity1">
+				<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="NotComplete" />
+					</IfElseBranchActivity.Condition>
+					<IfElseActivity x:Name="ifElseActivity2">
+						<IfElseBranchActivity x:Name="ifInputBatteryPN">
+							<IfElseBranchActivity.Condition>
+								<RuleConditionReference ConditionName="ifCheckBattery" />
+							</IfElseBranchActivity.Condition>
+							<ns0:CheckBatteryPN Customer="{ActivityBind CombineKPCT,Path=Customer}" x:Name="checkBatteryPN1" Editor="{ActivityBind CombineKPCT,Path=Editor}" Station="{ActivityBind CombineKPCT,Path=Station}" SessionType="{ActivityBind CombineKPCT,Path=SessionType}" Line="{ActivityBind CombineKPCT,Path=PdLine}" Key="{ActivityBind CombineKPCT,Path=Key}" />
+						</IfElseBranchActivity>
+						<IfElseBranchActivity x:Name="ifInputVendorSN">
+							<ns0:CheckVendorSN Customer="{ActivityBind CombineKPCT,Path=Customer}" x:Name="checkVendorSN1" Editor="{ActivityBind CombineKPCT,Path=Editor}" Station="{ActivityBind CombineKPCT,Path=Station}" SessionType="{ActivityBind CombineKPCT,Path=SessionType}" Line="{ActivityBind CombineKPCT,Path=PdLine}" Key="{ActivityBind CombineKPCT,Path=Key}" />
+						</IfElseBranchActivity>
+					</IfElseActivity>
+				</IfElseBranchActivity>
+			</IfElseActivity>
+		</SequenceActivity>
+	</WhileActivity>
+	<ns0:DBScope Station="{ActivityBind CombineKPCT,Path=Station}" SessionType="{ActivityBind CombineKPCT,Path=SessionType}" x:Name="dbScope1" Key="{ActivityBind CombineKPCT,Path=Key}">
+		<ns0:BindKPCT Customer="{ActivityBind CombineKPCT,Path=Customer}" x:Name="bindKPCT1" Editor="{ActivityBind CombineKPCT,Path=Editor}" Station="{ActivityBind CombineKPCT,Path=Station}" SessionType="{ActivityBind CombineKPCT,Path=SessionType}" Line="{ActivityBind CombineKPCT,Path=PdLine}" Key="{ActivityBind CombineKPCT,Path=Key}" />
+	</ns0:DBScope>
+	<ns0:DataMigration Customer="{ActivityBind CombineKPCT,Path=Customer}" x:Name="dataMigration1" Editor="{ActivityBind CombineKPCT,Path=Editor}" Station="{ActivityBind CombineKPCT,Path=Station}" SessionType="{ActivityBind CombineKPCT,Path=SessionType}" Line="{ActivityBind CombineKPCT,Path=PdLine}" Key="{ActivityBind CombineKPCT,Path=Key}" />
+</ns0:BaseFlow>

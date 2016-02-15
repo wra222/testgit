@@ -1,0 +1,23 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="SMTDefectInput" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:DBScope Station="{ActivityBind SMTDefectInput,Path=Station}" x:Name="dbScope1" Key="{ActivityBind SMTDefectInput,Path=Key}" SessionType="{ActivityBind SMTDefectInput,Path=SessionType}">
+		<ns0:CheckMBForSMTDefectInput Customer="{ActivityBind SMTDefectInput,Path=Customer}" x:Name="checkMBForSMTDefectInput1" SessionType="{ActivityBind SMTDefectInput,Path=SessionType}" Editor="{ActivityBind SMTDefectInput,Path=Editor}" Station="{ActivityBind SMTDefectInput,Path=Station}" Line="{ActivityBind SMTDefectInput,Path=PdLine}" Key="{ActivityBind SMTDefectInput,Path=Key}" />
+		<WhileActivity x:Name="whileActivity1">
+			<WhileActivity.Condition>
+				<RuleConditionReference ConditionName="NotComplete" />
+			</WhileActivity.Condition>
+			<SequenceActivity x:Name="sequenceActivity1">
+				<ns0:WaitInput Customer="{ActivityBind SMTDefectInput,Path=Customer}" x:Name="waitInput1" SessionType="{ActivityBind SMTDefectInput,Path=SessionType}" Editor="{ActivityBind SMTDefectInput,Path=Editor}" Station="{ActivityBind SMTDefectInput,Path=Station}" Line="{ActivityBind SMTDefectInput,Path=PdLine}" Key="{ActivityBind SMTDefectInput,Path=Key}" />
+				<IfElseActivity x:Name="ifElseActivity1">
+					<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+						<IfElseBranchActivity.Condition>
+							<RuleConditionReference ConditionName="NotComplete" />
+						</IfElseBranchActivity.Condition>
+						<ns0:AddSMTDefect Customer="{ActivityBind SMTDefectInput,Path=Customer}" x:Name="AddSMTDefect" SessionType="{ActivityBind SMTDefectInput,Path=SessionType}" Editor="{ActivityBind SMTDefectInput,Path=Editor}" Station="{ActivityBind SMTDefectInput,Path=Station}" Line="{ActivityBind SMTDefectInput,Path=PdLine}" Key="{ActivityBind SMTDefectInput,Path=Key}" />
+					</IfElseBranchActivity>
+				</IfElseActivity>
+			</SequenceActivity>
+		</WhileActivity>
+		<ns0:WriteMBLog Customer="{ActivityBind SMTDefectInput,Path=Customer}" LineSuffix="{x:Null}" Station="{ActivityBind SMTDefectInput,Path=Station}" SessionType="{ActivityBind SMTDefectInput,Path=SessionType}" ManualStation="{x:Null}" Editor="{ActivityBind SMTDefectInput,Path=Editor}" IsPass="False" x:Name="writeMBLog1" IsSingle="True" Line="{ActivityBind SMTDefectInput,Path=PdLine}" Key="{ActivityBind SMTDefectInput,Path=Key}" />
+		<ns0:WritePCBTestLog Customer="{ActivityBind SMTDefectInput,Path=Customer}" x:Name="writePCBTestLog1" SessionType="{ActivityBind SMTDefectInput,Path=SessionType}" Editor="{ActivityBind SMTDefectInput,Path=Editor}" Station="{ActivityBind SMTDefectInput,Path=Station}" Line="{ActivityBind SMTDefectInput,Path=PdLine}" Key="{ActivityBind SMTDefectInput,Path=Key}" />
+	</ns0:DBScope>
+</ns0:BaseFlow>

@@ -1,0 +1,26 @@
+﻿<ns0:BaseFlow Customer="{p1:Null}" x:Name="POData" SessionType="0" Editor="{x:Null}" Station="{x:Null}" CurrentFlowSession="{x:Null}" Key="{x:Null}" PdLine="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:IMES.Activity;Assembly=IMES.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<ns0:CheckDNCombineProduct Customer="{ActivityBind POData,Path=Customer}" x:Name="checkDNCombineProduct1" SessionType="{ActivityBind POData,Path=SessionType}" Editor="{ActivityBind POData,Path=Editor}" Station="{ActivityBind POData,Path=Station}" Line="{ActivityBind POData,Path=PdLine}" Key="{ActivityBind POData,Path=Key}" />
+	<IfElseActivity x:Name="ifElseActivity1">
+		<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="DNCombineProudct" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind POData,Path=Station}" x:Name="dbScope1" Key="{ActivityBind POData,Path=Key}" SessionType="{ActivityBind POData,Path=SessionType}">
+				<ns0:BackupForUnpack Customer="{ActivityBind POData,Path=Customer}" x:Name="backupForUnpack1" SessionType="{ActivityBind POData,Path=SessionType}" Editor="{ActivityBind POData,Path=Editor}" Station="{ActivityBind POData,Path=Station}" Line="{ActivityBind POData,Path=PdLine}" Key="{ActivityBind POData,Path=Key}" />
+				<ns0:UpdateProductListStatusByProIDs Customer="{ActivityBind POData,Path=Customer}" x:Name="updateProductListStatusByProIDs1" SessionType="{ActivityBind POData,Path=SessionType}" Editor="{ActivityBind POData,Path=Editor}" Station="83" Status="Pass" Line="{ActivityBind POData,Path=PdLine}" Key="{ActivityBind POData,Path=Key}" />
+				<ns0:WriteProductLogByDeliveryNo Customer="{ActivityBind POData,Path=Customer}" x:Name="writeProductLogByDeliveryNo1" SessionType="{ActivityBind POData,Path=SessionType}" Editor="{ActivityBind POData,Path=Editor}" Station="85U" Status="Pass" Line="{ActivityBind POData,Path=PdLine}" Key="{ActivityBind POData,Path=Key}" />
+				<ns0:DNUnpackForPOData Customer="{ActivityBind POData,Path=Customer}" x:Name="dnUnpackForPOData1" SessionType="{ActivityBind POData,Path=SessionType}" Editor="{ActivityBind POData,Path=Editor}" Station="{ActivityBind POData,Path=Station}" Line="{ActivityBind POData,Path=PdLine}" Key="{ActivityBind POData,Path=Key}" />
+				<ns0:DeleteCartonSSCCForPOData Customer="{ActivityBind POData,Path=Customer}" x:Name="deleteCartonSSCCForPOData1" SessionType="{ActivityBind POData,Path=SessionType}" Editor="{ActivityBind POData,Path=Editor}" Station="{ActivityBind POData,Path=Station}" Line="{ActivityBind POData,Path=PdLine}" Key="{ActivityBind POData,Path=Key}" />
+				<ns0:DeleteDN Customer="{ActivityBind POData,Path=Customer}" x:Name="deleteDN1" SessionType="{ActivityBind POData,Path=SessionType}" Editor="{ActivityBind POData,Path=Editor}" Station="{ActivityBind POData,Path=Station}" Line="{ActivityBind POData,Path=PdLine}" Key="{ActivityBind POData,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="DNNotCombineProduct" />
+			</IfElseBranchActivity.Condition>
+			<ns0:DBScope Station="{ActivityBind POData,Path=Station}" x:Name="dbScope2" Key="{ActivityBind POData,Path=Key}" SessionType="{ActivityBind POData,Path=SessionType}">
+				<ns0:DeleteDN Customer="{ActivityBind POData,Path=Customer}" x:Name="deleteDN2" SessionType="{ActivityBind POData,Path=SessionType}" Editor="{ActivityBind POData,Path=Editor}" Station="{ActivityBind POData,Path=Station}" Line="{ActivityBind POData,Path=PdLine}" Key="{ActivityBind POData,Path=Key}" />
+			</ns0:DBScope>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+</ns0:BaseFlow>
