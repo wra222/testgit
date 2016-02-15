@@ -1,0 +1,134 @@
+D:\Jerry\Work\HPEDITS\Source Code\HPEDITS\bin\Inventec.HPEDITS.Parser.dll
+D:\Jerry\Work\HPEDITS\Source Code\HPEDITS\bin\Inventec.HPEDITS.Parser.pdb
+D:\Jerry\Work\HPEDITS\Source Code\HPEDITS\Parser\obj\Debug\ResolveAssemblyReference.cache
+D:\Jerry\Work\HPEDITS\Source Code\HPEDITS\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+D:\Jerry\Work\HPEDITS\Source Code\HPEDITS\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\bin\Inventec.HPEDITS.Parser.dll
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\bin\Inventec.HPEDITS.Parser.pdb
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\Parser\obj\Debug\ResolveAssemblyReference.cache
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\Parser\bin\Debug\Inventec.HPEDITS.Parser.dll
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\Parser\bin\Debug\Inventec.HPEDITS.Parser.pdb
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\bin\Debug\Inventec.HPEDITS.Parser.dll
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\bin\Debug\Inventec.HPEDITS.Parser.pdb
+D:\Jerry\Work\HPEDITS\Source Code\Phase 1\bin\Debug\DataDictionary.csv
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\Parser\obj\Debug\ResolveAssemblyReference.cache
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+F:\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\Parser\obj\Debug\ResolveAssemblyReference.cache
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+E:\project\hvls\HPEDITS .net Source Code\HP EDITS_20080318\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+E:\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+E:\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+E:\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+E:\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+E:\EDIS\hvls\Parser\obj\Debug\ResolveAssemblyReference.cache
+E:\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+E:\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+E:\備份\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+E:\備份\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+E:\備份\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+E:\備份\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+E:\備份\EDIS\hvls\Parser\obj\Debug\ResolveAssemblyReference.cache
+E:\備份\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+E:\備份\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+E:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+E:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+E:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+E:\PAK_EDI\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+E:\PAK_EDI\EDIS\hvls\Parser\obj\Debug\ResolveAssemblyReference.cache
+E:\PAK_EDI\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+E:\PAK_EDI\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+D:\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+D:\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+D:\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+D:\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+D:\2DTest\EDIS\hvls\Parser\obj\Debug\ResolveAssemblyReference.cache
+D:\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+D:\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+D:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+D:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+D:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+D:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+D:\edits_test\2DTest\EDIS\hvls\Parser\obj\Debug\ResolveAssemblyReference.cache
+D:\edits_test\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+D:\edits_test\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+E:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+E:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+E:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+E:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+E:\edits_test\2DTest\EDIS\hvls\Parser\obj\Debug\ResolveAssemblyReference.cache
+E:\edits_test\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+E:\edits_test\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+C:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+C:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+C:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+C:\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+C:\edits_test\2DTest\EDIS\hvls\Parser\obj\Debug\ResolveAssemblyReference.cache
+C:\edits_test\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+C:\edits_test\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\Parser\obj\Debug\ResolveAssemblyReference.cache
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+E:\Martin\Edits\edits_test\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+D:\EDITS-20100823\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+D:\EDITS-20100823\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+D:\EDITS-20100823\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+D:\EDITS-20100823\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+D:\EDITS-20100823\2DTest\EDIS\hvls\Parser\obj\Debug\ResolveAssemblyReference.cache
+D:\EDITS-20100823\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+D:\EDITS-20100823\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\Parser\obj\Debug\ResolveAssemblyReference.cache
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+D:\EDITSCQ-20101227\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\Parser\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+C:\Documents and Settings\icc100291\桌面\EDITSCQ\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+D:\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+D:\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+D:\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+D:\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+D:\EDITSCQ\2DTest\EDIS\hvls\Parser\obj\Debug\ResolveAssemblyReference.cache
+D:\EDITSCQ\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+D:\EDITSCQ\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\Parser\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+C:\Documents and Settings\Administrator\桌面\EDITSCQ\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\Parser\obj\Debug\ResolveAssemblyReference.cache
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+E:\fis\EDITSCQ\2DTest\EDIS\hvls\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\Parser\obj\Debug\ResolveAssemblyReference.cache
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\Parser\obj\Debug\Inventec.HPEDITS.Parser.dll
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\Parser\obj\Debug\Inventec.HPEDITS.Parser.pdb
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\DataDictionary.csv
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.dll
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.pdb
+E:\fis\EDITSCQ\2DTest\EDIS\Edits\HPEDITS .net Source Code\HPEDITS_WebApp_20080124\Bin\Inventec.HPEDITS.Parser.XML

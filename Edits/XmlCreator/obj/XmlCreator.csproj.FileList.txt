@@ -1,0 +1,6 @@
+..\bin\Inventec.HPEDITS.XmlCreator.dll
+..\bin\Inventec.HPEDITS.XmlCreator.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Inventec.HPEDITS.XmlCreator.dll
+obj\Debug\Inventec.HPEDITS.XmlCreator.pdb
+..\bin\NLog.config

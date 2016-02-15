@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by dilys (hp) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="HOUSE_WAYBILLS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="HOUSE_WAYBILL" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="WAYBILL_NUMBER" type="xs:string"/>
+							<xs:element name="SHIP_MODE" type="xs:string"/>
+							<xs:element name="INTL_CARRIER" type="xs:string"/>
+							<xs:element name="CURRENT_DATE" type="xs:string"/>
+							<xs:element name="ACTUAL_SHIPDATE" type="xs:string"/>
+							<xs:element name="HAWB_PALLET_QTY" type="xs:double"/>
+							<xs:element name="HAWB_BOX_QTY" type="xs:double"/>
+							<xs:element name="HAWB_UNIT_QTY" type="xs:double"/>
+							<xs:element name="CONSOL_INVOICE" type="xs:string"/>
+							<xs:element name="DUTY_CODE" type="xs:string"/>
+							<xs:element name="PREF_GATEWAY" type="xs:string"/>
+							<xs:element name="TRANS_SERV_LEVEL" type="xs:string"/>
+							<xs:element name="HAWB_ACT_WEIGHT" type="xs:double"/>
+							<xs:element name="HAWB_GROSS_WEIGHT" type="xs:double"/>
+							<xs:element name="SHIP_FROM_NAME" type="xs:string"/>
+							<xs:element name="SHIP_FROM_NAME_2" type="xs:string"/>
+							<xs:element name="SHIP_FROM_NAME_3" type="xs:string"/>
+							<xs:element name="SHIP_FROM_STREET" type="xs:string"/>
+							<xs:element name="SHIP_FROM_STREET_2" type="xs:string"/>
+							<xs:element name="SHIP_FROM_CITY" type="xs:string"/>
+							<xs:element name="SHIP_FROM_STATE" type="xs:string"/>
+							<xs:element name="SHIP_FROM_ZIP" type="xs:string"/>
+							<xs:element name="SHIP_FROM_COUNTRY_NAME" type="xs:string"/>
+							<xs:element name="SHIP_FROM_COUNTRY_CODE" type="xs:string"/>
+							<xs:element name="SHIP_FROM_CONTACT" type="xs:string"/>
+							<xs:element name="SHIP_FROM_TELEPHONE" type="xs:string"/>
+							<xs:element name="SHIP_TO_ID" type="xs:string"/>
+							<xs:element name="SHIP_TO_NAME" type="xs:string"/>
+							<xs:element name="SHIP_TO_NAME_2" type="xs:string"/>
+							<xs:element name="SHIP_TO_NAME_3" type="xs:string"/>
+							<xs:element name="SHIP_TO_STREET" type="xs:string"/>
+							<xs:element name="SHIP_TO_STREET_2" type="xs:string"/>
+							<xs:element name="SHIP_TO_CITY" type="xs:string"/>
+							<xs:element name="SHIP_TO_STATE" type="xs:string"/>
+							<xs:element name="SHIP_TO_ZIP" type="xs:string"/>
+							<xs:element name="SHIP_TO_COUNTRY_CODE" type="xs:string"/>
+							<xs:element name="SHIP_TO_COUNTRY_NAME" type="xs:string"/>
+							<xs:element name="PACK_ID_LINE_ITEM" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PACK_ID" type="xs:string"/>
+										<xs:element name="HP_SO" type="xs:string"/>
+										<xs:element name="PACK_ID_LINE_ITEM_UNIT_QTY" type="xs:double"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="UDFType">
+		<xs:sequence>
+			<xs:element name="KEY" type="xs:string"/>
+			<xs:element name="VALUE" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

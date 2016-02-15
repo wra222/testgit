@@ -1,0 +1,2495 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Inventec.HPEDITS.XmlCreator</name>
+    </assembly>
+    <members>
+        <member name="T:PALLETSATD.PALLETS">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:PALLETSATD.PALLETS.PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PALLETSATD.PALLETS.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PALLETSATD.PALLETS.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PALLETSATD.PALLETS.UDF_PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PALLETSATD.PALLETS.LABEL_INSTR_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PALLETSATD.PALLETS.PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PALLETSATD.PALLETS.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PALLETSATD.PALLETS.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PALLETSATD.PALLETS.UDF_PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PALLETSATD.PALLETS.LABEL_INSTR_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PALLETSATD.PALLETS.PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PALLETSATD.PALLETS.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PALLETSATD.PALLETS.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PALLETSATD.PALLETS.UDF_PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PALLETSATD.PALLETS.LABEL_INSTR_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.SERIAL_NUMDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.LABEL_INSTR_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.UDF_BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.SERIAL_NUMRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.LABEL_INSTR_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.UDF_BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.SERIAL_NUMRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.LABEL_INSTR_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BoxTD.BOXES.UDF_BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="M:Inventec.HPEDITS.XmlCreator.Database.ITableMappingLookup.LookupXMLTable(System.String)">
+            <summary>
+            Check if the XML table is actually a table in DB or a field
+            </summary>
+            <returns>If entity doesn't exist, then TableLookupResult is null,
+            if table is DBtable, then will return TableName, if is a field, then will return
+            field name.</returns>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.LABEL_INSTR_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.UDF_PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.PACK_ID_LINE_ITEMDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.SERIAL_NUMDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.UDF_BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.LABEL_INSTR_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.UDF_PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.PACK_ID_LINE_ITEMRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.SERIAL_NUMRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.UDF_BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.LABEL_INSTR_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.UDF_PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.PACK_ID_LINE_ITEMRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.SERIAL_NUMRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletTDB_OLD.PALLETS.UDF_BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Inventec.HPEDITS.XmlCreator.BoxLabelXmlCreator">
+            <summary>
+            Packlist Xml Creator
+            </summary>
+        </member>
+        <member name="F:Inventec.HPEDITS.XmlCreator.XmlCreator.m_SchemaPath">
+            <summary>
+            Schema path and file name
+            </summary>
+        </member>
+        <member name="F:Inventec.HPEDITS.XmlCreator.XmlCreator.m_DataSet">
+            <summary>
+            store data item filter by Schema
+            </summary>
+        </member>
+        <member name="M:Inventec.HPEDITS.XmlCreator.XmlCreator.LoadSchema(System.String)">
+            <summary>
+            Reads an XML schema into the DataSet. 
+            </summary>
+            <param name="aSchemaPath">schema file path and file name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Inventec.HPEDITS.XmlCreator.XmlCreator.LoadData(System.String)">
+            <summary>
+            Utilize schema load data from database
+            </summary>
+        </member>
+        <member name="M:Inventec.HPEDITS.XmlCreator.XmlCreator.#ctor">
+            <summary>
+            constructor
+            </summary>
+        </member>
+        <member name="M:Inventec.HPEDITS.XmlCreator.XmlCreator.WriteXml">
+            <summary>
+            write xml file use dataset data
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inventec.HPEDITS.XmlCreator.XmlCreator.WriteXml(System.String,System.Boolean)">
+            <summary>
+            write xml file use dataset data
+            </summary>
+            <param name="aXmlPath">set xml path and file name</param>
+            <returns></returns>
+        </member>
+        <member name="P:Inventec.HPEDITS.XmlCreator.XmlCreator.SchemaPath">
+            <summary>
+            get the Schema path and file name
+            </summary>
+        </member>
+        <member name="P:Inventec.HPEDITS.XmlCreator.XmlCreator.DataSet">
+            <summary>
+            get data set 
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.SUBREGIONDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.DESTINATION_CODEDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.UDF_BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.SUBREGIONRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.DESTINATION_CODERow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.UDF_BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.SUBREGIONRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.DESTINATION_CODERowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WaybillTD_new.WAYBILL_ADDITION.UDF_BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PALLETSB3.PALLETS">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:PALLETSB3.PALLETS.PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PALLETSB3.PALLETS.LABEL_INSTR_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PALLETSB3.PALLETS.PACK_ID_LINE_ITEMDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PALLETSB3.PALLETS.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PALLETSB3.PALLETS.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PALLETSB3.PALLETS.PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PALLETSB3.PALLETS.LABEL_INSTR_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PALLETSB3.PALLETS.PACK_ID_LINE_ITEMRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PALLETSB3.PALLETS.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PALLETSB3.PALLETS.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PALLETSB3.PALLETS.PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PALLETSB3.PALLETS.LABEL_INSTR_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PALLETSB3.PALLETS.PACK_ID_LINE_ITEMRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PALLETSB3.PALLETS.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PALLETSB3.PALLETS.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.UDF_BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.SERIAL_NUMDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.LABEL_INSTR_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.PACK_ID_LINE_ITEMDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.UDF_BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.SERIAL_NUMRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.LABEL_INSTR_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.PACK_ID_LINE_ITEMRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.UDF_BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.SERIAL_NUMRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.LABEL_INSTR_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BoxTD_BSaM_20121120.BOXES.PACK_ID_LINE_ITEMRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.PACK_IDDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.EXPORT_NOTES_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.SHIPPING_INSTR_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.PICKING_INSTR_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.DELIVERY_INSTR_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.SPECIAL_INSTR_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.CUSTOMER_INSTR_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.LABEL_INSTR_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.CARRIER_INST_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.INVOICE_UDF_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UDF_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.HANDLING_INSTR_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.PACK_ID_LINE_ITEMDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.EXPORT_NOTES_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.SHIPPING_INSTR_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.PICKING_INSTR_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.DELIVERY_INSTR_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.SPECIAL_INSTR_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.CUSTOMER_INSTR_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.HANDLING_INSTR_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UID_INSTR_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.CONFIG_INSTR_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.MAXKIT_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UDF_DETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.HP_PN_COMPONENTSDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.SERIAL_NUMDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UDF_BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.PACK_IDRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.EXPORT_NOTES_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.SHIPPING_INSTR_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.PICKING_INSTR_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.DELIVERY_INSTR_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.SPECIAL_INSTR_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.CUSTOMER_INSTR_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.LABEL_INSTR_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.CARRIER_INST_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.INVOICE_UDF_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UDF_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.HANDLING_INSTR_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.PACK_ID_LINE_ITEMRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.EXPORT_NOTES_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.SHIPPING_INSTR_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.PICKING_INSTR_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.DELIVERY_INSTR_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.SPECIAL_INSTR_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.CUSTOMER_INSTR_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.HANDLING_INSTR_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UID_INSTR_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.CONFIG_INSTR_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.MAXKIT_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UDF_DETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.HP_PN_COMPONENTSRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.SERIAL_NUMRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UDF_BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.PACK_IDRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.EXPORT_NOTES_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.SHIPPING_INSTR_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.PICKING_INSTR_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.DELIVERY_INSTR_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.SPECIAL_INSTR_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.CUSTOMER_INSTR_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.LABEL_INSTR_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.CARRIER_INST_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.INVOICE_UDF_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UDF_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.HANDLING_INSTR_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.PACK_ID_LINE_ITEMRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.EXPORT_NOTES_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.SHIPPING_INSTR_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.PICKING_INSTR_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.DELIVERY_INSTR_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.SPECIAL_INSTR_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.CUSTOMER_INSTR_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.HANDLING_INSTR_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UID_INSTR_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.CONFIG_INSTR_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.MAXKIT_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UDF_DETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.HP_PN_COMPONENTSRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.SERIAL_NUMRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PackListTD.NewDataSet.UDF_BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.UDF_PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.SERIAL_NUMDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.PACK_IDDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.HP_SODataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.UDF_BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.UDF_PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.SERIAL_NUMRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.PACK_IDRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.HP_SORow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.UDF_BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.UDF_PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.SERIAL_NUMRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.PACK_IDRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.HP_SORowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:BsamPalletB.HOUSE_WAYBILL.UDF_BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.SUBREGIONDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.DESTINATION_CODEDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.UDF_BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.SUBREGIONRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.DESTINATION_CODERow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.UDF_BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.SUBREGIONRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.DESTINATION_CODERowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WaybillTD.WAYBILL_ADDITION.UDF_BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PALLETS2D.PALLETS">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:PALLETS2D.PALLETS.PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PALLETS2D.PALLETS.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PALLETS2D.PALLETS.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PALLETS2D.PALLETS.UDF_PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PALLETS2D.PALLETS.LABEL_INSTR_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PALLETS2D.PALLETS.PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PALLETS2D.PALLETS.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PALLETS2D.PALLETS.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PALLETS2D.PALLETS.UDF_PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PALLETS2D.PALLETS.LABEL_INSTR_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PALLETS2D.PALLETS.PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PALLETS2D.PALLETS.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PALLETS2D.PALLETS.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PALLETS2D.PALLETS.UDF_PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PALLETS2D.PALLETS.LABEL_INSTR_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Inventec.HPEDITS.XmlCreator.PackListXmlCreator">
+            <summary>
+            Packlist Xml Creator
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.SUBREGIONDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.DESTINATION_CODEDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.UDF_BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.SUBREGIONRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.DESTINATION_CODERow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.UDF_BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.SUBREGIONRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.DESTINATION_CODERowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WaybillTD_20121127_new.WAYBILL_ADDITION.UDF_BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.MASTER_WAYBILLDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.HOUSE_WAYBILLDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.PROD_TYPE_NAMEDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.UDF_PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.SERIAL_NUMDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.UDF_BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.MASTER_WAYBILLRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.HOUSE_WAYBILLRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.PROD_TYPE_NAMERow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.UDF_PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.SERIAL_NUMRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.UDF_BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.MASTER_WAYBILLRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.HOUSE_WAYBILLRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.PROD_TYPE_NAMERowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.UDF_PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.SERIAL_NUMRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD_New.MASTER_WAYBILLS.UDF_BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletATD.PALLETS">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:PalletATD.PALLETS.PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletATD.PALLETS.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletATD.PALLETS.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletATD.PALLETS.UDF_PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletATD.PALLETS.LABEL_INSTR_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletATD.PALLETS.PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletATD.PALLETS.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletATD.PALLETS.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletATD.PALLETS.UDF_PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletATD.PALLETS.LABEL_INSTR_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletATD.PALLETS.PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletATD.PALLETS.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletATD.PALLETS.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletATD.PALLETS.UDF_PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletATD.PALLETS.LABEL_INSTR_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.MASTER_WAYBILLDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.HOUSE_WAYBILLDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.UDF_PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.SERIAL_NUMDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.UDF_BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.MASTER_WAYBILLRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.HOUSE_WAYBILLRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.UDF_PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.SERIAL_NUMRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.UDF_BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.MASTER_WAYBILLRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.HOUSE_WAYBILLRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.UDF_PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.SERIAL_NUMRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybilTD.MASTER_WAYBILLS.UDF_BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Inventec.HPEDITS.XmlCreator.PalletAXmlCreator">
+            <summary>
+            Packlist Xml Creator
+            </summary>
+        </member>
+        <member name="T:Inventec.HPEDITS.XmlCreator.PalletBXmlCreator">
+            <summary>
+            Packlist Xml Creator
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.TRUCKDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.FORWARDERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.UDF_PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.BOXESDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.UDF_BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.TRUCKRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.FORWARDERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.UDF_PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.BOXESRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.UDF_BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.TRUCKRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.FORWARDERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.UDF_PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.BOXESRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:POS.NewDataSet.UDF_BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.MASTER_WAYBILLDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.HOUSE_WAYBILLDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.UDF_PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.SERIAL_NUMDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.UDF_BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.MASTER_WAYBILLRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.HOUSE_WAYBILLRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.UDF_PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.SERIAL_NUMRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.UDF_BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.MASTER_WAYBILLRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.HOUSE_WAYBILLRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.UDF_PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.SERIAL_NUMRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MasterWaybill.MASTER_WAYBILLS.UDF_BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Inventec.HPEDITS.XmlCreator.clsBarCode">
+            <summary>
+            Summary description for clsBarCode.
+            </summary>
+        </member>
+        <member name="M:Inventec.HPEDITS.XmlCreator.clsBarCode.FindMod10Digit(System.String)">
+            <summary>
+            calculates a mod 10 check digit from the input string
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inventec.HPEDITS.XmlCreator.clsBarCode.Code128TildeProcessing(System.String)">
+            <summary>
+            Interprets tilde characters for special processing.  
+            </summary>
+            <param name="InputValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inventec.HPEDITS.XmlCreator.clsBarCode.Code128(System.String,System.Boolean)">
+            <summary>
+            This method will automatically generate the correct version of Code 128 bar code
+            add switch between the different character sets.  It will take the Input string,
+            add the start character, stop character, and check digit character and return the 
+            completed string 
+            </summary>
+            <param name="InputValue">The value to barcode</param>
+            <param name="InputValue">whether or not tildes are processed as special escape characters</param>
+            <returns></returns>
+        </member>
+        <member name="M:Inventec.HPEDITS.XmlCreator.clsBarCode.Code128HR(System.String,System.Boolean)">
+            <summary>
+            This method will convert data encoded for Code128 and return the human readable form
+            of the code 
+            </summary>
+            <param name="InputValue">The value that is to be barcoded</param>
+            <param name="applyTilde">Determines if tilde characters should be interpreted as escape sequence characters</param>
+            <returns></returns>
+        </member>
+        <member name="T:Inventec.HPEDITS.XmlCreator.HouseWaybillsXmlCreator">
+            <summary>
+            HouseWaybills Xml Creator
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.LABEL_INSTR_HEADDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.UDF_PALLETDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.PACK_ID_LINE_ITEMDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.SERIAL_NUMDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.UDF_BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.LABEL_INSTR_HEADRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.UDF_PALLETRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.PACK_ID_LINE_ITEMRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.SERIAL_NUMRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.UDF_BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.LABEL_INSTR_HEADRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.UDF_PALLETRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.PACK_ID_LINE_ITEMRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.SERIAL_NUMRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:PalletTDB.PALLETS.UDF_BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WAYBILL.WAYBILL_ADDITION">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:WAYBILL.WAYBILL_ADDITION.SUBREGIONDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WAYBILL.WAYBILL_ADDITION.DESTINATION_CODEDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WAYBILL.WAYBILL_ADDITION.BOXDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WAYBILL.WAYBILL_ADDITION.UDF_HEADERDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WAYBILL.WAYBILL_ADDITION.UDF_DETAILDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:WAYBILL.WAYBILL_ADDITION.SUBREGIONRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WAYBILL.WAYBILL_ADDITION.DESTINATION_CODERow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WAYBILL.WAYBILL_ADDITION.BOXRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WAYBILL.WAYBILL_ADDITION.UDF_HEADERRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WAYBILL.WAYBILL_ADDITION.UDF_DETAILRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:WAYBILL.WAYBILL_ADDITION.SUBREGIONRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WAYBILL.WAYBILL_ADDITION.DESTINATION_CODERowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WAYBILL.WAYBILL_ADDITION.BOXRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WAYBILL.WAYBILL_ADDITION.UDF_HEADERRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:WAYBILL.WAYBILL_ADDITION.UDF_DETAILRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Inventec.HPEDITS.XmlCreator.POSXmlCreator">
+            <summary>
+            POSXmlCreator Xml Creator
+            </summary>
+        </member>
+        <member name="T:HOUSE_WAYBILLS_001_20130124.HOUSE_WAYBILLS">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:HOUSE_WAYBILLS_001_20130124.HOUSE_WAYBILLS.HOUSE_WAYBILLDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:HOUSE_WAYBILLS_001_20130124.HOUSE_WAYBILLS.PACK_ID_LINE_ITEMDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:HOUSE_WAYBILLS_001_20130124.HOUSE_WAYBILLS.HOUSE_WAYBILLRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:HOUSE_WAYBILLS_001_20130124.HOUSE_WAYBILLS.PACK_ID_LINE_ITEMRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:HOUSE_WAYBILLS_001_20130124.HOUSE_WAYBILLS.HOUSE_WAYBILLRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:HOUSE_WAYBILLS_001_20130124.HOUSE_WAYBILLS.PACK_ID_LINE_ITEMRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+    </members>
+</doc>
